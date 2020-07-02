@@ -5,7 +5,6 @@
 #include "ElasticState.h"
 #include "ResolutionModels.h"
 #include "FastSim.h"
-#include "Math/Vector3D.h"
 
 using namespace MuE;
 using namespace std;
@@ -255,10 +254,9 @@ PxPyPzEVector FastSim::SmearX(const PxPyPzEVector & k) const
     
   Double_t smearx = gRandom->Gaus(divx, thrms);
   */
-    
-  Double_t smearx = gRandom->Gaus(0, thrms);  
+  Double_t smeary = gRandom->Gaus(0, thrms);
+ Double_t smearx = gRandom->Gaus(0, thrms);  
   gRandom->Gaus(0., 1.); // dummy call to preserve the random chain synchronization
-  Double_t smeary = divy;
   
   // angles in the xz and yz planes // defined in -pi, +pi, although should be small angles around zero
   Double_t anglex = atan2(k.Px(), k.Pz());
@@ -308,7 +306,7 @@ PxPyPzEVector FastSim::SmearPolar(const PxPyPzEVector & k) const
 }
 
 
-XYZVector FastSim::coo (const Double_t & the, const Double_t & phi ) const
+XYZVector FastSim::coo(const Double_t & the, const Double_t & phi ) const
 {   Double_t theR = the * 0.001;//rad
     Double_t phiR = phi * 0.001;//rad
     Double_t d0=0.35;//m
@@ -359,7 +357,7 @@ void FastSim::LoadKineVars(const PxPyPzEVector & p_mu_in,  const PxPyPzEVector &
   kv.phmu = p_mu_out.Phi();
 
 XYZVector coo_fin_mu=coo(kv.thmu,kv.phmu);
-XYZVector coo_fin_e=coo(kv.the,kv.phme);
+XYZVector coo_fin_e=coo(kv.the,kv.phe);
 kv.cooXe = coo_fin_e.X();
 kv.cooXmu = coo_fin_mu.X();
 kv.cooYe = coo_fin_e.Y();

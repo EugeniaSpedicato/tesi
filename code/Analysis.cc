@@ -33,7 +33,7 @@ void Analysis::Analyze(const MuE::Event & event, const MuE::FastSim & fs)
   const MuE::Photon & photon = fs.GetPhoton();
 
   // apply preselection if both the gen-level and det-level electron angle are above the cut (default 30mrad)
-  if (genKin.the > paran.thetaMax && detKin.the > paran.thetaMax > && detKinBeamRot.the > paran.thetaMax) return;
+  if (genKin.the > paran.thetaMax && detKin.the > paran.thetaMax ) return;
 
   // filling my analysis variables
   myAna.RunNr = event.RunNr;

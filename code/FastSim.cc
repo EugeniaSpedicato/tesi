@@ -323,8 +323,12 @@ XYZVector FastSim::coo(const Double_t & the, const Double_t & phi ) const
     
     if (tar==0)
     {
-    Double_t xf=x+d0*tan(theR);
-    Double_t yf=y+d0*tan(phiR);
+    
+    Double_t d0_xy = sqrt(x*x+y*y);//generato random
+    Double_t d_xy = d0_xy+d0*tan(theR);//vettore nel piano xy
+    Double_t xf = d_xy*cos(phiR);
+    Double_t yf = d_xy*sen(phiR);
+        
     XYZVector coo_f(xf,yf,zf);
        // cout << "First target ";
     return coo_f;
@@ -332,8 +336,11 @@ XYZVector FastSim::coo(const Double_t & the, const Double_t & phi ) const
     
     if(tar==1)
     {
-    Double_t xf=x+d1*tan(theR);
-    Double_t yf=y+d1*tan(phiR); 
+    Double_t d0_xy = sqrt(x*x+y*y);//generato random
+    Double_t d_xy = d0_xy+d1*tan(theR);//vettore nel piano xy
+    Double_t xf = d_xy*cos(phiR);
+    Double_t yf = d_xy*sen(phiR);
+        
     XYZVector coo_f(xf,yf,zf);
        // cout << "Second target ";
         

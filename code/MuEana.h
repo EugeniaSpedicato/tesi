@@ -35,10 +35,14 @@ namespace MuE {
       Double_t cooXmu;
       Double_t cooYe;
       Double_t cooYmu;
+      Double_t pXmu;
+      Double_t pYmu;
+      Double_t pZmu;
+      
 
     KineVars():
     t13(0),t24(0),x13(0),x24(0),tt_e(0),xt_e(0),Ee(0),Emu(0),the(0),thmu(0),phe(0),phmu(0),
-    deltaPhi(0),openingAngle(0),tripleProduct(0),cooXe(0),cooXmu(0),cooYe(0),cooYmu(0)
+    deltaPhi(0),openingAngle(0),tripleProduct(0),cooXe(0),cooXmu(0),cooYe(0),cooYmu(0),pXmu(0),pYmu(0),pZmu(0)
     {};
 
     virtual ~KineVars(){};

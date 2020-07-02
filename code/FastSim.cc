@@ -186,8 +186,8 @@ Double_t FastSim::ThetaRMS(const PxPyPzEVector & k) const
 
  PxPyPzEVector FastSim::RotDiv(const PxPyPzEVector & k) const
  {
-Double_t divthx = gRandom->Gaus(0., 0.0003);
-Double_t divthy = gRandom->Gaus(0., 0.0002); 
+Double_t divthx = gRandom->Gaus(0., 0.00027);
+Double_t divthy = gRandom->Gaus(0., 0.00026); 
 
 Double_t anglex = atan2(k.Px(), k.Pz());
 Double_t angley = atan2(k.Py(), k.Pz()); 
@@ -200,7 +200,7 @@ Double_t pmuin=sqrt(k.Px()*k.Px()+k.Py()*k.Py()+k.Pz()*k.Pz());
 Double_t pz=pmuin/(1+tan(anglex)*tan(anglex)+tan(angley)*tan(angley));
 Double_t py=pz*tan(angley);
 Double_t px=pz*tan(anglex);
-Double_t pt=sqrt(px*px+py*py);
+//Double_t pt=sqrt(px*px+py*py);
  PxPyPzEVector pnewdiv(px, py, pz, k.E());     
 return pnewdiv;  
  }   
@@ -360,8 +360,11 @@ void FastSim::LoadKineVars(const PxPyPzEVector & p_mu_in,  const PxPyPzEVector &
   kv.thmu = 1e3* p_mu_out.Theta();
   kv.phe = p_e_out.Phi();
   kv.phmu = p_mu_out.Phi();
-  kv.phmu = p_mu_out.Phi();
-  kv.phmu = p_mu_out.Phi();
+  kv.pXmu = p_mu_in.Px();
+  kv.pYmu = p_mu_in.Py();
+  kv.pZmu = p_mu_in.Pz();
+
+
 
 XYZVector coo_fin_mu=coo(kv.thmu,kv.phmu);
 XYZVector coo_fin_e=coo(kv.the,kv.phe);

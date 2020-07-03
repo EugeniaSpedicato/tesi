@@ -306,7 +306,7 @@ PxPyPzEVector FastSim::SmearPolar(const PxPyPzEVector & k) const
 }
 
 
-XYZVector FastSim::coo(const Double_t & the, const Double_t & phi ) const
+XYZVector FastSim::coo(const Double_t & the, const Double_t & phi,MuE::KineVars & kv) const
 {   Double_t theR = the * 0.001;//rad
     Double_t phiR = phi * 0.001;//rad
     Double_t d0=0.35;//m
@@ -323,26 +323,41 @@ XYZVector FastSim::coo(const Double_t & the, const Double_t & phi ) const
     
     if (tar==0)
     {
-    
+    if (kv==DetKinBeamRot){
     Double_t d0_xy = sqrt(x*x+y*y);//generato random
     Double_t d_xy = d0_xy+d0*tan(theR);//vettore nel piano xy
     Double_t xf = d_xy*cos(phiR);
     Double_t yf = d_xy*sin(phiR);
+       
+    XYZVector coo_f(xf,yf,zf);}
         
-    XYZVector coo_f(xf,yf,zf);
+    else 
+    {Double_t d0_xy = 0;//generato random
+    Double_t d_xy = d0_xy+d0*tan(theR);//vettore nel piano xy
+    Double_t xf = d_xy*cos(phiR);
+    Double_t yf = d_xy*sin(phiR);
+    XYZVector coo_f(xf,yf,zf);}
        // cout << "First target ";
     return coo_f;
     };
     
     if(tar==1)
     {
+            if (kv==DetKinBeamRot){
     Double_t d0_xy = sqrt(x*x+y*y);//generato random
     Double_t d_xy = d0_xy+d1*tan(theR);//vettore nel piano xy
     Double_t xf = d_xy*cos(phiR);
     Double_t yf = d_xy*sin(phiR);
         
-    XYZVector coo_f(xf,yf,zf);
+    XYZVector coo_f(xf,yf,zf);}
        // cout << "Second target ";
+        
+        else{
+     Double_t d0_xy = 0;//generato random
+    Double_t d_xy = d0_xy+d1*tan(theR);//vettore nel piano xy
+    Double_t xf = d_xy*cos(phiR);
+    Double_t yf = d_xy*sin(phiR);
+            XYZVector coo_f(xf,yf,zf);}
         
         return coo_f;//in meters
     }
@@ -377,8 +392,8 @@ void FastSim::LoadKineVars(const PxPyPzEVector & p_mu_in,  const PxPyPzEVector &
 
 
 
-XYZVector coo_fin_mu=coo(kv.thmu,kv.phmu);
-XYZVector coo_fin_e=coo(kv.the,kv.phe);
+XYZVector coo_fin_mu=coo(kv.thmu,kv.phmu,kv);
+XYZVector coo_fin_e=coo(kv.the,kv.phe,kv);
 kv.cooXe = coo_fin_e.X();
 kv.cooXmu = coo_fin_mu.X();
 kv.cooYe = coo_fin_e.Y();

@@ -372,8 +372,8 @@ void FastSim::LoadKineVars(const PxPyPzEVector & p_mu_in,  const PxPyPzEVector &
 
 
 
-XYZVector coo_fin_mu=coo(kv.thmu,kv.phmu);
-XYZVector coo_fin_e=coo(kv.the,kv.phe);
+//XYZVector coo_fin_mu=coo(kv.thmu,kv.phmu);
+//XYZVector coo_fin_e=coo(kv.the,kv.phe);
 //kv.cooXe = coo_fin_e.X();
 //kv.cooXmu = coo_fin_mu.X();
 //kv.cooYe = coo_fin_e.Y();

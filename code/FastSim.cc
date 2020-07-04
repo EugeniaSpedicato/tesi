@@ -306,7 +306,7 @@ PxPyPzEVector FastSim::SmearPolar(const PxPyPzEVector & k) const
 }
 
 
-XYZVector FastSim::coo(const Double_t & the, const Double_t & phi,MuE::KineVars & kv) const
+XYZVector FastSim::coo(const Double_t & the, const Double_t & phi) const
 {   Double_t theR = the * 0.001;//rad
     Double_t phiR = phi * 0.001;//rad
     Double_t d0=0.35;//m
@@ -323,27 +323,16 @@ XYZVector FastSim::coo(const Double_t & the, const Double_t & phi,MuE::KineVars 
     
     if (tar==0)
     {
-    if (kv==DetKinBeamRot){
     Double_t d0_xy = sqrt(x*x+y*y);//generato random
     Double_t d_xy = d0_xy+d0*tan(theR);//vettore nel piano xy
     Double_t xf = d_xy*cos(phiR);
     Double_t yf = d_xy*sin(phiR);
        
-    XYZVector coo_f(xf,yf,zf);}
-        
-    else 
-    {Double_t d0_xy = 0;//generato random
-    Double_t d_xy = d0_xy+d0*tan(theR);//vettore nel piano xy
-    Double_t xf = d_xy*cos(phiR);
-    Double_t yf = d_xy*sin(phiR);
-    XYZVector coo_f(xf,yf,zf);}
-       // cout << "First target ";
-    return coo_f;
+    XYZVector coo_f(xf,yf,zf);
     };
     
     if(tar==1)
     {
-            if (kv==DetKinBeamRot){
     Double_t d0_xy = sqrt(x*x+y*y);//generato random
     Double_t d_xy = d0_xy+d1*tan(theR);//vettore nel piano xy
     Double_t xf = d_xy*cos(phiR);
@@ -352,15 +341,6 @@ XYZVector FastSim::coo(const Double_t & the, const Double_t & phi,MuE::KineVars 
     XYZVector coo_f(xf,yf,zf);}
        // cout << "Second target ";
         
-        else{
-     Double_t d0_xy = 0;//generato random
-    Double_t d_xy = d0_xy+d1*tan(theR);//vettore nel piano xy
-    Double_t xf = d_xy*cos(phiR);
-    Double_t yf = d_xy*sin(phiR);
-            XYZVector coo_f(xf,yf,zf);}
-        
-        return coo_f;//in meters
-    }
 else return coo_in;
 }
 
@@ -369,8 +349,8 @@ void FastSim::LoadKineVars(const PxPyPzEVector & p_mu_in,  const PxPyPzEVector &
 			   const PxPyPzEVector & p_mu_out, const PxPyPzEVector & p_e_out,
 			   MuE::KineVars & kv) {
   
-  kv.Ee = p_e_out.E();
-  kv.Emu = p_mu_out.E();
+ // kv.Ee = p_e_out.E();
+  //kv.Emu = p_mu_out.E();
   kv.the = 1e3* p_e_out.Theta();
   kv.thmu = 1e3* p_mu_out.Theta();
   kv.phe = p_e_out.Phi();
@@ -404,8 +384,8 @@ kv.cooYmu = coo_fin_mu.Y();
     
   // Note: here Ebeam is the average beam energy, so tt_e and xt_e are defined under this assumption
   MuE::ElasticState emu_state(Ebeam,mm,me, kv.the);
-  kv.tt_e = emu_state.GetT();
-  kv.xt_e = emu_state.GetX();
+ // kv.tt_e = emu_state.GetT();
+  //kv.xt_e = emu_state.GetX();
   
   PxPyPzEVector q13 = p_mu_in - p_mu_out;
   PxPyPzEVector q24 = p_e_in - p_e_out;

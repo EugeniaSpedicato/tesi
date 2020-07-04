@@ -18,11 +18,11 @@ namespace MuE {
     Double_t t24; // Mandelstam t (electron leg)
     Double_t x13; // Feynman x (muon leg)
     Double_t x24; // Feynman x (electron leg)
-    Double_t tt_e; // t computed from electron angle with LO formulas
-    Double_t xt_e; // x computed from electron angle with LO formulas
+    //Double_t tt_e; // t computed from electron angle with LO formulas
+    //Double_t xt_e; // x computed from electron angle with LO formulas
 
-    Double_t Ee; // electron energy
-    Double_t Emu; // muon energy
+    //Double_t Ee; // electron energy
+    //Double_t Emu; // muon energy
     Double_t the; // electron theta (in mrad)
     Double_t thmu; // muon theta (in mrad)
     Double_t phe; // electron phi (from -pi to +pi)

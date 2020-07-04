@@ -349,8 +349,8 @@ void FastSim::LoadKineVars(const PxPyPzEVector & p_mu_in,  const PxPyPzEVector &
 			   const PxPyPzEVector & p_mu_out, const PxPyPzEVector & p_e_out,
 			   MuE::KineVars & kv) {
   
- // kv.Ee = p_e_out.E();
-  //kv.Emu = p_mu_out.E();
+  kv.Ee = p_e_out.E();
+  kv.Emu = p_mu_out.E();
   kv.the = 1e3* p_e_out.Theta();
   kv.thmu = 1e3* p_mu_out.Theta();
   kv.phe = p_e_out.Phi();
@@ -384,8 +384,8 @@ kv.cooYmu = coo_fin_mu.Y();
     
   // Note: here Ebeam is the average beam energy, so tt_e and xt_e are defined under this assumption
   MuE::ElasticState emu_state(Ebeam,mm,me, kv.the);
- // kv.tt_e = emu_state.GetT();
-  //kv.xt_e = emu_state.GetX();
+  kv.tt_e = emu_state.GetT();
+  kv.xt_e = emu_state.GetX();
   
   PxPyPzEVector q13 = p_mu_in - p_mu_out;
   PxPyPzEVector q24 = p_e_in - p_e_out;

@@ -329,7 +329,7 @@ XYZVector FastSim::coo(const Double_t & the, const Double_t & phi) const
     Double_t yf = d_xy*sin(phiR);
        
     XYZVector coo_f(xf,yf,zf);
-    };
+    }
     
     if(tar==1)
     {
@@ -355,29 +355,29 @@ void FastSim::LoadKineVars(const PxPyPzEVector & p_mu_in,  const PxPyPzEVector &
   kv.thmu = 1e3* p_mu_out.Theta();
   kv.phe = p_e_out.Phi();
   kv.phmu = p_mu_out.Phi();
-  kv.pXmu = p_mu_in.Px();
-  kv.pYmu = p_mu_in.Py();
-  kv.pZmu = p_mu_in.Pz();
-  kv.pXe = p_e_in.Px();
-  kv.pYe = p_e_in.Py();
-  kv.pZe = p_e_in.Pz();
-  kv.pXmu_out = p_mu_out.Px();
-  kv.pYmu_out = p_mu_out.Py();
-  kv.pZmu_out = p_mu_out.Pz();
-  kv.pXe_out = p_e_out.Px();
-  kv.pYe_out = p_e_out.Py();
-  kv.pZe_out = p_e_out.Pz();
-  kv.Pmu_out = p_mu_out.P();
-  kv.Pe_out = p_e_out.P();
+ // kv.pXmu = p_mu_in.Px();
+ // kv.pYmu = p_mu_in.Py();
+  //kv.pZmu = p_mu_in.Pz();
+  //kv.pXe = p_e_in.Px();
+  //kv.pYe = p_e_in.Py();
+  //kv.pZe = p_e_in.Pz();
+  //kv.pXmu_out = p_mu_out.Px();
+  //kv.pYmu_out = p_mu_out.Py();
+  //kv.pZmu_out = p_mu_out.Pz();
+  //kv.pXe_out = p_e_out.Px();
+  //kv.pYe_out = p_e_out.Py();
+  //kv.pZe_out = p_e_out.Pz();
+//  kv.Pmu_out = p_mu_out.P();
+//  kv.Pe_out = p_e_out.P();
 
 
 
-//XYZVector coo_fin_mu=coo(kv.thmu,kv.phmu);
-//XYZVector coo_fin_e=coo(kv.the,kv.phe);
-//kv.cooXe = coo_fin_e.X();
-//kv.cooXmu = coo_fin_mu.X();
-//kv.cooYe = coo_fin_e.Y();
-//kv.cooYmu = coo_fin_mu.Y();
+XYZVector coo_fin_mu=coo(kv.thmu,kv.phmu);
+XYZVector coo_fin_e=coo(kv.the,kv.phe);
+kv.cooXe = coo_fin_e.X();
+kv.cooXmu = coo_fin_mu.X();
+kv.cooYe = coo_fin_e.Y();
+kv.cooYmu = coo_fin_mu.Y();
 
     
     

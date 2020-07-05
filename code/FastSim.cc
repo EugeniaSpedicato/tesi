@@ -323,10 +323,10 @@ XYZVector FastSim::coo(const Double_t & the, const Double_t & phi) const
     
     if (tar==0)
     {
-    Double_t d0_xy = sqrt(x*x+y*y);//generato random
-    Double_t d_xy = d0_xy+d0*tan(theR);//vettore nel piano xy
-    Double_t xf = d_xy*cos(phiR);
-    Double_t yf = d_xy*sin(phiR);
+    //generato random
+    Double_t d_xy = d0*tan(theR);//vettore nel piano xy
+    Double_t xf = x+d_xy*cos(phiR);
+    Double_t yf = y+d_xy*sin(phiR);
        
     XYZVector coo_f(xf,yf,zf);
          return coo_f;
@@ -334,10 +334,9 @@ XYZVector FastSim::coo(const Double_t & the, const Double_t & phi) const
     
     if(tar==1)
     {
-    Double_t d0_xy = sqrt(x*x+y*y);//generato random
-    Double_t d_xy = d0_xy+d1*tan(theR);//vettore nel piano xy
-    Double_t xf = d_xy*cos(phiR);
-    Double_t yf = d_xy*sin(phiR);
+    Double_t d_xy = d1*tan(theR);//vettore nel piano xy
+    Double_t xf = x+d_xy*cos(phiR);
+    Double_t yf = y+d_xy*sin(phiR);
         
     XYZVector coo_f(xf,yf,zf);
      return coo_f;}

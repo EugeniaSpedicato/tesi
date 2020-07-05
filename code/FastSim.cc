@@ -307,7 +307,7 @@ PxPyPzEVector FastSim::SmearPolar(const PxPyPzEVector & k) const
 
 
 XYZVector FastSim::coo(const Double_t & the, const Double_t & phi) const
-{   Double_t theR = the;//rad
+{   Double_t theR = the*0.001;//rad
     Double_t phiR = phi;//rad
     Double_t d0=0.35;//m
     Double_t d1=0.1;//m
@@ -329,6 +329,7 @@ XYZVector FastSim::coo(const Double_t & the, const Double_t & phi) const
     Double_t yf = d_xy*sin(phiR);
        
     XYZVector coo_f(xf,yf,zf);
+         return coo_f;
     }
     
     if(tar==1)
@@ -338,7 +339,8 @@ XYZVector FastSim::coo(const Double_t & the, const Double_t & phi) const
     Double_t xf = d_xy*cos(phiR);
     Double_t yf = d_xy*sin(phiR);
         
-    XYZVector coo_f(xf,yf,zf);}
+    XYZVector coo_f(xf,yf,zf);
+     return coo_f;}
        // cout << "Second target ";
         
 else return coo_in;

@@ -439,7 +439,7 @@ void FastSim::LoadPhoton(const MuE::Event & event, MuE::Photon & photon) {
      */
       
       PxPyPzEVector p_ph(event.photons[0].px,event.photons[0].py,event.photons[0].pz,event.photons[0].E);
-      PxPyPzEVector p_ph_div=BeamRot(p_ph);   
+      PxPyPzEVector p_ph_div=RotDiv(p_ph);   
       
      
     PxPyPzEVector p_gamma_Lab = {p_ph_div.Px(), 

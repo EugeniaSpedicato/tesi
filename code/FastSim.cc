@@ -187,7 +187,7 @@ Double_t FastSim::ThetaRMS(const PxPyPzEVector & k) const
  PxPyPzEVector FastSim::RotDiv(const PxPyPzEVector & k) const
  {
 Double_t divthx = gRandom->Gaus(0., 0.00027);
-Double_t divthy = gRandom->Gaus(0., 0.00026); 
+Double_t divthy = gRandom->Gaus(0., 0.00020); 
 
 Double_t anglex = atan2(k.Px(), k.Pz());
 Double_t angley = atan2(k.Py(), k.Pz()); 

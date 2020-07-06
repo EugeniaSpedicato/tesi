@@ -418,14 +418,15 @@ void FastSim::LoadPhoton(const MuE::Event & event, MuE::Photon & photon) {
   auto n_photons = event.photons.size();
   
   if (n_photons >0) { 
-      Double_t px_ph_div=event.photons[0].px;
-      Double_t py_ph_div=event.photons[0].py;
-      Double_t pz_ph_div=event.photons[0].pz;
       
       
-    PxPyPzEVector p_gamma_Lab = {px_ph_div, 
-                                 py_ph_div,
-                                 pz_ph_div,
+      PxPyPzEVector p_ph(event.photons[0].px,event.photons[0].py,event.photons[0].pz,event.photons[0].E);
+      PxPyPzEVector p_ph_div=BeamRot(p_ph);   
+      
+     
+    PxPyPzEVector p_gamma_Lab = {p_ph_div.Px(), 
+                                 p_ph_div.Py(),
+                                 p_ph_div.Pz(),
 			                     event.photons[0].E};
       
     PxPyPzEVector p_gamma_CoM = Lorentz_ToCoM(p_gamma_Lab);

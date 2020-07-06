@@ -31,11 +31,11 @@ namespace MuE {
     Double_t deltaPhi; // acoplanarity (deltaPhi)
     Double_t openingAngle; // opening angle mu-e out in the Lab
     Double_t tripleProduct; // triple product btw normalized vectors i . mu x e
-     /*Double_t cooXe;
+     Double_t cooXe;
       Double_t cooXmu;
       Double_t cooYe;
-      Double_t cooYmu;*/
-Double_t pXmu;
+      Double_t cooYmu;
+    /*Double_t pXmu;
 Double_t pYmu;
 Double_t pZmu;
 Double_t pXe;
@@ -48,11 +48,11 @@ Double_t pXe_out;
 Double_t pYe_out;
 Double_t pZe_out;
 Double_t Pmu_out;
-Double_t Pe_out;
+Double_t Pe_out;*/
 
     KineVars():
-    t13(0),t24(0),x13(0),x24(0),tt_e(0),xt_e(0),Ee(0),Emu(0),the(0),thmu(0),phe(0),phmu(0),deltaPhi(0),openingAngle(0),tripleProduct(0),pXmu(0),pYmu(0),pZmu(0),pXe(0),pYe(0),pZe(0),pXmu_out(0),pYmu_out(0),pZmu_out(0),pXe_out(0),pYe_out(0),pZe_out(0),Pmu_out(0),Pe_out(0)
-      //cooXe(0),cooXmu(0),cooYe(0),cooYmu(0)
+    t13(0),t24(0),x13(0),x24(0),tt_e(0),xt_e(0),Ee(0),Emu(0),the(0),thmu(0),phe(0),phmu(0),deltaPhi(0),openingAngle(0),tripleProduct(0),cooXe(0),cooXmu(0),cooYe(0),cooYmu(0)
+        //pXmu(0),pYmu(0),pZmu(0),pXe(0),pYe(0),pZe(0),pXmu_out(0),pYmu_out(0),pZmu_out(0),pXe_out(0),pYe_out(0),pZe_out(0),Pmu_out(0),Pe_out(0)
     {};
     
 
@@ -70,8 +70,8 @@ Double_t Pe_out;
     Double_t theta;     //   "    theta in the Lab frame (in mrad)
     Double_t phi;       //   "    phi in the Lab frame (in rad)
     Double_t energyCoM; // photon energy in the Centre-of-Mass frame
-    Double_t cooXph;
-    Double_t cooYph;
+   // Double_t cooXph;
+//    Double_t cooYph;
     
   Photon():
     energy(-1),theta(-1),phi(0),energyCoM(-1)

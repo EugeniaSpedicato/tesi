@@ -356,7 +356,7 @@ void FastSim::LoadKineVars(const PxPyPzEVector & p_mu_in,  const PxPyPzEVector &
   kv.thmu = 1e3* p_mu_out.Theta();
   kv.phe = p_e_out.Phi();
   kv.phmu = p_mu_out.Phi();
- kv.pXmu = p_mu_in.Px();
+/* kv.pXmu = p_mu_in.Px();
   kv.pYmu = p_mu_in.Py();
   kv.pZmu = p_mu_in.Pz();
   kv.pXe = p_e_in.Px();
@@ -370,16 +370,16 @@ void FastSim::LoadKineVars(const PxPyPzEVector & p_mu_in,  const PxPyPzEVector &
   kv.pZe_out = p_e_out.Pz();
 kv.Pmu_out = p_mu_out.P();
 kv.Pe_out = p_e_out.P();
+*/
 
 
-
-/*XYZVector coo_fin_mu=coo(kv.thmu,kv.phmu);
+XYZVector coo_fin_mu=coo(kv.thmu,kv.phmu);
 XYZVector coo_fin_e=coo(kv.the,kv.phe);
 kv.cooXe = coo_fin_e.X();
 kv.cooXmu = coo_fin_mu.X();
 kv.cooYe = coo_fin_e.Y();
 kv.cooYmu = coo_fin_mu.Y();
-*/
+
     
     
     
@@ -417,7 +417,7 @@ void FastSim::LoadPhoton(const MuE::Event & event, MuE::Photon & photon) {
   // by now at most one photon
   auto n_photons = event.photons.size();
   
-  if (n_photons >0) {  
+  if (n_photons >0) {  /*
     PxPyPzEVector p_gamma_Lab = {event.photons[0].px, 
 				 event.photons[0].py,
 				 event.photons[0].pz,
@@ -436,7 +436,7 @@ void FastSim::LoadPhoton(const MuE::Event & event, MuE::Photon & photon) {
     photon.theta     = -1;
     photon.phi       =  0;
   }
-     /* 
+     */
       
       PxPyPzEVector p_ph(event.photons[0].px,event.photons[0].py,event.photons[0].pz,event.photons[0].E);
       PxPyPzEVector p_ph_div=BeamRot(p_ph);   
@@ -468,7 +468,7 @@ void FastSim::LoadPhoton(const MuE::Event & event, MuE::Photon & photon) {
     photon.phi       =  0;
     photon.cooXph    = 0;
     photon.cooYph    = 0;
-  }*/
+  }
       
       
       

@@ -417,8 +417,26 @@ void FastSim::LoadPhoton(const MuE::Event & event, MuE::Photon & photon) {
   // by now at most one photon
   auto n_photons = event.photons.size();
   
-  if (n_photons >0) { 
-      
+  if (n_photons >0) {  
+    PxPyPzEVector p_gamma_Lab = {event.photons[0].px, 
+				 event.photons[0].py,
+				 event.photons[0].pz,
+			         event.photons[0].E};
+    PxPyPzEVector p_gamma_CoM = Lorentz_ToCoM(p_gamma_Lab);
+    
+    photon.energy    = p_gamma_Lab.E();
+    photon.theta     = p_gamma_Lab.Theta() *1e3;
+    photon.phi       = p_gamma_Lab.Phi();
+    photon.energyCoM = p_gamma_CoM.E();  
+  }
+
+  else {
+    photon.energyCoM = -1;
+    photon.energy    = -1;
+    photon.theta     = -1;
+    photon.phi       =  0;
+  }
+     /* 
       
       PxPyPzEVector p_ph(event.photons[0].px,event.photons[0].py,event.photons[0].pz,event.photons[0].E);
       PxPyPzEVector p_ph_div=BeamRot(p_ph);   
@@ -450,7 +468,11 @@ void FastSim::LoadPhoton(const MuE::Event & event, MuE::Photon & photon) {
     photon.phi       =  0;
     photon.cooXph    = 0;
     photon.cooYph    = 0;
-  }
+  }*/
+      
+      
+      
+      
 }
 
 // synchronize the random number chain to account for events with negligible weight

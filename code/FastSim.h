@@ -45,6 +45,7 @@ namespace MuE {
     PxPyPzEVector SmearX(const PxPyPzEVector & p) const; 
     PxPyPzEVector SmearPolar(const PxPyPzEVector & p) const; 
     XYZVector coo(const Double_t & a, const Double_t & s) const; 
+    
 
     void LoadKineVars(const PxPyPzEVector & p_mu_in,  const PxPyPzEVector & p_e_in, 
 		      const PxPyPzEVector & p_mu_out, const PxPyPzEVector & p_e_out, 

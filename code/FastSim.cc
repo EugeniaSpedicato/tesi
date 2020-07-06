@@ -356,30 +356,30 @@ void FastSim::LoadKineVars(const PxPyPzEVector & p_mu_in,  const PxPyPzEVector &
   kv.thmu = 1e3* p_mu_out.Theta();
   kv.phe = p_e_out.Phi();
   kv.phmu = p_mu_out.Phi();
- // kv.pXmu = p_mu_in.Px();
- // kv.pYmu = p_mu_in.Py();
-  //kv.pZmu = p_mu_in.Pz();
-  //kv.pXe = p_e_in.Px();
-  //kv.pYe = p_e_in.Py();
-  //kv.pZe = p_e_in.Pz();
-  //kv.pXmu_out = p_mu_out.Px();
-  //kv.pYmu_out = p_mu_out.Py();
-  //kv.pZmu_out = p_mu_out.Pz();
-  //kv.pXe_out = p_e_out.Px();
-  //kv.pYe_out = p_e_out.Py();
-  //kv.pZe_out = p_e_out.Pz();
-//  kv.Pmu_out = p_mu_out.P();
-//  kv.Pe_out = p_e_out.P();
+ kv.pXmu = p_mu_in.Px();
+  kv.pYmu = p_mu_in.Py();
+  kv.pZmu = p_mu_in.Pz();
+  kv.pXe = p_e_in.Px();
+  kv.pYe = p_e_in.Py();
+  kv.pZe = p_e_in.Pz();
+  kv.pXmu_out = p_mu_out.Px();
+  kv.pYmu_out = p_mu_out.Py();
+  kv.pZmu_out = p_mu_out.Pz();
+  kv.pXe_out = p_e_out.Px();
+  kv.pYe_out = p_e_out.Py();
+  kv.pZe_out = p_e_out.Pz();
+kv.Pmu_out = p_mu_out.P();
+kv.Pe_out = p_e_out.P();
 
 
 
-XYZVector coo_fin_mu=coo(kv.thmu,kv.phmu);
+/*XYZVector coo_fin_mu=coo(kv.thmu,kv.phmu);
 XYZVector coo_fin_e=coo(kv.the,kv.phe);
 kv.cooXe = coo_fin_e.X();
 kv.cooXmu = coo_fin_mu.X();
 kv.cooYe = coo_fin_e.Y();
 kv.cooYmu = coo_fin_mu.Y();
-
+*/
     
     
     
@@ -418,16 +418,28 @@ void FastSim::LoadPhoton(const MuE::Event & event, MuE::Photon & photon) {
   auto n_photons = event.photons.size();
   
   if (n_photons >0) { 
-    PxPyPzEVector p_gamma_Lab = {event.photons[0].px, 
-				 event.photons[0].py,
-				 event.photons[0].pz,
-			         event.photons[0].E};
+      Double_t px_ph_div=event.photons[0].px;
+      Double_t py_ph_div=event.photons[0].py;
+      Double_t pz_ph_div=event.photons[0].pz;
+      
+      
+    PxPyPzEVector p_gamma_Lab = {px_ph_div, 
+                                 py_ph_div,
+                                 pz_ph_div,
+			                     event.photons[0].E};
+      
     PxPyPzEVector p_gamma_CoM = Lorentz_ToCoM(p_gamma_Lab);
     
     photon.energy    = p_gamma_Lab.E();
     photon.theta     = p_gamma_Lab.Theta() *1e3;
     photon.phi       = p_gamma_Lab.Phi();
-    photon.energyCoM = p_gamma_CoM.E();  
+    photon.energyCoM = p_gamma_CoM.E(); 
+      
+    XYZVector coo_fin_ph=coo(photon.theta,photon.phi);
+
+      photon.cooXph = coo_fin_ph.X();
+      photon.cooYph = coo_fin_ph.Y();
+    
   }
 
   else {
@@ -435,6 +447,8 @@ void FastSim::LoadPhoton(const MuE::Event & event, MuE::Photon & photon) {
     photon.energy    = -1;
     photon.theta     = -1;
     photon.phi       =  0;
+    photon.cooXph    = 0;
+    photon.cooYph    = 0;
   }
 }
 

@@ -70,11 +70,11 @@ Double_t Pe_out;*/
     Double_t theta;     //   "    theta in the Lab frame (in mrad)
     Double_t phi;       //   "    phi in the Lab frame (in rad)
     Double_t energyCoM; // photon energy in the Centre-of-Mass frame
-   // Double_t cooXph;
-//    Double_t cooYph;
+    Double_t cooXph;
+    Double_t cooYph;
     
   Photon():
-    energy(-1),theta(-1),phi(0),energyCoM(-1)
+    energy(-1),theta(-1),phi(0),energyCoM(-1),cooXph(0),cooYph(0)
       {};
     
     virtual ~Photon(){};

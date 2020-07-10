@@ -113,7 +113,7 @@ PxPyPzEVector p_mu_out_div_smeared, p_e_out_div_smeared;
   
   LoadKineVars(p_mu_in_div, p_e_in_div, p_mu_out_div_smeared, p_e_out_div_smeared, detKinBeamRot);
   
-  LoadPhoton(event, photon);
+  LoadPhoton(event, photon, p_mu_in_div);
     
 }
 
@@ -473,7 +473,7 @@ kv.cooYmu = coo_fin_mu.Y();
   kv.tripleProduct = nvec_mu_in.Dot(crossProduct);
 }
 
-void FastSim::LoadPhoton(const MuE::Event & event, MuE::Photon & photon) {
+void FastSim::LoadPhoton(const MuE::Event & event, MuE::Photon & photon,const PxPyPzEVector & p_mu_in_div) {
   // by now at most one photon
   auto n_photons = event.photons.size();
   

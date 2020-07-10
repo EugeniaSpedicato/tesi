@@ -184,6 +184,12 @@ Double_t FastSim::ThetaRMS(const PxPyPzEVector & k) const
 }
 
 
+
+
+
+
+
+
  PxPyPzEVector FastSim::RotDiv(const PxPyPzEVector & k) const
  {
 Double_t divthx = gRandom->Gaus(0., 0.00027);
@@ -197,13 +203,53 @@ angley += divthy;
      
     //NB questi Px Py Pz sono del nuovo!!
 Double_t pmuin=sqrt(k.Px()*k.Px()+k.Py()*k.Py()+k.Pz()*k.Pz());
+
 Double_t pz=pmuin/(1+tan(anglex)*tan(anglex)+tan(angley)*tan(angley));
 Double_t py=pz*tan(angley);
 Double_t px=pz*tan(anglex);
-//Double_t pt=sqrt(px*px+py*py);
- PxPyPzEVector pnewdiv(px, py, pz, k.E());     
-return pnewdiv;  
+
+Double_t ptz=sqrt(px*px+pz*pz);
+
+/* PxPyPzEVector pnewdiv(px, py, pz, k.E());     
+return pnewdiv;  */
+
+// costruzione della matrice di rotazione
+Double_t psi=atan2(px,pz); 
+Double_t phi=atan2(py,ptz);  
+     
+TMatrixD R(3,3);
+R[0][0]=cos(psi);
+R[0][1]=0;
+R[0][2]=sin(psi);
+    R[1][0]=sin(phi)*sin(psi);
+    R[1][1]=cos(phi);
+    R[1][2]=sin(phi)*cos(psi);
+        R[2][0]=-cos(phi)*sin(psi);
+        R[2][1]=-sin(phi);
+        R[2][2]=cos(phi)*cos(psi);
+     
+
+TMatrixD pO(3,1);
+    pO[0][0]=k.Px();
+    pO[1][0]=k.Py();
+    pO[2][0]=k.Pz();
+
+Double_t det;
+
+TMatrixD pN(R, TMatrixD::kMult,pO);
+
+PxPyPzEVector pnewdiv(pN[0][0], pN[1][0], pN[2][0], k.E());     
+return pnewdiv;    
  }   
+
+
+
+
+
+
+
+
+
 
 
 // apply resolution smearing to particle momentum
@@ -309,13 +355,13 @@ PxPyPzEVector FastSim::SmearPolar(const PxPyPzEVector & k) const
 XYZVector FastSim::coo(const Double_t & the, const Double_t & phi) const
 {   Double_t theR = the*0.001;//rad
     Double_t phiR = phi;//rad
-    Double_t d0=0.35;//m
-    Double_t d1=0.1;//m
+    Double_t d0=2.10;//m
+    Double_t d1=1.10;//m
  
     Double_t x=gRandom->Gaus(0., 0.026);//m
     Double_t y=gRandom->Gaus(0., 0.027);//m
     Double_t z=0.;
-    Double_t zf=0.35;
+    Double_t zf=2.10;
     XYZVector coo_in(x,y,z);
  
     //interazione target 1 o target 2 

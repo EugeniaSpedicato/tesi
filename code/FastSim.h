@@ -40,6 +40,7 @@ namespace MuE {
     PxPyPzEVector Lorentz_ToLab(const PxPyPzEVector & pcm) const;
 
     Double_t ThetaRMS(const PxPyPzEVector & p) const; 
+    PxPyPzEVector RotDivIN(const PxPyPzEVector & p, const PxPyPzEVector & o) const; 
     PxPyPzEVector RotDiv(const PxPyPzEVector & p) const; 
     PxPyPzEVector Smear(const PxPyPzEVector & p) const; 
     PxPyPzEVector SmearX(const PxPyPzEVector & p) const; 

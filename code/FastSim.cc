@@ -6,6 +6,7 @@
 #include "ResolutionModels.h"
 #include "FastSim.h"
 #include "TMatrixF.h" 
+#include "TMatrixD.h"
 #include "TMatrixFBase.h"
 #include <TMatrixFSym.h>
 #include "TString.h"
@@ -88,11 +89,11 @@ void FastSim::Process(const MuE::Event & event) {
     
     //DETKIN RUOTATE
 
-PxPyPzEVector p_mu_in_div=RotDiv(p_mu_in);
-PxPyPzEVector p_e_in_div=RotDiv(p_e_in);
+PxPyPzEVector p_mu_in_div=RotDivIN(p_mu_in);
+PxPyPzEVector p_e_in_div=RotDivIN(p_e_in);
     
-PxPyPzEVector p_mu_out_div=RotDiv(p_mu_out);
-PxPyPzEVector p_e_out_div=RotDiv(p_e_out);
+PxPyPzEVector p_mu_out_div=RotDiv(p_mu_in_div,p_mu_out);
+PxPyPzEVector p_e_out_div=RotDiv(p_mu_in_div,p_e_out);
   
 PxPyPzEVector p_mu_out_div_smeared, p_e_out_div_smeared; 
   
@@ -192,10 +193,7 @@ Double_t FastSim::ThetaRMS(const PxPyPzEVector & k) const
 
 
 
-
-
-
- PxPyPzEVector FastSim::RotDiv(const PxPyPzEVector & k) const
+ PxPyPzEVector FastSim::RotDivIN(const PxPyPzEVector & k) const
  {
 Double_t divthx = gRandom->Gaus(0., 0.00027);
 Double_t divthy = gRandom->Gaus(0., 0.00020); 
@@ -212,6 +210,18 @@ Double_t pmuin=sqrt(k.Px()*k.Px()+k.Py()*k.Py()+k.Pz()*k.Pz());
 Double_t pz=pmuin/(1+tan(anglex)*tan(anglex)+tan(angley)*tan(angley));
 Double_t py=pz*tan(angley);
 Double_t px=pz*tan(anglex);
+
+Double_t ptz=sqrt(px*px+pz*pz);
+
+PxPyPzEVector pnewdiv(px, py, pz, k.E());     
+return pnewdiv;  
+ }
+
+ PxPyPzEVector FastSim::RotDiv(const PxPyPzEVector & k,const PxPyPzEVector & out) const
+ {
+Double_t pz=k.Pz();
+Double_t py=k.Py();
+Double_t px=k.Px();
 
 Double_t ptz=sqrt(px*px+pz*pz);
 
@@ -235,11 +245,10 @@ R[0][2]=sin(psi);
      
 
 TMatrixD pO(3,1);
-    pO[0][0]=k.Px();
-    pO[1][0]=k.Py();
-    pO[2][0]=k.Pz();
+    pO[0][0]=out.Px();
+    pO[1][0]=out.Py();
+    pO[2][0]=out.Pz();
 
-Double_t det;
 
 TMatrixD pN(R, TMatrixD::kMult,pO);
 
@@ -490,7 +499,7 @@ void FastSim::LoadPhoton(const MuE::Event & event, MuE::Photon & photon) {
      */
       
       PxPyPzEVector p_ph(event.photons[0].px,event.photons[0].py,event.photons[0].pz,event.photons[0].E);
-      PxPyPzEVector p_ph_div=RotDiv(p_ph);   
+      PxPyPzEVector p_ph_div=RotDiv(p_mu_in_div,p_ph);   
       
      
     PxPyPzEVector p_gamma_Lab = {p_ph_div.Px(), 

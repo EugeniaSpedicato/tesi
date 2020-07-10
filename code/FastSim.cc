@@ -5,6 +5,11 @@
 #include "ElasticState.h"
 #include "ResolutionModels.h"
 #include "FastSim.h"
+#include "TMatrixF.h" 
+#include "TMatrixFBase.h"
+#include <TMatrixFSym.h>
+#include "TString.h"
+#include <TApplication.h>
 
 using namespace MuE;
 using namespace std;

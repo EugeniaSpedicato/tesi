@@ -432,12 +432,12 @@ kv.Pe_out = p_e_out.P();
 
 
 
-/*XYZVector coo_fin_mu=coo(kv.thmu,kv.phmu);
+XYZVector coo_fin_mu=coo(kv.thmu,kv.phmu);
 XYZVector coo_fin_e=coo(kv.the,kv.phe);
 kv.cooXe = coo_fin_e.X();
 kv.cooXmu = coo_fin_mu.X();
 kv.cooYe = coo_fin_e.Y();
-kv.cooYmu = coo_fin_mu.Y();*/
+kv.cooYmu = coo_fin_mu.Y();
 
     
     

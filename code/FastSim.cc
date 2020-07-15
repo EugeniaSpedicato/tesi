@@ -376,7 +376,10 @@ TMatrixD FastSim::coo(const Double_t & the, const Double_t & phi,const Double_t 
     Double_t y=gRandom->Gaus(0., 0.027);//m
     Double_t z=0.;
     Double_t zf=2.10;
-    XYZVector coo_in(x,y,z);
+    TMatrixD coo_in[1][3];
+ coo_in[0][0]=0;
+ coo_in[0][1]=0;
+ coo_in[0][2]=0;
  
     //interazione target 1 o target 2 
     Int_t tar=gRandom->Integer(2);
@@ -445,7 +448,7 @@ void FastSim::LoadKineVars(const PxPyPzEVector & p_mu_in,  const PxPyPzEVector &
   kv.phe = p_e_out.Phi();
   kv.phmu = p_mu_out.Phi();
     
-XYZVector coo_fin=coo(kv.thmu,kv.phmu,kv.the,kv.phe);
+TMatrixD coo_fin=coo(kv.thmu,kv.phmu,kv.the,kv.phe);
 kv.cooXe = coo_fin[1][0];
 kv.cooXmu = coo_fin[0][0];
 kv.cooYe = coo_fin[1][1];
@@ -552,8 +555,8 @@ void FastSim::LoadPhoton(const MuE::Event & event, MuE::Photon & photon,const Px
     photon.energy    = -1;
     photon.theta     = -1;
     photon.phi       =  0;
-    photon.cooXph    = 0;
-    photon.cooYph    = 0;
+  //  photon.cooXph    = 0;
+  //  photon.cooYph    = 0;
   }
       
       

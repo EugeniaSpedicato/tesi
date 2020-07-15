@@ -13,6 +13,10 @@
 #include "MuEtree.h"
 #include "MuEana.h"
 #include "Inputs.h"
+#include "TMatrixD.h"
+#include "TMatrixFBase.h"
+#include <TMatrixFSym.h>
+#include "TString.h"
 
 namespace MuE {
 

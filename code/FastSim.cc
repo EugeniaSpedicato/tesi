@@ -376,7 +376,7 @@ TMatrixD FastSim::coo(const Double_t & the, const Double_t & phi,const Double_t 
     Double_t y=gRandom->Gaus(0., 0.027);//m
     Double_t z=0.;
     Double_t zf=2.10;
-    TMatrixD coo_in[1][3];
+    TMatrixD coo_in(1,3);
  coo_in[0][0]=0;
  coo_in[0][1]=0;
  coo_in[0][2]=0;
@@ -396,7 +396,7 @@ TMatrixD FastSim::coo(const Double_t & the, const Double_t & phi,const Double_t 
     Double_t xfe = x+d_xye*cos(phiRE);
     Double_t yfe = y+d_xye*sin(phiRE);
     
-    TMatrixD coo_f [2][3];
+    TMatrixD coo_f(2,3);
     coo_f [0][0]=xf;  
     coo_f [0][1]=yf;  
     coo_f [0][2]=tar;  
@@ -419,7 +419,7 @@ TMatrixD FastSim::coo(const Double_t & the, const Double_t & phi,const Double_t 
     Double_t xfe = x+d_xye*cos(phiRE);
     Double_t yfe = y+d_xye*sin(phiRE);
 
-    TMatrixD coo_f [2][3];
+    TMatrixD coo_f (2,3);
     coo_f [0][0]=xf;  
     coo_f [0][1]=yf;  
     coo_f [0][2]=tar;  

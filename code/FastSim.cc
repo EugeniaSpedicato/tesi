@@ -206,7 +206,6 @@ angley += divthy;
      
     //NB questi Px Py Pz sono del nuovo!!
 Double_t pmuin=sqrt(k.Px()*k.Px()+k.Py()*k.Py()+k.Pz()*k.Pz());
-
 Double_t pz=pmuin/(1+tan(anglex)*tan(anglex)+tan(angley)*tan(angley));
 Double_t py=pz*tan(angley);
 Double_t px=pz*tan(anglex);
@@ -235,7 +234,7 @@ TMatrixD R(3,3);
 R[0][0]=cos(psi);
 R[0][1]=0;
 R[0][2]=sin(psi);
-    R[1][0]=sin(phi)*sin(psi);
+    R[1][0]=-sin(phi)*sin(psi);
     R[1][1]=cos(phi);
     R[1][2]=sin(phi)*cos(psi);
         R[2][0]=-cos(phi)*sin(psi);
@@ -365,9 +364,11 @@ PxPyPzEVector FastSim::SmearPolar(const PxPyPzEVector & k) const
 }
 
 
-XYZVector FastSim::coo(const Double_t & the, const Double_t & phi) const
+TMatrixD FastSim::coo(const Double_t & the, const Double_t & phi,const Double_t & theE, const Double_t & phiE) const
 {   Double_t theR = the*0.001;//rad
     Double_t phiR = phi;//rad
+    Double_t theRE = theE*0.001;//rad
+    Double_t phiRE = phiE;//rad
     Double_t d0=2.10;//m
     Double_t d1=1.10;//m
  
@@ -382,24 +383,52 @@ XYZVector FastSim::coo(const Double_t & the, const Double_t & phi) const
     
     if (tar==0)
     {
-    //generato random
+
+        //muone
     Double_t d_xy = d0*tan(theR);//vettore nel piano xy
     Double_t xf = x+d_xy*cos(phiR);
     Double_t yf = y+d_xy*sin(phiR);
-       
-    XYZVector coo_f(xf,yf,zf);
+        //elettrone  
+    Double_t d_xye = d0*tan(theRE);//vettore nel piano xy
+    Double_t xfe = x+d_xye*cos(phiRE);
+    Double_t yfe = y+d_xye*sin(phiRE);
+    
+    TMatrixD coo_f [2][3];
+    coo_f [0][0]=xf;  
+    coo_f [0][1]=yf;  
+    coo_f [0][2]=tar;  
+    coo_f [1][0]=xfe;  
+    coo_f [1][1]=yfe;  
+    coo_f [1][2]=tar;  
+        
+
          return coo_f;
     }
     
     if(tar==1)
     {
+        //muone
     Double_t d_xy = d1*tan(theR);//vettore nel piano xy
     Double_t xf = x+d_xy*cos(phiR);
     Double_t yf = y+d_xy*sin(phiR);
+        //elettrone
+    Double_t d_xye = d1*tan(theRE);//vettore nel piano xy
+    Double_t xfe = x+d_xye*cos(phiRE);
+    Double_t yfe = y+d_xye*sin(phiRE);
+
+    TMatrixD coo_f [2][3];
+    coo_f [0][0]=xf;  
+    coo_f [0][1]=yf;  
+    coo_f [0][2]=tar;  
+    coo_f [1][0]=xfe;  
+    coo_f [1][1]=yfe;  
+    coo_f [1][2]=tar;  
         
-    XYZVector coo_f(xf,yf,zf);
-     return coo_f;}
-       // cout << "Second target ";
+
+    return coo_f;
+
+    }
+      
         
 else return coo_in;
 }
@@ -415,12 +444,15 @@ void FastSim::LoadKineVars(const PxPyPzEVector & p_mu_in,  const PxPyPzEVector &
   kv.thmu = 1e3* p_mu_out.Theta();
   kv.phe = p_e_out.Phi();
   kv.phmu = p_mu_out.Phi();
-XYZVector coo_fin_mu=coo(kv.thmu,kv.phmu);
-XYZVector coo_fin_e=coo(kv.the,kv.phe);
-kv.cooXe = coo_fin_e.X();
-kv.cooXmu = coo_fin_mu.X();
-kv.cooYe = coo_fin_e.Y();
-kv.cooYmu = coo_fin_mu.Y();
+    
+XYZVector coo_fin=coo(kv.thmu,kv.phmu,kv.the,kv.phe);
+kv.cooXe = coo_fin[1][0];
+kv.cooXmu = coo_fin[0][0];
+kv.cooYe = coo_fin[1][1];
+kv.cooYmu = coo_fin[0][1];
+
+kv.tar = coo_fin[0][2];
+
   kv.pXmu = p_mu_in.Px();
   kv.pYmu = p_mu_in.Py();
   kv.pZmu = p_mu_in.Pz();
@@ -508,10 +540,10 @@ void FastSim::LoadPhoton(const MuE::Event & event, MuE::Photon & photon,const Px
     photon.phi       = p_gamma_Lab.Phi();
     photon.energyCoM = p_gamma_CoM.E(); 
       
-    XYZVector coo_fin_ph=coo(photon.theta,photon.phi);
+   /* XYZVector coo_fin_ph=coo(photon.theta,photon.phi);
 
       photon.cooXph = coo_fin_ph.X();
-      photon.cooYph = coo_fin_ph.Y();
+      photon.cooYph = coo_fin_ph.Y();*/
     
   }
 

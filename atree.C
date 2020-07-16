@@ -1,11 +1,14 @@
 #define atree_cxx
 #include "atree.h"
 #include <TH2.h>
+#include <TH1.h>
+
 #include <TStyle.h>
 #include <TCanvas.h>
 
 void atree::Loop()
 {
+    TH1::SetDefaultSumw2();
 TH1F* E_mu=new TH1F("h1", "Energy muon", 150,0,200);
 TH1F* E_e=new TH1F("h2", "Energy electron", 150,0,200);
 
@@ -67,66 +70,66 @@ TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.3,-0.3,100,
       // if (Cut(ientry) < 0) continue;
        Double_t pmuOUT=sqrt(detKinBeamRot_pXmu_out*detKinBeamRot_pXmu_out+detKinBeamRot_pYmu_out*detKinBeamRot_pYmu_out+detKinBeamRot_pZmu_out*detKinBeamRot_pZmu_out);
        Double_t peOUT=sqrt(detKinBeamRot_pXe_out*detKinBeamRot_pXe_out+detKinBeamRot_pYe_out*detKinBeamRot_pYe_out+detKinBeamRot_pZe_out*detKinBeamRot_pZe_out);
-       Double_t E_mu=sqrt(pmuOUT*pmuOUT+(105.6583745 *0.001)*(105.6583745 *0.001));
-       Double_t E_e=sqrt(peOUT*peOUT+(0.5109989461 *0.001)*(0.5109989461 *0.001));
+       Double_t DE_mu=sqrt(pmuOUT*pmuOUT+(105.6583745 *0.001)*(105.6583745 *0.001));
+       Double_t DE_e=sqrt(peOUT*peOUT+(0.5109989461 *0.001)*(0.5109989461 *0.001));
        
-       E_mu->Fill(E_mu);
-       E_e->Fill(E_e);
+       E_mu->Fill(DE_mu,wgt_full);
+       E_e->Fill(DE_e,wgt_full);
     
        
-       px_mu->Fill(detKinBeamRot_pXmu);
-       py_mu->Fill(detKinBeamRot_pYmu);
-       pz_mu->Fill(detKinBeamRot_pZmu);
+       px_mu->Fill(detKinBeamRot_pXmu,wgt_full);
+       py_mu->Fill(detKinBeamRot_pYmu,wgt_full);
+       pz_mu->Fill(detKinBeamRot_pZmu,wgt_full);
        
-       px_mu_out->Fill(detKinBeamRot_pXmu_out);
-       py_mu_out->Fill(detKinBeamRot_pYmu_out);
-       pz_mu_out->Fill(detKinBeamRot_pZmu_out);
-       px_mu_outNO->Fill(detKin_pXmu_out);
-       py_mu_outNO->Fill(detKin_pYmu_out);
-       pz_mu_outNO->Fill(detKin_pZmu_out);
+       px_mu_out->Fill(detKinBeamRot_pXmu_out,wgt_full);
+       py_mu_out->Fill(detKinBeamRot_pYmu_out,wgt_full);
+       pz_mu_out->Fill(detKinBeamRot_pZmu_out,wgt_full);
+       px_mu_outNO->Fill(detKin_pXmu_out,wgt_full);
+       py_mu_outNO->Fill(detKin_pYmu_out,wgt_full);
+       pz_mu_outNO->Fill(detKin_pZmu_out,wgt_full);
        
-       px_e_out->Fill(detKinBeamRot_pXe_out);
-       py_e_out->Fill(detKinBeamRot_pYe_out);
-       pz_e_out->Fill(detKinBeamRot_pZe_out);
-       px_e_outNO->Fill(detKin_pXe_out);
-       py_e_outNO->Fill(detKin_pYe_out);
-       pz_e_outNO->Fill(detKin_pZe_out);
+       px_e_out->Fill(detKinBeamRot_pXe_out,wgt_full);
+       py_e_out->Fill(detKinBeamRot_pYe_out,wgt_full);
+       pz_e_out->Fill(detKinBeamRot_pZe_out,wgt_full);
+       px_e_outNO->Fill(detKin_pXe_out,wgt_full);
+       py_e_outNO->Fill(detKin_pYe_out,wgt_full);
+       pz_e_outNO->Fill(detKin_pZe_out,wgt_full);
        
-        coox_mu->Fill(detKinBeamRot_cooXmu);
-       cooy_mu->Fill(detKinBeamRot_cooYmu);
+        coox_mu->Fill(detKinBeamRot_cooXmu,wgt_full);
+       cooy_mu->Fill(detKinBeamRot_cooYmu,wgt_full);
        
-       coox_e->Fill(detKinBeamRot_cooXe);
-       cooy_e->Fill(detKinBeamRot_cooYe);
+       coox_e->Fill(detKinBeamRot_cooXe,wgt_full);
+       cooy_e->Fill(detKinBeamRot_cooYe,wgt_full);
        
        Double_t diffX=detKinBeamRot_cooXe-detKinBeamRot_cooXmu;
-       diffX_mue->Fill(diffX);
+       diffX_mue->Fill(diffX,wgt_full);
        Double_t diffY=detKinBeamRot_cooYe-detKinBeamRot_cooYmu;
-       diffY_mue->Fill(diffY);
+       diffY_mue->Fill(diffY,wgt_full);
        
        Double_t diffPX=detKinBeamRot_pXe_out-detKin_pXe_out;
-       diffePX->Fill(diffPX);
+       diffePX->Fill(diffPX,wgt_full);
        Double_t diffPY=detKinBeamRot_pYe_out-detKin_pYe_out;
-       diffePY->Fill(diffPY);
+       diffePY->Fill(diffPY,wgt_full);
        Double_t diffPZ=detKinBeamRot_pZe_out-detKin_pZe_out;
-       diffePZ->Fill(diffPZ);
+       diffePZ->Fill(diffPZ,wgt_full);
        
-     X_Y_mu ->Fill(detKinBeamRot_cooXmu, detKinBeamRot_cooYmu);
-     X_Y_e ->Fill(detKinBeamRot_cooXe, detKinBeamRot_cooYe);
+     X_Y_mu ->Fill(detKinBeamRot_cooXmu, detKinBeamRot_cooYmu,wgt_full);
+     X_Y_e ->Fill(detKinBeamRot_cooXe, detKinBeamRot_cooYe,wgt_full);
        
-       if (tar==0)
+       if (detKinBeamRot_tar==0)
        {
-         tarONEXmu->Fill(detKinBeamRot_cooXmu);
-         tarONEYmu->Fill(detKinBeamRot_cooYmu);
-         tarONEXe->Fill(detKinBeamRot_cooXe);
-         tarONEYe->Fill(detKinBeamRot_cooYe);
+         tarONEXmu->Fill(detKinBeamRot_cooXmu,wgt_full);
+         tarONEYmu->Fill(detKinBeamRot_cooYmu,wgt_full);
+         tarONEXe->Fill(detKinBeamRot_cooXe,wgt_full);
+         tarONEYe->Fill(detKinBeamRot_cooYe,wgt_full);
        }
        
-       if (tar==1)
+       if (detKinBeamRot_tar==1)
        {
-         tarTWOXmu->Fill(detKinBeamRot_cooXmu);
-         tarTWOYmu->Fill(detKinBeamRot_cooYmu);
-         tarTWOXe->Fill(detKinBeamRot_cooXe);
-         tarTWOYe->Fill(detKinBeamRot_cooYe);
+         tarTWOXmu->Fill(detKinBeamRot_cooXmu,wgt_full);
+         tarTWOYmu->Fill(detKinBeamRot_cooYmu,wgt_full);
+         tarTWOXe->Fill(detKinBeamRot_cooXe,wgt_full);
+         tarTWOYe->Fill(detKinBeamRot_cooYe,wgt_full);
            
        }
        
@@ -135,7 +138,7 @@ TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.3,-0.3,100,
     px_mu->Fit("gaus");
     py_mu->Fit("gaus");
     pz_mu->Fit("gaus");
-    /*
+    
     TCanvas * diffP= new TCanvas("diff","diff",400,10,1500,1000);
     diffP->Divide(3,2);
     diffP->cd(1);
@@ -236,7 +239,7 @@ TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.3,-0.3,100,
     
     diff->cd(4);
     pz_e_out->Draw();
-     */
+     
     
     TCanvas * cooX= new TCanvas("cooX","cooX",400,10,600,400);
     cooX->Divide(2,2);
@@ -260,7 +263,7 @@ TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.3,-0.3,100,
   cooX->SaveAs("coo.png");
  
     TCanvas * dued= new TCanvas("dued","dued",400,10,600,400);
-    tar->Divide(3,1);
+
   X_Y_mu->SetMarkerColor(kBlack);
     X_Y_mu->Draw();
   X_Y_e->SetMarkerColor(kRed);
@@ -283,3 +286,4 @@ TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.3,-0.3,100,
 
     
 }
+

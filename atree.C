@@ -9,6 +9,7 @@
 void atree::Loop()
 {
     TH1::SetDefaultSumw2();
+
 TH1F* E_mu=new TH1F("h1", "Energy muon", 150,0,200);
 TH1F* E_e=new TH1F("h2", "Energy electron", 150,0,200);
 
@@ -143,49 +144,57 @@ TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.3,-0.3,100,
     diffP->Divide(3,2);
     diffP->cd(1);
     px_e_outNO->SetLineColor(kOrange);
-    px_e_outNO->Draw();
+    px_e_outNO->Draw("L");
     px_e_out->SetLineColor(kBlack);
-    px_e_out->Draw("same");
+    px_e_out->Draw("SAME");
+    px_e_out->Draw("L");
+    
     
     
     diffP->cd(2);
     py_e_outNO->SetLineColor(kOrange);
-    py_e_outNO->Draw();
+    py_e_outNO->Draw("L");
     py_e_out->SetLineColor(kBlack);
     py_e_out->Draw("same");
+    py_e_out->Draw("L");
+    
     
     
     
     diffP->cd(3);
     pz_e_outNO->SetLineColor(kOrange);
-    pz_e_outNO->Draw();
+    pz_e_outNO->Draw("L");
     pz_e_out->SetLineColor(kBlack);
     pz_e_out->Draw("same");
+    pz_e_out->Draw("L");
+    
     
     
     diffP->cd(4);
     px_mu_outNO->SetLineColor(40);
-    px_mu_outNO->Draw();
+    px_mu_outNO->Draw("L");
     px_mu_out->SetLineColor(46);
     px_mu_out->Draw("same");
+    px_mu_out->Draw("L");
+    
     
     diffP->cd(5);
     px_mu_outNO->SetLineColor(40);
-    px_mu_outNO->Draw();
+    px_mu_outNO->Draw("L");
     px_mu_out->SetLineColor(46);
     px_mu_out->Draw("same");
+    px_mu_out->Draw("L");
+    
     
     diffP->cd(6);
     px_mu_outNO->SetLineColor(40);
-    px_mu_outNO->Draw();
+    px_mu_outNO->Draw("L");
     px_mu_out->SetLineColor(46);
     px_mu_out->Draw("same");
+    px_mu_out->Draw("L");
     
     
-    
-    
-    
-    diffP->SaveAs("divNodiv.png");
+    diffP->SaveAs("divNodiv.jpg");
     
         
         
@@ -193,12 +202,12 @@ TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.3,-0.3,100,
      TCanvas * d= new TCanvas("d","d",400,10,1500,1000);
     d->Divide(3,1);
     d->cd(1);
-    diffePX->Draw();
+    diffePX->Draw("L");
     d->cd(2);
-    diffePY->Draw();
+    diffePY->Draw("L");
     d->cd(3);
-    diffePZ->Draw();
-    diffP->SaveAs("diffEp.png");
+    diffePZ->Draw("L");
+    d->SaveAs("diffEp.jpg");
     
     
     
@@ -206,69 +215,84 @@ TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.3,-0.3,100,
     TCanvas * E= new TCanvas("E","E",400,10,1500,1000);
     E->Divide(2,1);
     E->cd(1);
-    E_mu->Draw();
+    E_mu->Draw("L");
     E->cd(2);
     E_e->SetLineColor(kRed);
-    E_e->Draw();
+    E_e->Draw("L");
     
     TCanvas * Pin= new TCanvas("Pin","Pin",400,10,1500,1000);
     Pin->Divide(1,3);
     Pin->cd(1);
-    px_mu->Draw();
+    px_mu->Draw("L");
     Pin->cd(2);
-    py_mu->Draw();
+    py_mu->Draw("L");
     Pin->cd(3);
-    pz_mu->Draw();
+    pz_mu->Draw("L");
         
     TCanvas * diff= new TCanvas("diff","diff",400,10,1500,1000);
     diff->Divide(2,2);
     diff->cd(1);
     px_e_out->SetLineColor(kRed);
-    px_e_out->Draw();
+    px_e_out->Draw("L");
     px_mu_out->Draw("same");
+    px_mu_out->Draw("L");
+    
     
     
     diff->cd(2);
     py_e_out->SetLineColor(kRed);
-    py_e_out->Draw();
+    py_e_out->Draw("L");
     py_mu_out->Draw("same");
+    py_mu_out->Draw("L");
+    
     
     
     diff->cd(3);
-    pz_mu_out->Draw();
+    pz_mu_out->Draw("L");
     
     diff->cd(4);
+<<<<<<< HEAD
+    pz_e_out->Draw("L");
+     diff->SaveAs("diff.jpg");
+=======
     pz_e_out->Draw();
      
+>>>>>>> 95bb3e784c02adb310b65946cdc352b096c860af
     
     TCanvas * cooX= new TCanvas("cooX","cooX",400,10,600,400);
     cooX->Divide(2,2);
     cooX->cd(1);
-    coox_mu->Draw();
+    coox_mu->Draw("L");
     coox_e->SetLineColor(kRed);
     coox_e->Draw("same");
+    coox_e->Draw("L");
+    
 
  
     cooX->cd(2);
-    cooy_mu->Draw();
+    cooy_mu->Draw("L");
     cooy_e->SetLineColor(kRed);
     cooy_e->Draw("same");
+    cooy_e->Draw("L");
+    
  
     cooX->cd(3);
-    diffX_mue->Draw();
+    diffX_mue->Draw("L");
       
     cooX->cd(4);
     diffY_mue->SetLineColor(kRed);
-    diffY_mue->Draw();
-  cooX->SaveAs("coo.png");
+    diffY_mue->Draw("L");
+  cooX->SaveAs("coo.jpg");
  
     TCanvas * dued= new TCanvas("dued","dued",400,10,600,400);
 
   X_Y_mu->SetMarkerColor(kBlack);
-    X_Y_mu->Draw();
+    X_Y_mu->Draw("L");
   X_Y_e->SetMarkerColor(kRed);
     X_Y_e->Draw("same");
-  dued->SaveAs("duedcoo.png");
+    X_Y_e->Draw("L");
+    
+  dued->SaveAs("duedcoo.jpg");
     
     TCanvas * tar= new TCanvas("tar","tar",400,10,600,400);
     tar->Divide(2,1);
@@ -282,8 +306,9 @@ TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.3,-0.3,100,
     tarTWOYmu->Draw();
       tarTWOYe->SetMarkerColor(49);
     tarTWOYe->Draw("same");
-  dued->SaveAs("duedcoo.png");
+  tar->SaveAs("tar.jpg");
 
     
 }
+
 

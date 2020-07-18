@@ -71,9 +71,9 @@ TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.5,-0.5,140,
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
       // if (Cut(ientry) < 0) continue;
-Double_t pmuOUT = sqrt(detKinBeamRot_pXmu_out*detKinBeamRot_pXmu_out+detKinBeamRot_pYmu_out*detKinBeamRot_pYmu_out+detKinBeamRot_pZmu_out*detKinBeamRot_pZmu_out);
+Double_t pmuOUT = sqrt(detKin_pXmu_out*detKin_pXmu_out+detKin_pYmu_out*detKin_pYmu_out+detKin_pZmu_out*detKin_pZmu_out);
        
-Double_t peOUT = sqrt(detKinBeamRot_pXe_out*detKinBeamRot_pXe_out+detKinBeamRot_pYe_out*detKinBeamRot_pYe_out+detKinBeamRot_pZe_out*detKinBeamRot_pZe_out);
+Double_t peOUT = sqrt(detKin_pXe_out*detKin_pXe_out+detKin_pYe_out*detKin_pYe_out+detKin_pZe_out*detKin_pZe_out);
        
        Double_t DE_mu=sqrt(pmuOUT*pmuOUT+(105.6583745 *0.001)*(105.6583745 *0.001));
        Double_t DE_e=sqrt(peOUT*peOUT+(0.5109989461 *0.001)*(0.5109989461 *0.001));
@@ -306,17 +306,28 @@ Double_t peOUT = sqrt(detKinBeamRot_pXe_out*detKinBeamRot_pXe_out+detKinBeamRot_
   dued->SaveAs("duedcoo.png");
     
     TCanvas * tar= new TCanvas("tar","tar",400,10,600,400);
-    tar->Divide(2,1);
+    tar->Divide(2,2);
     tar->cd(1);
-  tarONEXmu->SetMarkerColor(30);
+  tarONEXmu->SetMarkerColor(42);
     tarONEXmu->Draw("HIST");
-      tarONEXe->SetMarkerColor(49);
+      tarONEXe->SetMarkerColor(46);
     tarONEXe->Draw("HIST same");
     tar->cd(2);
-  tarTWOYmu->SetMarkerColor(50);
+      tarONEYmu->SetMarkerColor(42);
+    tarONEXmu->Draw("HIST");
+      tarONEYe->SetMarkerColor(46);
+    tarONEYe->Draw("HIST same");
+    tar->cd(3);
+      tarTWOXmu->SetMarkerColor(42);
+    tarTWOXmu->Draw("HIST");
+      tarTWOXe->SetMarkerColor(46);
+    tarTWOXe->Draw("HIST same");
+    tar->cd(4);
+  tarTWOYmu->SetMarkerColor(42);
     tarTWOYmu->Draw("HIST");
-      tarTWOYe->SetMarkerColor(49);
+      tarTWOYe->SetMarkerColor(46);
     tarTWOYe->Draw("HIST same");
+    
   tar->SaveAs("tar.png");
 
     

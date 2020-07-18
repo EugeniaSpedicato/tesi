@@ -71,7 +71,7 @@ TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.5,-0.5,140,
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
       // if (Cut(ientry) < 0) continue;
-Double_t pmuOUT = sqrt(detKin_pXmu_out*detKin_pXmu_out+detKin_pYmu_out*detKin_pYmu_out+detKin_pZmu_out*detKin_pZmu_out);
+/*Double_t pmuOUT = sqrt(detKin_pXmu_out*detKin_pXmu_out+detKin_pYmu_out*detKin_pYmu_out+detKin_pZmu_out*detKin_pZmu_out);
        
 Double_t peOUT = sqrt(detKin_pXe_out*detKin_pXe_out+detKin_pYe_out*detKin_pYe_out+detKin_pZe_out*detKin_pZe_out);
        
@@ -82,7 +82,16 @@ Double_t peOUT = sqrt(detKin_pXe_out*detKin_pXe_out+detKin_pYe_out*detKin_pYe_ou
        E_e->Fill(DE_e,wgt_full);
        E_muCODE->Fill(detKinBeamRot_Emu,wgt_full);
        E_eCODE->Fill(detKinBeamRot_Ee,wgt_full);
-    
+    */
+Double_t pmuOUT = sqrt(detKin_pXmu_out*detKin_pXmu_out+detKin_pYmu_out*detKin_pYmu_out+detKin_pZmu_out*detKin_pZmu_out);
+       
+Double_t peOUT = sqrt(detKin_pXe_out*detKin_pXe_out+detKin_pYe_out*detKin_pYe_out+detKin_pZe_out*detKin_pZe_out);
+       
+       
+        E_mu->Fill(Pmu_out,wgt_full);
+       E_e->Fill(Pe_out,wgt_full);
+       E_muCODE->Fill(pmuOUT,wgt_full);
+       E_eCODE->Fill(peOUT,wgt_full);  
        
        px_mu->Fill(detKinBeamRot_pXmu,wgt_full);
        py_mu->Fill(detKinBeamRot_pYmu,wgt_full);

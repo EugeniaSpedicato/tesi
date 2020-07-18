@@ -12,6 +12,8 @@ void atree::Loop()
 
 TH1F* E_mu=new TH1F("h1", "Energy muon", 150,0,200);
 TH1F* E_e=new TH1F("h2", "Energy electron", 150,0,200);
+TH1F* E_muCODE=new TH1F("h1C", "Energy muon", 150,0,200);
+TH1F* E_eCODE=new TH1F("h2C", "Energy electron", 150,0,200);
 
 TH1F* px_mu=new TH1F("h1", "pX_in muon", 190,-0.3,0.3);
 TH1F* py_mu=new TH1F("h2", "pY_in muon", 190,-0.3,0.3);
@@ -54,8 +56,8 @@ TH1F* tarTWOYe=new TH1F("h2ea", "Coo Y e tar2 ", 140,-0.1,0.1);
 TH1F* diffX_mue=new TH1F("h", "DiffCoo X mu and e-", 140,-0.3,0.3);
 TH1F* diffY_mue=new TH1F("h", "DiffCoo Y mu and e-", 140,-0.3,0.3);
  
-TH2F  *X_Y_mu  = new TH2F("h2d" , " X  Vs. y of the muon",140,-0.3,-0.3,140,-0.3,0.3);
-TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.3,-0.3,140,-0.3,0.3);
+TH2F  *X_Y_mu  = new TH2F("h2d" , " X  Vs. y of the muon",140,-0.5,-0.5,140,-0.5,0.5);
+TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.5,-0.5,140,-0.5,0.5);
  
  
 
@@ -69,13 +71,17 @@ TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.3,-0.3,140,
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
       // if (Cut(ientry) < 0) continue;
-       Double_t pmuOUT=sqrt(detKinBeamRot_pXmu_out*detKinBeamRot_pXmu_out+detKinBeamRot_pYmu_out*detKinBeamRot_pYmu_out+detKinBeamRot_pZmu_out*detKinBeamRot_pZmu_out);
-       Double_t peOUT=sqrt(detKinBeamRot_pXe_out*detKinBeamRot_pXe_out+detKinBeamRot_pYe_out*detKinBeamRot_pYe_out+detKinBeamRot_pZe_out*detKinBeamRot_pZe_out);
+Double_t pmuOUT = sqrt(detKinBeamRot_pXmu_out*detKinBeamRot_pXmu_out+detKinBeamRot_pYmu_out*detKinBeamRot_pYmu_out+detKinBeamRot_pZmu_out*detKinBeamRot_pZmu_out);
+       
+Double_t peOUT = sqrt(detKinBeamRot_pXe_out*detKinBeamRot_pXe_out+detKinBeamRot_pYe_out*detKinBeamRot_pYe_out+detKinBeamRot_pZe_out*detKinBeamRot_pZe_out);
+       
        Double_t DE_mu=sqrt(pmuOUT*pmuOUT+(105.6583745 *0.001)*(105.6583745 *0.001));
        Double_t DE_e=sqrt(peOUT*peOUT+(0.5109989461 *0.001)*(0.5109989461 *0.001));
        
        E_mu->Fill(DE_mu,wgt_full);
        E_e->Fill(DE_e,wgt_full);
+       E_muCODE->Fill(detKinBeamRot_Emu,wgt_full);
+       E_eCODE->Fill(detKinBeamRot_Ee,wgt_full);
     
        
        px_mu->Fill(detKinBeamRot_pXmu,wgt_full);
@@ -194,7 +200,7 @@ TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.3,-0.3,140,
 
     
     
-    diffP->SaveAs("divNodiv.pdf");
+    diffP->SaveAs("divNodiv.png");
     
         
         
@@ -207,7 +213,7 @@ TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.3,-0.3,140,
     diffePY->Draw("HIST");
     d->cd(3);
     diffePZ->Draw("HIST");
-    d->SaveAs("diffEp.pdf");
+    d->SaveAs("diffEp.png");
     
     
     
@@ -216,9 +222,14 @@ TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.3,-0.3,140,
     E->Divide(2,1);
     E->cd(1);
     E_mu->Draw("HIST");
+    E_muCODE->SetColorLine(kBlack);
+    E_muCODE->Draw("HIST same");
     E->cd(2);
     E_e->SetLineColor(kRed);
     E_e->Draw("HIST");
+    E_eCODE->SetColorLine(kBlack);
+    E_eCODE->Draw("HIST same");
+    E->SaveAs("energy.png")
     
     TCanvas * Pin= new TCanvas("Pin","Pin",400,10,1500,1000);
     Pin->Divide(1,3);
@@ -228,6 +239,8 @@ TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.3,-0.3,140,
     py_mu->Draw("HIST");
     Pin->cd(3);
     pz_mu->Draw("HIST");
+    
+   Pin->SaveAs("p_in.png")
         
     TCanvas * diff= new TCanvas("diff","diff",400,10,1500,1000);
     diff->Divide(2,2);
@@ -253,7 +266,7 @@ TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.3,-0.3,140,
     diff->cd(4);
     
     pz_e_out->Draw("HIST");
-    diff->SaveAs("diff.pdf");
+    diff->SaveAs("diff.png");
 
 
      
@@ -280,7 +293,7 @@ TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.3,-0.3,140,
     cooX->cd(4);
     diffY_mue->SetLineColor(kRed);
     diffY_mue->Draw("HIST");
-  cooX->SaveAs("coo.pdf");
+  cooX->SaveAs("coo.png");
  
     TCanvas * dued= new TCanvas("dued","dued",400,10,600,400);
 
@@ -290,7 +303,7 @@ TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.3,-0.3,140,
     X_Y_e->Draw("HIST same");
 
     
-  dued->SaveAs("duedcoo.jpg");
+  dued->SaveAs("duedcoo.png");
     
     TCanvas * tar= new TCanvas("tar","tar",400,10,600,400);
     tar->Divide(2,1);
@@ -304,7 +317,7 @@ TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.3,-0.3,140,
     tarTWOYmu->Draw("HIST");
       tarTWOYe->SetMarkerColor(49);
     tarTWOYe->Draw("HIST same");
-  tar->SaveAs("tar.pdf");
+  tar->SaveAs("tar.png");
 
     
 }

@@ -194,7 +194,7 @@ TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.3,-0.3,100,
 
     
     
-    diffP->SaveAs("divNodiv.jpg");
+    diffP->SaveAs("divNodiv.pdf");
     
         
         
@@ -207,7 +207,7 @@ TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.3,-0.3,100,
     diffePY->Draw("HIST");
     d->cd(3);
     diffePZ->Draw("HIST");
-    d->SaveAs("diffEp.jpg");
+    d->SaveAs("diffEp.pdf");
     
     
     
@@ -253,7 +253,7 @@ TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.3,-0.3,100,
     diff->cd(4);
     
     pz_e_out->Draw("HIST");
-    diff->SaveAs("diff.jpg");
+    diff->SaveAs("diff.pdf");
 
 
      
@@ -280,7 +280,7 @@ TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.3,-0.3,100,
     cooX->cd(4);
     diffY_mue->SetLineColor(kRed);
     diffY_mue->Draw("HIST");
-  cooX->SaveAs("coo.jpg");
+  cooX->SaveAs("coo.pdf");
  
     TCanvas * dued= new TCanvas("dued","dued",400,10,600,400);
 
@@ -290,7 +290,7 @@ TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.3,-0.3,100,
     X_Y_e->Draw("HIST same");
 
     
-  dued->SaveAs("duedcoo.jpg");
+  dued->SaveAs("duedcoo.pdf");
     
     TCanvas * tar= new TCanvas("tar","tar",400,10,600,400);
     tar->Divide(2,1);
@@ -304,7 +304,7 @@ TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.3,-0.3,100,
     tarTWOYmu->Draw("HIST");
       tarTWOYe->SetMarkerColor(49);
     tarTWOYe->Draw("HIST same");
-  tar->SaveAs("tar.jpg");
+  tar->SaveAs("tar.pdf");
 
     
 }

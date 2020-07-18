@@ -31,9 +31,9 @@ TH1F* px_e_outNO=new TH1F("h1bN", "pX_out electron NO DIV", 150,-0.3,0.3);
 TH1F* py_e_outNO=new TH1F("h2bN", "pY_out electron NO DIV", 150,-0.3,0.3);
 TH1F* pz_e_outNO=new TH1F("h3bN", "pZ_out electron NO DIV", 150,0,5);
     
-TH1F* diffePX=new TH1F("h1N", "pX_out diff electron div-NO DIV", 150,-0.08,0.08);
-TH1F* diffePY=new TH1F("h2N", "pY_out diff electron div-NO DIV", 150,-0.08,0.08);
-TH1F* diffePZ=new TH1F("h3N", "pZ_out diff electron div-NO DIV", 150,-0.05,0.05);
+TH1F* diffePX=new TH1F("h1N", "pX_out diff electron div-NO DIV", 150,-0.02,0.02);
+TH1F* diffePY=new TH1F("h2N", "pY_out diff electron div-NO DIV", 150,-0.02,0.02);
+TH1F* diffePZ=new TH1F("h3N", "pZ_out diff electron div-NO DIV", 150,-0.001,0.001);
         
     
 TH1F* coox_mu=new TH1F("h1", "Coo X mu", 140,-0.1,0.1);
@@ -143,7 +143,7 @@ TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.3,-0.3,140,
     TCanvas * diffP= new TCanvas("diff","diff",400,10,1500,1000);
     diffP->Divide(3,2);
     diffP->cd(1);
-    px_e_outNO->SetLineColor(kOrange);
+    px_e_outNO->SetLineColor(kRed);
     px_e_outNO->Draw("HIST");
     px_e_out->SetLineColor(kBlack);
     px_e_out->Draw("HIST same");
@@ -152,7 +152,7 @@ TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.3,-0.3,140,
     
     
     diffP->cd(2);
-    py_e_outNO->SetLineColor(kOrange);
+    py_e_outNO->SetLineColor(kRed);
     py_e_outNO->Draw("HIST");
     py_e_out->SetLineColor(kBlack);
     py_e_out->Draw("HIST same");
@@ -162,7 +162,7 @@ TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.3,-0.3,140,
     
     
     diffP->cd(3);
-    pz_e_outNO->SetLineColor(kOrange);
+    pz_e_outNO->SetLineColor(kRed);
     pz_e_outNO->Draw("HIST");
     pz_e_out->SetLineColor(kBlack);
     pz_e_out->Draw("HIST same");
@@ -290,7 +290,7 @@ TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.3,-0.3,140,
     X_Y_e->Draw("HIST same");
 
     
-  dued->SaveAs("duedcoo.pdf");
+  dued->SaveAs("duedcoo.jpg");
     
     TCanvas * tar= new TCanvas("tar","tar",400,10,600,400);
     tar->Divide(2,1);

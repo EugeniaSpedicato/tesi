@@ -31,9 +31,9 @@ TH1F* px_e_outNO=new TH1F("h1bN", "pX_out electron NO DIV", 150,-0.3,0.3);
 TH1F* py_e_outNO=new TH1F("h2bN", "pY_out electron NO DIV", 150,-0.3,0.3);
 TH1F* pz_e_outNO=new TH1F("h3bN", "pZ_out electron NO DIV", 150,0,5);
     
-TH1F* diffePX=new TH1F("h1N", "pX_out diff electron div-NO DIV", 150,-0.3,0.3);
-TH1F* diffePY=new TH1F("h2N", "pY_out diff electron div-NO DIV", 150,-0.3,0.3);
-TH1F* diffePZ=new TH1F("h3N", "pZ_out diff electron div-NO DIV", 150,0,5);
+TH1F* diffePX=new TH1F("h1N", "pX_out diff electron div-NO DIV", 150,-0.08,0.08);
+TH1F* diffePY=new TH1F("h2N", "pY_out diff electron div-NO DIV", 150,-0.08,0.08);
+TH1F* diffePZ=new TH1F("h3N", "pZ_out diff electron div-NO DIV", 150,-0.05,0.05);
         
     
 TH1F* coox_mu=new TH1F("h1", "Coo X mu", 140,-0.1,0.1);
@@ -54,8 +54,8 @@ TH1F* tarTWOYe=new TH1F("h2ea", "Coo Y e tar2 ", 140,-0.1,0.1);
 TH1F* diffX_mue=new TH1F("h", "DiffCoo X mu and e-", 140,-0.3,0.3);
 TH1F* diffY_mue=new TH1F("h", "DiffCoo Y mu and e-", 140,-0.3,0.3);
  
-TH2F  *X_Y_mu  = new TH2F("h2d" , " X  Vs. y of the muon",140,-0.3,-0.3,100,0,40);
-TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.3,-0.3,100,0,40);
+TH2F  *X_Y_mu  = new TH2F("h2d" , " X  Vs. y of the muon",140,-0.3,-0.3,140,-0.3,0.3);
+TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.3,-0.3,140,-0.3,0.3);
  
  
 

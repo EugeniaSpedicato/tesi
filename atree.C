@@ -144,54 +144,54 @@ TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.3,-0.3,100,
     diffP->Divide(3,2);
     diffP->cd(1);
     px_e_outNO->SetLineColor(kOrange);
-    px_e_outNO->Draw("L");
+    px_e_outNO->Draw("HIST");
     px_e_out->SetLineColor(kBlack);
-    px_e_out->Draw("SAME");
-    px_e_out->Draw("L");
+    px_e_out->Draw("HIST same");
+
     
     
     
     diffP->cd(2);
     py_e_outNO->SetLineColor(kOrange);
-    py_e_outNO->Draw("L");
+    py_e_outNO->Draw("HIST");
     py_e_out->SetLineColor(kBlack);
-    py_e_out->Draw("same");
-    py_e_out->Draw("L");
+    py_e_out->Draw("HIST same");
+
     
     
     
     
     diffP->cd(3);
     pz_e_outNO->SetLineColor(kOrange);
-    pz_e_outNO->Draw("L");
+    pz_e_outNO->Draw("HIST");
     pz_e_out->SetLineColor(kBlack);
-    pz_e_out->Draw("same");
-    pz_e_out->Draw("L");
+    pz_e_out->Draw("HIST same");
+
     
     
     
     diffP->cd(4);
     px_mu_outNO->SetLineColor(40);
-    px_mu_outNO->Draw("L");
+    px_mu_outNO->Draw("HIST");
     px_mu_out->SetLineColor(46);
-    px_mu_out->Draw("same");
-    px_mu_out->Draw("L");
+    px_mu_out->Draw("HIST same");
+
     
     
     diffP->cd(5);
     px_mu_outNO->SetLineColor(40);
-    px_mu_outNO->Draw("L");
+    px_mu_outNO->Draw("HIST");
     px_mu_out->SetLineColor(46);
-    px_mu_out->Draw("same");
-    px_mu_out->Draw("L");
+    px_mu_out->Draw("HIST same");
+
     
     
     diffP->cd(6);
     px_mu_outNO->SetLineColor(40);
-    px_mu_outNO->Draw("L");
+    px_mu_outNO->Draw("HIST");
     px_mu_out->SetLineColor(46);
-    px_mu_out->Draw("same");
-    px_mu_out->Draw("L");
+    px_mu_out->Draw("HIST same");
+
     
     
     diffP->SaveAs("divNodiv.jpg");
@@ -202,11 +202,11 @@ TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.3,-0.3,100,
      TCanvas * d= new TCanvas("d","d",400,10,1500,1000);
     d->Divide(3,1);
     d->cd(1);
-    diffePX->Draw("L");
+    diffePX->Draw("HIST");
     d->cd(2);
-    diffePY->Draw("L");
+    diffePY->Draw("HIST");
     d->cd(3);
-    diffePZ->Draw("L");
+    diffePZ->Draw("HIST");
     d->SaveAs("diffEp.jpg");
     
     
@@ -215,82 +215,80 @@ TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.3,-0.3,100,
     TCanvas * E= new TCanvas("E","E",400,10,1500,1000);
     E->Divide(2,1);
     E->cd(1);
-    E_mu->Draw("L");
+    E_mu->Draw("HIST");
     E->cd(2);
     E_e->SetLineColor(kRed);
-    E_e->Draw("L");
+    E_e->Draw("HIST");
     
     TCanvas * Pin= new TCanvas("Pin","Pin",400,10,1500,1000);
     Pin->Divide(1,3);
     Pin->cd(1);
-    px_mu->Draw("L");
+    px_mu->Draw("HIST");
     Pin->cd(2);
-    py_mu->Draw("L");
+    py_mu->Draw("HIST");
     Pin->cd(3);
-    pz_mu->Draw("L");
+    pz_mu->Draw("HIST");
         
     TCanvas * diff= new TCanvas("diff","diff",400,10,1500,1000);
     diff->Divide(2,2);
     diff->cd(1);
     px_e_out->SetLineColor(kRed);
-    px_e_out->Draw("L");
-    px_mu_out->Draw("same");
-    px_mu_out->Draw("L");
+    px_e_out->Draw("HIST");
+    px_mu_out->Draw("HIST same");
+
     
     
     
     diff->cd(2);
     py_e_out->SetLineColor(kRed);
-    py_e_out->Draw("L");
-    py_mu_out->Draw("same");
-    py_mu_out->Draw("L");
+    py_e_out->Draw("HIST");
+    py_mu_out->Draw("HIST same");
+
     
     
     
     diff->cd(3);
-    pz_mu_out->Draw("L");
+    pz_mu_out->Draw("HIST");
     
     diff->cd(4);
-<<<<<<< HEAD
-    pz_e_out->Draw("L");
-     diff->SaveAs("diff.jpg");
-=======
-    pz_e_out->Draw();
-     
->>>>>>> 95bb3e784c02adb310b65946cdc352b096c860af
     
+    pz_e_out->Draw("HIST");
+    diff->SaveAs("diff.jpg");
+
+
+     
     TCanvas * cooX= new TCanvas("cooX","cooX",400,10,600,400);
     cooX->Divide(2,2);
     cooX->cd(1);
-    coox_mu->Draw("L");
+    coox_mu->Draw("HIST");
     coox_e->SetLineColor(kRed);
-    coox_e->Draw("same");
-    coox_e->Draw("L");
+    coox_e->Draw("HIST same");
+
     
 
  
     cooX->cd(2);
-    cooy_mu->Draw("L");
+    cooy_mu->Draw("HIST");
     cooy_e->SetLineColor(kRed);
-    cooy_e->Draw("same");
-    cooy_e->Draw("L");
+    cooy_e->Draw("HIST same");
+
     
  
     cooX->cd(3);
-    diffX_mue->Draw("L");
+    diffX_mue->Draw("HIST");
       
     cooX->cd(4);
     diffY_mue->SetLineColor(kRed);
-    diffY_mue->Draw("L");
+    diffY_mue->Draw("HIST");
   cooX->SaveAs("coo.jpg");
  
     TCanvas * dued= new TCanvas("dued","dued",400,10,600,400);
 
   X_Y_mu->SetMarkerColor(kBlack);
-    X_Y_mu->Draw("L");
+    X_Y_mu->Draw("HIST");
   X_Y_e->SetMarkerColor(kRed);
-    X_Y_e->Draw("same");
-    X_Y_e->Draw("L");
+    X_Y_e->Draw("HIST same");
+
     
   dued->SaveAs("duedcoo.jpg");
     
@@ -298,14 +296,14 @@ TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.3,-0.3,100,
     tar->Divide(2,1);
     tar->cd(1);
   tarONEXmu->SetMarkerColor(30);
-    tarONEXmu->Draw();
+    tarONEXmu->Draw("HIST");
       tarONEXe->SetMarkerColor(49);
-    tarONEXe->Draw("same");
+    tarONEXe->Draw("HIST same");
     tar->cd(2);
   tarTWOYmu->SetMarkerColor(50);
-    tarTWOYmu->Draw();
+    tarTWOYmu->Draw("HIST");
       tarTWOYe->SetMarkerColor(49);
-    tarTWOYe->Draw("same");
+    tarTWOYe->Draw("HIST same");
   tar->SaveAs("tar.jpg");
 
     

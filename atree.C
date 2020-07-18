@@ -185,18 +185,18 @@ Double_t peOUT = sqrt(detKinBeamRot_pXe_out*detKinBeamRot_pXe_out+detKinBeamRot_
     
     
     diffP->cd(5);
-    px_mu_outNO->SetLineColor(40);
-    px_mu_outNO->Draw("HIST");
-    px_mu_out->SetLineColor(46);
-    px_mu_out->Draw("HIST same");
+    py_mu_outNO->SetLineColor(40);
+    py_mu_outNO->Draw("HIST");
+    py_mu_out->SetLineColor(46);
+    py_mu_out->Draw("HIST same");
 
     
     
     diffP->cd(6);
-    px_mu_outNO->SetLineColor(40);
-    px_mu_outNO->Draw("HIST");
-    px_mu_out->SetLineColor(46);
-    px_mu_out->Draw("HIST same");
+    pz_mu_outNO->SetLineColor(40);
+    pz_mu_outNO->Draw("HIST");
+    pz_mu_out->SetLineColor(46);
+    pz_mu_out->Draw("HIST same");
 
     
     
@@ -222,14 +222,14 @@ Double_t peOUT = sqrt(detKinBeamRot_pXe_out*detKinBeamRot_pXe_out+detKinBeamRot_
     E->Divide(2,1);
     E->cd(1);
     E_mu->Draw("HIST");
-    E_muCODE->SetColorLine(kBlack);
+    E_muCODE->SetLineColor(kBlack);
     E_muCODE->Draw("HIST same");
     E->cd(2);
     E_e->SetLineColor(kRed);
     E_e->Draw("HIST");
-    E_eCODE->SetColorLine(kBlack);
+    E_eCODE->SetLineColor(kBlack);
     E_eCODE->Draw("HIST same");
-    E->SaveAs("energy.png")
+    E->SaveAs("energy.png");
     
     TCanvas * Pin= new TCanvas("Pin","Pin",400,10,1500,1000);
     Pin->Divide(1,3);
@@ -240,7 +240,7 @@ Double_t peOUT = sqrt(detKinBeamRot_pXe_out*detKinBeamRot_pXe_out+detKinBeamRot_
     Pin->cd(3);
     pz_mu->Draw("HIST");
     
-   Pin->SaveAs("p_in.png")
+   Pin->SaveAs("p_in.png");
         
     TCanvas * diff= new TCanvas("diff","diff",400,10,1500,1000);
     diff->Divide(2,2);

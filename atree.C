@@ -8,7 +8,8 @@
 
 void atree::Loop()
 {
-TH1::SetDefaultSumw2();
+    TH1::SetDefaultSumw2();
+
 TH1F* E_mu=new TH1F("h1", "Energy muon", 150,0,200);
 TH1F* E_e=new TH1F("h2", "Energy electron", 150,0,200);
 
@@ -250,8 +251,13 @@ TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.3,-0.3,100,
     pz_mu_out->Draw("L");
     
     diff->cd(4);
+<<<<<<< HEAD
     pz_e_out->Draw("L");
      diff->SaveAs("diff.jpg");
+=======
+    pz_e_out->Draw();
+     
+>>>>>>> 95bb3e784c02adb310b65946cdc352b096c860af
     
     TCanvas * cooX= new TCanvas("cooX","cooX",400,10,600,400);
     cooX->Divide(2,2);
@@ -304,3 +310,4 @@ TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.3,-0.3,100,
 
     
 }
+

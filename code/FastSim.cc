@@ -90,7 +90,7 @@ void FastSim::Process(const MuE::Event & event) {
     //DETKIN RUOTATE
 
 PxPyPzEVector p_mu_in_div=RotDivIN(p_mu_in);
-PxPyPzEVector p_e_in_div=RotDivIN(p_e_in);
+PxPyPzEVector p_e_in_div=(p_e_in);
     
 PxPyPzEVector p_mu_out_div=RotDiv(p_mu_in_div,p_mu_out);
 PxPyPzEVector p_e_out_div=RotDiv(p_mu_in_div,p_e_out);

@@ -56,15 +56,15 @@ TH1F* cooy_mu=new TH1F("h2", "Coo Y mu", 140,-0.1,0.1);
 TH1F* coox_e=new TH1F("h1e", "Coo X e", 140,-0.1,0.1);
 TH1F* cooy_e=new TH1F("h2e", "Coo Y e", 140,-0.1,0.1);
  
-TH1F* tarONEXmu=new TH1F("h1a", "Coo X mu tar1  ", 140,-0.3,0.3);
-TH1F* tarONEYmu=new TH1F("h2a", "Coo Y mu tar1 ", 140,-0.3,0.3);
-TH1F* tarONEXe=new TH1F("h1ea", "Coo X e tar1 ", 140,-0.3,0.3);
-TH1F* tarONEYe=new TH1F("h2ea", "Coo Y e tar1 ", 140,-0.3,0.3);
+TH1F* tarONEXmu=new TH1F("h1a", "Coo X mu tar1  ", 140,-0.15,0.15);
+TH1F* tarONEYmu=new TH1F("h2a", "Coo Y mu tar1 ", 140,-0.15,0.15);
+TH1F* tarONEXe=new TH1F("h1ea", "Coo X e tar1 ", 140,-0.15,0.15);
+TH1F* tarONEYe=new TH1F("h2ea", "Coo Y e tar1 ", 140,-0.15,0.15);
     
-TH1F* tarTWOXmu=new TH1F("h1a", "Coo X mu tar2  ", 140,-0.1,0.1);
-TH1F* tarTWOYmu=new TH1F("h2a", "Coo Y mu tar2 ", 140,-0.1,0.1);
-TH1F* tarTWOXe=new TH1F("h1ea", "Coo X e tar2 ", 140,-0.1,0.1);
-TH1F* tarTWOYe=new TH1F("h2ea", "Coo Y e tar2 ", 140,-0.1,0.1);
+TH1F* tarTWOXmu=new TH1F("h1a", "Coo X mu tar2  ", 140,-0.15,0.15);
+TH1F* tarTWOYmu=new TH1F("h2a", "Coo Y mu tar2 ", 140,-0.15,0.15);
+TH1F* tarTWOXe=new TH1F("h1ea", "Coo X e tar2 ", 140,-0.15,0.15);
+TH1F* tarTWOYe=new TH1F("h2ea", "Coo Y e tar2 ", 140,-0.15,0.15);
  
 TH1F* diffX_mue=new TH1F("h", "DiffCoo X mu and e-", 140,-0.3,0.3);
 TH1F* diffY_mue=new TH1F("h", "DiffCoo Y mu and e-", 140,-0.3,0.3);
@@ -374,7 +374,7 @@ Double_t DE_eBR=sqrt(peOUTBR*peOUTBR+(0.5109989461 *0.001)*(0.5109989461 *0.001)
     diffY_mue->Draw("HIST");
   cooX->SaveAs("coo.png");
  
-    TCanvas * dued= new TCanvas("dued","dued",1000,100,1500,1500);
+    TCanvas * dued= new TCanvas("dued","dued",1000,100,1500,2000);
 
   X_Y_mu->SetMarkerColor(kBlack);
     X_Y_mu->Draw("HIST");

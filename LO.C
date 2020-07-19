@@ -12,16 +12,30 @@ void atree::Loop()
     
      
            
-TH1F* px_mu_out=new TH1F("h1a", "pX_out muon", 150,-0.3,0.3);
-TH1F* py_mu_out=new TH1F("h2a", "pY_out muon", 150,-0.3,0.3);
-TH1F* pz_mu_out=new TH1F("h3a", "pZ_out muon", 150,0,180);
+TH1F* Npx_mu_out=new TH1F("h1a", "pX_out muon BR", 150,-0.3,0.3);
+TH1F* Npy_mu_out=new TH1F("h2a", "pY_out muon BR", 150,-0.3,0.3);
+TH1F* Npz_mu_out=new TH1F("h3a", "pZ_out muon BR", 150,0,180);
+TH1F* Npx_mu_outNO=new TH1F("h1aN", "pX_out muon BR", 150,-0.3,0.3);
+TH1F* Npy_mu_outNO=new TH1F("h2aN", "pY_out muon  BR", 150,-0.3,0.3);
+TH1F* Npz_mu_outNO=new TH1F("h3aN", "pZ_out muon N BR", 150,0,180);
+    
+TH1F* Npx_e_out=new TH1F("h1b", "pX_out electron BR", 150,-0.3,0.3);
+TH1F* Npy_e_out=new TH1F("h2b", "pY_out electron BR", 150,-0.3,0.3);
+TH1F* Npz_e_out=new TH1F("h3b", "pZ_out electron BR", 150,0,5);
+TH1F* Npx_e_outNO=new TH1F("h1bN", "pX_out electron  BR", 150,-0.3,0.3);
+TH1F* Npy_e_outNO=new TH1F("h2bN", "pY_out electron  BR", 150,-0.3,0.3);
+TH1F* Npz_e_outNO=new TH1F("h3bN", "pZ_out electron  BR", 150,0,5);
+    
+TH1F* px_mu_out=new TH1F("h1a", "pX_out muon NO DIV", 150,-0.3,0.3);
+TH1F* py_mu_out=new TH1F("h2a", "pY_out muon NO DIV", 150,-0.3,0.3);
+TH1F* pz_mu_out=new TH1F("h3a", "pZ_out muon NO DIV", 150,0,180);
 TH1F* px_mu_outNO=new TH1F("h1aN", "pX_out muon NO DIV", 150,-0.3,0.3);
 TH1F* py_mu_outNO=new TH1F("h2aN", "pY_out muon NO DIV", 150,-0.3,0.3);
 TH1F* pz_mu_outNO=new TH1F("h3aN", "pZ_out muon NO DIV", 150,0,180);
     
-TH1F* px_e_out=new TH1F("h1b", "pX_out electron", 150,-0.3,0.3);
-TH1F* py_e_out=new TH1F("h2b", "pY_out electron", 150,-0.3,0.3);
-TH1F* pz_e_out=new TH1F("h3b", "pZ_out electron", 150,0,5);
+TH1F* px_e_out=new TH1F("h1b", "pX_out electron NO DIV", 150,-0.3,0.3);
+TH1F* py_e_out=new TH1F("h2b", "pY_out electron NO DIV", 150,-0.3,0.3);
+TH1F* pz_e_out=new TH1F("h3b", "pZ_out electron NO DIV", 150,0,5);
 TH1F* px_e_outNO=new TH1F("h1bN", "pX_out electron NO DIV", 150,-0.3,0.3);
 TH1F* py_e_outNO=new TH1F("h2bN", "pY_out electron NO DIV", 150,-0.3,0.3);
 TH1F* pz_e_outNO=new TH1F("h3bN", "pZ_out electron NO DIV", 150,0,5);
@@ -39,19 +53,33 @@ TH1F* pz_e_outNO=new TH1F("h3bN", "pZ_out electron NO DIV", 150,0,5);
        
        
        
-       px_mu_out->Fill(detKinBeamRot_pXmu_out,wgt_LO);
-       py_mu_out->Fill(detKinBeamRot_pYmu_out,wgt_LO);
-       pz_mu_out->Fill(detKinBeamRot_pZmu_out,wgt_LO);
-       px_mu_outNO->Fill(detKinBeamRot_pXmu_out,wgt_full);
-       py_mu_outNO->Fill(detKinBeamRot_pYmu_out,wgt_full);
-       pz_mu_outNO->Fill(detKinBeamRot_pZmu_out,wgt_full);
+       Npx_mu_out->Fill(detKinBeamRot_pXmu_out,wgt_LO);
+       Npy_mu_out->Fill(detKinBeamRot_pYmu_out,wgt_LO);
+       Npz_mu_out->Fill(detKinBeamRot_pZmu_out,wgt_LO);
+       Npx_mu_outNO->Fill(detKinBeamRot_pXmu_out,wgt_full);
+       Npy_mu_outNO->Fill(detKinBeamRot_pYmu_out,wgt_full);
+       Npz_mu_outNO->Fill(detKinBeamRot_pZmu_out,wgt_full);
        
-       px_e_out->Fill(detKinBeamRot_pXe_out,wgt_LO);
-       py_e_out->Fill(detKinBeamRot_pYe_out,wgt_LO);
-       pz_e_out->Fill(detKinBeamRot_pZe_out,wgt_LO);
-       px_e_outNO->Fill(detKinBeamRot_pXe_out,wgt_full);
-       py_e_outNO->Fill(detKinBeamRot_pYe_out,wgt_full);
-       pz_e_outNO->Fill(detKinBeamRot_pZe_out,wgt_full);
+       Npx_e_out->Fill(detKinBeamRot_pXe_out,wgt_LO);
+       Npy_e_out->Fill(detKinBeamRot_pYe_out,wgt_LO);
+       Npz_e_out->Fill(detKinBeamRot_pZe_out,wgt_LO);
+       Npx_e_outNO->Fill(detKinBeamRot_pXe_out,wgt_full);
+       Npy_e_outNO->Fill(detKinBeamRot_pYe_out,wgt_full);
+       Npz_e_outNO->Fill(detKinBeamRot_pZe_out,wgt_full);
+       
+        px_mu_out->Fill(detKin_pXmu_out,wgt_LO);
+       py_mu_out->Fill(detKin_pYmu_out,wgt_LO);
+       pz_mu_out->Fill(detKin_pZmu_out,wgt_LO);
+       px_mu_outNO->Fill(detKin_pXmu_out,wgt_full);
+       py_mu_outNO->Fill(detKin_pYmu_out,wgt_full);
+       pz_mu_outNO->Fill(detKin_pZmu_out,wgt_full);
+       
+       px_e_out->Fill(detKin_pXe_out,wgt_LO);
+       py_e_out->Fill(detKin_pYe_out,wgt_LO);
+       pz_e_out->Fill(detKin_pZe_out,wgt_LO);
+       px_e_outNO->Fill(detKin_pXe_out,wgt_full);
+       py_e_outNO->Fill(detKin_pYe_out,wgt_full);
+       pz_e_outNO->Fill(detKin_pZe_out,wgt_full);
        
        
    }
@@ -59,6 +87,63 @@ TH1F* pz_e_outNO=new TH1F("h3bN", "pZ_out electron NO DIV", 150,0,5);
     TCanvas * diffP= new TCanvas("diff","diff",400,10,1500,1000);
     diffP->Divide(3,2);
     diffP->cd(1);
+    Npx_e_outNO->SetLineColor(kRed);
+    Npx_e_outNO->Draw("HIST");
+    Npx_e_out->SetLineColor(kBlack);
+    Npx_e_out->Draw("HIST same");
+
+    
+    
+    
+    diffP->cd(2);
+    Npy_e_outNO->SetLineColor(kRed);
+    Npy_e_outNO->Draw("HIST");
+    Npy_e_out->SetLineColor(kBlack);
+    Npy_e_out->Draw("HIST same");
+
+    
+    
+    
+    
+    diffP->cd(3);
+    Npz_e_outNO->SetLineColor(kRed);
+    Npz_e_outNO->Draw("HIST");
+    Npz_e_out->SetLineColor(kBlack);
+    Npz_e_out->Draw("HIST same");
+
+    
+    
+    
+    diffP->cd(4);
+    Npx_mu_outNO->SetLineColor(40);
+    Npx_mu_outNO->Draw("HIST");
+    Npx_mu_out->SetLineColor(46);
+    Npx_mu_out->Draw("HIST same");
+
+    
+    
+    diffP->cd(5);
+    Npy_mu_outNO->SetLineColor(40);
+    Npy_mu_outNO->Draw("HIST");
+    Npy_mu_out->SetLineColor(46);
+    Npy_mu_out->Draw("HIST same");
+
+    
+    
+    diffP->cd(6);
+    Npz_mu_outNO->SetLineColor(40);
+    Npz_mu_outNO->Draw("HIST");
+    Npz_mu_out->SetLineColor(46);
+    Npz_mu_out->Draw("HIST same");
+
+    
+    
+    diffP->SaveAs("LO-NLO.png");
+    
+    
+        TCanvas * ndiffP= new TCanvas("diff","diff",400,10,1500,1000);
+   ndiffP->Divide(3,2);
+    ndiffP->cd(1);
     px_e_outNO->SetLineColor(kRed);
     px_e_outNO->Draw("HIST");
     px_e_out->SetLineColor(kBlack);
@@ -67,7 +152,7 @@ TH1F* pz_e_outNO=new TH1F("h3bN", "pZ_out electron NO DIV", 150,0,5);
     
     
     
-    diffP->cd(2);
+    ndiffP->cd(2);
     py_e_outNO->SetLineColor(kRed);
     py_e_outNO->Draw("HIST");
     py_e_out->SetLineColor(kBlack);
@@ -77,7 +162,7 @@ TH1F* pz_e_outNO=new TH1F("h3bN", "pZ_out electron NO DIV", 150,0,5);
     
     
     
-    diffP->cd(3);
+    ndiffP->cd(3);
     pz_e_outNO->SetLineColor(kRed);
     pz_e_outNO->Draw("HIST");
     pz_e_out->SetLineColor(kBlack);
@@ -86,7 +171,7 @@ TH1F* pz_e_outNO=new TH1F("h3bN", "pZ_out electron NO DIV", 150,0,5);
     
     
     
-    diffP->cd(4);
+    ndiffP->cd(4);
     px_mu_outNO->SetLineColor(40);
     px_mu_outNO->Draw("HIST");
     px_mu_out->SetLineColor(46);
@@ -94,7 +179,7 @@ TH1F* pz_e_outNO=new TH1F("h3bN", "pZ_out electron NO DIV", 150,0,5);
 
     
     
-    diffP->cd(5);
+    ndiffP->cd(5);
     py_mu_outNO->SetLineColor(40);
     py_mu_outNO->Draw("HIST");
     py_mu_out->SetLineColor(46);
@@ -102,7 +187,7 @@ TH1F* pz_e_outNO=new TH1F("h3bN", "pZ_out electron NO DIV", 150,0,5);
 
     
     
-    diffP->cd(6);
+    ndiffP->cd(6);
     pz_mu_outNO->SetLineColor(40);
     pz_mu_outNO->Draw("HIST");
     pz_mu_out->SetLineColor(46);
@@ -110,7 +195,7 @@ TH1F* pz_e_outNO=new TH1F("h3bN", "pZ_out electron NO DIV", 150,0,5);
 
     
     
-    diffP->SaveAs("LO-NLO.png");
+    ndiffP->SaveAs("LO-NLOnodiv.png");
     
         
     

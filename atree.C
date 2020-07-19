@@ -86,9 +86,9 @@ TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.5,-0.5,140,
       // if (Cut(ientry) < 0) continue;
 Double_t pmuOUTBR = sqrt(detKinBeamRot_pXmu_out*detKinBeamRot_pXmu_out+detKinBeamRot_pYmu_out*detKinBeamRot_pYmu_out+detKinBeamRot_pZmu_out*detKinBeamRot_pZmu_out);     
 
-Double_t peOUT = sqrt(detKinBeamRot_pXe_out*detKinBeamRot_pXe_out+detKinBeamRot_pYe_out*detKinBeamRot_pYe_out+detKinBeamRot_pZe_out*detKinBeamRot_pZe_out);
+Double_t peOUTBR = sqrt(detKinBeamRot_pXe_out*detKinBeamRot_pXe_out+detKinBeamRot_pYe_out*detKinBeamRot_pYe_out+detKinBeamRot_pZe_out*detKinBeamRot_pZe_out);
 
-Double_t pmuOUTBR = sqrt(detKin_pXmu_out*detKin_pXmu_out+detKin_pYmu_out*detKin_pYmu_out+detKin_pZmu_out*detKin_pZmu_out);
+Double_t pmuOUT = sqrt(detKin_pXmu_out*detKin_pXmu_out+detKin_pYmu_out*detKin_pYmu_out+detKin_pZmu_out*detKin_pZmu_out);
        
 Double_t peOUT = sqrt(detKin_pXe_out*detKin_pXe_out+detKin_pYe_out*detKin_pYe_out+detKin_pZe_out*detKin_pZe_out);
        
@@ -258,7 +258,7 @@ Double_t DE_eBR=sqrt(peOUTBR*peOUTBR+(0.5109989461 *0.001)*(0.5109989461 *0.001)
     TCanvas * E= new TCanvas("E","E",400,10,1500,1000);
     E->Divide(2,1);
     E->cd(1);
-    E_mu->SetLineColor(kBlu);
+    E_mu->SetLineColor(kBlue);
     E_mu->Draw("HIST");
     E_muCODE->SetLineColor(kBlack);
     E_muCODE->Draw("HIST same");
@@ -267,7 +267,7 @@ Double_t DE_eBR=sqrt(peOUTBR*peOUTBR+(0.5109989461 *0.001)*(0.5109989461 *0.001)
     BRE_muCODE->SetLineColor(kOrange);
     BRE_muCODE->Draw("HIST same");
     E->cd(2);
-    E_e->SetLineColor(kBlu);
+    E_e->SetLineColor(kBlue);
     E_e->Draw("HIST");
     E_eCODE->SetLineColor(kBlack);
     E_eCODE->Draw("HIST same");
@@ -281,23 +281,23 @@ Double_t DE_eBR=sqrt(peOUTBR*peOUTBR+(0.5109989461 *0.001)*(0.5109989461 *0.001)
     TCanvas * P= new TCanvas("P","P",400,10,1500,1000);
     P->Divide(2,1);
     P->cd(1);
-    P_mu->SetLineColor(kBlu);
-    P_mu->Draw("HIST");
-    P_muCODE->SetLineColor(kBlack);
-    P_muCODE->Draw("HIST same");
-    BRP_mu->SetLineColor(kRed);
-    BRP_mu->Draw("HIST same");
-    BRP_muCODE->SetLineColor(kOrange);
-    BRP_muCODE->Draw("HIST same");
+    p_mu->SetLineColor(kBlue);
+    p_mu->Draw("HIST");
+    p_muCODE->SetLineColor(kBlack);
+    p_muCODE->Draw("HIST same");
+    BRp_mu->SetLineColor(kRed);
+    BRp_mu->Draw("HIST same");
+    BRp_muCODE->SetLineColor(kOrange);
+    BRp_muCODE->Draw("HIST same");
     P->cd(2);
-    P_e->SetLineColor(kBlu);
-    P_e->Draw("HIST");
-    P_eCODE->SetLineColor(kBlack);
-    P_eCODE->Draw("HIST same");
-    BRP_e->SetLineColor(kRed);
-    BRP_e->Draw("HIST same");
-    BRP_eCODE->SetLineColor(kOrange);
-    BRP_eCODE->Draw("HIST same");    
+    p_e->SetLineColor(kBlue);
+    p_e->Draw("HIST");
+    p_eCODE->SetLineColor(kBlack);
+    p_eCODE->Draw("HIST same");
+    BRp_e->SetLineColor(kRed);
+    BRp_e->Draw("HIST same");
+    BRp_eCODE->SetLineColor(kOrange);
+    BRp_eCODE->Draw("HIST same");    
     
     P->SaveAs("momentumTOT.png");
     

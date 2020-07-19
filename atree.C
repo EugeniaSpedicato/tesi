@@ -14,6 +14,19 @@ TH1F* E_mu=new TH1F("h1", "Energy muon", 150,0,200);
 TH1F* E_e=new TH1F("h2", "Energy electron", 150,0,200);
 TH1F* E_muCODE=new TH1F("h1C", "Energy muon", 150,0,200);
 TH1F* E_eCODE=new TH1F("h2C", "Energy electron", 150,0,200);
+TH1F* p_mu=new TH1F("h1", "momentum out muon", 150,0,200);
+TH1F* p_e=new TH1F("h2", "momentum out electron", 150,0,200);
+TH1F* p_muCODE=new TH1F("h1C", "momentum k.P() out muon", 150,0,200);
+TH1F* p_eCODE=new TH1F("h2C", "momentum k.P() out electron", 150,0,200);
+    
+TH1F* BRE_mu=new TH1F("h1", "Energy muon", 150,0,200);
+TH1F* BRE_e=new TH1F("h2", "Energy electron", 150,0,200);
+TH1F* BRE_muCODE=new TH1F("h1C", "Energy muon", 150,0,200);
+TH1F* BRE_eCODE=new TH1F("h2C", "Energy electron", 150,0,200);
+TH1F* BRp_mu=new TH1F("h1", "momentum out muon", 150,0,200);
+TH1F* BRp_e=new TH1F("h2", "momentum out electron", 150,0,200);
+TH1F* BRp_muCODE=new TH1F("h1C", "momentum k.P() out muon", 150,0,200);
+TH1F* BRp_eCODE=new TH1F("h2C", "momentum k.P() out electron", 150,0,200);    
 
 TH1F* px_mu=new TH1F("h1", "pX_in muon", 190,-0.3,0.3);
 TH1F* py_mu=new TH1F("h2", "pY_in muon", 190,-0.3,0.3);
@@ -71,27 +84,42 @@ TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.5,-0.5,140,
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
       // if (Cut(ientry) < 0) continue;
-/*Double_t pmuOUT = sqrt(detKin_pXmu_out*detKin_pXmu_out+detKin_pYmu_out*detKin_pYmu_out+detKin_pZmu_out*detKin_pZmu_out);
+Double_t pmuOUTBR = sqrt(detKinBeamRot_pXmu_out*detKinBeamRot_pXmu_out+detKinBeamRot_pYmu_out*detKinBeamRot_pYmu_out+detKinBeamRot_pZmu_out*detKinBeamRot_pZmu_out);     
+
+Double_t peOUT = sqrt(detKinBeamRot_pXe_out*detKinBeamRot_pXe_out+detKinBeamRot_pYe_out*detKinBeamRot_pYe_out+detKinBeamRot_pZe_out*detKinBeamRot_pZe_out);
+
+Double_t pmuOUTBR = sqrt(detKin_pXmu_out*detKin_pXmu_out+detKin_pYmu_out*detKin_pYmu_out+detKin_pZmu_out*detKin_pZmu_out);
        
 Double_t peOUT = sqrt(detKin_pXe_out*detKin_pXe_out+detKin_pYe_out*detKin_pYe_out+detKin_pZe_out*detKin_pZe_out);
        
-       Double_t DE_mu=sqrt(pmuOUT*pmuOUT+(105.6583745 *0.001)*(105.6583745 *0.001));
-       Double_t DE_e=sqrt(peOUT*peOUT+(0.5109989461 *0.001)*(0.5109989461 *0.001));
+Double_t DE_mu=sqrt(pmuOUT*pmuOUT+(105.6583745 *0.001)*(105.6583745 *0.001));
+Double_t DE_e=sqrt(peOUT*peOUT+(0.5109989461 *0.001)*(0.5109989461 *0.001));
+
+Double_t DE_muBR=sqrt(pmuOUTBR*pmuOUTBR+(105.6583745 *0.001)*(105.6583745 *0.001));
+Double_t DE_eBR=sqrt(peOUTBR*peOUTBR+(0.5109989461 *0.001)*(0.5109989461 *0.001));
        
+         
+       E_muCODE->Fill(detKin_Emu,wgt_full);
+       E_eCODE->Fill(detKin_Ee,wgt_full);
        E_mu->Fill(DE_mu,wgt_full);
        E_e->Fill(DE_e,wgt_full);
-       E_muCODE->Fill(detKinBeamRot_Emu,wgt_full);
-       E_eCODE->Fill(detKinBeamRot_Ee,wgt_full);
-    */
-Double_t pmuOUT = sqrt(detKin_pXmu_out*detKin_pXmu_out+detKin_pYmu_out*detKin_pYmu_out+detKin_pZmu_out*detKin_pZmu_out);
        
-Double_t peOUT = sqrt(detKin_pXe_out*detKin_pXe_out+detKin_pYe_out*detKin_pYe_out+detKin_pZe_out*detKin_pZe_out);
+       BRE_muCODE->Fill(detKinBeamRot_Emu,wgt_full);
+       BRE_eCODE->Fill(detKinBeamRot_Ee,wgt_full);
+       BRE_mu->Fill(DE_muBR,wgt_full);
+       BRE_e->Fill(DE_eBR,wgt_full);
+
+         
+       p_muCODE->Fill(detKin_Pmu_out,wgt_full); //estratto da evento k.P()
+       p_eCODE->Fill(detKin_Pe_out,wgt_full); //estratto da evento k.P()
+       p_mu->Fill(pmuOUT,wgt_full); //calcolato con px,py,pz
+       p_e->Fill(peOUT,wgt_full);   //calcolato con px,py,pz
        
+       BRp_muCODE->Fill(detKinBeamRot_Pmu_out,wgt_full); //estratto da evento k.P()
+       BRp_eCODE->Fill(detKinBeamRot_Pe_out,wgt_full); //estratto da evento k.P()
+       BRp_mu->Fill(pmuOUTBR,wgt_full); //calcolato con px,py,pz
+       BRp_e->Fill(peOUTBR,wgt_full);   //calcolato con px,py,pz
        
-        E_mu->Fill(Pmu_out,wgt_full);
-       E_e->Fill(Pe_out,wgt_full);
-       E_muCODE->Fill(pmuOUT,wgt_full);
-       E_eCODE->Fill(peOUT,wgt_full);  
        
        px_mu->Fill(detKinBeamRot_pXmu,wgt_full);
        py_mu->Fill(detKinBeamRot_pYmu,wgt_full);
@@ -230,15 +258,51 @@ Double_t peOUT = sqrt(detKin_pXe_out*detKin_pXe_out+detKin_pYe_out*detKin_pYe_ou
     TCanvas * E= new TCanvas("E","E",400,10,1500,1000);
     E->Divide(2,1);
     E->cd(1);
+    E_mu->SetLineColor(kBlu);
     E_mu->Draw("HIST");
     E_muCODE->SetLineColor(kBlack);
     E_muCODE->Draw("HIST same");
+    BRE_mu->SetLineColor(kRed);
+    BRE_mu->Draw("HIST same");
+    BRE_muCODE->SetLineColor(kOrange);
+    BRE_muCODE->Draw("HIST same");
     E->cd(2);
-    E_e->SetLineColor(kRed);
+    E_e->SetLineColor(kBlu);
     E_e->Draw("HIST");
     E_eCODE->SetLineColor(kBlack);
     E_eCODE->Draw("HIST same");
+    BRE_e->SetLineColor(kRed);
+    BRE_e->Draw("HIST same");
+    BRE_eCODE->SetLineColor(kOrange);
+    BRE_eCODE->Draw("HIST same");    
+    
     E->SaveAs("energy.png");
+    
+    TCanvas * P= new TCanvas("P","P",400,10,1500,1000);
+    P->Divide(2,1);
+    P->cd(1);
+    P_mu->SetLineColor(kBlu);
+    P_mu->Draw("HIST");
+    P_muCODE->SetLineColor(kBlack);
+    P_muCODE->Draw("HIST same");
+    BRP_mu->SetLineColor(kRed);
+    BRP_mu->Draw("HIST same");
+    BRP_muCODE->SetLineColor(kOrange);
+    BRP_muCODE->Draw("HIST same");
+    P->cd(2);
+    P_e->SetLineColor(kBlu);
+    P_e->Draw("HIST");
+    P_eCODE->SetLineColor(kBlack);
+    P_eCODE->Draw("HIST same");
+    BRP_e->SetLineColor(kRed);
+    BRP_e->Draw("HIST same");
+    BRP_eCODE->SetLineColor(kOrange);
+    BRP_eCODE->Draw("HIST same");    
+    
+    P->SaveAs("momentumTOT.png");
+    
+    
+
     
     TCanvas * Pin= new TCanvas("Pin","Pin",400,10,1500,1000);
     Pin->Divide(1,3);

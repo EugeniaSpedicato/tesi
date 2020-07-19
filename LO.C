@@ -39,6 +39,11 @@ TH1F* pz_e_out=new TH1F("h3b", "pZ_out electron NO DIV", 150,0,5);
 TH1F* px_e_outNO=new TH1F("h1bN", "pX_out electron NO DIV", 150,-0.3,0.3);
 TH1F* py_e_outNO=new TH1F("h2bN", "pY_out electron NO DIV", 150,-0.3,0.3);
 TH1F* pz_e_outNO=new TH1F("h3bN", "pZ_out electron NO DIV", 150,0,5);
+    
+TH1F* th=new TH1F("h3bN", "theta", 150,-0.1,0.1);
+TH1F* thBR=new TH1F("h3bN", "theta BR", 150,-0.1,0.1);
+    
+    
       
     if (fChain == 0) return;
 
@@ -80,6 +85,9 @@ TH1F* pz_e_outNO=new TH1F("h3bN", "pZ_out electron NO DIV", 150,0,5);
        px_e_outNO->Fill(detKin_pXe_out,wgt_full);
        py_e_outNO->Fill(detKin_pYe_out,wgt_full);
        pz_e_outNO->Fill(detKin_pZe_out,wgt_full);
+       
+       th->Fill(detKin_thmu,wgt_full);
+        thBR->Fill(detKinBeamRot_thmu,wgt_full);
        
        
    }
@@ -196,6 +204,18 @@ TH1F* pz_e_outNO=new TH1F("h3bN", "pZ_out electron NO DIV", 150,0,5);
     
     
     ndiffP->SaveAs("LO-NLOnodiv.png");
+    
+    TCanvas * t= new TCanvas("t","t",400,10,1500,1000);
+    th->SetLineColor(40);
+    th->Draw("HIST");
+    thBR->SetLineColor(46);
+    thBR->Draw("HIST same");
+    
+    t->SaveAs("theta.png");
+    
+    
+    
+    
     
         
     

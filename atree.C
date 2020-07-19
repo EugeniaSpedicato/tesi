@@ -94,15 +94,15 @@ Double_t peOUT = sqrt(detKin_pXe_out*detKin_pXe_out+detKin_pYe_out*detKin_pYe_ou
  
        
 
-Double_t DE_eBR =  (2* (0.5109989461 *0.001)*(0.5109989461 *0.001)-  detKinBeamRot_t24)/(2* (0.5109989461 *0.001));
-Double_t DE_e =  (2* (0.5109989461 *0.001)*(0.5109989461 *0.001)-  detKin_t24)/(2* (0.5109989461 *0.001));
+//Double_t DE_eBR =  (2* (0.5109989461 *0.001)*(0.5109989461 *0.001)-  detKinBeamRot_t24)/(2* (0.5109989461 *0.001));
+//Double_t DE_e =  (2* (0.5109989461 *0.001)*(0.5109989461 *0.001)-  detKin_t24)/(2* (0.5109989461 *0.001));
        
        
 Double_t DE_mu=sqrt(pmuOUT*pmuOUT+(105.6583745 *0.001)*(105.6583745 *0.001));
-//Double_t DE_e=sqrt(peOUT*peOUT+(0.5109989461 *0.001)*(0.5109989461 *0.001));
+Double_t DE_e=sqrt(peOUT*peOUT+(0.5109989461 *0.001)*(0.5109989461 *0.001));
 
 Double_t DE_muBR=sqrt(pmuOUTBR*pmuOUTBR+(105.6583745 *0.001)*(105.6583745 *0.001));
-//Double_t DE_eBR=sqrt(peOUTBR*peOUTBR+(0.5109989461 *0.001)*(0.5109989461 *0.001));
+Double_t DE_eBR=sqrt(peOUTBR*peOUTBR+(0.5109989461 *0.001)*(0.5109989461 *0.001));
        
          
        E_muCODE->Fill(detKin_Emu,wgt_full);
@@ -384,7 +384,7 @@ Double_t DE_muBR=sqrt(pmuOUTBR*pmuOUTBR+(105.6583745 *0.001)*(105.6583745 *0.001
     
   dued->SaveAs("duedcoo.png");
     
-    TCanvas * tar= new TCanvas("tar","tar",400,10,600,400);
+    TCanvas * tar= new TCanvas("tar","tar",400,10,1500,1000);
     tar->Divide(2,2);
     tar->cd(1);
   tarONEXmu->SetLineColor(42);

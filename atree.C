@@ -89,14 +89,20 @@ Double_t pmuOUTBR = sqrt(detKinBeamRot_pXmu_out*detKinBeamRot_pXmu_out+detKinBea
 Double_t peOUTBR = sqrt(detKinBeamRot_pXe_out*detKinBeamRot_pXe_out+detKinBeamRot_pYe_out*detKinBeamRot_pYe_out+detKinBeamRot_pZe_out*detKinBeamRot_pZe_out);
 
 Double_t pmuOUT = sqrt(detKin_pXmu_out*detKin_pXmu_out+detKin_pYmu_out*detKin_pYmu_out+detKin_pZmu_out*detKin_pZmu_out);
-       
+    
 Double_t peOUT = sqrt(detKin_pXe_out*detKin_pXe_out+detKin_pYe_out*detKin_pYe_out+detKin_pZe_out*detKin_pZe_out);
+ 
+       
+
+Double_t DE_eBR =  (2* (0.5109989461 *0.001)*(0.5109989461 *0.001)-  detKinBeamRot_t24)/(2* (0.5109989461 *0.001));
+Double_t DE_e =  (2* (0.5109989461 *0.001)*(0.5109989461 *0.001)-  detKin_t24)/(2* (0.5109989461 *0.001));
+       
        
 Double_t DE_mu=sqrt(pmuOUT*pmuOUT+(105.6583745 *0.001)*(105.6583745 *0.001));
-Double_t DE_e=sqrt(peOUT*peOUT+(0.5109989461 *0.001)*(0.5109989461 *0.001));
+//Double_t DE_e=sqrt(peOUT*peOUT+(0.5109989461 *0.001)*(0.5109989461 *0.001));
 
 Double_t DE_muBR=sqrt(pmuOUTBR*pmuOUTBR+(105.6583745 *0.001)*(105.6583745 *0.001));
-Double_t DE_eBR=sqrt(peOUTBR*peOUTBR+(0.5109989461 *0.001)*(0.5109989461 *0.001));
+//Double_t DE_eBR=sqrt(peOUTBR*peOUTBR+(0.5109989461 *0.001)*(0.5109989461 *0.001));
        
          
        E_muCODE->Fill(detKin_Emu,wgt_full);
@@ -368,7 +374,7 @@ Double_t DE_eBR=sqrt(peOUTBR*peOUTBR+(0.5109989461 *0.001)*(0.5109989461 *0.001)
     diffY_mue->Draw("HIST");
   cooX->SaveAs("coo.png");
  
-    TCanvas * dued= new TCanvas("dued","dued",400,10,600,400);
+    TCanvas * dued= new TCanvas("dued","dued",1000,100,1000,800);
 
   X_Y_mu->SetMarkerColor(kBlack);
     X_Y_mu->Draw("HIST");
@@ -381,24 +387,24 @@ Double_t DE_eBR=sqrt(peOUTBR*peOUTBR+(0.5109989461 *0.001)*(0.5109989461 *0.001)
     TCanvas * tar= new TCanvas("tar","tar",400,10,600,400);
     tar->Divide(2,2);
     tar->cd(1);
-  tarONEXmu->SetMarkerColor(42);
+  tarONEXmu->SetLineColor(42);
     tarONEXmu->Draw("HIST");
-      tarONEXe->SetMarkerColor(46);
+      tarONEXe->SetLineColor(46);
     tarONEXe->Draw("HIST same");
     tar->cd(2);
-      tarONEYmu->SetMarkerColor(42);
+      tarONEYmu->SetLineColor(42);
     tarONEXmu->Draw("HIST");
-      tarONEYe->SetMarkerColor(46);
+      tarONEYe->SetLineColor(46);
     tarONEYe->Draw("HIST same");
     tar->cd(3);
-      tarTWOXmu->SetMarkerColor(42);
+      tarTWOXmu->SetLineColor(42);
     tarTWOXmu->Draw("HIST");
-      tarTWOXe->SetMarkerColor(46);
+      tarTWOXe->SetLineColor(46);
     tarTWOXe->Draw("HIST same");
     tar->cd(4);
-  tarTWOYmu->SetMarkerColor(42);
+  tarTWOYmu->SetLineColor(42);
     tarTWOYmu->Draw("HIST");
-      tarTWOYe->SetMarkerColor(46);
+      tarTWOYe->SetLineColor(46);
     tarTWOYe->Draw("HIST same");
     
   tar->SaveAs("tar.png");

@@ -73,8 +73,8 @@ TH1F* thYZmu_two=new TH1F("h2bza", "theta YZ tar 2", 150,-0.12,0.12);
     
     
     
-TH1F* thXZmu=new TH1F("a", "theta XZ mu", 150,-0.05,0.05);
-TH1F* thYZmu=new TH1F("c", "theta YZ mu", 150,-0.05,0.05);
+TH1F* thXZmu=new TH1F("a", "theta XZ mu", 150,-0.005,0.005);
+TH1F* thYZmu=new TH1F("c", "theta YZ mu", 150,-0.005,0.005);
     
 TH1F* thXZe=new TH1F("v", "theta XZ e", 150,-0.05,0.05);
 TH1F* thYZe=new TH1F("b", "theta YZ e", 150,-0.05,0.05);
@@ -397,18 +397,20 @@ Double_t anglex_e = atan2(detKin_pXe_out, detKin_pZe_out);
     
     
 TCanvas * theC= new TCanvas("tar","tar",400,10,1500,1000);
-    theC->Divide(2,1);
+    theC->Divide(2,2);
     theC->cd(1);
     thXZmu->SetLineColor(30);
     thXZmu->Draw("HIST");
-    thXZe->SetLineColor(38);
-    thXZe->Draw("HIST same");
-    
     theC->cd(2);
+    thXZe->SetLineColor(38);
+    thXZe->Draw("HIST");
+    
+    theC->cd(3);
     thYZmu->SetLineColor(30);
     thYZmu->Draw("HIST");
+    theC->cd(4);
     thYZe->SetLineColor(38);
-    thYZe->Draw("HIST same");
+    thYZe->Draw("HIST");
     
     
   theC->SaveAs("thAtan.png");

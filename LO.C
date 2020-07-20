@@ -10,7 +10,9 @@ void atree::Loop()
 {
     TH1::SetDefaultSumw2();
     
-     
+Double_t d0=2.10; //meters
+Double_t d1=1.10; //meters 
+    
            
 TH1F* Npx_mu_out=new TH1F("h1a", "pX_out muon BR", 150,-0.3,0.3);
 TH1F* Npy_mu_out=new TH1F("h2a", "pY_out muon BR", 150,-0.3,0.3);
@@ -42,6 +44,18 @@ TH1F* pz_e_outNO=new TH1F("h3bN", "pZ_out electron NO DIV", 150,0,5);
     
 TH1F* th=new TH1F("h3bN", "theta", 150,-0.1,0.1);
 TH1F* thBR=new TH1F("h3bN", "theta BR", 150,-0.1,0.1);
+    
+TH1F* thXZe_one=new TH1F("h1b", "theta electron 1", 150,-0.3,0.3);
+TH1F* thYZe_one=new TH1F("h2b", "theta electron 1", 150,-0.3,0.3);
+    
+TH1F* thXZmu_one=new TH1F("h1b", "theta muon 1", 150,-0.3,0.3);
+TH1F* thYZmu_one=new TH1F("h2b", "theta muon 1", 150,-0.3,0.3);
+    
+TH1F* thXZe_two=new TH1F("h1b", "theta electron 2", 150,-0.3,0.3);
+TH1F* thYZe_two=new TH1F("h2b", "theta electron 2", 150,-0.3,0.3);
+    
+TH1F* thXZmu_two=new TH1F("h1b", "theta muon 2", 150,-0.3,0.3);
+TH1F* thYZmu_two=new TH1F("h2b", "theta muon 2", 150,-0.3,0.3);
     
     
       
@@ -88,6 +102,34 @@ TH1F* thBR=new TH1F("h3bN", "theta BR", 150,-0.1,0.1);
        
        th->Fill(detKin_thmu,wgt_full);
         thBR->Fill(detKinBeamRot_thmu,wgt_full);
+       
+            if (detKinBeamRot_tar==0)
+       {
+        Double_t th_xze=atan2(detKinBeamRot_cooXe,d0);
+        Double_t th_xzmu=atan2(detKinBeamRot_cooXmu,d0);
+        Double_t th_yze=atan2(detKinBeamRot_cooYe,d0);
+        Double_t th_yzmu=atan2(detKinBeamRot_cooYmu,d0);
+                
+             thXZe_one->Fill(th_xze,wgt_full);
+             thXZmu_one->Fill(th_xzmu,wgt_full);
+             thYZe_one->Fill(th_yze,wgt_full);
+             thYZmu_one->Fill(th_yzmu,wgt_full);
+        
+       }
+       
+       if (detKinBeamRot_tar==1)
+       {
+
+        Double_t th_xze=atan2(detKinBeamRot_cooXe,d1);
+        Double_t th_xzmu=atan2(detKinBeamRot_cooXmu,d1);
+        Double_t th_yze=atan2(detKinBeamRot_cooYe,d1);
+        Double_t th_yzmu=atan2(detKinBeamRot_cooYmu,d1);  
+           
+             thXZe_two->Fill(th_xze,wgt_full);
+             thXZmu_two->Fill(th_xzmu,wgt_full);
+             thYZe_two->Fill(th_yze,wgt_full);
+             thYZmu_two->Fill(th_yzmu,wgt_full);
+       }
        
        
    }
@@ -214,7 +256,36 @@ TH1F* thBR=new TH1F("h3bN", "theta BR", 150,-0.1,0.1);
     t->SaveAs("theta.png");
     
     
+        TCanvas * tar= new TCanvas("tar","tar",400,10,1500,1000);
+    tar->Divide(2,2);
     
+    tar->cd(1);
+  thXZmu_one->SetLineColor(30);
+    thXZmu_one->Draw("HIST");
+      thXZe_one->SetLineColor(38);
+    thXZe_one->Draw("HIST same");
+    
+    tar->cd(2);
+      thYZmu_one->SetLineColor(30);
+    thYZmu_one->Draw("HIST");
+      thYZe_one->SetLineColor(38);
+    thYZe_one->Draw("HIST same");
+    
+    tar->cd(3);
+      thXZmu_two->SetLineColor(30);
+    thXZmu_two->Draw("HIST");
+      thXZe_two->SetLineColor(38);
+    thXZe_two->Draw("HIST same");
+    
+    tar->cd(4);
+  thYZmu_two->SetLineColor(30);
+    thYZmu_two->Draw("HIST");
+      thYZe_two->SetLineColor(38);
+    thYZe_two->Draw("HIST same");
+    
+
+    
+  tar->SaveAs("thXZYZ.png");
     
     
         

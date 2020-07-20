@@ -72,19 +72,19 @@ TH1F* thYZmu_two=new TH1F("h2bza", "theta YZ tar 2", 150,-0.12,0.12);
        
        
        
-       Npx_mu_out->Fill(detKinBeamRot_pXmu_out,wgt_LO);
-       Npy_mu_out->Fill(detKinBeamRot_pYmu_out,wgt_LO);
-       Npz_mu_out->Fill(detKinBeamRot_pZmu_out,wgt_LO);
-       Npx_mu_outNO->Fill(detKinBeamRot_pXmu_out,wgt_full);
-       Npy_mu_outNO->Fill(detKinBeamRot_pYmu_out,wgt_full);
-       Npz_mu_outNO->Fill(detKinBeamRot_pZmu_out,wgt_full);
+       Npx_mu_out->Fill(genKin_pXmu_out,wgt_LO);
+       Npy_mu_out->Fill(genKin_pYmu_out,wgt_LO);
+       Npz_mu_out->Fill(genKin_pZmu_out,wgt_LO);
+       Npx_mu_outNO->Fill(genKin_pXmu_out,wgt_full);
+       Npy_mu_outNO->Fill(genKin_pYmu_out,wgt_full);
+       Npz_mu_outNO->Fill(genKin_pZmu_out,wgt_full);
        
-       Npx_e_out->Fill(detKinBeamRot_pXe_out,wgt_LO);
-       Npy_e_out->Fill(detKinBeamRot_pYe_out,wgt_LO);
-       Npz_e_out->Fill(detKinBeamRot_pZe_out,wgt_LO);
-       Npx_e_outNO->Fill(detKinBeamRot_pXe_out,wgt_full);
-       Npy_e_outNO->Fill(detKinBeamRot_pYe_out,wgt_full);
-       Npz_e_outNO->Fill(detKinBeamRot_pZe_out,wgt_full);
+       Npx_e_out->Fill(genKin_pXe_out,wgt_LO);
+       Npy_e_out->Fill(genKin_pYe_out,wgt_LO);
+       Npz_e_out->Fill(genKin_pZe_out,wgt_LO);
+       Npx_e_outNO->Fill(genKin_pXe_out,wgt_full);
+       Npy_e_outNO->Fill(genKin_pYe_out,wgt_full);
+       Npz_e_outNO->Fill(genKin_pZe_out,wgt_full);
        
         px_mu_out->Fill(detKin_pXmu_out,wgt_LO);
        py_mu_out->Fill(detKin_pYmu_out,wgt_LO);

@@ -28,36 +28,36 @@ TH1F* Npx_e_outNO=new TH1F("h1bN", "pX_out electron  BR", 150,-0.3,0.3);
 TH1F* Npy_e_outNO=new TH1F("h2bN", "pY_out electron  BR", 150,-0.3,0.3);
 TH1F* Npz_e_outNO=new TH1F("h3bN", "pZ_out electron  BR", 150,0,5);
     
-TH1F* px_mu_out=new TH1F("h1a", "pX_out muon NO DIV", 150,-0.3,0.3);
-TH1F* py_mu_out=new TH1F("h2a", "pY_out muon NO DIV", 150,-0.3,0.3);
-TH1F* pz_mu_out=new TH1F("h3a", "pZ_out muon NO DIV", 150,0,180);
-TH1F* px_mu_outNO=new TH1F("h1aN", "pX_out muon NO DIV", 150,-0.3,0.3);
-TH1F* py_mu_outNO=new TH1F("h2aN", "pY_out muon NO DIV", 150,-0.3,0.3);
-TH1F* pz_mu_outNO=new TH1F("h3aN", "pZ_out muon NO DIV", 150,0,180);
+TH1F* px_mu_out=new TH1F("h1aq", "pX_out muon NO DIV", 150,-0.3,0.3);
+TH1F* py_mu_out=new TH1F("h2aq", "pY_out muon NO DIV", 150,-0.3,0.3);
+TH1F* pz_mu_out=new TH1F("h3aq", "pZ_out muon NO DIV", 150,0,180);
+TH1F* px_mu_outNO=new TH1F("h1aNq", "pX_out muon NO DIV", 150,-0.3,0.3);
+TH1F* py_mu_outNO=new TH1F("h2aNq", "pY_out muon NO DIV", 150,-0.3,0.3);
+TH1F* pz_mu_outNO=new TH1F("h3aNq", "pZ_out muon NO DIV", 150,0,180);
     
-TH1F* px_e_out=new TH1F("h1b", "pX_out electron NO DIV", 150,-0.3,0.3);
-TH1F* py_e_out=new TH1F("h2b", "pY_out electron NO DIV", 150,-0.3,0.3);
-TH1F* pz_e_out=new TH1F("h3b", "pZ_out electron NO DIV", 150,0,5);
-TH1F* px_e_outNO=new TH1F("h1bN", "pX_out electron NO DIV", 150,-0.3,0.3);
-TH1F* py_e_outNO=new TH1F("h2bN", "pY_out electron NO DIV", 150,-0.3,0.3);
-TH1F* pz_e_outNO=new TH1F("h3bN", "pZ_out electron NO DIV", 150,0,5);
+TH1F* px_e_out=new TH1F("h1bq", "pX_out electron NO DIV", 150,-0.3,0.3);
+TH1F* py_e_out=new TH1F("h2bq", "pY_out electron NO DIV", 150,-0.3,0.3);
+TH1F* pz_e_out=new TH1F("h3bq", "pZ_out electron NO DIV", 150,0,5);
+TH1F* px_e_outNO=new TH1F("h1bNq", "pX_out electron NO DIV", 150,-0.3,0.3);
+TH1F* py_e_outNO=new TH1F("h2bNq", "pY_out electron NO DIV", 150,-0.3,0.3);
+TH1F* pz_e_outNO=new TH1F("h3bNq", "pZ_out electron NO DIV", 150,0,5);
     
-TH1F* gNpx_mu_out=new TH1F("h1a", "pX_out muon BR", 150,-0.3,0.3);
-TH1F* gNpy_mu_out=new TH1F("h2a", "pY_out muon BR", 150,-0.3,0.3);
-TH1F* gNpz_mu_out=new TH1F("h3a", "pZ_out muon BR", 150,0,180);
-TH1F* gNpx_mu_outNO=new TH1F("h1aN", "pX_out muon BR", 150,-0.3,0.3);
-TH1F* gNpy_mu_outNO=new TH1F("h2aN", "pY_out muon  BR", 150,-0.3,0.3);
-TH1F* gNpz_mu_outNO=new TH1F("h3aN", "pZ_out muon N BR", 150,0,180);
+TH1F* gNpx_mu_out=new TH1F("qq", "pX_out muon BR", 150,-0.3,0.3);
+TH1F* gNpy_mu_out=new TH1F("qqq", "pY_out muon BR", 150,-0.3,0.3);
+TH1F* gNpz_mu_out=new TH1F("qw", "pZ_out muon BR", 150,0,180);
+TH1F* gNpx_mu_outNO=new TH1F("qww", "pX_out muon BR", 150,-0.3,0.3);
+TH1F* gNpy_mu_outNO=new TH1F("qqw", "pY_out muon  BR", 150,-0.3,0.3);
+TH1F* gNpz_mu_outNO=new TH1F("www", "pZ_out muon N BR", 150,0,180);
     
-TH1F* gNpx_e_out=new TH1F("h1b", "pX_out electron gk", 150,-0.3,0.3);
-TH1F* gNpy_e_out=new TH1F("h2b", "pY_out electron gk", 150,-0.3,0.3);
-TH1F* gNpz_e_out=new TH1F("h3b", "pZ_out electron gk", 150,0,5);
-TH1F* gNpx_e_outNO=new TH1F("h1bN", "pX_out electron  gk", 150,-0.3,0.3);
-TH1F* gNpy_e_outNO=new TH1F("h2bN", "pY_out electron  gk", 150,-0.3,0.3);
-TH1F* gNpz_e_outNO=new TH1F("h3bN", "pZ_out electron  gk", 150,0,5);    
+TH1F* gNpx_e_out=new TH1F("n", "pX_out electron gk", 150,-0.3,0.3);
+TH1F* gNpy_e_out=new TH1F("h", "pY_out electron gk", 150,-0.3,0.3);
+TH1F* gNpz_e_out=new TH1F("n1", "pZ_out electron gk", 150,0,5);
+TH1F* gNpx_e_outNO=new TH1F("ss", "pX_out electron  gk", 150,-0.3,0.3);
+TH1F* gNpy_e_outNO=new TH1F("zz", "pY_out electron  gk", 150,-0.3,0.3);
+TH1F* gNpz_e_outNO=new TH1F("zd", "pZ_out electron  gk", 150,0,5);    
     
-TH1F* th=new TH1F("h3bN", "theta", 150,0,0.4);
-TH1F* thBR=new TH1F("h3bN", "theta BR", 150,0,0.4);
+TH1F* th=new TH1F("h3bNj", "theta", 150,0,0.4);
+TH1F* thBR=new TH1F("h3bNn", "theta BR", 150,0,0.4);
     
 TH1F* thXZe_one=new TH1F("h1bzj", "theta XZ tar 1", 150,-0.12,0.12);
 TH1F* thYZe_one=new TH1F("h2bzj", "theta YZ tar 1", 150,-0.12,0.12);
@@ -174,7 +174,7 @@ Double_t anglex_e = atan2(detKinBeamRot_pXe_out, detKinBeamRot_pZe_out);
     thXZmu->Fill(anglex_mu,wgt_full);
     thYZmu->Fill(angley_mu,wgt_full);
     thXZe->Fill(anglex_e,wgt_full);
-    thYZee->Fill(angley_e,wgt_full);
+    thYZe->Fill(angley_e,wgt_full);
        
        
        
@@ -396,21 +396,22 @@ Double_t anglex_e = atan2(detKinBeamRot_pXe_out, detKinBeamRot_pZe_out);
   tar->SaveAs("thXZYZ.png");
     
     
-TCanvas * th= new TCanvas("tar","tar",400,10,1500,1000);
-    th->Divide(2,1);
-    th->cd(1);
+TCanvas * theC= new TCanvas("tar","tar",400,10,1500,1000);
+    theC->Divide(2,1);
+    theC->cd(1);
     thXZmu->SetLineColor(30);
     thXZmu->Draw("HIST");
     thXZe->SetLineColor(38);
     thXZe->Draw("HIST same");
     
-    th->cd(1);
+    theC->cd(1);
     thYZmu->SetLineColor(30);
     thYZmu->Draw("HIST");
     thYZe->SetLineColor(38);
     thYZe->Draw("HIST same");
     
     
+  theC->SaveAs("thAtan.png");
     
         
     

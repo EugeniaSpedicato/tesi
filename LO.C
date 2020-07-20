@@ -42,6 +42,20 @@ TH1F* px_e_outNO=new TH1F("h1bN", "pX_out electron NO DIV", 150,-0.3,0.3);
 TH1F* py_e_outNO=new TH1F("h2bN", "pY_out electron NO DIV", 150,-0.3,0.3);
 TH1F* pz_e_outNO=new TH1F("h3bN", "pZ_out electron NO DIV", 150,0,5);
     
+TH1F* gNpx_mu_out=new TH1F("h1a", "pX_out muon BR", 150,-0.3,0.3);
+TH1F* gNpy_mu_out=new TH1F("h2a", "pY_out muon BR", 150,-0.3,0.3);
+TH1F* gNpz_mu_out=new TH1F("h3a", "pZ_out muon BR", 150,0,180);
+TH1F* gNpx_mu_outNO=new TH1F("h1aN", "pX_out muon BR", 150,-0.3,0.3);
+TH1F* gNpy_mu_outNO=new TH1F("h2aN", "pY_out muon  BR", 150,-0.3,0.3);
+TH1F* gNpz_mu_outNO=new TH1F("h3aN", "pZ_out muon N BR", 150,0,180);
+    
+TH1F* gNpx_e_out=new TH1F("h1b", "pX_out electron gk", 150,-0.3,0.3);
+TH1F* gNpy_e_out=new TH1F("h2b", "pY_out electron gk", 150,-0.3,0.3);
+TH1F* gNpz_e_out=new TH1F("h3b", "pZ_out electron gk", 150,0,5);
+TH1F* gNpx_e_outNO=new TH1F("h1bN", "pX_out electron  gk", 150,-0.3,0.3);
+TH1F* gNpy_e_outNO=new TH1F("h2bN", "pY_out electron  gk", 150,-0.3,0.3);
+TH1F* gNpz_e_outNO=new TH1F("h3bN", "pZ_out electron  gk", 150,0,5);    
+    
 TH1F* th=new TH1F("h3bN", "theta", 150,0,0.4);
 TH1F* thBR=new TH1F("h3bN", "theta BR", 150,0,0.4);
     
@@ -72,19 +86,19 @@ TH1F* thYZmu_two=new TH1F("h2bza", "theta YZ tar 2", 150,-0.12,0.12);
        
        
        
-       Npx_mu_out->Fill(genKin_pXmu_out,wgt_LO);
-       Npy_mu_out->Fill(genKin_pYmu_out,wgt_LO);
-       Npz_mu_out->Fill(genKin_pZmu_out,wgt_LO);
-       Npx_mu_outNO->Fill(genKin_pXmu_out,wgt_full);
-       Npy_mu_outNO->Fill(genKin_pYmu_out,wgt_full);
-       Npz_mu_outNO->Fill(genKin_pZmu_out,wgt_full);
+       Npx_mu_out->Fill(detKinBeamRot_pXmu_out,wgt_LO);
+       Npy_mu_out->Fill(detKinBeamRot_pYmu_out,wgt_LO);
+       Npz_mu_out->Fill(detKinBeamRot_pZmu_out,wgt_LO);
+       Npx_mu_outNO->Fill(detKinBeamRot_pXmu_out,wgt_full);
+       Npy_mu_outNO->Fill(detKinBeamRot_pYmu_out,wgt_full);
+       Npz_mu_outNO->Fill(detKinBeamRot_pZmu_out,wgt_full);
        
-       Npx_e_out->Fill(genKin_pXe_out,wgt_LO);
-       Npy_e_out->Fill(genKin_pYe_out,wgt_LO);
-       Npz_e_out->Fill(genKin_pZe_out,wgt_LO);
-       Npx_e_outNO->Fill(genKin_pXe_out,wgt_full);
-       Npy_e_outNO->Fill(genKin_pYe_out,wgt_full);
-       Npz_e_outNO->Fill(genKin_pZe_out,wgt_full);
+       Npx_e_out->Fill(detKinBeamRot_pXe_out,wgt_LO);
+       Npy_e_out->Fill(detKinBeamRot_pYe_out,wgt_LO);
+       Npz_e_out->Fill(detKinBeamRot_pZe_out,wgt_LO);
+       Npx_e_outNO->Fill(detKinBeamRot_pXe_out,wgt_full);
+       Npy_e_outNO->Fill(detKinBeamRot_pYe_out,wgt_full);
+       Npz_e_outNO->Fill(detKinBeamRot_pZe_out,wgt_full);
        
         px_mu_out->Fill(detKin_pXmu_out,wgt_LO);
        py_mu_out->Fill(detKin_pYmu_out,wgt_LO);
@@ -99,6 +113,21 @@ TH1F* thYZmu_two=new TH1F("h2bza", "theta YZ tar 2", 150,-0.12,0.12);
        px_e_outNO->Fill(detKin_pXe_out,wgt_full);
        py_e_outNO->Fill(detKin_pYe_out,wgt_full);
        pz_e_outNO->Fill(detKin_pZe_out,wgt_full);
+       
+       gNpx_mu_out->Fill(genKin_pXmu_out,wgt_LO);
+       gNpy_mu_out->Fill(genKin_pYmu_out,wgt_LO);
+       gNpz_mu_out->Fill(genKin_pZmu_out,wgt_LO);
+       gNpx_mu_outNO->Fill(genKin_pXmu_out,wgt_full);
+       gNpy_mu_outNO->Fill(genKin_pYmu_out,wgt_full);
+       gNpz_mu_outNO->Fill(genKin_pZmu_out,wgt_full);
+       
+       gNpx_e_out->Fill(genKin_pXe_out,wgt_LO);
+       gNpy_e_out->Fill(genKin_pYe_out,wgt_LO);
+       gNpz_e_out->Fill(genKin_pZe_out,wgt_LO);
+       gNpx_e_outNO->Fill(genKin_pXe_out,wgt_full);
+       gNpy_e_outNO->Fill(genKin_pYe_out,wgt_full);
+       gNpz_e_outNO->Fill(genKin_pZe_out,wgt_full);
+       
        
        th->Fill(detKin_thmu,wgt_full);
         thBR->Fill(detKinBeamRot_thmu,wgt_full);
@@ -246,6 +275,67 @@ TH1F* thYZmu_two=new TH1F("h2bza", "theta YZ tar 2", 150,-0.12,0.12);
     
     
     ndiffP->SaveAs("LO-NLOnodiv.png");
+    
+    
+    
+    TCanvas * gndiffP= new TCanvas("diff","diff",400,10,1500,1000);
+   gndiffP->Divide(3,2);
+    gndiffP->cd(1);
+    gNpx_e_outNO->SetLineColor(kRed);
+    gNpx_e_outNO->Draw("HIST");
+    gNpx_e_out->SetLineColor(kBlack);
+    gNpx_e_out->Draw("HIST same");
+
+    
+    
+    
+    gndiffP->cd(2);
+    gNpy_e_outNO->SetLineColor(kRed);
+    gNpy_e_outNO->Draw("HIST");
+    gNpy_e_out->SetLineColor(kBlack);
+    gNpy_e_out->Draw("HIST same");
+
+    
+    
+    
+    
+    gndiffP->cd(3);
+    gNpz_e_outNO->SetLineColor(kRed);
+    gNpz_e_outNO->Draw("HIST");
+    gNpz_e_out->SetLineColor(kBlack);
+    gNpz_e_out->Draw("HIST same");
+
+    
+    
+    
+    gndiffP->cd(4);
+    gNpx_mu_outNO->SetLineColor(40);
+    gNpx_mu_outNO->Draw("HIST");
+    gNpx_mu_out->SetLineColor(46);
+    gNpx_mu_out->Draw("HIST same");
+
+    
+    
+    gndiffP->cd(5);
+    gNpy_mu_outNO->SetLineColor(40);
+    gNpy_mu_outNO->Draw("HIST");
+    gNpy_mu_out->SetLineColor(46);
+    gNpy_mu_out->Draw("HIST same");
+
+    
+    
+    gndiffP->cd(6);
+    gNpz_mu_outNO->SetLineColor(40);
+    gNpz_mu_outNO->Draw("HIST");
+    gNpz_mu_out->SetLineColor(46);
+    gNpz_mu_out->Draw("HIST same");
+
+    
+    
+    gndiffP->SaveAs("LO-NLOgenKin.png");
+    
+    
+    
     
     TCanvas * t= new TCanvas("t","t",400,10,1500,1000);
     th->SetLineColor(40);

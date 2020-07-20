@@ -42,20 +42,20 @@ TH1F* px_e_outNO=new TH1F("h1bN", "pX_out electron NO DIV", 150,-0.3,0.3);
 TH1F* py_e_outNO=new TH1F("h2bN", "pY_out electron NO DIV", 150,-0.3,0.3);
 TH1F* pz_e_outNO=new TH1F("h3bN", "pZ_out electron NO DIV", 150,0,5);
     
-TH1F* th=new TH1F("h3bN", "theta", 150,-0.1,0.1);
-TH1F* thBR=new TH1F("h3bN", "theta BR", 150,-0.1,0.1);
+TH1F* th=new TH1F("h3bN", "theta", 150,0,0.4);
+TH1F* thBR=new TH1F("h3bN", "theta BR", 150,0,0.4);
     
-TH1F* thXZe_one=new TH1F("h1b", "theta electron 1", 150,-0.3,0.3);
-TH1F* thYZe_one=new TH1F("h2b", "theta electron 1", 150,-0.3,0.3);
+TH1F* thXZe_one=new TH1F("h1bzj", "theta XZ tar 1", 150,-0.12,0.12);
+TH1F* thYZe_one=new TH1F("h2bzj", "theta YZ tar 1", 150,-0.12,0.12);
     
-TH1F* thXZmu_one=new TH1F("h1b", "theta muon 1", 150,-0.3,0.3);
-TH1F* thYZmu_one=new TH1F("h2b", "theta muon 1", 150,-0.3,0.3);
+TH1F* thXZmu_one=new TH1F("h1bzs", "theta XZ tar 1", 150,-0.12,0.12);
+TH1F* thYZmu_one=new TH1F("h2bzs", "theta YZ tar 1", 150,-0.12,0.12);
     
-TH1F* thXZe_two=new TH1F("h1b", "theta electron 2", 150,-0.3,0.3);
-TH1F* thYZe_two=new TH1F("h2b", "theta electron 2", 150,-0.3,0.3);
+TH1F* thXZe_two=new TH1F("h1bz", "theta XZ tar 2", 150,-0.12,0.12);
+TH1F* thYZe_two=new TH1F("h2bz", "theta YZ tar 2", 150,-0.12,0.12);
     
-TH1F* thXZmu_two=new TH1F("h1b", "theta muon 2", 150,-0.3,0.3);
-TH1F* thYZmu_two=new TH1F("h2b", "theta muon 2", 150,-0.3,0.3);
+TH1F* thXZmu_two=new TH1F("h1bza", "theta XZ tar 2", 150,-0.12,0.12);
+TH1F* thYZmu_two=new TH1F("h2bza", "theta YZ tar 2", 150,-0.12,0.12);
     
     
       

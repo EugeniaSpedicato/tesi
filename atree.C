@@ -374,7 +374,7 @@ Double_t DE_eBR=sqrt(peOUTBR*peOUTBR+(0.5109989461 *0.001)*(0.5109989461 *0.001)
     diffY_mue->Draw("HIST");
   cooX->SaveAs("coo.png");
  
-    TCanvas * dued= new TCanvas("dued","dued",1000,100,1500,2000);
+    TCanvas * dued= new TCanvas("dued","dued",1000,100,2500,2000);
 
   X_Y_mu->SetMarkerColor(kBlack);
     X_Y_mu->Draw("HIST");

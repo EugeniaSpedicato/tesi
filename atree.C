@@ -349,7 +349,7 @@ Double_t DE_eBR=sqrt(peOUTBR*peOUTBR+(0.5109989461 *0.001)*(0.5109989461 *0.001)
 
 
      
-    TCanvas * cooX= new TCanvas("cooX","cooX",400,10,600,400);
+    TCanvas * cooX= new TCanvas("cooX","cooX",400,10,1500,1000);
     cooX->Divide(2,2);
     cooX->cd(1);
     coox_mu->Draw("HIST");

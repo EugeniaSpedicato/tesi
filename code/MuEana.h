@@ -78,8 +78,7 @@ Double_t tar;
     energy(-1),theta(-1),phi(0),energyCoM(-1)
       //cooXph(0),cooYph(0)
       {};
-    
-    virtual ~Photon(){};
+     virtual ~Photon(){};
 
     ClassDef(Photon,1)
   };
@@ -105,5 +104,31 @@ Double_t tar;
      ClassDef(MuEana,1)
   };
 }
+    /*virtual ~Photon(){};
+
+    ClassDef(Photon,1)
+  };
+
+  class MuEana {
+
+   public:
+    UInt_t RunNr;
+    Long64_t EventNr;
+    Double_t wgt_full, wgt_norun, wgt_lep, wgt_LO;   // event weights 
+    Double_t E_mu_in;  // incoming muon energy
+    KineVars genKin;   // kinematic variables at Generator-level for e and mu tracks
+    KineVars detKin; // kinematic variables at Detector-level for e and mu tracks
+    KineVars detKinBeamRot; 
+      Photon photon;     // photon kinematic variables at Gen-level
+    
+    MuEana():
+     RunNr(0),EventNr(0),wgt_full(0),wgt_norun(0),wgt_lep(0),wgt_LO(0),E_mu_in(0)
+       {};
+    
+     virtual ~MuEana(){};   
+
+     ClassDef(MuEana,1)
+  };
+}*/
 
 #endif

@@ -502,7 +502,34 @@ kv.Pe_out = p_e_out.P();
   kv.tripleProduct = nvec_mu_in.Dot(crossProduct);
 }
 
-void FastSim::LoadPhoton(const MuE::Event & event, MuE::Photon & photon,const PxPyPzEVector & p_mu_in_div) {
+
+
+void FastSim::LoadPhoton(const MuE::Event & event, MuE::Photon & photon) {
+  // by now at most one photon
+  auto n_photons = event.photons.size();
+  
+  if (n_photons >0) { 
+    PxPyPzEVector p_gamma_Lab = {event.photons[0].px, 
+				 event.photons[0].py,
+				 event.photons[0].pz,
+			         event.photons[0].E};
+    PxPyPzEVector p_gamma_CoM = Lorentz_ToCoM(p_gamma_Lab);
+    
+    photon.energy    = p_gamma_Lab.E();
+    photon.theta     = p_gamma_Lab.Theta() *1e3;
+    photon.phi       = p_gamma_Lab.Phi();
+    photon.energyCoM = p_gamma_CoM.E();  
+  }
+
+  else {
+    photon.energyCoM = -1;
+    photon.energy    = -1;
+    photon.theta     = -1;
+    photon.phi       =  0;
+  }
+}
+
+/*void FastSim::LoadPhoton(const MuE::Event & event, MuE::Photon & photon,const PxPyPzEVector & p_mu_in_div) {
   // by now at most one photon
   auto n_photons = event.photons.size();
   
@@ -562,7 +589,7 @@ void FastSim::LoadPhoton(const MuE::Event & event, MuE::Photon & photon,const Px
       
       
       
-}
+}*/
 
 // synchronize the random number chain to account for events with negligible weight
 //  (skipped in the main event loop)

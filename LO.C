@@ -73,11 +73,11 @@ TH1F* thYZmu_two=new TH1F("h2bza", "theta YZ tar 2", 150,-0.12,0.12);
     
     
     
-TH1F* thXZmu=new TH1F("a", "theta XZ mu", 150,-0.12,0.12);
-TH1F* thYZmu=new TH1F("c", "theta YZ mu", 150,-0.12,0.12);
+TH1F* thXZmu=new TH1F("a", "theta XZ mu", 150,-0.05,0.05);
+TH1F* thYZmu=new TH1F("c", "theta YZ mu", 150,-0.05,0.05);
     
-TH1F* thXZe=new TH1F("v", "theta XZ e", 150,-0.12,0.12);
-TH1F* thYZe=new TH1F("b", "theta YZ e", 150,-0.12,0.12);
+TH1F* thXZe=new TH1F("v", "theta XZ e", 150,-0.05,0.05);
+TH1F* thYZe=new TH1F("b", "theta YZ e", 150,-0.05,0.05);
     
       
     if (fChain == 0) return;
@@ -166,10 +166,10 @@ TH1F* thYZe=new TH1F("b", "theta YZ e", 150,-0.12,0.12);
              thYZe_two->Fill(th_yze,wgt_full);
              thYZmu_two->Fill(th_yzmu,wgt_full);
        }
-Double_t anglex_mu = atan2(detKinBeamRot_pXmu_out, detKinBeamRot_pZmu_out);
-  Double_t angley_mu = atan2(detKinBeamRot_pYmu_out, detKinBeamRot_pZmu_out);       
-Double_t anglex_e = atan2(detKinBeamRot_pXe_out, detKinBeamRot_pZe_out);
-  Double_t angley_e = atan2(detKinBeamRot_pYe_out, detKinBeamRot_pZe_out);
+Double_t anglex_mu = atan2(detKin_pXmu_out, detKin_pZmu_out);
+  Double_t angley_mu = atan2(detKin_pYmu_out, detKin_pZmu_out);       
+Double_t anglex_e = atan2(detKin_pXe_out, detKin_pZe_out);
+  Double_t angley_e = atan2(detKin_pYe_out, detKin_pZe_out);
        
     thXZmu->Fill(anglex_mu,wgt_full);
     thYZmu->Fill(angley_mu,wgt_full);
@@ -404,7 +404,7 @@ TCanvas * theC= new TCanvas("tar","tar",400,10,1500,1000);
     thXZe->SetLineColor(38);
     thXZe->Draw("HIST same");
     
-    theC->cd(1);
+    theC->cd(2);
     thYZmu->SetLineColor(30);
     thYZmu->Draw("HIST");
     thYZe->SetLineColor(38);

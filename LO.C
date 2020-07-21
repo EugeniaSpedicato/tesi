@@ -375,14 +375,7 @@ Double_t angley_e = atan2(detKin_pYe_out, detKin_pZe_out);
     
     t->SaveAs("theta.png");
     
-    
-    TCanvas * ptq= new TCanvas("ptq","pqt",400,10,1500,1000);
-    pt->SetLineColor(40);
-    pt->Draw("HIST");
-    ptBR->SetLineColor(46);
-    ptBR->Draw("HIST same");
-    
-    ptq->SaveAs("pT.png");
+
     
    /* 
         TCanvas * tar= new TCanvas("tar","tar",400,10,1500,1000);

@@ -118,48 +118,87 @@ cout<< divthx <<" " <<divthy<<endl;
     
 
 //  devi prendere il theta Mu e theta E, metti sotto loadkine vars, sarà forse genKin.the o .thmu e .phe phmu
-XYZVector coo (Double_t & the, Double_t & phi )
-{   Double_t theR = the * 0.001;//rad
-    Double_t phiR = phi * 0.001;//rad
-    Double_t d0=0.35;//m
-    Double_t d1=0.1;//m
+TMatrixD coo(const PxPyPzEVector & k,const Double_t & the, const Double_t & phi) 
+{   Double_t theR = the;//rad
+    Double_t phiR = phi;//rad
+ 
+Double_t anglex = atan2(k.Px(), k.Pz());
+Double_t angley = atan2(k.Py(), k.Pz()); 
+    
+    Double_t d0=2.10;//m
+    Double_t d1=1.10;//m
+ 
     Double_t x=gRandom->Gaus(0., 0.026);//m
     Double_t y=gRandom->Gaus(0., 0.027);//m
     Double_t z=0.;
-    Double_t zf=0.35;
-    XYZVector coo_in(x,y,z);
+    Double_t zf=2.10;
+    TMatrixD coo_in(1,3);
+ coo_in[0][0]=0;
+ coo_in[0][1]=0;
+ coo_in[0][2]=0;
+ 
     //interazione target 1 o target 2 
     Int_t tar=gRandom->Integer(2);
     
     if (tar==0)
     {
-    Double_t xf=x+d0*tan(theR);
-    Double_t yf=y+d0*tan(phiR);
-    XYZVector coo_f(xf,yf,zf);
-       // cout << "First target ";
-    return coo_f;
-    };
+
+        //primo modo
+    Double_t d_xy = d0*tan(theR);//vettore nel piano xy
+    Double_t xf = x+d_xy*cos(phiR);
+    Double_t yf = y+d_xy*sin(phiR);
+        //secondo modo
+    Double_t xfe = x+d0*tan(anglex);
+    Double_t yfe = y+d0*tan(angley);
+    
+    TMatrixD coo_f(2,3);
+    coo_f [0][0]=xf;  
+    coo_f [0][1]=yf;  
+    coo_f [0][2]=tar;  
+    coo_f [1][0]=xfe;  
+    coo_f [1][1]=yfe;  
+    coo_f [1][2]=tar;  
+        
+
+         return coo_f;
+    }
     
     if(tar==1)
     {
-    Double_t xf=x+d1*tan(theR);
-    Double_t yf=y+d1*tan(phiR); 
-    XYZVector coo_f(xf,yf,zf);
-       // cout << "Second target ";
+        //primo modo
+    Double_t d_xy = d1*tan(theR);//vettore nel piano xy
+    Double_t xf = x+d_xy*cos(phiR);
+    Double_t yf = y+d_xy*sin(phiR);
+        //secondo modo
+    Double_t xfe = x+d1*tan(anglex);
+    Double_t yfe = y+d1*tan(angley);
+
+    TMatrixD coo_f (2,3);
+    coo_f [0][0]=xf;  
+    coo_f [0][1]=yf;  
+    coo_f [0][2]=tar;  
+    coo_f [1][0]=xfe;  
+    coo_f [1][1]=yfe;  
+    coo_f [1][2]=tar;  
         
-        return coo_f;
+
+    return coo_f;
+
     }
+      
+        
 else return coo_in;
 }
 
 
 
-void gu()
+
+void provaMat()
 {
 
 Double_t ppx=0;
 Double_t ppy=0;
-Double_t ppz=150;
+Double_t ppz=12342342342;
 Double_t Ein=200;
     
 PxPyPzEVector p_in(ppx,ppy,ppz,Ein);
@@ -167,12 +206,14 @@ PxPyPzEVector p_in(ppx,ppy,ppz,Ein);
 PxPyPzEVector p_in_div=RotDiv(p_in);
     
 
-  
-Double_t theta=0.0005;
-Double_t phi=0.0004;
+ 
+Double_t theta=p_in_div.Theta();
+Double_t phi=p_in_div.Phi();
+
+
+TMatrixD coo_f=coo(p_in_div,theta,phi);
     
-XYZVector coo_f=coo(theta,phi);
- cout << " x= " << coo_f.X() << " y= " << coo_f.Y() << " z= " << coo_f.Z() << endl;   
+ cout << " x1= " << coo_f[0][0] << " y1= " << coo_f[0][1] << " x2= " << coo_f[1][0] << " y2= " <<coo_f[1][1] <<endl;   
 }
 
     

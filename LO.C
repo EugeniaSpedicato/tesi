@@ -79,6 +79,12 @@ TH1F* thYZmu=new TH1F("c", "theta YZ mu", 150,-0.005,0.005);
 TH1F* thXZe=new TH1F("v", "theta XZ e", 150,-0.05,0.05);
 TH1F* thYZe=new TH1F("b", "theta YZ e", 150,-0.05,0.05);
     
+TH1F* thXZmuLO=new TH1F("a", "theta XZ mu", 150,-0.005,0.005);
+TH1F* thYZmuLO=new TH1F("c", "theta YZ mu", 150,-0.005,0.005);
+    
+TH1F* thXZeLO=new TH1F("v", "theta XZ e", 150,-0.05,0.05);
+TH1F* thYZeLO=new TH1F("b", "theta YZ e", 150,-0.05,0.05);
+    
       
     if (fChain == 0) return;
 
@@ -176,6 +182,11 @@ Double_t angley_e = atan2(detKin_pYe_out, detKin_pZe_out);
     thYZmu->Fill(angley_mu,wgt_full);
     thXZe->Fill(anglex_e,wgt_full);
     thYZe->Fill(angley_e,wgt_full);
+       
+    thXZmuLO->Fill(anglex_mu,wgt_LO);
+    thYZmuLO->Fill(angley_mu,wgt_LO);
+    thXZeLO->Fill(anglex_e,wgt_LO);
+    thYZeLO->Fill(angley_e,wgt_LO);
        
        
        
@@ -409,18 +420,28 @@ Double_t angley_e = atan2(detKin_pYe_out, detKin_pZe_out);
 TCanvas * theC= new TCanvas("tar","tar",400,10,1500,1000);
     theC->Divide(2,2);
     theC->cd(1);
-    thXZmu->SetLineColor(30);
+    thXZmu->SetLineColor(38);
     thXZmu->Draw("HIST");
+    thXZmuLO->SetLineColor(30);
+    thXZmuLO->Draw("HIST same");
+    
     theC->cd(2);
     thXZe->SetLineColor(38);
     thXZe->Draw("HIST");
+    thXZeLO->SetLineColor(30);
+    thXZeLO->Draw("HIST same");
     
     theC->cd(3);
-    thYZmu->SetLineColor(30);
+    thYZmu->SetLineColor(38);
     thYZmu->Draw("HIST");
+    thYZmuLO->SetLineColor(30);
+    thYZmuLO->Draw("HIST same");
+    
     theC->cd(4);
     thYZe->SetLineColor(38);
     thYZe->Draw("HIST");
+    thYZeLO->SetLineColor(30);
+    thYZeLO->Draw("HIST same");
     
     
   theC->SaveAs("thAtan.png");

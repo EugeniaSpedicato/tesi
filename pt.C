@@ -9,17 +9,17 @@ void atree::Loop()
     TH1::SetDefaultSumw2();
     
     
-TH1F* ptmu=new TH1F("a", "PT", 150,0,0.5);
-TH1F* ptBRmu=new TH1F("a", "PT BR", 150,0,0.5);
+TH1F* ptmu=new TH1F("a", "PT", 150,0,0.25);
+TH1F* ptBRmu=new TH1F("a", "PT BR", 150,0,0.25);
     
-TH1F* pte=new TH1F("ae", "PT", 150,0,0.5);
-TH1F* ptBRe=new TH1F("ae", "PT BR", 150,0,0.5);
+TH1F* pte=new TH1F("ae", "PT", 150,0,0.25);
+TH1F* ptBRe=new TH1F("ae", "PT BR", 150,0,0.25);
     
-TH1F* thmu=new TH1F("h3bNj", "theta", 150,0,0.5);
-TH1F* thBRmu=new TH1F("h3bNn", "theta BR", 150,0,2);
+TH1F* thmu=new TH1F("h3bNj", "theta", 150,0,0.25);
+TH1F* thBRmu=new TH1F("h3bNn", "theta BR", 150,0,10);
     
-TH1F* the=new TH1F("h3bNj", "theta", 150,0,5);
-TH1F* thBRe=new TH1F("h3bNn", "theta BR", 150,0,5);
+TH1F* the=new TH1F("h3bNj", "theta", 150,0,20);
+TH1F* thBRe=new TH1F("h3bNn", "theta BR", 150,0,20);
 
 
  if (fChain == 0) return;
@@ -54,35 +54,42 @@ TH1F* thBRe=new TH1F("h3bNn", "theta BR", 150,0,5);
        }
            
     TCanvas * ptq= new TCanvas("ptq","pqt",400,10,1500,1000);
-    ptq->Divide(2,1);
+    ptq->Divide(2,2);
     ptq->cd(1);
-    ptBRmu->SetLineColor(46);
-    ptBRmu->Draw("HIST");
     ptmu->SetLineColor(40);
-    ptmu->Draw("HIST same");
+    ptmu->Draw("HIST");
     
     ptq->cd(2);
+    ptBRmu->SetLineColor(46);
+    ptBRmu->Draw("HIST");
+    
+    ptq->cd(3);
     ptBRe->SetLineColor(46);
     ptBRe->Draw("HIST");
+    
+    ptq->cd(4);
     pte->SetLineColor(40);
-    pte->Draw("HIST same");
+    pte->Draw("HIST");
     
     ptq->SaveAs("pT.png");
     
     
     TCanvas * t= new TCanvas("t","t",400,10,1500,1000);
-    t->Divide(2,1);
+    t->Divide(2,2);
     t->cd(1);
     thmu->SetLineColor(40);
     thmu->Draw("HIST");
-    thBRmu->SetLineColor(46);
-    thBRmu->Draw("HIST same");
     
     t->cd(2);
+    thBRmu->SetLineColor(46);
+    thBRmu->Draw("HIST");
+    
+    t->cd(3);
     the->SetLineColor(40);
     the->Draw("HIST");
+    t->cd(4);
     thBRe->SetLineColor(46);
-    thBRe->Draw("HIST same");
+    thBRe->Draw("HIST");
     
     t->SaveAs("TH.png");
     

@@ -9,11 +9,17 @@ void atree::Loop()
     TH1::SetDefaultSumw2();
     
     
-TH1F* ptmu=new TH1F("a", "PT", 150,0,160);
-TH1F* ptBRmu=new TH1F("a", "PT BR", 150,0,160);
+TH1F* ptmu=new TH1F("a", "PT", 150,0,5);
+TH1F* ptBRmu=new TH1F("a", "PT BR", 150,0,5);
     
-TH1F* pte=new TH1F("ae", "PT", 150,0,160);
-TH1F* ptBRe=new TH1F("ae", "PT BR", 150,0,160);
+TH1F* pte=new TH1F("ae", "PT", 150,0,5);
+TH1F* ptBRe=new TH1F("ae", "PT BR", 150,0,5);
+    
+TH1F* thmu=new TH1F("h3bNj", "theta", 150,0,0.5);
+TH1F* thBRmunew TH1F("h3bNn", "theta BR", 150,0,1);
+    
+TH1F* the=new TH1F("h3bNj", "theta", 150,0,0.5);
+TH1F* thBRe=new TH1F("h3bNn", "theta BR", 150,0,1);
 
 
  if (fChain == 0) return;
@@ -39,6 +45,12 @@ TH1F* ptBRe=new TH1F("ae", "PT BR", 150,0,160);
        
        pte->Fill(PTe,wgt_full);
        ptBRe->Fill(PTBRe,wgt_full);
+       
+        thmu->Fill(detKin_thmu,wgt_full);
+       thBRmu->Fill(detKinBeamRot_thmu,wgt_full);
+       
+        the->Fill(detKin_the,wgt_full);
+       thBRe->Fill(detKinBeamRot_the,wgt_full);
        }
            
     TCanvas * ptq= new TCanvas("ptq","pqt",400,10,1500,1000);
@@ -56,4 +68,22 @@ TH1F* ptBRe=new TH1F("ae", "PT BR", 150,0,160);
     ptBRe->Draw("HIST same");
     
     ptq->SaveAs("pT.png");
+    
+    
+    TCanvas * t= new TCanvas("t","t",400,10,1500,1000);
+    t->Divide(2,1);
+    t->cd(1);
+    thmu->SetLineColor(40);
+    thmu->Draw("HIST");
+    thBRmu->SetLineColor(46);
+    thBRmu->Draw("HIST same");
+    
+    t->cd(2);
+    the->SetLineColor(40);
+    the->Draw("HIST");
+    thBRe->SetLineColor(46);
+    thBRe->Draw("HIST same");
+    
+    t->SaveAs("TH.png");
+    
     }

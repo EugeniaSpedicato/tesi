@@ -10,10 +10,10 @@ code=../code
 echo "Compiling ..."
 rootcling -f MuEtreeDict.C -I${code} MuEtree.h MuEana.h MuEtreeLinkDef.h
 
-FOPTIONS="-c -O2"
-gfortran ${FOPTIONS} ${code}/summa.f
-gfortran ${FOPTIONS} ${code}/hadr5n12.f
-gfortran ${FOPTIONS} ${code}/muerad.f
+#FOPTIONS="-c -O2"
+#gfortran ${FOPTIONS} ${code}/summa.f
+#gfortran ${FOPTIONS} ${code}/hadr5n12.f
+#gfortran ${FOPTIONS} ${code}/muerad.f
 
 OPTIONS="-O2 -Wall"
 #OPTIONS="-g -Wall"

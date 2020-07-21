@@ -9,17 +9,17 @@ void atree::Loop()
     TH1::SetDefaultSumw2();
     
     
-TH1F* ptmu=new TH1F("a", "PT", 150,0,5);
-TH1F* ptBRmu=new TH1F("a", "PT BR", 150,0,5);
+TH1F* ptmu=new TH1F("a", "PT", 150,0,0.5);
+TH1F* ptBRmu=new TH1F("a", "PT BR", 150,0,0.5);
     
-TH1F* pte=new TH1F("ae", "PT", 150,0,5);
-TH1F* ptBRe=new TH1F("ae", "PT BR", 150,0,5);
+TH1F* pte=new TH1F("ae", "PT", 150,0,0.5);
+TH1F* ptBRe=new TH1F("ae", "PT BR", 150,0,0.5);
     
 TH1F* thmu=new TH1F("h3bNj", "theta", 150,0,0.5);
-TH1F* thBRmunew TH1F("h3bNn", "theta BR", 150,0,1);
+TH1F* thBRmu=new TH1F("h3bNn", "theta BR", 150,0,2);
     
-TH1F* the=new TH1F("h3bNj", "theta", 150,0,0.5);
-TH1F* thBRe=new TH1F("h3bNn", "theta BR", 150,0,1);
+TH1F* the=new TH1F("h3bNj", "theta", 150,0,5);
+TH1F* thBRe=new TH1F("h3bNn", "theta BR", 150,0,5);
 
 
  if (fChain == 0) return;
@@ -56,16 +56,16 @@ TH1F* thBRe=new TH1F("h3bNn", "theta BR", 150,0,1);
     TCanvas * ptq= new TCanvas("ptq","pqt",400,10,1500,1000);
     ptq->Divide(2,1);
     ptq->cd(1);
-    ptmu->SetLineColor(40);
-    ptmu->Draw("HIST");
     ptBRmu->SetLineColor(46);
-    ptBRmu->Draw("HIST same");
+    ptBRmu->Draw("HIST");
+    ptmu->SetLineColor(40);
+    ptmu->Draw("HIST same");
     
-    cd->(2);
-    pte->SetLineColor(40);
-    pte->Draw("HIST");
+    ptq->cd(2);
     ptBRe->SetLineColor(46);
-    ptBRe->Draw("HIST same");
+    ptBRe->Draw("HIST");
+    pte->SetLineColor(40);
+    pte->Draw("HIST same");
     
     ptq->SaveAs("pT.png");
     

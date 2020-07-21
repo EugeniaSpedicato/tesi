@@ -57,7 +57,7 @@ TH1F* gNpy_e_outNO=new TH1F("zz", "pY_out electron  gk", 150,-0.3,0.3);
 TH1F* gNpz_e_outNO=new TH1F("zd", "pZ_out electron  gk", 150,0,5);    
     
 TH1F* th=new TH1F("h3bNj", "theta", 150,0,0.4);
-TH1F* thBR=new TH1F("h3bNn", "theta BR", 150,0,0.4);
+TH1F* thBR=new TH1F("h3bNn", "theta BR", 150,0,1);
     
 TH1F* thXZe_one=new TH1F("h1bzj", "theta XZ tar 1", 150,-0.12,0.12);
 TH1F* thYZe_one=new TH1F("h2bzj", "theta YZ tar 1", 150,-0.12,0.12);
@@ -137,7 +137,7 @@ TH1F* thYZe=new TH1F("b", "theta YZ e", 150,-0.05,0.05);
        
        
        th->Fill(detKin_thmu,wgt_full);
-        thBR->Fill(detKinBeamRot_thmu,wgt_full);
+       thBR->Fill(detKinBeamRot_thmu,wgt_full);
        
             if (detKinBeamRot_tar==0)
        {
@@ -363,6 +363,15 @@ Double_t angley_e = atan2(detKin_pYe_out, detKin_pZe_out);
     thBR->Draw("HIST same");
     
     t->SaveAs("theta.png");
+    
+    
+    TCanvas * ptq= new TCanvas("ptq","pqt",400,10,1500,1000);
+    pt->SetLineColor(40);
+    pt->Draw("HIST");
+    ptBR->SetLineColor(46);
+    ptBR->Draw("HIST same");
+    
+    ptq->SaveAs("pT.png");
     
    /* 
         TCanvas * tar= new TCanvas("tar","tar",400,10,1500,1000);

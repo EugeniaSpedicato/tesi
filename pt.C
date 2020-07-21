@@ -15,11 +15,11 @@ TH1F* ptBRmu=new TH1F("a", "PT BR", 150,0,0.25);
 TH1F* pte=new TH1F("ae", "PT", 150,0,0.25);
 TH1F* ptBRe=new TH1F("ae", "PT BR", 150,0,0.25);
     
-TH1F* thmu=new TH1F("h3bNj", "theta", 150,0,0.25);
-TH1F* thBRmu=new TH1F("h3bNn", "theta BR", 150,0,10);
+TH1F* thmu=new TH1F("h3bNj", "theta", 150,0,1);
+TH1F* thBRmu=new TH1F("h3bNn", "theta BR", 150,0,1);
     
-TH1F* the=new TH1F("h3bNj", "theta", 150,0,20);
-TH1F* thBRe=new TH1F("h3bNn", "theta BR", 150,0,20);
+TH1F* the=new TH1F("h3bNj", "theta", 150,0,1);
+TH1F* thBRe=new TH1F("h3bNn", "theta BR", 150,0,1);
 
 
  if (fChain == 0) return;
@@ -46,11 +46,11 @@ TH1F* thBRe=new TH1F("h3bNn", "theta BR", 150,0,20);
        pte->Fill(PTe,wgt_full);
        ptBRe->Fill(PTBRe,wgt_full);
        
-        thmu->Fill(detKin_thmu,wgt_full);
-       thBRmu->Fill(detKinBeamRot_thmu,wgt_full);
+        thmu->Fill(detKin_thmu*0.001,wgt_full);
+       thBRmu->Fill(detKinBeamRot_thmu*0.001,wgt_full);
        
-        the->Fill(detKin_the,wgt_full);
-       thBRe->Fill(detKinBeamRot_the,wgt_full);
+        the->Fill(detKin_the*0.001,wgt_full);
+       thBRe->Fill(detKinBeamRot_the*0.001,wgt_full);
        }
            
     TCanvas * ptq= new TCanvas("ptq","pqt",400,10,1500,1000);
@@ -60,7 +60,7 @@ TH1F* thBRe=new TH1F("h3bNn", "theta BR", 150,0,20);
     ptmu->Draw("HIST");
     
     ptq->cd(2);
-    ptBRmu->SetLineColor(46);
+    ptBRmu->SetLineColor(40);
     ptBRmu->Draw("HIST");
     
     ptq->cd(3);
@@ -68,7 +68,7 @@ TH1F* thBRe=new TH1F("h3bNn", "theta BR", 150,0,20);
     ptBRe->Draw("HIST");
     
     ptq->cd(4);
-    pte->SetLineColor(40);
+    pte->SetLineColor(46);
     pte->Draw("HIST");
     
     ptq->SaveAs("pT.png");
@@ -81,11 +81,11 @@ TH1F* thBRe=new TH1F("h3bNn", "theta BR", 150,0,20);
     thmu->Draw("HIST");
     
     t->cd(2);
-    thBRmu->SetLineColor(46);
+    thBRmu->SetLineColor(40);
     thBRmu->Draw("HIST");
     
     t->cd(3);
-    the->SetLineColor(40);
+    the->SetLineColor(46);
     the->Draw("HIST");
     t->cd(4);
     thBRe->SetLineColor(46);

@@ -250,7 +250,7 @@ TMatrixD pO(3,1);
 
 TMatrixD pN(R, TMatrixD::kMult,pO);
 
-PxPyPzEVector pnewdiv(pN[0][0], pN[1][0], pN[2][0], k.E());     
+PxPyPzEVector pnewdiv(pN[0][0], pN[1][0], pN[2][0], out.E());     
 return pnewdiv;    
  }   
 

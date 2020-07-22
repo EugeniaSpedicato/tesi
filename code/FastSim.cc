@@ -113,7 +113,7 @@ PxPyPzEVector p_mu_out_div_smeared, p_e_out_div_smeared;
   
   LoadKineVars(p_mu_in_div, p_e_in_div, p_mu_out_div_smeared, p_e_out_div_smeared, detKinBeamRot);
   
-  LoadPhoton(event, photon, p_mu_in_div);
+  LoadPhoton(event, photon);
     
 }
 
@@ -520,7 +520,7 @@ void FastSim::LoadKineVars(const PxPyPzEVector & p_mu_in,  const PxPyPzEVector &
   kv.phe = p_e_out.Phi();
   kv.phmu = p_mu_out.Phi();
     
-TMatrixD coo_fin=coo(kv.p_mu_out, kv.p_e_out);
+TMatrixD coo_fin=coo(p_mu_out, p_e_out);
 kv.cooXe = coo_fin[1][0];
 kv.cooXmu = coo_fin[0][0];
 kv.cooYe = coo_fin[1][1];
@@ -576,7 +576,7 @@ kv.Pe_out = p_e_out.P();
 
 
       
-      void FastSim::LoadPhoton(const MuE::Event & event, MuE::Photon & photon) {
+void FastSim::LoadPhoton(const MuE::Event & event, MuE::Photon & photon) {
   // by now at most one photon
   auto n_photons = event.photons.size();
   

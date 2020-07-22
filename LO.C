@@ -193,7 +193,7 @@ Double_t angley_e = atan2(detKin_pYe_out, detKin_pZe_out);
        
    }
     
-    TCanvas * diffP= new TCanvas("diff","diff",400,10,1500,1000);
+   /* TCanvas * diffP= new TCanvas("diff","diff",400,10,1500,1000);
     diffP->Divide(3,2);
     diffP->cd(1);
     Npx_e_outNO->SetLineColor(kRed);
@@ -377,7 +377,7 @@ Double_t angley_e = atan2(detKin_pYe_out, detKin_pZe_out);
     
 
     
-   /* 
+   */ 
         TCanvas * tar= new TCanvas("tar","tar",400,10,1500,1000);
     tar->Divide(2,2);
     
@@ -409,13 +409,14 @@ Double_t angley_e = atan2(detKin_pYe_out, detKin_pZe_out);
     
   tar->SaveAs("thXZYZ.png");
     
-    */
+    
+/* 
 TCanvas * theC= new TCanvas("tar","tar",400,10,1500,1000);
     theC->Divide(2,2);
     theC->cd(1);
-    thXZmu->SetLineColor(38);
+    thXZmu->SetLineColor(38);//blu
     thXZmu->Draw("HIST");
-    thXZmuLO->SetLineColor(30);
+    thXZmuLO->SetLineColor(30);//verde
     thXZmuLO->Draw("HIST same");
     
     theC->cd(2);
@@ -439,6 +440,6 @@ TCanvas * theC= new TCanvas("tar","tar",400,10,1500,1000);
     
   theC->SaveAs("thAtan.png");
     
-        
+        */
     
 }

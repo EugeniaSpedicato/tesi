@@ -439,7 +439,7 @@ else return coo_in;
 
 
 
-TMatrixD coo(const PxPyPzEVector & k,const PxPyPzEVector & ke) const
+TMatrixD FastSim::coo(const PxPyPzEVector & k,const PxPyPzEVector & ke) const
 { 
 Double_t anglex = atan2(k.Px(), k.Pz());
 Double_t angley = atan2(k.Py(), k.Pz()); 
@@ -575,12 +575,12 @@ kv.Pe_out = p_e_out.P();
 }
 
 
-
-void FastSim::LoadPhoton(const MuE::Event & event, MuE::Photon & photon) {
+      
+      void FastSim::LoadPhoton(const MuE::Event & event, MuE::Photon & photon) {
   // by now at most one photon
   auto n_photons = event.photons.size();
   
-  if (n_photons >0) { 
+  if (n_photons >0) {  
     PxPyPzEVector p_gamma_Lab = {event.photons[0].px, 
 				 event.photons[0].py,
 				 event.photons[0].pz,
@@ -599,69 +599,9 @@ void FastSim::LoadPhoton(const MuE::Event & event, MuE::Photon & photon) {
     photon.theta     = -1;
     photon.phi       =  0;
   }
+      
+      
 }
-
-/*void FastSim::LoadPhoton(const MuE::Event & event, MuE::Photon & photon,const PxPyPzEVector & p_mu_in_div) {
-  // by now at most one photon
-  auto n_photons = event.photons.size();
-  
-  if (n_photons >0) {  /*
-    PxPyPzEVector p_gamma_Lab = {event.photons[0].px, 
-				 event.photons[0].py,
-				 event.photons[0].pz,
-			         event.photons[0].E};
-    PxPyPzEVector p_gamma_CoM = Lorentz_ToCoM(p_gamma_Lab);
-    
-    photon.energy    = p_gamma_Lab.E();
-    photon.theta     = p_gamma_Lab.Theta() *1e3;
-    photon.phi       = p_gamma_Lab.Phi();
-    photon.energyCoM = p_gamma_CoM.E();  
-  }
-
-  else {
-    photon.energyCoM = -1;
-    photon.energy    = -1;
-    photon.theta     = -1;
-    photon.phi       =  0;
-  }
-     */
-      
-      PxPyPzEVector p_ph(event.photons[0].px,event.photons[0].py,event.photons[0].pz,event.photons[0].E);
-      PxPyPzEVector p_ph_div=RotDiv(p_mu_in_div,p_ph);   
-      
-     
-    PxPyPzEVector p_gamma_Lab = {p_ph_div.Px(), 
-                                 p_ph_div.Py(),
-                                 p_ph_div.Pz(),
-			                     event.photons[0].E};
-      
-    PxPyPzEVector p_gamma_CoM = Lorentz_ToCoM(p_gamma_Lab);
-    
-    photon.energy    = p_gamma_Lab.E();
-    photon.theta     = p_gamma_Lab.Theta() *1e3;
-    photon.phi       = p_gamma_Lab.Phi();
-    photon.energyCoM = p_gamma_CoM.E(); 
-      
-   /* XYZVector coo_fin_ph=coo(photon.theta,photon.phi);
-
-      photon.cooXph = coo_fin_ph.X();
-      photon.cooYph = coo_fin_ph.Y();*/
-    
-  }
-
-  else {
-    photon.energyCoM = -1;
-    photon.energy    = -1;
-    photon.theta     = -1;
-    photon.phi       =  0;
-  //  photon.cooXph    = 0;
-  //  photon.cooYph    = 0;
-  }
-      
-      
-      
-      
-}*/
 
 // synchronize the random number chain to account for events with negligible weight
 //  (skipped in the main event loop)

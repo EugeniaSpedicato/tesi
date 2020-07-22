@@ -363,7 +363,7 @@ PxPyPzEVector FastSim::SmearPolar(const PxPyPzEVector & k) const
   return PxPyPzEVector(p.X(), p.Y(), p.Z(), k.E());
 }
 
-
+/*
 TMatrixD FastSim::coo(const Double_t & the, const Double_t & phi,const Double_t & theE, const Double_t & phiE) const
 {   Double_t theR = the*0.001;//rad
     Double_t phiR = phi;//rad
@@ -435,7 +435,79 @@ TMatrixD FastSim::coo(const Double_t & the, const Double_t & phi,const Double_t 
         
 else return coo_in;
 }
+*/
 
+
+
+TMatrixD coo(const PxPyPzEVector & k,const PxPyPzEVector & ke) const
+{ 
+Double_t anglex = atan2(k.Px(), k.Pz());
+Double_t angley = atan2(k.Py(), k.Pz()); 
+    
+Double_t anglexe = atan2(ke.Px(), ke.Pz());
+Double_t angleye = atan2(ke.Py(), ke.Pz()); 
+    
+    Double_t d0=2.10;//m
+    Double_t d1=1.10;//m
+ 
+    Double_t x=gRandom->Gaus(0., 0.026);//m
+    Double_t y=gRandom->Gaus(0., 0.027);//m
+    Double_t z=0.;
+    Double_t zf=2.10;
+    TMatrixD coo_in(1,3);
+ coo_in[0][0]=0;
+ coo_in[0][1]=0;
+ coo_in[0][2]=0;
+ 
+    //interazione target 1 o target 2 
+    Int_t tar=gRandom->Integer(2);
+    
+    if (tar==0)
+    {
+        //muone
+    Double_t xf = x+d0*tan(anglex);
+    Double_t yf = y+d0*tan(angley);
+        //elettrone
+    Double_t xfe = x+d0*tan(anglexe);
+    Double_t yfe = y+d0*tan(angleye);
+    
+    TMatrixD coo_f(2,3);
+    coo_f [0][0]=xf;  
+    coo_f [0][1]=yf;  
+    coo_f [0][2]=tar;  
+    coo_f [1][0]=xfe;  
+    coo_f [1][1]=yfe;  
+    coo_f [1][2]=tar;  
+        
+
+         return coo_f;
+    }
+    
+    if(tar==1)
+    {
+        //muone
+    Double_t xf = x+d1*tan(anglex);
+    Double_t yf = y+d1*tan(angley);
+        //elettrone
+    Double_t xfe = x+d1*tan(anglexe);
+    Double_t yfe = y+d1*tan(angleye);
+
+    TMatrixD coo_f (2,3);
+    coo_f [0][0]=xf;  
+    coo_f [0][1]=yf;  
+    coo_f [0][2]=tar;  
+    coo_f [1][0]=xfe;  
+    coo_f [1][1]=yfe;  
+    coo_f [1][2]=tar;  
+        
+
+    return coo_f;
+
+    }
+      
+        
+else return coo_in;
+}
 
 void FastSim::LoadKineVars(const PxPyPzEVector & p_mu_in,  const PxPyPzEVector & p_e_in, 
 			   const PxPyPzEVector & p_mu_out, const PxPyPzEVector & p_e_out,
@@ -448,7 +520,7 @@ void FastSim::LoadKineVars(const PxPyPzEVector & p_mu_in,  const PxPyPzEVector &
   kv.phe = p_e_out.Phi();
   kv.phmu = p_mu_out.Phi();
     
-TMatrixD coo_fin=coo(kv.thmu,kv.phmu,kv.the,kv.phe);
+TMatrixD coo_fin=coo(kv.p_mu_out, kv.p_e_out);
 kv.cooXe = coo_fin[1][0];
 kv.cooXmu = coo_fin[0][0];
 kv.cooYe = coo_fin[1][1];

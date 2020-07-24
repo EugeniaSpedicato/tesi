@@ -773,6 +773,73 @@ for (Int_t p=1; p<7; p++)  {
                 xe[1][p+1]=xe[1][p]+dSS*tan(thetaXe[1][p])+(1/sqrt(3))*sS*thetaXe[1][p+1];
                 ye[1][p+1]=ye[1][p]+dSS*tan(thetaYe[1][p])+(1/sqrt(3))*sS*thetaYe[1][p+1]+gRandom->Gaus(0,ris);                 
                  }}
+        
+        Double_t xf = x[1][6]+dCAL*tan(thetaX[1][6]);
+    Double_t yf = y[1][6]+dCAL*tan(thetaY[1][6]);
+    Double_t xfe = xe[1][6]+dCAL*tan(thetaXe[1][6]);
+    Double_t yfe = ye[1][6]+dCAL*tan(thetaYe[1][6]);
+    
+    TMatrixD coo_ang_fin(18,7);
+        
+                for (Int_t i=0; i<7; i++)
+    { //coordinate stazione 2 muone
+        coo_ang_fin[0][i]=x[0][i]; 
+        coo_ang_fin[1][i]=y[0][i]; 
+        coo_ang_fin[2][i]=thetaX[0][i]; 
+        coo_ang_fin[3][i]=thetaY[0][i]; 
+    //coordinate stazione 3 muone         
+        coo_ang_fin[4][i]=x[1][i]; 
+        coo_ang_fin[5][i]=y[1][i]; 
+        coo_ang_fin[6][i]=thetaX[1][i]; 
+        coo_ang_fin[7][i]=thetaY[1][i];      
+    //coordinate stazione 2 elettrone
+        coo_ang_fin[9][i]=xe[0][i]; 
+        coo_ang_fin[10][i]=ye[0][i]; 
+        coo_ang_fin[11][i]=thetaXe[0][i]; 
+        coo_ang_fin[12][i]=thetaYe[0][i]; 
+    //coordinate stazione 3 elettrone          
+        coo_ang_fin[13][i]=xe[1][i]; 
+        coo_ang_fin[14][i]=ye[1][i]; 
+        coo_ang_fin[15][i]=thetaXe[1][i]; 
+        coo_ang_fin[16][i]=thetaYe[1][i];       
+    }  
+    
+  Double_t dxdz = tan(thetaX[1][6]); // could approx tan ~ angle
+  Double_t dydz = tan(thetaY[1][6]);
+  
+  // assuming z-motion is always forward
+  Double_t skz = sqrt(k.P2() / (dxdz*dxdz + dydz*dydz + 1));
+  Double_t skx = skz * dxdz;
+  Double_t sky = skz * dydz;
+        
+  Double_t dxdze = tan(thetaXe[1][6]); // could approx tan ~ angle
+  Double_t dydze = tan(thetaYe[1][6]);
+  
+  // assuming z-motion is always forward
+  Double_t skze = sqrt(ke.P2() / (dxdze*dxdze + dydze*dydze + 1));
+  Double_t skxe = skze * dxdze;
+  Double_t skye = skze * dydze;
+        
+        // coordinate sul calorimetro e momento out smeared
+        coo_ang_fin[8][0]=xf;   
+        coo_ang_fin[8][1]=yf;  
+        coo_ang_fin[8][2]=tar;      
+        coo_ang_fin[8][3]=skx; 
+        coo_ang_fin[8][4]=sky;      
+        coo_ang_fin[8][5]=skz;      
+        coo_ang_fin[8][6]=k.E();   
+        
+                
+        // coordinate sul calorimetro e momento out smeared
+        coo_ang_fin[17][0]=xfe;   
+        coo_ang_fin[17][1]=yfe;  
+        coo_ang_fin[17][2]=tar;      
+        coo_ang_fin[17][3]=skxe; 
+        coo_ang_fin[17][4]=skye;      
+        coo_ang_fin[17][5]=skze;      
+        coo_ang_fin[17][6]=ke.E();   
+        
+    return coo_ang_fin;
     
     }
      
@@ -864,7 +931,7 @@ for (Int_t p=1; p<7; p++)  {
                  }}
         // sul calorimetro
         
-    Double_t xf = x[1][6]+dCAL*tan(thetaX[1][6]);
+Double_t xf = x[1][6]+dCAL*tan(thetaX[1][6]);
     Double_t yf = y[1][6]+dCAL*tan(thetaY[1][6]);
     Double_t xfe = xe[1][6]+dCAL*tan(thetaXe[1][6]);
     Double_t yfe = ye[1][6]+dCAL*tan(thetaYe[1][6]);

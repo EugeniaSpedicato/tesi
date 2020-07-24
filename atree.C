@@ -97,9 +97,9 @@ Double_t peOUT = sqrt(detKin_pXe_out*detKin_pXe_out+detKin_pYe_out*detKin_pYe_ou
 //Double_t DE_eBR =  (2* (0.5109989461 *0.001)*(0.5109989461 *0.001)-  detKinBeamRot_t24)/(2* (0.5109989461 *0.001));
 //Double_t DE_e =  (2* (0.5109989461 *0.001)*(0.5109989461 *0.001)-  detKin_t24)/(2* (0.5109989461 *0.001));
        
-       
+ /*      
 Double_t DE_mu=sqrt(pmuOUT*pmuOUT+(105.6583745 *0.001)*(105.6583745 *0.001));
-Double_t DE_e=sqrt(peOUT*peOUT+(0.5109989461 *0.001)*(0.5109989461 *0.001));
+Double_t DE_e=sqrt(peOUT*peOUT+(0.5109989461 *0.001)*(0.5109989461 *0.001));*/
 
 Double_t DE_muBR=sqrt(pmuOUTBR*pmuOUTBR+(105.6583745 *0.001)*(105.6583745 *0.001));
 Double_t DE_eBR=sqrt(peOUTBR*peOUTBR+(0.5109989461 *0.001)*(0.5109989461 *0.001));
@@ -118,8 +118,8 @@ Double_t DE_eBR=sqrt(peOUTBR*peOUTBR+(0.5109989461 *0.001)*(0.5109989461 *0.001)
          
    //    p_muCODE->Fill(detKin_Pmu_out,wgt_full); //estratto da evento k.P()
     //   p_eCODE->Fill(detKin_Pe_out,wgt_full); //estratto da evento k.P()
-       p_mu->Fill(pmuOUT,wgt_full); //calcolato con px,py,pz
-       p_e->Fill(peOUT,wgt_full);   //calcolato con px,py,pz
+     //  p_mu->Fill(pmuOUT,wgt_full); //calcolato con px,py,pz
+     //  p_e->Fill(peOUT,wgt_full);   //calcolato con px,py,pz
        
        BRp_muCODE->Fill(detKinBeamRot_Pmu_out,wgt_full); //estratto da evento k.P()
        BRp_eCODE->Fill(detKinBeamRot_Pe_out,wgt_full); //estratto da evento k.P()

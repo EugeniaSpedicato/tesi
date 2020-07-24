@@ -107,8 +107,8 @@ Double_t DE_eBR=sqrt(peOUTBR*peOUTBR+(0.5109989461 *0.001)*(0.5109989461 *0.001)
          
    //    E_muCODE->Fill(detKin_Emu,wgt_full);
     //   E_eCODE->Fill(detKin_Ee,wgt_full);
-       E_mu->Fill(DE_mu,wgt_full);
-       E_e->Fill(DE_e,wgt_full);
+     //  E_mu->Fill(DE_mu,wgt_full);
+    //   E_e->Fill(DE_e,wgt_full);
        
        BRE_muCODE->Fill(detKinBeamRot_Emu,wgt_full);
        BRE_eCODE->Fill(detKinBeamRot_Ee,wgt_full);

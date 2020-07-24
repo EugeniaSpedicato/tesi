@@ -50,8 +50,9 @@ namespace MuE {
     PxPyPzEVector SmearX(const PxPyPzEVector & p) const; 
     PxPyPzEVector SmearPolar(const PxPyPzEVector & p) const; 
     //TMatrixD coo(const Double_t & a, const Double_t & s,const Double_t & ae, const Double_t & se) const; 
-    TMatrixD coo(const PxPyPzEVector & p,const PxPyPzEVector & q) const; 
-    
+    //TMatrixD coo(const PxPyPzEVector & p,const PxPyPzEVector & q) const; 
+    TMatrixD MCSin(const PxPyPzEVector & k) const; 
+    TMatrixD MCSout(const PxPyPzEVector & k, const PxPyPzEVector & ke, const Double_t xx, const Double_t yy, const Double_t thX, const Double_t thY) const; 
 
     void LoadKineVars(const PxPyPzEVector & p_mu_in,  const PxPyPzEVector & p_e_in, 
 		      const PxPyPzEVector & p_mu_out, const PxPyPzEVector & p_e_out, 

@@ -583,7 +583,7 @@ return coo_ang_in;
 
 */
 
-TMatrixD FastSim::MCSout(const PxPyPzEVector & kin, const PxPyPzEVector & k, const PxPyPzEVector & ke, const Double_t xx, const Double_t yy, const Double_t thX, const Double_t thY) const
+TMatrixD FastSim::MCSout(const PxPyPzEVector & kin, const PxPyPzEVector & k, const PxPyPzEVector & ke) const
 {
 Double_t const sigX=0.026; //m
 Double_t const sigY=0.027; //m

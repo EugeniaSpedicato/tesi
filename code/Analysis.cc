@@ -26,14 +26,15 @@ void Analysis::BeginJob()
 
 void Analysis::Analyze(const MuE::Event & event, const MuE::FastSim & fs)
 {
-  const MuE::KineVars & genKin = fs.GetGenKin();
-  const MuE::KineVars & detKin = fs.GetDetKin();
+  //const MuE::KineVars & genKin = fs.GetGenKin();
+  //const MuE::KineVars & detKin = fs.GetDetKin();
   const MuE::KineVars & detKinBeamRot = fs.GetDetKinBeamRot();
     
-  const MuE::Photon & photon = fs.GetPhoton();
+ // const MuE::Photon & photon = fs.GetPhoton();
 
   // apply preselection if both the gen-level and det-level electron angle are above the cut (default 30mrad)
-  if (genKin.the > paran.thetaMax && detKin.the > paran.thetaMax ) return;
+  //if (genKin.the > paran.thetaMax && detKin.the > paran.thetaMax ) return;
+    if (detKinBeamRot.the > paran.thetaMax) return;
 
   // filling my analysis variables
   myAna.RunNr = event.RunNr;
@@ -43,16 +44,16 @@ void Analysis::Analyze(const MuE::Event & event, const MuE::FastSim & fs)
   myAna.wgt_lep = event.wgt_lep;
   myAna.wgt_LO = event.wgt_LO;
   myAna.E_mu_in = event.E_mu_in;      
-  myAna.genKin = genKin;
-  myAna.detKin = detKin;
+  //myAna.genKin = genKin;
+  //myAna.detKin = detKin;
   myAna.detKinBeamRot = detKinBeamRot;
-  myAna.photon = photon;
+  //myAna.photon = photon;
   
   // filling my analysis tree
   if (paran.makeTree) atree->Fill();
   
   // filling my histos
-  histos->Fill(event, myAna);
+  //histos->Fill(event, myAna);
 }
 
 void Analysis::EndJob(const MCstat & mcsums) 
@@ -60,7 +61,7 @@ void Analysis::EndJob(const MCstat & mcsums)
   Long64_t n_events = mcsums.Nevgen;
 
   if (n_events >=0) {
-    cerr << "Final histogram normalizations, ratios, fits, plots "<<endl<<endl;
+    /* cerr << "Final histogram normalizations, ratios, fits, plots "<<endl<<endl;
     histos->SetSums(mcsums);
     histos->Normalize(n_events);
 
@@ -68,7 +69,7 @@ void Analysis::EndJob(const MCstat & mcsums)
     histos->Plot();
     if (paran.doTemplates) histos->Plot2D();
     histos->Fit();
-    histos->PlotResolutions();
+    histos->PlotResolutions();*/
 
     // write out root tree
     if (paran.makeTree) {
@@ -77,7 +78,7 @@ void Analysis::EndJob(const MCstat & mcsums)
     }
     
     // write out hist root file
-    output_hist_file->Write();
+    //output_hist_file->Write();
     
     if (n_events ==0) 
       cerr <<endl<< "Processed all input events, histograms written to file: results.root" << endl;
@@ -97,7 +98,7 @@ void  Analysis::EndJob(const MCstat & mcsums, const std::vector<std::pair<std::s
   Long64_t n_events = parmain.n_events;
 
   if (n_events >=0) {
-    cerr <<endl<< "Final histogram normalizations, ratios, fits, plots "<<endl<<endl;
+  /*  cerr <<endl<< "Final histogram normalizations, ratios, fits, plots "<<endl<<endl;
     histos->SetSums(mcsums);
     histos->Normalize(n_events);
 
@@ -106,7 +107,7 @@ void  Analysis::EndJob(const MCstat & mcsums, const std::vector<std::pair<std::s
     if (paran.doTemplates) histos->Plot2D();
     histos->Fit();
     histos->PlotResolutions();
-
+*/
     // write out root tree
     if (paran.makeTree) {
       atree->Print();
@@ -116,7 +117,7 @@ void  Analysis::EndJob(const MCstat & mcsums, const std::vector<std::pair<std::s
     // write out hist root file
     output_hist_file->Write();
     
-    if (n_events ==0) 
+ /*   if (n_events ==0) 
       cerr <<endl<< "Processed all input events, histograms written to file: results.root" << endl;
     else
       cerr <<endl<< "Processed " << n_events << " events, histograms written to file: results.root" << endl;
@@ -140,7 +141,7 @@ void  Analysis::EndJob(const MCstat & mcsums, const std::vector<std::pair<std::s
     //histos->LoadExtHistos(fp);
     //histos->LoadCarlos(mc_inputs);
     //histos->CompareWithCarlos();
-  }
+  }*/
   
 }
 

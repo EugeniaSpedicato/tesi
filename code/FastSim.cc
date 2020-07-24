@@ -99,13 +99,12 @@ PxPyPzEVector p_e_in_div=(p_e_in);
 PxPyPzEVector p_mu_out_div=RotDiv(p_mu_in_div,p_mu_out);
 PxPyPzEVector p_e_out_div=RotDiv(p_mu_in_div,p_e_out);
   
-PxPyPzEVector p_mu_out_div_smeared, p_e_out_div_smeared; 
 
 //effetto MCS out, ritorna una matrice con coo, angoli e momento per muone ed elettrone
 TMatrixD b=MCSout(p_mu_out_div,p_e_out_div,a[0][6],a[1][6],a[2][6],a[3][6]);
     
-    p_mu_out_div_smeared(b[8][3],b[8][4],b[8][5],b[8][6]);
-    p_e_out_div_smeared(b[17][3],b[17][4],b[17][5],b[17][6]);
+PxPyPzEVector p_mu_out_div_smeared(b[8][3],b[8][4],b[8][5],b[8][6]);
+PxPyPzEVector p_e_out_div_smeared(b[17][3],b[17][4],b[17][5],b[17][6]);
 
   
   /*  if (MSopt ==0) {

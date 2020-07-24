@@ -311,7 +311,7 @@ PxPyPzEVector FastSim::SmearX(const PxPyPzEVector & k) const
 {
   Double_t thrms = ThetaRMS(k);
   //HO AGGIUNTO QUESTO
- /* Double_t divx = gRandom->Gaus(0., 0.3);
+  Double_t divx = gRandom->Gaus(0., 0.3);
   Double_t divy = gRandom->Gaus(0., 0.2);
     
   Double_t smearx = gRandom->Gaus(divx, thrms);
@@ -645,7 +645,7 @@ Double_t sigBE=(13.6/energy)*sqrt(sB/2*x0B)*(1+0.038*log(sB/2*x0B)); //rad
             thetaXin[0]=anglexin;
             xin[0]=gRandom->Gaus(0., sigX);
             
-            thetaY[0]=angley;
+            thetaY[0]=angleyin;
             yin[0]=gRandom->Gaus(0., sigY);
    
 
@@ -713,8 +713,8 @@ Double_t sigBE=(13.6/energy)*sqrt(sB/2*x0B)*(1+0.038*log(sB/2*x0B)); //rad
                  x[0][0]=xin[6]+d*tan(thetaXin[6])+(1/sqrt(3))*0.0075*(thetaX1)+(1/sqrt(3))*0.0075*(thetaX[0][0]);
                  y[0][0]=yin[6]+d*tan(thetaYin[6])+(1/sqrt(3))*0.0075*(thetaY1)+(1/sqrt(3))*0.0075*(thetaY[0][0]);  
     
-                 xe[0][0]=xx+d*tan(thetaXin[6])+(1/sqrt(3))*0.0075*(thetaX1)+(1/sqrt(3))*0.0075*(thetaXe[0][0]);
-                 y[0][0]=yy+d*tan(thetaYin[6])+(1/sqrt(3))*0.0075*(thetaY1)+(1/sqrt(3))*0.0075*(thetaYe[0][0]);  
+                 xe[0][0]=xin[6]+d*tan(thetaXin[6])+(1/sqrt(3))*0.0075*(thetaX1)+(1/sqrt(3))*0.0075*(thetaXe[0][0]);
+                 y[0][0]=yin[6]+d*tan(thetaYin[6])+(1/sqrt(3))*0.0075*(thetaY1)+(1/sqrt(3))*0.0075*(thetaYe[0][0]);  
               
 //entro nelle 3 coppie di silici
 for (Int_t p=1; p<7; p++)  {

@@ -21,7 +21,7 @@ void Analysis::BeginJob()
   
   cout<<"\n"<<"Analysis Inputs: thetaMax for preselection and histograms = "<< paran.thetaMax << " mrad"<<endl;
 
-  histos = new Histos(pargen, paran);
+ // histos = new Histos(pargen, paran);
 }
 
 void Analysis::Analyze(const MuE::Event & event, const MuE::FastSim & fs)
@@ -143,5 +143,5 @@ void  Analysis::EndJob(const MCstat & mcsums, const std::vector<std::pair<std::s
     //histos->CompareWithCarlos();
   }*/
   
-}
+}}
 

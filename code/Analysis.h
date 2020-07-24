@@ -12,7 +12,7 @@
 #include "MuEtree.h"
 #include "MuEana.h"
 #include "FastSim.h"
-#include "Histos.h"
+//#include "Histos.h"
 #include "Inputs.h"
 
 namespace MuE {
@@ -41,7 +41,7 @@ namespace MuE {
     TFile * output_tree_file;
     TTree * atree;
     
-    Histos * histos;
+   // Histos * histos;
 
   };
 }

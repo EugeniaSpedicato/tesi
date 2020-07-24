@@ -28,10 +28,10 @@ namespace MuE {
 
     void Process(const Event & event);
 
-    const KineVars & GetGenKin() const {return genKin;}
-    const KineVars & GetDetKin() const {return detKin;}
+   // const KineVars & GetGenKin() const {return genKin;}
+    // const KineVars & GetDetKin() const {return detKin;}
     const KineVars & GetDetKinBeamRot() const {return detKinBeamRot;}
-    const Photon & GetPhoton() const {return photon;}
+   // const Photon & GetPhoton() const {return photon;}
 
     void RandomNrSync();
 
@@ -43,16 +43,16 @@ namespace MuE {
     PxPyPzEVector Lorentz_ToCoM(const PxPyPzEVector & plab) const;
     PxPyPzEVector Lorentz_ToLab(const PxPyPzEVector & pcm) const;
 
-    Double_t ThetaRMS(const PxPyPzEVector & p) const; 
+    // Double_t ThetaRMS(const PxPyPzEVector & p) const; 
     PxPyPzEVector RotDivIN(const PxPyPzEVector & p) const; 
     PxPyPzEVector RotDiv(const PxPyPzEVector & p,const PxPyPzEVector & o) const; 
-    PxPyPzEVector Smear(const PxPyPzEVector & p) const; 
-    PxPyPzEVector SmearX(const PxPyPzEVector & p) const; 
-    PxPyPzEVector SmearPolar(const PxPyPzEVector & p) const; 
+    //PxPyPzEVector Smear(const PxPyPzEVector & p) const; 
+   // PxPyPzEVector SmearX(const PxPyPzEVector & p) const; 
+   // PxPyPzEVector SmearPolar(const PxPyPzEVector & p) const; 
     //TMatrixD coo(const Double_t & a, const Double_t & s,const Double_t & ae, const Double_t & se) const; 
     //TMatrixD coo(const PxPyPzEVector & p,const PxPyPzEVector & q) const; 
-    TMatrixD MCSin(const PxPyPzEVector & k) const; 
-    TMatrixD MCSout(const PxPyPzEVector & k, const PxPyPzEVector & ke, const Double_t xx, const Double_t yy, const Double_t thX, const Double_t thY) const; 
+    // TMatrixD MCSin(const PxPyPzEVector & k) const; 
+    TMatrixD MCSout(const PxPyPzEVector & kin, const PxPyPzEVector & k, const PxPyPzEVector & ke) const; 
 
     void LoadKineVars(const PxPyPzEVector & p_mu_in,  const PxPyPzEVector & p_e_in, 
 		      const PxPyPzEVector & p_mu_out, const PxPyPzEVector & p_e_out, 
@@ -75,10 +75,10 @@ namespace MuE {
 
     PxPyPzEVector p_system; // mu-e centre-of-mass system fourmomentum
     Double_t Minv; // event invariant mass = sqrt(s)
-    KineVars genKin; // kinematic variables at Gen-level for e and mu track
-    KineVars detKin; // kinematic variables at Detector-level for e and mu track
+   // KineVars genKin; // kinematic variables at Gen-level for e and mu track
+   // KineVars detKin; // kinematic variables at Detector-level for e and mu track
     KineVars detKinBeamRot; // kinematic variables at Detector-level for e and mu track with divergence
-    Photon photon; // photon variables at Gen-level
+   // Photon photon; // photon variables at Gen-level
 
   };
 }

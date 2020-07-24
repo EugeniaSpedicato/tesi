@@ -90,10 +90,10 @@ virtual ~Photon(){};
     Long64_t EventNr;
     Double_t wgt_full, wgt_norun, wgt_lep, wgt_LO;   // event weights 
     Double_t E_mu_in;  // incoming muon energy
-    KineVars genKin;   // kinematic variables at Generator-level for e and mu tracks
-    KineVars detKin; // kinematic variables at Detector-level for e and mu tracks
+   // KineVars genKin;   // kinematic variables at Generator-level for e and mu tracks
+   // KineVars detKin; // kinematic variables at Detector-level for e and mu tracks
     KineVars detKinBeamRot; 
-      Photon photon;     // photon kinematic variables at Gen-level
+    //  Photon photon;     // photon kinematic variables at Gen-level
     
     MuEana():
      RunNr(0),EventNr(0),wgt_full(0),wgt_norun(0),wgt_lep(0),wgt_LO(0),E_mu_in(0)

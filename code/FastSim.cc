@@ -645,7 +645,7 @@ Double_t sigBE=(13.6/energy)*sqrt(sB/2*x0B)*(1+0.038*log(sB/2*x0B)); //rad
             thetaXin[0]=anglexin;
             xin[0]=gRandom->Gaus(0., sigX);
             
-            thetaY[0]=angleyin;
+            thetaYin[0]=angleyin;
             yin[0]=gRandom->Gaus(0., sigY);
    
 
@@ -788,8 +788,8 @@ for (Int_t p=1; p<7; p++)  {
                  thetaXe[0][0]= 0;
                  thetaYe[0][0]= 0;
 
-                 x[0][0]=xx+d*tan(thetaXin[6])+(1/sqrt(3))*sB*(thetaX[0][0]);
-                 y[0][0]=yy+d*tan(thetaYin[6])+(1/sqrt(3))*sB*(thetaY[0][0]);
+                 x[0][0]=thetaXin[6]+d*tan(thetaXin[6])+(1/sqrt(3))*sB*(thetaX[0][0]);
+                 y[0][0]=thetaYin[6]+d*tan(thetaYin[6])+(1/sqrt(3))*sB*(thetaY[0][0]);
                  xe[0][0]=0;
                  ye[0][0]=0;
        

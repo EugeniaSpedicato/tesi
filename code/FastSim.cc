@@ -102,7 +102,7 @@ PxPyPzEVector p_e_out_div=RotDiv(p_mu_in_div,p_e_out);
 PxPyPzEVector p_mu_out_div_smeared, p_e_out_div_smeared; 
 
 //effetto MCS out, ritorna una matrice con coo, angoli e momento per muone ed elettrone
-TMatrixD b=MCSin(p_mu_out_div,p_e_out_div,a[0][6],a[1][6],a[2][6],a[3][6]);
+TMatrixD b=MCSout(p_mu_out_div,p_e_out_div,a[0][6],a[1][6],a[2][6],a[3][6]);
     
     p_mu_out_div_smeared(b[8][3],b[8][4],b[8][5],b[8][6]);
     p_e_out_div_smeared(b[17][3],b[17][4],b[17][5],b[17][6]);
@@ -515,7 +515,7 @@ else return coo_in;
 
 
 
-TMatrixD MCSin(const PxPyPzEVector & k) const
+TMatrixD FastSim::MCSin(const PxPyPzEVector & k) const
 {   
 Double_t const energy   = 150000; //MeV
 
@@ -629,7 +629,7 @@ Double_t sigSI=(13.6/energy)*sqrt(sS/x0S)*(1+0.038*log(sS/x0S)); //rad
 coo_ang_in[4][0]= skx;
 coo_ang_in[4][1]= sky;
 coo_ang_in[4][2]= skz;
-coo_ang_in[4][3]= k.E;
+coo_ang_in[4][3]= k.E();
 coo_ang_in[4][4]=0;
 coo_ang_in[4][5]=0;
 coo_ang_in[4][6]=0;
@@ -643,7 +643,7 @@ return coo_ang_in;
 
 
 
-TMatrixD MCSout(const PxPyPzEVector & k, const PxPyPzEVector & ke, const Double_t xx, const Double_t yy, const Double_t thX, const Double_t thY) const
+TMatrixD FastSim::MCSout(const PxPyPzEVector & k, const PxPyPzEVector & ke, const Double_t xx, const Double_t yy, const Double_t thX, const Double_t thY) const
 {   
 Double_t const energy   = 150000; //MeV
 
@@ -925,7 +925,7 @@ for (Int_t p=1; p<7; p++)  {
         coo_ang_fin[17][5]=skze;      
         coo_ang_fin[17][6]=ke.E();   
         
-    return coo_ang_in;
+    return coo_ang_fin;
         
     }
 
@@ -952,8 +952,8 @@ kv.cooYmu = coo_fin[0][1];
 
 kv.tar = coo_fin[0][2];*/
     
-TMatrixD a=MCSin(p_mu_in_div);    
-TMatrixD b=MCSin(p_mu_out_div,p_e_out_div,a[0][6],a[1][6],a[2][6],a[3][6]);
+TMatrixD a=MCSin(p_mu_in);    
+TMatrixD b=MCSout(p_mu_out,p_e_out,a[0][6],a[1][6],a[2][6],a[3][6]);
 kv.cooXe = b[17][0];
 kv.cooXmu = b[8][0];
 kv.cooYe = b[17][1];

@@ -115,7 +115,7 @@ cout<< divthx <<" " <<divthy<<endl;
 
 
  }   
-    
+/*  
 
 //  devi prendere il theta Mu e theta E, metti sotto loadkine vars, sarà forse genKin.the o .thmu e .phe phmu
 TMatrixD coo(const PxPyPzEVector & k,const Double_t & the, const Double_t & phi) 
@@ -481,7 +481,7 @@ return coo_ang_fin;
     }
 
 }
-
+*/
 
 void provaMat()
 {
@@ -506,8 +506,7 @@ PxPyPzEVector p_in_div=RotDiv(p_in);
 Double_t theta=p_in_div.Theta();
 Double_t phi=p_in_div.Phi();
 
-        for(Int_t j=0; j<100; j++)
-    {
+/*
 Int_t tar=gRandom->Integer(2);  
 TMatrixD coo_in=MCSin(p_in_div);
 TMatrixD coo_f=MCSout(p_out,tar,coo_in[0][6],coo_in[1][6],coo_in[2][6],coo_in[3][6]);
@@ -528,6 +527,9 @@ TMatrixD coo_f=MCSout(p_out,tar,coo_in[0][6],coo_in[1][6],coo_in[2][6],coo_in[3]
     }
  cout << " xf MC= " << coo_f[8][0]<< " yf MC= " << coo_f[8][1] << " ThXf MC= " << coo_f[8][2] << " ThYf MC= " << coo_f[8][3] << " tarf= " << coo_f[8][4] <<endl;  
 }
+    */
+    
+    
     
 }
     

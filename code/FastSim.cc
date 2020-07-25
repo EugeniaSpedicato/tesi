@@ -438,7 +438,7 @@ TMatrixD FastSim::coo(const Double_t & the, const Double_t & phi,const Double_t 
     }
       
         
-else return coo_in;
+else return coo_in; 
 }
 */
 
@@ -612,7 +612,7 @@ Double_t sigSI=(13.6/energy)*sqrt(sS/x0S)*(1+0.038*log(sS/x0S)); //rad
 // considero sB/2 per quandp interagisce a metà 
 Double_t sigBE2=(13.6/energy)*sqrt(sB/2*x0B)*(1+0.038*log(sB/2*x0B)); //rad
 // considero sB/2 per quandp interagisce a metà 
-Double_t sigBE=(13.6/energy)*sqrt(sB/2*x0B)*(1+0.038*log(sB/2*x0B)); //rad    
+Double_t sigBE=(13.6/energy)*sqrt(sB*x0B)*(1+0.038*log(sB*x0B)); //rad    
     
     
     Double_t thetaXin[7];
@@ -714,7 +714,7 @@ Double_t sigBE=(13.6/energy)*sqrt(sB/2*x0B)*(1+0.038*log(sB/2*x0B)); //rad
                  y[0][0]=yin[6]+d*tan(thetaYin[6])+(1/sqrt(3))*0.0075*(thetaY1)+(1/sqrt(3))*0.0075*(thetaY[0][0]);  
     
                  xe[0][0]=xin[6]+d*tan(thetaXin[6])+(1/sqrt(3))*0.0075*(thetaX1)+(1/sqrt(3))*0.0075*(thetaXe[0][0]);
-                 y[0][0]=yin[6]+d*tan(thetaYin[6])+(1/sqrt(3))*0.0075*(thetaY1)+(1/sqrt(3))*0.0075*(thetaYe[0][0]);  
+                 ye[0][0]=yin[6]+d*tan(thetaYin[6])+(1/sqrt(3))*0.0075*(thetaY1)+(1/sqrt(3))*0.0075*(thetaYe[0][0]);  
               
 //entro nelle 3 coppie di silici
 for (Int_t p=1; p<7; p++)  {
@@ -774,7 +774,7 @@ for (Int_t p=1; p<7; p++)  {
                 ye[1][p+1]=ye[1][p]+dSS*tan(thetaYe[1][p])+(1/sqrt(3))*sS*thetaYe[1][p+1]+gRandom->Gaus(0,ris);                 
                  }}
         
-        Double_t xf = x[1][6]+dCAL*tan(thetaX[1][6]);
+    Double_t xf = x[1][6]+dCAL*tan(thetaX[1][6]);
     Double_t yf = y[1][6]+dCAL*tan(thetaY[1][6]);
     Double_t xfe = xe[1][6]+dCAL*tan(thetaXe[1][6]);
     Double_t yfe = ye[1][6]+dCAL*tan(thetaYe[1][6]);
@@ -855,8 +855,8 @@ for (Int_t p=1; p<7; p++)  {
                  thetaXe[0][0]= 0;
                  thetaYe[0][0]= 0;
 
-                 x[0][0]=thetaXin[6]+d*tan(thetaXin[6])+(1/sqrt(3))*sB*(thetaX[0][0]);
-                 y[0][0]=thetaYin[6]+d*tan(thetaYin[6])+(1/sqrt(3))*sB*(thetaY[0][0]);
+                 x[0][0]=xin[6]+d*tan(thetaXin[6])+(1/sqrt(3))*sB*(thetaX[0][0]);
+                 y[0][0]=yin[6]+d*tan(thetaYin[6])+(1/sqrt(3))*sB*(thetaY[0][0]);
                  xe[0][0]=0;
                  ye[0][0]=0;
        
@@ -931,7 +931,7 @@ for (Int_t p=1; p<7; p++)  {
                  }}
         // sul calorimetro
         
-Double_t xf = x[1][6]+dCAL*tan(thetaX[1][6]);
+    Double_t xf = x[1][6]+dCAL*tan(thetaX[1][6]);
     Double_t yf = y[1][6]+dCAL*tan(thetaY[1][6]);
     Double_t xfe = xe[1][6]+dCAL*tan(thetaXe[1][6]);
     Double_t yfe = ye[1][6]+dCAL*tan(thetaYe[1][6]);
@@ -999,6 +999,11 @@ Double_t xf = x[1][6]+dCAL*tan(thetaX[1][6]);
     return coo_ang_fin;
         
     }
+ TMatrixD coo_in(1,3);
+ coo_in[0][0]=0;
+ coo_in[0][1]=0;
+ coo_in[0][2]=0;
+else return coo_in; 
 
 }
 

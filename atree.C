@@ -356,9 +356,6 @@ Double_t DE_eBR=sqrt(peOUTBR*peOUTBR+(0.5109989461 *0.001)*(0.5109989461 *0.001)
     coox_e->SetLineColor(kRed);
     coox_e->Draw("HIST same");
 
-    
-
- 
     cooX->cd(2);
     cooy_mu->Draw("HIST");
     cooy_e->SetLineColor(kRed);
@@ -393,7 +390,7 @@ Double_t DE_eBR=sqrt(peOUTBR*peOUTBR+(0.5109989461 *0.001)*(0.5109989461 *0.001)
     tarONEXe->Draw("HIST same");
     tar->cd(2);
       tarONEYmu->SetLineColor(42);
-    tarONEXmu->Draw("HIST");
+    tarONEYmu->Draw("HIST");
       tarONEYe->SetLineColor(46);
     tarONEYe->Draw("HIST same");
     tar->cd(3);

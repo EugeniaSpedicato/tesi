@@ -113,6 +113,7 @@ TH1F* thYZeLO=new TH1F("b", "theta YZ e", 150,-0.05,0.05);
        Npy_e_outNO->Fill(detKinBeamRot_pYe_out,wgt_full);
        Npz_e_outNO->Fill(detKinBeamRot_pZe_out,wgt_full);
        
+       /*
         px_mu_out->Fill(detKin_pXmu_out,wgt_LO);
        py_mu_out->Fill(detKin_pYmu_out,wgt_LO);
        pz_mu_out->Fill(detKin_pZmu_out,wgt_LO);
@@ -141,8 +142,8 @@ TH1F* thYZeLO=new TH1F("b", "theta YZ e", 150,-0.05,0.05);
        gNpy_e_outNO->Fill(genKin_pYe_out,wgt_full);
        gNpz_e_outNO->Fill(genKin_pZe_out,wgt_full);
        
-       
-       th->Fill(detKin_thmu,wgt_full);
+       */
+       //th->Fill(detKin_thmu,wgt_full);
        thBR->Fill(detKinBeamRot_thmu,wgt_full);
        
             if (detKinBeamRot_tar==0)
@@ -173,7 +174,7 @@ TH1F* thYZeLO=new TH1F("b", "theta YZ e", 150,-0.05,0.05);
              thYZmu_two->Fill(th_yzmu,wgt_full);
        }
 
-Double_t anglex_mu = atan2(detKin_pXmu_out, detKin_pZmu_out);
+/* Double_t anglex_mu = atan2(detKin_pXmu_out, detKin_pZmu_out);
 Double_t angley_mu = atan2(detKin_pYmu_out, detKin_pZmu_out);       
 Double_t anglex_e = atan2(detKin_pXe_out, detKin_pZe_out);
 Double_t angley_e = atan2(detKin_pYe_out, detKin_pZe_out);
@@ -187,13 +188,13 @@ Double_t angley_e = atan2(detKin_pYe_out, detKin_pZe_out);
     thYZmuLO->Fill(angley_mu,wgt_LO);
     thXZeLO->Fill(anglex_e,wgt_LO);
     thYZeLO->Fill(angley_e,wgt_LO);
-       
+       */
        
        
        
    }
     
-   /* TCanvas * diffP= new TCanvas("diff","diff",400,10,1500,1000);
+    TCanvas * diffP= new TCanvas("diff","diff",400,10,1500,1000);
     diffP->Divide(3,2);
     diffP->cd(1);
     Npx_e_outNO->SetLineColor(kRed);
@@ -249,7 +250,7 @@ Double_t angley_e = atan2(detKin_pYe_out, detKin_pZe_out);
     
     diffP->SaveAs("LO-NLO.png");
     
-    
+    /*
         TCanvas * ndiffP= new TCanvas("diff","diff",400,10,1500,1000);
    ndiffP->Divide(3,2);
     ndiffP->cd(1);

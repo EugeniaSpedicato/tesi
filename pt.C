@@ -33,61 +33,63 @@ TH1F* thBRe=new TH1F("h3bNn", "theta BR", 150,0,0.05);
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
        
-     Double_t PTmu=sqrt(detKin_pXmu_out*detKin_pXmu_out+detKin_pYmu_out*detKin_pYmu_out);
-     Double_t PTe=sqrt(detKin_pXe_out*detKin_pXe_out+detKin_pYe_out*detKin_pYe_out);
+     //Double_t PTmu=sqrt(detKin_pXmu_out*detKin_pXmu_out+detKin_pYmu_out*detKin_pYmu_out);
+     //Double_t PTe=sqrt(detKin_pXe_out*detKin_pXe_out+detKin_pYe_out*detKin_pYe_out);
        
      Double_t PTBRmu=sqrt(detKinBeamRot_pXmu_out*detKinBeamRot_pXmu_out+detKinBeamRot_pYmu_out*detKinBeamRot_pYmu_out);
      Double_t PTBRe=sqrt(detKinBeamRot_pXe_out*detKinBeamRot_pXe_out+detKinBeamRot_pYe_out*detKinBeamRot_pYe_out);
     
   
-       ptmu->Fill(PTmu,wgt_full);
+       //ptmu->Fill(PTmu,wgt_full);
        ptBRmu->Fill(PTBRmu,wgt_full);
        
-       pte->Fill(PTe,wgt_full);
+       //pte->Fill(PTe,wgt_full);
        ptBRe->Fill(PTBRe,wgt_full);
        
-        thmu->Fill(detKin_thmu*0.001,wgt_full);
+        //thmu->Fill(detKin_thmu*0.001,wgt_full);
        thBRmu->Fill(detKinBeamRot_thmu*0.001,wgt_full);
        
-        the->Fill(detKin_the*0.001,wgt_full);
+        //the->Fill(detKin_the*0.001,wgt_full);
        thBRe->Fill(detKinBeamRot_the*0.001,wgt_full);
        }
            
     TCanvas * ptq= new TCanvas("ptq","pqt",400,10,1500,1000);
-    ptq->Divide(2,2);
-    ptq->cd(1);
+    ptq->Divide(1,2);
+    /*ptq->cd(1);
     ptmu->SetLineColor(40);
-    ptmu->Draw("HIST");
+    ptmu->Draw("HIST");*/
     
-    ptq->cd(2);
+    ptq->cd(1);
     ptBRmu->SetLineColor(40);
     ptBRmu->Draw("HIST");
     
-    ptq->cd(3);
+    ptq->cd(2);
     ptBRe->SetLineColor(46);
     ptBRe->Draw("HIST");
     
-    ptq->cd(4);
+    /*ptq->cd(4);
     pte->SetLineColor(46);
-    pte->Draw("HIST");
+    pte->Draw("HIST");*/
     
     ptq->SaveAs("pT.png");
     
+    */
     
     TCanvas * t= new TCanvas("t","t",400,10,1500,1000);
-    t->Divide(2,2);
-    t->cd(1);
+    t->Divide(1,2);
+    /*t->cd(1);
     thmu->SetLineColor(40);
-    thmu->Draw("HIST");
+    thmu->Draw("HIST");*/
     
-    t->cd(2);
+    t->cd(1);
     thBRmu->SetLineColor(40);
     thBRmu->Draw("HIST");
     
-    t->cd(3);
+    /*t->cd(3);
     the->SetLineColor(46);
-    the->Draw("HIST");
-    t->cd(4);
+    the->Draw("HIST");*/
+    
+    t->cd(2);
     thBRe->SetLineColor(46);
     thBRe->Draw("HIST");
     

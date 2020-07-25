@@ -614,6 +614,10 @@ Double_t sigBE2=(13.6/energy)*sqrt(sB/2*x0B)*(1+0.038*log(sB/2*x0B)); //rad
 // considero sB/2 per quandp interagisce a metà 
 Double_t sigBE=(13.6/energy)*sqrt(sB*x0B)*(1+0.038*log(sB*x0B)); //rad    
     
+    TMatrixD coo_in(1,3);
+ coo_in[0][0]=0;
+ coo_in[0][1]=0;
+ coo_in[0][2]=0;
     
     Double_t thetaXin[7];
     Double_t thetaYin[7];
@@ -999,10 +1003,7 @@ for (Int_t p=1; p<7; p++)  {
     return coo_ang_fin;
         
     }
- TMatrixD coo_in(1,3);
- coo_in[0][0]=0;
- coo_in[0][1]=0;
- coo_in[0][2]=0;
+
 else return coo_in; 
 
 }

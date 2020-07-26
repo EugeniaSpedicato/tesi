@@ -54,16 +54,16 @@ TH1F* thBRe=new TH1F("h3bNn", "theta BR", 150,0,0.05);
        }
            
     TCanvas * ptq= new TCanvas("ptq","pqt",400,10,1500,1000);
-    ptq->Divide(1,2);
+    ptq->Divide(2,2);
     ptq->cd(1);
     ptmu->SetLineColor(40);
     ptmu->Draw("HIST");
     
-    ptq->cd(1);
+    ptq->cd(2);
     ptBRmu->SetLineColor(40);
     ptBRmu->Draw("HIST");
     
-    ptq->cd(2);
+    ptq->cd(3);
     ptBRe->SetLineColor(46);
     ptBRe->Draw("HIST");
     
@@ -76,12 +76,12 @@ TH1F* thBRe=new TH1F("h3bNn", "theta BR", 150,0,0.05);
     
     
     TCanvas * t= new TCanvas("t","t",400,10,1500,1000);
-    t->Divide(1,2);
+    t->Divide(2,2);
     t->cd(1);
     thmu->SetLineColor(40);
     thmu->Draw("HIST");
     
-    t->cd(1);
+    t->cd(2);
     thBRmu->SetLineColor(40);
     thBRmu->Draw("HIST");
     
@@ -89,7 +89,7 @@ TH1F* thBRe=new TH1F("h3bNn", "theta BR", 150,0,0.05);
     the->SetLineColor(46);
     the->Draw("HIST");
     
-    t->cd(2);
+    t->cd(4);
     thBRe->SetLineColor(46);
     thBRe->Draw("HIST");
     

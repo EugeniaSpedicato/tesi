@@ -174,10 +174,10 @@ TH1F* thYZeLO=new TH1F("b", "theta YZ e", 150,-0.05,0.05);
              thYZmu_two->Fill(th_yzmu,wgt_full);
        }
 
-/* Double_t anglex_mu = atan2(detKin_pXmu_out, detKin_pZmu_out);
-Double_t angley_mu = atan2(detKin_pYmu_out, detKin_pZmu_out);       
-Double_t anglex_e = atan2(detKin_pXe_out, detKin_pZe_out);
-Double_t angley_e = atan2(detKin_pYe_out, detKin_pZe_out);
+ Double_t anglex_mu = atan2(detKinBeamRot_pXmu_out, detKinBeamRot_pZmu_out);
+Double_t angley_mu = atan2(detKinBeamRot_pYmu_out, detKinBeamRot_pZmu_out);       
+Double_t anglex_e = atan2(detKinBeamRot_pXe_out, detKinBeamRot_pZe_out);
+Double_t angley_e = atan2(detKinBeamRot_pYe_out, detKinBeamRot_pZe_out);
        
     thXZmu->Fill(anglex_mu,wgt_full);
     thYZmu->Fill(angley_mu,wgt_full);
@@ -188,8 +188,11 @@ Double_t angley_e = atan2(detKin_pYe_out, detKin_pZe_out);
     thYZmuLO->Fill(angley_mu,wgt_LO);
     thXZeLO->Fill(anglex_e,wgt_LO);
     thYZeLO->Fill(angley_e,wgt_LO);
-       */
+    
        
+           
+           
+           
        
        
    }
@@ -411,7 +414,7 @@ Double_t angley_e = atan2(detKin_pYe_out, detKin_pZe_out);
   tar->SaveAs("thXZYZ.png");
     
     
-/* 
+
 TCanvas * theC= new TCanvas("tar","tar",400,10,1500,1000);
     theC->Divide(2,2);
     theC->cd(1);
@@ -441,6 +444,5 @@ TCanvas * theC= new TCanvas("tar","tar",400,10,1500,1000);
     
   theC->SaveAs("thAtan.png");
     
-        */
-    
+            
 }

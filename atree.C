@@ -18,15 +18,16 @@ TH1F* p_mu=new TH1F("h1", "momentum out muon", 150,0,200);
 TH1F* p_e=new TH1F("h2", "momentum out electron", 150,0,200);
 TH1F* p_muCODE=new TH1F("h1C", "momentum k.P() out muon", 150,0,200);
 TH1F* p_eCODE=new TH1F("h2C", "momentum k.P() out electron", 150,0,200);
-    
+
+       
 TH1F* BRE_mu=new TH1F("h1", "Energy muon", 150,0,200);
 TH1F* BRE_e=new TH1F("h2", "Energy electron", 150,0,200);
 TH1F* BRE_muCODE=new TH1F("h1C", "Energy muon", 150,0,200);
 TH1F* BRE_eCODE=new TH1F("h2C", "Energy electron", 150,0,200);
-TH1F* BRp_mu=new TH1F("h1", "momentum out muon", 150,0,200);
-TH1F* BRp_e=new TH1F("h2", "momentum out electron", 150,0,200);
-TH1F* BRp_muCODE=new TH1F("h1C", "momentum k.P() out muon", 150,0,200);
-TH1F* BRp_eCODE=new TH1F("h2C", "momentum k.P() out electron", 150,0,200);    
+TH1F* NLOp_mux=new TH1F("h1", "momentum out muon", 150,-0.3,0.3);
+TH1F* NLOp_ex=new TH1F("h2", "momentum out electron", 150,-0.3,0.3);
+TH1F* NLOp_muy=new TH1F("h1C", "momentum  out muon", 150,-0.3,0.3);
+TH1F* NLOp_ey=new TH1F("h2C", "momentum out electron", 150,-0.3,0.3);    
 
 TH1F* px_mu=new TH1F("h1", "pX_in muon", 190,-0.3,0.3);
 TH1F* py_mu=new TH1F("h2", "pY_in muon", 190,-0.3,0.3);
@@ -71,8 +72,33 @@ TH1F* diffY_mue=new TH1F("h", "DiffCoo Y mu and e-", 140,-0.3,0.3);
  
 TH2F  *X_Y_mu  = new TH2F("h2d" , " X  Vs. y of the muon",140,-0.5,-0.5,140,-0.5,0.5);
 TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.5,-0.5,140,-0.5,0.5);
+    
+    
+TH1F* GKpx_e_out=new TH1F("h1", "pX_out NO DIV", 150,-0.3,0.3);
+TH1F* GKpy_e_out=new TH1F("h2", "pY_out NO DIV", 150,-0.3,0.3);
+TH1F* GKpz_e_out=new TH1F("h3", "pZ_out NO DIV", 150,0,5);
+TH1F* GKpx_mu_out=new TH1F("h1a", "pX_out NO DIV", 150,-0.3,0.3);
+TH1F* GKpy_mu_out=new TH1F("h2a", "pY_out NO DIV", 150,-0.3,0.3);
+TH1F* GKpz_mu_out=new TH1F("h3a", "pZ_out NO DIV", 150,0,180);
+    
+TH1F* thXZmu=new TH1F("a", "theta XZ mu", 150,-0.005,0.005);
+TH1F* thYZmu=new TH1F("c", "theta YZ mu", 150,-0.005,0.005);
+    
+TH1F* thXZe=new TH1F("v", "theta XZ e", 150,-0.05,0.05);
+TH1F* thYZe=new TH1F("b", "theta YZ e", 150,-0.05,0.05);
  
- 
+     
+TH1F* ptmu=new TH1F("a", "PT", 150,0,0.25);
+TH1F* ptBRmu=new TH1F("a", "PT BR", 150,0,0.25);
+    
+TH1F* pte=new TH1F("ae", "PT", 150,0,0.25);
+TH1F* ptBRe=new TH1F("ae", "PT BR", 150,0,0.25);
+    
+TH1F* thmu=new TH1F("h3bNj", "theta", 150,0,0.002);
+TH1F* thBRmu=new TH1F("h3bNn", "theta BR", 150,0,0.002);
+    
+TH1F* the=new TH1F("h3bNj", "theta", 150,0,0.05);
+TH1F* thBRe=new TH1F("h3bNn", "theta BR", 150,0,0.05);
 
    if (fChain == 0) return;
 
@@ -88,44 +114,39 @@ Double_t pmuOUTBR = sqrt(detKinBeamRot_pXmu_out*detKinBeamRot_pXmu_out+detKinBea
 
 Double_t peOUTBR = sqrt(detKinBeamRot_pXe_out*detKinBeamRot_pXe_out+detKinBeamRot_pYe_out*detKinBeamRot_pYe_out+detKinBeamRot_pZe_out*detKinBeamRot_pZe_out);
 
-/*Double_t pmuOUT = sqrt(detKin_pXmu_out*detKin_pXmu_out+detKin_pYmu_out*detKin_pYmu_out+detKin_pZmu_out*detKin_pZmu_out);
+Double_t pmuOUT = sqrt(detKin_pXmu_out*detKin_pXmu_out+detKin_pYmu_out*detKin_pYmu_out+detKin_pZmu_out*detKin_pZmu_out);
     
 Double_t peOUT = sqrt(detKin_pXe_out*detKin_pXe_out+detKin_pYe_out*detKin_pYe_out+detKin_pZe_out*detKin_pZe_out);
- */
+ 
        
 
-//Double_t DE_eBR =  (2* (0.5109989461 *0.001)*(0.5109989461 *0.001)-  detKinBeamRot_t24)/(2* (0.5109989461 *0.001));
-//Double_t DE_e =  (2* (0.5109989461 *0.001)*(0.5109989461 *0.001)-  detKin_t24)/(2* (0.5109989461 *0.001));
+Double_t DE_eBR =  (2* (0.5109989461 *0.001)*(0.5109989461 *0.001)-  detKinBeamRot_t24)/(2* (0.5109989461 *0.001));
+Double_t DE_e =  (2* (0.5109989461 *0.001)*(0.5109989461 *0.001)-  detKin_t24)/(2* (0.5109989461 *0.001));
        
- /*      
+    
 Double_t DE_mu=sqrt(pmuOUT*pmuOUT+(105.6583745 *0.001)*(105.6583745 *0.001));
-Double_t DE_e=sqrt(peOUT*peOUT+(0.5109989461 *0.001)*(0.5109989461 *0.001));*/
+Double_t DE_e=sqrt(peOUT*peOUT+(0.5109989461 *0.001)*(0.5109989461 *0.001));
 
 Double_t DE_muBR=sqrt(pmuOUTBR*pmuOUTBR+(105.6583745 *0.001)*(105.6583745 *0.001));
 Double_t DE_eBR=sqrt(peOUTBR*peOUTBR+(0.5109989461 *0.001)*(0.5109989461 *0.001));
        
          
-   //    E_muCODE->Fill(detKin_Emu,wgt_full);
-    //   E_eCODE->Fill(detKin_Ee,wgt_full);
-     //  E_mu->Fill(DE_mu,wgt_full);
-    //   E_e->Fill(DE_e,wgt_full);
+       E_muCODE->Fill(detKin_Emu,wgt_full);
+       E_eCODE->Fill(detKin_Ee,wgt_full);
+       E_mu->Fill(DE_mu,wgt_full);
+       E_e->Fill(DE_e,wgt_full);
        
        BRE_muCODE->Fill(detKinBeamRot_Emu,wgt_full);
        BRE_eCODE->Fill(detKinBeamRot_Ee,wgt_full);
        BRE_mu->Fill(DE_muBR,wgt_full);
        BRE_e->Fill(DE_eBR,wgt_full);
 
-         
-   //    p_muCODE->Fill(detKin_Pmu_out,wgt_full); //estratto da evento k.P()
-    //   p_eCODE->Fill(detKin_Pe_out,wgt_full); //estratto da evento k.P()
-     //  p_mu->Fill(pmuOUT,wgt_full); //calcolato con px,py,pz
-     //  p_e->Fill(peOUT,wgt_full);   //calcolato con px,py,pz
-       
-       BRp_muCODE->Fill(detKinBeamRot_Pmu_out,wgt_full); //estratto da evento k.P()
-       BRp_eCODE->Fill(detKinBeamRot_Pe_out,wgt_full); //estratto da evento k.P()
-       BRp_mu->Fill(pmuOUTBR,wgt_full); //calcolato con px,py,pz
-       BRp_e->Fill(peOUTBR,wgt_full);   //calcolato con px,py,pz
-       
+
+    NLOp_mux->Fill(detKin_pXmu_out,wgt_NLO); //estratto da evento k.P()
+    NLOp_ex->Fill(detKin_pXe_out,wgt_NLO); //estratto da evento k.P()
+    NLOp_muy->Fill(detKin_pYmu_out,wgt_NLO); //calcolato con px,py,pz
+    NLOp_ey->Fill(detKin_pYe_out,wgt_NLO);   //calcolato con px,py,pz
+              
        
        px_mu->Fill(detKinBeamRot_pXmu,wgt_full);
        py_mu->Fill(detKinBeamRot_pYmu,wgt_full);
@@ -134,16 +155,16 @@ Double_t DE_eBR=sqrt(peOUTBR*peOUTBR+(0.5109989461 *0.001)*(0.5109989461 *0.001)
        px_mu_out->Fill(detKinBeamRot_pXmu_out,wgt_full);
        py_mu_out->Fill(detKinBeamRot_pYmu_out,wgt_full);
        pz_mu_out->Fill(detKinBeamRot_pZmu_out,wgt_full);
-   //    px_mu_outNO->Fill(detKin_pXmu_out,wgt_full);
-    //   py_mu_outNO->Fill(detKin_pYmu_out,wgt_full);
-    //   pz_mu_outNO->Fill(detKin_pZmu_out,wgt_full);
+       px_mu_outNO->Fill(detKin_pXmu_out,wgt_full);
+       py_mu_outNO->Fill(detKin_pYmu_out,wgt_full);
+       pz_mu_outNO->Fill(detKin_pZmu_out,wgt_full);
        
        px_e_out->Fill(detKinBeamRot_pXe_out,wgt_full);
        py_e_out->Fill(detKinBeamRot_pYe_out,wgt_full);
        pz_e_out->Fill(detKinBeamRot_pZe_out,wgt_full);
-    //    px_e_outNO->Fill(detKin_pXe_out,wgt_full);
-    //    py_e_outNO->Fill(detKin_pYe_out,wgt_full);
-    //    pz_e_outNO->Fill(detKin_pZe_out,wgt_full);
+        px_e_outNO->Fill(detKin_pXe_out,wgt_full);
+        py_e_outNO->Fill(detKin_pYe_out,wgt_full);
+        pz_e_outNO->Fill(detKin_pZe_out,wgt_full);
        
         coox_mu->Fill(detKinBeamRot_cooXmu,wgt_full);
        cooy_mu->Fill(detKinBeamRot_cooYmu,wgt_full);
@@ -156,12 +177,12 @@ Double_t DE_eBR=sqrt(peOUTBR*peOUTBR+(0.5109989461 *0.001)*(0.5109989461 *0.001)
        Double_t diffY=detKinBeamRot_cooYe-detKinBeamRot_cooYmu;
        diffY_mue->Fill(diffY,wgt_full);
        
-      //  Double_t diffPX=detKinBeamRot_pXe_out-detKin_pXe_out;
-      //  diffePX->Fill(diffPX,wgt_full);
-      //  Double_t diffPY=detKinBeamRot_pYe_out-detKin_pYe_out;
-     //   diffePY->Fill(diffPY,wgt_full);
-     //   Double_t diffPZ=detKinBeamRot_pZe_out-detKin_pZe_out;
-     //   diffePZ->Fill(diffPZ,wgt_full);
+        Double_t diffPX=detKinBeamRot_pXe_out-detKin_pXe_out;
+        diffePX->Fill(diffPX,wgt_full);
+        Double_t diffPY=detKinBeamRot_pYe_out-detKin_pYe_out;
+        diffePY->Fill(diffPY,wgt_full);
+        Double_t diffPZ=detKinBeamRot_pZe_out-detKin_pZe_out;
+        diffePZ->Fill(diffPZ,wgt_full);
        
      X_Y_mu ->Fill(detKinBeamRot_cooXmu, detKinBeamRot_cooYmu,wgt_full);
      X_Y_e ->Fill(detKinBeamRot_cooXe, detKinBeamRot_cooYe,wgt_full);
@@ -183,6 +204,45 @@ Double_t DE_eBR=sqrt(peOUTBR*peOUTBR+(0.5109989461 *0.001)*(0.5109989461 *0.001)
            
        }
        
+       
+        GKpx_mu_out->Fill(genKin_pXmu_out,wgt_full);
+       GKpy_mu_out->Fill(genKin_pYmu_out,wgt_full);
+       GKpz_mu_out->Fill(genKin_pZmu_out,wgt_full);
+       GKpx_e_out->Fill(genKin_pXe_out,wgt_full);
+       GKpy_e_out->Fill(genKin_pYe_out,wgt_full);
+       GKpz_e_out->Fill(genKin_pZe_out,wgt_full);
+       
+       
+    Double_t anglex_mu = atan2(detKin_pXmu_out, detKin_pZmu_out);
+    Double_t angley_mu = atan2(detKin_pYmu_out, detKin_pZmu_out);       
+    Double_t anglex_e = atan2(detKin_pXe_out, detKin_pZe_out);
+    Double_t angley_e = atan2(detKin_pYe_out, detKin_pZe_out);
+       
+    thXZmu->Fill(anglex_mu,wgt_full);
+    thYZmu->Fill(angley_mu,wgt_full);
+    thXZe->Fill(anglex_e,wgt_full);
+    thYZe->Fill(angley_e,wgt_full);
+       
+       
+    Double_t PTmu=sqrt(detKin_pXmu_out*detKin_pXmu_out+detKin_pYmu_out*detKin_pYmu_out);
+     Double_t PTe=sqrt(detKin_pXe_out*detKin_pXe_out+detKin_pYe_out*detKin_pYe_out);
+       
+     Double_t PTBRmu=sqrt(detKinBeamRot_pXmu_out*detKinBeamRot_pXmu_out+detKinBeamRot_pYmu_out*detKinBeamRot_pYmu_out);
+     Double_t PTBRe=sqrt(detKinBeamRot_pXe_out*detKinBeamRot_pXe_out+detKinBeamRot_pYe_out*detKinBeamRot_pYe_out);
+    
+  
+       ptmu->Fill(PTmu,wgt_LO);
+       ptBRmu->Fill(PTBRmu,wgt_LO);
+       
+       pte->Fill(PTe,wgt_LO);
+       ptBRe->Fill(PTBRe,wgt_LO);
+       
+        thmu->Fill(detKin_thmu*0.001,wgt_LO);
+       thBRmu->Fill(detKinBeamRot_thmu*0.001,wgt_LO);
+       
+        the->Fill(detKin_the*0.001,wgt_LO);
+       thBRe->Fill(detKinBeamRot_the*0.001,wgt_LO);
+       
    }
 
     px_mu->Fit("gaus");
@@ -192,8 +252,8 @@ Double_t DE_eBR=sqrt(peOUTBR*peOUTBR+(0.5109989461 *0.001)*(0.5109989461 *0.001)
     TCanvas * diffP= new TCanvas("diff","diff",400,10,1500,1000);
     diffP->Divide(3,2);
     diffP->cd(1);
-   //  px_e_outNO->SetLineColor(kRed);
-  //   px_e_outNO->Draw("HIST");
+     px_e_outNO->SetLineColor(kRed);
+     px_e_outNO->Draw("HIST");
     px_e_out->SetLineColor(kBlack);
     px_e_out->Draw("HIST");
 
@@ -201,8 +261,8 @@ Double_t DE_eBR=sqrt(peOUTBR*peOUTBR+(0.5109989461 *0.001)*(0.5109989461 *0.001)
     
     
     diffP->cd(2);
-  //   py_e_outNO->SetLineColor(kRed);
-  //   py_e_outNO->Draw("HIST");
+     py_e_outNO->SetLineColor(kRed);
+     py_e_outNO->Draw("HIST");
     py_e_out->SetLineColor(kBlack);
     py_e_out->Draw("HIST");
 
@@ -211,8 +271,8 @@ Double_t DE_eBR=sqrt(peOUTBR*peOUTBR+(0.5109989461 *0.001)*(0.5109989461 *0.001)
     
     
     diffP->cd(3);
-   //  pz_e_outNO->SetLineColor(kRed);
-   //  pz_e_outNO->Draw("HIST");
+     pz_e_outNO->SetLineColor(kRed);
+     pz_e_outNO->Draw("HIST");
     pz_e_out->SetLineColor(kBlack);
     pz_e_out->Draw("HIST");
 
@@ -220,24 +280,24 @@ Double_t DE_eBR=sqrt(peOUTBR*peOUTBR+(0.5109989461 *0.001)*(0.5109989461 *0.001)
     
     
     diffP->cd(4);
-  //   px_mu_outNO->SetLineColor(40);
-  //   px_mu_outNO->Draw("HIST");
+   px_mu_outNO->SetLineColor(40);
+ px_mu_outNO->Draw("HIST");
     px_mu_out->SetLineColor(46);
     px_mu_out->Draw("HIST");
 
     
     
     diffP->cd(5);
- //    py_mu_outNO->SetLineColor(40);
-  //   py_mu_outNO->Draw("HIST");
+     py_mu_outNO->SetLineColor(40);
+     py_mu_outNO->Draw("HIST");
     py_mu_out->SetLineColor(46);
     py_mu_out->Draw("HIST");
 
     
     
     diffP->cd(6);
-   //  pz_mu_outNO->SetLineColor(40);
-   //  pz_mu_outNO->Draw("HIST");
+     pz_mu_outNO->SetLineColor(40);
+     pz_mu_outNO->Draw("HIST");
     pz_mu_out->SetLineColor(46);
     pz_mu_out->Draw("HIST");
 
@@ -248,7 +308,7 @@ Double_t DE_eBR=sqrt(peOUTBR*peOUTBR+(0.5109989461 *0.001)*(0.5109989461 *0.001)
         
         
         
-  /*   TCanvas * d= new TCanvas("d","d",400,10,1500,1000);
+    TCanvas * d= new TCanvas("d","d",400,10,1500,1000);
     d->Divide(3,1);
     d->cd(1);
     diffePX->Draw("HIST");
@@ -257,10 +317,9 @@ Double_t DE_eBR=sqrt(peOUTBR*peOUTBR+(0.5109989461 *0.001)*(0.5109989461 *0.001)
     d->cd(3);
     diffePZ->Draw("HIST");
     d->SaveAs("diffEp.png");
-    */
-    
-    
- /*   
+
+
+
     TCanvas * E= new TCanvas("E","E",400,10,1500,1000);
     E->Divide(2,1);
     E->cd(1);
@@ -283,30 +342,20 @@ Double_t DE_eBR=sqrt(peOUTBR*peOUTBR+(0.5109989461 *0.001)*(0.5109989461 *0.001)
     BRE_eCODE->Draw("HIST same");    
     
     E->SaveAs("energy.png");
- */   
-   /* TCanvas * P= new TCanvas("P","P",400,10,1500,1000);
-    P->Divide(2,1);
-    P->cd(1);
-    p_mu->SetLineColor(kBlue);
-    p_mu->Draw("HIST");
-    p_muCODE->SetLineColor(kBlack);
-    p_muCODE->Draw("HIST same");
-    BRp_mu->SetLineColor(kRed);
-    BRp_mu->Draw("HIST same");
-    BRp_muCODE->SetLineColor(kOrange);
-    BRp_muCODE->Draw("HIST same");
-    P->cd(2);
-    p_e->SetLineColor(kBlue);
-    p_e->Draw("HIST");
-    p_eCODE->SetLineColor(kBlack);
-    p_eCODE->Draw("HIST same");
-    BRp_e->SetLineColor(kRed);
-    BRp_e->Draw("HIST same");
-    BRp_eCODE->SetLineColor(kOrange);
-    BRp_eCODE->Draw("HIST same");    
+  
+  TCanvas * P= new TCanvas("P","P",400,10,1500,1000);
+    P->Divide(2,2);
+    p->cd(1);
+        NLOp_mux->Draw("HIST");
+    p->cd(2);
+        NLOp_muy->Draw("HIST");
+    p->cd(3);
+        NLOp_ex->Draw("HIST");
+    p->cd(4);
+        NLOp_ey->Draw("HIST");
     
-    P->SaveAs("momentumTOT.png");
-    */
+    P->SaveAs("momentumNLO.png");
+    
     
 
     
@@ -405,6 +454,104 @@ Double_t DE_eBR=sqrt(peOUTBR*peOUTBR+(0.5109989461 *0.001)*(0.5109989461 *0.001)
     tarTWOYe->Draw("HIST same");
     
   tar->SaveAs("tar.png");
+    
+
+ TCanvas * c= new TCanvas("c","c",400,10,1500,1000);  
+    c->Divide(2,3);
+    c->cd(1);
+    px_mu_out->Draw("HIST");
+    GKpx_mu_out->SetLineColor(30);
+    GKpx_mu_out->Draw("HIST same");
+    
+    c->cd(2);
+    py_mu_out->Draw("HIST");
+    GKpy_mu_out->SetLineColor(30);
+    GKpy_mu_out->Draw("HIST same");
+    
+    c->cd(3);
+    pz_mu_out->Draw("HIST");
+    GKpz_mu_out->SetLineColor(30);
+    GKpz_mu_out->Draw("HIST same");
+    
+    c->cd(4);
+    px_e_out->Draw("HIST");
+    GKpx_e_out->SetLineColor(30);
+    GKpx_e_out->Draw("HIST same");
+    c->cd(5);
+    py_e_out->Draw("HIST");
+    GKpy_e_out->SetLineColor(30);
+    GKpy_e_out->Draw("HIST same");
+    c->cd(6);
+    pz_e_out->Draw("HIST");
+    GKpz_e_out->SetLineColor(30);
+    GKpz_e_out->Draw("HIST same");
+    
+    c->SaveAs("Poriginal.png");
+    
+    TCanvas * theC= new TCanvas("tar","tar",400,10,1500,1000);
+    theC->Divide(2,2);
+    theC->cd(1);
+    thXZmu->SetLineColor(30);
+    thXZmu->Draw("HIST");
+    theC->cd(2);
+    thXZe->SetLineColor(38);
+    thXZe->Draw("HIST");
+    
+    theC->cd(3);
+    thYZmu->SetLineColor(30);
+    thYZmu->Draw("HIST");
+    theC->cd(4);
+    thYZe->SetLineColor(38);
+    thYZe->Draw("HIST");
+    
+    
+  theC->SaveAs("ThOriginal.png");
+    
+    
+           
+    TCanvas * ptq= new TCanvas("ptq","pqt",400,10,1500,1000);
+    ptq->Divide(2,2);
+    ptq->cd(1);
+    ptmu->SetLineColor(40);
+    ptmu->Draw("HIST");
+    
+    ptq->cd(2);
+    ptBRmu->SetLineColor(40);
+    ptBRmu->Draw("HIST");
+    
+    ptq->cd(3);
+    ptBRe->SetLineColor(46);
+    ptBRe->Draw("HIST");
+    
+    ptq->cd(4);
+    pte->SetLineColor(46);
+    pte->Draw("HIST");
+    
+    ptq->SaveAs("pTLO.png");
+    
+    
+    
+    TCanvas * t= new TCanvas("t","t",400,10,1500,1000);
+    t->Divide(2,2);
+    t->cd(1);
+    thmu->SetLineColor(40);
+    thmu->Draw("HIST");
+    
+    t->cd(2);
+    thBRmu->SetLineColor(40);
+    thBRmu->Draw("HIST");
+    
+    t->cd(3);
+    the->SetLineColor(46);
+    the->Draw("HIST");
+    
+    t->cd(4);
+    thBRe->SetLineColor(46);
+    thBRe->Draw("HIST");
+    
+    t->SaveAs("THLO.png");
+    
+        
 
     
 }

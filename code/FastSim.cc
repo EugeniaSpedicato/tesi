@@ -647,10 +647,10 @@ Double_t sigBE=(13.6/energy)*sqrt(sB*x0B)*(1+0.038*log(sB*x0B)); //rad
     //questi parametri sono dati dallo spread intrinseco del fascio
            
             thetaXin[0]=anglexin;
-            xin[0]=gRandom->Gaus(0., sigX);
+            xin[0]=gRandom->Gaus(0.,sigX);
             
             thetaYin[0]=angleyin;
-            yin[0]=gRandom->Gaus(0., sigY);
+            yin[0]=gRandom->Gaus(0.,sigY);
    
 
 // ora entra nel primo silicio, considero una distanza dall' origine d=0.25-0.005 m. Mi calcolo ThetaX e ThetaY all'uscita, x e y sono all'uscita e considero anche la risoluzione ris data dal silicio che ora misura x, quindi solo sulla x

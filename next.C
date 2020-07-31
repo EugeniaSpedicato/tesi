@@ -1,5 +1,5 @@
 #define atree_cxx
-#include "LO.h"
+#include "next.h"
 #include <TH2.h>
 #include <TH1.h>
 
@@ -10,8 +10,8 @@ void atree::Loop()
 {
     TH1::SetDefaultSumw2();
     
-TH1F* px_mu_out=new TH1F("h1a", "pX_out muon", 150,-0.3,0.3);
-TH1F* py_mu_out=new TH1F("h2a", "pY_out muon", 150,-0.3,0.3);
+TH1F* px_mu_out=new TH1F("h1a", "pX_out muon", 150,-1,1);
+TH1F* py_mu_out=new TH1F("h2a", "pY_out muon", 150,-1,1);
 TH1F* pz_mu_out=new TH1F("h3a", "pZ_out muon", 150,0,180);
 TH1F* Emuin=new TH1F("h1aN", "Energy in", 150,0,160);
 TH1F* Emuout=new TH1F("h1aN", "Energy out", 150,0,160);
@@ -22,24 +22,24 @@ TH1F* pz_e_out=new TH1F("h3b", "pZ_out electron", 150,0,5);
 TH1F* Eein=new TH1F("h2aN", "Energ iny", 150,0,10);
 TH1F* Eeout=new TH1F("h2aN", "Energy out", 150,0,10);
     
-TH1F* thmu=new TH1F("h3bNj", "theta", 150,0,0.002);  
-TH1F* the=new TH1F("h3bNj", "theta", 150,0,0.05);
+TH1F* thmu=new TH1F("h3bNj", "theta", 150,0,0.05);  
+TH1F* the=new TH1F("h3bNj", "theta", 150,0,0.5);
 
-TH1F* thXZmu=new TH1F("a", "theta XZ mu", 150,-0.005,0.005);
-TH1F* thYZmu=new TH1F("c", "theta YZ mu", 150,-0.005,0.005);
+TH1F* thXZmu=new TH1F("a", "theta XZ mu", 150,-0.05,0.05);
+TH1F* thYZmu=new TH1F("c", "theta YZ mu", 150,-0.05,0.05);
     
-TH1F* thXZe=new TH1F("v", "theta XZ e", 150,-0.05,0.05);
-TH1F* thYZe=new TH1F("b", "theta YZ e", 150,-0.05,0.05);
+TH1F* thXZe=new TH1F("v", "theta XZ e", 150,-0.5,0.5);
+TH1F* thYZe=new TH1F("b", "theta YZ e", 150,-0.5,0.5);
     
-TH1F* tarONEXmu=new TH1F("h1a", "Coo X mu tar1  ", 140,-0.15,0.15);
-TH1F* tarONEYmu=new TH1F("h2a", "Coo Y mu tar1 ", 140,-0.15,0.15);
-TH1F* tarONEXe=new TH1F("h1ea", "Coo X e tar1 ", 140,-0.15,0.15);
-TH1F* tarONEYe=new TH1F("h2ea", "Coo Y e tar1 ", 140,-0.15,0.15);
+TH1F* tarONEXmu=new TH1F("h1a", "Coo X mu tar1  ", 140,-0.4,0.4);
+TH1F* tarONEYmu=new TH1F("h2a", "Coo Y mu tar1 ", 140,-0.4,0.4);
+TH1F* tarONEXe=new TH1F("h1ea", "Coo X e tar1 ", 140,-0.4,0.4);
+TH1F* tarONEYe=new TH1F("h2ea", "Coo Y e tar1 ", 140,-0.4,0.4);
     
-TH1F* tarTWOXmu=new TH1F("h1a", "Coo X mu tar2  ", 140,-0.15,0.15);
-TH1F* tarTWOYmu=new TH1F("h2a", "Coo Y mu tar2 ", 140,-0.15,0.15);
-TH1F* tarTWOXe=new TH1F("h1ea", "Coo X e tar2 ", 140,-0.15,0.15);
-TH1F* tarTWOYe=new TH1F("h2ea", "Coo Y e tar2 ", 140,-0.15,0.15);
+TH1F* tarTWOXmu=new TH1F("h1a", "Coo X mu tar2  ", 140,-0.4,0.4);
+TH1F* tarTWOYmu=new TH1F("h2a", "Coo Y mu tar2 ", 140,-0.4,0.4);
+TH1F* tarTWOXe=new TH1F("h1ea", "Coo X e tar2 ", 140,-0.4,0.4);
+TH1F* tarTWOYe=new TH1F("h2ea", "Coo Y e tar2 ", 140,-0.4,0.4);
     
 TH2F  *X_Y_mu  = new TH2F("h2d" , " X  Vs. y of the muon",140,-0.5,-0.5,140,-0.5,0.5);
 TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.5,-0.5,140,-0.5,0.5);
@@ -144,7 +144,7 @@ Double_t me= 0.5109989461 *0.001;
     Eein->Draw("HIST");
     e->cd(4);
     Eeout->Draw("HIST");
-    p->SaveAs("energy.png");
+    e->SaveAs("energy.png");
 
         TCanvas * t= new TCanvas("t","t",400,10,1500,1000);
     t->Divide(1,2);
@@ -207,6 +207,8 @@ Double_t me= 0.5109989461 *0.001;
     X_Y_mu->Draw("HIST");
     dued->cd(2);
     X_Y_e->Draw("HIST");
+  dued->SaveAs("dued.png");
+    
 
     
       }

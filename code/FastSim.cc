@@ -641,7 +641,7 @@ Double_t sigBE=(13.6/energy)*sqrt(sB*x0B)*(1+0.038*log(sB*x0B)); //rad
     Double_t angley = atan2(k.Py(), k.Pz()); 
     Double_t anglexe = atan2(ke.Px(), ke.Pz());
     Double_t angleye = atan2(ke.Py(), ke.Pz()); 
-    
+ /*   
  //ricorda il momento che entra ccome argomento ha già la divergenza presa in RotDivIN
         
     //questi parametri sono dati dallo spread intrinseco del fascio
@@ -651,7 +651,7 @@ Double_t sigBE=(13.6/energy)*sqrt(sB*x0B)*(1+0.038*log(sB*x0B)); //rad
             
             thetaYin[0]=angleyin;
             yin[0]=gRandom->Gaus(0.,sigY);
-   
+   !!!sigma
 
 // ora entra nel primo silicio, considero una distanza dall' origine d=0.25-0.005 m. Mi calcolo ThetaX e ThetaY all'uscita, x e y sono all'uscita e considero anche la risoluzione ris data dal silicio che ora misura x, quindi solo sulla x
                 thetaXin[1]= gRandom->Gaus(thetaXin[0],sigSI);
@@ -694,7 +694,7 @@ Double_t sigBE=(13.6/energy)*sqrt(sB*x0B)*(1+0.038*log(sB*x0B)); //rad
                 thetaYin[6]= gRandom->Gaus(thetaYin[5],sigSI);
 
                 xin[6]=xin[5]+dSS*tan(thetaXin[5])+(1/sqrt(3))*sS*thetaXin[6];
-                yin[6]=yin[5]+dSS*tan(thetaYin[5])+(1/sqrt(3))*sS*thetaYin[6]+gRandom->Gaus(0,ris);
+                yin[6]=yin[5]+dSS*tan(thetaYin[5])+(1/sqrt(3))*sS*thetaYin[6]+gRandom->Gaus(0,ris);*/
     
     Int_t tar=gRandom->Integer(2);
     
@@ -714,11 +714,11 @@ Double_t sigBE=(13.6/energy)*sqrt(sB*x0B)*(1+0.038*log(sB*x0B)); //rad
                  thetaXe[0][0]= gRandom->Gaus(anglexe,sigBE2);
                  thetaYe[0][0]= gRandom->Gaus(angleye,sigBE2); 
 
-                 x[0][0]=xin[6]+d*tan(thetaXin[6])+(1/sqrt(3))*0.0075*(thetaX1)+(1/sqrt(3))*0.0075*(thetaX[0][0]);
-                 y[0][0]=yin[6]+d*tan(thetaYin[6])+(1/sqrt(3))*0.0075*(thetaY1)+(1/sqrt(3))*0.0075*(thetaY[0][0]);  
+                 x[0][0]=xin[6]+d*tan(thetaXin[6])+(1/sqrt(3))*0.0075*sigBE2+(1/sqrt(3))*0.0075*sigBE2;
+                 y[0][0]=yin[6]+d*tan(thetaYin[6])+(1/sqrt(3))*0.0075*sigBE2+(1/sqrt(3))*0.0075*sigBE2;  
     
-                 xe[0][0]=xin[6]+d*tan(thetaXin[6])+(1/sqrt(3))*0.0075*(thetaX1)+(1/sqrt(3))*0.0075*(thetaXe[0][0]);
-                 ye[0][0]=yin[6]+d*tan(thetaYin[6])+(1/sqrt(3))*0.0075*(thetaY1)+(1/sqrt(3))*0.0075*(thetaYe[0][0]);  
+                 xe[0][0]=xin[6]+d*tan(thetaXin[6])+(1/sqrt(3))*0.0075*sigBE2+(1/sqrt(3))*0.0075*sigBE2;
+                 ye[0][0]=yin[6]+d*tan(thetaYin[6])+(1/sqrt(3))*0.0075*sigBE2+(1/sqrt(3))*0.0075*sigBE2;  
               
 //entro nelle 3 coppie di silici
 for (Int_t p=1; p<7; p++)  {
@@ -728,20 +728,20 @@ for (Int_t p=1; p<7; p++)  {
                  thetaXe[0][p]= gRandom->Gaus(thetaXe[0][p-1],sigSI);
                  thetaYe[0][p]= gRandom->Gaus(thetaYe[0][p-1],sigSI); 
 
-                x[0][p]=x[0][p-1]+d*tan(thetaX[0][p-1])+(1/sqrt(3))*sS*thetaX[0][p]+gRandom->Gaus(0,ris);
-                y[0][p]=y[0][p-1]+d*tan(thetaY[0][p-1])+(1/sqrt(3))*sS*thetaY[0][p];
-                xe[0][p]=xe[0][p-1]+d*tan(thetaXe[0][p-1])+(1/sqrt(3))*sS*thetaXe[0][p]+gRandom->Gaus(0,ris);
-                ye[0][p]=ye[0][p-1]+d*tan(thetaYe[0][p-1])+(1/sqrt(3))*sS*thetaYe[0][p];
+                x[0][p]=x[0][p-1]+d*tan(thetaX[0][p-1])+(1/sqrt(3))*sS*sigSI+gRandom->Gaus(0,ris);
+                y[0][p]=y[0][p-1]+d*tan(thetaY[0][p-1])+(1/sqrt(3))*sS*sigSI;
+                xe[0][p]=xe[0][p-1]+d*tan(thetaXe[0][p-1])+(1/sqrt(3))*sS*sigSI+gRandom->Gaus(0,ris);
+                ye[0][p]=ye[0][p-1]+d*tan(thetaYe[0][p-1])+(1/sqrt(3))*sS*sigSI;
                 
                 thetaX[0][p+1]= gRandom->Gaus(thetaX[0][p],sigSI);
                 thetaY[0][p+1]= gRandom->Gaus(thetaY[0][p],sigSI);
                 thetaXe[0][p+1]= gRandom->Gaus(thetaXe[0][p],sigSI);
                 thetaYe[0][p+1]= gRandom->Gaus(thetaYe[0][p],sigSI);
 
-                x[0][p+1]=x[0][p]+dSS*tan(thetaX[0][p])+(1/sqrt(3))*sS*thetaX[0][p+1];
-                y[0][p+1]=y[0][p]+dSS*tan(thetaY[0][p])+(1/sqrt(3))*sS*thetaY[0][p+1]+gRandom->Gaus(0,ris);
-                xe[0][p+1]=xe[0][p]+dSS*tan(thetaXe[0][p])+(1/sqrt(3))*sS*thetaXe[0][p+1];
-                ye[0][p+1]=ye[0][p]+dSS*tan(thetaYe[0][p])+(1/sqrt(3))*sS*thetaYe[0][p+1]+gRandom->Gaus(0,ris);
+                x[0][p+1]=x[0][p]+dSS*tan(thetaX[0][p])+(1/sqrt(3))*sS*sigSI;
+                y[0][p+1]=y[0][p]+dSS*tan(thetaY[0][p])+(1/sqrt(3))*sS*sigSI+gRandom->Gaus(0,ris);
+                xe[0][p+1]=xe[0][p]+dSS*tan(thetaXe[0][p])+(1/sqrt(3))*sS*sigSI;
+                ye[0][p+1]=ye[0][p]+dSS*tan(thetaYe[0][p])+(1/sqrt(3))*sS*sigSI+gRandom->Gaus(0,ris);
                  }}
         
                  thetaX[1][0]= gRandom->Gaus(thetaX[0][6],sigBE);
@@ -749,10 +749,10 @@ for (Int_t p=1; p<7; p++)  {
                  thetaXe[1][0]= gRandom->Gaus(thetaXe[0][6],sigBE);
                  thetaYe[1][0]= gRandom->Gaus(thetaYe[0][6],sigBE); 
 
-                 x[1][0]=x[0][6]+d*tan(thetaX[0][6])+(1/sqrt(3))*sB*(thetaX[1][0]);
-                 y[1][0]=y[0][6]+d*tan(thetaY[0][6])+(1/sqrt(3))*sB*(thetaY[1][0]);  
-                 xe[1][0]=xe[0][6]+d*tan(thetaXe[0][6])+(1/sqrt(3))*sB*(thetaXe[1][0]);
-                 ye[1][0]=ye[0][6]+d*tan(thetaYe[0][6])+(1/sqrt(3))*sB*(thetaYe[1][0]);  
+                 x[1][0]=x[0][6]+d*tan(thetaX[0][6])+(1/sqrt(3))*sB*sigBE;
+                 y[1][0]=y[0][6]+d*tan(thetaY[0][6])+(1/sqrt(3))*sB*sigBE;  
+                 xe[1][0]=xe[0][6]+d*tan(thetaXe[0][6])+(1/sqrt(3))*sB*sigBE;
+                 ye[1][0]=ye[0][6]+d*tan(thetaYe[0][6])+(1/sqrt(3))*sB*sigBE;  
    
         //entro nelle 3 coppie di silici
 for (Int_t p=1; p<7; p++)  {
@@ -762,20 +762,20 @@ for (Int_t p=1; p<7; p++)  {
                  thetaXe[1][p]= gRandom->Gaus(thetaXe[1][p-1],sigSI);
                  thetaYe[1][p]= gRandom->Gaus(thetaYe[1][p-1],sigSI); 
 
-                x[1][p]=x[1][p-1]+d*tan(thetaX[1][p-1])+(1/sqrt(3))*sS*thetaX[1][p]+gRandom->Gaus(0,ris);
-                y[1][p]=y[1][p-1]+d*tan(thetaY[1][p-1])+(1/sqrt(3))*sS*thetaY[1][p];
-                xe[1][p]=xe[1][p-1]+d*tan(thetaXe[1][p-1])+(1/sqrt(3))*sS*thetaXe[1][p]+gRandom->Gaus(0,ris);
-                ye[1][p]=ye[1][p-1]+d*tan(thetaYe[1][p-1])+(1/sqrt(3))*sS*thetaYe[1][p];
+                x[1][p]=x[1][p-1]+d*tan(thetaX[1][p-1])+(1/sqrt(3))*sS*sigSI+gRandom->Gaus(0,ris);
+                y[1][p]=y[1][p-1]+d*tan(thetaY[1][p-1])+(1/sqrt(3))*sS*sigSI;
+                xe[1][p]=xe[1][p-1]+d*tan(thetaXe[1][p-1])+(1/sqrt(3))*sS*sigSI+gRandom->Gaus(0,ris);
+                ye[1][p]=ye[1][p-1]+d*tan(thetaYe[1][p-1])+(1/sqrt(3))*sS*sigSI;
                 
                 thetaX[1][p+1]= gRandom->Gaus(thetaX[1][p],sigSI);
                 thetaY[1][p+1]= gRandom->Gaus(thetaY[1][p],sigSI);
                 thetaXe[1][p+1]= gRandom->Gaus(thetaXe[1][p],sigSI);
                 thetaYe[1][p+1]= gRandom->Gaus(thetaYe[1][p],sigSI);
 
-                x[1][p+1]=x[1][p]+dSS*tan(thetaX[1][p])+(1/sqrt(3))*sS*thetaX[1][p+1];
-                y[1][p+1]=y[1][p]+dSS*tan(thetaY[1][p])+(1/sqrt(3))*sS*thetaY[1][p+1]+gRandom->Gaus(0,ris);
-                xe[1][p+1]=xe[1][p]+dSS*tan(thetaXe[1][p])+(1/sqrt(3))*sS*thetaXe[1][p+1];
-                ye[1][p+1]=ye[1][p]+dSS*tan(thetaYe[1][p])+(1/sqrt(3))*sS*thetaYe[1][p+1]+gRandom->Gaus(0,ris);                 
+                x[1][p+1]=x[1][p]+dSS*tan(thetaX[1][p])+(1/sqrt(3))*sS*sigSI;
+                y[1][p+1]=y[1][p]+dSS*tan(thetaY[1][p])+(1/sqrt(3))*sS*sigSI+gRandom->Gaus(0,ris);
+                xe[1][p+1]=xe[1][p]+dSS*tan(thetaXe[1][p])+(1/sqrt(3))*sS*sigSI;
+                ye[1][p+1]=ye[1][p]+dSS*tan(thetaYe[1][p])+(1/sqrt(3))*sS*sigSI+gRandom->Gaus(0,ris);                 
                  }}
         
     Double_t xf = x[1][6]+dCAL*tan(thetaX[1][6]);
@@ -859,8 +859,8 @@ for (Int_t p=1; p<7; p++)  {
                  thetaXe[0][0]= 0;
                  thetaYe[0][0]= 0;
 
-                 x[0][0]=xin[6]+d*tan(thetaXin[6])+(1/sqrt(3))*sB*(thetaX[0][0]);
-                 y[0][0]=yin[6]+d*tan(thetaYin[6])+(1/sqrt(3))*sB*(thetaY[0][0]);
+                 x[0][0]=xin[6]+d*tan(thetaXin[6])+(1/sqrt(3))*sB*sigBE;
+                 y[0][0]=yin[6]+d*tan(thetaYin[6])+(1/sqrt(3))*sB*sigBE;
                  xe[0][0]=0;
                  ye[0][0]=0;
        
@@ -872,8 +872,8 @@ for (Int_t p=1; p<7; p++)  {
                  thetaXe[0][p]= 0;
                  thetaYe[0][p]= 0;
 
-                x[0][p]=x[0][p-1]+d*tan(thetaX[0][p-1])+(1/sqrt(3))*sS*thetaX[0][p]+gRandom->Gaus(0,ris);
-                y[0][p]=y[0][p-1]+d*tan(thetaY[0][p-1])+(1/sqrt(3))*sS*thetaY[0][p];
+                x[0][p]=x[0][p-1]+d*tan(thetaX[0][p-1])+(1/sqrt(3))*sS*sigSI+gRandom->Gaus(0,ris);
+                y[0][p]=y[0][p-1]+d*tan(thetaY[0][p-1])+(1/sqrt(3))*sS*sigSI;
                 xe[0][p]=0;
                 ye[0][p]=0;
                 
@@ -883,8 +883,8 @@ for (Int_t p=1; p<7; p++)  {
                 thetaXe[0][p+1]= 0;
                 thetaYe[0][p+1]= 0;
 
-                x[0][p+1]=x[0][p]+dSS*tan(thetaX[0][p])+(1/sqrt(3))*sS*thetaX[0][p+1];
-                y[0][p+1]=y[0][p]+dSS*tan(thetaY[0][p])+(1/sqrt(3))*sS*thetaY[0][p+1]+gRandom->Gaus(0,ris);   
+                x[0][p+1]=x[0][p]+dSS*tan(thetaX[0][p])+(1/sqrt(3))*sS*sigSI;
+                y[0][p+1]=y[0][p]+dSS*tan(thetaY[0][p])+(1/sqrt(3))*sS*sigSI+gRandom->Gaus(0,ris);   
                 xe[0][p+1]=0;
                 ye[0][p+1]=0; 
                  }}
@@ -902,13 +902,13 @@ for (Int_t p=1; p<7; p++)  {
                 thetaXe[1][0]=gRandom->Gaus(anglexe,sigBE2);
                 thetaYe[1][0]=gRandom->Gaus(angleye,sigBE2);
 
-                 x[1][0]=x[0][6]+d*tan(thetaX[0][6])+(1/sqrt(3))*0.0075*(thetaX1)+(1/sqrt(3))*0.0075*(thetaX[1][0]); 
+                 x[1][0]=x[0][6]+d*tan(thetaX[0][6])+(1/sqrt(3))*0.0075*(sigBE2)+(1/sqrt(3))*0.0075*(sigBE2); 
         
-                 y[1][0]=y[0][6]+d*tan(thetaY[0][6])+(1/sqrt(3))*0.0075*(thetaY1)+(1/sqrt(3))*0.0075*(thetaY[1][0]);
+                 y[1][0]=y[0][6]+d*tan(thetaY[0][6])+(1/sqrt(3))*0.0075*(sigBE2)+(1/sqrt(3))*0.0075*(sigBE2);
         
-                 xe[1][0]=x[0][6]+d*tan(thetaX[0][6])+(1/sqrt(3))*0.0075*(thetaX1)+(1/sqrt(3))*0.0075*(thetaXe[1][0]); 
+                 xe[1][0]=x[0][6]+d*tan(thetaX[0][6])+(1/sqrt(3))*0.0075*(sigBE2)+(1/sqrt(3))*0.0075*(sigBE2); 
         
-                 ye[1][0]=y[0][6]+d*tan(thetaY[0][6])+(1/sqrt(3))*0.0075*(thetaY1)+(1/sqrt(3))*0.0075*(thetaYe[1][0]);
+                 ye[1][0]=y[0][6]+d*tan(thetaY[0][6])+(1/sqrt(3))*0.0075*(sigBE2)+(1/sqrt(3))*0.0075*(sigBE2);
    
         //entro nelle 3 coppie di silici
 for (Int_t p=1; p<7; p++)  {
@@ -918,20 +918,20 @@ for (Int_t p=1; p<7; p++)  {
                  thetaXe[1][p]= gRandom->Gaus(thetaXe[1][p-1],sigSI);
                  thetaYe[1][p]= gRandom->Gaus(thetaYe[1][p-1],sigSI); 
 
-                x[1][p]=x[1][p-1]+d*tan(thetaX[1][p-1])+(1/sqrt(3))*sS*thetaX[1][p]+gRandom->Gaus(0,ris);
-                y[1][p]=y[1][p-1]+d*tan(thetaY[1][p-1])+(1/sqrt(3))*sS*thetaY[1][p];
-                xe[1][p]=xe[1][p-1]+d*tan(thetaXe[1][p-1])+(1/sqrt(3))*sS*thetaXe[1][p]+gRandom->Gaus(0,ris);
-                ye[1][p]=ye[1][p-1]+d*tan(thetaYe[1][p-1])+(1/sqrt(3))*sS*thetaYe[1][p];
+                x[1][p]=x[1][p-1]+d*tan(thetaX[1][p-1])+(1/sqrt(3))*sS*sigSI+gRandom->Gaus(0,ris);
+                y[1][p]=y[1][p-1]+d*tan(thetaY[1][p-1])+(1/sqrt(3))*sS*sigSI;
+                xe[1][p]=xe[1][p-1]+d*tan(thetaXe[1][p-1])+(1/sqrt(3))*sS*sigSI+gRandom->Gaus(0,ris);
+                ye[1][p]=ye[1][p-1]+d*tan(thetaYe[1][p-1])+(1/sqrt(3))*sS*sigSI;
                 
                 thetaX[1][p+1]= gRandom->Gaus(thetaX[1][p],sigSI);
                 thetaY[1][p+1]= gRandom->Gaus(thetaY[1][p],sigSI);
                 thetaXe[1][p+1]= gRandom->Gaus(thetaXe[1][p],sigSI);
                 thetaYe[1][p+1]= gRandom->Gaus(thetaYe[1][p],sigSI);
 
-                x[1][p+1]=x[1][p]+dSS*tan(thetaX[1][p])+(1/sqrt(3))*sS*thetaX[1][p+1];
-                y[1][p+1]=y[1][p]+dSS*tan(thetaY[1][p])+(1/sqrt(3))*sS*thetaY[1][p+1]+gRandom->Gaus(0,ris);
-                xe[1][p+1]=xe[1][p]+dSS*tan(thetaXe[1][p])+(1/sqrt(3))*sS*thetaXe[1][p+1];
-                ye[1][p+1]=ye[1][p]+dSS*tan(thetaYe[1][p])+(1/sqrt(3))*sS*thetaYe[1][p+1]+gRandom->Gaus(0,ris);                 
+                x[1][p+1]=x[1][p]+dSS*tan(thetaX[1][p])+(1/sqrt(3))*sS*sigSI;
+                y[1][p+1]=y[1][p]+dSS*tan(thetaY[1][p])+(1/sqrt(3))*sS*sigSI+gRandom->Gaus(0,ris);
+                xe[1][p+1]=xe[1][p]+dSS*tan(thetaXe[1][p])+(1/sqrt(3))*sS*sigSI;
+                ye[1][p+1]=ye[1][p]+dSS*tan(thetaYe[1][p])+(1/sqrt(3))*sS*sigSI+gRandom->Gaus(0,ris);                 
                  }}
         // sul calorimetro
         

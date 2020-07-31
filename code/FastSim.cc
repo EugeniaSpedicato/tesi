@@ -206,9 +206,8 @@ Double_t FastSim::ThetaRMS(const PxPyPzEVector & k) const
 
  PxPyPzEVector FastSim::RotDivIN(const PxPyPzEVector & k) const
  {
-Double_t const energy   = 150000; //MeV
 
-Double_t const sS    = 0.00128; //m spessore silicio
+Double_t const sS    = 3*0.00128; //m spessore silicio
 Double_t const x0S = 0.094; // m
 
     
@@ -285,7 +284,7 @@ Double_t const sigY=0.027; //m
         
 Double_t const energy   = 150000; //MeV
     
-Double_t const sSin    = 0.00128; //m spessore silicio per fascio entrante
+Double_t const sSin    = 3*0.00128; //m spessore silicio per fascio entrante
 
 Double_t const sS    = 0.00064; //m spessore silicio
 Double_t const x0S = 0.094; // m
@@ -298,15 +297,16 @@ Double_t const x0B = 0.353; // m
 Double_t const dSS = 0.01; // m distanza tra i due 2S
 
 
-Double_t const d = 0.25-0.025;
-Double_t const dx = 0.25+0.025; // m la distanza tra coppie di silici è 0.25. Però 0.25 è tra i due della coppia, quindi considero -dSS/2=0.025
+Double_t const d = 0.25-0.005;
+Double_t const dx = 0.25+0.005; // m la distanza tra coppie di silici è 0.25. Però 0.25 è tra i due della coppia, quindi considero -dSS/2=0.025
 
 // m la distanza tra coppie di silici è 0.25. Però 0.25 è tra i due della coppia, quindi considero -dSS/2=0.005
 Double_t const ris = 18e-6; // m considero questa la risoluzione dei silici
 Double_t const dCAL = 0.10; // m distanza silicio calorimetro
     
-Double_t sigSIin=(13.6/kin.E())*sqrt(sSin/x0S)*(1+0.038*log(sSin/x0S)); //rad
-Double_t sigBE2in=(13.6/kin.E())*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad   
+Double_t sigSIinP=(13.6/kin.E())*sqrt(sSin/x0S)*(1+0.038*log(sSin/x0S)); //rad
+Double_t sigSIin=(13.6/kin.E())*sqrt(sS/x0S)*(1+0.038*log(sS/x0S)); //rad
+Double_t sigBE2in=(13.6/kin.E())*sqrt(sB/(2*x0B))*(1+0.038*log(sB/(2*x0B))); //rad   
 Double_t sigBEin=(13.6/kin.E())*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad   
     
     
@@ -314,12 +314,12 @@ Double_t sigSImu=(13.6/k.E())*sqrt(sS/x0S)*(1+0.038*log(sS/x0S)); //rad
 // considero sB/2 per quandp interagisce a metà 
 Double_t sigSIe=(13.6/ke.E())*sqrt(sS/x0S)*(1+0.038*log(sS/x0S)); //rad
 // considero sB/2 per quandp interagisce a metà 
-Double_t sigBE2mu=(13.6/k.E())*sqrt(sB/2*x0B)*(1+0.038*log(sB/2*x0B)); //rad
+Double_t sigBE2mu=(13.6/k.E())*sqrt(sB/(2*x0B))*(1+0.038*log(sB/(2*x0B))); //rad
 // considero sB/2 per quandp interagisce a metà 
-Double_t sigBE2e=(13.6/ke.E())*sqrt(sB/2*x0B)*(1+0.038*log(sB/2*x0B)); //rad
+Double_t sigBE2e=(13.6/ke.E())*sqrt(sB/(2*x0B))*(1+0.038*log(sB/(2*x0B))); //rad
 // considero sB/2 per quandp interagisce a metà 
-Double_t sigBEmu=(13.6/k.E())*sqrt(sB*x0B)*(1+0.038*log(sB*x0B)); //rad   
-Double_t sigBEe=(13.6/ke.E())*sqrt(sB*x0B)*(1+0.038*log(sB*x0B)); //rad   
+Double_t sigBEmu=(13.6/k.E())*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad   
+Double_t sigBEe=(13.6/ke.E())*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad   
     
 
     
@@ -341,8 +341,8 @@ Double_t sigBEe=(13.6/ke.E())*sqrt(sB*x0B)*(1+0.038*log(sB*x0B)); //rad
     Double_t anglexe = atan2(ke.Px(), ke.Pz());
     Double_t angleye = atan2(ke.Py(), ke.Pz()); 
     
-    Double_t xin=d*anglexin+(1/sqrt(3))*sSin*sigSIin;
-    Double_t yin=d*angleyin+(1/sqrt(3))*sSin*sigSIin;
+    Double_t xin=d*anglexin+(1/sqrt(3))*sSin*sigSIinP;
+    Double_t yin=d*angleyin+(1/sqrt(3))*sSin*sigSIinP;
     
     TMatrixD coo_in(1,3);
     coo_in[0][0]=xin;

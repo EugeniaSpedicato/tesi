@@ -75,8 +75,8 @@ Double_t me= 0.5109989461 *0.001;
     Emuout->Fill(Emu_out,wgt_full);   
     Eeout->Fill(Ee_out,wgt_full);
        
-    Emu->Fill(detKinBeamRot_Emu,wgt_full);   
-    Ee->Fill(detKinBeamRot_Ee,wgt_full);
+    Emuin->Fill(detKinBeamRot_Emu,wgt_full);   
+    Eein->Fill(detKinBeamRot_Ee,wgt_full);
        
     thmu->Fill(detKinBeamRot_thmu*0.001,wgt_full);
     the->Fill(detKinBeamRot_the*0.001,wgt_full);  
@@ -135,13 +135,13 @@ Double_t me= 0.5109989461 *0.001;
     TCanvas * e= new TCanvas("e","e",400,10,1500,1000);
     e->Divide(2,2);
     e->cd(1);
-    Emu->SetLineColor(46);
-    Emu->Draw("HIST");
+    Emuin->SetLineColor(46);
+    Emuin->Draw("HIST");
     e->cd(2);
     Emuout->SetLineColor(46);
     Emuout->Draw("HIST");
     e->cd(3);
-    Ee->Draw("HIST");
+    Eein->Draw("HIST");
     e->cd(4);
     Eeout->Draw("HIST");
     p->SaveAs("energy.png");

@@ -95,7 +95,7 @@ PxPyPzEVector p_mu_in_div=RotDivIN(p_mu_in);
 
 PxPyPzEVector p_e_in_div=(p_e_in);
     
-//faccio un'approssimazione per cui rotdiv non prende il momento smearato ma solo quello che diverge
+//cioe div della cinematica e smear del MCS
 PxPyPzEVector p_mu_out_div=RotDiv(p_mu_in_div,p_mu_out);
 PxPyPzEVector p_e_out_div=RotDiv(p_mu_in_div,p_e_out);
   
@@ -295,7 +295,7 @@ Double_t const x0B = 0.353; // m
 
 
 
-Double_t const dSS = 0.05; // m distanza tra i due 2S
+Double_t const dSS = 0.01; // m distanza tra i due 2S
 
 
 Double_t const d = 0.25-0.025;

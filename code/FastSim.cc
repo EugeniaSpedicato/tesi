@@ -217,8 +217,8 @@ Double_t sigSI=(13.6/k.E())*sqrt(sS/x0S)*(1+0.038*log(sS/x0S)); //rad
 Double_t divthx = gRandom->Gaus(0., 0.00027);
 Double_t divthy = gRandom->Gaus(0., 0.00020); 
      
-/*Double_t anglex=gRandom->Gaus(divthx,sigSI);
-Double_t angley=gRandom->Gaus(divthy,sigSI); *///boh io non farei cos' sinceramente, ma ok prima approssimazione.
+Double_t Thx=gRandom->Gaus(0,sigSI);
+Double_t Thy=gRandom->Gaus(0,sigSI); //boh io non farei cos' sinceramente, ma ok prima approssimazione.
 
 //Double_t anglex = atan2(k.Px(), k.Pz());
 //Double_t angley = atan2(k.Py(), k.Pz()); 

@@ -217,14 +217,14 @@ Double_t sigSI=(13.6/k.E())*sqrt(sS/x0S)*(1+0.038*log(sS/x0S)); //rad
 Double_t divthx = gRandom->Gaus(0., 0.00027);
 Double_t divthy = gRandom->Gaus(0., 0.00020); 
      
-Double_t anglex=gRandom->Gaus(divthx,sigSI);
-Double_t angley=gRandom->Gaus(divthy,sigSI); //boh io non farei cos' sinceramente, ma ok prima approssimazione.
+/*Double_t anglex=gRandom->Gaus(divthx,sigSI);
+Double_t angley=gRandom->Gaus(divthy,sigSI); *///boh io non farei cos' sinceramente, ma ok prima approssimazione.
 
-/*Double_t anglex = atan2(k.Px(), k.Pz());
-Double_t angley = atan2(k.Py(), k.Pz()); 
+//Double_t anglex = atan2(k.Px(), k.Pz());
+//Double_t angley = atan2(k.Py(), k.Pz()); 
      
 Double_t anglex = sqrt(divthx*divthx+Thx*Thx);
-Double_t angley = sqrt(divthy*divthy+Thy*Thy);*/
+Double_t angley = sqrt(divthy*divthy+Thy*Thy);
      
     //NB questi Px Py Pz sono del nuovo!!
 Double_t pmuin=sqrt(k.Px()*k.Px()+k.Py()*k.Py()+k.Pz()*k.Pz());
@@ -467,7 +467,7 @@ for (Int_t p=1; p<7; p++)  {
   Double_t dydz = tan(thetaY[1][6]);
   
   // assuming z-motion is always forward
-  Double_t skz = sqrt(k.P2() / (dxdz*dxdz + dydz*dydz + 1));
+  Double_t skz = sqrt(k.P() / (dxdz*dxdz + dydz*dydz + 1));
   Double_t skx = skz * dxdz;
   Double_t sky = skz * dydz;
         
@@ -475,7 +475,7 @@ for (Int_t p=1; p<7; p++)  {
   Double_t dydze = tan(thetaYe[1][6]);
   
   // assuming z-motion is always forward
-  Double_t skze = sqrt(ke.P2() / (dxdze*dxdze + dydze*dydze + 1));
+  Double_t skze = sqrt(ke.P() / (dxdze*dxdze + dydze*dydze + 1));
   Double_t skxe = skze * dxdze;
   Double_t skye = skze * dydze;
         
@@ -512,9 +512,9 @@ for (Int_t p=1; p<7; p++)  {
                  THinX[0]= gRandom->Gaus(anglexin,sigBEin);
                  THinY[0]= gRandom->Gaus(angleyin,sigBEin); 
                  thetaX[0][0]=0;
-                 thetaY[0][0]= 0;
-                 thetaXe[0][0]= 0;
-                 thetaYe[0][0]= 0;
+                 thetaY[0][0]=0;
+                 thetaXe[0][0]=0;
+                 thetaYe[0][0]=0;
 
                  inX[0]=xin+(1/sqrt(3))*sB*sigBEin;
                  inY[0]=yin+(1/sqrt(3))*sB*sigBEin;
@@ -569,13 +569,13 @@ for (Int_t p=1; p<7; p++)  {
                 thetaXe[1][0]=gRandom->Gaus(anglexe,sigBE2e);
                 thetaYe[1][0]=gRandom->Gaus(angleye,sigBE2e);
 
-                 x[1][0]=inX[6]+(1/sqrt(3))*0.0075*(sigBE2in)+(1/sqrt(3))*0.0075*(sigBE2mu); 
+                 x[1][0]=inX[6]+d*tan(THinX[6])+(1/sqrt(3))*0.0075*(sigBE2in)+(1/sqrt(3))*0.0075*(sigBE2mu); 
         
-                 y[1][0]=inY[6]+(1/sqrt(3))*0.0075*(sigBE2in)+(1/sqrt(3))*0.0075*(sigBE2mu);
+                 y[1][0]=inY[6]+d*tan(THinY[6])+(1/sqrt(3))*0.0075*(sigBE2in)+(1/sqrt(3))*0.0075*(sigBE2mu);
         
-                 xe[1][0]=inX[6]+(1/sqrt(3))*0.0075*(sigBE2in)+(1/sqrt(3))*0.0075*(sigBE2e); 
+                 xe[1][0]=inX[6]+d*tan(THinX[6])+(1/sqrt(3))*0.0075*(sigBE2in)+(1/sqrt(3))*0.0075*(sigBE2e); 
         
-                 ye[1][0]=inY[6]+(1/sqrt(3))*0.0075*(sigBE2in)+(1/sqrt(3))*0.0075*(sigBE2e);
+                 ye[1][0]=inY[6]+d*tan(THinY[6])+(1/sqrt(3))*0.0075*(sigBE2in)+(1/sqrt(3))*0.0075*(sigBE2e);
    
         //entro nelle 3 coppie di silici
 for (Int_t p=1; p<7; p++)  {

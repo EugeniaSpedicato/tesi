@@ -55,7 +55,7 @@ TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.5,-0.5,140,
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
        
-       
+       if (detKinBeamRot_tar==0){
        px_mu_out->Fill(detKinBeamRot_pXmu_out,wgt_full);
        py_mu_out->Fill(detKinBeamRot_pYmu_out,wgt_full);
        pz_mu_out->Fill(detKinBeamRot_pZmu_out,wgt_full);
@@ -91,27 +91,27 @@ Double_t me= 0.5109989461 *0.001;
     thXZe->Fill(anglex_e,wgt_full);
     thYZe->Fill(angley_e,wgt_full); 
        
-           if (detKinBeamRot_tar==0)
-       {
+      /*     if (detKinBeamRot_tar==0)
+       {*/
          tarONEXmu->Fill(detKinBeamRot_cooXmu,wgt_full);
          tarONEYmu->Fill(detKinBeamRot_cooYmu,wgt_full);
          tarONEXe->Fill(detKinBeamRot_cooXe,wgt_full);
          tarONEYe->Fill(detKinBeamRot_cooYe,wgt_full);
-       }
+      // }
        
-       if (detKinBeamRot_tar==1)
-       {
+      /* if (detKinBeamRot_tar==1)
+       {*/
          tarTWOXmu->Fill(detKinBeamRot_cooXmu,wgt_full);
          tarTWOYmu->Fill(detKinBeamRot_cooYmu,wgt_full);
          tarTWOXe->Fill(detKinBeamRot_cooXe,wgt_full);
          tarTWOYe->Fill(detKinBeamRot_cooYe,wgt_full);
            
-       }
+      // }
        
     X_Y_mu ->Fill(detKinBeamRot_cooXmu, detKinBeamRot_cooYmu,wgt_full);
      X_Y_e ->Fill(detKinBeamRot_cooXe, detKinBeamRot_cooYe,wgt_full);
       
-      }
+      }}
       
     TCanvas * p= new TCanvas("p","p",400,10,1500,1000);
     p->Divide(2,3);

@@ -221,8 +221,8 @@ Double_t const sB    = 0.015; //m spessore berillio
 Double_t const x0B = 0.353; // m
 
     
-Double_t sigSI=(13.6/k.E())*sqrt(sS/x0S)*(1+0.038*log(sS/x0S)); //rad
-Double_t sigBE=(13.6/k.E())*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad   
+Double_t sigSI=(13.6/k.E()*0.001)*sqrt(sS/x0S)*(1+0.038*log(sS/x0S)); //rad
+Double_t sigBE=(13.6/k.E()*0.001)*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad   
 
 
      
@@ -239,8 +239,8 @@ Double_t Thy=gRandom->Gaus(0,sigSI);
 //Double_t anglex = atan2(k.Px(), k.Pz());
 //Double_t angley = atan2(k.Py(), k.Pz()); 
      
-Double_t anglex = Thx;//sqrt(divthx*divthx+Thx*Thx);
-Double_t angley = Thy;//sqrt(divthy*divthy+Thy*Thy);
+Double_t anglex = sqrt(divthx*divthx+Thx*Thx);
+Double_t angley = sqrt(divthy*divthy+Thy*Thy);
      
     //NB questi Px Py Pz sono del nuovo!!
 Double_t pmuin=sqrt(k.Px()*k.Px()+k.Py()*k.Py()+k.Pz()*k.Pz());
@@ -269,8 +269,8 @@ Double_t Thy2=gRandom->Gaus(Thy1,sigSI); //boh io non farei cos' sinceramente, m
 //Double_t anglex = atan2(k.Px(), k.Pz());
 //Double_t angley = atan2(k.Py(), k.Pz()); 
      
-Double_t anglex = Thx2;//sqrt(divthx*divthx+Thx2*Thx2);
-Double_t angley = Thy2;//sqrt(divthy*divthy+Thy2*Thy2);
+Double_t anglex = sqrt(divthx*divthx+Thx2*Thx2);
+Double_t angley = sqrt(divthy*divthy+Thy2*Thy2);
      
     //NB questi Px Py Pz sono del nuovo!!
 Double_t pmuin=sqrt(k.Px()*k.Px()+k.Py()*k.Py()+k.Pz()*k.Pz());
@@ -358,22 +358,22 @@ Double_t const dx = 0.25+0.005; // m la distanza tra coppie di silici è 0.25. P
 Double_t const ris = 18e-6; // m considero questa la risoluzione dei silici
 Double_t const dCAL = 0.10; // m distanza silicio calorimetro
     
-Double_t sigSIinP=(13.6/kin.E())*sqrt(sSin/x0S)*(1+0.038*log(sSin/x0S)); //rad
-Double_t sigSIin=(13.6/kin.E())*sqrt(sS/x0S)*(1+0.038*log(sS/x0S)); //rad
-Double_t sigBE2in=(13.6/kin.E())*sqrt(sB/(2*x0B))*(1+0.038*log(sB/(2*x0B))); //rad   
-Double_t sigBEin=(13.6/kin.E())*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad   
+Double_t sigSIinP=(13.6/kin.E()*0.001)*sqrt(sSin/x0S)*(1+0.038*log(sSin/x0S)); //rad
+Double_t sigSIin=(13.6/kin.E()*0.001)*sqrt(sS/x0S)*(1+0.038*log(sS/x0S)); //rad
+Double_t sigBE2in=(13.6/kin.E()*0.001)*sqrt(sB/(2*x0B))*(1+0.038*log(sB/(2*x0B))); //rad   
+Double_t sigBEin=(13.6/kin.E()*0.001)*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad   
     
     
-Double_t sigSImu=(13.6/k.E())*sqrt(sS/x0S)*(1+0.038*log(sS/x0S)); //rad
+Double_t sigSImu=(13.6/k.E()*0.001)*sqrt(sS/x0S)*(1+0.038*log(sS/x0S)); //rad
 // considero sB/2 per quandp interagisce a metà 
-Double_t sigSIe=(13.6/ke.E())*sqrt(sS/x0S)*(1+0.038*log(sS/x0S)); //rad
+Double_t sigSIe=(13.6/ke.E()*0.001)*sqrt(sS/x0S)*(1+0.038*log(sS/x0S)); //rad
 // considero sB/2 per quandp interagisce a metà 
-Double_t sigBE2mu=(13.6/k.E())*sqrt(sB/(2*x0B))*(1+0.038*log(sB/(2*x0B))); //rad
+Double_t sigBE2mu=(13.6/k.E()*0.001)*sqrt(sB/(2*x0B))*(1+0.038*log(sB/(2*x0B))); //rad
 // considero sB/2 per quandp interagisce a metà 
-Double_t sigBE2e=(13.6/ke.E())*sqrt(sB/(2*x0B))*(1+0.038*log(sB/(2*x0B))); //rad
+Double_t sigBE2e=(13.6/ke.E()*0.001)*sqrt(sB/(2*x0B))*(1+0.038*log(sB/(2*x0B))); //rad
 // considero sB/2 per quandp interagisce a metà 
-Double_t sigBEmu=(13.6/k.E())*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad   
-Double_t sigBEe=(13.6/ke.E())*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad   
+Double_t sigBEmu=(13.6/k.E()*0.001)*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad   
+Double_t sigBEe=(13.6/ke.E()*0.001)*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad   
     
 
     Double_t THinX[7];
@@ -523,7 +523,7 @@ for (Int_t p=1; p<7; p++)  {
   Double_t dydz = tan(thetaY[1][6]);
   
   // assuming z-motion is always forward
-  Double_t skz = sqrt(k.P() / (dxdz*dxdz + dydz*dydz + 1));
+  Double_t skz = sqrt(k.P2() / (dxdz*dxdz + dydz*dydz + 1));
   Double_t skx = skz * dxdz;
   Double_t sky = skz * dydz;
         
@@ -531,7 +531,7 @@ for (Int_t p=1; p<7; p++)  {
   Double_t dydze = tan(thetaYe[1][6]);
   
   // assuming z-motion is always forward
-  Double_t skze = sqrt(ke.P() / (dxdze*dxdze + dydze*dydze + 1));
+  Double_t skze = sqrt(ke.P2() / (dxdze*dxdze + dydze*dydze + 1));
   Double_t skxe = skze * dxdze;
   Double_t skye = skze * dydze;
         

@@ -737,7 +737,7 @@ else return coo_in;
 
 
 void FastSim::LoadKineVars(const PxPyPzEVector & p_mu_in,  const PxPyPzEVector & p_e_in, 
-			   const PxPyPzEVector & p_mu_out, const PxPyPzEVector & p_e_out,
+			   const PxPyPzEVector & p_mu_out, const PxPyPzEVector & p_e_out, const Double_t coo,
 			   MuE::KineVars & kv) {
   
   kv.Ee = p_e_out.E();

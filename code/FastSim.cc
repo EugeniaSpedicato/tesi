@@ -232,15 +232,15 @@ Double_t divthy = gRandom->Gaus(0., 0.00020);
 Int_t tar=gRandom->Integer(2);
      
 if (tar==0){
-Double_t Thx=gRandom->Gaus(divthx,sigSI);
-Double_t Thy=gRandom->Gaus(divthy,sigSI);
+Double_t Thx=gRandom->Gaus(0,sigSI);
+Double_t Thy=gRandom->Gaus(0,sigSI);
 
 
 //Double_t anglex = atan2(k.Px(), k.Pz());
 //Double_t angley = atan2(k.Py(), k.Pz()); 
      
-Double_t anglex = divthx;//sqrt(divthx*divthx+Thx*Thx);
-Double_t angley = divthy;//sqrt(divthy*divthy+Thy*Thy);
+Double_t anglex = Thx;//sqrt(divthx*divthx+Thx*Thx);
+Double_t angley = Thy;//sqrt(divthy*divthy+Thy*Thy);
      
     //NB questi Px Py Pz sono del nuovo!!
 Double_t pmuin=sqrt(k.Px()*k.Px()+k.Py()*k.Py()+k.Pz()*k.Pz());
@@ -258,11 +258,11 @@ pnewdiv[4][0]=tar;
 return pnewdiv;  }
      
 if (tar==1){
-Double_t Thx=gRandom->Gaus(divthx,sigSI);
+Double_t Thx=gRandom->Gaus(0,sigSI);
 Double_t Thx1=gRandom->Gaus(Thx,sigBE);
 Double_t Thx2=gRandom->Gaus(Thx1,sigSI);
     
-Double_t Thy=gRandom->Gaus(divthy,sigSI);
+Double_t Thy=gRandom->Gaus(0,sigSI);
 Double_t Thy1=gRandom->Gaus(Thy,sigBE);
 Double_t Thy2=gRandom->Gaus(Thy1,sigSI); //boh io non farei cos' sinceramente, ma ok prima approssimazione.
 

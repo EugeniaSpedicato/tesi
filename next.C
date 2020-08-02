@@ -10,6 +10,10 @@ void atree::Loop()
 {
     TH1::SetDefaultSumw2();
     
+TH1F* px_mu=new TH1F("h1", "pX_in muon", 190,-0.3,0.3);
+TH1F* py_mu=new TH1F("h2", "pY_in muon", 190,-0.3,0.3);
+TH1F* pz_mu=new TH1F("h3", "pZ_in muon", 190,50,180);
+    
 TH1F* px_mu_out=new TH1F("h1a", "pX_out muon", 150,-10,10);
 TH1F* py_mu_out=new TH1F("h2a", "pY_out muon", 150,-10,10);
 TH1F* pz_mu_out=new TH1F("h3a", "pZ_out muon", 150,0,180);
@@ -55,7 +59,9 @@ TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.5,-0.5,140,
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
        
-     
+            px_mu->Fill(detKinBeamRot_pXmu,wgt_full);
+       py_mu->Fill(detKinBeamRot_pYmu,wgt_full);
+       pz_mu->Fill(detKinBeamRot_pZmu,wgt_full);
        px_mu_out->Fill(detKinBeamRot_pXmu_out,wgt_full);
        py_mu_out->Fill(detKinBeamRot_pYmu_out,wgt_full);
        pz_mu_out->Fill(detKinBeamRot_pZmu_out,wgt_full);
@@ -208,6 +214,17 @@ Double_t me= 0.5109989461 *0.001;
     dued->cd(2);
     X_Y_e->Draw("HIST");
   dued->SaveAs("dued.png");
+    
+        TCanvas * Pin= new TCanvas("Pin","Pin",400,10,1500,1000);
+    Pin->Divide(1,3);
+    Pin->cd(1);
+    px_mu->Draw("HIST");
+    Pin->cd(2);
+    py_mu->Draw("HIST");
+    Pin->cd(3);
+    pz_mu->Draw("HIST");
+    
+   Pin->SaveAs("p_in.png");
     
 
     

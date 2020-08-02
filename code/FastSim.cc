@@ -88,8 +88,8 @@ void FastSim::Process(const MuE::Event & event) {
   
    */ 
     //DETKIN RUOTATE (const PxPyPzEVector & k, const Double_t tar, const Double_t xx, const Double_t yy, const Double_t thX, const Double_t thY)
-
-PxPyPzEVector p_mu_in_div=RotDivIN(p_mu_in);
+TMatrixD muin==RotDivIN(p_mu_in);
+PxPyPzEVector p_mu_in_div(muin[0][0],muin[1][0],muin[2][0],muin[3][0]);
 //TMatrixD a=MCSin(p_mu_in_div);//effetto MCS, ritorna una matrice con coo, angoli e momento
 //PxPyPzEVector p_mu_in_smeared(a[4][0],a[4][1],a[4][2],a[4][3]);
 
@@ -101,7 +101,7 @@ PxPyPzEVector p_e_out_div=RotDiv(p_mu_in_div,p_e_out);
   
 
 //effetto MCS out, ritorna una matrice con coo, angoli e momento per muone ed elettrone
-TMatrixD b=MCSout(p_mu_in_div,p_mu_out_div,p_e_out_div);
+TMatrixD b=MCSout(p_mu_in_div,p_mu_out_div,p_e_out_div,muin[4][0]);
     
 PxPyPzEVector p_mu_out_div_smeared(b[8][3],b[8][4],b[8][5],b[8][6]);
 PxPyPzEVector p_e_out_div_smeared(b[17][3],b[17][4],b[17][5],b[17][6]);
@@ -204,21 +204,29 @@ Double_t FastSim::ThetaRMS(const PxPyPzEVector & k) const
 */
 
 
- PxPyPzEVector FastSim::RotDivIN(const PxPyPzEVector & k) const
+ TMatrixD FastSim::RotDivIN(const PxPyPzEVector & k) const
  {
 
 Double_t const sS    = 3*0.00128; //m spessore silicio
 Double_t const x0S = 0.094; // m
+Double_t const sB    = 0.015; //m spessore berillio
+Double_t const x0B = 0.353; // m
 
     
 Double_t sigSI=(13.6/k.E())*sqrt(sS/x0S)*(1+0.038*log(sS/x0S)); //rad
+Double_t sigBE=(13.6/k.E())*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad   
+
 
      
 Double_t divthx = gRandom->Gaus(0., 0.00027);
 Double_t divthy = gRandom->Gaus(0., 0.00020); 
+    
+Int_t tar=gRandom->Integer(2);
      
+if (tar==0){
 Double_t Thx=gRandom->Gaus(0,sigSI);
-Double_t Thy=gRandom->Gaus(0,sigSI); //boh io non farei cos' sinceramente, ma ok prima approssimazione.
+Double_t Thy=gRandom->Gaus(0,sigSI);
+
 
 //Double_t anglex = atan2(k.Px(), k.Pz());
 //Double_t angley = atan2(k.Py(), k.Pz()); 
@@ -233,8 +241,46 @@ Double_t py=pz*tan(angley);
 Double_t px=pz*tan(anglex);
 
 
-PxPyPzEVector pnewdiv(px, py, pz, k.E());     
-return pnewdiv;  
+TMatrixD pnewdiv(5,1);
+pnewdiv[0][0]=px;
+pnewdiv[1][0]=py;
+pnewdiv[2][0]=pz; 
+pnewdiv[3][0]=k.E();
+pnewdiv[4][0]=tar;
+return pnewdiv;  }
+     
+if (tar==1){
+Double_t Thx=gRandom->Gaus(0,sigSI);
+Double_t Thx1=gRandom->Gaus(Thx,sigBE);
+Double_t Thx2=gRandom->Gaus(Thx1,sigSI);
+    
+Double_t Thy=gRandom->Gaus(0,sigSI);
+Double_t Thy1=gRandom->Gaus(Thy,sigBE);
+Double_t Thy2=gRandom->Gaus(Thy1,sigSI); //boh io non farei cos' sinceramente, ma ok prima approssimazione.
+
+//Double_t anglex = atan2(k.Px(), k.Pz());
+//Double_t angley = atan2(k.Py(), k.Pz()); 
+     
+Double_t anglex = sqrt(divthx*divthx+Thx2*Thx2);
+Double_t angley = sqrt(divthy*divthy+Thy2*Thy2);
+     
+    //NB questi Px Py Pz sono del nuovo!!
+Double_t pmuin=sqrt(k.Px()*k.Px()+k.Py()*k.Py()+k.Pz()*k.Pz());
+Double_t pz=pmuin/(1+tan(anglex)*tan(anglex)+tan(angley)*tan(angley));
+Double_t py=pz*tan(angley);
+Double_t px=pz*tan(anglex);
+
+
+TMatrixD pnewdiv(5,1);
+pnewdiv[0][0]=px;
+pnewdiv[1][0]=py;
+pnewdiv[2][0]=pz; 
+pnewdiv[3][0]=k.E();
+pnewdiv[4][0]=tar;
+    
+return pnewdiv;  }
+     
+return k;
  }
 
  PxPyPzEVector FastSim::RotDiv(const PxPyPzEVector & k,const PxPyPzEVector & out) const
@@ -278,7 +324,7 @@ return pnewdiv;
 
 
 
-TMatrixD FastSim::MCSout(const PxPyPzEVector & kin, const PxPyPzEVector & k, const PxPyPzEVector & ke) const
+TMatrixD FastSim::MCSout(const PxPyPzEVector & kin, const PxPyPzEVector & k, const PxPyPzEVector & ke, const Double_t & tar) const
 {
             
 Double_t const sSin    = 3*0.00128; //m spessore silicio per fascio entrante
@@ -342,20 +388,19 @@ Double_t sigBEe=(13.6/ke.E())*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad
     Double_t anglexe = atan2(ke.Px(), ke.Pz());
     Double_t angleye = atan2(ke.Py(), ke.Pz()); 
     
-    Double_t xin=d*anglexin+(1/sqrt(3))*sSin*sigSIinP;
-    Double_t yin=d*angleyin+(1/sqrt(3))*sSin*sigSIinP;
     
     TMatrixD coo_in(1,3);
-    coo_in[0][0]=xin;
-    coo_in[0][1]=yin;
+    coo_in[0][0]=0;
+    coo_in[0][1]=0;
     coo_in[0][2]=0;
-
-    
-    Int_t tar=gRandom->Integer(2);
+ 
     
     if(tar==0)
     {
        // siamo nelle stazioni con il target di berillio. Ora entra nel berillio ad una distanza d=0.25-0.005 m dagli ultimi silici. Qui però non puoi trascurare lo spessore del berillio, cioè dove interagisce? considero a metà (7.5 mm), quindi aggiungo a d il pezzo in cui x non è modificato e poi sommo con il nuovo angolo di scattering
+        
+                Double_t xin=(1-sSin)*anglexin+(1/sqrt(3))*sSin*sigSIinP;
+                Double_t yin=(1-sSin)*angleyin+(1/sqrt(3))*sSin*sigSIinP;
                 
                 Double_t thetaX1= gRandom->Gaus(anglexin,sigBE2in);
                 Double_t thetaY1= gRandom->Gaus(angleyin,sigBE2in); 
@@ -507,17 +552,18 @@ for (Int_t p=1; p<7; p++)  {
     {
         // siamo nelle stazioni con il target di berillio. Ora entra nel berillio ad una distanza d=0.25-0.005 m dagli ultimi silici. Qui però non puoi trascurare lo spessore del berillio, cioè dove interagisce? considero a metà (7.5 mm), quindi aggiungo a d il pezzo in cui x non è modificato e poi sommo con il nuovo angolo di scattering
                 
-
+                Double_t xin=(1-2*sSin-sB)*anglexin+2*(1/sqrt(3))*sSin*sigSIinP+(1/sqrt(3))*sSin*sigBEin;
+                Double_t yin=(1-2*sSin-sB)*angleyin+2*(1/sqrt(3))*sSin*sigSIinP+(1/sqrt(3))*sSin*sigBEin;
         
-                 THinX[0]= gRandom->Gaus(anglexin,sigBEin);
-                 THinY[0]= gRandom->Gaus(angleyin,sigBEin); 
+               //  THinX[0]= gRandom->Gaus(anglexin,sigBEin);
+            //     THinY[0]= gRandom->Gaus(angleyin,sigBEin); 
                  thetaX[0][0]=0;
                  thetaY[0][0]=0;
                  thetaXe[0][0]=0;
                  thetaYe[0][0]=0;
 
-                 inX[0]=xin+(1/sqrt(3))*sB*sigBEin;
-                 inY[0]=yin+(1/sqrt(3))*sB*sigBEin;
+               //  inX[0]=xin+(1/sqrt(3))*sB*sigBEin;
+            //     inY[0]=yin+(1/sqrt(3))*sB*sigBEin;
                  x[0][0]=0;
                  y[0][0]=0;  
                  xe[0][0]=0;
@@ -526,39 +572,46 @@ for (Int_t p=1; p<7; p++)  {
 //entro nelle 3 coppie di silici
 for (Int_t p=1; p<7; p++)  {
                  if(p==1 || p==3 || p==5){
-                THinX[p]=gRandom->Gaus(THinX[p-1],sigSIin);
-                THinY[p]=gRandom->Gaus(THinY[p-1],sigSIin);
+             //   THinX[p]=gRandom->Gaus(THinX[p-1],sigSIin);
+            //  THinY[p]=gRandom->Gaus(THinY[p-1],sigSIin);
                  thetaX[0][p]=0;
                  thetaY[0][p]=0;
                  thetaXe[0][p]= 0;
                  thetaYe[0][p]= 0;
 
-                inX[p]=inX[p-1]+d*tan(THinX[p-1])+(1/sqrt(3))*sS*sigSIin+gRandom->Gaus(0,ris);
-                inY[p]=inY[p-1]+d*tan(THinY[p-1])+(1/sqrt(3))*sS*sigSIin;
+              //  inX[p]=inX[p-1]+d*tan(THinX[p-1])+(1/sqrt(3))*sS*sigSIin+gRandom->Gaus(0,ris);
+              //  inY[p]=inY[p-1]+d*tan(THinY[p-1])+(1/sqrt(3))*sS*sigSIin;
                 x[0][p]=0;
                 y[0][p]=0;
                 xe[0][p]=0;
                 ye[0][p]=0;
                 
                 
-                THinX[p+1]= gRandom->Gaus(THinX[p],sigSIin);
-                THinY[p+1]= gRandom->Gaus(THinY[p],sigSIin);
+              //  THinX[p+1]= gRandom->Gaus(THinX[p],sigSIin);
+              //  THinY[p+1]= gRandom->Gaus(THinY[p],sigSIin);
                 thetaX[0][p+1]=0;
                 thetaY[0][p+1]=0;
                 thetaXe[0][p+1]= 0;
                 thetaYe[0][p+1]= 0;
 
-                inX[p+1]=inX[p]+dSS*tan(THinX[p])+(1/sqrt(3))*sS*sigSIin;
-                inY[p+1]=inY[p]+dSS*tan(THinY[p])+(1/sqrt(3))*sS*sigSIin+gRandom->Gaus(0,ris);
+               // inX[p+1]=inX[p]+dSS*tan(THinX[p])+(1/sqrt(3))*sS*sigSIin;
+              //  inY[p+1]=inY[p]+dSS*tan(THinY[p])+(1/sqrt(3))*sS*sigSIin+gRandom->Gaus(0,ris);
                 x[0][p+1]=0;
                 y[0][p+1]=0;
                 xe[0][p+1]=0;
                 ye[0][p+1]=0; 
                  }}
-                                 
-                Double_t thetaX1= gRandom->Gaus(THinX[6],sigBE2in);
-                Double_t thetaY1= gRandom->Gaus(THinY[6],sigBE2in); 
-        
+
+
+                 x[0][0]=xin+(1/sqrt(3))*0.0075*sigBE2in+(1/sqrt(3))*0.0075*sigBE2mu;
+                 y[0][0]=yin+(1/sqrt(3))*0.0075*sigBE2in+(1/sqrt(3))*0.0075*sigBE2mu;  
+    
+                 xe[0][0]=xin+(1/sqrt(3))*0.0075*sigBE2in+(1/sqrt(3))*0.0075*sigBE2e;
+                 ye[0][0]=yin+(1/sqrt(3))*0.0075*sigBE2in+(1/sqrt(3))*0.0075*sigBE2e;              
+             //   Double_t thetaX1= gRandom->Gaus(THinX[6],sigBE2in);
+              //  Double_t thetaY1= gRandom->Gaus(THinY[6],sigBE2in); inX[6]+d*tan(THinX[6])
+                Double_t thetaX1= gRandom->Gaus(anglexin,sigBE2in);
+                Double_t thetaY1= gRandom->Gaus(angleyin,sigBE2in); 
                 anglex += thetaX1;
                 angley += thetaY1;
                 anglexe += thetaX1;
@@ -569,13 +622,13 @@ for (Int_t p=1; p<7; p++)  {
                 thetaXe[1][0]=gRandom->Gaus(anglexe,sigBE2e);
                 thetaYe[1][0]=gRandom->Gaus(angleye,sigBE2e);
 
-                 x[1][0]=inX[6]+d*tan(THinX[6])+(1/sqrt(3))*0.0075*(sigBE2in)+(1/sqrt(3))*0.0075*(sigBE2mu); 
+                 x[1][0]=xin+(1/sqrt(3))*0.0075*(sigBE2in)+(1/sqrt(3))*0.0075*(sigBE2mu); 
         
-                 y[1][0]=inY[6]+d*tan(THinY[6])+(1/sqrt(3))*0.0075*(sigBE2in)+(1/sqrt(3))*0.0075*(sigBE2mu);
+                 y[1][0]=yin+(1/sqrt(3))*0.0075*(sigBE2in)+(1/sqrt(3))*0.0075*(sigBE2mu);
         
-                 xe[1][0]=inX[6]+d*tan(THinX[6])+(1/sqrt(3))*0.0075*(sigBE2in)+(1/sqrt(3))*0.0075*(sigBE2e); 
+                 xe[1][0]=xin+(1/sqrt(3))*0.0075*(sigBE2in)+(1/sqrt(3))*0.0075*(sigBE2e); 
         
-                 ye[1][0]=inY[6]+d*tan(THinY[6])+(1/sqrt(3))*0.0075*(sigBE2in)+(1/sqrt(3))*0.0075*(sigBE2e);
+                 ye[1][0]=yin+(1/sqrt(3))*0.0075*(sigBE2in)+(1/sqrt(3))*0.0075*(sigBE2e);
    
         //entro nelle 3 coppie di silici
 for (Int_t p=1; p<7; p++)  {

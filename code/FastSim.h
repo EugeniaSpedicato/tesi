@@ -44,7 +44,7 @@ namespace MuE {
     PxPyPzEVector Lorentz_ToLab(const PxPyPzEVector & pcm) const;
 
     // Double_t ThetaRMS(const PxPyPzEVector & p) const; 
-    PxPyPzEVector RotDivIN(const PxPyPzEVector & p) const; 
+    TMatrixD RotDivIN(const PxPyPzEVector & p) const; 
     PxPyPzEVector RotDiv(const PxPyPzEVector & p,const PxPyPzEVector & o) const; 
     //PxPyPzEVector Smear(const PxPyPzEVector & p) const; 
    // PxPyPzEVector SmearX(const PxPyPzEVector & p) const; 
@@ -52,7 +52,7 @@ namespace MuE {
     //TMatrixD coo(const Double_t & a, const Double_t & s,const Double_t & ae, const Double_t & se) const; 
     //TMatrixD coo(const PxPyPzEVector & p,const PxPyPzEVector & q) const; 
     // TMatrixD MCSin(const PxPyPzEVector & k) const; 
-    TMatrixD MCSout(const PxPyPzEVector & kin, const PxPyPzEVector & k, const PxPyPzEVector & ke) const; 
+    TMatrixD MCSout(const PxPyPzEVector & kin, const PxPyPzEVector & k, const PxPyPzEVector & ke,const Double_t tar) const; 
 
     void LoadKineVars(const PxPyPzEVector & p_mu_in,  const PxPyPzEVector & p_e_in, 
 		      const PxPyPzEVector & p_mu_out, const PxPyPzEVector & p_e_out, 

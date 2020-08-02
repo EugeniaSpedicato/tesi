@@ -107,7 +107,12 @@ PxPyPzEVector p_mu_out_div_smeared(b[8][3],b[8][4],b[8][5],b[8][6]);
 PxPyPzEVector p_e_out_div_smeared(b[17][3],b[17][4],b[17][5],b[17][6]);
 
 
-Double_t coo[5]=(b[8][0],b[8][1],b[17][0],b[17][1],b[8][2]);
+TMatrixD coo(5,1);
+coo[0][0]=b[8][0];
+coo[1][0]=b[8][1];
+coo[2][0]=b[17][0];
+coo[3][0]=b[17][1];
+coo[4][0]=b[8][2];
 
 
   /*  if (MSopt ==0) {
@@ -737,7 +742,7 @@ else return coo_in;
 
 
 void FastSim::LoadKineVars(const PxPyPzEVector & p_mu_in,  const PxPyPzEVector & p_e_in, 
-			   const PxPyPzEVector & p_mu_out, const PxPyPzEVector & p_e_out, const Double_t & coo[],
+			   const PxPyPzEVector & p_mu_out, const PxPyPzEVector & p_e_out, const TMatrixD & coo,
 			   MuE::KineVars & kv) {
   
   kv.Ee = p_e_out.E();
@@ -755,12 +760,12 @@ kv.cooYmu = coo_fin[0][1];
 
 kv.tar = coo_fin[0][2];*/
  
-kv.cooXmu = coo[0];
-kv.cooYmu = coo[1];
-kv.cooXe = coo[2];
-kv.cooYe = coo[3];
+kv.cooXmu = coo[0][0];
+kv.cooYmu = coo[1][0];
+kv.cooXe = coo[2][0];
+kv.cooYe = coo[3][0];
 
-kv.tar = coo[4];
+kv.tar = coo[4][0];
 
 
   kv.pXmu = p_mu_in.Px();

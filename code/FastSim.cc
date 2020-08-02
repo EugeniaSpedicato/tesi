@@ -239,8 +239,8 @@ Double_t Thy=gRandom->Gaus(divthy,sigSI);
 //Double_t anglex = atan2(k.Px(), k.Pz());
 //Double_t angley = atan2(k.Py(), k.Pz()); 
      
-Double_t anglex = Thx;//sqrt(divthx*divthx+Thx*Thx);
-Double_t angley = Thy;//sqrt(divthy*divthy+Thy*Thy);
+Double_t anglex = divthx;//sqrt(divthx*divthx+Thx*Thx);
+Double_t angley = divthy;//sqrt(divthy*divthy+Thy*Thy);
      
     //NB questi Px Py Pz sono del nuovo!!
 Double_t pmuin=sqrt(k.Px()*k.Px()+k.Py()*k.Py()+k.Pz()*k.Pz());

@@ -221,8 +221,8 @@ Double_t const sB    = 0.015; //m spessore berillio
 Double_t const x0B = 0.353; // m
 
     
-Double_t sigSI=(13.6/k.E()*0.001)*sqrt(sS/x0S)*(1+0.038*log(sS/x0S)); //rad
-Double_t sigBE=(13.6/k.E()*0.001)*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad   
+Double_t sigSI=(13.6/(k.E()*0.001))*sqrt(sS/x0S)*(1+0.038*log(sS/x0S)); //rad
+Double_t sigBE=(13.6/(k.E()*0.001))*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad   
 
 
      
@@ -358,22 +358,22 @@ Double_t const dx = 0.25+0.005; // m la distanza tra coppie di silici è 0.25. P
 Double_t const ris = 18e-6; // m considero questa la risoluzione dei silici
 Double_t const dCAL = 0.10; // m distanza silicio calorimetro
     
-Double_t sigSIinP=(13.6/kin.E()*0.001)*sqrt(sSin/x0S)*(1+0.038*log(sSin/x0S)); //rad
-Double_t sigSIin=(13.6/kin.E()*0.001)*sqrt(sS/x0S)*(1+0.038*log(sS/x0S)); //rad
-Double_t sigBE2in=(13.6/kin.E()*0.001)*sqrt(sB/(2*x0B))*(1+0.038*log(sB/(2*x0B))); //rad   
-Double_t sigBEin=(13.6/kin.E()*0.001)*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad   
+Double_t sigSIinP=(13.6/(kin.E()*0.001))*sqrt(sSin/x0S)*(1+0.038*log(sSin/x0S)); //rad
+Double_t sigSIin=(13.6/(kin.E()*0.001))*sqrt(sS/x0S)*(1+0.038*log(sS/x0S)); //rad
+Double_t sigBE2in=(13.6/(kin.E()*0.001))*sqrt(sB/(2*x0B))*(1+0.038*log(sB/(2*x0B))); //rad   
+Double_t sigBEin=(13.6/(kin.E()*0.001))*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad   
     
     
-Double_t sigSImu=(13.6/k.E()*0.001)*sqrt(sS/x0S)*(1+0.038*log(sS/x0S)); //rad
+Double_t sigSImu=(13.6/(k.E()*0.001))*sqrt(sS/x0S)*(1+0.038*log(sS/x0S)); //rad
 // considero sB/2 per quandp interagisce a metà 
-Double_t sigSIe=(13.6/ke.E()*0.001)*sqrt(sS/x0S)*(1+0.038*log(sS/x0S)); //rad
+Double_t sigSIe=(13.6/(ke.E()*0.001))*sqrt(sS/x0S)*(1+0.038*log(sS/x0S)); //rad
 // considero sB/2 per quandp interagisce a metà 
-Double_t sigBE2mu=(13.6/k.E()*0.001)*sqrt(sB/(2*x0B))*(1+0.038*log(sB/(2*x0B))); //rad
+Double_t sigBE2mu=(13.6/(k.E()*0.001))*sqrt(sB/(2*x0B))*(1+0.038*log(sB/(2*x0B))); //rad
 // considero sB/2 per quandp interagisce a metà 
-Double_t sigBE2e=(13.6/ke.E()*0.001)*sqrt(sB/(2*x0B))*(1+0.038*log(sB/(2*x0B))); //rad
+Double_t sigBE2e=(13.6/(ke.E()*0.001))*sqrt(sB/(2*x0B))*(1+0.038*log(sB/(2*x0B))); //rad
 // considero sB/2 per quandp interagisce a metà 
-Double_t sigBEmu=(13.6/k.E()*0.001)*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad   
-Double_t sigBEe=(13.6/ke.E()*0.001)*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad   
+Double_t sigBEmu=(13.6/(k.E()*0.001))*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad   
+Double_t sigBEe=(13.6/(ke.E()*0.001))*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad   
     
 
     Double_t THinX[7];

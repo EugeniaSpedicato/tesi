@@ -106,7 +106,10 @@ TMatrixD b=MCSout(p_mu_in_div,p_mu_out_div,p_e_out_div,muin[4][0]);
 PxPyPzEVector p_mu_out_div_smeared(b[8][3],b[8][4],b[8][5],b[8][6]);
 PxPyPzEVector p_e_out_div_smeared(b[17][3],b[17][4],b[17][5],b[17][6]);
 
-  
+
+Double_t coo[5]=(b[8][0],b[8][1],b[17][0],b[17][1],b[8][2]);
+
+
   /*  if (MSopt ==0) {
     p_mu_out_div_smeared = Smear(p_mu_out_div);
     p_e_out_div_smeared = Smear(p_e_out_div);
@@ -121,7 +124,7 @@ PxPyPzEVector p_e_out_div_smeared(b[17][3],b[17][4],b[17][5],b[17][6]);
   }
   else cout<<"\n"<<"*** ERROR : FastSim, undefined detector MS option = "<<MSopt<<endl;*/
   
-  LoadKineVars(p_mu_in_div, p_e_in_div, p_mu_out_div_smeared, p_e_out_div_smeared, detKinBeamRot);
+  LoadKineVars(p_mu_in_div, p_e_in_div, p_mu_out_div_smeared, p_e_out_div_smeared, coo, detKinBeamRot);
   
   //LoadPhoton(event, photon);
     
@@ -751,14 +754,13 @@ kv.cooYe = coo_fin[1][1];
 kv.cooYmu = coo_fin[0][1];
 
 kv.tar = coo_fin[0][2];*/
-    
-TMatrixD b=MCSout(p_mu_in,p_mu_out,p_e_out);
-kv.cooXe = b[17][0];
-kv.cooXmu = b[8][0];
-kv.cooYe = b[17][1];
-kv.cooYmu = b[8][1];
+ 
+kv.cooXmu = coo[0];
+kv.cooYmu = coo[1];
+kv.cooXe = coo[2];
+kv.cooYe = coo[3];
 
-kv.tar = b[8][2];
+kv.tar = coo[4];
 
 
   kv.pXmu = p_mu_in.Px();

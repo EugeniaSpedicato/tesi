@@ -55,7 +55,7 @@ namespace MuE {
     TMatrixD MCSout(const PxPyPzEVector & kin, const PxPyPzEVector & k, const PxPyPzEVector & ke,const Double_t & tar) const; 
 
     void LoadKineVars(const PxPyPzEVector & p_mu_in,  const PxPyPzEVector & p_e_in, 
-		      const PxPyPzEVector & p_mu_out, const PxPyPzEVector & p_e_out,  const Double_t & coo,
+		      const PxPyPzEVector & p_mu_out, const PxPyPzEVector & p_e_out,  const Double_t & coo[],
 		      KineVars & kv);
     void LoadPhoton(const Event & event, Photon & photon);
 

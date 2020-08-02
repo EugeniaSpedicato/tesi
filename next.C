@@ -10,8 +10,8 @@ void atree::Loop()
 {
     TH1::SetDefaultSumw2();
     
-TH1F* px_mu=new TH1F("h1", "pX_in muon", 190,-3,3);
-TH1F* py_mu=new TH1F("h2", "pY_in muon", 190,-3,3);
+TH1F* px_mu=new TH1F("h1", "pX_in muon", 190,-10,10);
+TH1F* py_mu=new TH1F("h2", "pY_in muon", 190,-10,10);
 TH1F* pz_mu=new TH1F("h3", "pZ_in muon", 190,50,180);
     
 TH1F* px_mu_out=new TH1F("h1a", "pX_out muon", 150,-10,10);

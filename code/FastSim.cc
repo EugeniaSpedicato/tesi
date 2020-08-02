@@ -88,7 +88,7 @@ void FastSim::Process(const MuE::Event & event) {
   
    */ 
     //DETKIN RUOTATE (const PxPyPzEVector & k, const Double_t tar, const Double_t xx, const Double_t yy, const Double_t thX, const Double_t thY)
-TMatrixD muin==RotDivIN(p_mu_in);
+TMatrixD muin=RotDivIN(p_mu_in);
 PxPyPzEVector p_mu_in_div(muin[0][0],muin[1][0],muin[2][0],muin[3][0]);
 //TMatrixD a=MCSin(p_mu_in_div);//effetto MCS, ritorna una matrice con coo, angoli e momento
 //PxPyPzEVector p_mu_in_smeared(a[4][0],a[4][1],a[4][2],a[4][3]);
@@ -280,7 +280,10 @@ pnewdiv[4][0]=tar;
     
 return pnewdiv;  }
      
-return k;
+TMatrixD p(2,1);
+p[0][0]=0;
+p[1][0]=0;
+return p;
  }
 
  PxPyPzEVector FastSim::RotDiv(const PxPyPzEVector & k,const PxPyPzEVector & out) const

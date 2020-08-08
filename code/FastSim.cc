@@ -410,8 +410,8 @@ Double_t sigBEe=(13.6/(ke.E()*1000))*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad
     {
        // siamo nelle stazioni con il target di berillio. Ora entra nel berillio ad una distanza d=0.25-0.005 m dagli ultimi silici. Qui però non puoi trascurare lo spessore del berillio, cioè dove interagisce? considero a metà (7.5 mm), quindi aggiungo a d il pezzo in cui x non è modificato e poi sommo con il nuovo angolo di scattering
         
-                Double_t xin=(1-sSin)*anglexin+(1/sqrt(3))*sSin*sigSIinP;
-                Double_t yin=(1-sSin)*angleyin+(1/sqrt(3))*sSin*sigSIinP;
+                Double_t xin=(1-sSin)*tan(anglexin)+(1/sqrt(3))*sSin*sigSIinP;
+                Double_t yin=(1-sSin)*tan(angleyin)+(1/sqrt(3))*sSin*sigSIinP;
                 
                 Double_t thetaX1= gRandom->Gaus(anglexin,sigBE2in);
                 Double_t thetaY1= gRandom->Gaus(angleyin,sigBE2in); 
@@ -523,7 +523,8 @@ for (Int_t p=1; p<7; p++)  {
   Double_t dydz = tan(thetaY[1][6]);
   
   // assuming z-motion is always forward
-  Double_t skz = sqrt(k.P2() / (dxdz*dxdz + dydz*dydz + 1));
+Double_t pmu=sqrt(k.Px()*k.Px()+k.Py()*k.Py()+k.Pz()*k.Pz());
+  Double_t skz = sqrt(pmu/ (dxdz*dxdz + dydz*dydz + 1));
   Double_t skx = skz * dxdz;
   Double_t sky = skz * dydz;
         
@@ -531,7 +532,8 @@ for (Int_t p=1; p<7; p++)  {
   Double_t dydze = tan(thetaYe[1][6]);
   
   // assuming z-motion is always forward
-  Double_t skze = sqrt(ke.P2() / (dxdze*dxdze + dydze*dydze + 1));
+Double_t pe=sqrt(ke.Px()*ke.Px()+ke.Py()*ke.Py()+ke.Pz()*ke.Pz());
+  Double_t skze = sqrt(pe/ (dxdze*dxdze + dydze*dydze + 1));
   Double_t skxe = skze * dxdze;
   Double_t skye = skze * dydze;
         
@@ -563,8 +565,8 @@ for (Int_t p=1; p<7; p++)  {
     {
         // siamo nelle stazioni con il target di berillio. Ora entra nel berillio ad una distanza d=0.25-0.005 m dagli ultimi silici. Qui però non puoi trascurare lo spessore del berillio, cioè dove interagisce? considero a metà (7.5 mm), quindi aggiungo a d il pezzo in cui x non è modificato e poi sommo con il nuovo angolo di scattering
                 
-                Double_t xin=(1-2*sSin-sB)*anglexin+2*(1/sqrt(3))*sSin*sigSIinP+(1/sqrt(3))*sSin*sigBEin;
-                Double_t yin=(1-2*sSin-sB)*angleyin+2*(1/sqrt(3))*sSin*sigSIinP+(1/sqrt(3))*sSin*sigBEin;
+                Double_t xin=(1-2*sSin-sB)*tan(anglexin)+2*(1/sqrt(3))*sSin*sigSIinP+(1/sqrt(3))*sSin*sigBEin;
+                Double_t yin=(1-2*sSin-sB)*tan(angleyin)+2*(1/sqrt(3))*sSin*sigSIinP+(1/sqrt(3))*sSin*sigBEin;
         
                //  THinX[0]= gRandom->Gaus(anglexin,sigBEin);
             //     THinY[0]= gRandom->Gaus(angleyin,sigBEin); 
@@ -700,7 +702,8 @@ for (Int_t p=1; p<7; p++)  {
   Double_t dydz = tan(thetaY[1][6]);
   
   // assuming z-motion is always forward
-  Double_t skz = sqrt(k.P() / (dxdz*dxdz + dydz*dydz + 1));
+Double_t pmu=sqrt(k.Px()*k.Px()+k.Py()*k.Py()+k.Pz()*k.Pz());
+  Double_t skz = sqrt(pmu/ (dxdz*dxdz + dydz*dydz + 1));
   Double_t skx = skz * dxdz;
   Double_t sky = skz * dydz;
         
@@ -708,7 +711,8 @@ for (Int_t p=1; p<7; p++)  {
   Double_t dydze = tan(thetaYe[1][6]);
   
   // assuming z-motion is always forward
-  Double_t skze = sqrt(ke.P() / (dxdze*dxdze + dydze*dydze + 1));
+Double_t pe=sqrt(ke.Px()*ke.Px()+ke.Py()*ke.Py()+ke.Pz()*ke.Pz());
+  Double_t skze = sqrt(pe / (dxdze*dxdze + dydze*dydze + 1));
   Double_t skxe = skze * dxdze;
   Double_t skye = skze * dydze;
         

@@ -439,16 +439,18 @@ Double_t sigBEe=(13.6/(ke.E()*1000))*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad
   
   // assuming z-motion is always forward
 Double_t pmu=sqrt(k.Px()*k.Px()+k.Py()*k.Py()+k.Pz()*k.Pz());
-  Double_t skz = sqrt(pmu/ (dxdz*dxdz + dydz*dydz + 1));
+  Double_t skz = pmu/(1 + dxdz*dxdz + dydz*dydz);
   Double_t skx = skz * dxdz;
   Double_t sky = skz * dydz;
+    
+        
         
   Double_t dxdze = tan(thetaXe[1][1]); // could approx tan ~ angle
   Double_t dydze = tan(thetaYe[1][1]);
   
   // assuming z-motion is always forward
 Double_t pe=sqrt(ke.Px()*ke.Px()+ke.Py()*ke.Py()+ke.Pz()*ke.Pz());
-  Double_t skze = sqrt(pe/ (dxdze*dxdze + dydze*dydze + 1));
+  Double_t skze = pe/(1 + dxdze*dxdze + dydze*dydze);
   Double_t skxe = skze * dxdze;
   Double_t skye = skze * dydze;
         

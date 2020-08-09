@@ -31,7 +31,7 @@ angley += divthy;
      
     //NB questi Px Py Pz sono del nuovo!!
 Double_t pmuin=sqrt(k.Px()*k.Px()+k.Py()*k.Py()+k.Pz()*k.Pz());
-Double_t pz=pmuin/(1+tan(anglex)*tan(anglex)+tan(angley)*tan(angley));
+Double_t pz=sqrt((pmuin*pmuin)/(1+tan(anglex)*tan(anglex)+tan(angley)*tan(angley)));
 Double_t py=pz*tan(angley);
 Double_t px=pz*tan(anglex);
 Double_t pt=sqrt(px*px+py*py);

@@ -242,7 +242,7 @@ Double_t me= 0.5109989461 *0.001;
     dx->Draw("HIST");
     d->cd(2);
     dy->Draw("HIST");
-  dued->SaveAs("diffCoo.png");
+  d->SaveAs("diffCoo.png");
     
 
     

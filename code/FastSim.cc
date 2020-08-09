@@ -103,16 +103,16 @@ PxPyPzEVector p_e_out_div=RotDiv(p_mu_in_div,p_e_out);
 //effetto MCS out, ritorna una matrice con coo, angoli e momento per muone ed elettrone
 TMatrixD b=MCSout(p_mu_in_div,p_mu_out_div,p_e_out_div,muin[4][0]);
     
-PxPyPzEVector p_mu_out_div_smeared(b[8][3],b[8][4],b[8][5],b[8][6]);
-PxPyPzEVector p_e_out_div_smeared(b[17][3],b[17][4],b[17][5],b[17][6]);
+PxPyPzEVector p_mu_out_div_smeared(b[0][3],b[0][4],b[0][5],b[0][6]);
+PxPyPzEVector p_e_out_div_smeared(b[1][3],b[1][4],b[1][5],b[1][6]);
 
 
 TMatrixD coo(5,1);
-coo[0][0]=b[8][0];
-coo[1][0]=b[8][1];
-coo[2][0]=b[17][0];
-coo[3][0]=b[17][1];
-coo[4][0]=b[8][2];
+coo[0][0]=0;
+coo[1][0]=0;
+coo[2][0]=0;
+coo[3][0]=0;
+coo[4][0]=0;
 
 
   /*  if (MSopt ==0) {
@@ -364,14 +364,13 @@ Double_t const ris = 18e-6; // m considero questa la risoluzione dei silici
 Double_t const dCAL = 0.10; // m distanza silicio calorimetro
     
 Double_t sigSIinP=(13.6/(kin.E()*1000))*sqrt(sSin/x0S)*(1+0.038*log(sSin/x0S)); //rad
-Double_t sigSIin=(13.6/(kin.E()*1000))*sqrt(sS/x0S)*(1+0.038*log(sS/x0S)); //rad
 Double_t sigBE2in=(13.6/(kin.E()*1000))*sqrt(sB/(2*x0B))*(1+0.038*log(sB/(2*x0B))); //rad   
 Double_t sigBEin=(13.6/(kin.E()*1000))*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad   
     
     
-Double_t sigSImu=(13.6/(k.E()*1000))*sqrt(sS/x0S)*(1+0.038*log(sS/x0S)); //rad
+Double_t sigSImu=(13.6/(k.E()*1000))*sqrt(sSin/x0S)*(1+0.038*log(sSin/x0S)); //rad
 // considero sB/2 per quandp interagisce a metà 
-Double_t sigSIe=(13.6/(ke.E()*1000))*sqrt(sS/x0S)*(1+0.038*log(sS/x0S)); //rad
+Double_t sigSIe=(13.6/(ke.E()*1000))*sqrt(sSin/x0S)*(1+0.038*log(sSin/x0S)); //rad
 // considero sB/2 per quandp interagisce a metà 
 Double_t sigBE2mu=(13.6/(k.E()*1000))*sqrt(sB/(2*x0B))*(1+0.038*log(sB/(2*x0B))); //rad
 // considero sB/2 per quandp interagisce a metà 
@@ -381,20 +380,14 @@ Double_t sigBEmu=(13.6/(k.E()*1000))*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad
 Double_t sigBEe=(13.6/(ke.E()*1000))*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad   
     
 
-    Double_t THinX[7];
-    Double_t THinY[7];
-    Double_t inX[7];
-    Double_t inY[7];
     
-    TMatrixD thetaX(2,7);
-    TMatrixD thetaY(2,7);
-    TMatrixD x(2,7);
-    TMatrixD y(2,7);
+    TMatrixD thetaX(2,2);
+    TMatrixD thetaY(2,2);
+
     
-    TMatrixD thetaXe(2,7);
-    TMatrixD thetaYe(2,7);
-    TMatrixD xe(2,7);
-    TMatrixD ye(2,7);
+    TMatrixD thetaXe(2,2);
+    TMatrixD thetaYe(2,2);
+
     
     Double_t anglexin = atan2(kin.Px(), kin.Pz());
     Double_t angleyin = atan2(kin.Py(), kin.Pz()); 
@@ -414,111 +407,35 @@ Double_t sigBEe=(13.6/(ke.E()*1000))*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad
     if(tar==0)
     {
        // siamo nelle stazioni con il target di berillio. Ora entra nel berillio ad una distanza d=0.25-0.005 m dagli ultimi silici. Qui però non puoi trascurare lo spessore del berillio, cioè dove interagisce? considero a metà (7.5 mm), quindi aggiungo a d il pezzo in cui x non è modificato e poi sommo con il nuovo angolo di scattering
-        
-                Double_t xin=(1-sSin)*tan(anglexin)+(1/sqrt(3))*sSin*sigSIinP;
-                Double_t yin=(1-sSin)*tan(angleyin)+(1/sqrt(3))*sSin*sigSIinP;
+
         
                  thetaX[0][0]= gRandom->Gaus(anglex,sigBE2mu);
                  thetaY[0][0]= gRandom->Gaus(angley,sigBE2mu); 
                  thetaXe[0][0]= gRandom->Gaus(anglexe,sigBE2e);
                  thetaYe[0][0]= gRandom->Gaus(angleye,sigBE2e); 
 
-                 x[0][0]=xin+(1/sqrt(3))*0.0075*sigBE2in+(1/sqrt(3))*0.0075*sigBE2mu;
-                 y[0][0]=yin+(1/sqrt(3))*0.0075*sigBE2in+(1/sqrt(3))*0.0075*sigBE2mu;  
-    
-                 xe[0][0]=xin+(1/sqrt(3))*0.0075*sigBE2in+(1/sqrt(3))*0.0075*sigBE2e;
-                 ye[0][0]=yin+(1/sqrt(3))*0.0075*sigBE2in+(1/sqrt(3))*0.0075*sigBE2e;  
-              
-//entro nelle 3 coppie di silici
-for (Int_t p=1; p<7; p++)  {
-                 if(p==1 || p==3 || p==5){
-                 thetaX[0][p]= gRandom->Gaus(thetaX[0][p-1],sigSImu);
-                 thetaY[0][p]= gRandom->Gaus(thetaY[0][p-1],sigSImu); 
-                 thetaXe[0][p]= gRandom->Gaus(thetaXe[0][p-1],sigSIe);
-                 thetaYe[0][p]= gRandom->Gaus(thetaYe[0][p-1],sigSIe); 
 
-                x[0][p]=x[0][p-1]+d*tan(thetaX[0][p-1])+(1/sqrt(3))*sS*sigSImu+gRandom->Gaus(0,ris);
-                y[0][p]=y[0][p-1]+d*tan(thetaY[0][p-1])+(1/sqrt(3))*sS*sigSImu;
-                xe[0][p]=xe[0][p-1]+d*tan(thetaXe[0][p-1])+(1/sqrt(3))*sS*sigSIe+gRandom->Gaus(0,ris);
-                ye[0][p]=ye[0][p-1]+d*tan(thetaYe[0][p-1])+(1/sqrt(3))*sS*sigSIe;
-                
-                thetaX[0][p+1]= gRandom->Gaus(thetaX[0][p],sigSImu);
-                thetaY[0][p+1]= gRandom->Gaus(thetaY[0][p],sigSImu);
-                thetaXe[0][p+1]= gRandom->Gaus(thetaXe[0][p],sigSIe);
-                thetaYe[0][p+1]= gRandom->Gaus(thetaYe[0][p],sigSIe);
+                 thetaX[0][1]= gRandom->Gaus(thetaX[0][0],sigSImu);
+                 thetaY[0][1]= gRandom->Gaus(thetaY[0][0],sigSImu); 
+                 thetaXe[0][1]= gRandom->Gaus(thetaXe[0][0],sigSIe);
+                 thetaYe[0][1]= gRandom->Gaus(thetaYe[0][0],sigSIe); 
 
-                x[0][p+1]=x[0][p]+dSS*tan(thetaX[0][p])+(1/sqrt(3))*sS*sigSImu;
-                y[0][p+1]=y[0][p]+dSS*tan(thetaY[0][p])+(1/sqrt(3))*sS*sigSImu+gRandom->Gaus(0,ris);
-                xe[0][p+1]=xe[0][p]+dSS*tan(thetaXe[0][p])+(1/sqrt(3))*sS*sigSIe;
-                ye[0][p+1]=ye[0][p]+dSS*tan(thetaYe[0][p])+(1/sqrt(3))*sS*sigSIe+gRandom->Gaus(0,ris);
-                 }}
         
                  thetaX[1][0]= gRandom->Gaus(thetaX[0][6],sigBEmu);
                  thetaY[1][0]= gRandom->Gaus(thetaY[0][6],sigBEmu); 
                  thetaXe[1][0]= gRandom->Gaus(thetaXe[0][6],sigBEe);
                  thetaYe[1][0]= gRandom->Gaus(thetaYe[0][6],sigBEe); 
 
-                 x[1][0]=x[0][6]+d*tan(thetaX[0][6])+(1/sqrt(3))*sB*sigBEmu;
-                 y[1][0]=y[0][6]+d*tan(thetaY[0][6])+(1/sqrt(3))*sB*sigBEmu;  
-                 xe[1][0]=xe[0][6]+d*tan(thetaXe[0][6])+(1/sqrt(3))*sB*sigBEe;
-                 ye[1][0]=ye[0][6]+d*tan(thetaYe[0][6])+(1/sqrt(3))*sB*sigBEe;  
-   
-        //entro nelle 3 coppie di silici
-for (Int_t p=1; p<7; p++)  {
-                 if(p==1 || p==3 || p==5){
-                 thetaX[1][p]= gRandom->Gaus(thetaX[1][p-1],sigSImu);
-                 thetaY[1][p]= gRandom->Gaus(thetaY[1][p-1],sigSImu); 
-                 thetaXe[1][p]= gRandom->Gaus(thetaXe[1][p-1],sigSIe);
-                 thetaYe[1][p]= gRandom->Gaus(thetaYe[1][p-1],sigSIe); 
 
-                x[1][p]=x[1][p-1]+d*tan(thetaX[1][p-1])+(1/sqrt(3))*sS*sigSImu+gRandom->Gaus(0,ris);
-                y[1][p]=y[1][p-1]+d*tan(thetaY[1][p-1])+(1/sqrt(3))*sS*sigSImu;
-                xe[1][p]=xe[1][p-1]+d*tan(thetaXe[1][p-1])+(1/sqrt(3))*sS*sigSIe+gRandom->Gaus(0,ris);
-                ye[1][p]=ye[1][p-1]+d*tan(thetaYe[1][p-1])+(1/sqrt(3))*sS*sigSIe;
-                
-                thetaX[1][p+1]= gRandom->Gaus(thetaX[1][p],sigSImu);
-                thetaY[1][p+1]= gRandom->Gaus(thetaY[1][p],sigSImu);
-                thetaXe[1][p+1]= gRandom->Gaus(thetaXe[1][p],sigSIe);
-                thetaYe[1][p+1]= gRandom->Gaus(thetaYe[1][p],sigSIe);
+                 thetaX[1][1]= gRandom->Gaus(thetaX[1][p-1],sigSImu);
+                 thetaY[1][1]= gRandom->Gaus(thetaY[1][p-1],sigSImu); 
+                 thetaXe[1][1]= gRandom->Gaus(thetaXe[1][p-1],sigSIe);
+                 thetaYe[1][1]= gRandom->Gaus(thetaYe[1][p-1],sigSIe); 
+    
+     TMatrixD coo_ang_fin(2,7);
 
-                x[1][p+1]=x[1][p]+dSS*tan(thetaX[1][p])+(1/sqrt(3))*sS*sigSImu;
-                y[1][p+1]=y[1][p]+dSS*tan(thetaY[1][p])+(1/sqrt(3))*sS*sigSImu+gRandom->Gaus(0,ris);
-                xe[1][p+1]=xe[1][p]+dSS*tan(thetaXe[1][p])+(1/sqrt(3))*sS*sigSIe;
-                ye[1][p+1]=ye[1][p]+dSS*tan(thetaYe[1][p])+(1/sqrt(3))*sS*sigSIe+gRandom->Gaus(0,ris);                 
-                 }}
-        
-    Double_t xf = x[1][6]+dCAL*tan(thetaX[1][6]);
-    Double_t yf = y[1][6]+dCAL*tan(thetaY[1][6]);
-    Double_t xfe = xe[1][6]+dCAL*tan(thetaXe[1][6]);
-    Double_t yfe = ye[1][6]+dCAL*tan(thetaYe[1][6]);
-    
-    TMatrixD coo_ang_fin(18,7);
-        
-                for (Int_t i=0; i<7; i++)
-    { //coordinate stazione 2 muone
-        coo_ang_fin[0][i]=x[0][i]; 
-        coo_ang_fin[1][i]=y[0][i]; 
-        coo_ang_fin[2][i]=thetaX[0][i]; 
-        coo_ang_fin[3][i]=thetaY[0][i]; 
-    //coordinate stazione 3 muone         
-        coo_ang_fin[4][i]=x[1][i]; 
-        coo_ang_fin[5][i]=y[1][i]; 
-        coo_ang_fin[6][i]=thetaX[1][i]; 
-        coo_ang_fin[7][i]=thetaY[1][i];      
-    //coordinate stazione 2 elettrone
-        coo_ang_fin[9][i]=xe[0][i]; 
-        coo_ang_fin[10][i]=ye[0][i]; 
-        coo_ang_fin[11][i]=thetaXe[0][i]; 
-        coo_ang_fin[12][i]=thetaYe[0][i]; 
-    //coordinate stazione 3 elettrone          
-        coo_ang_fin[13][i]=xe[1][i]; 
-        coo_ang_fin[14][i]=ye[1][i]; 
-        coo_ang_fin[15][i]=thetaXe[1][i]; 
-        coo_ang_fin[16][i]=thetaYe[1][i];       
-    }  
-    
-  Double_t dxdz = tan(thetaX[1][6]); // could approx tan ~ angle
-  Double_t dydz = tan(thetaY[1][6]);
+  Double_t dxdz = tan(thetaX[1][1]); // could approx tan ~ angle
+  Double_t dydz = tan(thetaY[1][1]);
   
   // assuming z-motion is always forward
 Double_t pmu=sqrt(k.Px()*k.Px()+k.Py()*k.Py()+k.Pz()*k.Pz());
@@ -526,8 +443,8 @@ Double_t pmu=sqrt(k.Px()*k.Px()+k.Py()*k.Py()+k.Pz()*k.Pz());
   Double_t skx = skz * dxdz;
   Double_t sky = skz * dydz;
         
-  Double_t dxdze = tan(thetaXe[1][6]); // could approx tan ~ angle
-  Double_t dydze = tan(thetaYe[1][6]);
+  Double_t dxdze = tan(thetaXe[1][1]); // could approx tan ~ angle
+  Double_t dydze = tan(thetaYe[1][1]);
   
   // assuming z-motion is always forward
 Double_t pe=sqrt(ke.Px()*ke.Px()+ke.Py()*ke.Py()+ke.Pz()*ke.Pz());
@@ -536,23 +453,23 @@ Double_t pe=sqrt(ke.Px()*ke.Px()+ke.Py()*ke.Py()+ke.Pz()*ke.Pz());
   Double_t skye = skze * dydze;
         
         // coordinate sul calorimetro e momento out smeared
-        coo_ang_fin[8][0]=xf;   
-        coo_ang_fin[8][1]=yf;  
-        coo_ang_fin[8][2]=tar;      
-        coo_ang_fin[8][3]=skx; 
-        coo_ang_fin[8][4]=sky;      
-        coo_ang_fin[8][5]=skz;      
-        coo_ang_fin[8][6]=k.E();   
+        coo_ang_fin[0][0]=0;   
+        coo_ang_fin[0][1]=0;  
+        coo_ang_fin[0][2]=tar;      
+        coo_ang_fin[0][3]=skx; 
+        coo_ang_fin[0][4]=sky;      
+        coo_ang_fin[0][5]=skz;      
+        coo_ang_fin[0][6]=k.E();   
         
                 
         // coordinate sul calorimetro e momento out smeared
-        coo_ang_fin[17][0]=xfe;   
-        coo_ang_fin[17][1]=yfe;  
-        coo_ang_fin[17][2]=tar;      
-        coo_ang_fin[17][3]=skxe; 
-        coo_ang_fin[17][4]=skye;      
-        coo_ang_fin[17][5]=skze;      
-        coo_ang_fin[17][6]=ke.E();   
+        coo_ang_fin[1][0]=0;   
+        coo_ang_fin[1][1]=0;  
+        coo_ang_fin[1][2]=tar;      
+        coo_ang_fin[1][3]=skxe; 
+        coo_ang_fin[1][4]=skye;      
+        coo_ang_fin[1][5]=skze;      
+        coo_ang_fin[1][6]=ke.E();   
         
     return coo_ang_fin;
     
@@ -562,9 +479,7 @@ Double_t pe=sqrt(ke.Px()*ke.Px()+ke.Py()*ke.Py()+ke.Pz()*ke.Pz());
     if(tar==1)
     {
         // siamo nelle stazioni con il target di berillio. Ora entra nel berillio ad una distanza d=0.25-0.005 m dagli ultimi silici. Qui però non puoi trascurare lo spessore del berillio, cioè dove interagisce? considero a metà (7.5 mm), quindi aggiungo a d il pezzo in cui x non è modificato e poi sommo con il nuovo angolo di scattering
-                
-                Double_t xin=(2-2*sSin-sB)*tan(anglexin)+2*(1/sqrt(3))*sSin*sigSIinP+(1/sqrt(3))*sSin*sigBEin;
-                Double_t yin=(2-2*sSin-sB)*tan(angleyin)+2*(1/sqrt(3))*sSin*sigSIinP+(1/sqrt(3))*sSin*sigBEin;
+ 
         
                //  THinX[0]= gRandom->Gaus(anglexin,sigBEin);
             //     THinY[0]= gRandom->Gaus(angleyin,sigBEin); 
@@ -573,125 +488,31 @@ Double_t pe=sqrt(ke.Px()*ke.Px()+ke.Py()*ke.Py()+ke.Pz()*ke.Pz());
                  thetaXe[0][0]=0;
                  thetaYe[0][0]=0;
 
-               //  inX[0]=xin+(1/sqrt(3))*sB*sigBEin;
-            //     inY[0]=yin+(1/sqrt(3))*sB*sigBEin;
-                 x[0][0]=0;
-                 y[0][0]=0;  
-                 xe[0][0]=0;
-                 ye[0][0]=0;
-       
-//entro nelle 3 coppie di silici
-for (Int_t p=1; p<7; p++)  {
-                 if(p==1 || p==3 || p==5){
-             //   THinX[p]=gRandom->Gaus(THinX[p-1],sigSIin);
-            //  THinY[p]=gRandom->Gaus(THinY[p-1],sigSIin);
-                 thetaX[0][p]=0;
-                 thetaY[0][p]=0;
-                 thetaXe[0][p]= 0;
-                 thetaYe[0][p]= 0;
-
-              //  inX[p]=inX[p-1]+d*tan(THinX[p-1])+(1/sqrt(3))*sS*sigSIin+gRandom->Gaus(0,ris);
-              //  inY[p]=inY[p-1]+d*tan(THinY[p-1])+(1/sqrt(3))*sS*sigSIin;
-                x[0][p]=0;
-                y[0][p]=0;
-                xe[0][p]=0;
-                ye[0][p]=0;
-                
-                
-              //  THinX[p+1]= gRandom->Gaus(THinX[p],sigSIin);
-              //  THinY[p+1]= gRandom->Gaus(THinY[p],sigSIin);
-                thetaX[0][p+1]=0;
-                thetaY[0][p+1]=0;
-                thetaXe[0][p+1]= 0;
-                thetaYe[0][p+1]= 0;
-
-               // inX[p+1]=inX[p]+dSS*tan(THinX[p])+(1/sqrt(3))*sS*sigSIin;
-              //  inY[p+1]=inY[p]+dSS*tan(THinY[p])+(1/sqrt(3))*sS*sigSIin+gRandom->Gaus(0,ris);
-                x[0][p+1]=0;
-                y[0][p+1]=0;
-                xe[0][p+1]=0;
-                ye[0][p+1]=0; 
-                 }}
 
 
-                 x[0][0]=xin+(1/sqrt(3))*0.0075*sigBE2in+(1/sqrt(3))*0.0075*sigBE2mu;
-                 y[0][0]=yin+(1/sqrt(3))*0.0075*sigBE2in+(1/sqrt(3))*0.0075*sigBE2mu;  
-    
-                 xe[0][0]=xin+(1/sqrt(3))*0.0075*sigBE2in+(1/sqrt(3))*0.0075*sigBE2e;
-                 ye[0][0]=yin+(1/sqrt(3))*0.0075*sigBE2in+(1/sqrt(3))*0.0075*sigBE2e;              
-             //   Double_t thetaX1= gRandom->Gaus(THinX[6],sigBE2in);
-              //  Double_t thetaY1= gRandom->Gaus(THinY[6],sigBE2in); inX[6]+d*tan(THinX[6])
-                
+                 thetaX[0][1]=0;
+                 thetaY[0][1]=0;
+                 thetaXe[0][1]= 0;
+                 thetaYe[0][1]= 0;
+
+
+
                 thetaX[1][0]=gRandom->Gaus(anglex,sigBE2mu);
                 thetaY[1][0]=gRandom->Gaus(angley,sigBE2mu);
                 thetaXe[1][0]=gRandom->Gaus(anglexe,sigBE2e);
                 thetaYe[1][0]=gRandom->Gaus(angleye,sigBE2e);
 
-                 x[1][0]=xin+(1/sqrt(3))*0.0075*(sigBE2in)+(1/sqrt(3))*0.0075*(sigBE2mu); 
-        
-                 y[1][0]=yin+(1/sqrt(3))*0.0075*(sigBE2in)+(1/sqrt(3))*0.0075*(sigBE2mu);
-        
-                 xe[1][0]=xin+(1/sqrt(3))*0.0075*(sigBE2in)+(1/sqrt(3))*0.0075*(sigBE2e); 
-        
-                 ye[1][0]=yin+(1/sqrt(3))*0.0075*(sigBE2in)+(1/sqrt(3))*0.0075*(sigBE2e);
    
-        //entro nelle 3 coppie di silici
-for (Int_t p=1; p<7; p++)  {
-                 if(p==1 || p==3 || p==5){
-                 thetaX[1][p]= gRandom->Gaus(thetaX[1][p-1],sigSImu);
-                 thetaY[1][p]= gRandom->Gaus(thetaY[1][p-1],sigSImu); 
-                 thetaXe[1][p]= gRandom->Gaus(thetaXe[1][p-1],sigSIe);
-                 thetaYe[1][p]= gRandom->Gaus(thetaYe[1][p-1],sigSIe); 
 
-                x[1][p]=x[1][p-1]+d*tan(thetaX[1][p-1])+(1/sqrt(3))*sS*sigSImu+gRandom->Gaus(0,ris);
-                y[1][p]=y[1][p-1]+d*tan(thetaY[1][p-1])+(1/sqrt(3))*sS*sigSImu;
-                xe[1][p]=xe[1][p-1]+d*tan(thetaXe[1][p-1])+(1/sqrt(3))*sS*sigSIe+gRandom->Gaus(0,ris);
-                ye[1][p]=ye[1][p-1]+d*tan(thetaYe[1][p-1])+(1/sqrt(3))*sS*sigSIe;
-                
-                thetaX[1][p+1]= gRandom->Gaus(thetaX[1][p],sigSImu);
-                thetaY[1][p+1]= gRandom->Gaus(thetaY[1][p],sigSImu);
-                thetaXe[1][p+1]= gRandom->Gaus(thetaXe[1][p],sigSIe);
-                thetaYe[1][p+1]= gRandom->Gaus(thetaYe[1][p],sigSIe);
+                 thetaX[1][1]= gRandom->Gaus(thetaX[1][0],sigSImu);
+                 thetaY[1][1]= gRandom->Gaus(thetaY[1][0],sigSImu); 
+                 thetaXe[1][1]= gRandom->Gaus(thetaXe[1][0],sigSIe);
+                 thetaYe[1][1]= gRandom->Gaus(thetaYe[1][0],sigSIe); 
 
-                x[1][p+1]=x[1][p]+dSS*tan(thetaX[1][p])+(1/sqrt(3))*sS*sigSImu;
-                y[1][p+1]=y[1][p]+dSS*tan(thetaY[1][p])+(1/sqrt(3))*sS*sigSImu+gRandom->Gaus(0,ris);
-                xe[1][p+1]=xe[1][p]+dSS*tan(thetaXe[1][p])+(1/sqrt(3))*sS*sigSIe;
-                ye[1][p+1]=ye[1][p]+dSS*tan(thetaYe[1][p])+(1/sqrt(3))*sS*sigSIe+gRandom->Gaus(0,ris);                 
-                 }}
-        // sul calorimetro
-        
-    Double_t xf = x[1][6]+dCAL*tan(thetaX[1][6]);
-    Double_t yf = y[1][6]+dCAL*tan(thetaY[1][6]);
-    Double_t xfe = xe[1][6]+dCAL*tan(thetaXe[1][6]);
-    Double_t yfe = ye[1][6]+dCAL*tan(thetaYe[1][6]);
-    
-    TMatrixD coo_ang_fin(18,7);
-        
-                for (Int_t i=0; i<7; i++)
-    { //coordinate stazione 2 muone
-        coo_ang_fin[0][i]=x[0][i]; 
-        coo_ang_fin[1][i]=y[0][i]; 
-        coo_ang_fin[2][i]=thetaX[0][i]; 
-        coo_ang_fin[3][i]=thetaY[0][i]; 
-    //coordinate stazione 3 muone         
-        coo_ang_fin[4][i]=x[1][i]; 
-        coo_ang_fin[5][i]=y[1][i]; 
-        coo_ang_fin[6][i]=thetaX[1][i]; 
-        coo_ang_fin[7][i]=thetaY[1][i];      
-    //coordinate stazione 2 elettrone
-        coo_ang_fin[9][i]=xe[0][i]; 
-        coo_ang_fin[10][i]=ye[0][i]; 
-        coo_ang_fin[11][i]=thetaXe[0][i]; 
-        coo_ang_fin[12][i]=thetaYe[0][i]; 
-    //coordinate stazione 3 elettrone          
-        coo_ang_fin[13][i]=xe[1][i]; 
-        coo_ang_fin[14][i]=ye[1][i]; 
-        coo_ang_fin[15][i]=thetaXe[1][i]; 
-        coo_ang_fin[16][i]=thetaYe[1][i];       
-    }  
-    
-  Double_t dxdz = tan(thetaX[1][6]); // could approx tan ~ angle
-  Double_t dydz = tan(thetaY[1][6]);
+     TMatrixD coo_ang_fin(2,7);
+
+  Double_t dxdz = tan(thetaX[1][1]); // could approx tan ~ angle
+  Double_t dydz = tan(thetaY[1][1]);
   
   // assuming z-motion is always forward
 Double_t pmu=sqrt(k.Px()*k.Px()+k.Py()*k.Py()+k.Pz()*k.Pz());
@@ -699,36 +520,35 @@ Double_t pmu=sqrt(k.Px()*k.Px()+k.Py()*k.Py()+k.Pz()*k.Pz());
   Double_t skx = skz * dxdz;
   Double_t sky = skz * dydz;
         
-  Double_t dxdze = tan(thetaXe[1][6]); // could approx tan ~ angle
-  Double_t dydze = tan(thetaYe[1][6]);
+  Double_t dxdze = tan(thetaXe[1][1]); // could approx tan ~ angle
+  Double_t dydze = tan(thetaYe[1][1]);
   
   // assuming z-motion is always forward
 Double_t pe=sqrt(ke.Px()*ke.Px()+ke.Py()*ke.Py()+ke.Pz()*ke.Pz());
-  Double_t skze = sqrt(pe / (dxdze*dxdze + dydze*dydze + 1));
+  Double_t skze = sqrt(pe/ (dxdze*dxdze + dydze*dydze + 1));
   Double_t skxe = skze * dxdze;
   Double_t skye = skze * dydze;
         
         // coordinate sul calorimetro e momento out smeared
-        coo_ang_fin[8][0]=xf;   
-        coo_ang_fin[8][1]=yf;  
-        coo_ang_fin[8][2]=tar;      
-        coo_ang_fin[8][3]=skx; 
-        coo_ang_fin[8][4]=sky;      
-        coo_ang_fin[8][5]=skz;      
-        coo_ang_fin[8][6]=k.E();   
+        coo_ang_fin[0][0]=0;   
+        coo_ang_fin[0][1]=0;  
+        coo_ang_fin[0][2]=tar;      
+        coo_ang_fin[0][3]=skx; 
+        coo_ang_fin[0][4]=sky;      
+        coo_ang_fin[0][5]=skz;      
+        coo_ang_fin[0][6]=k.E();   
         
                 
         // coordinate sul calorimetro e momento out smeared
-        coo_ang_fin[17][0]=xfe;   
-        coo_ang_fin[17][1]=yfe;  
-        coo_ang_fin[17][2]=tar;      
-        coo_ang_fin[17][3]=skxe; 
-        coo_ang_fin[17][4]=skye;      
-        coo_ang_fin[17][5]=skze;      
-        coo_ang_fin[17][6]=ke.E();   
+        coo_ang_fin[1][0]=0;   
+        coo_ang_fin[1][1]=0;  
+        coo_ang_fin[1][2]=tar;      
+        coo_ang_fin[1][3]=skxe; 
+        coo_ang_fin[1][4]=skye;      
+        coo_ang_fin[1][5]=skze;      
+        coo_ang_fin[1][6]=ke.E();   
         
     return coo_ang_fin;
-        
     }
 
 else return coo_in; 

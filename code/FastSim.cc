@@ -421,16 +421,16 @@ Double_t sigBEe=(13.6/(ke.E()*1000))*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad
                  thetaYe[0][1]= gRandom->Gaus(thetaYe[0][0],sigSIe); 
 
         
-                 thetaX[1][0]= gRandom->Gaus(thetaX[0][6],sigBEmu);
-                 thetaY[1][0]= gRandom->Gaus(thetaY[0][6],sigBEmu); 
-                 thetaXe[1][0]= gRandom->Gaus(thetaXe[0][6],sigBEe);
-                 thetaYe[1][0]= gRandom->Gaus(thetaYe[0][6],sigBEe); 
+                 thetaX[1][0]= gRandom->Gaus(thetaX[0][1],sigBEmu);
+                 thetaY[1][0]= gRandom->Gaus(thetaY[0][1],sigBEmu); 
+                 thetaXe[1][0]= gRandom->Gaus(thetaXe[0][1],sigBEe);
+                 thetaYe[1][0]= gRandom->Gaus(thetaYe[0][1],sigBEe); 
 
 
-                 thetaX[1][1]= gRandom->Gaus(thetaX[1][p-1],sigSImu);
-                 thetaY[1][1]= gRandom->Gaus(thetaY[1][p-1],sigSImu); 
-                 thetaXe[1][1]= gRandom->Gaus(thetaXe[1][p-1],sigSIe);
-                 thetaYe[1][1]= gRandom->Gaus(thetaYe[1][p-1],sigSIe); 
+                 thetaX[1][1]= gRandom->Gaus(thetaX[1][0],sigSImu);
+                 thetaY[1][1]= gRandom->Gaus(thetaY[1][0],sigSImu); 
+                 thetaXe[1][1]= gRandom->Gaus(thetaXe[1][0],sigSIe);
+                 thetaYe[1][1]= gRandom->Gaus(thetaYe[1][0],sigSIe); 
     
      TMatrixD coo_ang_fin(2,7);
 

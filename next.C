@@ -120,8 +120,8 @@ Double_t me= 0.5109989461 *0.001;
     X_Y_mu ->Fill(detKinBeamRot_cooXmu, detKinBeamRot_cooYmu,wgt_full);
      X_Y_e ->Fill(detKinBeamRot_cooXe, detKinBeamRot_cooYe,wgt_full);
        
-    Douvle_t Dx = detKinBeamRot_cooXe-detKinBeamRot_cooXmu;
-    Douvle_t Dy = detKinBeamRot_cooYe-detKinBeamRot_cooXmu;
+    Double_t Dx = detKinBeamRot_cooXe-detKinBeamRot_cooXmu;
+    Double_t Dy = detKinBeamRot_cooYe-detKinBeamRot_cooXmu;
     
     dx->Fill(Dx,wgt_full);
     dy->Fill(Dy,wgt_full);

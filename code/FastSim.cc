@@ -223,9 +223,9 @@ Double_t const x0B = 0.353; // m
     
 Double_t sigSI=(13.6/(k.E()*1000))*sqrt(sS/x0S)*(1+0.038*log(sS/x0S)); //rad
 Double_t sigBE=(13.6/(k.E()*1000))*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad   
+Double_t sigBE2in=(13.6/(k.E()*1000))*sqrt(sB/(2*x0B))*(1+0.038*log(sB/(2*x0B))); //rad   
 
 
-     
 Double_t divthx = gRandom->Gaus(0., 0.00027);
 Double_t divthy = gRandom->Gaus(0., 0.00020); 
     
@@ -234,13 +234,15 @@ Int_t tar=gRandom->Integer(2);
 if (tar==0){
 Double_t Thx=gRandom->Gaus(divthx,sigSI);
 Double_t Thy=gRandom->Gaus(divthy,sigSI);
+Double_t thetaX1= gRandom->Gaus(Thx,sigBE2in);
+Double_t thetaY1= gRandom->Gaus(Thy,sigBE2in); 
 
 
 //Double_t anglex = atan2(k.Px(), k.Pz());
 //Double_t angley = atan2(k.Py(), k.Pz()); 
      
-Double_t anglex = sqrt(Thx*Thx);
-Double_t angley = sqrt(Thy*Thy);
+Double_t anglex = thetaX1;
+Double_t angley = thetaY1;
      
     //NB questi Px Py Pz sono del nuovo!!
 Double_t pmuin=sqrt(k.Px()*k.Px()+k.Py()*k.Py()+k.Pz()*k.Pz());
@@ -264,13 +266,16 @@ Double_t Thx2=gRandom->Gaus(Thx1,sigSI);
     
 Double_t Thy=gRandom->Gaus(divthy,sigSI);
 Double_t Thy1=gRandom->Gaus(Thy,sigBE);
-Double_t Thy2=gRandom->Gaus(Thy1,sigSI); //boh io non farei cos' sinceramente, ma ok prima approssimazione.
+Double_t Thy2=gRandom->Gaus(Thy1,sigSI); 
+    
+Double_t thetaX1= gRandom->Gaus(Thx2,sigBE2in);
+Double_t thetaY1= gRandom->Gaus(Thy2,sigBE2in); 
 
 //Double_t anglex = atan2(k.Px(), k.Pz());
 //Double_t angley = atan2(k.Py(), k.Pz()); 
      
-Double_t anglex = sqrt(Thx2*Thx2);
-Double_t angley = sqrt(Thy2*Thy2);
+Double_t anglex = thetaX1;
+Double_t angley = thetaY1;
      
     //NB questi Px Py Pz sono del nuovo!!
 Double_t pmuin=sqrt(k.Px()*k.Px()+k.Py()*k.Py()+k.Pz()*k.Pz());
@@ -412,13 +417,6 @@ Double_t sigBEe=(13.6/(ke.E()*1000))*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad
         
                 Double_t xin=(1-sSin)*tan(anglexin)+(1/sqrt(3))*sSin*sigSIinP;
                 Double_t yin=(1-sSin)*tan(angleyin)+(1/sqrt(3))*sSin*sigSIinP;
-                
-                Double_t thetaX1= gRandom->Gaus(anglexin,sigBE2in);
-                Double_t thetaY1= gRandom->Gaus(angleyin,sigBE2in); 
-                anglex += thetaX1;
-                angley += thetaY1;
-                anglexe += thetaX1;
-                angleye += thetaY1;
         
                  thetaX[0][0]= gRandom->Gaus(anglex,sigBE2mu);
                  thetaY[0][0]= gRandom->Gaus(angley,sigBE2mu); 
@@ -623,12 +621,6 @@ for (Int_t p=1; p<7; p++)  {
                  ye[0][0]=yin+(1/sqrt(3))*0.0075*sigBE2in+(1/sqrt(3))*0.0075*sigBE2e;              
              //   Double_t thetaX1= gRandom->Gaus(THinX[6],sigBE2in);
               //  Double_t thetaY1= gRandom->Gaus(THinY[6],sigBE2in); inX[6]+d*tan(THinX[6])
-                Double_t thetaX1= gRandom->Gaus(anglexin,sigBE2in);
-                Double_t thetaY1= gRandom->Gaus(angleyin,sigBE2in); 
-                anglex += thetaX1;
-                angley += thetaY1;
-                anglexe += thetaX1;
-                angleye += thetaY1;
                 
                 thetaX[1][0]=gRandom->Gaus(anglex,sigBE2mu);
                 thetaY[1][0]=gRandom->Gaus(angley,sigBE2mu);

@@ -45,6 +45,9 @@ TH1F* tarTWOYmu=new TH1F("h2a", "Coo Y mu tar2 ", 140,-0.01,0.01);
 TH1F* tarTWOXe=new TH1F("h1ea", "Coo X e tar2 ", 140,-0.1,0.1);
 TH1F* tarTWOYe=new TH1F("h2ea", "Coo Y e tar2 ", 140,-0.1,0.1);
     
+TH1F* dx=new TH1F("h2ea", "diff coo X e and mu", 140,-0.1,0.1);
+TH1F* dy=new TH1F("h2ea", "diff coo Y e and mu ", 140,-0.1,0.1);
+    
 TH2F  *X_Y_mu  = new TH2F("h2d" , " X  Vs. y of the muon",140,-0.5,-0.5,140,-0.5,0.5);
 TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.5,-0.5,140,-0.5,0.5);
     
@@ -59,15 +62,15 @@ TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.5,-0.5,140,
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
        
-        px_mu->Fill(detKinBeamRot_pXmu,wgt_LO);
-       py_mu->Fill(detKinBeamRot_pYmu,wgt_LO);
-       pz_mu->Fill(detKinBeamRot_pZmu,wgt_LO);
-       px_mu_out->Fill(detKinBeamRot_pXmu_out,wgt_LO);
-       py_mu_out->Fill(detKinBeamRot_pYmu_out,wgt_LO);
-       pz_mu_out->Fill(detKinBeamRot_pZmu_out,wgt_LO);
-       px_e_out->Fill(detKinBeamRot_pXe_out,wgt_LO);
-       py_e_out->Fill(detKinBeamRot_pYe_out,wgt_LO);
-       pz_e_out->Fill(detKinBeamRot_pZe_out,wgt_LO);       
+        px_mu->Fill(detKinBeamRot_pXmu,wgt_full);
+       py_mu->Fill(detKinBeamRot_pYmu,wgt_full);
+       pz_mu->Fill(detKinBeamRot_pZmu,wgt_full);
+       px_mu_out->Fill(detKinBeamRot_pXmu_out,wgt_full);
+       py_mu_out->Fill(detKinBeamRot_pYmu_out,wgt_full);
+       pz_mu_out->Fill(detKinBeamRot_pZmu_out,wgt_full);
+       px_e_out->Fill(detKinBeamRot_pXe_out,wgt_full);
+       py_e_out->Fill(detKinBeamRot_pYe_out,wgt_full);
+       pz_e_out->Fill(detKinBeamRot_pZe_out,wgt_full);       
        
 Double_t mmu= 105.6583745 *0.001;
 Double_t me= 0.5109989461 *0.001;
@@ -78,44 +81,51 @@ Double_t me= 0.5109989461 *0.001;
     Double_t Emu_out=sqrt(Pmu*Pmu+mmu*mmu);
     Double_t Ee_out=sqrt(Pe*Pe+me*me);
        
-    Emuout->Fill(Emu_out,wgt_LO);   
-    Eeout->Fill(Ee_out,wgt_LO);
+    Emuout->Fill(Emu_out,wgt_full);   
+    Eeout->Fill(Ee_out,wgt_full);
        
-    Emuin->Fill(detKinBeamRot_Emu,wgt_LO);   
-    Eein->Fill(detKinBeamRot_Ee,wgt_LO);
+    Emuin->Fill(detKinBeamRot_Emu,wgt_full);   
+    Eein->Fill(detKinBeamRot_Ee,wgt_full);
        
-    thmu->Fill(detKinBeamRot_thmu*0.001,wgt_LO);
-    the->Fill(detKinBeamRot_the*0.001,wgt_LO);  
+    thmu->Fill(detKinBeamRot_thmu*0.001,wgt_full);
+    the->Fill(detKinBeamRot_the*0.001,wgt_full);  
         
     Double_t anglex_mu = atan2(detKinBeamRot_pXmu_out, detKinBeamRot_pZmu_out);
     Double_t angley_mu = atan2(detKinBeamRot_pYmu_out, detKinBeamRot_pZmu_out);       
     Double_t anglex_e = atan2(detKinBeamRot_pXe_out, detKinBeamRot_pZe_out);
     Double_t angley_e = atan2(detKinBeamRot_pYe_out, detKinBeamRot_pZe_out);
        
-    thXZmu->Fill(anglex_mu,wgt_LO);
-    thYZmu->Fill(angley_mu,wgt_LO);
-    thXZe->Fill(anglex_e,wgt_LO);
-    thYZe->Fill(angley_e,wgt_LO); 
+    thXZmu->Fill(anglex_mu,wgt_full);
+    thYZmu->Fill(angley_mu,wgt_full);
+    thXZe->Fill(anglex_e,wgt_full);
+    thYZe->Fill(angley_e,wgt_full); 
        
            if (detKinBeamRot_tar==0)
        
-           { tarONEXmu->Fill(detKinBeamRot_cooXmu,wgt_LO);
-         tarONEYmu->Fill(detKinBeamRot_cooYmu,wgt_LO);
-         tarONEXe->Fill(detKinBeamRot_cooXe,wgt_LO);
-         tarONEYe->Fill(detKinBeamRot_cooYe,wgt_LO);
+           { tarONEXmu->Fill(detKinBeamRot_cooXmu,wgt_full);
+         tarONEYmu->Fill(detKinBeamRot_cooYmu,wgt_full);
+         tarONEXe->Fill(detKinBeamRot_cooXe,wgt_full);
+         tarONEYe->Fill(detKinBeamRot_cooYe,wgt_full);
       }
        
        if (detKinBeamRot_tar==1)
        {
-         tarTWOXmu->Fill(detKinBeamRot_cooXmu,wgt_LO);
-         tarTWOYmu->Fill(detKinBeamRot_cooYmu,wgt_LO);
-         tarTWOXe->Fill(detKinBeamRot_cooXe,wgt_LO);
-         tarTWOYe->Fill(detKinBeamRot_cooYe,wgt_LO);
+         tarTWOXmu->Fill(detKinBeamRot_cooXmu,wgt_full);
+         tarTWOYmu->Fill(detKinBeamRot_cooYmu,wgt_full);
+         tarTWOXe->Fill(detKinBeamRot_cooXe,wgt_full);
+         tarTWOYe->Fill(detKinBeamRot_cooYe,wgt_full);
            
        }
        
-    X_Y_mu ->Fill(detKinBeamRot_cooXmu, detKinBeamRot_cooYmu,wgt_LO);
-     X_Y_e ->Fill(detKinBeamRot_cooXe, detKinBeamRot_cooYe,wgt_LO);
+    X_Y_mu ->Fill(detKinBeamRot_cooXmu, detKinBeamRot_cooYmu,wgt_full);
+     X_Y_e ->Fill(detKinBeamRot_cooXe, detKinBeamRot_cooYe,wgt_full);
+       
+    Douvle_t Dx = detKinBeamRot_cooXe-detKinBeamRot_cooXmu;
+    Douvle_t Dy = detKinBeamRot_cooYe-detKinBeamRot_cooXmu;
+    
+    dx->Fill(Dx,wgt_full);
+    dy->Fill(Dy,wgt_full);
+    
       
       }
       
@@ -225,6 +235,14 @@ Double_t me= 0.5109989461 *0.001;
     pz_mu->Draw("HIST");
     
    Pin->SaveAs("p_in.png");
+    
+    TCanvas * d= new TCanvas("dued","dued",1000,100,2500,2000);
+    d->Divide(1,2);
+    d->cd(1);
+    dx->Draw("HIST");
+    d->cd(2);
+    dy->Draw("HIST");
+  dued->SaveAs("diffCoo.png");
     
 
     

@@ -131,7 +131,7 @@ coo[4][0]=b[8][2];
   
   LoadKineVars(p_mu_in_div, p_e_in_div, p_mu_out_div_smeared, p_e_out_div_smeared, coo, detKinBeamRot);
   
-  //LoadPhoton(event, photon);
+  LoadPhoton(event, photon, p_mu_in_div,muin[4][0]);
     
 }
 
@@ -338,7 +338,41 @@ PxPyPzEVector pnewdiv(pN[0][0], pN[1][0], pN[2][0], out.E());
 return pnewdiv;    
  }   
 
+TMatrixD FastSim::MCSphoton(const Double_t & tar,const Double_t & theta,const Double_t & phi) const
+    
+{ Double_t d0 =2.025; //m
+  Double_t d1 =1.025;
+         TMatrixD coo (1,2);
+        coo[0][0]=0;
+        coo[0][1]=0;
+        
+        return coo;
 
+    if(tar==0)
+    {
+    Double_t d_xy = d0*tan(the);//vettore nel piano xy
+    Double_t xf = x+d_xy*cos(phi);
+    Double_t yf = y+d_xy*sin(phi);
+        TMatrixD coo (1,2);
+        coo[0][0]=xf;
+        coo[0][1]=yf;
+        
+        return coo;
+    }
+    
+    if(tar==1)
+    {      
+    Double_t d_xy = d1*tan(the);//vettore nel piano xy
+    Double_t xf = x+d_xy*cos(phi);
+    Double_t yf = y+d_xy*sin(phi);
+        TMatrixD coo (1,2);
+        coo[0][0]=xf;
+        coo[0][1]=yf;
+        
+        return coo;
+    }
+ else return coo;
+}
 
 TMatrixD FastSim::MCSout(const PxPyPzEVector & kin, const PxPyPzEVector & k, const PxPyPzEVector & ke, const Double_t & tar) const
 {
@@ -812,7 +846,7 @@ kv.Pe_out = p_e_out.P();
 
 
       
-void FastSim::LoadPhoton(const MuE::Event & event, MuE::Photon & photon) {
+void FastSim::LoadPhoton(const MuE::Event & event, MuE::Photon & photon,const PxPyPzEVector & p_mu_in,const Double_t & tar) {
   // by now at most one photon
   auto n_photons = event.photons.size();
   
@@ -821,12 +855,22 @@ void FastSim::LoadPhoton(const MuE::Event & event, MuE::Photon & photon) {
 				 event.photons[0].py,
 				 event.photons[0].pz,
 			         event.photons[0].E};
-    PxPyPzEVector p_gamma_CoM = Lorentz_ToCoM(p_gamma_Lab);
+
+      
+PxPyPzEVector p_gamma_Lab_div=RotDiv(p_mu_in,p_gamma_Lab);
+   PxPyPzEVector p_gamma_CoM = Lorentz_ToCoM(p_gamma_Lab_div);
+  
     
-    photon.energy    = p_gamma_Lab.E();
-    photon.theta     = p_gamma_Lab.Theta() *1e3;
-    photon.phi       = p_gamma_Lab.Phi();
-    photon.energyCoM = p_gamma_CoM.E();  
+    photon.energy    = p_gamma_Lab_div.E();
+    photon.theta     = p_gamma_Lab_div.Theta() *1e3;
+    photon.phi       = p_gamma_Lab_div.Phi();
+    photon.energyCoM = p_gamma_CoM.E(); 
+      
+    TMatrixD cooP=coo(tar,p_gamma_Lab_div.Theta(),photon.phi);
+    photon.coox=cooP[0][0];
+    photon.cooy=cooP[0][1];
+      
+    
   }
 
   else {
@@ -834,6 +878,9 @@ void FastSim::LoadPhoton(const MuE::Event & event, MuE::Photon & photon) {
     photon.energy    = -1;
     photon.theta     = -1;
     photon.phi       =  0;
+    photon.coox     = -1;
+    photon.cooy     = -1;
+      
   }
       
       

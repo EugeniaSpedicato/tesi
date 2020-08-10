@@ -53,11 +53,12 @@ namespace MuE {
     //TMatrixD coo(const PxPyPzEVector & p,const PxPyPzEVector & q) const; 
     // TMatrixD MCSin(const PxPyPzEVector & k) const; 
     TMatrixD MCSout(const PxPyPzEVector & kin, const PxPyPzEVector & k, const PxPyPzEVector & ke,const Double_t & tar) const; 
+    TMatrixD MCSphoton(const Double_t & tar,const Double_t & theta,const Double_t & phi) const;
 
     void LoadKineVars(const PxPyPzEVector & p_mu_in,  const PxPyPzEVector & p_e_in, 
 		      const PxPyPzEVector & p_mu_out, const PxPyPzEVector & p_e_out,  const TMatrixD & coo,
 		      KineVars & kv);
-    void LoadPhoton(const Event & event, Photon & photon);
+    void LoadPhoton(const Event & event, Photon & photon,,const PxPyPzEVector & p_mu_in,const Double_t & tar);
 
     static const Double_t mm_PDG; // PDG muon mass 
     static const Double_t me_PDG; // PDG electron mass

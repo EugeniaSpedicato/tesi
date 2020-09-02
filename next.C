@@ -95,10 +95,7 @@ Double_t me= 0.5109989461 *0.001;
     Double_t anglex_e = atan2(detKinBeamRot_pXe_out, detKinBeamRot_pZe_out);
     Double_t angley_e = atan2(detKinBeamRot_pYe_out, detKinBeamRot_pZe_out);
        
-    thXZmu->Fill(anglex_mu,wgt_full);
-    thYZmu->Fill(angley_mu,wgt_full);
-    thXZe->Fill(anglex_e,wgt_full);
-    thYZe->Fill(angley_e,wgt_full); 
+
        
            if (detKinBeamRot_tar==0)
        
@@ -106,7 +103,10 @@ Double_t me= 0.5109989461 *0.001;
          tarONEYmu->Fill(detKinBeamRot_cooYmu,wgt_full);
          tarONEXe->Fill(detKinBeamRot_cooXe,wgt_full);
          tarONEYe->Fill(detKinBeamRot_cooYe,wgt_full);
-      }
+          thXZmu->Fill(anglex_mu,wgt_full);
+    thYZmu->Fill(angley_mu,wgt_full);
+    thXZe->Fill(anglex_e,wgt_full);
+    thYZe->Fill(angley_e,wgt_full); 
        
      /*  if (detKinBeamRot_tar==1)
        {
@@ -125,7 +125,7 @@ Double_t me= 0.5109989461 *0.001;
     
     dx->Fill(Dx,wgt_full);
     dy->Fill(Dy,wgt_full);
-    
+    }
       
       }
       

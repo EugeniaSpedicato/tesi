@@ -108,14 +108,14 @@ Double_t me= 0.5109989461 *0.001;
          tarONEYe->Fill(detKinBeamRot_cooYe,wgt_full);
       }
        
-       if (detKinBeamRot_tar==1)
+     /*  if (detKinBeamRot_tar==1)
        {
          tarTWOXmu->Fill(detKinBeamRot_cooXmu,wgt_full);
          tarTWOYmu->Fill(detKinBeamRot_cooYmu,wgt_full);
          tarTWOXe->Fill(detKinBeamRot_cooXe,wgt_full);
          tarTWOYe->Fill(detKinBeamRot_cooYe,wgt_full);
            
-       }
+       }*/
        
     X_Y_mu ->Fill(detKinBeamRot_cooXmu, detKinBeamRot_cooYmu,wgt_full);
      X_Y_e ->Fill(detKinBeamRot_cooXe, detKinBeamRot_cooYe,wgt_full);

@@ -39,17 +39,22 @@ TH1F* tarONEXmu=new TH1F("h1a", "Coo X mu tar1  ", 140,-0.01,0.01);
 TH1F* tarONEYmu=new TH1F("h2a", "Coo Y mu tar1 ", 140,-0.01,0.01);
 TH1F* tarONEXe=new TH1F("h1ea", "Coo X e tar1 ", 140,-0.1,0.1);
 TH1F* tarONEYe=new TH1F("h2ea", "Coo Y e tar1 ", 140,-0.1,0.1);
+TH1F* tarONEXp=new TH1F("h1ea", "Coo X ph tar2 ", 140,-0.1,0.1);
+TH1F* tarONEYp=new TH1F("h2ea", "Coo Y ph tar2 ", 140,-0.1,0.1);
     
 TH1F* tarTWOXmu=new TH1F("h1a", "Coo X mu tar2  ", 140,-0.01,0.01);
 TH1F* tarTWOYmu=new TH1F("h2a", "Coo Y mu tar2 ", 140,-0.01,0.01);
 TH1F* tarTWOXe=new TH1F("h1ea", "Coo X e tar2 ", 140,-0.1,0.1);
 TH1F* tarTWOYe=new TH1F("h2ea", "Coo Y e tar2 ", 140,-0.1,0.1);
+TH1F* tarTWOXp=new TH1F("h1ea", "Coo X ph tar2 ", 140,-0.1,0.1);
+TH1F* tarTWOYp=new TH1F("h2ea", "Coo Y ph tar2 ", 140,-0.1,0.1);
     
 TH1F* dx=new TH1F("h2ea", "diff coo X e and mu", 140,-0.1,0.1);
 TH1F* dy=new TH1F("h2ea", "diff coo Y e and mu ", 140,-0.1,0.1);
     
 TH2F  *X_Y_mu  = new TH2F("h2d" , " X  Vs. y of the muon",140,-0.5,-0.5,140,-0.5,0.5);
 TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.5,-0.5,140,-0.5,0.5);
+TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0.5,0.5);
     
     
      if (fChain == 0) return;
@@ -95,7 +100,10 @@ Double_t me= 0.5109989461 *0.001;
     Double_t anglex_e = atan2(detKinBeamRot_pXe_out, detKinBeamRot_pZe_out);
     Double_t angley_e = atan2(detKinBeamRot_pYe_out, detKinBeamRot_pZe_out);
        
-
+    thXZmu->Fill(anglex_mu,wgt_full);
+    thYZmu->Fill(angley_mu,wgt_full);
+    thXZe->Fill(anglex_e,wgt_full);
+    thYZe->Fill(angley_e,wgt_full); 
        
            if (detKinBeamRot_tar==0)
        
@@ -103,29 +111,30 @@ Double_t me= 0.5109989461 *0.001;
          tarONEYmu->Fill(detKinBeamRot_cooYmu,wgt_full);
          tarONEXe->Fill(detKinBeamRot_cooXe,wgt_full);
          tarONEYe->Fill(detKinBeamRot_cooYe,wgt_full);
-          thXZmu->Fill(anglex_mu,wgt_full);
-    thYZmu->Fill(angley_mu,wgt_full);
-    thXZe->Fill(anglex_e,wgt_full);
-    thYZe->Fill(angley_e,wgt_full); 
+         tarONEXp->Fill(photon_coox,wgt_full);
+         tarONEYp->Fill(photon_cooy,wgt_full);
+      }
        
-     /*  if (detKinBeamRot_tar==1)
+       if (detKinBeamRot_tar==1)
        {
          tarTWOXmu->Fill(detKinBeamRot_cooXmu,wgt_full);
          tarTWOYmu->Fill(detKinBeamRot_cooYmu,wgt_full);
          tarTWOXe->Fill(detKinBeamRot_cooXe,wgt_full);
          tarTWOYe->Fill(detKinBeamRot_cooYe,wgt_full);
            
-       }*/
+       }
        
     X_Y_mu ->Fill(detKinBeamRot_cooXmu, detKinBeamRot_cooYmu,wgt_full);
      X_Y_e ->Fill(detKinBeamRot_cooXe, detKinBeamRot_cooYe,wgt_full);
+     X_Y_p ->Fill(photon_coox, photon_cooy,wgt_full);
+       
        
     Double_t Dx = detKinBeamRot_cooXe-detKinBeamRot_cooXmu;
     Double_t Dy = detKinBeamRot_cooYe-detKinBeamRot_cooXmu;
     
     dx->Fill(Dx,wgt_full);
     dy->Fill(Dy,wgt_full);
-    }
+    
       
       }
       
@@ -192,7 +201,7 @@ Double_t me= 0.5109989461 *0.001;
     
     
         TCanvas * tar= new TCanvas("tar","tar",400,10,1500,1000);
-    tar->Divide(2,4);
+    tar->Divide(3,4);
     tar->cd(1);
     tarONEXmu->SetLineColor(46);
     tarONEXmu->Draw("HIST");
@@ -213,16 +222,32 @@ Double_t me= 0.5109989461 *0.001;
     tarTWOYmu->Draw("HIST");
     tar->cd(8);
     tarTWOYe->Draw("HIST");
+    tar->cd(9);
+    tarONEXp->SetLineColor(30);
+    tarONEXp->Draw("HIST");
+    tar->cd(10);
+    tarONEYp->SetLineColor(30);
+    tarONEYp->Draw("HIST");
+    tar->cd(11);
+    tarTWOXp->SetLineColor(30);
+    tarTWOXp->Draw("HIST");
+    tar->cd(12);
+    tarTWOYp->SetLineColor(30);
+    tarTWOYp->Draw("HIST");
+    
     
   tar->SaveAs("tar.png");
     
     TCanvas * dued= new TCanvas("dued","dued",1000,100,2500,2000);
-    dued->Divide(1,2);
+    dued->Divide(1,3);
     dued->cd(1);
     X_Y_mu->SetMarkerColor(46);
     X_Y_mu->Draw("HIST");
     dued->cd(2);
     X_Y_e->Draw("HIST");
+    dued->cd(3);
+    X_Y_p->SetMarkerColor(30);
+    X_Y_p->Draw("HIST");
   dued->SaveAs("dued.png");
     
         TCanvas * Pin= new TCanvas("Pin","Pin",400,10,1500,1000);
@@ -236,7 +261,7 @@ Double_t me= 0.5109989461 *0.001;
     
    Pin->SaveAs("p_in.png");
     
-    TCanvas * d= new TCanvas("dued","dued",1000,100,2500,2000);
+    TCanvas * d= new TCanvas("d","d",1000,100,2500,2000);
     d->Divide(1,2);
     d->cd(1);
     dx->Draw("HIST");

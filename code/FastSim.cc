@@ -888,7 +888,7 @@ PxPyPzEVector p_gamma_Lab_div=RotDiv(p_mu_in,p_gamma_Lab);
     photon.phi       = p_gamma_Lab_div.Phi();
     photon.energyCoM = p_gamma_CoM.E(); 
       
-    TMatrixD coo=MCSphoton(tar,photon.theta,photon.phi,xin,yin)
+    TMatrixD coo=MCSphoton(tar,photon.theta,photon.phi,xin,yin);
       
     photon.coox=coo[0][0];
     photon.cooy=coo[0][1];

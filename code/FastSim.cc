@@ -756,13 +756,14 @@ TMatrixD FastSim::MCSphoton(const Double_t & tar,const Double_t & theta,const Do
 
 { Double_t d0 =2.025; //m
   Double_t d1 =1.025;
+ Double_t thetaR = theta*0.01;
          TMatrixD coo (1,2);
         coo[0][0]=0;
         coo[0][1]=0;
  
     if(tar==0)
     {
-    Double_t d_xy = d0*tan(theta);//vettore nel piano xy
+    Double_t d_xy = d0*tan(thetaR);//vettore nel piano xy
     Double_t xf = xin+d_xy*cos(phi);
     Double_t yf = yin+d_xy*sin(phi);
         TMatrixD coo (1,2);
@@ -774,7 +775,7 @@ TMatrixD FastSim::MCSphoton(const Double_t & tar,const Double_t & theta,const Do
 
     if(tar==1)
     {
-    Double_t d_xy = d1*tan(theta);//vettore nel piano xy
+    Double_t d_xy = d1*tan(thetaR);//vettore nel piano xy
     Double_t xf = xin+d_xy*cos(phi);
     Double_t yf = yin+d_xy*sin(phi);
         TMatrixD coo (1,2);

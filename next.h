@@ -1,231 +1,268 @@
-#define atree_cxx
-#include "next.h"
-#include <TH2.h>
-#include <TH1.h>
+//////////////////////////////////////////////////////////
+// This class has been automatically generated on
+// Thu Sep  3 12:15:09 2020 by ROOT version 6.20/02
+// from TTree atree/Analysis output tree
+// found on file: outtree.root
+//////////////////////////////////////////////////////////
 
-#include <TStyle.h>
-#include <TCanvas.h>
+#ifndef atree_h
+#define atree_h
 
-void atree::Loop()
+#include <TROOT.h>
+#include <TChain.h>
+#include <TFile.h>
+
+// Header file for the classes stored in the TTree if any.
+
+class atree {
+public :
+   TTree          *fChain;   //!pointer to the analyzed TTree or TChain
+   Int_t           fCurrent; //!current Tree number in a TChain
+
+// Fixed size dimensions of array or collections stored in the TTree if any.
+
+   // Declaration of leaf types
+ //MuE::MuEana     *event;
+   UInt_t          RunNr;
+   Long64_t        EventNr;
+   Double_t        wgt_full;
+   Double_t        wgt_norun;
+   Double_t        wgt_lep;
+   Double_t        wgt_LO;
+   Double_t        E_mu_in;
+   Double_t        detKinBeamRot_t13;
+   Double_t        detKinBeamRot_t24;
+   Double_t        detKinBeamRot_x13;
+   Double_t        detKinBeamRot_x24;
+   Double_t        detKinBeamRot_tt_e;
+   Double_t        detKinBeamRot_xt_e;
+   Double_t        detKinBeamRot_Ee;
+   Double_t        detKinBeamRot_Emu;
+   Double_t        detKinBeamRot_the;
+   Double_t        detKinBeamRot_thmu;
+   Double_t        detKinBeamRot_phe;
+   Double_t        detKinBeamRot_phmu;
+   Double_t        detKinBeamRot_deltaPhi;
+   Double_t        detKinBeamRot_openingAngle;
+   Double_t        detKinBeamRot_tripleProduct;
+   Double_t        detKinBeamRot_cooXe;
+   Double_t        detKinBeamRot_cooXmu;
+   Double_t        detKinBeamRot_cooYe;
+   Double_t        detKinBeamRot_cooYmu;
+   Double_t        detKinBeamRot_pXmu;
+   Double_t        detKinBeamRot_pYmu;
+   Double_t        detKinBeamRot_pZmu;
+   Double_t        detKinBeamRot_pXe;
+   Double_t        detKinBeamRot_pYe;
+   Double_t        detKinBeamRot_pZe;
+   Double_t        detKinBeamRot_pXmu_out;
+   Double_t        detKinBeamRot_pYmu_out;
+   Double_t        detKinBeamRot_pZmu_out;
+   Double_t        detKinBeamRot_pXe_out;
+   Double_t        detKinBeamRot_pYe_out;
+   Double_t        detKinBeamRot_pZe_out;
+   Double_t        detKinBeamRot_Pmu_out;
+   Double_t        detKinBeamRot_Pe_out;
+   Double_t        detKinBeamRot_tar;
+   Double_t        photon_energy;
+   Double_t        photon_theta;
+   Double_t        photon_phi;
+   Double_t        photon_energyCoM;
+   Double_t        photon_coox;
+   Double_t        photon_cooy;
+
+   // List of branches
+   TBranch        *b_event_RunNr;   //!
+   TBranch        *b_event_EventNr;   //!
+   TBranch        *b_event_wgt_full;   //!
+   TBranch        *b_event_wgt_norun;   //!
+   TBranch        *b_event_wgt_lep;   //!
+   TBranch        *b_event_wgt_LO;   //!
+   TBranch        *b_event_E_mu_in;   //!
+   TBranch        *b_event_detKinBeamRot_t13;   //!
+   TBranch        *b_event_detKinBeamRot_t24;   //!
+   TBranch        *b_event_detKinBeamRot_x13;   //!
+   TBranch        *b_event_detKinBeamRot_x24;   //!
+   TBranch        *b_event_detKinBeamRot_tt_e;   //!
+   TBranch        *b_event_detKinBeamRot_xt_e;   //!
+   TBranch        *b_event_detKinBeamRot_Ee;   //!
+   TBranch        *b_event_detKinBeamRot_Emu;   //!
+   TBranch        *b_event_detKinBeamRot_the;   //!
+   TBranch        *b_event_detKinBeamRot_thmu;   //!
+   TBranch        *b_event_detKinBeamRot_phe;   //!
+   TBranch        *b_event_detKinBeamRot_phmu;   //!
+   TBranch        *b_event_detKinBeamRot_deltaPhi;   //!
+   TBranch        *b_event_detKinBeamRot_openingAngle;   //!
+   TBranch        *b_event_detKinBeamRot_tripleProduct;   //!
+   TBranch        *b_event_detKinBeamRot_cooXe;   //!
+   TBranch        *b_event_detKinBeamRot_cooXmu;   //!
+   TBranch        *b_event_detKinBeamRot_cooYe;   //!
+   TBranch        *b_event_detKinBeamRot_cooYmu;   //!
+   TBranch        *b_event_detKinBeamRot_pXmu;   //!
+   TBranch        *b_event_detKinBeamRot_pYmu;   //!
+   TBranch        *b_event_detKinBeamRot_pZmu;   //!
+   TBranch        *b_event_detKinBeamRot_pXe;   //!
+   TBranch        *b_event_detKinBeamRot_pYe;   //!
+   TBranch        *b_event_detKinBeamRot_pZe;   //!
+   TBranch        *b_event_detKinBeamRot_pXmu_out;   //!
+   TBranch        *b_event_detKinBeamRot_pYmu_out;   //!
+   TBranch        *b_event_detKinBeamRot_pZmu_out;   //!
+   TBranch        *b_event_detKinBeamRot_pXe_out;   //!
+   TBranch        *b_event_detKinBeamRot_pYe_out;   //!
+   TBranch        *b_event_detKinBeamRot_pZe_out;   //!
+   TBranch        *b_event_detKinBeamRot_Pmu_out;   //!
+   TBranch        *b_event_detKinBeamRot_Pe_out;   //!
+   TBranch        *b_event_detKinBeamRot_tar;   //!
+   TBranch        *b_event_photon_energy;   //!
+   TBranch        *b_event_photon_theta;   //!
+   TBranch        *b_event_photon_phi;   //!
+   TBranch        *b_event_photon_energyCoM;   //!
+   TBranch        *b_event_photon_coox;   //!
+   TBranch        *b_event_photon_cooy;   //!
+
+   atree(TTree *tree=0);
+   virtual ~atree();
+   virtual Int_t    Cut(Long64_t entry);
+   virtual Int_t    GetEntry(Long64_t entry);
+   virtual Long64_t LoadTree(Long64_t entry);
+   virtual void     Init(TTree *tree);
+   virtual void     Loop();
+   virtual Bool_t   Notify();
+   virtual void     Show(Long64_t entry = -1);
+};
+
+#endif
+
+#ifdef atree_cxx
+atree::atree(TTree *tree) : fChain(0) 
 {
-    TH1::SetDefaultSumw2();
-    
-TH1F* px_mu=new TH1F("h1", "pX_in muon", 190,-10,10);
-TH1F* py_mu=new TH1F("h2", "pY_in muon", 190,-10,10);
-TH1F* pz_mu=new TH1F("h3", "pZ_in muon", 190,50,180);
-    
-TH1F* px_mu_out=new TH1F("h1a", "pX_out muon", 150,-10,10);
-TH1F* py_mu_out=new TH1F("h2a", "pY_out muon", 150,-10,10);
-TH1F* pz_mu_out=new TH1F("h3a", "pZ_out muon", 150,0,180);
-TH1F* Emuin=new TH1F("h1aN", "Energy in", 150,0,160);
-TH1F* Emuout=new TH1F("h1aN", "Energy out", 150,0,160);
-    
-TH1F* px_e_out=new TH1F("h1b", "pX_out electron", 150,-0.3,0.3);
-TH1F* py_e_out=new TH1F("h2b", "pY_out electron", 150,-0.3,0.3);
-TH1F* pz_e_out=new TH1F("h3b", "pZ_out electron", 150,0,5);
-TH1F* Eein=new TH1F("h2aN", "Energ iny", 150,0,10);
-TH1F* Eeout=new TH1F("h2aN", "Energy out", 150,0,10);
-    
-TH1F* thmu=new TH1F("h3bNj", "theta", 150,0,0.3);  
-TH1F* the=new TH1F("h3bNj", "theta", 150,0,0.5);
-
-TH1F* thXZmu=new TH1F("a", "theta XZ mu", 150,-0.2,0.2);
-TH1F* thYZmu=new TH1F("c", "theta YZ mu", 150,-0.2,0.2);
-    
-TH1F* thXZe=new TH1F("v", "theta XZ e", 150,-0.5,0.5);
-TH1F* thYZe=new TH1F("b", "theta YZ e", 150,-0.5,0.5);
-    
-TH1F* tarONEXmu=new TH1F("h1a", "Coo X mu tar1  ", 140,-0.4,0.4);
-TH1F* tarONEYmu=new TH1F("h2a", "Coo Y mu tar1 ", 140,-0.4,0.4);
-TH1F* tarONEXe=new TH1F("h1ea", "Coo X e tar1 ", 140,-0.8,0.8);
-TH1F* tarONEYe=new TH1F("h2ea", "Coo Y e tar1 ", 140,-0.8,0.8);
-    
-TH1F* tarTWOXmu=new TH1F("h1a", "Coo X mu tar2  ", 140,-0.4,0.4);
-TH1F* tarTWOYmu=new TH1F("h2a", "Coo Y mu tar2 ", 140,-0.4,0.4);
-TH1F* tarTWOXe=new TH1F("h1ea", "Coo X e tar2 ", 140,-0.8,0.8);
-TH1F* tarTWOYe=new TH1F("h2ea", "Coo Y e tar2 ", 140,-0.8,0.8);
-    
-TH2F  *X_Y_mu  = new TH2F("h2d" , " X  Vs. y of the muon",140,-0.5,-0.5,140,-0.5,0.5);
-TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.5,-0.5,140,-0.5,0.5);
-    
-    
-     if (fChain == 0) return;
-
-   Long64_t nentries = fChain->GetEntriesFast();
-
-   Long64_t nbytes = 0, nb = 0;
-   for (Long64_t jentry=0; jentry<nentries;jentry++) {
-      Long64_t ientry = LoadTree(jentry);
-      if (ientry < 0) break;
-      nb = fChain->GetEntry(jentry);   nbytes += nb;
-       
-        px_mu->Fill(detKinBeamRot_pXmu,wgt_full);
-       py_mu->Fill(detKinBeamRot_pYmu,wgt_full);
-       pz_mu->Fill(detKinBeamRot_pZmu,wgt_full);
-       px_mu_out->Fill(detKinBeamRot_pXmu_out,wgt_full);
-       py_mu_out->Fill(detKinBeamRot_pYmu_out,wgt_full);
-       pz_mu_out->Fill(detKinBeamRot_pZmu_out,wgt_full);
-       px_e_out->Fill(detKinBeamRot_pXe_out,wgt_full);
-       py_e_out->Fill(detKinBeamRot_pYe_out,wgt_full);
-       pz_e_out->Fill(detKinBeamRot_pZe_out,wgt_full);       
-       
-Double_t mmu= 105.6583745 *0.001;
-Double_t me= 0.5109989461 *0.001;
-       
-    Double_t Pmu=sqrt(detKinBeamRot_pXmu_out*detKinBeamRot_pXmu_out+detKinBeamRot_pYmu_out*detKinBeamRot_pYmu_out+detKinBeamRot_pZmu_out*detKinBeamRot_pZmu_out);
-    Double_t Pe=sqrt(detKinBeamRot_pXe_out*detKinBeamRot_pXe_out+detKinBeamRot_pYe_out*detKinBeamRot_pYe_out+detKinBeamRot_pZe_out*detKinBeamRot_pZe_out);
-       
-    Double_t Emu_out=sqrt(Pmu*Pmu+mmu*mmu);
-    Double_t Ee_out=sqrt(Pe*Pe+me*me);
-       
-    Emuout->Fill(Emu_out,wgt_full);   
-    Eeout->Fill(Ee_out,wgt_full);
-       
-    Emuin->Fill(detKinBeamRot_Emu,wgt_full);   
-    Eein->Fill(detKinBeamRot_Ee,wgt_full);
-       
-    thmu->Fill(detKinBeamRot_thmu*0.001,wgt_full);
-    the->Fill(detKinBeamRot_the*0.001,wgt_full);  
-        
-    Double_t anglex_mu = atan2(detKinBeamRot_pXmu_out, detKinBeamRot_pZmu_out);
-    Double_t angley_mu = atan2(detKinBeamRot_pYmu_out, detKinBeamRot_pZmu_out);       
-    Double_t anglex_e = atan2(detKinBeamRot_pXe_out, detKinBeamRot_pZe_out);
-    Double_t angley_e = atan2(detKinBeamRot_pYe_out, detKinBeamRot_pZe_out);
-       
-    thXZmu->Fill(anglex_mu,wgt_full);
-    thYZmu->Fill(angley_mu,wgt_full);
-    thXZe->Fill(anglex_e,wgt_full);
-    thYZe->Fill(angley_e,wgt_full); 
-       
-           if (detKinBeamRot_tar==0)
-       
-           { tarONEXmu->Fill(detKinBeamRot_cooXmu,wgt_full);
-         tarONEYmu->Fill(detKinBeamRot_cooYmu,wgt_full);
-         tarONEXe->Fill(detKinBeamRot_cooXe,wgt_full);
-         tarONEYe->Fill(detKinBeamRot_cooYe,wgt_full);
+// if parameter tree is not specified (or zero), connect the file
+// used to generate this class and read the Tree.
+   if (tree == 0) {
+      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("outtree.root");
+      if (!f || !f->IsOpen()) {
+         f = new TFile("outtree.root");
       }
-       
-       if (detKinBeamRot_tar==1)
-       {
-         tarTWOXmu->Fill(detKinBeamRot_cooXmu,wgt_full);
-         tarTWOYmu->Fill(detKinBeamRot_cooYmu,wgt_full);
-         tarTWOXe->Fill(detKinBeamRot_cooXe,wgt_full);
-         tarTWOYe->Fill(detKinBeamRot_cooYe,wgt_full);
-           
-       }
-       
-    X_Y_mu ->Fill(detKinBeamRot_cooXmu, detKinBeamRot_cooYmu,wgt_full);
-     X_Y_e ->Fill(detKinBeamRot_cooXe, detKinBeamRot_cooYe,wgt_full);
-      
-      }
-      
-    TCanvas * p= new TCanvas("p","p",400,10,1500,1000);
-    p->Divide(2,3);
-    p->cd(1);
-    px_mu_out->SetLineColor(46);
-    px_mu_out->Draw("HIST");
-    p->cd(2);    
-    py_mu_out->SetLineColor(46);
-    py_mu_out->Draw("HIST");
-    p->cd(3);
-    pz_mu_out->SetLineColor(46);
-    pz_mu_out->Draw("HIST");  
-    p->cd(4);
-    px_e_out->Draw("HIST");  
-    p->cd(5);
-    py_e_out->Draw("HIST");   
-    p->cd(6);
-    pz_e_out->Draw("HIST");
-    p->SaveAs("Pemu.png");
-    
-    TCanvas * e= new TCanvas("e","e",400,10,1500,1000);
-    e->Divide(2,2);
-    e->cd(1);
-    Emuin->SetLineColor(46);
-    Emuin->Draw("HIST");
-    e->cd(2);
-    Emuout->SetLineColor(46);
-    Emuout->Draw("HIST");
-    e->cd(3);
-    Eein->Draw("HIST");
-    e->cd(4);
-    Eeout->Draw("HIST");
-    e->SaveAs("energy.png");
+      f->GetObject("atree",tree);
 
-        TCanvas * t= new TCanvas("t","t",400,10,1500,1000);
-    t->Divide(1,2);
-    t->cd(1);
-    thmu->SetLineColor(46);
-    thmu->Draw("HIST");
+   }
+   Init(tree);
+}
 
-    t->cd(2);
-    the->Draw("HIST");
+atree::~atree()
+{
+   if (!fChain) return;
+   delete fChain->GetCurrentFile();
+}
 
-    t->SaveAs("THpolar.png");
-    
-    TCanvas * theC= new TCanvas("tar","tar",400,10,1500,1000);
-    theC->Divide(2,2);
-    theC->cd(1);
-    thXZmu->SetLineColor(46);
-    thXZmu->Draw("HIST");
-    theC->cd(2);
-    thXZe->Draw("HIST");
-    theC->cd(3);
-    thYZmu->SetLineColor(46);
-    thYZmu->Draw("HIST");
-    theC->cd(4);
-    thYZe->Draw("HIST");
-    
-    
-  theC->SaveAs("ThOriginal.png");
-    
-    
-    
-        TCanvas * tar= new TCanvas("tar","tar",400,10,1500,1000);
-    tar->Divide(2,4);
-    tar->cd(1);
-    tarONEXmu->SetLineColor(46);
-    tarONEXmu->Draw("HIST");
-    tar->cd(2);
-    tarONEXe->Draw("HIST");
-    tar->cd(3);
-    tarONEYmu->SetLineColor(46);
-    tarONEYmu->Draw("HIST");
-    tar->cd(4);
-    tarONEYe->Draw("HIST");
-    tar->cd(5);
-    tarTWOXmu->SetLineColor(46);
-    tarTWOXmu->Draw("HIST");
-    tar->cd(6);
-    tarTWOXe->Draw("HIST");
-    tar->cd(7);
-    tarTWOYmu->SetLineColor(46);
-    tarTWOYmu->Draw("HIST");
-    tar->cd(8);
-    tarTWOYe->Draw("HIST");
-    
-  tar->SaveAs("tar.png");
-    
-    TCanvas * dued= new TCanvas("dued","dued",1000,100,2500,2000);
-    dued->Divide(1,2);
-    dued->cd(1);
-    X_Y_mu->SetMarkerColor(46);
-    X_Y_mu->Draw("HIST");
-    dued->cd(2);
-    X_Y_e->Draw("HIST");
-  dued->SaveAs("dued.png");
-    
-        TCanvas * Pin= new TCanvas("Pin","Pin",400,10,1500,1000);
-    Pin->Divide(1,3);
-    Pin->cd(1);
-    px_mu->Draw("HIST");
-    Pin->cd(2);
-    py_mu->Draw("HIST");
-    Pin->cd(3);
-    pz_mu->Draw("HIST");
-    
-   Pin->SaveAs("p_in.png");
-    
+Int_t atree::GetEntry(Long64_t entry)
+{
+// Read contents of entry.
+   if (!fChain) return 0;
+   return fChain->GetEntry(entry);
+}
+Long64_t atree::LoadTree(Long64_t entry)
+{
+// Set the environment to read one entry
+   if (!fChain) return -5;
+   Long64_t centry = fChain->LoadTree(entry);
+   if (centry < 0) return centry;
+   if (fChain->GetTreeNumber() != fCurrent) {
+      fCurrent = fChain->GetTreeNumber();
+      Notify();
+   }
+   return centry;
+}
 
-    
-      }
+void atree::Init(TTree *tree)
+{
+   // The Init() function is called when the selector needs to initialize
+   // a new tree or chain. Typically here the branch addresses and branch
+   // pointers of the tree will be set.
+   // It is normally not necessary to make changes to the generated
+   // code, but the routine can be extended by the user if needed.
+   // Init() will be called many times when running on PROOF
+   // (once per file to be processed).
+
+   // Set branch addresses and branch pointers
+   if (!tree) return;
+   fChain = tree;
+   fCurrent = -1;
+   fChain->SetMakeClass(1);
+
+   fChain->SetBranchAddress("RunNr", &RunNr, &b_event_RunNr);
+   fChain->SetBranchAddress("EventNr", &EventNr, &b_event_EventNr);
+   fChain->SetBranchAddress("wgt_full", &wgt_full, &b_event_wgt_full);
+   fChain->SetBranchAddress("wgt_norun", &wgt_norun, &b_event_wgt_norun);
+   fChain->SetBranchAddress("wgt_lep", &wgt_lep, &b_event_wgt_lep);
+   fChain->SetBranchAddress("wgt_LO", &wgt_LO, &b_event_wgt_LO);
+   fChain->SetBranchAddress("E_mu_in", &E_mu_in, &b_event_E_mu_in);
+   fChain->SetBranchAddress("detKinBeamRot.t13", &detKinBeamRot_t13, &b_event_detKinBeamRot_t13);
+   fChain->SetBranchAddress("detKinBeamRot.t24", &detKinBeamRot_t24, &b_event_detKinBeamRot_t24);
+   fChain->SetBranchAddress("detKinBeamRot.x13", &detKinBeamRot_x13, &b_event_detKinBeamRot_x13);
+   fChain->SetBranchAddress("detKinBeamRot.x24", &detKinBeamRot_x24, &b_event_detKinBeamRot_x24);
+   fChain->SetBranchAddress("detKinBeamRot.tt_e", &detKinBeamRot_tt_e, &b_event_detKinBeamRot_tt_e);
+   fChain->SetBranchAddress("detKinBeamRot.xt_e", &detKinBeamRot_xt_e, &b_event_detKinBeamRot_xt_e);
+   fChain->SetBranchAddress("detKinBeamRot.Ee", &detKinBeamRot_Ee, &b_event_detKinBeamRot_Ee);
+   fChain->SetBranchAddress("detKinBeamRot.Emu", &detKinBeamRot_Emu, &b_event_detKinBeamRot_Emu);
+   fChain->SetBranchAddress("detKinBeamRot.the", &detKinBeamRot_the, &b_event_detKinBeamRot_the);
+   fChain->SetBranchAddress("detKinBeamRot.thmu", &detKinBeamRot_thmu, &b_event_detKinBeamRot_thmu);
+   fChain->SetBranchAddress("detKinBeamRot.phe", &detKinBeamRot_phe, &b_event_detKinBeamRot_phe);
+   fChain->SetBranchAddress("detKinBeamRot.phmu", &detKinBeamRot_phmu, &b_event_detKinBeamRot_phmu);
+   fChain->SetBranchAddress("detKinBeamRot.deltaPhi", &detKinBeamRot_deltaPhi, &b_event_detKinBeamRot_deltaPhi);
+   fChain->SetBranchAddress("detKinBeamRot.openingAngle", &detKinBeamRot_openingAngle, &b_event_detKinBeamRot_openingAngle);
+   fChain->SetBranchAddress("detKinBeamRot.tripleProduct", &detKinBeamRot_tripleProduct, &b_event_detKinBeamRot_tripleProduct);
+   fChain->SetBranchAddress("detKinBeamRot.cooXe", &detKinBeamRot_cooXe, &b_event_detKinBeamRot_cooXe);
+   fChain->SetBranchAddress("detKinBeamRot.cooXmu", &detKinBeamRot_cooXmu, &b_event_detKinBeamRot_cooXmu);
+   fChain->SetBranchAddress("detKinBeamRot.cooYe", &detKinBeamRot_cooYe, &b_event_detKinBeamRot_cooYe);
+   fChain->SetBranchAddress("detKinBeamRot.cooYmu", &detKinBeamRot_cooYmu, &b_event_detKinBeamRot_cooYmu);
+   fChain->SetBranchAddress("detKinBeamRot.pXmu", &detKinBeamRot_pXmu, &b_event_detKinBeamRot_pXmu);
+   fChain->SetBranchAddress("detKinBeamRot.pYmu", &detKinBeamRot_pYmu, &b_event_detKinBeamRot_pYmu);
+   fChain->SetBranchAddress("detKinBeamRot.pZmu", &detKinBeamRot_pZmu, &b_event_detKinBeamRot_pZmu);
+   fChain->SetBranchAddress("detKinBeamRot.pXe", &detKinBeamRot_pXe, &b_event_detKinBeamRot_pXe);
+   fChain->SetBranchAddress("detKinBeamRot.pYe", &detKinBeamRot_pYe, &b_event_detKinBeamRot_pYe);
+   fChain->SetBranchAddress("detKinBeamRot.pZe", &detKinBeamRot_pZe, &b_event_detKinBeamRot_pZe);
+   fChain->SetBranchAddress("detKinBeamRot.pXmu_out", &detKinBeamRot_pXmu_out, &b_event_detKinBeamRot_pXmu_out);
+   fChain->SetBranchAddress("detKinBeamRot.pYmu_out", &detKinBeamRot_pYmu_out, &b_event_detKinBeamRot_pYmu_out);
+   fChain->SetBranchAddress("detKinBeamRot.pZmu_out", &detKinBeamRot_pZmu_out, &b_event_detKinBeamRot_pZmu_out);
+   fChain->SetBranchAddress("detKinBeamRot.pXe_out", &detKinBeamRot_pXe_out, &b_event_detKinBeamRot_pXe_out);
+   fChain->SetBranchAddress("detKinBeamRot.pYe_out", &detKinBeamRot_pYe_out, &b_event_detKinBeamRot_pYe_out);
+   fChain->SetBranchAddress("detKinBeamRot.pZe_out", &detKinBeamRot_pZe_out, &b_event_detKinBeamRot_pZe_out);
+   fChain->SetBranchAddress("detKinBeamRot.Pmu_out", &detKinBeamRot_Pmu_out, &b_event_detKinBeamRot_Pmu_out);
+   fChain->SetBranchAddress("detKinBeamRot.Pe_out", &detKinBeamRot_Pe_out, &b_event_detKinBeamRot_Pe_out);
+   fChain->SetBranchAddress("detKinBeamRot.tar", &detKinBeamRot_tar, &b_event_detKinBeamRot_tar);
+   fChain->SetBranchAddress("photon.energy", &photon_energy, &b_event_photon_energy);
+   fChain->SetBranchAddress("photon.theta", &photon_theta, &b_event_photon_theta);
+   fChain->SetBranchAddress("photon.phi", &photon_phi, &b_event_photon_phi);
+   fChain->SetBranchAddress("photon.energyCoM", &photon_energyCoM, &b_event_photon_energyCoM);
+   fChain->SetBranchAddress("photon.coox", &photon_coox, &b_event_photon_coox);
+   fChain->SetBranchAddress("photon.cooy", &photon_cooy, &b_event_photon_cooy);
+   Notify();
+}
+
+Bool_t atree::Notify()
+{
+   // The Notify() function is called when a new file is opened. This
+   // can be either for a new TTree in a TChain or when when a new TTree
+   // is started when using PROOF. It is normally not necessary to make changes
+   // to the generated code, but the routine can be extended by the
+   // user if needed. The return value is currently not used.
+
+   return kTRUE;
+}
+
+void atree::Show(Long64_t entry)
+{
+// Print contents of entry.
+// If entry is not specified, print current entry
+   if (!fChain) return;
+   fChain->Show(entry);
+}
+Int_t atree::Cut(Long64_t entry)
+{
+// This function may be called from Loop.
+// returns  1 if entry is accepted.
+// returns -1 otherwise.
+   return 1;
+}
+#endif // #ifdef atree_cxx

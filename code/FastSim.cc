@@ -851,7 +851,8 @@ void FastSim::LoadPhoton(const MuE::Event & event, MuE::Photon & photon,const Px
   auto n_photons = event.photons.size();
   
   if (n_photons >0) {  
-    PxPyPzEVector p_gamma_Lab = {event.photons[0].px, 
+    PxPyPzEVector p_gamma_Lab = {
+                 event.photons[0].px, 
 				 event.photons[0].py,
 				 event.photons[0].pz,
 			         event.photons[0].E};
@@ -866,7 +867,7 @@ PxPyPzEVector p_gamma_Lab_div=RotDiv(p_mu_in,p_gamma_Lab);
     photon.phi       = p_gamma_Lab_div.Phi();
     photon.energyCoM = p_gamma_CoM.E(); 
       
-    TMatrixD cooP=coo(tar,p_gamma_Lab_div.Theta(),photon.phi);
+    TMatrixD cooP=MCSphoton(tar,p_gamma_Lab_div.Theta(),photon.phi);
     photon.coox=cooP[0][0];
     photon.cooy=cooP[0][1];
       

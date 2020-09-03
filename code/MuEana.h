@@ -76,7 +76,6 @@ Double_t tar;
     
   Photon():
     energy(-1),theta(-1),phi(0),energyCoM(-1),coox(-1),cooy(-1)
-      //cooXph(0),cooYph(0)
       {};
 virtual ~Photon(){};
 
@@ -93,7 +92,7 @@ virtual ~Photon(){};
    // KineVars genKin;   // kinematic variables at Generator-level for e and mu tracks
    // KineVars detKin; // kinematic variables at Detector-level for e and mu tracks
     KineVars detKinBeamRot; 
-    //  Photon photon;     // photon kinematic variables at Gen-level
+     Photon photon;     // photon kinematic variables at Gen-level
     
     MuEana():
      RunNr(0),EventNr(0),wgt_full(0),wgt_norun(0),wgt_lep(0),wgt_LO(0),E_mu_in(0)

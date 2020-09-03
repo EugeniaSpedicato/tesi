@@ -136,7 +136,7 @@ Double_t yin=b[18][1];
   
   LoadKineVars(p_mu_in_div, p_e_in_div, p_mu_out_div_smeared, p_e_out_div_smeared, coo, detKinBeamRot);
   
-  LoadPhoton(event, photon, p_mu_in_div,muin[4][0],xin[0][0],yin[0][0]);
+  LoadPhoton(event, photon, p_mu_in_div,muin[4][0],xin,yin);
     
 }
 
@@ -888,7 +888,7 @@ PxPyPzEVector p_gamma_Lab_div=RotDiv(p_mu_in,p_gamma_Lab);
     photon.phi       = p_gamma_Lab_div.Phi();
     photon.energyCoM = p_gamma_CoM.E(); 
       
-    TMatrixD coo=MCSphoton(tar,theta,phi,xin,yin)
+    TMatrixD coo=MCSphoton(tar,photon.theta,photon.phi,xin,yin)
       
     photon.coox=coo[0][0];
     photon.cooy=coo[0][1];

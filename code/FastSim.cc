@@ -117,8 +117,8 @@ coo[3][0]=b[17][1];
 coo[4][0]=b[8][2];
     
 TMatrixD cooIN(5,1);
-xin[0][0]=b[18][0];
-yin[1][0]=b[18][1];
+Double_t xin=b[18][0];
+Double_t yin=b[18][1];
 
   /*  if (MSopt ==0) {
     p_mu_out_div_smeared = Smear(p_mu_out_div);
@@ -344,7 +344,7 @@ return pnewdiv;
  }   
 
 
-TMatrixD FastSim::MCSout(const PxPyPzEVector & kin, const PxPyPzEVector & k, const PxPyPzEVector & ke, const Double_t & tar,const Double_t & thetaP,const Double_t & phiP) const
+TMatrixD FastSim::MCSout(const PxPyPzEVector & kin, const PxPyPzEVector & k, const PxPyPzEVector & ke, const Double_t & tar) const
 {
         
     

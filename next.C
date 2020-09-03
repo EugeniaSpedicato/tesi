@@ -17,14 +17,16 @@ TH1F* pz_mu=new TH1F("h3", "pZ_in muon", 190,50,180);
 TH1F* px_mu_out=new TH1F("h1a", "pX_out muon", 150,-0.3,0.3);
 TH1F* py_mu_out=new TH1F("h2a", "pY_out muon", 150,-0.3,0.3);
 TH1F* pz_mu_out=new TH1F("h3a", "pZ_out muon", 150,0,180);
-TH1F* Emuin=new TH1F("h1aN", "Energy in", 150,0,160);
-TH1F* Emuout=new TH1F("h1aN", "Energy out", 150,0,160);
+TH1F* Emuin=new TH1F("h1aN", "Energy in mu", 150,0,160);
+TH1F* Emuout=new TH1F("h1aN", "Energy out mu", 150,0,160);
+TH1F* Ep=new TH1F("h1aN", "Energy out p", 150,0,160);
+    
     
 TH1F* px_e_out=new TH1F("h1b", "pX_out electron", 150,-0.3,0.3);
 TH1F* py_e_out=new TH1F("h2b", "pY_out electron", 150,-0.3,0.3);
 TH1F* pz_e_out=new TH1F("h3b", "pZ_out electron", 150,0,5);
-TH1F* Eein=new TH1F("h2aN", "Energ iny", 150,0,10);
-TH1F* Eeout=new TH1F("h2aN", "Energy out", 150,0,10);
+TH1F* Eein=new TH1F("h2aN", "Energ in e", 150,0,10);
+TH1F* Eeout=new TH1F("h2aN", "Energy out e", 150,0,10);
     
 TH1F* thmu=new TH1F("h3bNj", "theta", 180,0,0.002);  
 TH1F* the=new TH1F("h3bNj", "theta", 180,0,0.1);
@@ -88,6 +90,8 @@ Double_t me= 0.5109989461 *0.001;
        
     Emuout->Fill(Emu_out,wgt_full);   
     Eeout->Fill(Ee_out,wgt_full);
+    Ep->Fill(photon_energy,wgt_full);
+
        
     Emuin->Fill(detKinBeamRot_Emu,wgt_full);   
     Eein->Fill(detKinBeamRot_Ee,wgt_full);
@@ -158,7 +162,7 @@ Double_t me= 0.5109989461 *0.001;
     p->SaveAs("Pemu.png");
     
     TCanvas * e= new TCanvas("e","e",400,10,1500,1000);
-    e->Divide(2,2);
+    e->Divide(3,2);
     e->cd(1);
     Emuin->SetLineColor(46);
     Emuin->Draw("HIST");
@@ -169,7 +173,11 @@ Double_t me= 0.5109989461 *0.001;
     Eein->Draw("HIST");
     e->cd(4);
     Eeout->Draw("HIST");
+    e->cd(5);
+    Ep->SetLineColor(30);
+    Ep->Draw("HIST");
     e->SaveAs("energy.png");
+    
 
         TCanvas * t= new TCanvas("t","t",400,10,1500,1000);
     t->Divide(1,2);

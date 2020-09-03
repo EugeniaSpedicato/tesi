@@ -109,7 +109,7 @@ Double_t me= 0.5109989461 *0.001;
     thXZe->Fill(anglex_e,wgt_full);
     thYZe->Fill(angley_e,wgt_full); 
        
-           if (detKinBeamRot_tar==0)
+           if (detKinBeamRot_tar==0 && photon_cooy!=-1 && photon_coox!=-1)
        
            { tarONEXmu->Fill(detKinBeamRot_cooXmu,wgt_full);
          tarONEYmu->Fill(detKinBeamRot_cooYmu,wgt_full);
@@ -119,7 +119,7 @@ Double_t me= 0.5109989461 *0.001;
          tarONEYp->Fill(photon_cooy,wgt_full);
       }
        
-       if (detKinBeamRot_tar==1)
+       if (detKinBeamRot_tar==1 && photon_cooy!=-1 && photon_coox!=-1)
        {
          tarTWOXmu->Fill(detKinBeamRot_cooXmu,wgt_full);
          tarTWOYmu->Fill(detKinBeamRot_cooYmu,wgt_full);
@@ -127,10 +127,11 @@ Double_t me= 0.5109989461 *0.001;
          tarTWOYe->Fill(detKinBeamRot_cooYe,wgt_full);
            
        }
-       
+       if ( photon_cooy!=-1 && photon_coox!=-1)
+       {
     X_Y_mu ->Fill(detKinBeamRot_cooXmu, detKinBeamRot_cooYmu,wgt_full);
      X_Y_e ->Fill(detKinBeamRot_cooXe, detKinBeamRot_cooYe,wgt_full);
-     X_Y_p ->Fill(photon_coox, photon_cooy,wgt_full);
+     X_Y_p ->Fill(photon_coox, photon_cooy,wgt_full);}
        
        
     Double_t Dx = detKinBeamRot_cooXe-detKinBeamRot_cooXmu;

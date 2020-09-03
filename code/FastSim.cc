@@ -100,6 +100,8 @@ PxPyPzEVector p_mu_out_div=RotDiv(p_mu_in_div,p_mu_out);
 PxPyPzEVector p_e_out_div=RotDiv(p_mu_in_div,p_e_out);
   
 
+    
+    
 //effetto MCS out, ritorna una matrice con coo, angoli e momento per muone ed elettrone
 TMatrixD b=MCSout(p_mu_in_div,p_mu_out_div,p_e_out_div,muin[4][0]);
     
@@ -113,7 +115,10 @@ coo[1][0]=b[8][1];
 coo[2][0]=b[17][0];
 coo[3][0]=b[17][1];
 coo[4][0]=b[8][2];
-
+    
+TMatrixD cooIN(5,1);
+xin[0][0]=b[18][0];
+yin[1][0]=b[18][1];
 
   /*  if (MSopt ==0) {
     p_mu_out_div_smeared = Smear(p_mu_out_div);
@@ -131,7 +136,7 @@ coo[4][0]=b[8][2];
   
   LoadKineVars(p_mu_in_div, p_e_in_div, p_mu_out_div_smeared, p_e_out_div_smeared, coo, detKinBeamRot);
   
-  LoadPhoton(event, photon, p_mu_in_div,muin[4][0]);
+  LoadPhoton(event, photon, p_mu_in_div,muin[4][0],xin[0][0],yin[0][0]);
     
 }
 
@@ -338,43 +343,8 @@ PxPyPzEVector pnewdiv(pN[0][0], pN[1][0], pN[2][0], out.E());
 return pnewdiv;    
  }   
 
-TMatrixD FastSim::MCSphoton(const Double_t & tar,const Double_t & theta,const Double_t & phi) const
-    
-{ Double_t d0 =2.025; //m
-  Double_t d1 =1.025;
-         TMatrixD coo (1,2);
-        coo[0][0]=0;
-        coo[0][1]=0;
-        
-        return coo;
 
-    if(tar==0)
-    {
-    Double_t d_xy = d0*tan(the);//vettore nel piano xy
-    Double_t xf = x+d_xy*cos(phi);
-    Double_t yf = y+d_xy*sin(phi);
-        TMatrixD coo (1,2);
-        coo[0][0]=xf;
-        coo[0][1]=yf;
-        
-        return coo;
-    }
-    
-    if(tar==1)
-    {      
-    Double_t d_xy = d1*tan(the);//vettore nel piano xy
-    Double_t xf = x+d_xy*cos(phi);
-    Double_t yf = y+d_xy*sin(phi);
-        TMatrixD coo (1,2);
-        coo[0][0]=xf;
-        coo[0][1]=yf;
-        
-        return coo;
-    }
- else return coo;
-}
-
-TMatrixD FastSim::MCSout(const PxPyPzEVector & kin, const PxPyPzEVector & k, const PxPyPzEVector & ke, const Double_t & tar) const
+TMatrixD FastSim::MCSout(const PxPyPzEVector & kin, const PxPyPzEVector & k, const PxPyPzEVector & ke, const Double_t & tar,const Double_t & thetaP,const Double_t & phiP) const
 {
         
     
@@ -398,6 +368,7 @@ Double_t const dx = 0.25+0.005; // m la distanza tra coppie di silici è 0.25. P
 Double_t const ris = 18e-6; // m considero questa la risoluzione dei silici
 Double_t const dCAL = 0.10; // m distanza silicio calorimetro
     
+
 Double_t sigSIinP=(13.6/(kin.E()*1000))*sqrt(sSin/x0S)*(1+0.038*log(sSin/x0S)); //rad
 Double_t sigBE2in=(13.6/(kin.E()*1000))*sqrt(sB/(2*x0B))*(1+0.038*log(sB/(2*x0B))); //rad   
 Double_t sigBEin=(13.6/(kin.E()*1000))*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad   
@@ -461,7 +432,11 @@ Double_t sigBEe=(13.6/(ke.E()*1000))*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad
                  y[0][0]=yin+(1/sqrt(3))*0.0075*sigBE2mu;  
     
                  xe[0][0]=xin+(1/sqrt(3))*0.0075*sigBE2e;
-                 ye[0][0]=yin+(1/sqrt(3))*0.0075*sigBE2e;  
+                 ye[0][0]=yin+(1/sqrt(3))*0.0075*sigBE2e; 
+            
+
+
+        
               
 //entro nelle 3 coppie di silici
 for (Int_t p=1; p<7; p++)  {
@@ -526,7 +501,7 @@ for (Int_t p=1; p<7; p++)  {
     Double_t xfe = xe[1][6]+dCAL*tan(thetaXe[1][6]);
     Double_t yfe = ye[1][6]+dCAL*tan(thetaYe[1][6]);
     
-    TMatrixD coo_ang_fin(18,7);
+    TMatrixD coo_ang_fin(19,7);
         
                 for (Int_t i=0; i<7; i++)
     { //coordinate stazione 2 muone
@@ -569,7 +544,7 @@ Double_t pe=sqrt(ke.Px()*ke.Px()+ke.Py()*ke.Py()+ke.Pz()*ke.Pz());
   Double_t skxe = skze * dxdze;
   Double_t skye = skze * dydze;
         
-        // coordinate sul calorimetro e momento out smeared
+        // coordinate sul calorimetro e momento out smeared muone
         coo_ang_fin[8][0]=xf;   
         coo_ang_fin[8][1]=yf;  
         coo_ang_fin[8][2]=tar;      
@@ -579,7 +554,7 @@ Double_t pe=sqrt(ke.Px()*ke.Px()+ke.Py()*ke.Py()+ke.Pz()*ke.Pz());
         coo_ang_fin[8][6]=k.E();   
         
                 
-        // coordinate sul calorimetro e momento out smeared
+        // coordinate sul calorimetro e momento out smeared elettrone
         coo_ang_fin[17][0]=xfe;   
         coo_ang_fin[17][1]=yfe;  
         coo_ang_fin[17][2]=tar;      
@@ -587,6 +562,11 @@ Double_t pe=sqrt(ke.Px()*ke.Px()+ke.Py()*ke.Py()+ke.Pz()*ke.Pz());
         coo_ang_fin[17][4]=skye;      
         coo_ang_fin[17][5]=skze;      
         coo_ang_fin[17][6]=ke.E();   
+        
+        //coordinate entranti beam divergente
+        coo_ang_fin[18][0]=xin; 
+        coo_ang_fin[18][1]=yin;  
+        
         
     return coo_ang_fin;
     
@@ -652,7 +632,9 @@ for (Int_t p=1; p<7; p++)  {
                  y[0][0]=yin+(1/sqrt(3))*0.0075*sigBE2mu;  
     
                  xe[0][0]=xin+(1/sqrt(3))*0.0075*sigBE2e;
-                 ye[0][0]=yin+(1/sqrt(3))*0.0075*sigBE2e;              
+                 ye[0][0]=yin+(1/sqrt(3))*0.0075*sigBE2e; 
+        
+        
              //   Double_t thetaX1= gRandom->Gaus(THinX[6],sigBE2in);
               //  Double_t thetaY1= gRandom->Gaus(THinY[6],sigBE2in); inX[6]+d*tan(THinX[6])
                 
@@ -699,7 +681,7 @@ for (Int_t p=1; p<7; p++)  {
     Double_t xfe = xe[1][6]+dCAL*tan(thetaXe[1][6]);
     Double_t yfe = ye[1][6]+dCAL*tan(thetaYe[1][6]);
     
-    TMatrixD coo_ang_fin(18,7);
+    TMatrixD coo_ang_fin(19,7);
         
                 for (Int_t i=0; i<7; i++)
     { //coordinate stazione 2 muone
@@ -761,6 +743,10 @@ Double_t pe=sqrt(ke.Px()*ke.Px()+ke.Py()*ke.Py()+ke.Pz()*ke.Pz());
         coo_ang_fin[17][5]=skze;      
         coo_ang_fin[17][6]=ke.E();   
         
+        //coordinate entranti beam divergente
+        coo_ang_fin[18][0]=xin; 
+        coo_ang_fin[18][1]=yin;  
+        
     return coo_ang_fin;
         
     }
@@ -769,6 +755,41 @@ else return coo_in;
 
 }
 
+
+
+TMatrixD FastSim::MCSphoton(const Double_t & tar,const Double_t & theta,const Double_t & phi,const Double_t & xin,const Double_t & yin) const
+
+{ Double_t d0 =2.025; //m
+  Double_t d1 =1.025;
+         TMatrixD coo (1,2);
+        coo[0][0]=0;
+        coo[0][1]=0;
+ 
+    if(tar==0)
+    {
+    Double_t d_xy = d0*tan(theta);//vettore nel piano xy
+    Double_t xf = xin+d_xy*cos(phi);
+    Double_t yf = yin+d_xy*sin(phi);
+        TMatrixD coo (1,2);
+        coo[0][0]=xf;
+        coo[0][1]=yf;
+
+        return coo;
+    }
+
+    if(tar==1)
+    {
+    Double_t d_xy = d1*tan(theta);//vettore nel piano xy
+    Double_t xf = xin+d_xy*cos(phi);
+    Double_t yf = yin+d_xy*sin(phi);
+        TMatrixD coo (1,2);
+        coo[0][0]=xf;
+        coo[0][1]=yf;
+
+        return coo;
+    }
+ else return coo;
+}
 
 
 void FastSim::LoadKineVars(const PxPyPzEVector & p_mu_in,  const PxPyPzEVector & p_e_in, 
@@ -846,7 +867,7 @@ kv.Pe_out = p_e_out.P();
 
 
       
-void FastSim::LoadPhoton(const MuE::Event & event, MuE::Photon & photon,const PxPyPzEVector & p_mu_in,const Double_t & tar) {
+void FastSim::LoadPhoton(const MuE::Event & event, MuE::Photon & photon,const PxPyPzEVector & p_mu_in,const Double_t & tar,const Double_t & xin,const Double_t & yin) {
   // by now at most one photon
   auto n_photons = event.photons.size();
   
@@ -855,7 +876,7 @@ void FastSim::LoadPhoton(const MuE::Event & event, MuE::Photon & photon,const Px
                  event.photons[0].px, 
 				 event.photons[0].py,
 				 event.photons[0].pz,
-			         event.photons[0].E};
+			     event.photons[0].E};
 
       
 PxPyPzEVector p_gamma_Lab_div=RotDiv(p_mu_in,p_gamma_Lab);
@@ -867,9 +888,10 @@ PxPyPzEVector p_gamma_Lab_div=RotDiv(p_mu_in,p_gamma_Lab);
     photon.phi       = p_gamma_Lab_div.Phi();
     photon.energyCoM = p_gamma_CoM.E(); 
       
-    TMatrixD cooP=MCSphoton(tar,p_gamma_Lab_div.Theta(),photon.phi);
-    photon.coox=cooP[0][0];
-    photon.cooy=cooP[0][1];
+    TMatrixD coo=MCSphoton(tar,theta,phi,xin,yin)
+      
+    photon.coox=coo[0][0];
+    photon.cooy=coo[0][1];
       
     
   }

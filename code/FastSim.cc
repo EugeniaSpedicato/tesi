@@ -362,7 +362,6 @@ Double_t const dSS = 0.01; // m distanza tra i due 2S
 
 
 Double_t const d = 0.25-0.005;
-Double_t const dx = 0.25+0.005; // m la distanza tra coppie di silici è 0.25. Però 0.25 è tra i due della coppia, quindi considero -dSS/2=0.025
 
 // m la distanza tra coppie di silici è 0.25. Però 0.25 è tra i due della coppia, quindi considero -dSS/2=0.005
 Double_t const ris = 18e-6; // m considero questa la risoluzione dei silici
@@ -386,10 +385,6 @@ Double_t sigBEmu=(13.6/(k.E()*1000))*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad
 Double_t sigBEe=(13.6/(ke.E()*1000))*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad   
     
 
-    Double_t THinX[7];
-    Double_t THinY[7];
-    Double_t inX[7];
-    Double_t inY[7];
     
     TMatrixD thetaX(2,7);
     TMatrixD thetaY(2,7);

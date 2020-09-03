@@ -404,14 +404,15 @@ Double_t sigBEe=(13.6/(ke.E()*1000))*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad
     Double_t anglexe = atan2(ke.Px(), ke.Pz());
     Double_t angleye = atan2(ke.Py(), ke.Pz()); 
     
+    Double_t thetaIN = kin.Theta()*1e3;
     
     TMatrixD coo_in(1,3);
-    coo_in[0][0]=0;
-    coo_in[0][1]=0;
-    coo_in[0][2]=0;
+    coo_in[0][0]=100;
+    coo_in[0][1]=100;
+    coo_in[0][2]=100;
  
     
-    if(tar==0)
+    if(tar==0 && thetaIN<35)
     {
        // siamo nelle stazioni con il target di berillio. Ora entra nel berillio ad una distanza d=0.25-0.005 m dagli ultimi silici. Qui però non puoi trascurare lo spessore del berillio, cioè dove interagisce? considero a metà (7.5 mm), quindi aggiungo a d il pezzo in cui x non è modificato e poi sommo con il nuovo angolo di scattering
         
@@ -568,7 +569,7 @@ Double_t pe=sqrt(ke.Px()*ke.Px()+ke.Py()*ke.Py()+ke.Pz()*ke.Pz());
     }
      
     
-    if(tar==1)
+    if(tar==1 && thetaIN<70)
     {
         // siamo nelle stazioni con il target di berillio. Ora entra nel berillio ad una distanza d=0.25-0.005 m dagli ultimi silici. Qui però non puoi trascurare lo spessore del berillio, cioè dove interagisce? considero a metà (7.5 mm), quindi aggiungo a d il pezzo in cui x non è modificato e poi sommo con il nuovo angolo di scattering
                 

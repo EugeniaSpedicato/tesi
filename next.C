@@ -41,15 +41,15 @@ TH1F* tarONEXmu=new TH1F("h1a", "Coo X mu tar1  ", 140,-0.15,0.15);
 TH1F* tarONEYmu=new TH1F("h2a", "Coo Y mu tar1 ", 140,-0.15,0.15);
 TH1F* tarONEXe=new TH1F("h1ea", "Coo X e tar1 ", 140,-0.15,0.15);
 TH1F* tarONEYe=new TH1F("h2ea", "Coo Y e tar1 ", 140,-0.15,0.15);
-TH1F* tarONEXp=new TH1F("h1ea", "Coo X ph tar2 ", 90,-1,1);
-TH1F* tarONEYp=new TH1F("h2ea", "Coo Y ph tar2 ", 90,-1,1);
+TH1F* tarONEXp=new TH1F("h1ea", "Coo X ph tar2 ", 90,-0.5,0.5);
+TH1F* tarONEYp=new TH1F("h2ea", "Coo Y ph tar2 ", 90,-0.5,0.5);
     
 TH1F* tarTWOXmu=new TH1F("h1a", "Coo X mu tar2  ", 140,-0.15,0.15);
 TH1F* tarTWOYmu=new TH1F("h2a", "Coo Y mu tar2 ", 140,-0.15,0.15);
 TH1F* tarTWOXe=new TH1F("h1ea", "Coo X e tar2 ", 140,-0.15,0.15);
 TH1F* tarTWOYe=new TH1F("h2ea", "Coo Y e tar2 ", 140,-0.15,0.15);
-TH1F* tarTWOXp=new TH1F("h1ea", "Coo X ph tar2 ", 90,-1,1);
-TH1F* tarTWOYp=new TH1F("h2ea", "Coo Y ph tar2 ", 90,-1,1);
+TH1F* tarTWOXp=new TH1F("h1ea", "Coo X ph tar2 ", 90,-0.5,0.5);
+TH1F* tarTWOYp=new TH1F("h2ea", "Coo Y ph tar2 ", 90,-0.5,0.5);
     
 TH1F* dx=new TH1F("h2ea", "diff coo X e and mu", 140,-0.1,0.1);
 TH1F* dy=new TH1F("h2ea", "diff coo Y e and mu ", 140,-0.1,0.1);
@@ -125,8 +125,8 @@ Double_t me= 0.5109989461 *0.001;
          tarTWOYmu->Fill(detKinBeamRot_cooYmu,wgt_full);
          tarTWOXe->Fill(detKinBeamRot_cooXe,wgt_full);
          tarTWOYe->Fill(detKinBeamRot_cooYe,wgt_full);
-         tarONEXp->Fill(photon_coox,wgt_full);
-         tarONEYp->Fill(photon_cooy,wgt_full);
+         tarTWOXp->Fill(photon_coox,wgt_full);
+         tarTWOYp->Fill(photon_cooy,wgt_full);
        }
 
     X_Y_mu ->Fill(detKinBeamRot_cooXmu, detKinBeamRot_cooYmu,wgt_full);

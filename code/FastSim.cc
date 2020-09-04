@@ -374,13 +374,13 @@ Double_t sigBEin=(13.6/(kin.E()*1000))*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad
     
     
 Double_t sigSImu=(13.6/(k.E()*1000))*sqrt(sS/x0S)*(1+0.038*log(sS/x0S)); //rad
-// considero sB/2 per quandp interagisce a metà 
+// considero sB/2 per quando interagisce a metà 
 Double_t sigSIe=(13.6/(ke.E()*1000))*sqrt(sS/x0S)*(1+0.038*log(sS/x0S)); //rad
-// considero sB/2 per quandp interagisce a metà 
+// considero sB/2 per quando interagisce a metà 
 Double_t sigBE2mu=(13.6/(k.E()*1000))*sqrt(sB/(2*x0B))*(1+0.038*log(sB/(2*x0B))); //rad
-// considero sB/2 per quandp interagisce a metà 
+// considero sB/2 per quando interagisce a metà 
 Double_t sigBE2e=(13.6/(ke.E()*1000))*sqrt(sB/(2*x0B))*(1+0.038*log(sB/(2*x0B))); //rad
-// considero sB/2 per quandp interagisce a metà 
+// considero sB/2 per quando interagisce a metà 
 Double_t sigBEmu=(13.6/(k.E()*1000))*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad   
 Double_t sigBEe=(13.6/(ke.E()*1000))*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad   
     
@@ -404,7 +404,8 @@ Double_t sigBEe=(13.6/(ke.E()*1000))*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad
     Double_t anglexe = atan2(ke.Px(), ke.Pz());
     Double_t angleye = atan2(ke.Py(), ke.Pz()); 
     
-    Double_t thetaEL = ke.Theta()*1000;
+    /*Double_t thetaEL = ke.Theta()*1000;//mrad
+    && thetaEL<35 && thetaEL<70*/
     
     TMatrixD coo_in(1,3);
     coo_in[0][0]=100;
@@ -415,7 +416,7 @@ Double_t sigBEe=(13.6/(ke.E()*1000))*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad
     Double_t yR = gRandom->Gaus(0,0.027);
 
     
-    if(tar==0 && thetaEL<35)
+    if(tar==0)
     {
        // siamo nelle stazioni con il target di berillio. Ora entra nel berillio, la distanza che percorre nel vuoto il fascio è approssimativamente 1m-spessore_silici=1-sSin che serve per il calcolo della coordinata. Considero interazione a metà (7.5 mm) del berillio.
         
@@ -572,7 +573,7 @@ Double_t pe=sqrt(ke.Px()*ke.Px()+ke.Py()*ke.Py()+ke.Pz()*ke.Pz());
     }
      
     
-    if(tar==1 && thetaEL<70)
+    if(tar==1)
     {
         // siamo nelle stazioni con il target di berillio. Ora entra nel berillio ad una distanza d=0.25-0.005 m dagli ultimi silici. Qui però non puoi trascurare lo spessore del berillio, cioè dove interagisce? considero a metà (7.5 mm), quindi aggiungo a d il pezzo in cui x non è modificato e poi sommo con il nuovo angolo di scattering
                 
@@ -760,7 +761,7 @@ TMatrixD FastSim::MCSphoton(const Double_t & tar,const Double_t & theta,const Do
 
 { Double_t d0 =2.025; //m
   Double_t d1 =1.025;
- Double_t thetaR = theta*0.01;
+ Double_t thetaR = theta*0.01;// rad
          TMatrixD coo (1,2);
         coo[0][0]=0;
         coo[0][1]=0;

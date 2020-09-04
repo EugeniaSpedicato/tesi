@@ -125,7 +125,8 @@ Double_t me= 0.5109989461 *0.001;
          tarTWOYmu->Fill(detKinBeamRot_cooYmu,wgt_full);
          tarTWOXe->Fill(detKinBeamRot_cooXe,wgt_full);
          tarTWOYe->Fill(detKinBeamRot_cooYe,wgt_full);
-           
+         tarONEXp->Fill(photon_coox,wgt_full);
+         tarONEYp->Fill(photon_cooy,wgt_full);
        }
 
     X_Y_mu ->Fill(detKinBeamRot_cooXmu, detKinBeamRot_cooYmu,wgt_full);

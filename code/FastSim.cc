@@ -757,7 +757,7 @@ else return coo_in;
 
 
 
-TMatrixD FastSim::MCSphoton(const Double_t & tar,const Double_t & theta,const Double_t & phi,const Double_t & xin,const Double_t & yin) const
+TMatrixD FastSim::MCSphoton(const Double_t & tar, const Double_t & kp,const Double_t & xin,const Double_t & yin) const
 
 { Double_t d0 =2.025; //m
   Double_t d1 =1.025;
@@ -766,12 +766,19 @@ TMatrixD FastSim::MCSphoton(const Double_t & tar,const Double_t & theta,const Do
         coo[0][0]=0;
         coo[0][1]=0;
  
+    Double_t anglex = atan2(kp.Px(), kp.Pz());
+    Double_t angley = atan2(kp.Py(), kp.Pz()); 
+ 
     if(tar==0)
     {
+        /*
     Double_t d_xy = d0*tan(thetaR);//vettore nel piano xy
     Double_t xf = xin+d_xy*cos(phi);
     Double_t yf = yin+d_xy*sin(phi);
-        TMatrixD coo (1,2);
+        TMatrixD coo (1,2);*/
+        Double_t xf=xin+d0*tan(anglex);
+        Double_t yf=yin+d0*tan(angley);
+        
         coo[0][0]=xf;
         coo[0][1]=yf;
 
@@ -780,9 +787,12 @@ TMatrixD FastSim::MCSphoton(const Double_t & tar,const Double_t & theta,const Do
 
     if(tar==1)
     {
-    Double_t d_xy = d1*tan(thetaR);//vettore nel piano xy
+    /*Double_t d_xy = d1*tan(thetaR);//vettore nel piano xy
     Double_t xf = xin+d_xy*cos(phi);
-    Double_t yf = yin+d_xy*sin(phi);
+    Double_t yf = yin+d_xy*sin(phi);*/
+        Double_t xf=d1*tan(anglex);
+        Double_t yf=d1*tan(angley); 
+            
         TMatrixD coo (1,2);
         coo[0][0]=xf;
         coo[0][1]=yf;
@@ -889,7 +899,7 @@ PxPyPzEVector p_gamma_Lab_div=RotDiv(p_mu_in,p_gamma_Lab);
     photon.phi       = p_gamma_Lab_div.Phi();
     photon.energyCoM = p_gamma_CoM.E(); 
       
-    TMatrixD coo=MCSphoton(tar,photon.theta,photon.phi,xin,yin);
+    TMatrixD coo=MCSphoton(tar,p_gamma_Lab_div,xin,yin);
       
     photon.coox=coo[0][0];
     photon.cooy=coo[0][1];

@@ -53,7 +53,7 @@ namespace MuE {
     //TMatrixD coo(const PxPyPzEVector & p,const PxPyPzEVector & q) const; 
     // TMatrixD MCSin(const PxPyPzEVector & k) const; 
     TMatrixD MCSout(const PxPyPzEVector & kin, const PxPyPzEVector & k, const PxPyPzEVector & ke,const Double_t & tar) const; 
-    TMatrixD MCSphoton(const Double_t & tar,const Double_t & theta,const Double_t & phi,const Double_t & xin,const Double_t & yin) const;
+    TMatrixD MCSphoton(const Double_t & tar,const Double_t & p_gamma_Lab_div,const Double_t & xin,const Double_t & yin) const;
 
     void LoadKineVars(const PxPyPzEVector & p_mu_in,  const PxPyPzEVector & p_e_in, const PxPyPzEVector & p_mu_out, const PxPyPzEVector & p_e_out,  const TMatrixD & coo,
 		      KineVars & kv);

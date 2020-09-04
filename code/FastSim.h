@@ -31,7 +31,7 @@ namespace MuE {
    // const KineVars & GetGenKin() const {return genKin;}
     // const KineVars & GetDetKin() const {return detKin;}
     const KineVars & GetDetKinBeamRot() const {return detKinBeamRot;}
-   // const Photon & GetPhoton() const {return photon;}
+    const Photon & GetPhoton() const {return photon;}
 
     void RandomNrSync();
 

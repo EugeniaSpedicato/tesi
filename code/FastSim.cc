@@ -226,7 +226,7 @@ Double_t const sB    = 0.015; //m spessore berillio
 Double_t const x0B = 0.353; // m
 
     
-Double_t sigSI=(13.6/(k.E()*1000))*sqrt(sS/x0S)*(1+0.038*log(sS/x0S)); //rad
+Double_t sigSI=(13.6/(k.E()*1000))*sqrt(sS/x0S)*(1+0.038*log(sS/x0S)); //rad e energy in MeV
 Double_t sigBE=(13.6/(k.E()*1000))*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad   
 Double_t sigBE2in=(13.6/(k.E()*1000))*sqrt(sB/(2*x0B))*(1+0.038*log(sB/(2*x0B))); //rad   
 
@@ -298,10 +298,10 @@ pnewdiv[4][0]=tar;
     
 return pnewdiv;  }
      
-TMatrixD p(2,1);
+else {TMatrixD p(2,1);
 p[0][0]=0;
 p[1][0]=0;
-return p;
+return p;}
  }
 
  PxPyPzEVector FastSim::RotDiv(const PxPyPzEVector & k,const PxPyPzEVector & out) const
@@ -417,7 +417,7 @@ Double_t sigBEe=(13.6/(ke.E()*1000))*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad
     
     if(tar==0 && thetaEL<35)
     {
-       // siamo nelle stazioni con il target di berillio. Ora entra nel berillio ad una distanza d=0.25-0.005 m dagli ultimi silici. Qui però non puoi trascurare lo spessore del berillio, cioè dove interagisce? considero a metà (7.5 mm), quindi aggiungo a d il pezzo in cui x non è modificato e poi sommo con il nuovo angolo di scattering
+       // siamo nelle stazioni con il target di berillio. Ora entra nel berillio, la distanza che percorre nel vuoto il fascio è approssimativamente 1m-spessore_silici=1-sSin che serve per il calcolo della coordinata. Considero interazione a metà (7.5 mm) del berillio.
         
                 Double_t xin = xR+(1-sSin)*tan(anglexin)+(1/sqrt(3))*sSin*sigSIinP+(1/sqrt(3))*0.0075*sigBE2in;
                 Double_t yin = yR+(1-sSin)*tan(angleyin)+(1/sqrt(3))*sSin*sigSIinP+(1/sqrt(3))*0.0075*sigBE2in;

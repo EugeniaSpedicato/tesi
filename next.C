@@ -37,15 +37,15 @@ TH1F* thYZmu=new TH1F("c", "theta YZ mu", 150,-0.002,0.002);
 TH1F* thXZe=new TH1F("v", "theta XZ e", 150,-0.1,0.1);
 TH1F* thYZe=new TH1F("b", "theta YZ e", 150,-0.1,0.1);
     
-TH1F* tarONEXmu=new TH1F("h1a", "Coo X mu tar1  ", 140,-0.01,0.01);
-TH1F* tarONEYmu=new TH1F("h2a", "Coo Y mu tar1 ", 140,-0.01,0.01);
+TH1F* tarONEXmu=new TH1F("h1a", "Coo X mu tar1  ", 140,-0.1,0.1);
+TH1F* tarONEYmu=new TH1F("h2a", "Coo Y mu tar1 ", 140,-0.1,0.1);
 TH1F* tarONEXe=new TH1F("h1ea", "Coo X e tar1 ", 140,-0.1,0.1);
 TH1F* tarONEYe=new TH1F("h2ea", "Coo Y e tar1 ", 140,-0.1,0.1);
 TH1F* tarONEXp=new TH1F("h1ea", "Coo X ph tar2 ", 140,-0.1,0.1);
 TH1F* tarONEYp=new TH1F("h2ea", "Coo Y ph tar2 ", 140,-0.1,0.1);
     
-TH1F* tarTWOXmu=new TH1F("h1a", "Coo X mu tar2  ", 140,-0.01,0.01);
-TH1F* tarTWOYmu=new TH1F("h2a", "Coo Y mu tar2 ", 140,-0.01,0.01);
+TH1F* tarTWOXmu=new TH1F("h1a", "Coo X mu tar2  ", 140,-0.1,0.1);
+TH1F* tarTWOYmu=new TH1F("h2a", "Coo Y mu tar2 ", 140,-0.1,0.1);
 TH1F* tarTWOXe=new TH1F("h1ea", "Coo X e tar2 ", 140,-0.1,0.1);
 TH1F* tarTWOYe=new TH1F("h2ea", "Coo Y e tar2 ", 140,-0.1,0.1);
 TH1F* tarTWOXp=new TH1F("h1ea", "Coo X ph tar2 ", 140,-0.1,0.1);

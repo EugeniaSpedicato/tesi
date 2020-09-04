@@ -30,7 +30,7 @@ void Analysis::Analyze(const MuE::Event & event, const MuE::FastSim & fs)
   //const MuE::KineVars & detKin = fs.GetDetKin();
   const MuE::KineVars & detKinBeamRot = fs.GetDetKinBeamRot();
     
- // const MuE::Photon & photon = fs.GetPhoton();
+  const MuE::Photon & photon = fs.GetPhoton();
 
   // apply preselection if both the gen-level and det-level electron angle are above the cut (default 30mrad)&& detKinBeamRot.cooXmu>0.07
   //if (genKin.the > paran.thetaMax && detKin.the > paran.thetaMax ) return;
@@ -47,7 +47,7 @@ void Analysis::Analyze(const MuE::Event & event, const MuE::FastSim & fs)
   //myAna.genKin = genKin;
   //myAna.detKin = detKin;
   myAna.detKinBeamRot = detKinBeamRot;
-  //myAna.photon = photon;
+  myAna.photon = photon;
   
   // filling my analysis tree
   if (paran.makeTree) atree->Fill();

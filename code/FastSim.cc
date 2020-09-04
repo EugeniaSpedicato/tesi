@@ -410,14 +410,17 @@ Double_t sigBEe=(13.6/(ke.E()*1000))*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad
     coo_in[0][0]=100;
     coo_in[0][1]=100;
     coo_in[0][2]=100;
- 
+    
+    Double_t xR = gRandom->Gaus(0,0.026);
+    Double_t yR = gRandom->Gaus(0,0.027);
+
     
     if(tar==0 && thetaEL<35)
     {
        // siamo nelle stazioni con il target di berillio. Ora entra nel berillio ad una distanza d=0.25-0.005 m dagli ultimi silici. Qui però non puoi trascurare lo spessore del berillio, cioè dove interagisce? considero a metà (7.5 mm), quindi aggiungo a d il pezzo in cui x non è modificato e poi sommo con il nuovo angolo di scattering
         
-                Double_t xin=(1-sSin)*tan(anglexin)+(1/sqrt(3))*sSin*sigSIinP+(1/sqrt(3))*0.0075*sigBE2in;
-                Double_t yin=(1-sSin)*tan(angleyin)+(1/sqrt(3))*sSin*sigSIinP+(1/sqrt(3))*0.0075*sigBE2in;
+                Double_t xin = xR+(1-sSin)*tan(anglexin)+(1/sqrt(3))*sSin*sigSIinP+(1/sqrt(3))*0.0075*sigBE2in;
+                Double_t yin = yR+(1-sSin)*tan(angleyin)+(1/sqrt(3))*sSin*sigSIinP+(1/sqrt(3))*0.0075*sigBE2in;
         
                  thetaX[0][0]= gRandom->Gaus(anglex,sigBE2mu);
                  thetaY[0][0]= gRandom->Gaus(angley,sigBE2mu); 
@@ -573,8 +576,8 @@ Double_t pe=sqrt(ke.Px()*ke.Px()+ke.Py()*ke.Py()+ke.Pz()*ke.Pz());
     {
         // siamo nelle stazioni con il target di berillio. Ora entra nel berillio ad una distanza d=0.25-0.005 m dagli ultimi silici. Qui però non puoi trascurare lo spessore del berillio, cioè dove interagisce? considero a metà (7.5 mm), quindi aggiungo a d il pezzo in cui x non è modificato e poi sommo con il nuovo angolo di scattering
                 
-                Double_t xin=(2-2*sSin-sB)*tan(anglexin)+2*(1/sqrt(3))*sSin*sigSIinP+(1/sqrt(3))*sSin*sigBEin+(1/sqrt(3))*0.0075*sigBE2in;
-                Double_t yin=(2-2*sSin-sB)*tan(angleyin)+2*(1/sqrt(3))*sSin*sigSIinP+(1/sqrt(3))*sSin*sigBEin+(1/sqrt(3))*0.0075*sigBE2in;
+                Double_t xin=xR+(2-2*sSin-sB)*tan(anglexin)+2*(1/sqrt(3))*sSin*sigSIinP+(1/sqrt(3))*sSin*sigBEin+(1/sqrt(3))*0.0075*sigBE2in;
+                Double_t yin=yR+(2-2*sSin-sB)*tan(angleyin)+2*(1/sqrt(3))*sSin*sigSIinP+(1/sqrt(3))*sSin*sigBEin+(1/sqrt(3))*0.0075*sigBE2in;
         
                //  THinX[0]= gRandom->Gaus(anglexin,sigBEin);
             //     THinY[0]= gRandom->Gaus(angleyin,sigBEin); 

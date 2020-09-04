@@ -757,11 +757,11 @@ else return coo_in;
 
 
 
-TMatrixD FastSim::MCSphoton(const Double_t & tar, const Double_t & kp,const Double_t & xin,const Double_t & yin) const
+TMatrixD FastSim::MCSphoton(const Double_t & tar, const PxPyPzEVector & kp,const Double_t & xin,const Double_t & yin) const
 
 { Double_t d0 =2.025; //m
   Double_t d1 =1.025;
- Double_t thetaR = theta*0.01;// rad
+// Double_t thetaR = theta*0.01;// rad
          TMatrixD coo (1,2);
         coo[0][0]=0;
         coo[0][1]=0;

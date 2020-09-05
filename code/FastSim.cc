@@ -404,14 +404,19 @@ Double_t sigBEe=(13.6/(ke.E()*1000))*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad
     Double_t anglexe = atan2(ke.Px(), ke.Pz());
     Double_t angleye = atan2(ke.Py(), ke.Pz()); 
     
-    Double_t thetaEL = ke.Theta()*1000;//mrad
-   
+    /*Double_t thetaEL = ke.Theta()*1000;//mrad
+    && thetaEL<35 && thetaEL<70*/
+    
+    TMatrixD coo_in(1,3);
+    coo_in[0][0]=100;
+    coo_in[0][1]=100;
+    coo_in[0][2]=100;
     
     Double_t xR = gRandom->Gaus(0,0.026);
     Double_t yR = gRandom->Gaus(0,0.027);
 
     
-    if(tar==0  && thetaEL<35)
+    if(tar==0)
     {
        // siamo nelle stazioni con il target di berillio. Ora entra nel berillio, la distanza che percorre nel vuoto il fascio è approssimativamente 1m-spessore_silici=1-sSin che serve per il calcolo della coordinata. Considero interazione a metà (7.5 mm) del berillio.
         
@@ -540,44 +545,23 @@ Double_t pe=sqrt(ke.Px()*ke.Px()+ke.Py()*ke.Py()+ke.Pz()*ke.Pz());
   Double_t skye = skze * dydze;
         
         // coordinate sul calorimetro e momento out smeared muone
-        if (xf<0.07 && yf<0.07) {
         coo_ang_fin[8][0]=xf;   
         coo_ang_fin[8][1]=yf;  
         coo_ang_fin[8][2]=tar;      
         coo_ang_fin[8][3]=skx; 
         coo_ang_fin[8][4]=sky;      
         coo_ang_fin[8][5]=skz;      
-        coo_ang_fin[8][6]=k.E();}
-        
-        else {
-        coo_ang_fin[8][0]=100;   
-        coo_ang_fin[8][1]=100;  
-        coo_ang_fin[8][2]=tar;      
-        coo_ang_fin[8][3]=100; 
-        coo_ang_fin[8][4]=100;      
-        coo_ang_fin[8][5]=100;      
-        coo_ang_fin[8][6]=100;
-        }
+        coo_ang_fin[8][6]=k.E();   
         
                 
         // coordinate sul calorimetro e momento out smeared elettrone
-        if (xfe<0.07 && yfe<0.07) {
         coo_ang_fin[17][0]=xfe;   
         coo_ang_fin[17][1]=yfe;  
         coo_ang_fin[17][2]=tar;      
         coo_ang_fin[17][3]=skxe; 
         coo_ang_fin[17][4]=skye;      
         coo_ang_fin[17][5]=skze;      
-        coo_ang_fin[17][6]=ke.E();}  
-        
-        else {        
-        coo_ang_fin[17][0]=100;   
-        coo_ang_fin[17][1]=100;  
-        coo_ang_fin[17][2]=tar;      
-        coo_ang_fin[17][3]=100; 
-        coo_ang_fin[17][4]=100;      
-        coo_ang_fin[17][5]=100;      
-        coo_ang_fin[17][6]=100;}
+        coo_ang_fin[17][6]=ke.E();   
         
         //coordinate entranti beam divergente
         coo_ang_fin[18][0]=xin; 
@@ -589,7 +573,7 @@ Double_t pe=sqrt(ke.Px()*ke.Px()+ke.Py()*ke.Py()+ke.Pz()*ke.Pz());
     }
      
     
-    if(tar==1 && thetaEL<70)
+    if(tar==1)
     {
         // siamo nelle stazioni con il target di berillio. Ora entra nel berillio ad una distanza d=0.25-0.005 m dagli ultimi silici. Qui però non puoi trascurare lo spessore del berillio, cioè dove interagisce? considero a metà (7.5 mm), quindi aggiungo a d il pezzo in cui x non è modificato e poi sommo con il nuovo angolo di scattering
                 
@@ -740,42 +724,24 @@ Double_t pe=sqrt(ke.Px()*ke.Px()+ke.Py()*ke.Py()+ke.Pz()*ke.Pz());
   Double_t skxe = skze * dxdze;
   Double_t skye = skze * dydze;
         
-        if (xf<0.07 && yf<0.07) {// coordinate sul calorimetro e momento out smeared
+        // coordinate sul calorimetro e momento out smeared
         coo_ang_fin[8][0]=xf;   
         coo_ang_fin[8][1]=yf;  
         coo_ang_fin[8][2]=tar;      
         coo_ang_fin[8][3]=skx; 
         coo_ang_fin[8][4]=sky;      
         coo_ang_fin[8][5]=skz;      
-        coo_ang_fin[8][6]=k.E(); }  
-        else {
-        coo_ang_fin[8][0]=100;   
-        coo_ang_fin[8][1]=100;  
-        coo_ang_fin[8][2]=tar;      
-        coo_ang_fin[8][3]=100; 
-        coo_ang_fin[8][4]=100;      
-        coo_ang_fin[8][5]=100;      
-        coo_ang_fin[8][6]=100;
-        }
+        coo_ang_fin[8][6]=k.E();   
+        
+                
         // coordinate sul calorimetro e momento out smeared
-       if (xfe<0.07 && yfe<0.07) {
         coo_ang_fin[17][0]=xfe;   
         coo_ang_fin[17][1]=yfe;  
         coo_ang_fin[17][2]=tar;      
         coo_ang_fin[17][3]=skxe; 
         coo_ang_fin[17][4]=skye;      
         coo_ang_fin[17][5]=skze;      
-        coo_ang_fin[17][6]=ke.E();  } 
-        
-        else {        
-        coo_ang_fin[17][0]=100;   
-        coo_ang_fin[17][1]=100;  
-        coo_ang_fin[17][2]=tar;      
-        coo_ang_fin[17][3]=100; 
-        coo_ang_fin[17][4]=100;      
-        coo_ang_fin[17][5]=100;      
-        coo_ang_fin[17][6]=100;}
-                
+        coo_ang_fin[17][6]=ke.E();   
         
         //coordinate entranti beam divergente
         coo_ang_fin[18][0]=xin; 
@@ -785,7 +751,7 @@ Double_t pe=sqrt(ke.Px()*ke.Px()+ke.Py()*ke.Py()+ke.Pz()*ke.Pz());
         
     }
 
-else return nullptr; 
+else return coo_in; 
 
 }
 
@@ -797,8 +763,8 @@ TMatrixD FastSim::MCSphoton(const Double_t & tar, const PxPyPzEVector & kp,const
   Double_t d1 =1.025;
 // Double_t thetaR = theta*0.01;// rad
          TMatrixD coo (1,2);
-        coo[0][0]=100;
-        coo[0][1]=100;
+        coo[0][0]=0;
+        coo[0][1]=0;
  
     Double_t anglex = atan2(kp.Px(), kp.Pz());
     Double_t angley = atan2(kp.Py(), kp.Pz()); 
@@ -809,16 +775,14 @@ TMatrixD FastSim::MCSphoton(const Double_t & tar, const PxPyPzEVector & kp,const
     Double_t d_xy = d0*tan(thetaR);//vettore nel piano xy
     Double_t xf = xin+d_xy*cos(phi);
     Double_t yf = yin+d_xy*sin(phi);
-        */
+        TMatrixD coo (1,2);*/
         Double_t xf=xin+d0*tan(anglex);
         Double_t yf=yin+d0*tan(angley);
         
-        if (xf<0.07 && yf<0.07) 
-        {coo[0][0]=xf;
+        coo[0][0]=xf;
         coo[0][1]=yf;
-        return coo;}
 
-        else return nullptr;
+        return coo;
     }
 
     if(tar==1)
@@ -829,12 +793,11 @@ TMatrixD FastSim::MCSphoton(const Double_t & tar, const PxPyPzEVector & kp,const
         Double_t xf=d1*tan(anglex);
         Double_t yf=d1*tan(angley); 
             
-        if (xf<0.07 && yf<0.07) 
-        {coo[0][0]=xf;
+        TMatrixD coo (1,2);
+        coo[0][0]=xf;
         coo[0][1]=yf;
-        return coo;}
-        
-        else return nullptr;
+
+        return coo;
     }
  else return coo;
 }

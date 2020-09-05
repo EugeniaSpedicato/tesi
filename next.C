@@ -112,41 +112,37 @@ Double_t me= 0.5109989461 *0.001;
            if (detKinBeamRot_tar==0)
        
            { 
-               if (detKinBeamRot_cooYmu!=100 && detKinBeamRot_cooXmu!=100){
         tarONEXmu->Fill(detKinBeamRot_cooXmu,wgt_full);
-         tarONEYmu->Fill(detKinBeamRot_cooYmu,wgt_full);}
-               if (detKinBeamRot_cooYe!=100 && detKinBeamRot_cooXe!=100){
+         tarONEYmu->Fill(detKinBeamRot_cooYmu,wgt_full);
          tarONEXe->Fill(detKinBeamRot_cooXe,wgt_full);
-         tarONEYe->Fill(detKinBeamRot_cooYe,wgt_full);}
+         tarONEYe->Fill(detKinBeamRot_cooYe,wgt_full);
              if (photon_coox!=-1 && photon_cooy!=-1)
         {tarONEXp->Fill(photon_coox,wgt_full);
          tarONEYp->Fill(photon_cooy,wgt_full);}
       }
        
        if (detKinBeamRot_tar==1)
-       {  if (detKinBeamRot_cooYmu!=100 && detKinBeamRot_cooXmu!=100){
+       {  
          tarTWOXmu->Fill(detKinBeamRot_cooXmu,wgt_full);
-         tarTWOYmu->Fill(detKinBeamRot_cooYmu,wgt_full);}
-           if (detKinBeamRot_cooYe!=100 && detKinBeamRot_cooXe!=100){
+         tarTWOYmu->Fill(detKinBeamRot_cooYmu,wgt_full);
          tarTWOXe->Fill(detKinBeamRot_cooXe,wgt_full);
-         tarTWOYe->Fill(detKinBeamRot_cooYe,wgt_full);}
+         tarTWOYe->Fill(detKinBeamRot_cooYe,wgt_full);
         if (photon_coox!=-1)
         {tarTWOXp->Fill(photon_coox,wgt_full);
          tarTWOYp->Fill(photon_cooy,wgt_full);}
        }
-if (detKinBeamRot_cooYmu!=100 && detKinBeamRot_cooXmu!=100){
-    X_Y_mu ->Fill(detKinBeamRot_cooXmu, detKinBeamRot_cooYmu,wgt_full);}
-       if (detKinBeamRot_cooYe!=100 && detKinBeamRot_cooXe!=100){
-     X_Y_e ->Fill(detKinBeamRot_cooXe, detKinBeamRot_cooYe,wgt_full);}
+
+    X_Y_mu ->Fill(detKinBeamRot_cooXmu, detKinBeamRot_cooYmu,wgt_full);
+     X_Y_e ->Fill(detKinBeamRot_cooXe, detKinBeamRot_cooYe,wgt_full);
      if (photon_coox!=-1 && photon_cooy!=-1)
         {X_Y_p ->Fill(photon_coox, photon_cooy,wgt_full);}
        
        
     Double_t Dx = detKinBeamRot_cooXe-detKinBeamRot_cooXmu;
     Double_t Dy = detKinBeamRot_cooYe-detKinBeamRot_cooXmu;
-    if (detKinBeamRot_cooYmu!=100 && detKinBeamRot_cooXmu!=100 && detKinBeamRot_cooYe!=100 && detKinBeamRot_cooXe!=100){
+
     dx->Fill(Dx,wgt_full);
-    dy->Fill(Dy,wgt_full);}
+    dy->Fill(Dy,wgt_full);
     
       
       }

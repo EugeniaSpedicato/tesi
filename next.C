@@ -257,9 +257,9 @@ Double_t me= 0.5109989461 *0.001;
     X_Y_mu->SetMarkerColor(46);
     X_Y_mu->Draw("HIST");
     dued->cd(2);
+    X_Y_e->SetMarkerColor(30);
     X_Y_e->Draw("HIST");
     dued->cd(3);
-    X_Y_p->SetMarkerColor(30);
     X_Y_p->Draw("HIST");
   dued->SaveAs("dued.png");
     

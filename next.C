@@ -17,6 +17,9 @@ TH1F* pz_mu=new TH1F("h3", "pZ_in muon", 190,50,180);
 TH1F* px_mu_out=new TH1F("h1a", "pX_out muon", 150,-0.3,0.3);
 TH1F* py_mu_out=new TH1F("h2a", "pY_out muon", 150,-0.3,0.3);
 TH1F* pz_mu_out=new TH1F("h3a", "pZ_out muon", 150,0,180);
+TH1F* px_mu_outLO=new TH1F("h1a", "pX_out muon LO", 150,-0.3,0.3);
+TH1F* py_mu_outLO=new TH1F("h2a", "pY_out muon LO", 150,-0.3,0.3);
+TH1F* pz_mu_outLO=new TH1F("h3a", "pZ_out muon LO", 150,0,180);
 TH1F* Emuin=new TH1F("h1aN", "Energy in mu", 150,0,160);
 TH1F* Emuout=new TH1F("h1aN", "Energy out mu", 150,0,160);
 TH1F* Ep=new TH1F("h1aN", "Energy out p", 150,0,1);
@@ -25,6 +28,9 @@ TH1F* Ep=new TH1F("h1aN", "Energy out p", 150,0,1);
 TH1F* px_e_out=new TH1F("h1b", "pX_out electron", 150,-0.3,0.3);
 TH1F* py_e_out=new TH1F("h2b", "pY_out electron", 150,-0.3,0.3);
 TH1F* pz_e_out=new TH1F("h3b", "pZ_out electron", 150,0,5);
+TH1F* px_e_outLO=new TH1F("h1b", "pX_out electron LO", 150,-0.3,0.3);
+TH1F* py_e_outLO=new TH1F("h2b", "pY_out electron LO", 150,-0.3,0.3);
+TH1F* pz_e_outLO=new TH1F("h3b", "pZ_out electron LO", 150,0,5);
 TH1F* Eein=new TH1F("h2aN", "Energ in e", 150,0,10);
 TH1F* Eeout=new TH1F("h2aN", "Energy out e", 150,0,10);
     
@@ -53,6 +59,10 @@ TH1F* tarTWOYp=new TH1F("h2ea", "Coo Y ph tar2 ", 100,-0.5,0.5);
     
 TH1F* dx=new TH1F("h2ea", "diff coo X e and mu", 140,-0.1,0.1);
 TH1F* dy=new TH1F("h2ea", "diff coo Y e and mu ", 140,-0.1,0.1);
+TH1F* dxmp=new TH1F("h2ea", "diff coo X photon and mu", 140,-0.1,0.1);
+TH1F* dymp=new TH1F("h2ea", "diff coo Y photon and mu ", 140,-0.1,0.1);
+TH1F* dxep=new TH1F("h2ea", "diff coo X e and photon", 140,-0.1,0.1);
+TH1F* dyep=new TH1F("h2ea", "diff coo Y e and photon ", 140,-0.1,0.1);
     
 TH2F  *X_Y_mu  = new TH2F("h2d" , " X  Vs. y of the muon",140,-0.5,-0.5,140,-0.5,0.5);
 TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.5,-0.5,140,-0.5,0.5);
@@ -77,7 +87,13 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0
        pz_mu_out->Fill(detKinBeamRot_pZmu_out,wgt_full);
        px_e_out->Fill(detKinBeamRot_pXe_out,wgt_full);
        py_e_out->Fill(detKinBeamRot_pYe_out,wgt_full);
-       pz_e_out->Fill(detKinBeamRot_pZe_out,wgt_full);       
+       pz_e_out->Fill(detKinBeamRot_pZe_out,wgt_full);  
+       px_mu_outLO->Fill(detKinBeamRot_pXmu_out,wgt_LO);
+       py_mu_outLO->Fill(detKinBeamRot_pYmu_out,wgt_LO);
+       pz_mu_outLO->Fill(detKinBeamRot_pZmu_out,wgt_LO);
+       px_e_outLO->Fill(detKinBeamRot_pXe_out,wgt_LO);
+       py_e_outLO->Fill(detKinBeamRot_pYe_out,wgt_LO);
+       pz_e_outLO->Fill(detKinBeamRot_pZe_out,wgt_LO);  
        
 Double_t mmu= 105.6583745 *0.001;
 Double_t me= 0.5109989461 *0.001;
@@ -140,9 +156,17 @@ Double_t me= 0.5109989461 *0.001;
        
     Double_t Dx = detKinBeamRot_cooXe-detKinBeamRot_cooXmu;
     Double_t Dy = detKinBeamRot_cooYe-detKinBeamRot_cooXmu;
+    Double_t Dxep = detKinBeamRot_cooXe-photon_coox;
+    Double_t Dyep = detKinBeamRot_cooYe-photon_cooy;    
+    Double_t Dxmp = photon_coox-detKinBeamRot_cooXmu;
+    Double_t Dymp = photon_cooy-detKinBeamRot_cooXmu;
 
     dx->Fill(Dx,wgt_full);
     dy->Fill(Dy,wgt_full);
+    dxep->Fill(Dxep,wgt_full);
+    dyep->Fill(Dyep,wgt_full);    
+    dxmp->Fill(Dxmp,wgt_full);
+    dymp->Fill(Dymp,wgt_full);
     
       
       }
@@ -152,18 +176,30 @@ Double_t me= 0.5109989461 *0.001;
     p->cd(1);
     px_mu_out->SetLineColor(46);
     px_mu_out->Draw("HIST");
+    px_mu_outLO->SetLineColor(kBlack);
+    px_mu_outLO->Draw("HIST same");
     p->cd(2);    
     py_mu_out->SetLineColor(46);
     py_mu_out->Draw("HIST");
+    py_mu_outLO->SetLineColor(kBlack);
+    py_mu_outLO->Draw("HIST same");
     p->cd(3);
     pz_mu_out->SetLineColor(46);
     pz_mu_out->Draw("HIST");  
+    pz_mu_outLO->SetLineColor(kBlack);
+    pz_mu_outLO->Draw("HIST same");  
     p->cd(4);
-    px_e_out->Draw("HIST");  
+    px_e_out->Draw("HIST");
+    px_e_outLO->SetLineColor(kBlack);
+    px_e_outLO->Draw("HIST same");  
     p->cd(5);
-    py_e_out->Draw("HIST");   
+    py_e_out->Draw("HIST"); 
+    py_e_outLO->SetLineColor(kBlack);
+    py_e_outLO->Draw("HIST same");
     p->cd(6);
     pz_e_out->Draw("HIST");
+    pz_e_outLO->SetLineColor(kBlack);
+    pz_e_outLO->Draw("HIST same");
     p->SaveAs("Pemu.png");
     
     TCanvas * e= new TCanvas("e","e",400,10,1500,1000);
@@ -275,11 +311,19 @@ Double_t me= 0.5109989461 *0.001;
    Pin->SaveAs("p_in.png");
     
     TCanvas * d= new TCanvas("d","d",1000,100,2500,2000);
-    d->Divide(1,2);
+    d->Divide(3,2);
     d->cd(1);
     dx->Draw("HIST");
     d->cd(2);
     dy->Draw("HIST");
+    d->cd(3);
+    dxep->Draw("HIST");
+    d->cd(4);
+    dyep->Draw("HIST");
+    d->cd(5);
+    dxmp->Draw("HIST");
+    d->cd(6);
+    dymp->Draw("HIST");
   d->SaveAs("diffCoo.png");
     
 

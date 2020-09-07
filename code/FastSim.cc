@@ -790,8 +790,8 @@ TMatrixD FastSim::MCSphoton(const Double_t & tar, const PxPyPzEVector & kp,const
     /*Double_t d_xy = d1*tan(thetaR);//vettore nel piano xy
     Double_t xf = xin+d_xy*cos(phi);
     Double_t yf = yin+d_xy*sin(phi);*/
-        Double_t xf=d1*tan(anglex);
-        Double_t yf=d1*tan(angley); 
+        Double_t xf=xin+d1*tan(anglex);
+        Double_t yf=yin+d1*tan(angley); 
             
         TMatrixD coo (1,2);
         coo[0][0]=xf;

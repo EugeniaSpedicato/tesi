@@ -35,9 +35,8 @@ void Analysis::Analyze(const MuE::Event & event, const MuE::FastSim & fs)
   // apply preselection if both the gen-level and det-level electron angle are above the cut (default 30mrad)&& detKinBeamRot.cooXmu>0.07
   //if (genKin.the > paran.thetaMax && detKin.the > paran.thetaMax ) return;
     if (detKinBeamRot.the > paran.thetaMax) return;
-    if (detKinBeamRot.cooXe > 0.07 || detKinBeamRot.cooYe > 0.07 || detKinBeamRot.cooXe < -0.07 || detKinBeamRot.cooYe < -0.07) return;
-    if (detKinBeamRot.cooXmu > 0.07 || detKinBeamRot.cooYmu > 0.07 || detKinBeamRot.cooXmu < -0.07 || detKinBeamRot.cooYmu < -0.07) return;
-    if (photon.coox > 0.07 || photon.cooy > 0.07 || photon.coox < -0.07 || photon.cooy < -0.07) return;
+    if (detKinBeamRot.cooXe > 0.07 || detKinBeamRot.cooYe > 0.07 || detKinBeamRot.cooXe < -0.07 || detKinBeamRot.cooYe < -0.07 || detKinBeamRot.cooXmu > 0.07 || detKinBeamRot.cooYmu > 0.07 || detKinBeamRot.cooXmu < -0.07 || detKinBeamRot.cooYmu < -0.07 || photon.coox > 0.07 || photon.cooy > 0.07 || photon.coox < -0.07 || photon.cooy < -0.07) return;
+
     
     
 

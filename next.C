@@ -22,7 +22,7 @@ TH1F* py_mu_outLO=new TH1F("h2a", "pY_out muon LO", 150,-0.3,0.3);
 TH1F* pz_mu_outLO=new TH1F("h3a", "pZ_out muon LO", 150,0,180);
 TH1F* Emuin=new TH1F("h1aN", "Energy in mu", 150,0,160);
 TH1F* Emuout=new TH1F("h1aN", "Energy out mu", 150,0,160);
-TH1F* Ep=new TH1F("h1aN", "Energy out p", 150,0,1);
+TH1F* Ep=new TH1F("h1aN", "Energy out p", 150,0,0.2);
     
     
 TH1F* px_e_out=new TH1F("h1b", "pX_out electron", 150,-0.3,0.3);

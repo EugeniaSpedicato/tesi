@@ -757,7 +757,7 @@ else return coo_in;
 
 
 
-TMatrixD FastSim::MCSphoton(const Double_t & tar, const PxPyPzEVector & kp,const Double_t & xin,const Double_t & yin) const
+TMatrixD FastSim::MCSphoton(const Double_t & tar, const PxPyPzEVector & kp,const Double_t & xin, const Double_t & yin) const
 
 { Double_t d0 =2.025; //m
   Double_t d1 =1.025;
@@ -776,6 +776,7 @@ TMatrixD FastSim::MCSphoton(const Double_t & tar, const PxPyPzEVector & kp,const
     Double_t xf = xin+d_xy*cos(phi);
     Double_t yf = yin+d_xy*sin(phi);
         TMatrixD coo (1,2);*/
+        
         Double_t xf=xin+d0*tan(anglex);
         Double_t yf=yin+d0*tan(angley);
         
@@ -790,6 +791,7 @@ TMatrixD FastSim::MCSphoton(const Double_t & tar, const PxPyPzEVector & kp,const
     /*Double_t d_xy = d1*tan(thetaR);//vettore nel piano xy
     Double_t xf = xin+d_xy*cos(phi);
     Double_t yf = yin+d_xy*sin(phi);*/
+        
         Double_t xf=xin+d1*tan(anglex);
         Double_t yf=yin+d1*tan(angley); 
             
@@ -890,16 +892,23 @@ void FastSim::LoadPhoton(const MuE::Event & event, MuE::Photon & photon,const Px
 			     event.photons[0].E};
 
       
-PxPyPzEVector p_gamma_Lab_div=RotDiv(p_mu_in,p_gamma_Lab);
-   PxPyPzEVector p_gamma_CoM = Lorentz_ToCoM(p_gamma_Lab_div);
+/*PxPyPzEVector p_gamma_Lab_div=RotDiv(p_mu_in,p_gamma_Lab);
+PxPyPzEVector p_gamma_CoM = Lorentz_ToCoM(p_gamma_Lab_div);
   
     
     photon.energy    = p_gamma_Lab_div.E();
     photon.theta     = p_gamma_Lab_div.Theta() *1e3;
     photon.phi       = p_gamma_Lab_div.Phi();
-    photon.energyCoM = p_gamma_CoM.E(); 
+    photon.energyCoM = p_gamma_CoM.E(); */
       
-    TMatrixD coo=MCSphoton(tar,p_gamma_Lab_div,xin,yin);
+    PxPyPzEVector p_gamma_CoM = Lorentz_ToCoM(p_gamma_Lab);
+  
+    
+    photon.energy    = p_gamma_Lab.E();
+    photon.theta     = p_gamma_Lab.Theta() *1e3;
+    photon.phi       = p_gamma_Lab.Phi();
+    photon.energyCoM = p_gamma_CoM.E();
+    TMatrixD coo=MCSphoton(tar,p_gamma_Lab,0,0);
       
     photon.coox=coo[0][0];
     photon.cooy=coo[0][1];

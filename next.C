@@ -2,6 +2,8 @@
 #include "next.h"
 #include <TH2.h>
 #include <TH1.h>
+#include <TGraph.h>
+
 
 #include <TStyle.h>
 #include <TCanvas.h>
@@ -77,8 +79,8 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0
 
    Long64_t nentries = fChain->GetEntriesFast();
     
-//Double_t EeV[nentries];
-//Double_t theV[nentries]; 
+Double_t EeV[nentries];
+Double_t theV[nentries]; 
    
     Long64_t nbytes = 0, nb = 0;
    for (Long64_t jentry=0; jentry<nentries;jentry++) {
@@ -175,18 +177,18 @@ Double_t me= 0.5109989461 *0.001;
     dxmp->Fill(Dxmp,wgt_full);
     dymp->Fill(Dymp,wgt_full);
        
-    //theV[jentry]=detKinBeamRot_the;
-    //EeV[jentry]=detKinBeamRot_Ee;
+    theV[jentry]=detKinBeamRot_the;
+    EeV[jentry]=detKinBeamRot_Ee;
        
       }
       
-    /*TGraph *energyThEl= new TGraph(4,theV,EeV); 
+    TGraph *energyThEl= new TGraph(4,theV,EeV); 
     energyThEl->SetTitle("Energy_e(theta_e)");
     energyThEl->SetMarkerColor(50);
     energyThEl->SetMarkerStyle(8);
     energyThEl->SetLineColor(9);
     energyThEl->GetXaxis()->SetTitle("ThetaEl(mrad)");
-    energyThEl->GetYaxis()->SetTitle("Energy(GeV)");*/ 
+    energyThEl->GetYaxis()->SetTitle("Energy(GeV)"); 
     
     TCanvas * p= new TCanvas("p","p",400,10,1500,1000);
     p->Divide(2,3);
@@ -224,22 +226,31 @@ Double_t me= 0.5109989461 *0.001;
     e->cd(1);
     Emuin->SetLineColor(46);
     Emuin->Draw("HIST");
+    gPad->SetLogx();
+    
     e->cd(2);
     Emuout->SetLineColor(46);
     Emuout->Draw("HIST");
+    gPad->SetLogx();
+    
     e->cd(3);
     Eein->Draw("HIST");
+    gPad->SetLogx();
+    
     e->cd(4);
     Eeout->Draw("HIST");
+    gPad->SetLogx();
+    
     e->cd(5);
     Ep->SetLineColor(30);
     Ep->Draw("HIST");
     gPad->SetLogx();
+    
     e->SaveAs("energy.png");
     
-    /*TCanvas * eth= new TCanvas("eth","eth",400,10,1500,1000);
+    TCanvas * eth= new TCanvas("eth","eth",400,10,1500,1000);
     energyThEl->Draw();
-    eth->SaveAs("EnergyTheta.png");*/
+    eth->SaveAs("EnergyTheta.png");
     
 
         TCanvas * t= new TCanvas("t","t",400,10,1500,1000);

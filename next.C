@@ -73,15 +73,14 @@ TH1F* dyep=new TH1F("h2ea", "diff coo Y e and photon ", 140,-0.1,0.1);
 TH2F  *X_Y_mu  = new TH2F("h2d" , " X  Vs. y of the muon",140,-0.5,-0.5,140,-0.5,0.5);
 TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.5,-0.5,140,-0.5,0.5);
 TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0.5,0.5);
- 
     
-Double_t EeV[8596416];
-Double_t theV[8596416];     
     
      if (fChain == 0) return;
 
    Long64_t nentries = fChain->GetEntriesFast();
     
+Double_t EeV[nentries]={};
+Double_t theV[nentries]={}; 
    
     Long64_t nbytes = 0, nb = 0;
    for (Long64_t jentry=0; jentry<nentries;jentry++) {

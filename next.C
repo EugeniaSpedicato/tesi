@@ -203,7 +203,7 @@ Double_t me= 0.5109989461 *0.001;
     p->SaveAs("Pemu.png");
     
     TCanvas * e= new TCanvas("e","e",400,10,1500,1000);
-    e->Setlogy()
+    e->SetLogy();
     e->Divide(3,2);
     e->cd(1);
     Emuin->SetLineColor(46);

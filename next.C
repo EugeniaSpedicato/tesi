@@ -10,8 +10,7 @@ void atree::Loop()
 {
     TH1::SetDefaultSumw2();
     
-Double_t Ee[];
-Double_t the[];    
+   
     
     
 TH1F* px_mu=new TH1F("h1", "pX_in muon", 190,-0.3,0.3);
@@ -77,8 +76,11 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0
      if (fChain == 0) return;
 
    Long64_t nentries = fChain->GetEntriesFast();
-
-   Long64_t nbytes = 0, nb = 0;
+    
+Double_t EeV[nentries];
+Double_t theV[nentries]; 
+   
+    Long64_t nbytes = 0, nb = 0;
    for (Long64_t jentry=0; jentry<nentries;jentry++) {
       Long64_t ientry = LoadTree(jentry);
       if (ientry < 0) break;
@@ -173,12 +175,12 @@ Double_t me= 0.5109989461 *0.001;
     dxmp->Fill(Dxmp,wgt_full);
     dymp->Fill(Dymp,wgt_full);
        
-    the[jentry]=detKinBeamRot_the;
-    Ee[jentry]=detKinBeamRot_Ee;
+    theV[jentry]=detKinBeamRot_the;
+    EeV[jentry]=detKinBeamRot_Ee;
        
       }
       
-    TGraph *energyThEl= new TGraph(4,the,Ee); 
+    TGraph *energyThEl= new TGraph(4,theV,EeV); 
     energyThEl->SetTitle("Energy_e(theta_e)");
     energyThEl->SetMarkerColor(50);
     energyThEl->SetMarkerStyle(8);

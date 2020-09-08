@@ -573,7 +573,7 @@ Double_t pe=sqrt(ke.Px()*ke.Px()+ke.Py()*ke.Py()+ke.Pz()*ke.Pz());
     }
      
     
-    if(tar==1)
+    if(tar==1) //peso 0 
     {
         // siamo nelle stazioni con il target di berillio. Ora entra nel berillio ad una distanza d=0.25-0.005 m dagli ultimi silici. Qui però non puoi trascurare lo spessore del berillio, cioè dove interagisce? considero a metà (7.5 mm), quindi aggiungo a d il pezzo in cui x non è modificato e poi sommo con il nuovo angolo di scattering
                 
@@ -892,23 +892,16 @@ void FastSim::LoadPhoton(const MuE::Event & event, MuE::Photon & photon,const Px
 			     event.photons[0].E};
 
       
-/*PxPyPzEVector p_gamma_Lab_div=RotDiv(p_mu_in,p_gamma_Lab);
+PxPyPzEVector p_gamma_Lab_div=RotDiv(p_mu_in,p_gamma_Lab);
 PxPyPzEVector p_gamma_CoM = Lorentz_ToCoM(p_gamma_Lab_div);
   
     
     photon.energy    = p_gamma_Lab_div.E();
     photon.theta     = p_gamma_Lab_div.Theta() *1e3;
     photon.phi       = p_gamma_Lab_div.Phi();
-    photon.energyCoM = p_gamma_CoM.E(); */
-      
-    PxPyPzEVector p_gamma_CoM = Lorentz_ToCoM(p_gamma_Lab);
-  
-    
-    photon.energy    = p_gamma_Lab.E();
-    photon.theta     = p_gamma_Lab.Theta() *1e3;
-    photon.phi       = p_gamma_Lab.Phi();
-    photon.energyCoM = p_gamma_CoM.E();
-    TMatrixD coo=MCSphoton(tar,p_gamma_Lab,0,0);
+    photon.energyCoM = p_gamma_CoM.E(); 
+
+    TMatrixD coo=MCSphoton(tar,p_gamma_Lab,xin,yin);
       
     photon.coox=coo[0][0];
     photon.cooy=coo[0][1];

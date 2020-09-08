@@ -169,10 +169,13 @@ Double_t me= 0.5109989461 *0.001;
     dxmp->Fill(Dxmp,wgt_full);
     dymp->Fill(Dymp,wgt_full);
        
-    TGraph *energyThEl= new TGraph(4,detKinBeamRot_the,detKinBeamRot_Ee); 
+    Double_t the[i]=detKinBeamRot_the;
+    Double_t Ee[i]=detKinBeamRot_Ee;
+       
       }
       
-    energyThEl->SetTitle("T1(e)");
+    TGraph *energyThEl= new TGraph(4,the,Ee); 
+    energyThEl->SetTitle("Energy_e(theta_e)");
     energyThEl->SetMarkerColor(50);
     energyThEl->SetMarkerStyle(8);
     energyThEl->SetLineColor(9);

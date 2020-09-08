@@ -190,8 +190,8 @@ Double_t me= 0.5109989461 *0.001;
     energyThEl->GetXaxis()->SetTitle("ThetaEl(mrad)");
     energyThEl->GetYaxis()->SetTitle("Energy(GeV)"); */
     
-    Long64_t N = tree.Draw("detKinBeamRot_the:detKinBeamRot_Ee","","goff");
-    TGraph *energyThEl = new TGraph(N,tree->GetV1(),tree->GetV2(),tree->GetV3());
+    Long64_t N = atree.Draw("detKinBeamRot_the:detKinBeamRot_Ee","","goff");
+    TGraph *energyThEl = new TGraph(N,atree->GetV1(),atree->GetV2(),atree->GetV3());
     
     TCanvas * p= new TCanvas("p","p",400,10,1500,1000);
     p->Divide(2,3);

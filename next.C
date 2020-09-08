@@ -79,8 +79,8 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0
 
    Long64_t nentries = fChain->GetEntriesFast();
     
-Double_t EeV[nentries]={};
-Double_t theV[nentries]={}; 
+Double_t EeV[]={};
+Double_t theV[]={}; 
    
     Long64_t nbytes = 0, nb = 0;
    for (Long64_t jentry=0; jentry<nentries;jentry++) {

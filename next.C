@@ -12,8 +12,6 @@ void atree::Loop()
 {
     TH1::SetDefaultSumw2();
     
-   
-    
     
 TH1F* px_mu=new TH1F("h1", "pX_in muon", 190,-0.3,0.3);
 TH1F* py_mu=new TH1F("h2", "pY_in muon", 190,-0.3,0.3);
@@ -74,8 +72,6 @@ TH2F  *X_Y_mu  = new TH2F("h2d" , " X  Vs. y of the muon",140,-0.5,-0.5,140,-0.5
 TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.5,-0.5,140,-0.5,0.5);
 TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0.5,0.5);
  
-/*Double_t EeV[]={};
-Double_t theV[]={}; */
     
      if (fChain == 0) return;
 
@@ -177,9 +173,6 @@ Double_t me= 0.5109989461 *0.001;
     dxmp->Fill(Dxmp,wgt_full);
     dymp->Fill(Dymp,wgt_full);
        
-    //theV[jentry]=detKinBeamRot_the;
-    //EeV[jentry]=detKinBeamRot_Ee;
-       
       }
       
     /*TGraph *energyThEl= new TGraph(4,theV,EeV); 
@@ -251,9 +244,9 @@ Double_t me= 0.5109989461 *0.001;
     
     e->SaveAs("energy.png");
     
-    TCanvas * eth= new TCanvas("eth","eth",400,10,1500,1000);
+    /*TCanvas * eth= new TCanvas("eth","eth",400,10,1500,1000);
     energyThEl->Draw();
-    eth->SaveAs("EnergyTheta.png");
+    eth->SaveAs("EnergyTheta.png");*/
     
 
         TCanvas * t= new TCanvas("t","t",400,10,1500,1000);

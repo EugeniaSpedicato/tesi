@@ -10,6 +10,10 @@ void atree::Loop()
 {
     TH1::SetDefaultSumw2();
     
+Double_t Ee[];
+Double_t the[];    
+    
+    
 TH1F* px_mu=new TH1F("h1", "pX_in muon", 190,-0.3,0.3);
 TH1F* py_mu=new TH1F("h2", "pY_in muon", 190,-0.3,0.3);
 TH1F* pz_mu=new TH1F("h3", "pZ_in muon", 190,50,180);
@@ -169,8 +173,8 @@ Double_t me= 0.5109989461 *0.001;
     dxmp->Fill(Dxmp,wgt_full);
     dymp->Fill(Dymp,wgt_full);
        
-    Double_t the[i]=detKinBeamRot_the;
-    Double_t Ee[i]=detKinBeamRot_Ee;
+    the[jentry]=detKinBeamRot_the;
+    Ee[jentry]=detKinBeamRot_Ee;
        
       }
       

@@ -78,12 +78,12 @@ Double_t theV[]={};
     
      if (fChain == 0) return;
 
-   Long64_t nentries = fChain->GetEntriesFast();
+   Int_t nentries = fChain->GetEntriesFast();
     
    
-    Long64_t nbytes = 0, nb = 0;
-   for (Long64_t jentry=0; jentry<nentries;jentry++) {
-      Long64_t ientry = LoadTree(jentry);
+    Int_t nbytes = 0, nb = 0;
+   for (Int_t jentry=0; jentry<nentries;jentry++) {
+      Int_t ientry = LoadTree(jentry);
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
        

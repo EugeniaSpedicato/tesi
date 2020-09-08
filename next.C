@@ -23,6 +23,7 @@ TH1F* pz_mu_outLO=new TH1F("h3a", "pZ_out muon LO", 150,0,180);
 TH1F* Emuin=new TH1F("h1aN", "Energy in mu", 150,0,160);
 TH1F* Emuout=new TH1F("h1aN", "Energy out mu", 150,0,160);
 TH1F* Ep=new TH1F("h1aN", "Energy out p", 150,0,0.2);
+
     
     
 TH1F* px_e_out=new TH1F("h1b", "pX_out electron", 150,-0.3,0.3);
@@ -167,10 +168,17 @@ Double_t me= 0.5109989461 *0.001;
     dyep->Fill(Dyep,wgt_full);    
     dxmp->Fill(Dxmp,wgt_full);
     dymp->Fill(Dymp,wgt_full);
-    
-      
+       
+    TGraph *energyThEl= new TGraph(4,detKinBeamRot_the,detKinBeamRot_Ee); 
       }
       
+    energyThEl->SetTitle("T1(e)");
+    energyThEl->SetMarkerColor(50);
+    energyThEl->SetMarkerStyle(8);
+    energyThEl->SetLineColor(9);
+    energyThEl->GetXaxis()->SetTitle("ThetaEl(mrad)");
+    energyThEl->GetYaxis()->SetTitle("Energy(GeV)"); 
+    
     TCanvas * p= new TCanvas("p","p",400,10,1500,1000);
     p->Divide(2,3);
     p->cd(1);
@@ -203,7 +211,7 @@ Double_t me= 0.5109989461 *0.001;
     p->SaveAs("Pemu.png");
     
     TCanvas * e= new TCanvas("e","e",400,10,1500,1000);
-    e->SetLogy();
+    e->SetLogx();
     e->Divide(3,2);
     e->cd(1);
     Emuin->SetLineColor(46);
@@ -219,6 +227,10 @@ Double_t me= 0.5109989461 *0.001;
     Ep->SetLineColor(30);
     Ep->Draw("HIST");
     e->SaveAs("energy.png");
+    
+    TCanvas * eth= new TCanvas("eth","eth",400,10,1500,1000);
+    energyThEl->Draw();
+    eth->SaveAs("EnergyTheta.png");
     
 
         TCanvas * t= new TCanvas("t","t",400,10,1500,1000);

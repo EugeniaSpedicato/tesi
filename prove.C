@@ -83,8 +83,7 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0
       Long64_t ientry = LoadTree(jentry);
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
- 
-       if (detKinBeamRot_tar==1){ 
+       
         px_mu->Fill(detKinBeamRot_pXmu,wgt_full);
        py_mu->Fill(detKinBeamRot_pYmu,wgt_full);
        pz_mu->Fill(detKinBeamRot_pZmu,wgt_full);
@@ -131,9 +130,9 @@ Double_t me= 0.5109989461 *0.001;
     thXZe->Fill(anglex_e,wgt_full);
     thYZe->Fill(angley_e,wgt_full); 
        
-          // if (detKinBeamRot_tar==0)
+           if (detKinBeamRot_tar==0)
        
-         //  { 
+           { 
         tarONEXmu->Fill(detKinBeamRot_cooXmu,wgt_full);
          tarONEYmu->Fill(detKinBeamRot_cooYmu,wgt_full);
          tarONEXe->Fill(detKinBeamRot_cooXe,wgt_full);
@@ -141,10 +140,10 @@ Double_t me= 0.5109989461 *0.001;
              if (photon_coox!=-1 && photon_cooy!=-1)
         {tarONEXp->Fill(photon_coox,wgt_full);
          tarONEYp->Fill(photon_cooy,wgt_full);}
-      //}
+      }
        
-      // if (detKinBeamRot_tar==1)
-      // {  
+       if (detKinBeamRot_tar==1)
+       {  
          tarTWOXmu->Fill(detKinBeamRot_cooXmu,wgt_full);
          tarTWOYmu->Fill(detKinBeamRot_cooYmu,wgt_full);
          tarTWOXe->Fill(detKinBeamRot_cooXe,wgt_full);
@@ -152,7 +151,7 @@ Double_t me= 0.5109989461 *0.001;
         if (photon_coox!=-1)
         {tarTWOXp->Fill(photon_coox,wgt_full);
          tarTWOYp->Fill(photon_cooy,wgt_full);}
-      // }
+       }
 
     X_Y_mu ->Fill(detKinBeamRot_cooXmu, detKinBeamRot_cooYmu,wgt_full);
      X_Y_e ->Fill(detKinBeamRot_cooXe, detKinBeamRot_cooYe,wgt_full);
@@ -173,7 +172,7 @@ Double_t me= 0.5109989461 *0.001;
     dyep->Fill(Dyep,wgt_full);    
     dxmp->Fill(Dxmp,wgt_full);
     dymp->Fill(Dymp,wgt_full);
-       }
+       
       }
       
     /*TGraph *energyThEl= new TGraph(4,theV,EeV); 

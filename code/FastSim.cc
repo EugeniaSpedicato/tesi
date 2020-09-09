@@ -586,16 +586,12 @@ Double_t pe=sqrt(ke.Px()*ke.Px()+ke.Py()*ke.Py()+ke.Pz()*ke.Pz());
                 
                 Double_t xin=xR+(2-2*sSin-sB)*tan(anglexin)+2*(1/sqrt(3))*sSin*sigSIinP+(1/sqrt(3))*sSin*sigBEin+(1/sqrt(3))*0.0075*sigBE2in;
                 Double_t yin=yR+(2-2*sSin-sB)*tan(angleyin)+2*(1/sqrt(3))*sSin*sigSIinP+(1/sqrt(3))*sSin*sigBEin+(1/sqrt(3))*0.0075*sigBE2in;
-        
-               //  THinX[0]= gRandom->Gaus(anglexin,sigBEin);
-            //     THinY[0]= gRandom->Gaus(angleyin,sigBEin); 
+
                  thetaX[0][0]=0;
                  thetaY[0][0]=0;
                  thetaXe[0][0]=0;
                  thetaYe[0][0]=0;
 
-               //  inX[0]=xin+(1/sqrt(3))*sB*sigBEin;
-            //     inY[0]=yin+(1/sqrt(3))*sB*sigBEin;
                  x[0][0]=0;
                  y[0][0]=0;  
                  xe[0][0]=0;
@@ -604,30 +600,22 @@ Double_t pe=sqrt(ke.Px()*ke.Px()+ke.Py()*ke.Py()+ke.Pz()*ke.Pz());
 //entro nelle 3 coppie di silici
 for (Int_t p=1; p<7; p++)  {
                  if(p==1 || p==3 || p==5){
-             //   THinX[p]=gRandom->Gaus(THinX[p-1],sigSIin);
-            //  THinY[p]=gRandom->Gaus(THinY[p-1],sigSIin);
                  thetaX[0][p]=0;
                  thetaY[0][p]=0;
                  thetaXe[0][p]= 0;
                  thetaYe[0][p]= 0;
 
-              //  inX[p]=inX[p-1]+d*tan(THinX[p-1])+(1/sqrt(3))*sS*sigSIin+gRandom->Gaus(0,ris);
-              //  inY[p]=inY[p-1]+d*tan(THinY[p-1])+(1/sqrt(3))*sS*sigSIin;
                 x[0][p]=0;
                 y[0][p]=0;
                 xe[0][p]=0;
                 ye[0][p]=0;
                 
-                
-              //  THinX[p+1]= gRandom->Gaus(THinX[p],sigSIin);
-              //  THinY[p+1]= gRandom->Gaus(THinY[p],sigSIin);
+
                 thetaX[0][p+1]=0;
                 thetaY[0][p+1]=0;
                 thetaXe[0][p+1]= 0;
                 thetaYe[0][p+1]= 0;
 
-               // inX[p+1]=inX[p]+dSS*tan(THinX[p])+(1/sqrt(3))*sS*sigSIin;
-              //  inY[p+1]=inY[p]+dSS*tan(THinY[p])+(1/sqrt(3))*sS*sigSIin+gRandom->Gaus(0,ris);
                 x[0][p+1]=0;
                 y[0][p+1]=0;
                 xe[0][p+1]=0;
@@ -641,9 +629,6 @@ for (Int_t p=1; p<7; p++)  {
                  xe[0][0]=xin+(1/sqrt(3))*0.0075*sigBE2e;
                  ye[0][0]=yin+(1/sqrt(3))*0.0075*sigBE2e; 
         
-        
-             //   Double_t thetaX1= gRandom->Gaus(THinX[6],sigBE2in);
-              //  Double_t thetaY1= gRandom->Gaus(THinY[6],sigBE2in); inX[6]+d*tan(THinX[6])
                 
                 thetaX[1][0]=gRandom->Gaus(anglex,sigBE2mu);
                 thetaY[1][0]=gRandom->Gaus(angley,sigBE2mu);

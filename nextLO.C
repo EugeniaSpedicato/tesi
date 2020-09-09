@@ -28,7 +28,7 @@ TH1F* py_mu_outLO=new TH1F("h2a", "pY_out muon LO", 150,-0.3,0.3);
 TH1F* pz_mu_outLO=new TH1F("h3a", "pZ_out muon LO", 150,0,180);
 TH1F* Emuin=new TH1F("h1aN", "Energy in mu", 150,0,160);
 TH1F* Emuout=new TH1F("h1aN", "Energy out mu", 150,0,160);
-TH1F* Ep=new TH1F("h1aN", "Energy out p", 200,0,0.2);
+TH1F* Ep=new TH1F("h1aN", "Energy out p", 250,0,0.2);
 
     
     
@@ -38,8 +38,8 @@ TH1F* pz_e_out=new TH1F("h3b", "pZ_out electron", 150,0,5);
 TH1F* px_e_outLO=new TH1F("h1b", "pX_out electron LO", 150,-0.3,0.3);
 TH1F* py_e_outLO=new TH1F("h2b", "pY_out electron LO", 150,-0.3,0.3);
 TH1F* pz_e_outLO=new TH1F("h3b", "pZ_out electron LO", 150,0,5);
-TH1F* Eein=new TH1F("h2aN", "Energ in e", 200,0,40);
-TH1F* Eeout=new TH1F("h2aN", "Energy out e", 200,0,40);
+TH1F* Eein=new TH1F("h2aN", "Energ in e", 250,0,40);
+TH1F* Eeout=new TH1F("h2aN", "Energy out e", 250,0,40);
     
 TH1F* thmu=new TH1F("h3bNj", "theta", 180,0,0.002);  
 TH1F* the=new TH1F("h3bNj", "theta", 180,0,0.1);
@@ -87,6 +87,9 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
  
+       if (tar==0)
+       {
+       
        px_mu->Fill(detKinBeamRot_pXmu,wgt_LO);
        py_mu->Fill(detKinBeamRot_pYmu,wgt_LO);
        pz_mu->Fill(detKinBeamRot_pZmu,wgt_LO);
@@ -114,19 +117,19 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0
     thXZmu->Fill(anglex_mu,wgt_LO);
     thYZmu->Fill(angley_mu,wgt_LO);
             
-               if (detKinBeamRot_tar==0)
+              // if (detKinBeamRot_tar==0)
        
-               {
+             //  {
          tarONEXmu->Fill(detKinBeamRot_cooXmu,wgt_LO);
          tarONEYmu->Fill(detKinBeamRot_cooYmu,wgt_LO);  
-               }
+             //  }
             
-               if (detKinBeamRot_tar==1)
+           //    if (detKinBeamRot_tar==1)
        
-               {
+           //    {
          tarTWOXmu->Fill(detKinBeamRot_cooXmu,wgt_LO);
          tarTWOYmu->Fill(detKinBeamRot_cooYmu,wgt_LO);    
-               }
+            //   }
     X_Y_mu ->Fill(detKinBeamRot_cooXmu, detKinBeamRot_cooYmu,wgt_LO);
         
         }
@@ -153,19 +156,19 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0
         Double_t angley_e = atan2(detKinBeamRot_pYe_out, detKinBeamRot_pZe_out);
         thXZe->Fill(anglex_e,wgt_LO);
         thYZe->Fill(angley_e,wgt_LO);            
-               if (detKinBeamRot_tar==0)
+              // if (detKinBeamRot_tar==0)
        
-               {
+              // {
              tarONEXe->Fill(detKinBeamRot_cooXe,wgt_LO);
              tarONEYe->Fill(detKinBeamRot_cooYe,wgt_LO);               
-               }
+              // }
             
-               if (detKinBeamRot_tar==1)
+               //if (detKinBeamRot_tar==1)
        
-               {
+              // {
              tarTWOXe->Fill(detKinBeamRot_cooXe,wgt_LO);
              tarTWOYe->Fill(detKinBeamRot_cooYe,wgt_LO);  
-               } 
+             //  } 
            
             X_Y_e ->Fill(detKinBeamRot_cooXe, detKinBeamRot_cooYe,wgt_LO);
            
@@ -176,26 +179,26 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0
        if(photon_coox < 0.07 && photon_cooy < 0.07 && photon_coox > -0.07 && photon_cooy > -0.07)
        {
         Ep->Fill(photon_energy,wgt_LO);            
-               if (detKinBeamRot_tar==0)
+            //   if (detKinBeamRot_tar==0)
        
-               {
+              // {
              if (photon_coox!=-1 && photon_cooy!=-1)
         {tarONEXp->Fill(photon_coox,wgt_LO);
          tarONEYp->Fill(photon_cooy,wgt_LO);}
-               }
+            //   }
             
-               if (detKinBeamRot_tar==1)
+            //   if (detKinBeamRot_tar==1)
        
-               {
+             //  {
 
          if (photon_coox!=-1)
         {tarTWOXp->Fill(photon_coox,wgt_LO);
          tarTWOYp->Fill(photon_cooy,wgt_LO);}                  
-               }
+               //}
        
      if (photon_coox!=-1 && photon_cooy!=-1)
         {X_Y_p ->Fill(photon_coox, photon_cooy,wgt_LO);}    
-       }
+      }
 
 
 
@@ -216,7 +219,7 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0
 
 
        }
-      
+   }
       
     /*TGraph *energyThEl= new TGraph(4,theV,EeV); 
     energyThEl->SetTitle("Energy_e(theta_e)");

@@ -263,7 +263,7 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0
     pz_e_outLO->SetLineColor(kBlack);
     pz_e_outLO->Draw("HIST same");
     pz_e_out->GetXaxis()->SetTitle("Pz [GeV]");
-    p->SaveAs("Pemu.png");
+    p->SaveAs("PemuLO.png");
     
     
     TCanvas * e= new TCanvas("e","e",400,10,1500,1000);
@@ -294,11 +294,11 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0
     Ep->GetXaxis()->SetTitle("E [GeV] (log scale)");
     gPad->SetLogx();
     
-    e->SaveAs("energy.png");
+    e->SaveAs("energyLO.png");
     
     /*TCanvas * eth= new TCanvas("eth","eth",400,10,1500,1000);
     energyThEl->Draw();
-    eth->SaveAs("EnergyTheta.png");*/
+    eth->SaveAs("EnergyThetaLO.png");*/
     
 
         TCanvas * t= new TCanvas("t","t",400,10,1500,1000);
@@ -312,7 +312,7 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0
     the->Draw("HIST");
     the->GetXaxis()->SetTitle("Polar Theta [mrad]");
 
-    t->SaveAs("THpolar.png");
+    t->SaveAs("THpolarLO.png");
     
     TCanvas * theC= new TCanvas("tar","tar",400,10,1500,1000);
     theC->Divide(2,2);
@@ -331,7 +331,7 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0
     thYZe->Draw("HIST");
     thYZe->GetXaxis()->SetTitle("Theta YZ [rad]");
     
-  theC->SaveAs("ThOriginal.png");
+  theC->SaveAs("ThOriginalLO.png");
     
     
     
@@ -383,7 +383,7 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0
     tarTWOYp->GetXaxis()->SetTitle("y [m]");
     
     
-  tar->SaveAs("tar.png");
+  tar->SaveAs("tarLO.png");
     
     TCanvas * dued= new TCanvas("dued","dued",1000,100,2500,2000);
     dued->Divide(1,3);
@@ -402,7 +402,7 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0
     X_Y_p->Draw("HIST");
     X_Y_p->GetXaxis()->SetTitle("x [m]");
     X_Y_p->GetYaxis()->SetTitle("y [m]");
-  dued->SaveAs("dued.png");
+  dued->SaveAs("duedLO.png");
     
         TCanvas * Pin= new TCanvas("Pin","Pin",400,10,1500,1000);
     Pin->Divide(1,3);
@@ -416,7 +416,7 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0
     pz_mu->Draw("HIST");
     pz_mu->GetXaxis()->SetTitle("Pz [GeV]");
     
-   Pin->SaveAs("p_in.png");
+   Pin->SaveAs("p_inLO.png");
     
     TCanvas * d= new TCanvas("d","d",1000,100,2500,2000);
     d->Divide(3,2);
@@ -438,7 +438,7 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0
     d->cd(6);
     dymp->Draw("HIST");
     dymp->GetXaxis()->SetTitle("Delta_y [m]");
-  d->SaveAs("diffCoo.png");
+  d->SaveAs("diffCooLO.png");
     
 
     

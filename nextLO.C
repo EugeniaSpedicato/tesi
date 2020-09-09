@@ -241,36 +241,29 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0
     p->cd(1);
     px_mu_out->SetLineColor(46);
     px_mu_out->Draw("HIST");
-    px_mu_outLO->SetLineColor(kBlack);
-    px_mu_outLO->Draw("HIST same");
+
     px_mu_out->GetXaxis()->SetTitle("Px [GeV]");
     
     p->cd(2);    
     py_mu_out->SetLineColor(46);
     py_mu_out->Draw("HIST");
-    py_mu_outLO->SetLineColor(kBlack);
-    py_mu_outLO->Draw("HIST same");
+
     py_mu_out->GetXaxis()->SetTitle("Py [GeV]");
     p->cd(3);
     pz_mu_out->SetLineColor(46);
     pz_mu_out->Draw("HIST");  
-    pz_mu_outLO->SetLineColor(kBlack);
-    pz_mu_outLO->Draw("HIST same");
+
     pz_mu_out->GetXaxis()->SetTitle("Pz [GeV]");
     p->cd(4);
     px_e_out->Draw("HIST");
-    px_e_outLO->SetLineColor(kBlack);
-    px_e_outLO->Draw("HIST same"); 
+
     px_e_out->GetXaxis()->SetTitle("Px [GeV]");
     p->cd(5);
     py_e_out->Draw("HIST"); 
-    py_e_outLO->SetLineColor(kBlack);
-    py_e_outLO->Draw("HIST same");
+
     py_e_out->GetXaxis()->SetTitle("Py [GeV]");
     p->cd(6);
     pz_e_out->Draw("HIST");
-    pz_e_outLO->SetLineColor(kBlack);
-    pz_e_outLO->Draw("HIST same");
     pz_e_out->GetXaxis()->SetTitle("Pz [GeV]");
     p->SaveAs("Pemu.png");
     

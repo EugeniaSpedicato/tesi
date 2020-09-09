@@ -275,9 +275,11 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0
     Emuin->SetLineColor(46);
     Emuin->GetXaxis()->SetTitle("E [GeV]");
     Emuin->Draw("HIST");
+    Emuout->SetLineColor(kYellow);
+    Emuout->Draw("HIST same");
+    
     
     e->cd(2);
-    Emuout->SetLineColor(46);
     Emuout->GetXaxis()->SetTitle("E [GeV]");
     Emuout->Draw("HIST");
     
@@ -285,6 +287,8 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0
     Eein->Draw("HIST");
     Eein->GetXaxis()->SetTitle("E [GeV] (log scale)");
     gPad->SetLogx();
+    Eeout->SetLineColor(kOrange);
+    Eeout->Draw("HIST same");
     
     e->cd(4);
     Eeout->Draw("HIST");
@@ -400,7 +404,7 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0
     X_Y_e->Draw("HIST");
     X_Y_e->GetXaxis()->SetTitle("x [m]");
     X_Y_e->GetYaxis()->SetTitle("y [m]");
-  duedmu->SaveAs("duedeLO.png");
+  duede->SaveAs("duedeLO.png");
     
 
     TCanvas * duedp= new TCanvas("duedp","duedp",1000,100,2500,2000);

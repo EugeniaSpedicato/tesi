@@ -105,7 +105,7 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0
             
     Double_t Emu_out=sqrt(Pmu*Pmu+mmu*mmu);
     Emuout->Fill(Emu_out,wgt_full);  
-    Emuin->Fill(detKinBeamRot_Emu,wgt_full);   
+    Emuin->Fill(detKinBeamRot_Emu,wgt_LO);   
             
     thmu->Fill(detKinBeamRot_thmu*0.001,wgt_full);
     Double_t anglex_mu = atan2(detKinBeamRot_pXmu_out, detKinBeamRot_pZmu_out);
@@ -147,7 +147,7 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0
    
        Double_t Ee_out=sqrt(Pe*Pe+me*me);
        Eeout->Fill(Ee_out,wgt_full);
-       Eein->Fill(detKinBeamRot_Ee,wgt_full);
+       Eein->Fill(detKinBeamRot_Ee,wgt_LO);
            
        the->Fill(detKinBeamRot_the*0.001,wgt_full);  
         Double_t anglex_e = atan2(detKinBeamRot_pXe_out, detKinBeamRot_pZe_out);
@@ -274,9 +274,11 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0
     Emuin->SetLineColor(46);
     Emuin->GetXaxis()->SetTitle("E [GeV]");
     Emuin->Draw("HIST");
+    Emuout->SetLineColor(kYellow);
+    Emuout->Draw("HIST same");
+    
     
     e->cd(2);
-    Emuout->SetLineColor(46);
     Emuout->GetXaxis()->SetTitle("E [GeV]");
     Emuout->Draw("HIST");
     
@@ -284,6 +286,8 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0
     Eein->Draw("HIST");
     Eein->GetXaxis()->SetTitle("E [GeV] (log scale)");
     gPad->SetLogx();
+    Eeout->SetLineColor(kOrange);
+    Eeout->Draw("HIST same");
     
     e->cd(4);
     Eeout->Draw("HIST");
@@ -399,7 +403,7 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0
     X_Y_e->Draw("HIST");
     X_Y_e->GetXaxis()->SetTitle("x [m]");
     X_Y_e->GetYaxis()->SetTitle("y [m]");
-  duedmu->SaveAs("duede.png");
+  duede->SaveAs("duede.png");
     
 
     TCanvas * duedp= new TCanvas("duedp","duedp",1000,100,2500,2000);

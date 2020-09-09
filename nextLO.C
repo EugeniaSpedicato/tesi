@@ -1,18 +1,5 @@
 #define atree_cxx
-#include "next.h"
-#include <TH2.h>
-#include <TH1.h>
-
-#include <TStyle.h>
-#include <TCanvas.h>
-
-void atree::Loop()
-{
-    TH1::SetDefaultSumw2();
-    
-TH1F* px_mu=new TH1F("h1", "pX_in muon", 190,-0.3,0.3);
-TH1F* py_mu=n#define atree_cxx
-#include "next.h"
+#include "nextLO.h"
 #include <TH2.h>
 #include <TH1.h>
 #include <TGraph.h>

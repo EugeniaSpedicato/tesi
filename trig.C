@@ -19,8 +19,8 @@ void atree::Loop()
      if (fChain == 0) return;
 
    Long64_t nentries = fChain->GetEntriesFast();
-    Double_t Ee[nentries]={};
-    Double_t The[nentries]={}; 
+    Double_t Ee[nentries];
+    Double_t The[nentries]; 
    
     Long64_t nbytes = 0, nb = 0;
    for (Long64_t jentry=0; jentry<nentries;jentry++) {
@@ -45,6 +45,7 @@ void atree::Loop()
     
     TCanvas * theE= new TCanvas("theE","theE",1000,100,2500,2000);
     energyThEl->Draw();
+    energyThEl->SaveAs("thetaEn.png")
     
     
 }

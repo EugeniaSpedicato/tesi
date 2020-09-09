@@ -191,53 +191,64 @@ Double_t me= 0.5109989461 *0.001;
     px_mu_out->Draw("HIST");
     px_mu_outLO->SetLineColor(kBlack);
     px_mu_outLO->Draw("HIST same");
+    px_mu_out->GetXaxis()->SetTitle("Px [GeV]");
+    
     p->cd(2);    
     py_mu_out->SetLineColor(46);
     py_mu_out->Draw("HIST");
     py_mu_outLO->SetLineColor(kBlack);
     py_mu_outLO->Draw("HIST same");
+    py_mu_out->GetXaxis()->SetTitle("Py [GeV]");
     p->cd(3);
     pz_mu_out->SetLineColor(46);
     pz_mu_out->Draw("HIST");  
     pz_mu_outLO->SetLineColor(kBlack);
-    pz_mu_outLO->Draw("HIST same");  
+    pz_mu_outLO->Draw("HIST same");
+    pz_mu_out->GetXaxis()->SetTitle("Pz [GeV]");
     p->cd(4);
     px_e_out->Draw("HIST");
     px_e_outLO->SetLineColor(kBlack);
-    px_e_outLO->Draw("HIST same");  
+    px_e_outLO->Draw("HIST same"); 
+    px_e_out->GetXaxis()->SetTitle("Px [GeV]");
     p->cd(5);
     py_e_out->Draw("HIST"); 
     py_e_outLO->SetLineColor(kBlack);
     py_e_outLO->Draw("HIST same");
+    py_e_out->GetXaxis()->SetTitle("Py [GeV]");
     p->cd(6);
     pz_e_out->Draw("HIST");
     pz_e_outLO->SetLineColor(kBlack);
     pz_e_outLO->Draw("HIST same");
+    pz_e_out->GetXaxis()->SetTitle("Pz [GeV]");
     p->SaveAs("Pemu.png");
+    
     
     TCanvas * e= new TCanvas("e","e",400,10,1500,1000);
     e->Divide(3,2);
     e->cd(1);
     Emuin->SetLineColor(46);
+    Emuin->GetXaxis()->SetTitle("E [GeV]");
     Emuin->Draw("HIST");
-    gPad->SetLogx();
     
     e->cd(2);
     Emuout->SetLineColor(46);
+    Emuout->GetXaxis()->SetTitle("E [GeV]");
     Emuout->Draw("HIST");
-    gPad->SetLogx();
     
     e->cd(3);
     Eein->Draw("HIST");
+    Eein->GetXaxis()->SetTitle("E [GeV] (log scale)");
     gPad->SetLogx();
     
     e->cd(4);
     Eeout->Draw("HIST");
+    Eeout->GetXaxis()->SetTitle("E [GeV] (log scale)");
     gPad->SetLogx();
     
     e->cd(5);
     Ep->SetLineColor(30);
     Ep->Draw("HIST");
+    Ep->GetXaxis()->SetTitle("E [GeV] (log scale)");
     gPad->SetLogx();
     
     e->SaveAs("energy.png");
@@ -252,9 +263,11 @@ Double_t me= 0.5109989461 *0.001;
     t->cd(1);
     thmu->SetLineColor(46);
     thmu->Draw("HIST");
+    thmu->GetXaxis()->SetTitle("Polar Theta [mrad]");
 
     t->cd(2);
     the->Draw("HIST");
+    the->GetXaxis()->SetTitle("Polar Theta [mrad]");
 
     t->SaveAs("THpolar.png");
     
@@ -263,14 +276,17 @@ Double_t me= 0.5109989461 *0.001;
     theC->cd(1);
     thXZmu->SetLineColor(46);
     thXZmu->Draw("HIST");
+    thXZmu->GetXaxis()->SetTitle("Theta XZ [rad]");
     theC->cd(2);
     thXZe->Draw("HIST");
+    thXZe->GetXaxis()->SetTitle("Theta XZ [rad]");
     theC->cd(3);
     thYZmu->SetLineColor(46);
     thYZmu->Draw("HIST");
+    thYZmu->GetXaxis()->SetTitle("Theta YZ [rad]");
     theC->cd(4);
     thYZe->Draw("HIST");
-    
+    thYZe->GetXaxis()->SetTitle("Theta YZ [rad]");
     
   theC->SaveAs("ThOriginal.png");
     
@@ -281,35 +297,47 @@ Double_t me= 0.5109989461 *0.001;
     tar->cd(1);
     tarONEXmu->SetLineColor(46);
     tarONEXmu->Draw("HIST");
+    tarONEXmu->GetXaxis()->SetTitle("x [m]");
     tar->cd(2);    
     tarONEYmu->SetLineColor(46);
     tarONEYmu->Draw("HIST");
+    tarONEYmu->GetXaxis()->SetTitle("y [m]");
     tar->cd(3);
     tarONEXe->Draw("HIST");
+    tarONEXe->GetXaxis()->SetTitle("x [m]");
     tar->cd(4);
     tarONEYe->Draw("HIST");
+    tarONEYe->GetXaxis()->SetTitle("y [m]");
     tar->cd(5);
     tarTWOXmu->SetLineColor(46);
     tarTWOXmu->Draw("HIST");
+    tarTWOXmu->GetXaxis()->SetTitle("x [m]");
     tar->cd(6);
     tarTWOYmu->SetLineColor(46);
     tarTWOYmu->Draw("HIST");
+    tarTWOYmu->GetXaxis()->SetTitle("y [m]");
     tar->cd(7);
     tarTWOXe->Draw("HIST");
+    tarTWOXe->GetXaxis()->SetTitle("x [m]");
     tar->cd(8);
     tarTWOYe->Draw("HIST");
+    tarTWOYe->GetXaxis()->SetTitle("y [m]");
     tar->cd(9);
     tarONEXp->SetLineColor(30);
     tarONEXp->Draw("HIST");
+    tarONEXp->GetXaxis()->SetTitle("x [m]");
     tar->cd(10);
     tarONEYp->SetLineColor(30);
     tarONEYp->Draw("HIST");
+    tarONEYp->GetXaxis()->SetTitle("y [m]");
     tar->cd(11);
     tarTWOXp->SetLineColor(30);
     tarTWOXp->Draw("HIST");
+    tarTWOXp->GetXaxis()->SetTitle("x [m]");
     tar->cd(12);
     tarTWOYp->SetLineColor(30);
     tarTWOYp->Draw("HIST");
+    tarTWOYp->GetXaxis()->SetTitle("y [m]");
     
     
   tar->SaveAs("tar.png");
@@ -319,21 +347,31 @@ Double_t me= 0.5109989461 *0.001;
     dued->cd(1);
     X_Y_mu->SetMarkerColor(46);
     X_Y_mu->Draw("HIST");
+    X_Y_mu->GetXaxis()->SetTitle("x [m]");
+    X_Y_mu->GetYaxis()->SetTitle("y [m]");
+    
     dued->cd(2);
     X_Y_e->SetMarkerColor(30);
     X_Y_e->Draw("HIST");
+    X_Y_e->GetXaxis()->SetTitle("x [m]");
+    X_Y_e->GetYaxis()->SetTitle("y [m]");
     dued->cd(3);
     X_Y_p->Draw("HIST");
+    X_Y_p->GetXaxis()->SetTitle("x [m]");
+    X_Y_p->GetYaxis()->SetTitle("y [m]");
   dued->SaveAs("dued.png");
     
         TCanvas * Pin= new TCanvas("Pin","Pin",400,10,1500,1000);
     Pin->Divide(1,3);
     Pin->cd(1);
     px_mu->Draw("HIST");
+    px_mu->GetXaxis()->SetTitle("Px [GeV]");
     Pin->cd(2);
     py_mu->Draw("HIST");
+    py_mu->GetXaxis()->SetTitle("Py [GeV]");
     Pin->cd(3);
     pz_mu->Draw("HIST");
+    pz_mu->GetXaxis()->SetTitle("Pz [GeV]");
     
    Pin->SaveAs("p_in.png");
     

@@ -12,15 +12,15 @@ void atree::Loop()
 {
     TH1::SetDefaultSumw2();
     
-    Double_t Ee[]={};
-    Double_t The[]={};
+
     
     
     
      if (fChain == 0) return;
 
    Long64_t nentries = fChain->GetEntriesFast();
-    
+    Double_t Ee[nentries]={};
+    Double_t The[nentries]={}; 
    
     Long64_t nbytes = 0, nb = 0;
    for (Long64_t jentry=0; jentry<nentries;jentry++) {

@@ -29,8 +29,8 @@ void atree::Loop()
       nb = fChain->GetEntry(jentry);   nbytes += nb;
  
        
-       Ee[jentry]=detKinBeamRot_Ee;
-       The[jentry]=detKinBeamRot_the;
+       Ee[nb]=detKinBeamRot_Ee;
+       The[nb]=detKinBeamRot_the;
   
        
    }
@@ -45,7 +45,7 @@ void atree::Loop()
     
     TCanvas * theE= new TCanvas("theE","theE",1000,100,2500,2000);
     energyThEl->Draw();
-    energyThEl->SaveAs("thetaEn.png")
+    energyThEl->SaveAs("thetaEn.png");
     
     
 }

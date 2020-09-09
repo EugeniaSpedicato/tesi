@@ -12,6 +12,9 @@ void atree::Loop()
 {
     TH1::SetDefaultSumw2();
     
+Double_t mmu= 105.6583745 *0.001;
+Double_t me= 0.5109989461 *0.001;
+    
     
 TH1F* px_mu=new TH1F("h1", "pX_in muon", 190,-0.3,0.3);
 TH1F* py_mu=new TH1F("h2", "pY_in muon", 190,-0.3,0.3);
@@ -84,97 +87,136 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
  
-       if (detKinBeamRot_cooXe < 0.07 || detKinBeamRot_cooYe < 0.07 || detKinBeamRot_cooXe > -0.07 || detKinBeamRot_cooYe > -0.07 || detKinBeamRot_cooXmu < 0.07 || detKinBeamRot_cooYmu < 0.07 || detKinBeamRot_cooXmu > -0.07 || detKinBeamRot_cooYmu > -0.07 || photon_coox < 0.07 || photon_cooy < 0.07 || photon_coox > -0.07 || photon_cooy > -0.07){ 
-        px_mu->Fill(detKinBeamRot_pXmu,wgt_full);
+       px_mu->Fill(detKinBeamRot_pXmu,wgt_full);
        py_mu->Fill(detKinBeamRot_pYmu,wgt_full);
        pz_mu->Fill(detKinBeamRot_pZmu,wgt_full);
+       
+        if (detKinBeamRot_cooXmu < 0.07 && detKinBeamRot_cooYmu < 0.07 && detKinBeamRot_cooXmu > -0.07 && detKinBeamRot_cooYmu > -0.07)
+        {
        px_mu_out->Fill(detKinBeamRot_pXmu_out,wgt_full);
        py_mu_out->Fill(detKinBeamRot_pYmu_out,wgt_full);
-       pz_mu_out->Fill(detKinBeamRot_pZmu_out,wgt_full);
-       px_e_out->Fill(detKinBeamRot_pXe_out,wgt_full);
-       py_e_out->Fill(detKinBeamRot_pYe_out,wgt_full);
-       pz_e_out->Fill(detKinBeamRot_pZe_out,wgt_full);  
+       pz_mu_out->Fill(detKinBeamRot_pZmu_out,wgt_full); 
        px_mu_outLO->Fill(detKinBeamRot_pXmu_out,wgt_LO);
        py_mu_outLO->Fill(detKinBeamRot_pYmu_out,wgt_LO);
        pz_mu_outLO->Fill(detKinBeamRot_pZmu_out,wgt_LO);
-       px_e_outLO->Fill(detKinBeamRot_pXe_out,wgt_LO);
-       py_e_outLO->Fill(detKinBeamRot_pYe_out,wgt_LO);
-       pz_e_outLO->Fill(detKinBeamRot_pZe_out,wgt_LO);  
-       
-Double_t mmu= 105.6583745 *0.001;
-Double_t me= 0.5109989461 *0.001;
-       
+            
     Double_t Pmu=sqrt(detKinBeamRot_pXmu_out*detKinBeamRot_pXmu_out+detKinBeamRot_pYmu_out*detKinBeamRot_pYmu_out+detKinBeamRot_pZmu_out*detKinBeamRot_pZmu_out);
-    Double_t Pe=sqrt(detKinBeamRot_pXe_out*detKinBeamRot_pXe_out+detKinBeamRot_pYe_out*detKinBeamRot_pYe_out+detKinBeamRot_pZe_out*detKinBeamRot_pZe_out);
-       
+            
     Double_t Emu_out=sqrt(Pmu*Pmu+mmu*mmu);
-    Double_t Ee_out=sqrt(Pe*Pe+me*me);
-       
-    Emuout->Fill(Emu_out,wgt_full);   
-    Eeout->Fill(Ee_out,wgt_full);
-    Ep->Fill(photon_energy,wgt_full);
-
-       
+    Emuout->Fill(Emu_out,wgt_full);  
     Emuin->Fill(detKinBeamRot_Emu,wgt_full);   
-    Eein->Fill(detKinBeamRot_Ee,wgt_full);
-       
+            
     thmu->Fill(detKinBeamRot_thmu*0.001,wgt_full);
-    the->Fill(detKinBeamRot_the*0.001,wgt_full);  
-        
     Double_t anglex_mu = atan2(detKinBeamRot_pXmu_out, detKinBeamRot_pZmu_out);
-    Double_t angley_mu = atan2(detKinBeamRot_pYmu_out, detKinBeamRot_pZmu_out);       
-    Double_t anglex_e = atan2(detKinBeamRot_pXe_out, detKinBeamRot_pZe_out);
-    Double_t angley_e = atan2(detKinBeamRot_pYe_out, detKinBeamRot_pZe_out);
-       
+    Double_t angley_mu = atan2(detKinBeamRot_pYmu_out, detKinBeamRot_pZmu_out);
+            
+           
     thXZmu->Fill(anglex_mu,wgt_full);
     thYZmu->Fill(angley_mu,wgt_full);
-    thXZe->Fill(anglex_e,wgt_full);
-    thYZe->Fill(angley_e,wgt_full); 
+            
+               if (detKinBeamRot_tar==0)
        
-           if (detKinBeamRot_tar==0)
+               {
+         tarONEXmu->Fill(detKinBeamRot_cooXmu,wgt_full);
+         tarONEYmu->Fill(detKinBeamRot_cooYmu,wgt_full);  
+               }
+            
+               if (detKinBeamRot_tar==1)
        
-           { 
-        tarONEXmu->Fill(detKinBeamRot_cooXmu,wgt_full);
-         tarONEYmu->Fill(detKinBeamRot_cooYmu,wgt_full);
-         tarONEXe->Fill(detKinBeamRot_cooXe,wgt_full);
-         tarONEYe->Fill(detKinBeamRot_cooYe,wgt_full);
+               {
+         tarTWOXmu->Fill(detKinBeamRot_cooXmu,wgt_full);
+         tarTWOYmu->Fill(detKinBeamRot_cooYmu,wgt_full);    
+               }
+    X_Y_mu ->Fill(detKinBeamRot_cooXmu, detKinBeamRot_cooYmu,wgt_full);
+        
+        }
+        
+       
+       
+       if (detKinBeamRot_cooXe < 0.07 && detKinBeamRot_cooYe < 0.07 && detKinBeamRot_cooXe > -0.07 && detKinBeamRot_cooYe > -0.07)
+        {
+       px_e_out->Fill(detKinBeamRot_pXe_out,wgt_full);
+       py_e_out->Fill(detKinBeamRot_pYe_out,wgt_full);
+       pz_e_out->Fill(detKinBeamRot_pZe_out,wgt_full);  
+       px_e_outLO->Fill(detKinBeamRot_pXe_out,wgt_LO);
+       py_e_outLO->Fill(detKinBeamRot_pYe_out,wgt_LO);
+       pz_e_outLO->Fill(detKinBeamRot_pZe_out,wgt_LO);
+      
+       Double_t Pe=sqrt(detKinBeamRot_pXe_out*detKinBeamRot_pXe_out+detKinBeamRot_pYe_out*detKinBeamRot_pYe_out+detKinBeamRot_pZe_out*detKinBeamRot_pZe_out);
+   
+       Double_t Ee_out=sqrt(Pe*Pe+me*me);
+       Eeout->Fill(Ee_out,wgt_full);
+       Eein->Fill(detKinBeamRot_Ee,wgt_full);
+           
+       the->Fill(detKinBeamRot_the*0.001,wgt_full);  
+        Double_t anglex_e = atan2(detKinBeamRot_pXe_out, detKinBeamRot_pZe_out);
+        Double_t angley_e = atan2(detKinBeamRot_pYe_out, detKinBeamRot_pZe_out);
+        thXZe->Fill(anglex_e,wgt_full);
+        thYZe->Fill(angley_e,wgt_full);            
+               if (detKinBeamRot_tar==0)
+       
+               {
+             tarONEXe->Fill(detKinBeamRot_cooXe,wgt_full);
+             tarONEYe->Fill(detKinBeamRot_cooYe,wgt_full);               
+               }
+            
+               if (detKinBeamRot_tar==1)
+       
+               {
+             tarTWOXe->Fill(detKinBeamRot_cooXe,wgt_full);
+             tarTWOYe->Fill(detKinBeamRot_cooYe,wgt_full);  
+               } 
+           
+            X_Y_e ->Fill(detKinBeamRot_cooXe, detKinBeamRot_cooYe,wgt_full);
+           
+        }
+        
+       
+       
+       if(photon_coox < 0.07 && photon_cooy < 0.07 && photon_coox > -0.07 && photon_cooy > -0.07)
+       {
+        Ep->Fill(photon_energy,wgt_full);            
+               if (detKinBeamRot_tar==0)
+       
+               {
              if (photon_coox!=-1 && photon_cooy!=-1)
         {tarONEXp->Fill(photon_coox,wgt_full);
          tarONEYp->Fill(photon_cooy,wgt_full);}
-      }
+               }
+            
+               if (detKinBeamRot_tar==1)
        
-       if (detKinBeamRot_tar==1)
-       {  
-         tarTWOXmu->Fill(detKinBeamRot_cooXmu,wgt_full);
-         tarTWOYmu->Fill(detKinBeamRot_cooYmu,wgt_full);
-         tarTWOXe->Fill(detKinBeamRot_cooXe,wgt_full);
-         tarTWOYe->Fill(detKinBeamRot_cooYe,wgt_full);
-        if (photon_coox!=-1)
+               {
+
+         if (photon_coox!=-1)
         {tarTWOXp->Fill(photon_coox,wgt_full);
-         tarTWOYp->Fill(photon_cooy,wgt_full);}
+         tarTWOYp->Fill(photon_cooy,wgt_full);}                  
+               }
+       
+     if (photon_coox!=-1 && photon_cooy!=-1)
+        {X_Y_p ->Fill(photon_coox, photon_cooy,wgt_full);}    
        }
 
-    X_Y_mu ->Fill(detKinBeamRot_cooXmu, detKinBeamRot_cooYmu,wgt_full);
-     X_Y_e ->Fill(detKinBeamRot_cooXe, detKinBeamRot_cooYe,wgt_full);
-     if (photon_coox!=-1 && photon_cooy!=-1)
-        {X_Y_p ->Fill(photon_coox, photon_cooy,wgt_full);}
+
+
        
-       
-    Double_t Dx = detKinBeamRot_cooXe-detKinBeamRot_cooXmu;
+       if (detKinBeamRot_cooXmu < 0.07 && detKinBeamRot_cooYmu < 0.07 && detKinBeamRot_cooXmu > -0.07 && detKinBeamRot_cooYmu > -0.07 && detKinBeamRot_cooXe < 0.07 && detKinBeamRot_cooYe < 0.07 && detKinBeamRot_cooXe > -0.07 && detKinBeamRot_cooYe > -0.07)
+       {Double_t Dx = detKinBeamRot_cooXe-detKinBeamRot_cooXmu;
     Double_t Dy = detKinBeamRot_cooYe-detKinBeamRot_cooXmu;
     Double_t Dxep = detKinBeamRot_cooXe-photon_coox;
     Double_t Dyep = detKinBeamRot_cooYe-photon_cooy;    
     Double_t Dxmp = photon_coox-detKinBeamRot_cooXmu;
     Double_t Dymp = photon_cooy-detKinBeamRot_cooXmu;
-
     dx->Fill(Dx,wgt_full);
     dy->Fill(Dy,wgt_full);
     dxep->Fill(Dxep,wgt_full);
     dyep->Fill(Dyep,wgt_full);    
     dxmp->Fill(Dxmp,wgt_full);
-    dymp->Fill(Dymp,wgt_full);
+    dymp->Fill(Dymp,wgt_full);}
+
+
        }
-      }
+      
       
     /*TGraph *energyThEl= new TGraph(4,theV,EeV); 
     energyThEl->SetTitle("Energy_e(theta_e)");

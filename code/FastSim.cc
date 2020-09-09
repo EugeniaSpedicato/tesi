@@ -119,6 +119,8 @@ coo[4][0]=b[8][2];
 TMatrixD cooIN(5,1);
 Double_t xin=b[18][0];
 Double_t yin=b[18][1];
+Double_t TheINT=b[18][2]; // angolo che ha nel momento dell'interazione, senza effetto di MCS 
+    
 
   /*  if (MSopt ==0) {
     p_mu_out_div_smeared = Smear(p_mu_out_div);
@@ -134,7 +136,7 @@ Double_t yin=b[18][1];
   }
   else cout<<"\n"<<"*** ERROR : FastSim, undefined detector MS option = "<<MSopt<<endl;*/
   
-  LoadKineVars(p_mu_in_div, p_e_in_div, p_mu_out_div_smeared, p_e_out_div_smeared, coo, detKinBeamRot);
+  LoadKineVars(p_mu_in_div, p_e_in_div, p_mu_out_div_smeared, p_e_out_div_smeared, coo, TheINT, detKinBeamRot);
   
   LoadPhoton(event, photon, p_mu_in_div,muin[4][0],xin,yin);
     
@@ -403,6 +405,8 @@ Double_t sigBEe=(13.6/(ke.E()*1000))*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad
     Double_t angley = atan2(k.Py(), k.Pz()); 
     Double_t anglexe = atan2(ke.Px(), ke.Pz());
     Double_t angleye = atan2(ke.Py(), ke.Pz()); 
+    Double_t The = ke.Theta(); // angolo in rad che ha nel momento dell'interazione, senza effetto di MCS 
+    
     
     /*Double_t thetaEL = ke.Theta()*1000;//mrad
     && thetaEL<35 && thetaEL<70*/
@@ -565,7 +569,10 @@ Double_t pe=sqrt(ke.Px()*ke.Px()+ke.Py()*ke.Py()+ke.Pz()*ke.Pz());
         
         //coordinate entranti beam divergente
         coo_ang_fin[18][0]=xin; 
-        coo_ang_fin[18][1]=yin;  
+        coo_ang_fin[18][1]=yin; 
+        coo_ang_fin[18][2]=The; // angolo che ha nel momento dell'interazione, senza effetto di MCS 
+
+        
         
         
     return coo_ang_fin;
@@ -746,6 +753,8 @@ Double_t pe=sqrt(ke.Px()*ke.Px()+ke.Py()*ke.Py()+ke.Pz()*ke.Pz());
         //coordinate entranti beam divergente
         coo_ang_fin[18][0]=xin; 
         coo_ang_fin[18][1]=yin;  
+        coo_ang_fin[18][2]=The; // angolo che ha nel momento dell'interazione, senza effetto di MCS 
+        
         
     return coo_ang_fin;
         
@@ -806,7 +815,7 @@ TMatrixD FastSim::MCSphoton(const Double_t & tar, const PxPyPzEVector & kp,const
 
 
 void FastSim::LoadKineVars(const PxPyPzEVector & p_mu_in,  const PxPyPzEVector & p_e_in, 
-			   const PxPyPzEVector & p_mu_out, const PxPyPzEVector & p_e_out, const TMatrixD & coo,
+			   const PxPyPzEVector & p_mu_out, const PxPyPzEVector & p_e_out, const TMatrixD & coo, const Double_t & TheINT,
 			   MuE::KineVars & kv) {
   
   kv.Ee = p_e_out.E();
@@ -815,22 +824,16 @@ void FastSim::LoadKineVars(const PxPyPzEVector & p_mu_in,  const PxPyPzEVector &
   kv.thmu = 1e3* p_mu_out.Theta();
   kv.phe = p_e_out.Phi();
   kv.phmu = p_mu_out.Phi();
-    
-/*TMatrixD coo_fin=coo(p_mu_out, p_e_out);
-kv.cooXe = coo_fin[1][0];
-kv.cooXmu = coo_fin[0][0];
-kv.cooYe = coo_fin[1][1];
-kv.cooYmu = coo_fin[0][1];
-
-kv.tar = coo_fin[0][2];*/
  
+    
+
 kv.cooXmu = coo[0][0];
 kv.cooYmu = coo[1][0];
 kv.cooXe = coo[2][0];
 kv.cooYe = coo[3][0];
 
 kv.tar = coo[4][0];
-
+ kv.ThEl_interaction = 1e3*TheINT; // angolo elettrone al momento della produzione, in mrad
 
   kv.pXmu = p_mu_in.Px();
   kv.pYmu = p_mu_in.Py();

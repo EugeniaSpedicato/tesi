@@ -29,13 +29,13 @@ void atree::Loop()
       nb = fChain->GetEntry(jentry);   nbytes += nb;
  
        
-       Ee[jentry]=detkinBeamRot_Ee;
-       The[jentry]=detkinBeamRot_the;
+       Ee[jentry]=detKinBeamRot_Ee;
+       The[jentry]=detKinBeamRot_the;
   
        
    }
     
- TGraph *energyThEl= new TGraph(4,the,Ee); 
+ TGraph *energyThEl= new TGraph(4,The,Ee); 
     energyThEl->SetTitle("Energy_e(theta_e)");
     energyThEl->SetMarkerColor(50);
     energyThEl->SetMarkerStyle(8);

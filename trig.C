@@ -27,12 +27,9 @@ void atree::Loop()
       Long64_t ientry = LoadTree(jentry);
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
- 
-       
+   
        energyThEl->SetPoint(jentry,detKinBeamRot_the,detKinBeamRot_Ee);
-       
-  
-       
+   
    }
     
 
@@ -40,11 +37,12 @@ void atree::Loop()
     energyThEl->SetMarkerColor(50);
     energyThEl->SetMarkerStyle(8);
     energyThEl->SetLineColor(9);
+    energyThEl->GetMarkerStyle(6);
     energyThEl->GetXaxis()->SetTitle("ThetaEl(mrad)");
     energyThEl->GetYaxis()->SetTitle("Energy(GeV)");   
     
     TCanvas * theE= new TCanvas("theE","theE",1000,100,2500,2000);
-    energyThEl->Draw("A");
+    energyThEl->Draw("AP");
     energyThEl->SaveAs("thetaEn.png");
     
     

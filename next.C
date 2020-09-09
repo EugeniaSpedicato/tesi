@@ -84,7 +84,7 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
  
-       if (detKinBeamRot_cooXe > 0.07 || detKinBeamRot_cooYe > 0.07 || detKinBeamRot_cooXe < -0.07 || detKinBeamRot_cooYe < -0.07 || detKinBeamRot_cooXmu > 0.07 || detKinBeamRot_cooYmu > 0.07 || detKinBeamRot_cooXmu < -0.07 || detKinBeamRot_cooYmu < -0.07 || photon_coox > 0.07 || photon_cooy > 0.07 || photon_coox < -0.07 || photon_cooy < -0.07){ 
+       if (detKinBeamRot_cooXe < 0.07 || detKinBeamRot_cooYe < 0.07 || detKinBeamRot_cooXe > -0.07 || detKinBeamRot_cooYe > -0.07 || detKinBeamRot_cooXmu < 0.07 || detKinBeamRot_cooYmu < 0.07 || detKinBeamRot_cooXmu > -0.07 || detKinBeamRot_cooYmu > -0.07 || photon_coox < 0.07 || photon_cooy < 0.07 || photon_coox > -0.07 || photon_cooy > -0.07){ 
         px_mu->Fill(detKinBeamRot_pXmu,wgt_full);
        py_mu->Fill(detKinBeamRot_pYmu,wgt_full);
        pz_mu->Fill(detKinBeamRot_pZmu,wgt_full);

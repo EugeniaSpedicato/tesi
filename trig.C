@@ -37,7 +37,7 @@ void atree::Loop()
     energyThEl->SetMarkerColor(50);
     energyThEl->SetMarkerStyle(8);
     energyThEl->SetLineColor(9);
-    energyThEl->GetMarkerStyle(6);
+    energyThEl->SetMarkerStyle(kFullDotSmall);
     energyThEl->GetXaxis()->SetTitle("ThetaEl(mrad)");
     energyThEl->GetYaxis()->SetTitle("Energy(GeV)");   
     

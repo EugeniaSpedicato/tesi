@@ -87,7 +87,7 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
  
-       if (detKinBeamRot_tar==1){
+       if (detKinBeamRot_tar==0){
        px_mu->Fill(detKinBeamRot_pXmu,wgt_full);
        py_mu->Fill(detKinBeamRot_pYmu,wgt_full);
        pz_mu->Fill(detKinBeamRot_pZmu,wgt_full);
@@ -274,7 +274,7 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0
     Emuin->SetLineColor(46);
     Emuin->GetXaxis()->SetTitle("E [GeV]");
     Emuin->Draw("HIST");
-    Emuout->SetLineColor(kYellow);
+    Emuout->SetLineColor(kBlack);
     Emuout->Draw("HIST same");
     
     
@@ -286,7 +286,7 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0
     Eein->Draw("HIST");
     Eein->GetXaxis()->SetTitle("E [GeV] (log scale)");
     gPad->SetLogx();
-    Eeout->SetLineColor(kOrange);
+    Eeout->SetLineColor(kBlack);
     Eeout->Draw("HIST same");
     
     e->cd(4);

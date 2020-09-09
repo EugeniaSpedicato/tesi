@@ -54,8 +54,8 @@ TH1F* tarONEXmu=new TH1F("h1a", "Coo X mu tar1  ", 140,-0.15,0.15);
 TH1F* tarONEYmu=new TH1F("h2a", "Coo Y mu tar1 ", 140,-0.15,0.15);
 TH1F* tarONEXe=new TH1F("h1ea", "Coo X e tar1 ", 140,-0.15,0.15);
 TH1F* tarONEYe=new TH1F("h2ea", "Coo Y e tar1 ", 140,-0.15,0.15);
-TH1F* tarONEXp=new TH1F("h1ea", "Coo X ph tar2 ", 100,-0.5,0.5);
-TH1F* tarONEYp=new TH1F("h2ea", "Coo Y ph tar2 ", 100,-0.5,0.5);
+TH1F* tarONEXp=new TH1F("h1ea", "Coo X ph tar1 ", 100,-0.5,0.5);
+TH1F* tarONEYp=new TH1F("h2ea", "Coo Y ph tar1 ", 100,-0.5,0.5);
     
 TH1F* tarTWOXmu=new TH1F("h1a", "Coo X mu tar2  ", 140,-0.15,0.15);
 TH1F* tarTWOYmu=new TH1F("h2a", "Coo Y mu tar2 ", 140,-0.15,0.15);

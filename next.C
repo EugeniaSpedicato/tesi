@@ -387,24 +387,26 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0
     
   tar->SaveAs("tar.png");
     
-    TCanvas * dued= new TCanvas("dued","dued",1000,100,2500,2000);
-    dued->Divide(1,3);
-    dued->cd(1);
+    TCanvas * duedmu= new TCanvas("duedmu","duedmu",1000,100,2500,2000);
     X_Y_mu->SetMarkerColor(46);
     X_Y_mu->Draw("HIST");
     X_Y_mu->GetXaxis()->SetTitle("x [m]");
     X_Y_mu->GetYaxis()->SetTitle("y [m]");
+  duedmu->SaveAs("duedmu.png");
     
-    dued->cd(2);
+    TCanvas * duede= new TCanvas("duede","duede",1000,100,2500,2000);
     X_Y_e->SetMarkerColor(30);
     X_Y_e->Draw("HIST");
     X_Y_e->GetXaxis()->SetTitle("x [m]");
     X_Y_e->GetYaxis()->SetTitle("y [m]");
-    dued->cd(3);
+  duedmu->SaveAs("duede.png");
+    
+
+    TCanvas * duedp= new TCanvas("duedp","duedp",1000,100,2500,2000);
     X_Y_p->Draw("HIST");
     X_Y_p->GetXaxis()->SetTitle("x [m]");
     X_Y_p->GetYaxis()->SetTitle("y [m]");
-  dued->SaveAs("dued.png");
+  duedp->SaveAs("duedph.png");
     
         TCanvas * Pin= new TCanvas("Pin","Pin",400,10,1500,1000);
     Pin->Divide(1,3);

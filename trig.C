@@ -46,6 +46,10 @@ TH1F* ThCalNoPh=new TH1F("h2aN", "Theta e wh/out ph", 180,0,0.1);
 TH1F* ThCalNoPh0=new TH1F("h2aN", "Theta e wh/out ph TAR 0", 180,0,0.1);
 TH1F* ThCalNoPh1=new TH1F("h2aN", "Theta e wh/out ph TAR 1", 180,0,0.1);   
     
+TH2F  *Th_E_noph  = new TH2F("h2da" , " Th  Vs. E of the electrons",140,-0.5,-0.5,140,-0.5,0.5);
+TH2F  *Th_E_noRm = new TH2F("h2da" , " Th  Vs. E of the electrons",140,-0.5,-0.5,140,-0.5,0.5);
+
+
     
      if (fChain == 0) return;
 
@@ -78,11 +82,11 @@ d=posEl-posPh;
            {
                nEl++;
            }
-          else {EnCalNORm->Fill(detKinBeamRot_Ee,wgt_full); ThCalNORm->Fill(detKinBeamRot_the,wgt_full);}
+          else {EnCalNORm->Fill(detKinBeamRot_Ee,wgt_full); ThCalNORm->Fill(detKinBeamRot_the,wgt_full); Th_E_noRm->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);}
        }
       else nElPh++;     
    }
-else {EnCalNoPh->Fill(detKinBeamRot_Ee,wgt_full); ThCalNoPh->Fill(detKinBeamRot_the,wgt_full);}
+else {EnCalNoPh->Fill(detKinBeamRot_Ee,wgt_full); ThCalNoPh->Fill(detKinBeamRot_the,wgt_full); Th_E_noph->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);}
  
            }
        
@@ -103,11 +107,11 @@ d=posEl-posPh;
            {
                nEl0++;
            }
-           else {EnCalNORm0->Fill(detKinBeamRot_Ee,wgt_full); ThCalNORm0->Fill(detKinBeamRot_the,wgt_full);}
+           else {EnCalNORm0->Fill(detKinBeamRot_Ee,wgt_full); ThCalNORm0->Fill(detKinBeamRot_the,wgt_full); Th_E_noRm0->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);}
        }
    else nElPh0++;
               }
-           else {EnCalNoPh0->Fill(detKinBeamRot_Ee,wgt_full); ThCalNoPh0->Fill(detKinBeamRot_the,wgt_full);}
+           else {EnCalNoPh0->Fill(detKinBeamRot_Ee,wgt_full); ThCalNoPh0->Fill(detKinBeamRot_the,wgt_full); Th_E_noph0->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);}
     
            }
        
@@ -128,11 +132,11 @@ d=posEl-posPh;
            {
                nEl1++;
            }
-           else {EnCalNORm1->Fill(detKinBeamRot_Ee,wgt_full); ThCalNORm1->Fill(detKinBeamRot_the,wgt_full);}
+           else {EnCalNORm1->Fill(detKinBeamRot_Ee,wgt_full); ThCalNORm1->Fill(detKinBeamRot_the,wgt_full); Th_E_noRm1->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);}
        }
    else  nElPh1++;
               }
-    else {EnCalNoPh1->Fill(detKinBeamRot_Ee,wgt_full); ThCalNoPh1->Fill(detKinBeamRot_the,wgt_full);}
+    else {EnCalNoPh1->Fill(detKinBeamRot_Ee,wgt_full); ThCalNoPh1->Fill(detKinBeamRot_the,wgt_full); Th_E_noph1->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);}
 
            }
    }
@@ -210,5 +214,35 @@ d=posEl-posPh;
    
     
     te->SaveAs("ThElnoRm.png");
+    
+    TCanvas * dued1= new TCanvas("dued1","dued1",1000,100,2500,2000);
+    Th_E_noph1->Draw("HIST");
+    Th_E_noph1->GetXaxis()->SetTitle("Th [mrad]");
+    Th_E_noph1->GetYaxis()->SetTitle("E [GeV]");
+    Th_E_noRm1->SetMarkerColor(30);
+    Th_E_noRm1->Draw("HIST same");
+    Th_E_noRm1->GetXaxis()->SetTitle("Th [mrad]");
+    Th_E_noRm1->GetYaxis()->SetTitle("E [GeV]");
+  dued1->SaveAs("Eth1.png");
+    
+    TCanvas * dued= new TCanvas("dued","dued",1000,100,2500,2000);
+    Th_E_noph->Draw("HIST");
+    Th_E_noph->GetXaxis()->SetTitle("Th [mrad]");
+    Th_E_noph->GetYaxis()->SetTitle("E [GeV]");
+    Th_E_noRm->SetMarkerColor(30);
+    Th_E_noRm->Draw("HIST same");
+    Th_E_noRm->GetXaxis()->SetTitle("Th [mrad]");
+    Th_E_noRm->GetYaxis()->SetTitle("E [GeV]");
+  dued1->SaveAs("Eth.png");
+    
+    TCanvas * dued0= new TCanvas("dued0","dued0",1000,100,2500,2000);
+    Th_E_noph0->Draw("HIST");
+    Th_E_noph0->GetXaxis()->SetTitle("Th [mrad]");
+    Th_E_noph0->GetYaxis()->SetTitle("E [GeV]");
+    Th_E_noRm0->SetMarkerColor(30);
+    Th_E_noRm0->Draw("HIST same");
+    Th_E_noRm0->GetXaxis()->SetTitle("Th [mrad]");
+    Th_E_noRm0->GetYaxis()->SetTitle("E [GeV]");
+  dued1->SaveAs("Eth0.png");
     
 }

@@ -4,6 +4,8 @@
 #include <TH1.h>
 #include <TGraph.h>
 #include <TTree.h>
+#include <cmath>
+using namespace std;
 
 #include <TStyle.h>
 #include <TCanvas.h>
@@ -15,8 +17,8 @@ void atree::Loop()
 Double_t Rm= 0.022; //raggio di Moliere in metri
 Double_t d; //distanza elettronce fotone.
 Double_t z  =2.025; //distanza origine-calorimetro in metri.
-Double nEl=0; // numero di elettroni con un fotone
-Double nElNO=0; // numero di elettroni senzs un fotone
+Double_t nEl=0; // numero di elettroni con un fotone
+Double_t nElNO=0; // numero di elettroni senzs un fotone
     
  
     
@@ -40,9 +42,9 @@ Double nElNO=0; // numero di elettroni senzs un fotone
        
 double_t posEl = sqrt(detKinBeamRot_cooXe*detKinBeamRot_cooXe+detKinBeamRot_cooYe*detKinBeamRot_cooYe+z*z);
 double_t posPh = sqrt(photon_coox*photon_coox+photon_cooy*photon_cooy+z*z);
-d=posEl-posph;   
+d=posEl-posPh;   
   
-       if (photon_coox < 0.07 && photon_cooy < 0.07 && photon_coox > -0.07 && photon_cooy > -0.07 && |d|<Rm)
+       if (photon_coox < 0.07 && photon_cooy < 0.07 && photon_coox > -0.07 && photon_cooy > -0.07 && abs(d)>2*Rm)
        {
           nEl++; 
        }

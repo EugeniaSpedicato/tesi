@@ -14,6 +14,8 @@ void atree::Loop()
     
 Double_t mmu= 105.6583745 *0.001;
 Double_t me= 0.5109989461 *0.001;
+Double_t Rm= 0.022; //raggio di Moliere in metri
+
     
     
 TH1F* px_mu=new TH1F("h1", "pX_in muon", 190,-0.3,0.3);

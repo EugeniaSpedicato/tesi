@@ -12,7 +12,12 @@ void atree::Loop()
 {
     TH1::SetDefaultSumw2();
     
-
+Double_t Rm= 0.022; //raggio di Moliere in metri
+Double_t d; //distanza elettronce fotone.
+Double_t z  =2.025; //distanza origine-calorimetro in metri.
+Double nEl=0; // numero di elettroni con un fotone
+Double nElNO=0; // numero di elettroni senzs un fotone
+    
  
     
     
@@ -20,7 +25,7 @@ void atree::Loop()
 
    Long64_t nentries = fChain->GetEntriesFast();
     
-   TGraph *energyThEl= new TGraph(nentries); 
+   //TGraph *energyThEl= new TGraph(nentries); 
 
     Long64_t nbytes = 0, nb = 0;
    for (Long64_t jentry=0; jentry<nentries;jentry++) {
@@ -28,12 +33,28 @@ void atree::Loop()
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
    
-       energyThEl->SetPoint(jentry,detKinBeamRot_the,detKinBeamRot_Ee);
+       //energyThEl->SetPoint(jentry,detKinBeamRot_the,detKinBeamRot_Ee);
+       if (detKinBeamRot_cooXe < 0.07 && detKinBeamRot_cooYe < 0.07 && detKinBeamRot_cooXe > -0.07 && detKinBeamRot_cooYe > -0.07)
+        {
+       nElNO++;
+       
+double_t posEl = sqrt(detKinBeamRot_cooXe*detKinBeamRot_cooXe+detKinBeamRot_cooYe*detKinBeamRot_cooYe+z*z);
+double_t posPh = sqrt(photon_coox*photon_coox+photon_cooy*photon_cooy+z*z);
+d=posEl-posph;   
+  
+       if (photon_coox < 0.07 && photon_cooy < 0.07 && photon_coox > -0.07 && photon_cooy > -0.07 && |d|<Rm)
+       {
+          nEl++; 
+       }
    
+   
+           }
    }
     
+    
+    
 
-    energyThEl->SetTitle("Energy_e(theta_e)");
+    /*energyThEl->SetTitle("Energy_e(theta_e)");
     energyThEl->SetMarkerColor(50);
     energyThEl->SetMarkerStyle(8);
     energyThEl->SetLineColor(9);
@@ -43,7 +64,10 @@ void atree::Loop()
     
     TCanvas * theE= new TCanvas("theE","theE",1000,100,2500,2000);
     energyThEl->Draw("AP");
-    energyThEl->SaveAs("thetaEn.png");
+    energyThEl->SaveAs("thetaEn.png");*/
+    cout << "numero di elettroni senza fotoni: " << nElNO << endl;
+    cout << "numero di elettroni con fotoni: " << nEl << endl;
+    
     
     
 }

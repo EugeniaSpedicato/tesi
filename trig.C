@@ -157,10 +157,16 @@ d=posEl-posPh;
     e->Divide(1,3);
     e->cd(1);
     EnCalNORm->Draw("HIST");
+    gPad->SetLogx();
+    
     e->cd(2);
     EnCalNORm0->Draw("HIST");
+    gPad->SetLogx();
+    
     e->cd(3);
     EnCalNORm1->Draw("HIST");
+    gPad->SetLogx();
+    
     e->SaveAs("EnergyElnoRm.png");
     
 }

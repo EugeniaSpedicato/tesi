@@ -69,7 +69,7 @@ d=posEl-posPh;
            {
                nEl++;
            }
-          else EnCalNORm->Fille(detkinBeamRot_Ee,wgt_full);
+          else EnCalNORm->Fill(detKinBeamRot_Ee,wgt_full);
        }
       else nElPh++;     
    }
@@ -93,7 +93,7 @@ d=posEl-posPh;
            {
                nEl0++;
            }
-           else EnCalNORm0->Fille(detkinBeamRot_Ee,wgt_full);
+           else EnCalNORm0->Fill(detKinBeamRot_Ee,wgt_full);
        }
    else nElPh0++;
               }
@@ -116,7 +116,7 @@ d=posEl-posPh;
            {
                nEl1++;
            }
-           else EnCalNORm1->Fille(detkinBeamRot_Ee,wgt_full);
+           else EnCalNORm1->Fill(detKinBeamRot_Ee,wgt_full);
        }
    else  nElPh1++;
               }

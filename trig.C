@@ -35,8 +35,10 @@ Double_t nElNORm1=0; // numero di elettroni con un fotone ma senza richesta Rm d
 TH1F* EnCalNORm=new TH1F("h2aN", "Energy e not 2 Rm distant from photons", 200,0,160);
 TH1F* EnCalNORm0=new TH1F("h2aN", "Energy e not 2 Rm distant from photons TAR 0", 200,0,160);
 TH1F* EnCalNORm1=new TH1F("h2aN", "Energy e not 2 Rm distant from photons TAR 1", 200,0,160);
-    
-    
+TH1F* EnCalNoPh=new TH1F("h2aN", "Energy e wh/out ph", 200,0,160);
+TH1F* EnCalNoPh0=new TH1F("h2aN", "Energy e wh/out ph TAR 0", 200,0,160);
+TH1F* EnCalNoPh1=new TH1F("h2aN", "Energy e wh/out ph TAR 1", 200,0,160);   
+
     
      if (fChain == 0) return;
 
@@ -73,7 +75,8 @@ d=posEl-posPh;
        }
       else nElPh++;     
    }
-   
+else EnCalNoPh->Fill(detKinBeamRot_Ee,wgt_full);
+ 
            }
        
               if (detKinBeamRot_cooXe < 0.07 && detKinBeamRot_cooYe < 0.07 && detKinBeamRot_cooXe > -0.07 && detKinBeamRot_cooYe > -0.07 && detKinBeamRot_tar==0 && detKinBeamRot_Ee>1)
@@ -97,6 +100,8 @@ d=posEl-posPh;
        }
    else nElPh0++;
               }
+           else EnCalNoPh0->Fill(detKinBeamRot_Ee,wgt_full);
+    
            }
        
               if (detKinBeamRot_cooXe < 0.07 && detKinBeamRot_cooYe < 0.07 && detKinBeamRot_cooXe > -0.07 && detKinBeamRot_cooYe > -0.07 && detKinBeamRot_tar==1)
@@ -120,6 +125,8 @@ d=posEl-posPh;
        }
    else  nElPh1++;
               }
+    else EnCalNoPh1->Fill(detKinBeamRot_Ee,wgt_full);
+
            }
    }
     
@@ -153,18 +160,24 @@ d=posEl-posPh;
     cout << "numero di elettroni con fotoni senza richiesta raggio Moliere dal tar 1: " << nElNORm1 << endl;
     
     
-    TCanvas * e= new TCanvas("e","e",400,10,1500,1000);
+    TCanvas * e= new TCanvas("e","e",200,10,1000,1000);
     e->Divide(1,3);
     e->cd(1);
     EnCalNORm->Draw("HIST");
+    EnCalNoPh->SetLineColor(kRed);
+    EnCalNoPh->Draw("HIST same");
     gPad->SetLogx();
     
     e->cd(2);
     EnCalNORm0->Draw("HIST");
+    EnCalNoPh0->SetLineColor(kRed);
+    EnCalNoPh0->Draw("HIST same");
     gPad->SetLogx();
     
     e->cd(3);
     EnCalNORm1->Draw("HIST");
+    EnCalNoPh1->SetLineColor(kRed);
+    EnCalNoPh1->Draw("HIST same");
     gPad->SetLogx();
     
     e->SaveAs("EnergyElnoRm.png");

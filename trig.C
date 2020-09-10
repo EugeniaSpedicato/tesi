@@ -74,6 +74,7 @@ d=posEl-posPh;
                nEl++;
            }
        }
+      else nElPh++;     
    }
    
            }
@@ -83,7 +84,7 @@ d=posEl-posPh;
        nElNO0++;
               if (photon_coox != -1)
        {
-           nElPh0++;
+           
 double_t posEl = sqrt(detKinBeamRot_cooXe*detKinBeamRot_cooXe+detKinBeamRot_cooYe*detKinBeamRot_cooYe);
 double_t posPh = sqrt(photon_coox*photon_coox+photon_cooy*photon_cooy);
 d=posEl-posPh;   
@@ -96,7 +97,7 @@ d=posEl-posPh;
                nEl0++;
            }
        }
-   
+   else nElPh0++;
               }
            }
        
@@ -105,7 +106,7 @@ d=posEl-posPh;
        nElNO1++;
               if (photon_coox != -1)
               {
-           nElPh1++;
+          
 double_t posEl = sqrt(detKinBeamRot_cooXe*detKinBeamRot_cooXe+detKinBeamRot_cooYe*detKinBeamRot_cooYe);
 double_t posPh = sqrt(photon_coox*photon_coox+photon_cooy*photon_cooy);
 d=posEl-posPh;   
@@ -118,7 +119,7 @@ d=posEl-posPh;
                nEl1++;
            }
        }
-   
+   else  nElPh1++;
               }
            }
    }

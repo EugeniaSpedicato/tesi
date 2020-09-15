@@ -14,22 +14,22 @@ void atree::Loop()
 {
     TH1::SetDefaultSumw2();
     
-Double_t Rm= 0.022; //raggio di Moliere in metri
-Double_t d; //distanza elettronce fotone.
-Double_t z  =2.025; //distanza origine-calorimetro in metri.
+Double_t Rm = 0.022; //raggio di Moliere in metri
+Double_t d; //distanza elettrone fotone.
+Double_t z  = 2.025; //distanza origine-calorimetro in metri.
 Double_t nEl=0; // numero di elettroni con un fotone
-Double_t nElPh=0; // numero elecctorni con fotone in generale
-Double_t nElNO=0; // numero di elettroni senzs un fotone
+Double_t nElPh=0; // numero elettroni con fotone in generale
+Double_t nElNO=0; // numero di elettroni senza un fotone
 Double_t nElNORm=0; // numero di elettroni con un fotone ma senza richesta Rm
     
 Double_t nEl0=0; // numero di elettroni con un fotone dal target 0
-Double_t nElPh0=0; // numero elecctorni con fotone in generale dal target 0
-Double_t nElNO0=0; // numero di elettroni senzs un fotone dal target 0
+Double_t nElPh0=0; // numero elettroni con fotone in generale dal target 0
+Double_t nElNO0=0; // numero di elettroni senza un fotone dal target 0
 Double_t nElNORm0=0; // numero di elettroni con un fotone ma senza richesta Rm dal target 0
     
 Double_t nEl1=0; // numero di elettroni con un fotone dal target 1
-Double_t nElPh1=0; // numero elecctorni con fotone in generale dal target 1
-Double_t nElNO1=0; // numero di elettroni senzs un fotone dal target 1
+Double_t nElPh1=0; // numero elettroni con fotone in generale dal target 1
+Double_t nElNO1=0; // numero di elettroni senza un fotone dal target 1
 Double_t nElNORm1=0; // numero di elettroni con un fotone ma senza richesta Rm dal target 1
 
 TH1F* EnCalNORm=new TH1F("h2aN", "Energy e not 2 Rm distant from photons", 200,0,160);
@@ -70,6 +70,8 @@ TH2F  *Th_E_noRm1 = new TH2F("h2da1" , " Th  Vs. E of the electrons",140,0,0.1,1
       nb = fChain->GetEntry(jentry);   nbytes += nb;
    
        //energyThEl->SetPoint(jentry,detKinBeamRot_the,detKinBeamRot_Ee);
+       
+       
        if (detKinBeamRot_cooXe < 0.07 && detKinBeamRot_cooYe < 0.07 && detKinBeamRot_cooXe > -0.07 && detKinBeamRot_cooYe > -0.07)
         {
        nElNO++;
@@ -96,7 +98,10 @@ else {EnCalNoPh->Fill(detKinBeamRot_Ee,wgt_full); ThCalNoPh->Fill(detKinBeamRot_
  
            }
        
-              if (detKinBeamRot_cooXe < 0.07 && detKinBeamRot_cooYe < 0.07 && detKinBeamRot_cooXe > -0.07 && detKinBeamRot_cooYe > -0.07 && detKinBeamRot_tar==0 && detKinBeamRot_Ee>1)
+       
+       
+       
+    if (detKinBeamRot_cooXe < 0.07 && detKinBeamRot_cooYe < 0.07 && detKinBeamRot_cooXe > -0.07 && detKinBeamRot_cooYe > -0.07 && detKinBeamRot_tar==0 && detKinBeamRot_Ee>1)
         {
        nElNO0++;
               if (photon_coox != -1)
@@ -121,7 +126,11 @@ d=posEl-posPh;
     
            }
        
-              if (detKinBeamRot_cooXe < 0.07 && detKinBeamRot_cooYe < 0.07 && detKinBeamRot_cooXe > -0.07 && detKinBeamRot_cooYe > -0.07 && detKinBeamRot_tar==1)
+              
+       
+
+       
+if (detKinBeamRot_cooXe < 0.07 && detKinBeamRot_cooYe < 0.07 && detKinBeamRot_cooXe > -0.07 && detKinBeamRot_cooYe > -0.07 && detKinBeamRot_tar==1)
         {
        nElNO1++;
               if (photon_coox != -1)

@@ -176,7 +176,7 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0
         
        
        
-       if(abs(photon_coox) < 1 && abs(photon_cooy) < 1)
+       if(abs(photon_coox) < 500 && abs(photon_cooy) < 500)
        {
         Ep->Fill(photon_energy,wgt_full);            
                if (detKinBeamRot_tar==0)

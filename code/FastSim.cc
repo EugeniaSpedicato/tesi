@@ -546,7 +546,7 @@ for (Int_t p=1; p<7; p++)  {
     Double_t xfe = xe[1][6]+dCAL*tan(thetaXe[1][6]);
     Double_t yfe = ye[1][6]+dCAL*tan(thetaYe[1][6]);
     
-    TMatrixD coo_ang_fin(19,7)
+    TMatrixD coo_ang_fin(19,7);
         
                 for (Int_t i=0; i<7; i++)
     { //coordinate stazione 2 muone
@@ -609,8 +609,8 @@ Double_t pe=sqrt(ke.Px()*ke.Px()+ke.Py()*ke.Py()+ke.Pz()*ke.Pz());
         coo_ang_fin[17][6]=ke.E();   
         
         //coordinate entranti beam divergente
-        coo_ang_fin[18][0]=xin; 
-        coo_ang_fin[18][1]=yin; 
+        coo_ang_fin[18][0]=x2; 
+        coo_ang_fin[18][1]=y2; 
         coo_ang_fin[18][2]=The; // angolo che ha nel momento dell'interazione, senza effetto di MCS 
 
         
@@ -796,8 +796,8 @@ Double_t pe=sqrt(ke.Px()*ke.Px()+ke.Py()*ke.Py()+ke.Pz()*ke.Pz());
         coo_ang_fin[17][6]=ke.E();   
         
         //coordinate entranti beam divergente
-        coo_ang_fin[18][0]=xin; 
-        coo_ang_fin[18][1]=yin;  
+        coo_ang_fin[18][0]=x4; 
+        coo_ang_fin[18][1]=y4;  
         coo_ang_fin[18][2]=The; // angolo che ha nel momento dell'interazione, senza effetto di MCS 
         
         

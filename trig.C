@@ -108,13 +108,13 @@ d=posEl-posPh;
            {
                nEl++;
            }
-          else {nElNORm++; EnCalNORm->Fill(detKinBeamRot_Ee,wgt_LO); ThCalNORm->Fill(detKinBeamRot_the,wgt_LO); Th_E_noRm->Fill(detKinBeamRot_the,detKinBeamRot_Ee,wgt_LO);}
+          else {nElNORm++; EnCalNORm->Fill(detKinBeamRot_Ee,wgt_full); ThCalNORm->Fill(detKinBeamRot_the,wgt_full); Th_E_noRm->Fill(detKinBeamRot_the,detKinBeamRot_Ee,wgt_full);}
        }
-      else {nElPh++; ThPhNoCal->Fill(detKinBeamRot_the,wgt_LO); EnPhNoCal->Fill(detKinBeamRot_Ee,wgt_LO);
-           Th_E_PhNoCal->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_LO);}     
+      else {nElPh++; ThPhNoCal->Fill(detKinBeamRot_the,wgt_full); EnPhNoCal->Fill(detKinBeamRot_Ee,wgt_full);
+           Th_E_PhNoCal->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);}     
    }
 else {nElNOph++;
-      EnCalNoPh->Fill(detKinBeamRot_Ee,wgt_LO); ThCalNoPh->Fill(detKinBeamRot_the,wgt_LO); Th_E_noph->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_LO);}
+      EnCalNoPh->Fill(detKinBeamRot_Ee,wgt_full); ThCalNoPh->Fill(detKinBeamRot_the,wgt_full); Th_E_noph->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);}
  
            }
        
@@ -138,12 +138,12 @@ d=posEl-posPh;
            {
                nEl0++;
            }
-           else {nElNORm0++; EnCalNORm0->Fill(detKinBeamRot_Ee,wgt_LO); ThCalNORm0->Fill(detKinBeamRot_the,wgt_LO); Th_E_noRm0->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_LO);}
+           else {nElNORm0++; EnCalNORm0->Fill(detKinBeamRot_Ee,wgt_full); ThCalNORm0->Fill(detKinBeamRot_the,wgt_full); Th_E_noRm0->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);}
        }
-   else {nElPh0++; ThPhNoCal0->Fill(detKinBeamRot_the,wgt_LO); EnPhNoCal0->Fill(detKinBeamRot_Ee,wgt_LO); 
-              Th_E_PhNoCal0->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_LO);} }
+   else {nElPh0++; ThPhNoCal0->Fill(detKinBeamRot_the,wgt_full); EnPhNoCal0->Fill(detKinBeamRot_Ee,wgt_full); 
+              Th_E_PhNoCal0->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);} }
         
- else {nElNOph0++; EnCalNoPh0->Fill(detKinBeamRot_Ee,wgt_LO); ThCalNoPh0->Fill(detKinBeamRot_the,wgt_LO); Th_E_noph0->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_LO);}
+ else {nElNOph0++; EnCalNoPh0->Fill(detKinBeamRot_Ee,wgt_full); ThCalNoPh0->Fill(detKinBeamRot_the,wgt_full); Th_E_noph0->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);}
     
            }
     
@@ -167,12 +167,12 @@ d=posEl-posPh;
            {
                nEl1++;
            }
-           else {nElNORm1++; EnCalNORm1->Fill(detKinBeamRot_Ee,wgt_LO); ThCalNORm1->Fill(detKinBeamRot_the,wgt_LO); Th_E_noRm1->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_LO);}
+           else {nElNORm1++; EnCalNORm1->Fill(detKinBeamRot_Ee,wgt_full); ThCalNORm1->Fill(detKinBeamRot_the,wgt_full); Th_E_noRm1->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);}
        }
-   else  {nElPh1++; ThPhNoCal1->Fill(detKinBeamRot_the,wgt_LO); EnPhNoCal1->Fill(detKinBeamRot_Ee,wgt_LO); 
-              Th_E_PhNoCal1->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_LO);}}
+   else  {nElPh1++; ThPhNoCal1->Fill(detKinBeamRot_the,wgt_full); EnPhNoCal1->Fill(detKinBeamRot_Ee,wgt_full); 
+              Th_E_PhNoCal1->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);}}
     else {nElNOph1++; 
-          EnCalNoPh1->Fill(detKinBeamRot_Ee,wgt_LO); ThCalNoPh1->Fill(detKinBeamRot_the,wgt_LO); Th_E_noph1->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_LO);}
+          EnCalNoPh1->Fill(detKinBeamRot_Ee,wgt_full); ThCalNoPh1->Fill(detKinBeamRot_the,wgt_full); Th_E_noph1->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);}
 
            }
    }

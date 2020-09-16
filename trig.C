@@ -21,21 +21,21 @@ Double_t nEl=0; // numero di elettroni con un fotone
 Double_t nElPh=0; // numero elettroni con fotone in generale
 Double_t nElNO=0; // numero di elettroni nel cal
 Double_t nElNORm=0; // numero di elettroni con un fotone ma senza richesta Rm
-Double_t nElNOPh=0; // numero di elettroni senza fotone
+Double_t nElNOph=0; // numero di elettroni senza fotone
     
     
 Double_t nEl0=0; // numero di elettroni con un fotone dal target 0
 Double_t nElPh0=0; // numero elettroni con fotone in generale dal target 0
 Double_t nElNO0=0; // numero di elettroni nel cal dal target 0
 Double_t nElNORm0=0; // numero di elettroni con un fotone ma senza richesta Rm dal target 0
-Double_t nElNOPh0=0; // numero di elettroni senza fotone dal target 0
+Double_t nElNOph0=0; // numero di elettroni senza fotone dal target 0
     
     
 Double_t nEl1=0; // numero di elettroni con un fotone dal target 1
 Double_t nElPh1=0; // numero elettroni con fotone in generale dal target 1
 Double_t nElNO1=0; // numero di elettroni nel cal dal target 1
 Double_t nElNORm1=0; // numero di elettroni con un fotone ma senza richesta Rm dal target 1
-Double_t nElNOPh1=0; // numero di elettroni senza fotone dal target 1
+Double_t nElNOph1=0; // numero di elettroni senza fotone dal target 1
 
 
 TH1F* EnCalNORm=new TH1F("h2aN", "Energy e not 2 Rm distant from photons", 200,0,160);

@@ -190,45 +190,45 @@ d=posEl-posPh;
            }
        if (abs(detKinBeamRot_cooXe)<0.07 && abs(detKinBeamRot_cooYe)<0.07 && abs(detKinBeamRot_cooXmu)<0.07 && abs(detKinBeamRot_cooYmu)<0.07 && detKinBeamRot_tar==1)
        {
-          Th_E_mu1->(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+          Th_E_mu1->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
            if (photon_coox != -1)
            {
-               Th_E_eph1->(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+               Th_E_eph1->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
            }
-           else Th_E_eNoph1->(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+           else Th_E_eNoph1->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
        }
     
        
     if (abs(detKinBeamRot_cooXe)<0.07 && abs(detKinBeamRot_cooYe)<0.07 && abs(detKinBeamRot_cooXmu)<0.07 && abs(detKinBeamRot_cooYmu)<0.07 && detKinBeamRot_tar==0)
        {
-          Th_E_mu0->(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+          Th_E_mu0->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
            if (photon_coox != -1)
            {
-               Th_E_eph0->(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+               Th_E_eph0->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
            }
-           else Th_E_eNoph0->(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+           else Th_E_eNoph0->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
        }
        
    
     
     if (abs(detKinBeamRot_cooXe)<0.07 && abs(detKinBeamRot_cooYe)<0.07 && abs(detKinBeamRot_cooXmu)<0.07 && abs(detKinBeamRot_cooYmu)<0.07 && detKinBeamRot_tar==1)
        {
-          Th_E_mu1->(detKinBeamRot_thmu,detKinBeamRot_Emu,wgt_full);
+          Th_E_mu1->Fill(detKinBeamRot_thmu,detKinBeamRot_Emu,wgt_full);
            if (photon_coox != -1)
            {
-               Th_E_eph1->(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+               Th_E_eph1->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
            }
-           else Th_E_eNoph1->(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+           else Th_E_eNoph1->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
        }
         
             if (abs(detKinBeamRot_cooXe)<0.07 && abs(detKinBeamRot_cooYe)<0.07 && abs(detKinBeamRot_cooXmu)<0.07 && abs(detKinBeamRot_cooYmu)<0.07)
        {
-          Th_E_mu->(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+          Th_E_mu->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
            if (photon_coox != -1)
            {
-               Th_E_eph->(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+               Th_E_eph->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
            }
-           else Th_E_eNoph->(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+           else Th_E_eNoph->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
        }
        
    }

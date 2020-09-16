@@ -182,20 +182,20 @@ d=posEl-posPh;
     cout << "numero di elettroni con fotoni nel calorimetro: " << nEl << endl;
     cout << "numero di elettroni con fotoni senza richiesta raggio Moliere: " << nElNORm << endl;
     cout<<endl;
-    cout << "numero di elettroni senza fotoni: " << nElNoPh << endl;
+    cout << "numero di elettroni senza fotoni: " << nElNoph << endl;
     
     cout << "numero di elettroni nel calorimetro dal tar 0: " << nElNO0 << endl;
     cout << "numero di elettroni con fotoni fuori dal calorimetro dal tar 0: " << nElPh0 << endl;
     cout << "numero di elettroni con fotoni nel calorimetro dal tar 0: " << nEl0 << endl;
     cout << "numero di elettroni con fotoni senza richiesta raggio Moliere dal tar 0: " << nElNORm0 << endl;
-    cout << "numero di elettroni senza fotoni dal tar 0: " << nElNoPh0 << endl;
+    cout << "numero di elettroni senza fotoni dal tar 0: " << nElNoph0 << endl;
     
     cout<<endl;
     cout << "numero di elettroni nel calorimetro dal tar 1: " << nElNO1 << endl;
     cout << "numero di elettroni con fotoni fuori dal calorimetro dal tar 1: " << nElPh1 << endl;
     cout << "numero di elettroni con fotoni nel calorimetro dal tar 1: " << nEl1 << endl;
     cout << "numero di elettroni con fotoni senza richiesta raggio Moliere dal tar 1: " << nElNORm1 << endl;
-    cout << "numero di elettroni senza fotoni: " << nElNoPh1 << endl;
+    cout << "numero di elettroni senza fotoni: " << nElNoph1 << endl;
     
     
     

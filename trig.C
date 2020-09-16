@@ -90,6 +90,7 @@ TH2F  *Th_E_PhNoCal1 = new TH2F("h2da1" , " Th  Vs. E of the electrons with phot
    
        //energyThEl->SetPoint(jentry,detKinBeamRot_the,detKinBeamRot_Ee);
        
+    if (detKinBeamRot_Ee<40 && detKinBeamRot_the<7){   
        
        if (detKinBeamRot_cooXe < 0.07 && detKinBeamRot_cooYe < 0.07 && detKinBeamRot_cooXe > -0.07 && detKinBeamRot_cooYe > -0.07)
         {
@@ -177,7 +178,7 @@ d=posEl-posPh;
            }
    }
     
-    
+   }
     
 
     /*energyThEl->SetTitle("Energy_e(theta_e)");

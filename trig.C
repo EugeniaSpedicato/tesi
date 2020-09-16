@@ -49,24 +49,24 @@ TH1F* EnPhNoCal0=new TH1F("h2aN", "Energy e with ph out of calorimeter TAR 0", 2
 TH1F* EnPhNoCal1=new TH1F("h2aN", "Energy e with ph out of calorimeter TAR 1", 200,0,160);   
 
     
-TH1F* ThCalNORm=new TH1F("h2aN", "Theta e not 2 Rm distant from photons",180,0,0.1);
-TH1F* ThCalNORm0=new TH1F("h2aN", "Theta e not 2 Rm distant from photons TAR 0", 180,0,0.1);
-TH1F* ThCalNORm1=new TH1F("h2aN", "Theta e not 2 Rm distant from photons TAR 1", 180,0,0.1);
-TH1F* ThCalNoPh=new TH1F("h2aN", "Theta e wh/out ph", 180,0,0.1);
-TH1F* ThCalNoPh0=new TH1F("h2aN", "Theta e wh/out ph TAR 0", 180,0,0.1);
-TH1F* ThCalNoPh1=new TH1F("h2aN", "Theta e wh/out ph TAR 1", 180,0,0.1);   
-TH1F* ThPhNoCal=new TH1F("h2aN", "Theta e with ph out of calorimete", 180,0,0.1);
-TH1F* ThPhNoCal0=new TH1F("h2aN", "Theta e with ph out of calorimete TAR 0", 180,0,0.1);
-TH1F* ThPhNoCal1=new TH1F("h2aN", "Theta e with ph out of calorimete TAR 1", 180,0,0.1);      
+TH1F* ThCalNORm=new TH1F("h2aN", "Theta e not 2 Rm distant from photons",180,0,100);
+TH1F* ThCalNORm0=new TH1F("h2aN", "Theta e not 2 Rm distant from photons TAR 0", 180,0,100);
+TH1F* ThCalNORm1=new TH1F("h2aN", "Theta e not 2 Rm distant from photons TAR 1", 180,0,100);
+TH1F* ThCalNoPh=new TH1F("h2aN", "Theta e wh/out ph", 180,0,100);
+TH1F* ThCalNoPh0=new TH1F("h2aN", "Theta e wh/out ph TAR 0", 180,0,100);
+TH1F* ThCalNoPh1=new TH1F("h2aN", "Theta e wh/out ph TAR 1", 180,0,100);   
+TH1F* ThPhNoCal=new TH1F("h2aN", "Theta e with ph out of calorimete", 180,0,100);
+TH1F* ThPhNoCal0=new TH1F("h2aN", "Theta e with ph out of calorimete TAR 0", 180,0,100);
+TH1F* ThPhNoCal1=new TH1F("h2aN", "Theta e with ph out of calorimete TAR 1", 180,0,100);      
     
-TH2F  *Th_E_noph  = new TH2F("h2da" , " Th  Vs. E of the electrons",140,0,0.1,140,0,160);
-TH2F  *Th_E_noRm = new TH2F("h2da" , " Th  Vs. E of the electrons",140,0,0.1,140,0,160);
+TH2F  *Th_E_noph  = new TH2F("h2da" , " Th  Vs. E of the electrons",140,0,100,140,0,160);
+TH2F  *Th_E_noRm = new TH2F("h2da" , " Th  Vs. E of the electrons",140,0,100,140,0,160);
     
-TH2F  *Th_E_noph0  = new TH2F("h2da0" , " Th  Vs. E of the electrons",140,0,0.1,140,0,160);
-TH2F  *Th_E_noRm0 = new TH2F("h2da0" , " Th  Vs. E of the electrons",140,0,0.1,140,0,160);
+TH2F  *Th_E_noph0  = new TH2F("h2da0" , " Th  Vs. E of the electrons",140,0,100,140,0,160);
+TH2F  *Th_E_noRm0 = new TH2F("h2da0" , " Th  Vs. E of the electrons",140,0,100,140,0,160);
     
-TH2F  *Th_E_noph1  = new TH2F("h2da1" , " Th  Vs. E of the electrons",140,0,0.1,140,0,160);
-TH2F  *Th_E_noRm1 = new TH2F("h2da1" , " Th  Vs. E of the electrons",140,0,0.1,140,0,160);
+TH2F  *Th_E_noph1  = new TH2F("h2da1" , " Th  Vs. E of the electrons",140,0,100,140,0,160);
+TH2F  *Th_E_noRm1 = new TH2F("h2da1" , " Th  Vs. E of the electrons",140,0,100,140,0,160);
 
 
     

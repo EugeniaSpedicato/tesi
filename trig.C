@@ -59,19 +59,19 @@ TH1F* ThPhNoCal=new TH1F("h2aN", "Theta e with ph out of calorimete", 180,0,100)
 TH1F* ThPhNoCal0=new TH1F("h2aN", "Theta e with ph out of calorimete TAR 0", 180,0,100);
 TH1F* ThPhNoCal1=new TH1F("h2aN", "Theta e with ph out of calorimete TAR 1", 180,0,100);      
     
-TH2F  *Th_E_noph  = new TH2F("h2da" , " Th  Vs. E of the electrons",140,0,100,140,0,160);
-TH2F  *Th_E_noRm = new TH2F("h2da" , " Th  Vs. E of the electrons",140,0,100,140,0,160);
-TH2F  *Th_E_PhNoCal = new TH2F("h2da" , " Th  Vs. E of the electrons",140,0,100,140,0,160);
+TH2F  *Th_E_noph  = new TH2F("h2da" , " Th  Vs. E of the electrons whitout photons (LO)",140,0,100,140,0,160);
+TH2F  *Th_E_noRm = new TH2F("h2da" , " Th  Vs. E of the electrons with photons <2Rm",140,0,100,140,0,160);
+TH2F  *Th_E_PhNoCal = new TH2F("h2da" , " Th  Vs. E of the electrons with photons out of cal",140,0,100,140,0,160);
 
     
-TH2F  *Th_E_noph0  = new TH2F("h2da0" , " Th  Vs. E of the electrons",140,0,100,140,0,160);
-TH2F  *Th_E_noRm0 = new TH2F("h2da0" , " Th  Vs. E of the electrons",140,0,100,140,0,160);
-TH2F  *Th_E_PhNoCal0 = new TH2F("h2da" , " Th  Vs. E of the electrons",140,0,100,140,0,160);
+TH2F  *Th_E_noph0  = new TH2F("h2da0" , " Th  Vs. E of the electrons whitout photons (LO) tar 0 ",140,0,100,140,0,160);
+TH2F  *Th_E_noRm0 = new TH2F("h2da0" , " Th  Vs. E of the electrons with photons <2Rm tar 0",140,0,100,140,0,160);
+TH2F  *Th_E_PhNoCal0 = new TH2F("h2da" , " Th  Vs. E of the electrons with photons out of cal tar 0",140,0,100,140,0,160);
     
     
-TH2F  *Th_E_noph1  = new TH2F("h2da1" , " Th  Vs. E of the electrons",140,0,100,140,0,160);
-TH2F  *Th_E_noRm1 = new TH2F("h2da1" , " Th  Vs. E of the electrons",140,0,100,140,0,160);
-TH2F  *Th_E_PhNoCal1 = new TH2F("h2da1" , " Th  Vs. E of the electrons",140,0,100,140,0,160);
+TH2F  *Th_E_noph1  = new TH2F("h2da1" , " Th  Vs. E of the electrons whitout photons (LO) tar 1",140,0,100,140,0,160);
+TH2F  *Th_E_noRm1 = new TH2F("h2da1" , " Th  Vs. E of the electrons with photons <2Rm tar 1",140,0,100,140,0,160);
+TH2F  *Th_E_PhNoCal1 = new TH2F("h2da1" , " Th  Vs. E of the electrons with photons out of cal tar 1",140,0,100,140,0,160);
     
 
 
@@ -317,5 +317,64 @@ d=posEl-posPh;
     Th_E_PhNoCal1->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_PhNoCal1->GetYaxis()->SetTitle("E [GeV]");
   dued0->SaveAs("Eth0.png");
+    
+    
+    
+        TCanvas * separati= new TCanvas("dued1","dued1",1000,100,2500,2000);
+    separati->Divide(3,3);
+    
+    separati->cd(1);
+    Th_E_noph1->SetMarkerColor(kRed);
+    Th_E_noph1->Draw("HIST");
+    Th_E_noph1->GetXaxis()->SetTitle("Th [mrad]");
+    Th_E_noph1->GetYaxis()->SetTitle("E [GeV]");
+    
+    separati->cd(2);
+    Th_E_noRm1->Draw("HIST");
+    Th_E_noRm1->GetXaxis()->SetTitle("Th [mrad]");
+    Th_E_noRm1->GetYaxis()->SetTitle("E [GeV]");
+    
+    separati->cd(3); 
+    Th_E_PhNoCal1->SetMarkerColor(kOrange);
+    Th_E_PhNoCal1->Draw("HIST ");
+    Th_E_PhNoCal1->GetXaxis()->SetTitle("Th [mrad]");
+    Th_E_PhNoCal1->GetYaxis()->SetTitle("E [GeV]");
+
+    separati->cd(4);
+    Th_E_noph->SetMarkerColor(kRed);
+    Th_E_noph->Draw("HIST");
+    Th_E_noph->GetXaxis()->SetTitle("Th [mrad]");
+    Th_E_noph->GetYaxis()->SetTitle("E [GeV]");
+
+    separati->cd(5);
+    Th_E_noRm->Draw("HIST");
+    Th_E_noRm->GetXaxis()->SetTitle("Th [mrad]");
+    Th_E_noRm->GetYaxis()->SetTitle("E [GeV]");
+        
+    separati->cd(6);
+    Th_E_PhNoCal->SetMarkerColor(kOrange);
+    Th_E_PhNoCal->Draw("HIST");
+    Th_E_PhNoCal->GetXaxis()->SetTitle("Th [mrad]");
+    Th_E_PhNoCal->GetYaxis()->SetTitle("E [GeV]");
+  dued->SaveAs("Eth.png");
+    
+  
+    separati->cd(7);
+    Th_E_noph0->SetMarkerColor(kRed);
+    Th_E_noph0->Draw("HIST");
+    Th_E_noph0->GetXaxis()->SetTitle("Th [mrad]");
+    Th_E_noph0->GetYaxis()->SetTitle("E [GeV]");
+
+    separati->cd(8);
+    Th_E_noRm0->Draw("HIST");
+    Th_E_noRm0->GetXaxis()->SetTitle("Th [mrad]");
+    Th_E_noRm0->GetYaxis()->SetTitle("E [GeV]");
+        
+    separati->cd(9);
+    Th_E_PhNoCal1->SetMarkerColor(kOrange);
+    Th_E_PhNoCal1->Draw("HIST same");
+    Th_E_PhNoCal1->GetXaxis()->SetTitle("Th [mrad]");
+    Th_E_PhNoCal1->GetYaxis()->SetTitle("E [GeV]");
+  separati->SaveAs("Energy-theta.png");
     
 }

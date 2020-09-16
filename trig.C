@@ -231,7 +231,7 @@ d=posEl-posPh;
            else Th_E_eNoph->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
        }
        
-   }
+   }}
     
 
     /*energyThEl->SetTitle("Energy_e(theta_e)");

@@ -61,12 +61,18 @@ TH1F* ThPhNoCal1=new TH1F("h2aN", "Theta e with ph out of calorimete TAR 1", 180
     
 TH2F  *Th_E_noph  = new TH2F("h2da" , " Th  Vs. E of the electrons",140,0,100,140,0,160);
 TH2F  *Th_E_noRm = new TH2F("h2da" , " Th  Vs. E of the electrons",140,0,100,140,0,160);
+TH2F  *Th_E_PhNoCal = new TH2F("h2da" , " Th  Vs. E of the electrons",140,0,100,140,0,160);
+
     
 TH2F  *Th_E_noph0  = new TH2F("h2da0" , " Th  Vs. E of the electrons",140,0,100,140,0,160);
 TH2F  *Th_E_noRm0 = new TH2F("h2da0" , " Th  Vs. E of the electrons",140,0,100,140,0,160);
+TH2F  *Th_E_PhNoCal0 = new TH2F("h2da" , " Th  Vs. E of the electrons",140,0,100,140,0,160);
+    
     
 TH2F  *Th_E_noph1  = new TH2F("h2da1" , " Th  Vs. E of the electrons",140,0,100,140,0,160);
 TH2F  *Th_E_noRm1 = new TH2F("h2da1" , " Th  Vs. E of the electrons",140,0,100,140,0,160);
+TH2F  *Th_E_PhNoCal1 = new TH2F("h2da1" , " Th  Vs. E of the electrons",140,0,100,140,0,160);
+    
 
 
     
@@ -104,7 +110,8 @@ d=posEl-posPh;
            }
           else {nElNORm++; EnCalNORm->Fill(detKinBeamRot_Ee,wgt_full); ThCalNORm->Fill(detKinBeamRot_the,wgt_full); Th_E_noRm->Fill(detKinBeamRot_the,detKinBeamRot_Ee,wgt_full);}
        }
-      else {nElPh++; ThPhNoCal->Fill(detKinBeamRot_the,wgt_full); EnPhNoCal->Fill(detKinBeamRot_Ee,wgt_full);}     
+      else {nElPh++; ThPhNoCal->Fill(detKinBeamRot_the,wgt_full); EnPhNoCal->Fill(detKinBeamRot_Ee,wgt_full);
+           Th_E_PhNoCal->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);}     
    }
 else {nElNOph++;
       EnCalNoPh->Fill(detKinBeamRot_Ee,wgt_full); ThCalNoPh->Fill(detKinBeamRot_the,wgt_full); Th_E_noph->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);}
@@ -133,8 +140,8 @@ d=posEl-posPh;
            }
            else {nElNORm0++; EnCalNORm0->Fill(detKinBeamRot_Ee,wgt_full); ThCalNORm0->Fill(detKinBeamRot_the,wgt_full); Th_E_noRm0->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);}
        }
-   else {nElPh0++; ThPhNoCal0->Fill(detKinBeamRot_the,wgt_full); EnPhNoCal0->Fill(detKinBeamRot_Ee,wgt_full);} 
-              }
+   else {nElPh0++; ThPhNoCal0->Fill(detKinBeamRot_the,wgt_full); EnPhNoCal0->Fill(detKinBeamRot_Ee,wgt_full); 
+              Th_E_PhNoCal0->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);}
            else {nElNOph0++;
                  EnCalNoPh0->Fill(detKinBeamRot_Ee,wgt_full); ThCalNoPh0->Fill(detKinBeamRot_the,wgt_full); Th_E_noph0->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);}
     
@@ -162,8 +169,8 @@ d=posEl-posPh;
            }
            else {nElNORm1++; EnCalNORm1->Fill(detKinBeamRot_Ee,wgt_full); ThCalNORm1->Fill(detKinBeamRot_the,wgt_full); Th_E_noRm1->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);}
        }
-   else  {nElPh1++; ThPhNoCal1->Fill(detKinBeamRot_the,wgt_full); EnPhNoCal1->Fill(detKinBeamRot_Ee,wgt_full);} 
-              }
+   else  {nElPh1++; ThPhNoCal1->Fill(detKinBeamRot_the,wgt_full); EnPhNoCal1->Fill(detKinBeamRot_Ee,wgt_full); 
+              Th_E_PhNoCal1->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);}
     else {nElNOph1++; 
           EnCalNoPh1->Fill(detKinBeamRot_Ee,wgt_full); ThCalNoPh1->Fill(detKinBeamRot_the,wgt_full); Th_E_noph1->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);}
 
@@ -217,17 +224,17 @@ d=posEl-posPh;
     gPad->SetLogx();
     
     e->cd(2);
-    EnCalNORm0->Draw("HIST");
     EnCalNoPh0->SetLineColor(kRed);
-    EnCalNoPh0->Draw("HIST same");
+    EnCalNoPh0->Draw("HIST");
+    EnCalNORm0->Draw("HIST same");
     EnPhNoCal0->SetLineColor(kOrange);
     EnPhNoCal0->Draw("HIST same");
     gPad->SetLogx();
     
     e->cd(3);
-    EnCalNORm1->Draw("HIST");
     EnCalNoPh1->SetLineColor(kRed);
-    EnCalNoPh1->Draw("HIST same");
+    EnCalNoPh1->Draw("HIST");
+    EnCalNORm1->Draw("HIST same");
     EnPhNoCal1->SetLineColor(kOrange);
     EnPhNoCal1->Draw("HIST same");
     gPad->SetLogx();
@@ -237,66 +244,78 @@ d=posEl-posPh;
     TCanvas * te= new TCanvas("te","te",200,10,1000,1000);
     te->Divide(1,3);
     te->cd(1);
-    ThCalNORm->Draw("HIST");
     ThCalNoPh->SetLineColor(kRed);
-    ThCalNoPh->Draw("HIST same");
+    ThCalNoPh->Draw("HIST");
+    ThCalNORm->Draw("HIST same");
     ThPhNoCal->SetLineColor(kOrange);
     ThPhNoCal->Draw("HIST same");
 
     
     te->cd(2);
-    ThCalNORm0->Draw("HIST");
     ThCalNoPh0->SetLineColor(kRed);
-    ThCalNoPh0->Draw("HIST same");
+    ThCalNoPh0->Draw("HIST");
+    ThCalNORm0->Draw("HIST same");
     ThPhNoCal0->SetLineColor(kOrange);
     ThPhNoCal0->Draw("HIST same");
    
     
     te->cd(3);
-    ThCalNORm1->Draw("HIST");
     ThCalNoPh1->SetLineColor(kRed);
-    ThCalNoPh1->Draw("HIST same");
+    ThCalNoPh1->Draw("HIST");
+    ThCalNORm1->Draw("HIST same");
     ThPhNoCal1->SetLineColor(kOrange);
     ThPhNoCal1->Draw("HIST same");
-   
     
     te->SaveAs("ThElnoRm.png");
     
     TCanvas * dued1= new TCanvas("dued1","dued1",1000,100,2500,2000);
+    Th_E_noph1->SetMarkerColor(kRed);
     Th_E_noph1->Draw("HIST");
     Th_E_noph1->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_noph1->GetYaxis()->SetTitle("E [GeV]");
-  dued1->SaveAs("Eth1.png");
-    
-    TCanvas * dued1a= new TCanvas("dued1","dued1",1000,100,2500,2000); 
-    Th_E_noRm1->SetMarkerColor(kBlack);
-    Th_E_noRm1->Draw("HIST");
+
+    Th_E_noRm1->Draw("HIST same");
     Th_E_noRm1->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_noRm1->GetYaxis()->SetTitle("E [GeV]");
-  dued1a->SaveAs("Eth1noRM.png");
+        
+    Th_E_PhNoCal1->SetMarkerColor(kOrange);
+    Th_E_PhNoCal1->Draw("HIST same");
+    Th_E_PhNoCal1->GetXaxis()->SetTitle("Th [mrad]");
+    Th_E_PhNoCal1->GetYaxis()->SetTitle("E [GeV]");
+  dued1->SaveAs("Eth1.png");
     
     TCanvas * dued= new TCanvas("dued","dued",1000,100,2500,2000);
+
+    Th_E_noph->SetMarkerColor(kRed);
     Th_E_noph->Draw("HIST");
     Th_E_noph->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_noph->GetYaxis()->SetTitle("E [GeV]");
-  dued->SaveAs("Eth.png");
-    TCanvas * dueda= new TCanvas("dued","dued",1000,100,2500,2000);
-    Th_E_noRm->SetMarkerColor(kBlack);
-    Th_E_noRm->Draw("HIST");
+
+    Th_E_noRm->Draw("HIST same");
     Th_E_noRm->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_noRm->GetYaxis()->SetTitle("E [GeV]");
-  dueda->SaveAs("EthnoRM.png");
+        
+    Th_E_PhNoCal->SetMarkerColor(kOrange);
+    Th_E_PhNoCal->Draw("HIST same");
+    Th_E_PhNoCal->GetXaxis()->SetTitle("Th [mrad]");
+    Th_E_PhNoCal->GetYaxis()->SetTitle("E [GeV]");
+  dued->SaveAs("Eth.png");
     
     TCanvas * dued0= new TCanvas("dued0","dued0",1000,100,2500,2000);
+
+    Th_E_noph0->SetMarkerColor(kRed);
     Th_E_noph0->Draw("HIST");
     Th_E_noph0->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_noph0->GetYaxis()->SetTitle("E [GeV]");
-  dued0->SaveAs("Eth0.png");
-    TCanvas * dued0a= new TCanvas("dued0","dued0",1000,100,2500,2000);
-    Th_E_noRm0->SetMarkerColor(kBlack);
-    Th_E_noRm0->Draw("HIST");
+
+    Th_E_noRm0->Draw("HIST same");
     Th_E_noRm0->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_noRm0->GetYaxis()->SetTitle("E [GeV]");
-  dued0a->SaveAs("Eth0noRM.png");
+        
+    Th_E_PhNoCal1->SetMarkerColor(kOrange);
+    Th_E_PhNoCal1->Draw("HIST same");
+    Th_E_PhNoCal1->GetXaxis()->SetTitle("Th [mrad]");
+    Th_E_PhNoCal1->GetYaxis()->SetTitle("E [GeV]");
+  dued0->SaveAs("Eth0.png");
     
 }

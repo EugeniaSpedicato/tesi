@@ -73,6 +73,18 @@ TH2F  *Th_E_noph1  = new TH2F("h2da1" , " Th  Vs. E of the electrons whitout pho
 TH2F  *Th_E_noRm1 = new TH2F("h2da1" , " Th  Vs. E of the electrons with photons <2Rm tar 1",140,0,100,140,0,160);
 TH2F  *Th_E_PhNoCal1 = new TH2F("h2da1" , " Th  Vs. E of the electrons with photons out of cal tar 1",140,0,100,140,0,160);
     
+TH2F  *Th_E_mu = new TH2F("h2da1" , " Th  Vs. E of the muons",140,0,5,140,0,160);
+TH2F  *Th_E_eph = new TH2F("h2da1" , " Th  Vs. E of the electrons with ph (NLO)",140,0,100,140,0,160);
+TH2F  *Th_E_eNoph = new TH2F("h2da1" , " Th  Vs. E of the electrons without photons",140,0,100,140,0,160);
+    
+TH2F  *Th_E_mu0 = new TH2F("h2da1" , " Th  Vs. E of the muons tar 0",140,0,5,140,0,160);
+TH2F  *Th_E_eph0 = new TH2F("h2da1" , " Th  Vs. E of the electrons with ph (NLO) tar 0",140,0,100,140,0,160);
+TH2F  *Th_E_eNoph0 = new TH2F("h2da1" , " Th  Vs. E of the electrons without photons tar 0",140,0,100,140,0,160);
+    
+TH2F  *Th_E_mu1 = new TH2F("h2da1" , " Th  Vs. E of the muons tar 1",140,0,5,140,0,160);
+TH2F  *Th_E_eph1 = new TH2F("h2da1" , " Th  Vs. E of the electrons with ph (NLO) tar 1",140,0,100,140,0,160);
+TH2F  *Th_E_eNoph1 = new TH2F("h2da1" , " Th  Vs. E of the electrons without photons tar 1",140,0,100,140,0,160);
+    
 
 
     
@@ -176,8 +188,49 @@ d=posEl-posPh;
           EnCalNoPh1->Fill(detKinBeamRot_Ee,wgt_full); ThCalNoPh1->Fill(detKinBeamRot_the,wgt_full); Th_E_noph1->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);}
 
            }
-   }
+       if (abs(detKinBeamRot_cooXe)<0.07 && abs(detKinBeamRot_cooYe)<0.07 && abs(detKinBeamRot_cooXmu)<0.07 && abs(detKinBeamRot_cooYmu)<0.07 && detKinBeamRot_tar==1)
+       {
+          Th_E_mu1->(detKinBeamRot_thmu,detKinBeamRot_Emu,wgt_full);
+           if (photon_coox != -1)
+           {
+               Th_E_eph1->(detKinBeamRot_the,detKinBeamRot_Ee,wgt_full);
+           }
+           else Th_E_eNoph1->(detKinBeamRot_thmu,detKinBeamRot_Emu,wgt_full);
+       }
     
+       
+    if (abs(detKinBeamRot_cooXe)<0.07 && abs(detKinBeamRot_cooYe)<0.07 && abs(detKinBeamRot_cooXmu)<0.07 && abs(detKinBeamRot_cooYmu)<0.07 && detKinBeamRot_tar==0)
+       {
+          Th_E_mu0->(detKinBeamRot_thmu,detKinBeamRot_Emu,wgt_full);
+           if (photon_coox != -1)
+           {
+               Th_E_eph0->(detKinBeamRot_the,detKinBeamRot_Ee,wgt_full);
+           }
+           else Th_E_eNoph0->(detKinBeamRot_thmu,detKinBeamRot_Emu,wgt_full);
+       }
+       
+   
+    
+    if (abs(detKinBeamRot_cooXe)<0.07 && abs(detKinBeamRot_cooYe)<0.07 && abs(detKinBeamRot_cooXmu)<0.07 && abs(detKinBeamRot_cooYmu)<0.07 && detKinBeamRot_tar==1)
+       {
+          Th_E_mu1->(detKinBeamRot_thmu,detKinBeamRot_Emu,wgt_full);
+           if (photon_coox != -1)
+           {
+               Th_E_eph1->(detKinBeamRot_the,detKinBeamRot_Ee,wgt_full);
+           }
+           else Th_E_eNoph1->(detKinBeamRot_thmu,detKinBeamRot_Emu,wgt_full);
+       }
+        
+            if (abs(detKinBeamRot_cooXe)<0.07 && abs(detKinBeamRot_cooYe)<0.07 && abs(detKinBeamRot_cooXmu)<0.07 && abs(detKinBeamRot_cooYmu)<0.07)
+       {
+          Th_E_mu->(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+           if (photon_coox != -1)
+           {
+               Th_E_eph->(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+           }
+           else Th_E_eNoph->(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+       }
+       
    }
     
 
@@ -357,7 +410,6 @@ d=posEl-posPh;
     Th_E_PhNoCal->Draw("HIST");
     Th_E_PhNoCal->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_PhNoCal->GetYaxis()->SetTitle("E [GeV]");
-  dued->SaveAs("Eth.png");
     
   
     separati->cd(7);
@@ -377,5 +429,64 @@ d=posEl-posPh;
     Th_E_PhNoCal0->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_PhNoCal0->GetYaxis()->SetTitle("E [GeV]");
   separati->SaveAs("Energy-theta.png");
+       
+            TCanvas * separatiA= new TCanvas("A","A",1000,100,2500,2000);
+    separatiA->Divide(3,3);
+    
+    separatiA->cd(1);
+    Th_E_eNoph1->SetMarkerColor(46);
+    Th_E_eNoph1->Draw("HIST");
+    Th_E_eNoph1->GetXaxis()->SetTitle("Th [mrad]");
+    Th_E_eNoph1->GetYaxis()->SetTitle("E [GeV]");
+    
+    separatiA->cd(2);
+    Th_E_eph1->Draw("HIST");
+    Th_E_eph1->GetXaxis()->SetTitle("Th [mrad]");
+    Th_E_eph1->GetYaxis()->SetTitle("E [GeV]");
+    
+    separatiA->cd(3); 
+    Th_E_mu1->SetMarkerColor(29);
+    Th_E_mu1->Draw("HIST ");
+    Th_E_mu1->GetXaxis()->SetTitle("Th [mrad]");
+    Th_E_mu1->GetYaxis()->SetTitle("E [GeV]");
+
+    separatiA->cd(4);
+    Th_E_eNoph->SetMarkerColor(46);
+    Th_E_eNoph->Draw("HIST");
+    Th_E_eNoph->GetXaxis()->SetTitle("Th [mrad]");
+    Th_E_eNoph->GetYaxis()->SetTitle("E [GeV]");
+
+    separatiA->cd(5);
+    Th_E_eph->Draw("HIST");
+    Th_E_eph->GetXaxis()->SetTitle("Th [mrad]");
+    Th_E_eph->GetYaxis()->SetTitle("E [GeV]");
+        
+    separatiA->cd(6);
+    Th_E_mu->SetMarkerColor(29);
+    Th_E_mu->Draw("HIST");
+    Th_E_mu->GetXaxis()->SetTitle("Th [mrad]");
+    Th_E_mu->GetYaxis()->SetTitle("E [GeV]");
+
+    
+  
+    separatiA->cd(7);
+    Th_E_eNoph0->SetMarkerColor(46);
+    Th_E_eNoph0->Draw("HIST");
+    Th_E_eNoph0->GetXaxis()->SetTitle("Th [mrad]");
+    Th_E_eNoph0->GetYaxis()->SetTitle("E [GeV]");
+
+    separatiA->cd(8);
+    Th_E_eph0->Draw("HIST");
+    Th_E_eph0->GetXaxis()->SetTitle("Th [mrad]");
+    Th_E_eph0->GetYaxis()->SetTitle("E [GeV]");
+        
+    separatiA->cd(9);
+    Th_E_mu0->SetMarkerColor(29);
+    Th_E_mu0->Draw("HIST same");
+    Th_E_mu0->GetXaxis()->SetTitle("Th [mrad]");
+    Th_E_mu0->GetYaxis()->SetTitle("E [GeV]");
+  separatiA->SaveAs("thetae-thetamu.png");   
+       
+    
     
 }

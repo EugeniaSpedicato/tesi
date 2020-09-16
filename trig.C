@@ -124,7 +124,7 @@ else {nElNOph++;
     if (detKinBeamRot_cooXe < 0.07 && detKinBeamRot_cooYe < 0.07 && detKinBeamRot_cooXe > -0.07 && detKinBeamRot_cooYe > -0.07 && detKinBeamRot_tar==0 && detKinBeamRot_Ee>1)
         {
        nElNO0++;
-              if (photon_coox != -1)
+              if (photon_coox != -1 )
        {
            
 double_t posEl = sqrt(detKinBeamRot_cooXe*detKinBeamRot_cooXe+detKinBeamRot_cooYe*detKinBeamRot_cooYe);
@@ -312,10 +312,10 @@ d=posEl-posPh;
     Th_E_noRm0->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_noRm0->GetYaxis()->SetTitle("E [GeV]");
         
-    Th_E_PhNoCal1->SetMarkerColor(kOrange);
-    Th_E_PhNoCal1->Draw("HIST same");
-    Th_E_PhNoCal1->GetXaxis()->SetTitle("Th [mrad]");
-    Th_E_PhNoCal1->GetYaxis()->SetTitle("E [GeV]");
+    Th_E_PhNoCal0->SetMarkerColor(kOrange);
+    Th_E_PhNoCal0->Draw("HIST same");
+    Th_E_PhNoCal0->GetXaxis()->SetTitle("Th [mrad]");
+    Th_E_PhNoCal0->GetYaxis()->SetTitle("E [GeV]");
   dued0->SaveAs("Eth0.png");
     
     
@@ -371,10 +371,10 @@ d=posEl-posPh;
     Th_E_noRm0->GetYaxis()->SetTitle("E [GeV]");
         
     separati->cd(9);
-    Th_E_PhNoCal1->SetMarkerColor(kOrange);
-    Th_E_PhNoCal1->Draw("HIST same");
-    Th_E_PhNoCal1->GetXaxis()->SetTitle("Th [mrad]");
-    Th_E_PhNoCal1->GetYaxis()->SetTitle("E [GeV]");
+    Th_E_PhNoCal0->SetMarkerColor(kOrange);
+    Th_E_PhNoCal0->Draw("HIST same");
+    Th_E_PhNoCal0->GetXaxis()->SetTitle("Th [mrad]");
+    Th_E_PhNoCal0->GetYaxis()->SetTitle("E [GeV]");
   separati->SaveAs("Energy-theta.png");
     
 }

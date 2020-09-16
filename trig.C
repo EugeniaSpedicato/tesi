@@ -19,18 +19,24 @@ Double_t d; //distanza elettrone fotone.
 Double_t z  = 2.025; //distanza origine-calorimetro in metri.
 Double_t nEl=0; // numero di elettroni con un fotone
 Double_t nElPh=0; // numero elettroni con fotone in generale
-Double_t nElNO=0; // numero di elettroni senza un fotone
+Double_t nElNO=0; // numero di elettroni nel cal
 Double_t nElNORm=0; // numero di elettroni con un fotone ma senza richesta Rm
+Double_t nElNoPh=0; // numero di elettroni senza fotone
+    
     
 Double_t nEl0=0; // numero di elettroni con un fotone dal target 0
 Double_t nElPh0=0; // numero elettroni con fotone in generale dal target 0
-Double_t nElNO0=0; // numero di elettroni senza un fotone dal target 0
+Double_t nElNO0=0; // numero di elettroni nel cal dal target 0
 Double_t nElNORm0=0; // numero di elettroni con un fotone ma senza richesta Rm dal target 0
+Double_t nElNoPh0=0; // numero di elettroni senza fotone dal target 0
+    
     
 Double_t nEl1=0; // numero di elettroni con un fotone dal target 1
 Double_t nElPh1=0; // numero elettroni con fotone in generale dal target 1
-Double_t nElNO1=0; // numero di elettroni senza un fotone dal target 1
+Double_t nElNO1=0; // numero di elettroni nel cal dal target 1
 Double_t nElNORm1=0; // numero di elettroni con un fotone ma senza richesta Rm dal target 1
+Double_t nElNoPh1=0; // numero di elettroni senza fotone dal target 1
+
 
 TH1F* EnCalNORm=new TH1F("h2aN", "Energy e not 2 Rm distant from photons", 200,0,160);
 TH1F* EnCalNORm0=new TH1F("h2aN", "Energy e not 2 Rm distant from photons TAR 0", 200,0,160);
@@ -77,7 +83,6 @@ TH2F  *Th_E_noRm1 = new TH2F("h2da1" , " Th  Vs. E of the electrons",140,0,0.1,1
        nElNO++;
        if (photon_coox != -1)
        {
-           nElPh++;
 double_t posEl = sqrt(detKinBeamRot_cooXe*detKinBeamRot_cooXe+detKinBeamRot_cooYe*detKinBeamRot_cooYe);
 double_t posPh = sqrt(photon_coox*photon_coox+photon_cooy*photon_cooy);
 d=posEl-posPh;   
@@ -85,16 +90,17 @@ d=posEl-posPh;
   
       if (photon_coox < 0.07 && photon_cooy < 0.07 && photon_coox > -0.07 && photon_cooy > -0.07)
        {
-          nElNORm++; 
+           
            if (abs(d)>2*Rm)
            {
                nEl++;
            }
-          else {EnCalNORm->Fill(detKinBeamRot_Ee,wgt_full); ThCalNORm->Fill(detKinBeamRot_the,wgt_full); Th_E_noRm->Fill(detKinBeamRot_the,detKinBeamRot_Ee,wgt_full);}
+          else {nElNORm++; EnCalNORm->Fill(detKinBeamRot_Ee,wgt_full); ThCalNORm->Fill(detKinBeamRot_the,wgt_full); Th_E_noRm->Fill(detKinBeamRot_the,detKinBeamRot_Ee,wgt_full);}
        }
       else nElPh++;     
    }
-else {EnCalNoPh->Fill(detKinBeamRot_Ee,wgt_full); ThCalNoPh->Fill(detKinBeamRot_the,wgt_full); Th_E_noph->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);}
+else {nElNOph++;
+      EnCalNoPh->Fill(detKinBeamRot_Ee,wgt_full); ThCalNoPh->Fill(detKinBeamRot_the,wgt_full); Th_E_noph->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);}
  
            }
        
@@ -113,16 +119,17 @@ d=posEl-posPh;
   
        if (photon_coox < 0.07 && photon_cooy < 0.07 && photon_coox > -0.07 && photon_cooy > -0.07)
        {
-          nElNORm0++; 
+     
            if (abs(d)>2*Rm)
            {
                nEl0++;
            }
-           else {EnCalNORm0->Fill(detKinBeamRot_Ee,wgt_full); ThCalNORm0->Fill(detKinBeamRot_the,wgt_full); Th_E_noRm0->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);}
+           else {nElNORm0++; EnCalNORm0->Fill(detKinBeamRot_Ee,wgt_full); ThCalNORm0->Fill(detKinBeamRot_the,wgt_full); Th_E_noRm0->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);}
        }
    else nElPh0++;
               }
-           else {EnCalNoPh0->Fill(detKinBeamRot_Ee,wgt_full); ThCalNoPh0->Fill(detKinBeamRot_the,wgt_full); Th_E_noph0->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);}
+           else {nElNOph0++;
+                 EnCalNoPh0->Fill(detKinBeamRot_Ee,wgt_full); ThCalNoPh0->Fill(detKinBeamRot_the,wgt_full); Th_E_noph0->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);}
     
            }
        
@@ -142,16 +149,16 @@ d=posEl-posPh;
   
        if (photon_coox < 0.07 && photon_cooy < 0.07 && photon_coox > -0.07 && photon_cooy > -0.07)
        {
-          nElNORm1++; 
            if (abs(d)>2*Rm)
            {
                nEl1++;
            }
-           else {EnCalNORm1->Fill(detKinBeamRot_Ee,wgt_full); ThCalNORm1->Fill(detKinBeamRot_the,wgt_full); Th_E_noRm1->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);}
+           else {nElNORm1++; EnCalNORm1->Fill(detKinBeamRot_Ee,wgt_full); ThCalNORm1->Fill(detKinBeamRot_the,wgt_full); Th_E_noRm1->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);}
        }
    else  nElPh1++;
               }
-    else {EnCalNoPh1->Fill(detKinBeamRot_Ee,wgt_full); ThCalNoPh1->Fill(detKinBeamRot_the,wgt_full); Th_E_noph1->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);}
+    else {nElNOph1++; 
+          EnCalNoPh1->Fill(detKinBeamRot_Ee,wgt_full); ThCalNoPh1->Fill(detKinBeamRot_the,wgt_full); Th_E_noph1->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);}
 
            }
    }
@@ -170,20 +177,26 @@ d=posEl-posPh;
     TCanvas * theE= new TCanvas("theE","theE",1000,100,2500,2000);
     energyThEl->Draw("AP");
     energyThEl->SaveAs("thetaEn.png");*/
-    cout << "numero di elettroni senza fotoni: " << nElNO << endl;
+    cout << "numero di elettroni nel calorimetro: " << nElNO << endl;
     cout << "numero di elettroni con fotoni fuori dal calorimetro: " << nElPh << endl;
     cout << "numero di elettroni con fotoni nel calorimetro: " << nEl << endl;
     cout << "numero di elettroni con fotoni senza richiesta raggio Moliere: " << nElNORm << endl;
     cout<<endl;
-    cout << "numero di elettroni senza fotoni dal tar 0: " << nElNO0 << endl;
-        cout << "numero di elettroni con fotoni fuori dal calorimetro dal tar 0: " << nElPh0 << endl;
+    cout << "numero di elettroni senza fotoni: " << nElNoPh << endl;
+    
+    cout << "numero di elettroni nel calorimetro dal tar 0: " << nElNO0 << endl;
+    cout << "numero di elettroni con fotoni fuori dal calorimetro dal tar 0: " << nElPh0 << endl;
     cout << "numero di elettroni con fotoni nel calorimetro dal tar 0: " << nEl0 << endl;
     cout << "numero di elettroni con fotoni senza richiesta raggio Moliere dal tar 0: " << nElNORm0 << endl;
+    cout << "numero di elettroni senza fotoni dal tar 0: " << nElNoPh0 << endl;
+    
     cout<<endl;
-    cout << "numero di elettroni senza fotoni dal tar 1: " << nElNO1 << endl;
+    cout << "numero di elettroni nel calorimetro dal tar 1: " << nElNO1 << endl;
     cout << "numero di elettroni con fotoni fuori dal calorimetro dal tar 1: " << nElPh1 << endl;
     cout << "numero di elettroni con fotoni nel calorimetro dal tar 1: " << nEl1 << endl;
     cout << "numero di elettroni con fotoni senza richiesta raggio Moliere dal tar 1: " << nElNORm1 << endl;
+    cout << "numero di elettroni senza fotoni: " << nElNoPh1 << endl;
+    
     
     
     TCanvas * e= new TCanvas("e","e",200,10,1000,1000);

@@ -109,7 +109,7 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0
     Emuout->Fill(Emu_out,wgt_full);  
     Emuin->Fill(detKinBeamRot_Emu,wgt_LO);   
             
-    thmu->Fill(detKinBeamRot_thmu*0.001,wgt_full);
+    thmu->Fill(detKinBeamRot_thmu,wgt_full);
     Double_t anglex_mu = atan2(detKinBeamRot_pXmu_out, detKinBeamRot_pZmu_out);
     Double_t angley_mu = atan2(detKinBeamRot_pYmu_out, detKinBeamRot_pZmu_out);
             
@@ -151,7 +151,7 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0
        Eeout->Fill(Ee_out,wgt_full);
        Eein->Fill(detKinBeamRot_Ee,wgt_LO);
            
-       the->Fill(detKinBeamRot_the*0.001,wgt_full);  
+       the->Fill(detKinBeamRot_the,wgt_full);  
         Double_t anglex_e = atan2(detKinBeamRot_pXe_out, detKinBeamRot_pZe_out);
         Double_t angley_e = atan2(detKinBeamRot_pYe_out, detKinBeamRot_pZe_out);
         thXZe->Fill(anglex_e,wgt_full);

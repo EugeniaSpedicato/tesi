@@ -90,7 +90,7 @@ d=posEl-posPh;
            {
                nEl++;
            }
-          else {EnCalNORm->Fill(detKinBeamRot_Ee,wgt_full); ThCalNORm->Fill(detKinBeamRot_the,wgt_full); Th_E_noRm->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);}
+          else {EnCalNORm->Fill(detKinBeamRot_Ee,wgt_full); ThCalNORm->Fill(detKinBeamRot_the,wgt_full); Th_E_noRm->Fill(detKinBeamRot_the,detKinBeamRot_Ee,wgt_full);}
        }
       else nElPh++;     
    }
@@ -234,7 +234,7 @@ d=posEl-posPh;
     Th_E_noph1->Draw("HIST");
     Th_E_noph1->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_noph1->GetYaxis()->SetTitle("E [GeV]");
-    Th_E_noRm1->SetMarkerColor(30);
+    Th_E_noRm1->SetMarkerColor(kRed);
     Th_E_noRm1->Draw("HIST same");
     Th_E_noRm1->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_noRm1->GetYaxis()->SetTitle("E [GeV]");
@@ -244,7 +244,7 @@ d=posEl-posPh;
     Th_E_noph->Draw("HIST");
     Th_E_noph->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_noph->GetYaxis()->SetTitle("E [GeV]");
-    Th_E_noRm->SetMarkerColor(30);
+    Th_E_noRm->SetMarkerColor(kRed);
     Th_E_noRm->Draw("HIST same");
     Th_E_noRm->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_noRm->GetYaxis()->SetTitle("E [GeV]");
@@ -254,7 +254,7 @@ d=posEl-posPh;
     Th_E_noph0->Draw("HIST");
     Th_E_noph0->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_noph0->GetYaxis()->SetTitle("E [GeV]");
-    Th_E_noRm0->SetMarkerColor(30);
+    Th_E_noRm0->SetMarkerColor(kRed);
     Th_E_noRm0->Draw("HIST same");
     Th_E_noRm0->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_noRm0->GetYaxis()->SetTitle("E [GeV]");

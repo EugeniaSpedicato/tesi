@@ -247,30 +247,37 @@ d=posEl-posPh;
     Th_E_noph1->Draw("HIST");
     Th_E_noph1->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_noph1->GetYaxis()->SetTitle("E [GeV]");
+  dued1->SaveAs("Eth1.png");
+    
+    TCanvas * dued1a= new TCanvas("dued1","dued1",1000,100,2500,2000); 
     Th_E_noRm1->SetMarkerColor(kRed);
-    Th_E_noRm1->Draw("HIST same");
+    Th_E_noRm1->Draw("HIST");
     Th_E_noRm1->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_noRm1->GetYaxis()->SetTitle("E [GeV]");
-  dued1->SaveAs("Eth1.png");
+  dued1a->SaveAs("Eth1noRM.png");
     
     TCanvas * dued= new TCanvas("dued","dued",1000,100,2500,2000);
     Th_E_noph->Draw("HIST");
     Th_E_noph->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_noph->GetYaxis()->SetTitle("E [GeV]");
+  dued->SaveAs("Eth.png");
+    TCanvas * dueda= new TCanvas("dued","dued",1000,100,2500,2000);
     Th_E_noRm->SetMarkerColor(kRed);
     Th_E_noRm->Draw("HIST same");
     Th_E_noRm->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_noRm->GetYaxis()->SetTitle("E [GeV]");
-  dued1->SaveAs("Eth.png");
+  dueda->SaveAs("EthnoRM.png");
     
     TCanvas * dued0= new TCanvas("dued0","dued0",1000,100,2500,2000);
     Th_E_noph0->Draw("HIST");
     Th_E_noph0->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_noph0->GetYaxis()->SetTitle("E [GeV]");
+  dued0->SaveAs("Eth0.png");
+    TCanvas * dued0a= new TCanvas("dued0","dued0",1000,100,2500,2000);
     Th_E_noRm0->SetMarkerColor(kRed);
     Th_E_noRm0->Draw("HIST same");
     Th_E_noRm0->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_noRm0->GetYaxis()->SetTitle("E [GeV]");
-  dued1->SaveAs("Eth0.png");
+  dued0a->SaveAs("Eth0noRM.png");
     
 }

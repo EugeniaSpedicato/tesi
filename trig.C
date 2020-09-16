@@ -73,17 +73,17 @@ TH2F  *Th_E_noph1  = new TH2F("h2da1" , " Th  Vs. E of the electrons whitout pho
 TH2F  *Th_E_noRm1 = new TH2F("h2da1" , " Th  Vs. E of the electrons with photons <2Rm tar 1",140,0,100,140,0,160);
 TH2F  *Th_E_PhNoCal1 = new TH2F("h2da1" , " Th  Vs. E of the electrons with photons out of cal tar 1",140,0,100,140,0,160);
     
-TH2F  *Th_E_mu = new TH2F("h2da1" , " Th  Vs. E of the muons",140,0,5,140,0,160);
-TH2F  *Th_E_eph = new TH2F("h2da1" , " Th  Vs. E of the electrons with ph (NLO)",140,0,100,140,0,160);
-TH2F  *Th_E_eNoph = new TH2F("h2da1" , " Th  Vs. E of the electrons without photons",140,0,100,140,0,160);
+TH2F  *Th_E_mu = new TH2F("h2da1" , " Th  Vs. E of the muons",140,0,100,140,0,5);
+TH2F  *Th_E_eph = new TH2F("h2da1" , " Th  Vs. E of the electrons with ph (NLO)",140,0,100,140,0,5);
+TH2F  *Th_E_eNoph = new TH2F("h2da1" , " Th  Vs. E of the electrons without photons",140,0,100,140,0,5);
     
-TH2F  *Th_E_mu0 = new TH2F("h2da1" , " Th  Vs. E of the muons tar 0",140,0,5,140,0,160);
-TH2F  *Th_E_eph0 = new TH2F("h2da1" , " Th  Vs. E of the electrons with ph (NLO) tar 0",140,0,100,140,0,160);
-TH2F  *Th_E_eNoph0 = new TH2F("h2da1" , " Th  Vs. E of the electrons without photons tar 0",140,0,100,140,0,160);
+TH2F  *Th_E_mu0 = new TH2F("h2da1" , " Th  Vs. E of the muons tar 0",140,0,100,140,0,5);
+TH2F  *Th_E_eph0 = new TH2F("h2da1" , " Th  Vs. E of the electrons with ph (NLO) tar 0",140,0,100,140,0,5);
+TH2F  *Th_E_eNoph0 = new TH2F("h2da1" , " Th  Vs. E of the electrons without photons tar 0",140,0,100,140,0,5);
     
-TH2F  *Th_E_mu1 = new TH2F("h2da1" , " Th  Vs. E of the muons tar 1",140,0,5,140,0,160);
-TH2F  *Th_E_eph1 = new TH2F("h2da1" , " Th  Vs. E of the electrons with ph (NLO) tar 1",140,0,100,140,0,160);
-TH2F  *Th_E_eNoph1 = new TH2F("h2da1" , " Th  Vs. E of the electrons without photons tar 1",140,0,100,140,0,160);
+TH2F  *Th_E_mu1 = new TH2F("h2da1" , " Th  Vs. E of the muons tar 1",140,0,100,140,0,5);
+TH2F  *Th_E_eph1 = new TH2F("h2da1" , " Th  Vs. E of the electrons with ph (NLO) tar 1",140,0,100,140,0,5);
+TH2F  *Th_E_eNoph1 = new TH2F("h2da1" , " Th  Vs. E of the electrons without photons tar 1",140,0,100,140,0,5);
     
 
 
@@ -190,23 +190,23 @@ d=posEl-posPh;
            }
        if (abs(detKinBeamRot_cooXe)<0.07 && abs(detKinBeamRot_cooYe)<0.07 && abs(detKinBeamRot_cooXmu)<0.07 && abs(detKinBeamRot_cooYmu)<0.07 && detKinBeamRot_tar==1)
        {
-          Th_E_mu1->(detKinBeamRot_thmu,detKinBeamRot_Emu,wgt_full);
+          Th_E_mu1->(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
            if (photon_coox != -1)
            {
-               Th_E_eph1->(detKinBeamRot_the,detKinBeamRot_Ee,wgt_full);
+               Th_E_eph1->(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
            }
-           else Th_E_eNoph1->(detKinBeamRot_thmu,detKinBeamRot_Emu,wgt_full);
+           else Th_E_eNoph1->(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
        }
     
        
     if (abs(detKinBeamRot_cooXe)<0.07 && abs(detKinBeamRot_cooYe)<0.07 && abs(detKinBeamRot_cooXmu)<0.07 && abs(detKinBeamRot_cooYmu)<0.07 && detKinBeamRot_tar==0)
        {
-          Th_E_mu0->(detKinBeamRot_thmu,detKinBeamRot_Emu,wgt_full);
+          Th_E_mu0->(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
            if (photon_coox != -1)
            {
-               Th_E_eph0->(detKinBeamRot_the,detKinBeamRot_Ee,wgt_full);
+               Th_E_eph0->(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
            }
-           else Th_E_eNoph0->(detKinBeamRot_thmu,detKinBeamRot_Emu,wgt_full);
+           else Th_E_eNoph0->(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
        }
        
    
@@ -216,9 +216,9 @@ d=posEl-posPh;
           Th_E_mu1->(detKinBeamRot_thmu,detKinBeamRot_Emu,wgt_full);
            if (photon_coox != -1)
            {
-               Th_E_eph1->(detKinBeamRot_the,detKinBeamRot_Ee,wgt_full);
+               Th_E_eph1->(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
            }
-           else Th_E_eNoph1->(detKinBeamRot_thmu,detKinBeamRot_Emu,wgt_full);
+           else Th_E_eNoph1->(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
        }
         
             if (abs(detKinBeamRot_cooXe)<0.07 && abs(detKinBeamRot_cooYe)<0.07 && abs(detKinBeamRot_cooXmu)<0.07 && abs(detKinBeamRot_cooYmu)<0.07)

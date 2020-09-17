@@ -206,7 +206,7 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
          EnPhNoCal0->Fill(detKinBeamRot_Ee,wgt_full); 
          Th_E_PhNoCal0->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);
          Th_E_PhNoCal0MU->Fill(detKinBeamRot_thmu, detKinBeamRot_Ee,wgt_full);} }
-        } }
+         
         
  else {nElNOph0++; 
        EnCalNoPh0->Fill(detKinBeamRot_Ee,wgt_full); 

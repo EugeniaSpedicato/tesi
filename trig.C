@@ -116,7 +116,7 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
       if (photon_coox < 0.07 && photon_cooy < 0.07 && photon_coox > -0.07 && photon_cooy > -0.07)
        {
            
-           if (abs(d)>2*Rm)
+           if (abs(d)>Rm)
            {
                nEl++;
            }
@@ -144,7 +144,7 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
        if (photon_coox < 0.07 && photon_cooy < 0.07 && photon_coox > -0.07 && photon_cooy > -0.07)
        {
      
-           if (abs(d)>2*Rm)
+           if (abs(d)>Rm)
            {
                nEl0++;
            }
@@ -171,7 +171,7 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
   
        if (photon_coox < 0.07 && photon_cooy < 0.07 && photon_coox > -0.07 && photon_cooy > -0.07)
        {
-           if (abs(d)>2*Rm)
+           if (abs(d)>Rm)
            {
                nEl1++;
            }

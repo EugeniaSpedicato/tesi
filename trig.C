@@ -59,7 +59,7 @@ TH1F* ThPhNoCal=new TH1F("h2aN", "Theta e with ph out of calorimete", 180,0,100)
 TH1F* ThPhNoCal0=new TH1F("h2aN", "Theta e with ph out of calorimete TAR 0", 180,0,100);
 TH1F* ThPhNoCal1=new TH1F("h2aN", "Theta e with ph out of calorimete TAR 1", 180,0,100);      
     
-TH2F  *Th_E_noph  = new TH2F("h2da" , " Th  Vs. E of the electrons whitout photons (LO)",140,0,100,140,0,160);
+TH2F  *Th_E_noph  = new TH2F("h2da" , " Th e Vs. Th  of the electrons whitout photons (LO)",140,0,100,140,0,160);
 TH2F  *Th_E_noRm = new TH2F("h2da" , " Th  Vs. E of the electrons with photons <2Rm",140,0,100,140,0,160);
 TH2F  *Th_E_PhNoCal = new TH2F("h2da" , " Th  Vs. E of the electrons with photons out of cal",140,0,100,140,0,160);
 
@@ -73,17 +73,17 @@ TH2F  *Th_E_noph1  = new TH2F("h2da1" , " Th  Vs. E of the electrons whitout pho
 TH2F  *Th_E_noRm1 = new TH2F("h2da1" , " Th  Vs. E of the electrons with photons <2Rm tar 1",140,0,100,140,0,160);
 TH2F  *Th_E_PhNoCal1 = new TH2F("h2da1" , " Th  Vs. E of the electrons with photons out of cal tar 1",140,0,100,140,0,160);
     
-TH2F  *Th_E_mu = new TH2F("h2da1" , " Th  Vs. E of the muons",140,0,100,140,0,5);
-TH2F  *Th_E_eph = new TH2F("h2da1" , " Th  Vs. E of the electrons with ph (NLO)",140,0,100,140,0,5);
-TH2F  *Th_E_eNoph = new TH2F("h2da1" , " Th  Vs. E of the electrons without photons",140,0,100,140,0,5);
+TH2F  *Th_E_mu = new TH2F("h2da1" , " Th mu Vs. Th e of the muons",140,0,100,140,0,5);
+TH2F  *Th_E_eph = new TH2F("h2da1" , " Th mu Vs. Th e when the electrons are with ph (NLO)",140,0,100,140,0,5);
+TH2F  *Th_E_eNoph = new TH2F("h2da1" , " Th mu Vs. Th e when the electrons are without photons",140,0,100,140,0,5);
     
-TH2F  *Th_E_mu0 = new TH2F("h2da1" , " Th  Vs. E of the muons tar 0",140,0,100,140,0,5);
-TH2F  *Th_E_eph0 = new TH2F("h2da1" , " Th  Vs. E of the electrons with ph (NLO) tar 0",140,0,100,140,0,5);
-TH2F  *Th_E_eNoph0 = new TH2F("h2da1" , " Th  Vs. E of the electrons without photons tar 0",140,0,100,140,0,5);
+TH2F  *Th_E_mu0 = new TH2F("h2da1" , " Th mu Vs. Th e of the muons tar 0",140,0,100,140,0,5);
+TH2F  *Th_E_eph0 = new TH2F("h2da1" , " Th mu Vs. Th e of the electrons with ph (NLO) tar 0",140,0,100,140,0,5);
+TH2F  *Th_E_eNoph0 = new TH2F("h2da1" , " Th mu Vs. Th e of the electrons without photons tar 0",140,0,100,140,0,5);
     
-TH2F  *Th_E_mu1 = new TH2F("h2da1" , " Th  Vs. E of the muons tar 1",140,0,100,140,0,5);
-TH2F  *Th_E_eph1 = new TH2F("h2da1" , " Th  Vs. E of the electrons with ph (NLO) tar 1",140,0,100,140,0,5);
-TH2F  *Th_E_eNoph1 = new TH2F("h2da1" , " Th  Vs. E of the electrons without photons tar 1",140,0,100,140,0,5);
+TH2F  *Th_E_mu1 = new TH2F("h2da1" , " Th mu Vs. Th e of the muons tar 1",140,0,100,140,0,5);
+TH2F  *Th_E_eph1 = new TH2F("h2da1" , " Th mu Vs. Th e of the electrons with ph (NLO) tar 1",140,0,100,140,0,5);
+TH2F  *Th_E_eNoph1 = new TH2F("h2da1" , " Th mu Vs. Th e of the electrons without photons tar 1",140,0,100,140,0,5);
     
 
 
@@ -102,7 +102,7 @@ TH2F  *Th_E_eNoph1 = new TH2F("h2da1" , " Th  Vs. E of the electrons without pho
    
        //energyThEl->SetPoint(jentry,detKinBeamRot_the,detKinBeamRot_Ee);
        
-    if (detKinBeamRot_Ee>1 || detKinBeamRot_the>20){   
+    if (detKinBeamRot_Ee>3.5 || detKinBeamRot_the>20 || detKinBeamRot_Ee>40 || detKinBeamRot_the>4){   
        
        if (detKinBeamRot_cooXe < 0.07 && detKinBeamRot_cooYe < 0.07 && detKinBeamRot_cooXe > -0.07 && detKinBeamRot_cooYe > -0.07)
         {

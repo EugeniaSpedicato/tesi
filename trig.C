@@ -87,9 +87,9 @@ TH2F  *Th_E_noRm0MU = new TH2F("h2da" , " Th MU Vs. Ee with photons <2Rm tar 0",
 TH2F  *Th_E_PhNoCal0MU = new TH2F("h2da" , " Th MU Vs. Ee with photons out of cal tar 0",140,0,5,140,0,160);
     
     
-TH2F  *Th_E_noph1  = new TH2F("h2da1" , " Th  Vs. E of the electrons whitout photons (LO) tar 1",140,0,5,140,0,160);
-TH2F  *Th_E_noRm1 = new TH2F("h2da1" , " Th  Vs. E of the electrons with photons <2Rm tar 1",140,0,5,140,0,160);
-TH2F  *Th_E_PhNoCal1 = new TH2F("h2da1" , " Th  Vs. E of the electrons with photons out of cal tar 1",140,0,5,140,0,160);
+TH2F  *Th_E_noph1  = new TH2F("h2da1" , " Th  Vs. E of the electrons whitout photons (LO) tar 1",140,0,100,140,0,160);
+TH2F  *Th_E_noRm1 = new TH2F("h2da1" , " Th  Vs. E of the electrons with photons <2Rm tar 1",140,0,100,140,0,160);
+TH2F  *Th_E_PhNoCal1 = new TH2F("h2da1" , " Th  Vs. E of the electrons with photons out of cal tar 1",140,0,100,140,0,160);
     
 TH2F  *Th_E_noph1MU  = new TH2F("h2da1" , " Th MU Vs. Ee whitout photons (LO) tar 1",140,0,5,140,0,160);
 TH2F  *Th_E_noRm1MU = new TH2F("h2da1" , " Th MU Vs. Ee with photons <2Rm tar 1",140,0,5,140,0,160);
@@ -429,7 +429,7 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
     ThPhNoCal1MU->SetLineColor(kOrange);
     ThPhNoCal1MU->Draw("HIST same");
     
-    teMU->SaveAs("ThElnoRm.png");
+    teMU->SaveAs("ThElnoRmMU.png");
     
     TCanvas * dued1= new TCanvas("dued1","dued1",1000,100,2500,2000);
     Th_E_noph1->SetMarkerColor(kRed);
@@ -657,7 +657,7 @@ TCanvas * E= new TCanvas("A","A",1000,100,2500,2000);
     Th_E_PhNoCal0MU->Draw("HIST same");
     Th_E_PhNoCal0MU->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_PhNoCal0MU->GetYaxis()->SetTitle("E [GeV]");
-  separati->SaveAs("Energye-thetaMU.png");
+  separatiMU->SaveAs("Energye-thetaMU.png");
     
        
     

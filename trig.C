@@ -102,7 +102,7 @@ TH2F  *Th_E_eNoph1 = new TH2F("h2da1" , " Th mu Vs. Th e of the electrons withou
    
        //energyThEl->SetPoint(jentry,detKinBeamRot_the,detKinBeamRot_Ee);
        
-    if ((detKinBeamRot_Ee>3.5 || detKinBeamRot_the>12) && (detKinBeamRot_Ee>40 || detKinBeamRot_the>4)){   
+    //if ((detKinBeamRot_Ee>3.5 || detKinBeamRot_the>12) && (detKinBeamRot_Ee>40 || detKinBeamRot_the>4)){   
        
        if (detKinBeamRot_cooXe < 0.07 && detKinBeamRot_cooYe < 0.07 && detKinBeamRot_cooXe > -0.07 && detKinBeamRot_cooYe > -0.07)
         {
@@ -117,7 +117,7 @@ d=posEl-posPh;
       if (photon_coox < 0.07 && photon_cooy < 0.07 && photon_coox > -0.07 && photon_cooy > -0.07)
        {
            
-           if (abs(d)>2*Rm)
+           if (abs(d)>Rm)
            {
                nEl++;
            }
@@ -147,7 +147,7 @@ d=posEl-posPh;
        if (photon_coox < 0.07 && photon_cooy < 0.07 && photon_coox > -0.07 && photon_cooy > -0.07)
        {
      
-           if (abs(d)>2*Rm)
+           if (abs(d)>Rm)
            {
                nEl0++;
            }
@@ -176,7 +176,7 @@ d=posEl-posPh;
   
        if (photon_coox < 0.07 && photon_cooy < 0.07 && photon_coox > -0.07 && photon_cooy > -0.07)
        {
-           if (abs(d)>2*Rm)
+           if (abs(d)>Rm)
            {
                nEl1++;
            }
@@ -232,7 +232,7 @@ d=posEl-posPh;
        }
        
    }
-   }
+  // }
 
     /*energyThEl->SetTitle("Energy_e(theta_e)");
     energyThEl->SetMarkerColor(50);

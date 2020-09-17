@@ -85,7 +85,10 @@ TH2F  *Th_E_mu1 = new TH2F("h2da1" , " Th mu Vs. Th e of the muons tar 1",140,0,
 TH2F  *Th_E_eph1 = new TH2F("h2da1" , " Th mu Vs. Th e of the electrons with ph (NLO) tar 1",140,0,100,140,0,5);
 TH2F  *Th_E_eNoph1 = new TH2F("h2da1" , " Th mu Vs. Th e of the electrons without photons tar 1",140,0,100,140,0,5);
     
-
+TH1F* E_ph=new TH1F("h2aN1", "E ph d>2Rm",180,0,100);
+TH1F* E_ph0=new TH1F("h2aN2", "E ph d>2Rm tar 0",180,0,100);
+TH1F* E_ph1=new TH1F("h2aN3", "E ph d>2Rm tar 1",180,0,100);
+    
 
     
      if (fChain == 0) return;
@@ -120,7 +123,7 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
            {
                nEl++;
            }
-          else {nElNORm++; EnCalNORm->Fill(detKinBeamRot_Ee,wgt_full); ThCalNORm->Fill(detKinBeamRot_the,wgt_full); Th_E_noRm->Fill(detKinBeamRot_the,detKinBeamRot_Ee,wgt_full);}
+          else {nElNORm++; EnCalNORm->Fill(detKinBeamRot_Ee,wgt_full); ThCalNORm->Fill(detKinBeamRot_the,wgt_full); Th_E_noRm->Fill(detKinBeamRot_the,detKinBeamRot_Ee,wgt_full); E_ph(photon_energy,wgt_full);}
        }
       else {nElPh++; ThPhNoCal->Fill(detKinBeamRot_the,wgt_full); EnPhNoCal->Fill(detKinBeamRot_Ee,wgt_full);
            Th_E_PhNoCal->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);}     
@@ -148,7 +151,7 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
            {
                nEl0++;
            }
-           else {nElNORm0++; EnCalNORm0->Fill(detKinBeamRot_Ee,wgt_full); ThCalNORm0->Fill(detKinBeamRot_the,wgt_full); Th_E_noRm0->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);}
+           else {nElNORm0++; EnCalNORm0->Fill(detKinBeamRot_Ee,wgt_full); ThCalNORm0->Fill(detKinBeamRot_the,wgt_full); Th_E_noRm0->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full); E_ph0(photon_energy,wgt_full);}
        }
    else {nElPh0++; ThPhNoCal0->Fill(detKinBeamRot_the,wgt_full); EnPhNoCal0->Fill(detKinBeamRot_Ee,wgt_full); 
               Th_E_PhNoCal0->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);} }
@@ -175,7 +178,7 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
            {
                nEl1++;
            }
-           else {nElNORm1++; EnCalNORm1->Fill(detKinBeamRot_Ee,wgt_full); ThCalNORm1->Fill(detKinBeamRot_the,wgt_full); Th_E_noRm1->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);}
+           else {nElNORm1++; EnCalNORm1->Fill(detKinBeamRot_Ee,wgt_full); ThCalNORm1->Fill(detKinBeamRot_the,wgt_full); Th_E_noRm1->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full); E_ph1(photon_energy,wgt_full);}
        }
    else  {nElPh1++; ThPhNoCal1->Fill(detKinBeamRot_the,wgt_full); EnPhNoCal1->Fill(detKinBeamRot_Ee,wgt_full); 
               Th_E_PhNoCal1->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);}}
@@ -286,6 +289,14 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
     EnCalNORm1->Draw("HIST same");
     EnPhNoCal1->SetLineColor(kOrange);
     EnPhNoCal1->Draw("HIST same");
+    gPad->SetLogx();
+    
+    e->cd(4);
+    E_ph->SetLineColor(31);
+    E_ph->Draw("HIST");
+    E_ph0->Draw("HIST same");
+    E_ph1->SetLineColor(49);
+    E_ph1->Draw("HIST same");
     gPad->SetLogx();
  
     e->SaveAs("EnergyElnoRm.png");

@@ -89,6 +89,7 @@ TH1F* E_ph=new TH1F("h2aN1", "E ph d>2Rm",180,0,100);
 TH1F* E_ph0=new TH1F("h2aN2", "E ph d>2Rm tar 0",180,0,100);
 TH1F* E_ph1=new TH1F("h2aN3", "E ph d>2Rm tar 1",180,0,100);
     
+TH2F  *Ee_Eph = new TH2F("h2da1" , " E e Vs. E oh of the photons with d<2Rm",140,0,100,140,0,100);
 
     
      if (fChain == 0) return;
@@ -151,7 +152,7 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
            {
                nEl0++;
            }
-           else {nElNORm0++; EnCalNORm0->Fill(detKinBeamRot_Ee,wgt_full); ThCalNORm0->Fill(detKinBeamRot_the,wgt_full); Th_E_noRm0->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full); E_ph0->Fill(photon_energy,wgt_full);}
+           else {nElNORm0++; EnCalNORm0->Fill(detKinBeamRot_Ee,wgt_full); ThCalNORm0->Fill(detKinBeamRot_the,wgt_full); Th_E_noRm0->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full); E_ph0->Fill(photon_energy,wgt_full); Ee_Eph->Fill(detKinBeamRot_Ee,photon_energy,wgt_full);}
        }
    else {nElPh0++; ThPhNoCal0->Fill(detKinBeamRot_the,wgt_full); EnPhNoCal0->Fill(detKinBeamRot_Ee,wgt_full); 
               Th_E_PhNoCal0->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);} }
@@ -178,7 +179,7 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
            {
                nEl1++;
            }
-           else {nElNORm1++; EnCalNORm1->Fill(detKinBeamRot_Ee,wgt_full); ThCalNORm1->Fill(detKinBeamRot_the,wgt_full); Th_E_noRm1->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full); E_ph1->Fill(photon_energy,wgt_full);}
+           else {nElNORm1++; EnCalNORm1->Fill(detKinBeamRot_Ee,wgt_full); ThCalNORm1->Fill(detKinBeamRot_the,wgt_full); Th_E_noRm1->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full); E_ph1->Fill(photon_energy,wgt_full);Ee_Eph->Fill(detKinBeamRot_Ee,photon_energy,wgt_full);}
        }
    else  {nElPh1++; ThPhNoCal1->Fill(detKinBeamRot_the,wgt_full); EnPhNoCal1->Fill(detKinBeamRot_Ee,wgt_full); 
               Th_E_PhNoCal1->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);}}
@@ -492,6 +493,12 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
     Th_E_mu0->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_mu0->GetYaxis()->SetTitle("E [GeV]");
   separatiA->SaveAs("thetae-thetamu.png");   
+    
+TCanvas * E= new TCanvas("A","A",1000,100,2500,2000);
+    
+    Ee_Eph->Draw("HIST");
+  E->SaveAs("Ee-Eph.png");   
+    
        
     
     

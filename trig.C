@@ -109,15 +109,14 @@ TH2F  *Th_E_eNoph1 = new TH2F("h2da1" , " Th mu Vs. Th e of the electrons withou
        nElNO++;
        if (photon_coox != -1)
        {
-double_t posEl = sqrt(detKinBeamRot_cooXe*detKinBeamRot_cooXe+detKinBeamRot_cooYe*detKinBeamRot_cooYe);
-double_t posPh = sqrt(photon_coox*photon_coox+photon_cooy*photon_cooy);
-d=posEl-posPh;   
+
+d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detKinBeamRot_cooYe-photon_cooy)*(detKinBeamRot_cooYe-photon_cooy));   
   
   
       if (photon_coox < 0.07 && photon_cooy < 0.07 && photon_coox > -0.07 && photon_cooy > -0.07)
        {
            
-           if (abs(d)>Rm)
+           if (abs(d)>2*Rm)
            {
                nEl++;
            }
@@ -140,14 +139,12 @@ else {nElNOph++;
               if (photon_coox != -1 )
        {
            
-double_t posEl = sqrt(detKinBeamRot_cooXe*detKinBeamRot_cooXe+detKinBeamRot_cooYe*detKinBeamRot_cooYe);
-double_t posPh = sqrt(photon_coox*photon_coox+photon_cooy*photon_cooy);
-d=posEl-posPh;   
-  
+d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detKinBeamRot_cooYe-photon_cooy)*(detKinBeamRot_cooYe-photon_cooy)); 
+                  
        if (photon_coox < 0.07 && photon_cooy < 0.07 && photon_coox > -0.07 && photon_cooy > -0.07)
        {
      
-           if (abs(d)>Rm)
+           if (abs(d)>2*Rm)
            {
                nEl0++;
            }
@@ -170,13 +167,11 @@ if (detKinBeamRot_cooXe < 0.07 && detKinBeamRot_cooYe < 0.07 && detKinBeamRot_co
               if (photon_coox != -1)
               {
           
-double_t posEl = sqrt(detKinBeamRot_cooXe*detKinBeamRot_cooXe+detKinBeamRot_cooYe*detKinBeamRot_cooYe);
-double_t posPh = sqrt(photon_coox*photon_coox+photon_cooy*photon_cooy);
-d=posEl-posPh;   
+d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detKinBeamRot_cooYe-photon_cooy)*(detKinBeamRot_cooYe-photon_cooy)); 
   
        if (photon_coox < 0.07 && photon_cooy < 0.07 && photon_coox > -0.07 && photon_cooy > -0.07)
        {
-           if (abs(d)>Rm)
+           if (abs(d)>2*Rm)
            {
                nEl1++;
            }

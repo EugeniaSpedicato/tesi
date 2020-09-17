@@ -102,7 +102,7 @@ TH2F  *Th_E_eNoph1 = new TH2F("h2da1" , " Th mu Vs. Th e of the electrons withou
    
        //energyThEl->SetPoint(jentry,detKinBeamRot_the,detKinBeamRot_Ee);
        
-    if (detKinBeamRot_Ee>3.5 || detKinBeamRot_the>20 || detKinBeamRot_Ee>40 || detKinBeamRot_the>4){   
+    if (detKinBeamRot_Ee>3.5 || detKinBeamRot_the>20 && detKinBeamRot_Ee>40 || detKinBeamRot_the>4){   
        
        if (detKinBeamRot_cooXe < 0.07 && detKinBeamRot_cooYe < 0.07 && detKinBeamRot_cooXe > -0.07 && detKinBeamRot_cooYe > -0.07)
         {

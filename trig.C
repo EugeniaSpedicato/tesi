@@ -128,7 +128,7 @@ TH2F  *Ee_Eph = new TH2F("h2da1" , " E e Vs. E oh of the photons with d<2Rm",140
    
        //energyThEl->SetPoint(jentry,detKinBeamRot_the,detKinBeamRot_Ee);
        
-    if ((detKinBeamRot_Ee>3.5 || detKinBeamRot_the>12) && (detKinBeamRot_Ee>40 || detKinBeamRot_the>4) && (detKinBeamRot_Ee>(-168/3.4)+((105/3.4)*detKinBeamRot_thmu)) && ( detKinBeamRot_Ee>125 && detKinBeamRot_Ee<25+(100/3.5)*detKinBeamRot_thmu )){   
+    if ((detKinBeamRot_Ee>3.5 || detKinBeamRot_the>12) && (detKinBeamRot_Ee>40 || detKinBeamRot_the>4) && (detKinBeamRot_Ee>(-168/3.4)+((105/3.4)*detKinBeamRot_thmu)) && ( detKinBeamRot_Ee>125 || detKinBeamRot_Ee<25+(100/3.5)*detKinBeamRot_thmu )){   
        
        if (detKinBeamRot_cooXe < 0.07 && detKinBeamRot_cooYe < 0.07 && detKinBeamRot_cooXe > -0.07 && detKinBeamRot_cooYe > -0.07)
         {

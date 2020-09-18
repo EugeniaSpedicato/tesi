@@ -490,7 +490,7 @@ for (Int_t p=1; p<7; p++)  {
                 y[0][p+1]=gRandom->Gaus(yi[0][p+1],(1/sqrt(3))*sS*sigSImu);
                 xei[0][p+1]=xe[0][p]+dSS*tan(thetaXe[0][p]);
                 xe[0][p+1]=gRandom->Gaus(xei[0][p+1],(1/sqrt(3))*sS*sigSIe);
-                ye[0][p+1]=ye[0][p]+dSS*tan(thetaYe[0][p]);
+                yei[0][p+1]=ye[0][p]+dSS*tan(thetaYe[0][p]);
                 ye[0][p+1]=gRandom->Gaus(yei[0][p+1],(1/sqrt(3))*sS*sigSIe);
                  }}
         

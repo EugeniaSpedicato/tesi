@@ -48,6 +48,7 @@ TH1F* EnPhNoCal=new TH1F("h2aN", "Energy e with ph out of calorimeter", 200,0,16
 TH1F* EnPhNoCal0=new TH1F("h2aN", "Energy e with ph out of calorimeter TAR 0", 200,0,160);
 TH1F* EnPhNoCal1=new TH1F("h2aN", "Energy e with ph out of calorimeter TAR 1", 200,0,160);   
     
+TH1F* En_tot=new TH1F("h2aN", "Energy e + energy ph inside 2 RM", 200,0,160);
     
 TH1F* ThCalNORm=new TH1F("h2aN", "Theta e not 2 Rm distant from photons",180,0,100);
 TH1F* ThCalNORm0=new TH1F("h2aN", "Theta e not 2 Rm distant from photons TAR 0", 180,0,100);
@@ -244,7 +245,10 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
                  ThCalNORm1MU->Fill(detKinBeamRot_thmu,wgt_full); 
                  Th_E_noRm1MU->Fill(detKinBeamRot_thmu, detKinBeamRot_Ee,wgt_full); 
                  E_ph1->Fill(photon_energy,wgt_full);
-                 Ee_Eph->Fill(detKinBeamRot_Ee,photon_energy,wgt_full);}
+                 Ee_Eph->Fill(detKinBeamRot_Ee,photon_energy,wgt_full);
+                
+                 Double_t Etot=photon_energy+detKinBeamRot_Ee;
+                En_tot->Fill(Etot,wgt_full);}
        }
    else  {nElPh1++; 
           ThPhNoCal1->Fill(detKinBeamRot_the,wgt_full); 
@@ -307,6 +311,8 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
            }
            else if (photon_coox = -1) { Th_E_eNoph->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);}
        }
+        
+        
        
    }
    }
@@ -345,7 +351,7 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
     
     
     TCanvas * e= new TCanvas("e","e",200,10,1000,1000);
-    e->Divide(2,2);
+    e->Divide(3,2);
     e->cd(1);
     EnCalNoPh->SetLineColor(kRed);
     EnCalNoPh->Draw("HIST");
@@ -378,6 +384,10 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
     E_ph1->Draw("HIST same");
     gPad->SetLogx();
  
+    e->cd(5);
+    En_tot->Draw("HIST");
+    gPad->SetLogx();
+    
     e->SaveAs("EnergyElnoRm.png");
     
     TCanvas * te= new TCanvas("te","te",200,10,1000,1000);

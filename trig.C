@@ -132,7 +132,7 @@ TH2F  *Ee_Eph = new TH2F("h2da1" , " E e Vs. E oh of the photons with d<2Rm",140
     if ((detKinBeamRot_Ee>3.5 || detKinBeamRot_the>12) && (detKinBeamRot_Ee>40 || detKinBeamRot_the>4) && (detKinBeamRot_Ee>(-168/3.4)+((105/3.4)*detKinBeamRot_thmu)) && ( detKinBeamRot_Ee>125 || detKinBeamRot_Ee<25+(100/3.5)*detKinBeamRot_thmu ) ){   
        
        if (detKinBeamRot_cooXe < 0.07 && detKinBeamRot_cooYe < 0.07 && detKinBeamRot_cooXe > -0.07 && detKinBeamRot_cooYe > -0.07)
-        {
+        { if (detKinBeamRot_tar==0 && detKinBeamRot_Ee>1){
        nElNO++;
        if (photon_coox != -1)
        {
@@ -169,7 +169,46 @@ else {nElNOph++;
       ThCalNoPh->Fill(detKinBeamRot_the,wgt_full);
       ThCalNoPhMU->Fill(detKinBeamRot_thmu,wgt_full);
       Th_E_noph->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);
+      Th_E_nophMU->Fill(detKinBeamRot_thmu, detKinBeamRot_Ee,wgt_full);}}
+         
+         if (detKinBeamRot_tar==0)nElNO++;
+       if (photon_coox != -1)
+       {
+
+d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detKinBeamRot_cooYe-photon_cooy)*(detKinBeamRot_cooYe-photon_cooy));   
+  
+  
+      if (photon_coox < 0.07 && photon_cooy < 0.07 && photon_coox > -0.07 && photon_cooy > -0.07)
+       {
+           
+           if (abs(d)>2*Rm)
+           {
+               nEl++;
+           }
+          else {
+              nElNORm++; 
+              EnCalNORm->Fill(detKinBeamRot_Ee,wgt_full); 
+              ThCalNORm->Fill(detKinBeamRot_the,wgt_full); 
+              Th_E_noRm->Fill(detKinBeamRot_the,detKinBeamRot_Ee,wgt_full); 
+              E_ph->Fill(photon_energy,wgt_full);
+              ThCalNORmMU->Fill(detKinBeamRot_thmu,wgt_full);
+              Th_E_noRmMU->Fill(detKinBeamRot_thmu,detKinBeamRot_Ee,wgt_full);}
+       }
+      else {nElPh++; 
+            ThPhNoCal->Fill(detKinBeamRot_the,wgt_full); 
+            ThPhNoCalMU->Fill(detKinBeamRot_thmu,wgt_full);
+            EnPhNoCal->Fill(detKinBeamRot_Ee,wgt_full);
+            Th_E_PhNoCal->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);
+            Th_E_PhNoCalMU->Fill(detKinBeamRot_thmu, detKinBeamRot_Ee,wgt_full);}     
+           }     
+   
+else {nElNOph++;
+      EnCalNoPh->Fill(detKinBeamRot_Ee,wgt_full); 
+      ThCalNoPh->Fill(detKinBeamRot_the,wgt_full);
+      ThCalNoPhMU->Fill(detKinBeamRot_thmu,wgt_full);
+      Th_E_noph->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);
       Th_E_nophMU->Fill(detKinBeamRot_thmu, detKinBeamRot_Ee,wgt_full);}
+        
      }
  
            

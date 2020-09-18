@@ -43,8 +43,8 @@ TH1F* pz_e_outLO=new TH1F("h3b", "pZ_out electron LO", 150,0,5);
 TH1F* Eein=new TH1F("h2aN", "Energ in e", 200,0,160);
 TH1F* Eeout=new TH1F("h2aN", "Energy out e", 200,0,160);
     
-TH1F* thmu=new TH1F("h3bNj", "theta", 180,0,0.002);  
-TH1F* the=new TH1F("h3bNj", "theta", 180,0,0.1);
+TH1F* thmu=new TH1F("h3bNj", "theta", 180,0,5);  
+TH1F* the=new TH1F("h3bNj", "theta", 180,0,100);
 
 TH1F* thXZmu=new TH1F("a", "theta XZ mu", 150,-0.002,0.002);
 TH1F* thYZmu=new TH1F("c", "theta YZ mu", 150,-0.002,0.002);

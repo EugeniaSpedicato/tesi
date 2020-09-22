@@ -574,53 +574,53 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
         TCanvas * separati= new TCanvas("dued1","dued1",1000,100,2500,2000);
     separati->Divide(3,3);
     
-    separati->cd(1);
+    separati->cd(7);
     Th_E_noph1->SetMarkerColor(kRed);
     Th_E_noph1->Draw("HIST");
     Th_E_noph1->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_noph1->GetYaxis()->SetTitle("E [GeV]");
     
-    separati->cd(2);
+    separati->cd(8);
     Th_E_noRm1->Draw("HIST");
     Th_E_noRm1->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_noRm1->GetYaxis()->SetTitle("E [GeV]");
     
-    separati->cd(3); 
+    separati->cd(9); 
     Th_E_PhNoCal1->SetMarkerColor(kOrange);
     Th_E_PhNoCal1->Draw("HIST ");
     Th_E_PhNoCal1->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_PhNoCal1->GetYaxis()->SetTitle("E [GeV]");
 
-    separati->cd(4);
+    separati->cd(1);
     Th_E_noph->SetMarkerColor(kRed);
     Th_E_noph->Draw("HIST");
     Th_E_noph->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_noph->GetYaxis()->SetTitle("E [GeV]");
 
-    separati->cd(5);
+    separati->cd(2);
     Th_E_noRm->Draw("HIST");
     Th_E_noRm->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_noRm->GetYaxis()->SetTitle("E [GeV]");
         
-    separati->cd(6);
+    separati->cd(3);
     Th_E_PhNoCal->SetMarkerColor(kOrange);
     Th_E_PhNoCal->Draw("HIST");
     Th_E_PhNoCal->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_PhNoCal->GetYaxis()->SetTitle("E [GeV]");
     
   
-    separati->cd(7);
+    separati->cd(4);
     Th_E_noph0->SetMarkerColor(kRed);
     Th_E_noph0->Draw("HIST");
     Th_E_noph0->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_noph0->GetYaxis()->SetTitle("E [GeV]");
 
-    separati->cd(8);
+    separati->cd(5);
     Th_E_noRm0->Draw("HIST");
     Th_E_noRm0->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_noRm0->GetYaxis()->SetTitle("E [GeV]");
         
-    separati->cd(9);
+    separati->cd(6);
     Th_E_PhNoCal0->SetMarkerColor(kOrange);
     Th_E_PhNoCal0->Draw("HIST same");
     Th_E_PhNoCal0->GetXaxis()->SetTitle("Th [mrad]");
@@ -630,35 +630,35 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
     TCanvas * separatiA= new TCanvas("A","A",1000,100,2500,2000);
     separatiA->Divide(3,3);
     
-    separatiA->cd(1);
+    separatiA->cd(7);
     Th_E_eNoph1->SetMarkerColor(46);
     Th_E_eNoph1->Draw("HIST");
     Th_E_eNoph1->GetXaxis()->SetTitle("Th el[mrad]");
     Th_E_eNoph1->GetYaxis()->SetTitle("Th mu [mrad]");
     
-    separatiA->cd(2);
+    separatiA->cd(8);
     Th_E_eph1->Draw("HIST");
     Th_E_eph1->GetXaxis()->SetTitle("Th el[mrad]");
     Th_E_eph1->GetYaxis()->SetTitle("Th mu [mrad]");
     
-    separatiA->cd(3); 
+    separatiA->cd(9); 
     Th_E_mu1->SetMarkerColor(29);
     Th_E_mu1->Draw("HIST ");
     Th_E_mu1->GetXaxis()->SetTitle("Th el[mrad]");
     Th_E_mu1->GetYaxis()->SetTitle("Th mu [mrad]");
 
-    separatiA->cd(4);
+    separatiA->cd(1);
     Th_E_eNoph->SetMarkerColor(46);
     Th_E_eNoph->Draw("HIST");
     Th_E_eNoph->GetXaxis()->SetTitle("Th el[mrad]");
     Th_E_eNoph->GetYaxis()->SetTitle("Th mu [mrad]");
 
-    separatiA->cd(5);
+    separatiA->cd(2);
     Th_E_eph->Draw("HIST");
     Th_E_eph->GetXaxis()->SetTitle("Th el[mrad]");
     Th_E_eph->GetYaxis()->SetTitle("Th mu [mrad]");
         
-    separatiA->cd(6);
+    separatiA->cd(3);
     Th_E_mu->SetMarkerColor(29);
     Th_E_mu->Draw("HIST");
     Th_E_mu->GetXaxis()->SetTitle("Th el[mrad]");
@@ -666,18 +666,18 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
 
     
   
-    separatiA->cd(7);
+    separatiA->cd(4);
     Th_E_eNoph0->SetMarkerColor(46);
     Th_E_eNoph0->Draw("HIST");
     Th_E_eNoph0->GetXaxis()->SetTitle("Th el [mrad]");
     Th_E_eNoph0->GetYaxis()->SetTitle("Th mu [mrad]");
 
-    separatiA->cd(8);
+    separatiA->cd(5);
     Th_E_eph0->Draw("HIST");
     Th_E_eph0->GetXaxis()->SetTitle("Th el [mrad]");
     Th_E_eph0->GetYaxis()->SetTitle("Th mu [mrad]");
         
-    separatiA->cd(9);
+    separatiA->cd(6);
     Th_E_mu0->SetMarkerColor(29);
     Th_E_mu0->Draw("HIST same");
     Th_E_mu0->GetXaxis()->SetTitle("Th el [mrad]");
@@ -694,53 +694,53 @@ TCanvas * E= new TCanvas("A","A",1000,100,2500,2000);
         TCanvas * separatiMU= new TCanvas("dued1MU","dued1MU",1000,100,2500,2000);
     separatiMU->Divide(3,3);
     
-    separatiMU->cd(1);
+    separatiMU->cd(7);
     Th_E_noph1MU->SetMarkerColor(kRed);
     Th_E_noph1MU->Draw("HIST");
     Th_E_noph1MU->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_noph1MU->GetYaxis()->SetTitle("E [GeV]");
     
-    separatiMU->cd(2);
+    separatiMU->cd(8);
     Th_E_noRm1MU->Draw("HIST");
     Th_E_noRm1MU->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_noRm1MU->GetYaxis()->SetTitle("E [GeV]");
     
-    separatiMU->cd(3); 
+    separatiMU->cd(9); 
     Th_E_PhNoCal1MU->SetMarkerColor(kOrange);
     Th_E_PhNoCal1MU->Draw("HIST ");
     Th_E_PhNoCal1MU->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_PhNoCal1MU->GetYaxis()->SetTitle("E [GeV]");
 
-    separatiMU->cd(4);
+    separatiMU->cd(1);
     Th_E_nophMU->SetMarkerColor(kRed);
     Th_E_nophMU->Draw("HIST");
     Th_E_nophMU->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_nophMU->GetYaxis()->SetTitle("E [GeV]");
 
-    separatiMU->cd(5);
+    separatiMU->cd(2);
     Th_E_noRmMU->Draw("HIST");
     Th_E_noRmMU->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_noRmMU->GetYaxis()->SetTitle("E [GeV]");
         
-    separatiMU->cd(6);
+    separatiMU->cd(3);
     Th_E_PhNoCalMU->SetMarkerColor(kOrange);
     Th_E_PhNoCalMU->Draw("HIST");
     Th_E_PhNoCalMU->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_PhNoCalMU->GetYaxis()->SetTitle("E [GeV]");
     
   
-    separatiMU->cd(7);
+    separatiMU->cd(4);
     Th_E_noph0MU->SetMarkerColor(kRed);
     Th_E_noph0MU->Draw("HIST");
     Th_E_noph0MU->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_noph0MU->GetYaxis()->SetTitle("E [GeV]");
 
-    separatiMU->cd(8);
+    separatiMU->cd(5);
     Th_E_noRm0MU->Draw("HIST");
     Th_E_noRm0MU->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_noRm0MU->GetYaxis()->SetTitle("E [GeV]");
         
-    separatiMU->cd(9);
+    separatiMU->cd(6);
     Th_E_PhNoCal0MU->SetMarkerColor(kOrange);
     Th_E_PhNoCal0MU->Draw("HIST same");
     Th_E_PhNoCal0MU->GetXaxis()->SetTitle("Th [mrad]");

@@ -425,7 +425,7 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
     
     
     
-    TCanvas * e= new TCanvas("e","e",200,10,1000,1000);
+    TCanvas * e= new TCanvas("e","e",200,10,1000,900);
     e->Divide(3,2);
     e->cd(1);
     EnCalNoPh->SetLineColor(kRed);
@@ -451,7 +451,7 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
     EnPhNoCal1->Draw("HIST same");
     gPad->SetLogx();
     
-    e->cd(4);
+    /*e->cd(4);
     E_ph->SetLineColor(31);
     E_ph->Draw("HIST");
     E_ph0->Draw("HIST same");
@@ -461,7 +461,7 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
  
     e->cd(5);
     En_tot->Draw("HIST");
-    gPad->SetLogx();
+    gPad->SetLogx();*/
     
     e->SaveAs("EnergyElnoRm.png");
     

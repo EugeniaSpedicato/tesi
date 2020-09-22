@@ -757,9 +757,9 @@ TCanvas * E= new TCanvas("A","A",1000,100,2500,2000);
     Th_E_PhNoCalMU->Draw("HIST same");
   incrocio->SaveAs("incrocioEnergye-thetaNLO.png");
     
-        TCanvas * incrocioLO= new TCanvas("incrocio","incrocio",1000,100,2500,2000);
+        TCanvas * incrocioLO= new TCanvas("incrocioLO","incrocioLO",1000,100,2500,2000);
     Th_E_noph->Draw("HIST");
-    Th_E_nophMU->SetMarkerColor(kRed);
+    Th_E_nophMU->SetMarkerColor(kBlack);
     Th_E_nophMU->Draw("HIST same");
   incrocioLO->SaveAs("incrocioEnergye-thetaLO.png");
     

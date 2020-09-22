@@ -96,17 +96,19 @@ TH2F  *Th_E_noph1MU  = new TH2F("h2da1" , " Th MU Vs. Ee whitout photons (LO) ta
 TH2F  *Th_E_noRm1MU = new TH2F("h2da1" , " Th MU Vs. Ee with photons <2Rm tar 1",140,0,5,140,0,160);
 TH2F  *Th_E_PhNoCal1MU = new TH2F("h2da1" , " Th MU Vs. Ee with photons out of cal tar 1",140,0,5,140,0,160);
     
-TH2F  *Th_E_mu = new TH2F("h2da1" , " Th mu Vs. Th e of the muons",140,0,100,140,0,5);
-TH2F  *Th_E_eph = new TH2F("h2da1" , " Th mu Vs. Th e when the electrons are with ph (NLO)",140,0,100,140,0,5);
+TH2F  *Th_E_mu = new TH2F("h2da1" , " Th mu Vs. Th e when the photons are produced but out of CAL ",140,0,100,140,0,5);
+TH2F  *Th_E_eph = new TH2F("h2da1" , " Th mu Vs. Th e when photons <2RM (NLO)",140,0,100,140,0,5);
 TH2F  *Th_E_eNoph = new TH2F("h2da1" , " Th mu Vs. Th e when the electrons are without photons",140,0,100,140,0,5);
+
     
-TH2F  *Th_E_mu0 = new TH2F("h2da1" , " Th mu Vs. Th e of the muons tar 0",140,0,100,140,0,5);
-TH2F  *Th_E_eph0 = new TH2F("h2da1" , " Th mu Vs. Th e of the electrons with ph (NLO) tar 0",140,0,100,140,0,5);
-TH2F  *Th_E_eNoph0 = new TH2F("h2da1" , " Th mu Vs. Th e of the electrons without photons tar 0",140,0,100,140,0,5);
+TH2F  *Th_E_mu0 = new TH2F("h2da1" , " Th mu Vs. Th e when e and mu when the photons are produced but out of CAL tar 0",140,0,100,140,0,5);
+TH2F  *Th_E_eph0 = new TH2F("h2da1" , " Th mu Vs. Th e with photons <2RM(NLO) tar 0",140,0,100,140,0,5);
+TH2F  *Th_E_eNoph0 = new TH2F("h2da1" , " Th mu Vs. Th e when electrons without photons tar 0",140,0,100,140,0,5);
+
     
-TH2F  *Th_E_mu1 = new TH2F("h2da1" , " Th mu Vs. Th e of the muons tar 1",140,0,100,140,0,5);
-TH2F  *Th_E_eph1 = new TH2F("h2da1" , " Th mu Vs. Th e of the electrons with ph (NLO) tar 1",140,0,100,140,0,5);
-TH2F  *Th_E_eNoph1 = new TH2F("h2da1" , " Th mu Vs. Th e of the electrons without photons tar 1",140,0,100,140,0,5);
+TH2F  *Th_E_mu1 = new TH2F("h2da1" , " Th mu Vs. Th e when e and mu when the photons are produced but out of CAL tar 1",140,0,100,140,0,5);
+TH2F  *Th_E_eph1 = new TH2F("h2da1" , " Th mu Vs. Th e with photons <2RM(NLO) tar 1",140,0,100,140,0,5);
+TH2F  *Th_E_eNoph1 = new TH2F("h2da1" , " Th mu Vs. Th e when electrons without photons tar 1",140,0,100,140,0,5);
     
 TH1F* E_ph=new TH1F("h2aN1", "E ph d>2Rm",180,0,100);
 TH1F* E_ph0=new TH1F("h2aN2", "E ph d>2Rm tar 0",180,0,100);
@@ -132,21 +134,30 @@ TH2F  *Ee_Eph = new TH2F("h2da1" , " E e Vs. E oh of the photons with d<2Rm",140
     if ((detKinBeamRot_Ee>3.5 || detKinBeamRot_the>12) && (detKinBeamRot_Ee>40 || detKinBeamRot_the>4) && (detKinBeamRot_Ee>(-168/3.4)+((105/3.4)*detKinBeamRot_thmu)) && ( detKinBeamRot_Ee>125 || detKinBeamRot_Ee<25+(100/3.5)*detKinBeamRot_thmu ) ){   
        
        if (detKinBeamRot_cooXe < 0.07 && detKinBeamRot_cooYe < 0.07 && detKinBeamRot_cooXe > -0.07 && detKinBeamRot_cooYe > -0.07)
-        { if (detKinBeamRot_tar==0 && detKinBeamRot_Ee>1){
-       nElNO++;
+        {   
+// SE VIENE DAL TARGET ZERO E HA ENERGIA MAGGIORE DI 1 GEV
+           if (detKinBeamRot_tar==0 && detKinBeamRot_Ee>1)
+       
+            
+        {   nElNO++;
+      
+         
+//SE CI SONO FOTONI
        if (photon_coox != -1)
        {
 
-d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detKinBeamRot_cooYe-photon_cooy)*(detKinBeamRot_cooYe-photon_cooy));   
+           d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detKinBeamRot_cooYe-photon_cooy)*(detKinBeamRot_cooYe-photon_cooy));   
   
-  
+// SE QUESTI FOTONI SONO NEL TARGET 
       if (photon_coox < 0.07 && photon_cooy < 0.07 && photon_coox > -0.07 && photon_cooy > -0.07)
        {
            
-           if (abs(d)>2*Rm)
+// SE HANNO UNA DISTANZA DALL'ELETTRONE MAGGIORE DI 2 RAGGI DI MOLIERE
+          if (abs(d)>2*Rm)
            {
                nEl++;
            }
+// SE INVECE IL PUNTO D'IMPATTO è AD UNA DSTANZA MINORE
           else {
               nElNORm++; 
               EnCalNORm->Fill(detKinBeamRot_Ee,wgt_full); 
@@ -154,115 +165,110 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
               Th_E_noRm->Fill(detKinBeamRot_the,detKinBeamRot_Ee,wgt_full); 
               E_ph->Fill(photon_energy,wgt_full);
               ThCalNORmMU->Fill(detKinBeamRot_thmu,wgt_full);
-              Th_E_noRmMU->Fill(detKinBeamRot_thmu,detKinBeamRot_Ee,wgt_full);}
-       }
-      else {nElPh++; 
-            ThPhNoCal->Fill(detKinBeamRot_the,wgt_full); 
-            ThPhNoCalMU->Fill(detKinBeamRot_thmu,wgt_full);
-            EnPhNoCal->Fill(detKinBeamRot_Ee,wgt_full);
-            Th_E_PhNoCal->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);
-            Th_E_PhNoCalMU->Fill(detKinBeamRot_thmu, detKinBeamRot_Ee,wgt_full);}     
-           }     
-   
-else {nElNOph++;
-      EnCalNoPh->Fill(detKinBeamRot_Ee,wgt_full); 
-      ThCalNoPh->Fill(detKinBeamRot_the,wgt_full);
-      ThCalNoPhMU->Fill(detKinBeamRot_thmu,wgt_full);
-      Th_E_noph->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);
-      Th_E_nophMU->Fill(detKinBeamRot_thmu, detKinBeamRot_Ee,wgt_full);}}
-         
-         if (detKinBeamRot_tar==0)nElNO++;
-       if (photon_coox != -1)
-       {
-
-d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detKinBeamRot_cooYe-photon_cooy)*(detKinBeamRot_cooYe-photon_cooy));   
-  
-  
-      if (photon_coox < 0.07 && photon_cooy < 0.07 && photon_coox > -0.07 && photon_cooy > -0.07)
-       {
-           
-           if (abs(d)>2*Rm)
-           {
-               nEl++;
-           }
-          else {
-              nElNORm++; 
-              EnCalNORm->Fill(detKinBeamRot_Ee,wgt_full); 
-              ThCalNORm->Fill(detKinBeamRot_the,wgt_full); 
-              Th_E_noRm->Fill(detKinBeamRot_the,detKinBeamRot_Ee,wgt_full); 
-              E_ph->Fill(photon_energy,wgt_full);
-              ThCalNORmMU->Fill(detKinBeamRot_thmu,wgt_full);
-              Th_E_noRmMU->Fill(detKinBeamRot_thmu,detKinBeamRot_Ee,wgt_full);}
-       }
-      else {nElPh++; 
-            ThPhNoCal->Fill(detKinBeamRot_the,wgt_full); 
-            ThPhNoCalMU->Fill(detKinBeamRot_thmu,wgt_full);
-            EnPhNoCal->Fill(detKinBeamRot_Ee,wgt_full);
-            Th_E_PhNoCal->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);
-            Th_E_PhNoCalMU->Fill(detKinBeamRot_thmu, detKinBeamRot_Ee,wgt_full);}     
-           }     
-   
-else {nElNOph++;
-      EnCalNoPh->Fill(detKinBeamRot_Ee,wgt_full); 
-      ThCalNoPh->Fill(detKinBeamRot_the,wgt_full);
-      ThCalNoPhMU->Fill(detKinBeamRot_thmu,wgt_full);
-      Th_E_noph->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);
-      Th_E_nophMU->Fill(detKinBeamRot_thmu, detKinBeamRot_Ee,wgt_full);}
-        
-     }
- 
-           
-       
-       
-       
-       
-    if (detKinBeamRot_cooXe < 0.07 && detKinBeamRot_cooYe < 0.07 && detKinBeamRot_cooXe > -0.07 && detKinBeamRot_cooYe > -0.07 && detKinBeamRot_tar==0 && detKinBeamRot_Ee>1)
-        {
-       nElNO0++;
-              if (photon_coox != -1 )
-       {
-           
-d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detKinBeamRot_cooYe-photon_cooy)*(detKinBeamRot_cooYe-photon_cooy)); 
-                  
-       if (photon_coox < 0.07 && photon_cooy < 0.07 && photon_coox > -0.07 && photon_cooy > -0.07)
-       {
-     
-           if (abs(d)>2*Rm)
-           {
-               nEl0++;
-           }
-           else {nElNORm0++; 
-                 EnCalNORm0->Fill(detKinBeamRot_Ee,wgt_full); 
-                 ThCalNORm0->Fill(detKinBeamRot_the,wgt_full); 
-                 Th_E_noRm0->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full); 
-                 ThCalNORm0MU->Fill(detKinBeamRot_thmu,wgt_full); 
-                 Th_E_noRm0MU->Fill(detKinBeamRot_thmu, detKinBeamRot_Ee,wgt_full); 
-                 E_ph0->Fill(photon_energy,wgt_full); 
-                 Ee_Eph->Fill(detKinBeamRot_Ee,photon_energy,wgt_full);}
-       }
-   else {nElPh0++; 
-         ThPhNoCal0->Fill(detKinBeamRot_the,wgt_full);
-         ThPhNoCal0MU->Fill(detKinBeamRot_thmu,wgt_full);  
-         EnPhNoCal0->Fill(detKinBeamRot_Ee,wgt_full); 
-         Th_E_PhNoCal0->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);
-         Th_E_PhNoCal0MU->Fill(detKinBeamRot_thmu, detKinBeamRot_Ee,wgt_full);} }
-         
-        
- else {nElNOph0++; 
-       EnCalNoPh0->Fill(detKinBeamRot_Ee,wgt_full); 
-       ThCalNoPh0->Fill(detKinBeamRot_the,wgt_full); 
-       ThCalNoPh0MU->Fill(detKinBeamRot_thmu,wgt_full); 
-       Th_E_noph0->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);
-       Th_E_noph0MU->Fill(detKinBeamRot_thmu, detKinBeamRot_Ee,wgt_full);
-       
-      }
-    
-           }
-    
+              Th_E_noRmMU->Fill(detKinBeamRot_thmu,detKinBeamRot_Ee,wgt_full);
               
-       
+// MUONI ASSOCIATI AD ELETTRONI CON FOTONI CON PUNTO D'IMPATTO <2*RM          
+                if (abs(detKinBeamRot_cooXmu)<0.07 && abs(detKinBeamRot_cooYmu)<0.07)
+                {
+                   Th_E_eph->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full); 
+                }}
+       }
+// SE I FOTONI NON CI SONO NEL CALROIMETRO MA SONO STATI PRODOTTI, QUINDI SONO EVENTI NLO
+      else {nElPh++; 
+            ThPhNoCal->Fill(detKinBeamRot_the,wgt_full); 
+            ThPhNoCalMU->Fill(detKinBeamRot_thmu,wgt_full);
+            EnPhNoCal->Fill(detKinBeamRot_Ee,wgt_full);
+            Th_E_PhNoCal->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);
+            Th_E_PhNoCalMU->Fill(detKinBeamRot_thmu, detKinBeamRot_Ee,wgt_full);
+        if (abs(detKinBeamRot_cooXmu)<0.07 && abs(detKinBeamRot_cooYmu)<0.07)
+                {
+                   Th_E_mu->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+                }
+           }     
+           }     
+// SE NON CI SONO FOTONI QUINDI EVENTI LO
+else {nElNOph++;
+      EnCalNoPh->Fill(detKinBeamRot_Ee,wgt_full); 
+      ThCalNoPh->Fill(detKinBeamRot_the,wgt_full);
+      ThCalNoPhMU->Fill(detKinBeamRot_thmu,wgt_full);
+      Th_E_noph->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);
+      Th_E_nophMU->Fill(detKinBeamRot_thmu, detKinBeamRot_Ee,wgt_full);
+     
+     if (abs(detKinBeamRot_cooXmu)<0.07 && abs(detKinBeamRot_cooYmu)<0.07)
+     {
+         Th_E_eNoph->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+     }
+     }}
+      
+         
+// SE VIENE DAL TARGET UNO
+         if (detKinBeamRot_tar==1)
+         { nElNO++;
+      
+         
+//SE CI SONO FOTONI
+       if (photon_coox != -1)
+       {
 
-       
+           d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detKinBeamRot_cooYe-photon_cooy)*(detKinBeamRot_cooYe-photon_cooy));   
+  
+// SE QUESTI FOTONI SONO NEL TARGET 
+      if (photon_coox < 0.07 && photon_cooy < 0.07 && photon_coox > -0.07 && photon_cooy > -0.07)
+       {
+           
+// SE HANNO UNA DISTANZA DALL'ELETTRONE MAGGIORE DI 2 RAGGI DI MOLIERE
+          if (abs(d)>2*Rm)
+           {
+               nEl++;
+           }
+// SE INVECE IL PUNTO D'IMPATTO è AD UNA DSTANZA MINORE
+          else {
+              nElNORm++; 
+              EnCalNORm->Fill(detKinBeamRot_Ee,wgt_full); 
+              ThCalNORm->Fill(detKinBeamRot_the,wgt_full); 
+              Th_E_noRm->Fill(detKinBeamRot_the,detKinBeamRot_Ee,wgt_full); 
+              E_ph->Fill(photon_energy,wgt_full);
+              ThCalNORmMU->Fill(detKinBeamRot_thmu,wgt_full);
+              Th_E_noRmMU->Fill(detKinBeamRot_thmu,detKinBeamRot_Ee,wgt_full);
+              
+// MUONI ASSOCIATI AD ELETTRONI CON FOTONI CON PUNTO D'IMPATTO <2*RM          
+                if (abs(detKinBeamRot_cooXmu)<0.07 && abs(detKinBeamRot_cooYmu)<0.07)
+                {
+                   Th_E_eph->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full); 
+                }}
+       }
+// SE I FOTONI NON CI SONO NEL CALROIMETRO MA SONO STATI PRODOTTI, QUINDI SONO EVENTI NLO
+      else {nElPh++; 
+            ThPhNoCal->Fill(detKinBeamRot_the,wgt_full); 
+            ThPhNoCalMU->Fill(detKinBeamRot_thmu,wgt_full);
+            EnPhNoCal->Fill(detKinBeamRot_Ee,wgt_full);
+            Th_E_PhNoCal->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);
+            Th_E_PhNoCalMU->Fill(detKinBeamRot_thmu, detKinBeamRot_Ee,wgt_full);
+        if (abs(detKinBeamRot_cooXmu)<0.07 && abs(detKinBeamRot_cooYmu)<0.07)
+                {
+                   Th_E_mu->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+                }
+           }     
+           }     
+// SE NON CI SONO FOTONI QUINDI EVENTI LO
+else {nElNOph++;
+      EnCalNoPh->Fill(detKinBeamRot_Ee,wgt_full); 
+      ThCalNoPh->Fill(detKinBeamRot_the,wgt_full);
+      ThCalNoPhMU->Fill(detKinBeamRot_thmu,wgt_full);
+      Th_E_noph->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);
+      Th_E_nophMU->Fill(detKinBeamRot_thmu, detKinBeamRot_Ee,wgt_full);
+     
+     if (abs(detKinBeamRot_cooXmu)<0.07 && abs(detKinBeamRot_cooYmu)<0.07)
+     {
+         Th_E_eNoph->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+     }
+     }}
+           
+       }
+              
+  
+        
+        
 if (detKinBeamRot_cooXe < 0.07 && detKinBeamRot_cooYe < 0.07 && detKinBeamRot_cooXe > -0.07 && detKinBeamRot_cooYe > -0.07 && detKinBeamRot_tar==1)
         {
        nElNO1++;
@@ -287,7 +293,13 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
                  Ee_Eph->Fill(detKinBeamRot_Ee,photon_energy,wgt_full);
                 
                  Double_t Etot=photon_energy+detKinBeamRot_Ee;
-                En_tot->Fill(Etot,wgt_full);}
+                En_tot->Fill(Etot,wgt_full);
+// MUONI ASSOCIATI AD ELETTRONI CON FOTONI CON PUNTO D'IMPATTO <2*RM          
+                if (abs(detKinBeamRot_cooXmu)<0.07 && abs(detKinBeamRot_cooYmu)<0.07)
+                {
+                   Th_E_eph1->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full); 
+                }
+                }
        }
    else  {nElPh1++; 
           ThPhNoCal1->Fill(detKinBeamRot_the,wgt_full); 
@@ -295,7 +307,10 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
           EnPhNoCal1->Fill(detKinBeamRot_Ee,wgt_full); 
          Th_E_PhNoCal1->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);
          Th_E_PhNoCal1MU->Fill(detKinBeamRot_thmu, detKinBeamRot_Ee,wgt_full);
-
+        if (abs(detKinBeamRot_cooXmu)<0.07 && abs(detKinBeamRot_cooYmu)<0.07)
+                {
+                   Th_E_mu1->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+                }
          }}
     else {nElNOph1++; 
           EnCalNoPh1->Fill(detKinBeamRot_Ee,wgt_full); 
@@ -303,53 +318,69 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
           Th_E_noph1->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);
           ThCalNoPh1MU->Fill(detKinBeamRot_thmu,wgt_full); 
           Th_E_noph1MU->Fill(detKinBeamRot_thmu, detKinBeamRot_Ee,wgt_full);}
-
+     if (abs(detKinBeamRot_cooXmu)<0.07 && abs(detKinBeamRot_cooYmu)<0.07)
+     {
+         Th_E_eNoph1->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+     }
            }
-       if (abs(detKinBeamRot_cooXe)<0.07 && abs(detKinBeamRot_cooYe)<0.07 && abs(detKinBeamRot_cooXmu)<0.07 && abs(detKinBeamRot_cooYmu)<0.07 && detKinBeamRot_tar==1)
-       {
-          Th_E_mu1->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
-           if (photon_coox != -1)
-           {
-               Th_E_eph1->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
-           }
-           else Th_E_eNoph1->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
-       }
+        
+        
     
-       
-    if (abs(detKinBeamRot_cooXe)<0.07 && abs(detKinBeamRot_cooYe)<0.07 && abs(detKinBeamRot_cooXmu)<0.07 && abs(detKinBeamRot_cooYmu)<0.07 && detKinBeamRot_tar==0)
+   if (detKinBeamRot_cooXe < 0.07 && detKinBeamRot_cooYe < 0.07 && detKinBeamRot_cooXe > -0.07 && detKinBeamRot_cooYe > -0.07 && detKinBeamRot_tar==0 && detKinBeamRot_Ee>1)
+        {
+       nElNO0++;
+              if (photon_coox != -1)
+              {
+          
+d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detKinBeamRot_cooYe-photon_cooy)*(detKinBeamRot_cooYe-photon_cooy)); 
+  
+       if (photon_coox < 0.07 && photon_cooy < 0.07 && photon_coox > -0.07 && photon_cooy > -0.07)
        {
-          Th_E_mu0->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
-        
-        d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detKinBeamRot_cooYe-photon_cooy)*(detKinBeamRot_cooYe-photon_cooy)); 
-        
-           if (photon_coox != -1 && d<2*Rm)
+           if (abs(d)>2*Rm)
            {
-               Th_E_eph0->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+               nEl0++;
            }
-           else if (photon_coox == -1) {Th_E_eNoph0->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);}
+           else {nElNORm0++; 
+                 EnCalNORm0->Fill(detKinBeamRot_Ee,wgt_full); 
+                 ThCalNORm0->Fill(detKinBeamRot_the,wgt_full); 
+                 Th_E_noRm0->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);
+                 ThCalNORm0MU->Fill(detKinBeamRot_thmu,wgt_full); 
+                 Th_E_noRm0MU->Fill(detKinBeamRot_thmu, detKinBeamRot_Ee,wgt_full); 
+                 E_ph0->Fill(photon_energy,wgt_full);
+                 Ee_Eph->Fill(detKinBeamRot_Ee,photon_energy,wgt_full);
+                
+                 Double_t Etot=photon_energy+detKinBeamRot_Ee;
+                En_tot->Fill(Etot,wgt_full);
+// MUONI ASSOCIATI AD ELETTRONI CON FOTONI CON PUNTO D'IMPATTO <2*RM          
+                if (abs(detKinBeamRot_cooXmu)<0.07 && abs(detKinBeamRot_cooYmu)<0.07)
+                {
+                   Th_E_eph0->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full); 
+                }
+                }
        }
-       
-   
-    
-    if (abs(detKinBeamRot_cooXe)<0.07 && abs(detKinBeamRot_cooYe)<0.07 && abs(detKinBeamRot_cooXmu)<0.07 && abs(detKinBeamRot_cooYmu)<0.07 && detKinBeamRot_tar==1)
-       {
-          Th_E_mu1->Fill(detKinBeamRot_thmu,detKinBeamRot_Emu,wgt_full);
-           if (photon_coox != -1 && d<2*Rm)
-           {
-               Th_E_eph1->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+   else  {nElPh0++; 
+          ThPhNoCal0->Fill(detKinBeamRot_the,wgt_full); 
+          ThPhNoCal0MU->Fill(detKinBeamRot_thmu,wgt_full); 
+          EnPhNoCal0->Fill(detKinBeamRot_Ee,wgt_full); 
+         Th_E_PhNoCal0->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);
+         Th_E_PhNoCal0MU->Fill(detKinBeamRot_thmu, detKinBeamRot_Ee,wgt_full);
+        if (abs(detKinBeamRot_cooXmu)<0.07 && abs(detKinBeamRot_cooYmu)<0.07)
+                {
+                   Th_E_mu0->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+                }
+         }}
+    else {nElNOph0++; 
+          EnCalNoPh0->Fill(detKinBeamRot_Ee,wgt_full); 
+          ThCalNoPh0->Fill(detKinBeamRot_the,wgt_full); 
+          Th_E_noph0->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);
+          ThCalNoPh0MU->Fill(detKinBeamRot_thmu,wgt_full); 
+          Th_E_noph0MU->Fill(detKinBeamRot_thmu, detKinBeamRot_Ee,wgt_full);}
+     if (abs(detKinBeamRot_cooXmu)<0.07 && abs(detKinBeamRot_cooYmu)<0.07)
+     {
+         Th_E_eNoph0->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+     }
            }
-           else if (photon_coox == -1) { Th_E_eNoph1->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);}
-       }
-        
-            if (abs(detKinBeamRot_cooXe)<0.07 && abs(detKinBeamRot_cooYe)<0.07 && abs(detKinBeamRot_cooXmu)<0.07 && abs(detKinBeamRot_cooYmu)<0.07)
-       {
-          Th_E_mu->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
-           if (photon_coox != -1 && d<2*Rm)
-           {
-               Th_E_eph->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
-           }
-           else if (photon_coox == -1) { Th_E_eNoph->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);}
-       }
+            
         
         
        

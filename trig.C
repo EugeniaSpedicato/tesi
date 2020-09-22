@@ -425,7 +425,7 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
     
     
     
-    TCanvas * e= new TCanvas("e","e",200,10,1000,900);
+    TCanvas * e= new TCanvas("e","e",100,50,1000,900);
     e->Divide(1,3);
     e->cd(1);
     EnCalNoPh->SetLineColor(kRed);

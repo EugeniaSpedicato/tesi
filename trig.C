@@ -748,6 +748,13 @@ TCanvas * E= new TCanvas("A","A",1000,100,2500,2000);
   separatiMU->SaveAs("Energye-thetaMU.png");
     
        
-    
+    TCanvas * incrocio= new TCanvas("incrocio","incrocio",1000,100,2500,2000);
+    Th_E_noRm->Draw("HIST");
+    Th_E_PhNoCal->Draw("HIST same");
+    Th_E_noRmMU->SetMarkerColor(kRed);
+    Th_E_PhNoCalMU->SetMarkerColor(kRed);
+    Th_E_noRmMU->Draw("HIST same");
+    Th_E_PhNoCalMU->Draw("HIST same");
+  incrocio->SaveAs("incrocioEnergye-theta.png");
     
 }

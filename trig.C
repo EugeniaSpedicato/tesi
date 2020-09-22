@@ -670,7 +670,7 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
     separatiA->cd(8);
     Th_E_eph0->Draw("HIST");
     Th_E_eph0->GetXaxis()->SetTitle("Th el [mrad]");
-    Th_E_eph0->GetYaxis()->SetTitle("Th mu [mrad]"));
+    Th_E_eph0->GetYaxis()->SetTitle("Th mu [mrad]");
         
     separatiA->cd(9);
     Th_E_mu0->SetMarkerColor(29);

@@ -425,10 +425,11 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
     
     
     
-    TCanvas * e= new TCanvas("e","e",100,50,1000,900);
+    TCanvas * e= new TCanvas("e","e",100,100,1000,1000);
     e->Divide(1,3);
     e->cd(1);
     EnCalNoPh->SetLineColor(kRed);
+    EnCalNORm0->SetLineColor(kBlack);
     EnCalNoPh->Draw("HIST");
     EnCalNORm->Draw("HIST same");
     EnPhNoCal->SetLineColor(kOrange);
@@ -437,6 +438,7 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
     
     e->cd(2);
     EnCalNoPh0->SetLineColor(kRed);
+    EnCalNORm0->SetLineColor(kBlack);
     EnCalNoPh0->Draw("HIST");
     EnCalNORm0->Draw("HIST same");
     EnPhNoCal0->SetLineColor(kOrange);
@@ -446,6 +448,7 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
     e->cd(3);
     EnCalNoPh1->SetLineColor(kRed);
     EnCalNoPh1->Draw("HIST");
+    EnCalNORm1->SetLineColor(kBlack);
     EnCalNORm1->Draw("HIST same");
     EnPhNoCal1->SetLineColor(kOrange);
     EnPhNoCal1->Draw("HIST same");
@@ -470,6 +473,7 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
     te->cd(1);
     ThCalNoPh->SetLineColor(kRed);
     ThCalNoPh->Draw("HIST");
+    ThCalNORm->SetLineColor(kBlack);
     ThCalNORm->Draw("HIST same");
     ThPhNoCal->SetLineColor(kOrange);
     ThPhNoCal->Draw("HIST same");
@@ -478,6 +482,7 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
     te->cd(2);
     ThCalNoPh0->SetLineColor(kRed);
     ThCalNoPh0->Draw("HIST");
+    ThCalNORm0->SetLineColor(kBlack);
     ThCalNORm0->Draw("HIST same");
     ThPhNoCal0->SetLineColor(kOrange);
     ThPhNoCal0->Draw("HIST same");
@@ -486,6 +491,7 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
     te->cd(3);
     ThCalNoPh1->SetLineColor(kRed);
     ThCalNoPh1->Draw("HIST");
+    ThCalNORm1->SetLineColor(kBlack);
     ThCalNORm1->Draw("HIST same");
     ThPhNoCal1->SetLineColor(kOrange);
     ThPhNoCal1->Draw("HIST same");
@@ -497,6 +503,7 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
     teMU->cd(1);
     ThCalNoPhMU->SetLineColor(kRed);
     ThCalNoPhMU->Draw("HIST");
+    ThCalNORmMU->SetLineColor(kBlack);
     ThCalNORmMU->Draw("HIST same");
     ThPhNoCalMU->SetLineColor(kOrange);
     ThPhNoCalMU->Draw("HIST same");
@@ -505,6 +512,7 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
     teMU->cd(2);
     ThCalNoPh0MU->SetLineColor(kRed);
     ThCalNoPh0MU->Draw("HIST");
+    ThCalNORm0MU->SetLineColor(kBlack);
     ThCalNORm0MU->Draw("HIST same");
     ThPhNoCal0MU->SetLineColor(kOrange);
     ThPhNoCal0MU->Draw("HIST same");
@@ -513,6 +521,7 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
     teMU->cd(3);
     ThCalNoPh1MU->SetLineColor(kRed);
     ThCalNoPh1MU->Draw("HIST");
+    ThCalNORm1MU->SetLineColor(kBlack);
     ThCalNORm1MU->Draw("HIST same");
     ThPhNoCal1MU->SetLineColor(kOrange);
     ThPhNoCal1MU->Draw("HIST same");

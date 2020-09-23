@@ -69,8 +69,8 @@ TH1F* ThCalNoPh1MU=new TH1F("h2aN", "Theta MU wh/out ph TAR 1", 180,0,5);
 TH1F* ThPhNoCalMU=new TH1F("h2aN", "Theta MU with ph out of calorimete", 180,0,5);
 TH1F* ThPhNoCal0MU=new TH1F("h2aN", "Theta MU with ph out of calorimete TAR 0", 180,0,5);
 TH1F* ThPhNoCal1MU=new TH1F("h2aN", "Theta MU with ph out of calorimete TAR 1", 180,0,5); 
-    
-TH2F  *Th_E_noph  = new TH2F("h2da" , " Th e Vs. Th  of the electrons whitout photons (LO)",140,0,100,140,0,160);
+//NB: Ho modificato il range di Th_E_noph
+TH2F  *Th_E_noph  = new TH2F("h2da" , " Th e Vs. Th  of the electrons whitout photons (LO)",140,0,5,140,55,110);
 TH2F  *Th_E_noRm = new TH2F("h2da" , " Th  Vs. E of the electrons with photons <2Rm",140,0,100,140,0,160);
 TH2F  *Th_E_PhNoCal = new TH2F("h2da" , " Th  Vs. E of the electrons with photons out of cal",140,0,100,140,0,160);
 

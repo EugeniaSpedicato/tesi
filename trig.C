@@ -380,9 +380,9 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
            }
            
            else {// poszione asse shower all'uscita del calorimetro. Se è maggiore di 2*RM allora, anche se nel punto di impatto non li distinguo, alla fine risultano separate (forse)
-                 Double_t Xe=tan(atan2(detKinBeamRot_pXe_out, detKinBeamRot_pZe_out))*0.22;
-                 Double_t Ye=tan(atan2(detKinBeamRot_pYe_out, detKinBeamRot_pZe_out))*0.22;
-                 Double_t r=0.22*tan(photon_theta*0.001); //theta in radianti
+                 Double_t Xe=tan(atan2(detKinBeamRot_pXe_out, detKinBeamRot_pZe_out))*0.5;
+                 Double_t Ye=tan(atan2(detKinBeamRot_pYe_out, detKinBeamRot_pZe_out))*0.5;
+                 Double_t r=0.5*tan(photon_theta*0.001); //theta in radianti
                  Double_t Xph=r*cos(photon_phi);
                  Double_t Yph=r*sin(photon_phi);
                  Double_t dist=sqrt((Xe-Xph)*(Xe-Xph)+(Ye-Yph)*(Ye-Yph));  

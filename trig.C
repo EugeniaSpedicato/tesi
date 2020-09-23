@@ -173,11 +173,11 @@ TH2F  *Eeph_Ee= new TH2F("h2da1" , " Ee+Eph Vs. Ee oh of the photons with d<2Rm"
                   NelDist++;
                     }
               else{nElNORm++; 
+            Double_t Etot=photon_energy+detKinBeamRot_Ee;
               EnCalNORm->Fill(detKinBeamRot_Ee,wgt_full); 
               ThCalNORm->Fill(detKinBeamRot_the,wgt_full); 
-              Th_E_noRm->Fill(detKinBeamRot_the,detKinBeamRot_Ee,wgt_full); 
+              Th_E_noRm->Fill(detKinBeamRot_the,Etot,wgt_full); 
               E_ph->Fill(photon_energy,wgt_full);
-                Double_t Etot=photon_energy+detKinBeamRot_Ee;
                 En_tot->Fill(Etot,wgt_full);
               
               
@@ -255,11 +255,11 @@ if (detKinBeamRot_tar==1)
                   NelDist++;
                     }
               else{nElNORm++; 
+            Double_t Etot=photon_energy+detKinBeamRot_Ee;
               EnCalNORm->Fill(detKinBeamRot_Ee,wgt_full); 
               ThCalNORm->Fill(detKinBeamRot_the,wgt_full); 
-              Th_E_noRm->Fill(detKinBeamRot_the,detKinBeamRot_Ee,wgt_full); 
+              Th_E_noRm->Fill(detKinBeamRot_the,Etot,wgt_full); 
               E_ph->Fill(photon_energy,wgt_full);
-                Double_t Etot=photon_energy+detKinBeamRot_Ee;
                 En_tot->Fill(Etot,wgt_full);
               
 // MUONI ASSOCIATI AD ELETTRONI CON FOTONI CON PUNTO D'IMPATTO <2*RM          

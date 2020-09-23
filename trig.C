@@ -72,11 +72,11 @@ TH1F* ThPhNoCalMU=new TH1F("h2aN", "Theta MU with ph out of calorimete", 180,0,5
 TH1F* ThPhNoCal0MU=new TH1F("h2aN", "Theta MU with ph out of calorimete TAR 0", 180,0,5);
 TH1F* ThPhNoCal1MU=new TH1F("h2aN", "Theta MU with ph out of calorimete TAR 1", 180,0,5); 
 
-TH2F  *Th_E_noph  = new TH2F("h2da" , " Th e Vs. Th  of the electrons whitout photons (LO)",140,0,160,140,0,100);
+TH2F  *Th_E_noph  = new TH2F("h2da" , " Th e Vs. Th  of the electrons whitout photons (LO)",140,0,100,140,0,160);
 TH2F  *Th_E_noRm = new TH2F("h2da" , " Th  Vs. E of the electrons with photons <2Rm",140,0,100,140,0,160);
 TH2F  *Th_E_PhNoCal = new TH2F("h2da" , " Th  Vs. E of the electrons with photons out of cal",140,0,100,140,0,160);
 
-TH2F  *Th_E_nophMU  = new TH2F("h2da" , " Th MU Vs. Ee whitout photons (LO)",140,0,160,140,0,5);
+TH2F  *Th_E_nophMU  = new TH2F("h2da" , " Th MU Vs. Ee whitout photons (LO)",140,0,5,140,0,160);
 TH2F  *Th_E_noRmMU = new TH2F("h2da" , " Th MU Vs. Ee with photons <2Rm",140,0,5,140,0,160);
 TH2F  *Th_E_PhNoCalMU = new TH2F("h2da" , " Th MU Vs. Ee with photons out of cal",140,0,5,140,0,160);
 
@@ -117,6 +117,9 @@ TH1F* E_ph0=new TH1F("h2aN2", "E ph d>2Rm tar 0",180,0,100);
 TH1F* E_ph1=new TH1F("h2aN3", "E ph d>2Rm tar 1",180,0,100);
     
 TH2F  *Ee_Eph = new TH2F("h2da1" , " E e Vs. E oh of the photons with d<2Rm",140,0,100,140,0,100);
+    
+TH2F  *Ee_thmu= new TH2F("h2da1" , " E e Vs. th mu oh of the photons with d<2Rm",140,0,100,140,0,5);
+TH2F  *Eeph_Emu= new TH2F("h2da1" , " Ee+Eph Vs. th mu oh of the photons with d<2Rm",140,0,100,140,0,5);
 
     
      if (fChain == 0) return;
@@ -181,7 +184,12 @@ TH2F  *Ee_Eph = new TH2F("h2da1" , " E e Vs. E oh of the photons with d<2Rm",140
                 {
               ThCalNORmMU->Fill(detKinBeamRot_thmu,wgt_full);
               Th_E_noRmMU->Fill(detKinBeamRot_thmu,detKinBeamRot_Ee,wgt_full);
-                   Th_E_eph->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full); 
+              Th_E_eph->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full); 
+              
+              Ee_thmu->Fill(detKinBeamRot_Ee,detKinBeamRot_thmu,wgt_full);
+              Double_t Etot=detKinBeamRot_Ee+photon_energy;
+              Eeph_Emu->Fill(Etot,detKinBeamRot_thmu,wgt_full); 
+            
                 }}
        }}
 // SE I FOTONI NON CI SONO NEL CALROIMETRO MA SONO STATI PRODOTTI, QUINDI SONO EVENTI NLO
@@ -200,13 +208,13 @@ TH2F  *Ee_Eph = new TH2F("h2da1" , " E e Vs. E oh of the photons with d<2Rm",140
 else {nElNOph++;
       EnCalNoPh->Fill(detKinBeamRot_Ee,wgt_full); 
       ThCalNoPh->Fill(detKinBeamRot_the,wgt_full);
-      Th_E_noph->Fill(detKinBeamRot_Ee, detKinBeamRot_the,wgt_full);
+      Th_E_noph->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);
      
      if (abs(detKinBeamRot_cooXmu)<0.07 && abs(detKinBeamRot_cooYmu)<0.07)
      {
       ThCalNoPhMU->Fill(detKinBeamRot_thmu,wgt_full);
-      Th_E_nophMU->Fill(detKinBeamRot_Ee, detKinBeamRot_thmu,wgt_full);
-       Th_E_eNoph->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+      Th_E_nophMU->Fill(detKinBeamRot_thmu, detKinBeamRot_Ee,wgt_full);
+         Th_E_eNoph->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
      }
      }
 }
@@ -831,5 +839,12 @@ TCanvas * E= new TCanvas("A","A",1000,100,2500,2000);
     Th_E_nophMU->SetMarkerColor(kBlack);
     Th_E_nophMU->Draw("HIST same");
   incrocioLO->SaveAs("incrocioEnergye-thetaLO.png");
+    
+    TCanvas * etot= new TCanvas("etot","etot",1000,100,2500,2000);
+    Eeph_Emu->SetMarkerColor(kRed);
+    Eeph_Emu->Draw("HIST");
+    Ee_thmu->SetMarkerColor(kBlue);
+    Ee_thmu->Draw("HIST same");
+    etot->SaveAs("Ephe-thetamu.png");
     
 }

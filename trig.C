@@ -482,8 +482,8 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
     
     
     
-    TCanvas * e= new TCanvas("e","e",100,100,1000,1000);
-    e->Divide(1,5);
+    TCanvas * e= new TCanvas("e","e",100,100,2000,1000);
+    e->Divide(3,2);
     e->cd(1);
     EnCalNoPh->SetLineColor(kRed);
     EnCalNoPh->GetXaxis()->SetTitle("E [GeV] log scale");
@@ -523,8 +523,8 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
     gPad->SetLogx();
  
     e->cd(5);
-    En_tot->Draw("HIST");
-    E_ph->Draw("HIST same");
+    EnCalNORm->Draw("HIST");
+    En_tot->Draw("HIST same");
     gPad->SetLogx();
     
     e->SaveAs("EnergyElnoRm.png");

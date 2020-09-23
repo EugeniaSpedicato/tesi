@@ -649,7 +649,7 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
     separatiA->Divide(3,3);
     
     separatiA->cd(7);
-    Th_E_eNoph1->SetMarkerColor(46);
+    Th_E_eNoph1->SetMarkerColor(kRed);
     Th_E_eNoph1->Draw("HIST");
     Th_E_eNoph1->GetXaxis()->SetTitle("Th el[mrad]");
     Th_E_eNoph1->GetYaxis()->SetTitle("Th mu [mrad]");
@@ -660,13 +660,13 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
     Th_E_eph1->GetYaxis()->SetTitle("Th mu [mrad]");
     
     separatiA->cd(9); 
-    Th_E_mu1->SetMarkerColor(29);
+    Th_E_mu1->SetMarkerColor(kOrange);
     Th_E_mu1->Draw("HIST ");
     Th_E_mu1->GetXaxis()->SetTitle("Th el[mrad]");
     Th_E_mu1->GetYaxis()->SetTitle("Th mu [mrad]");
 
     separatiA->cd(1);
-    Th_E_eNoph->SetMarkerColor(46);
+    Th_E_eNoph->SetMarkerColor(kRed);
     Th_E_eNoph->Draw("HIST");
     Th_E_eNoph->GetXaxis()->SetTitle("Th el[mrad]");
     Th_E_eNoph->GetYaxis()->SetTitle("Th mu [mrad]");
@@ -677,7 +677,7 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
     Th_E_eph->GetYaxis()->SetTitle("Th mu [mrad]");
         
     separatiA->cd(3);
-    Th_E_mu->SetMarkerColor(29);
+    Th_E_mu->SetMarkerColor(kOrange);
     Th_E_mu->Draw("HIST");
     Th_E_mu->GetXaxis()->SetTitle("Th el[mrad]");
     Th_E_mu->GetYaxis()->SetTitle("Th mu [mrad]");
@@ -685,7 +685,7 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
     
   
     separatiA->cd(4);
-    Th_E_eNoph0->SetMarkerColor(46);
+    Th_E_eNoph0->SetMarkerColor(kRed);
     Th_E_eNoph0->Draw("HIST");
     Th_E_eNoph0->GetXaxis()->SetTitle("Th el [mrad]");
     Th_E_eNoph0->GetYaxis()->SetTitle("Th mu [mrad]");
@@ -696,7 +696,7 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
     Th_E_eph0->GetYaxis()->SetTitle("Th mu [mrad]");
         
     separatiA->cd(6);
-    Th_E_mu0->SetMarkerColor(29);
+    Th_E_mu0->SetMarkerColor(kOrange);
     Th_E_mu0->Draw("HIST same");
     Th_E_mu0->GetXaxis()->SetTitle("Th el [mrad]");
     Th_E_mu0->GetYaxis()->SetTitle("Th mu [mrad]");

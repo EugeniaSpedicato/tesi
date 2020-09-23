@@ -483,7 +483,7 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
     
     
     TCanvas * e= new TCanvas("e","e",100,100,1000,1000);
-    e->Divide(1,3);
+    e->Divide(1,5);
     e->cd(1);
     EnCalNoPh->SetLineColor(kRed);
     EnCalNoPh->GetXaxis()->SetTitle("E [GeV] log scale");
@@ -514,7 +514,7 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
     EnPhNoCal1->Draw("HIST same");
     gPad->SetLogx();
     
-    /*e->cd(4);
+    e->cd(4);
     E_ph->SetLineColor(31);
     E_ph->Draw("HIST");
     E_ph0->Draw("HIST same");
@@ -524,7 +524,8 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
  
     e->cd(5);
     En_tot->Draw("HIST");
-    gPad->SetLogx();*/
+    E_ph->Draw("HIST same");
+    gPad->SetLogx();
     
     e->SaveAs("EnergyElnoRm.png");
     
@@ -839,6 +840,13 @@ TCanvas * E= new TCanvas("A","A",1000,100,2500,2000);
     Th_E_nophMU->SetMarkerColor(kBlack);
     Th_E_nophMU->Draw("HIST same");
   incrocioLO->SaveAs("incrocioEnergye-thetaLO.png");
+    
+    TCanvas * etot= new TCanvas("etot","etot",1000,100,2500,2000);
+    Eeph_Emu->SetMarkerColor(kRed);
+    Eeph_Emu->Draw("HIST");
+    Ee_thmu->SetMarkerColor(kBlue);
+    Ee_thmu->Draw("HIST same");
+    etot->SaveAs("Ephe-thetamu.png");
     
     TCanvas * etot= new TCanvas("etot","etot",1000,100,2500,2000);
     Eeph_Emu->SetMarkerColor(kRed);

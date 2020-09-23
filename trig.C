@@ -185,7 +185,8 @@ TH2F  *Eeph_Ee= new TH2F("h2da1" , " Ee+Eph Vs. Ee oh of the photons with d<2Rm"
                 if (abs(detKinBeamRot_cooXmu)<0.07 && abs(detKinBeamRot_cooYmu)<0.07)
                 {
               ThCalNORmMU->Fill(detKinBeamRot_thmu,wgt_full);
-              Th_E_noRmMU->Fill(detKinBeamRot_thmu,detKinBeamRot_Ee,wgt_full);
+                Double_t Etot=photon_energy+detKinBeamRot_Ee;
+              Th_E_noRmMU->Fill(detKinBeamRot_thmu,Etot,wgt_full);
               Th_E_eph->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full); 
               
               Ee_thmu->Fill(detKinBeamRot_Ee,detKinBeamRot_thmu,wgt_full);
@@ -409,13 +410,11 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
                  Th_E_noRm0->Fill(detKinBeamRot_the, Etot,wgt_full);
                  E_ph0->Fill(photon_energy,wgt_full);
                  Ee_Eph->Fill(detKinBeamRot_Ee,photon_energy,wgt_full);
-                
-                 Double_t Etot=photon_energy+detKinBeamRot_Ee;
                 En_tot->Fill(Etot,wgt_full);
 // MUONI ASSOCIATI AD ELETTRONI CON FOTONI CON PUNTO D'IMPATTO <2*RM          
                 if (abs(detKinBeamRot_cooXmu)<0.07 && abs(detKinBeamRot_cooYmu)<0.07)
                 {
-                    ThCalNORm0MU->Fill(detKinBeamRot_thmu,wgt_full); + 
+                    ThCalNORm0MU->Fill(detKinBeamRot_thmu,wgt_full); 
             Double_t Etot=photon_energy+detKinBeamRot_Ee;
                     Th_E_noRm0MU->Fill(detKinBeamRot_thmu, Etot,wgt_full); 
                     Th_E_eph0->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full); 

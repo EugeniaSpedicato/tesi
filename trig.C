@@ -119,7 +119,7 @@ TH1F* E_ph1=new TH1F("h2aN3", "E ph d>2Rm tar 1",180,0,100);
 TH2F  *Ee_Eph = new TH2F("h2da1" , " E e Vs. E oh of the photons with d<2Rm",140,0,100,140,0,100);
     
 TH2F  *Ee_thmu= new TH2F("h2da1" , " E e Vs. th mu oh of the photons with d<2Rm",140,0,100,140,0,5);
-TH2F  *Eeph_Emu= new TH2F("h2da1" , " Ee+Eph Vs. th mu oh of the photons with d<2Rm",140,0,100,140,0,5);
+TH2F  *Eeph_Ee= new TH2F("h2da1" , " Ee+Eph Vs. Ee oh of the photons with d<2Rm",140,0,100,140,0,100);
 
     
      if (fChain == 0) return;
@@ -190,7 +190,7 @@ TH2F  *Eeph_Emu= new TH2F("h2da1" , " Ee+Eph Vs. th mu oh of the photons with d<
               
               Ee_thmu->Fill(detKinBeamRot_Ee,detKinBeamRot_thmu,wgt_full);
               Double_t Etot=detKinBeamRot_Ee+photon_energy;
-              Eeph_Emu->Fill(Etot,detKinBeamRot_thmu,wgt_full); 
+              Eeph_Ee->Fill(Etot,detKinBeamRot_Ee,wgt_full); 
             
                 }}
        }}
@@ -845,10 +845,7 @@ TCanvas * E= new TCanvas("A","A",1000,100,2500,2000);
   incrocioLO->SaveAs("incrocioEnergye-thetaLO.png");
     
     TCanvas * etot= new TCanvas("etot","etot",1000,100,2500,2000);
-    Eeph_Emu->SetMarkerColor(kRed);
-    Eeph_Emu->Draw("HIST");
-    Ee_thmu->SetMarkerColor(kBlue);
-    Ee_thmu->Draw("HIST same");
+    Eeph_Ee->Draw("HIST");
     etot->SaveAs("Ephe-thetamu.png");
     
 

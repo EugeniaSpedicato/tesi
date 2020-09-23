@@ -266,7 +266,8 @@ if (detKinBeamRot_tar==1)
                 if (abs(detKinBeamRot_cooXmu)<0.07 && abs(detKinBeamRot_cooYmu)<0.07)
                 {
               ThCalNORmMU->Fill(detKinBeamRot_thmu,wgt_full);
-              Th_E_noRmMU->Fill(detKinBeamRot_thmu,detKinBeamRot_Ee,wgt_full);
+                Double_t Etot=photon_energy+detKinBeamRot_Ee;
+              Th_E_noRmMU->Fill(detKinBeamRot_thmu,Etot,wgt_full);
                    Th_E_eph->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full); 
                 }}
        }}
@@ -330,18 +331,20 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
               if(dist>2*Rm){
                   NelDist1++;
                     }
-           else {nElNORm1++; 
+           else {nElNORm1++;  
+            Double_t Etot=photon_energy+detKinBeamRot_Ee;
                  EnCalNORm1->Fill(detKinBeamRot_Ee,wgt_full); 
                  ThCalNORm1->Fill(detKinBeamRot_the,wgt_full); 
-                 Th_E_noRm1->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);
+                 Th_E_noRm1->Fill(detKinBeamRot_the, Etot,wgt_full);
                  E_ph1->Fill(photon_energy,wgt_full);
                  Ee_Eph->Fill(detKinBeamRot_Ee,photon_energy,wgt_full);
                 
 // MUONI ASSOCIATI AD ELETTRONI CON FOTONI CON PUNTO D'IMPATTO <2*RM          
                 if (abs(detKinBeamRot_cooXmu)<0.07 && abs(detKinBeamRot_cooYmu)<0.07)
                 {
-                 ThCalNORm1MU->Fill(detKinBeamRot_thmu,wgt_full); 
-                 Th_E_noRm1MU->Fill(detKinBeamRot_thmu, detKinBeamRot_Ee,wgt_full); 
+                 ThCalNORm1MU->Fill(detKinBeamRot_thmu,wgt_full);
+                 Double_t Etot=photon_energy+detKinBeamRot_Ee;
+                 Th_E_noRm1MU->Fill(detKinBeamRot_thmu, Etot,wgt_full); 
                    Th_E_eph1->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full); 
                 }
                 }
@@ -399,9 +402,11 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
                   NelDist0++;
                     }
            else {nElNORm0++; 
+ 
+            Double_t Etot=photon_energy+detKinBeamRot_Ee;
                  EnCalNORm0->Fill(detKinBeamRot_Ee,wgt_full); 
                  ThCalNORm0->Fill(detKinBeamRot_the,wgt_full); 
-                 Th_E_noRm0->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);
+                 Th_E_noRm0->Fill(detKinBeamRot_the, Etot,wgt_full);
                  E_ph0->Fill(photon_energy,wgt_full);
                  Ee_Eph->Fill(detKinBeamRot_Ee,photon_energy,wgt_full);
                 
@@ -410,8 +415,9 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
 // MUONI ASSOCIATI AD ELETTRONI CON FOTONI CON PUNTO D'IMPATTO <2*RM          
                 if (abs(detKinBeamRot_cooXmu)<0.07 && abs(detKinBeamRot_cooYmu)<0.07)
                 {
-                    ThCalNORm0MU->Fill(detKinBeamRot_thmu,wgt_full); 
-                    Th_E_noRm0MU->Fill(detKinBeamRot_thmu, detKinBeamRot_Ee,wgt_full); 
+                    ThCalNORm0MU->Fill(detKinBeamRot_thmu,wgt_full); + 
+            Double_t Etot=photon_energy+detKinBeamRot_Ee;
+                    Th_E_noRm0MU->Fill(detKinBeamRot_thmu, Etot,wgt_full); 
                     Th_E_eph0->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full); 
                 }
                 }

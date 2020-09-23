@@ -22,13 +22,14 @@ Double_t nElPh=0; // numero elettroni con fotone in generale
 Double_t nElNO=0; // numero di elettroni nel cal
 Double_t nElNORm=0; // numero di elettroni con un fotone ma senza richesta Rm
 Double_t nElNOph=0; // numero di elettroni senza fotone
-    
+Double_t NelDist=0; // numero di elettroni con un fotone a 2*Rm alla fine del cal
     
 Double_t nEl0=0; // numero di elettroni con un fotone dal target 0
 Double_t nElPh0=0; // numero elettroni con fotone in generale dal target 0
 Double_t nElNO0=0; // numero di elettroni nel cal dal target 0
 Double_t nElNORm0=0; // numero di elettroni con un fotone ma senza richesta Rm dal target 0
 Double_t nElNOph0=0; // numero di elettroni senza fotone dal target 0
+Double_t NelDist0=0; // numero di elettroni con un fotone a 2*Rm alla fine del cal
     
     
 Double_t nEl1=0; // numero di elettroni con un fotone dal target 1
@@ -36,6 +37,7 @@ Double_t nElPh1=0; // numero elettroni con fotone in generale dal target 1
 Double_t nElNO1=0; // numero di elettroni nel cal dal target 1
 Double_t nElNORm1=0; // numero di elettroni con un fotone ma senza richesta Rm dal target 1
 Double_t nElNOph1=0; // numero di elettroni senza fotone dal target 1
+Double_t NelDist1=0; // numero di elettroni con un fotone a 2*Rm alla fine del cal
 
 
 TH1F* EnCalNORm=new TH1F("h2aN", "Energy e not 2 Rm distant from photons", 200,0,160);
@@ -137,9 +139,8 @@ TH2F  *Ee_Eph = new TH2F("h2da1" , " E e Vs. E oh of the photons with d<2Rm",140
         {   
 // SE VIENE DAL TARGET ZERO E HA ENERGIA MAGGIORE DI 1 GEV
            if (detKinBeamRot_tar==0 && detKinBeamRot_Ee>1)
-       
-            
-        {   nElNO++;
+
+         {   nElNO++;
       
          
 //SE CI SONO FOTONI
@@ -158,12 +159,22 @@ TH2F  *Ee_Eph = new TH2F("h2da1" , " E e Vs. E oh of the photons with d<2Rm",140
                nEl++;
            }
 // SE INVECE IL PUNTO D'IMPATTO è AD UNA DSTANZA MINORE
-          else {
-              nElNORm++; 
+                    else { // poszione asse shower all'uscita del calorimetro. Se è maggiore di 2*RM allora, anche se nel punto di impatto non li distinguo, alla fine risultano separate (forse)
+                 Double_t Xe=tan(atan2(detKinBeamRot_pXe_out, detKinBeamRot_pZe_out))*0.22;
+                 Double_t Ye=tan(atan2(detKinBeamRot_pYe_out, detKinBeamRot_pZe_out))*0.22;
+                 Double_t r=0.22*tan(photon_theta*0.001); //theta in radianti
+                 Double_t Xph=r*cos(photon_phi);
+                 Double_t Yph=r*sin(photon_phi);
+                 Double_t dist=sqrt((Xe-Xph)*(Xe-Xph)+(Ye-Yph)*(Ye-Yph));  
+              if(dist>2*Rm){
+                  NelDist++;
+                    }
+              else{nElNORm++; 
               EnCalNORm->Fill(detKinBeamRot_Ee,wgt_full); 
               ThCalNORm->Fill(detKinBeamRot_the,wgt_full); 
               Th_E_noRm->Fill(detKinBeamRot_the,detKinBeamRot_Ee,wgt_full); 
               E_ph->Fill(photon_energy,wgt_full);
+              
               
 // MUONI ASSOCIATI AD ELETTRONI CON FOTONI CON PUNTO D'IMPATTO <2*RM          
                 if (abs(detKinBeamRot_cooXmu)<0.07 && abs(detKinBeamRot_cooYmu)<0.07)
@@ -172,7 +183,7 @@ TH2F  *Ee_Eph = new TH2F("h2da1" , " E e Vs. E oh of the photons with d<2Rm",140
               Th_E_noRmMU->Fill(detKinBeamRot_thmu,detKinBeamRot_Ee,wgt_full);
                    Th_E_eph->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full); 
                 }}
-       }
+       }}
 // SE I FOTONI NON CI SONO NEL CALROIMETRO MA SONO STATI PRODOTTI, QUINDI SONO EVENTI NLO
       else {nElPh++; 
             ThPhNoCal->Fill(detKinBeamRot_the,wgt_full);
@@ -184,8 +195,7 @@ TH2F  *Ee_Eph = new TH2F("h2da1" , " E e Vs. E oh of the photons with d<2Rm",140
             Th_E_PhNoCalMU->Fill(detKinBeamRot_thmu, detKinBeamRot_Ee,wgt_full);
                    Th_E_mu->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
                 }
-           }     
-           }     
+               } }
 // SE NON CI SONO FOTONI QUINDI EVENTI LO
 else {nElNOph++;
       EnCalNoPh->Fill(detKinBeamRot_Ee,wgt_full); 
@@ -198,12 +208,14 @@ else {nElNOph++;
       Th_E_nophMU->Fill(detKinBeamRot_thmu, detKinBeamRot_Ee,wgt_full);
          Th_E_eNoph->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
      }
-     }}
-      
-         
-// SE VIENE DAL TARGET UNO
-         if (detKinBeamRot_tar==1)
-         { nElNO++;
+     }
+}
+
+
+
+
+if (detKinBeamRot_tar==1)          
+{   nElNO++;
       
          
 //SE CI SONO FOTONI
@@ -222,12 +234,22 @@ else {nElNOph++;
                nEl++;
            }
 // SE INVECE IL PUNTO D'IMPATTO è AD UNA DSTANZA MINORE
-          else {
-              nElNORm++; 
+                    else { // poszione asse shower all'uscita del calorimetro. Se è maggiore di 2*RM allora, anche se nel punto di impatto non li distinguo, alla fine risultano separate (forse)
+                 Double_t Xe=tan(atan2(detKinBeamRot_pXe_out, detKinBeamRot_pZe_out))*0.22;
+                 Double_t Ye=tan(atan2(detKinBeamRot_pYe_out, detKinBeamRot_pZe_out))*0.22;
+                 Double_t r=0.22*tan(photon_theta*0.001); //theta in radianti
+                 Double_t Xph=r*cos(photon_phi);
+                 Double_t Yph=r*sin(photon_phi);
+                 Double_t dist=sqrt((Xe-Xph)*(Xe-Xph)+(Ye-Yph)*(Ye-Yph));  
+              if(dist>2*Rm){
+                  NelDist++;
+                    }
+              else{nElNORm++; 
               EnCalNORm->Fill(detKinBeamRot_Ee,wgt_full); 
               ThCalNORm->Fill(detKinBeamRot_the,wgt_full); 
               Th_E_noRm->Fill(detKinBeamRot_the,detKinBeamRot_Ee,wgt_full); 
               E_ph->Fill(photon_energy,wgt_full);
+              
               
 // MUONI ASSOCIATI AD ELETTRONI CON FOTONI CON PUNTO D'IMPATTO <2*RM          
                 if (abs(detKinBeamRot_cooXmu)<0.07 && abs(detKinBeamRot_cooYmu)<0.07)
@@ -236,20 +258,19 @@ else {nElNOph++;
               Th_E_noRmMU->Fill(detKinBeamRot_thmu,detKinBeamRot_Ee,wgt_full);
                    Th_E_eph->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full); 
                 }}
-       }
+       }}
 // SE I FOTONI NON CI SONO NEL CALROIMETRO MA SONO STATI PRODOTTI, QUINDI SONO EVENTI NLO
       else {nElPh++; 
-            ThPhNoCal->Fill(detKinBeamRot_the,wgt_full); 
+            ThPhNoCal->Fill(detKinBeamRot_the,wgt_full);
             EnPhNoCal->Fill(detKinBeamRot_Ee,wgt_full);
             Th_E_PhNoCal->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);
         if (abs(detKinBeamRot_cooXmu)<0.07 && abs(detKinBeamRot_cooYmu)<0.07)
-                {
+                { 
             ThPhNoCalMU->Fill(detKinBeamRot_thmu,wgt_full);
             Th_E_PhNoCalMU->Fill(detKinBeamRot_thmu, detKinBeamRot_Ee,wgt_full);
-            Th_E_mu->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+                   Th_E_mu->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
                 }
-           }     
-           }     
+               } }
 // SE NON CI SONO FOTONI QUINDI EVENTI LO
 else {nElNOph++;
       EnCalNoPh->Fill(detKinBeamRot_Ee,wgt_full); 
@@ -258,18 +279,22 @@ else {nElNOph++;
      
      if (abs(detKinBeamRot_cooXmu)<0.07 && abs(detKinBeamRot_cooYmu)<0.07)
      {
-         
       ThCalNoPhMU->Fill(detKinBeamRot_thmu,wgt_full);
       Th_E_nophMU->Fill(detKinBeamRot_thmu, detKinBeamRot_Ee,wgt_full);
-      Th_E_eNoph->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+         Th_E_eNoph->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
      }
-     }}
-           
+     }
+}
        }
-              
-  
         
         
+
+
+
+
+
+
+
 if (detKinBeamRot_cooXe < 0.07 && detKinBeamRot_cooYe < 0.07 && detKinBeamRot_cooXe > -0.07 && detKinBeamRot_cooYe > -0.07 && detKinBeamRot_tar==1)
         {
        nElNO1++;
@@ -284,6 +309,16 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
            {
                nEl1++;
            }
+        else { // poszione asse shower all'uscita del calorimetro. Se è maggiore di 2*RM allora, anche se nel punto di impatto non li distinguo, alla fine risultano separate (forse)
+                 Double_t Xe=tan(atan2(detKinBeamRot_pXe_out, detKinBeamRot_pZe_out))*0.22;
+                 Double_t Ye=tan(atan2(detKinBeamRot_pYe_out, detKinBeamRot_pZe_out))*0.22;
+                 Double_t r=0.22*tan(photon_theta*0.001); //theta in radianti
+                 Double_t Xph=r*cos(photon_phi);
+                 Double_t Yph=r*sin(photon_phi);
+                 Double_t dist=sqrt((Xe-Xph)*(Xe-Xph)+(Ye-Yph)*(Ye-Yph));  
+              if(dist>2*Rm){
+                  NelDist1++;
+                    }
            else {nElNORm1++; 
                  EnCalNORm1->Fill(detKinBeamRot_Ee,wgt_full); 
                  ThCalNORm1->Fill(detKinBeamRot_the,wgt_full); 
@@ -301,7 +336,7 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
                    Th_E_eph1->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full); 
                 }
                 }
-       }
+       }}
    else  {nElPh1++; 
           ThPhNoCal1->Fill(detKinBeamRot_the,wgt_full); 
           EnPhNoCal1->Fill(detKinBeamRot_Ee,wgt_full); 
@@ -343,6 +378,17 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
            {
                nEl0++;
            }
+           
+           else {// poszione asse shower all'uscita del calorimetro. Se è maggiore di 2*RM allora, anche se nel punto di impatto non li distinguo, alla fine risultano separate (forse)
+                 Double_t Xe=tan(atan2(detKinBeamRot_pXe_out, detKinBeamRot_pZe_out))*0.22;
+                 Double_t Ye=tan(atan2(detKinBeamRot_pYe_out, detKinBeamRot_pZe_out))*0.22;
+                 Double_t r=0.22*tan(photon_theta*0.001); //theta in radianti
+                 Double_t Xph=r*cos(photon_phi);
+                 Double_t Yph=r*sin(photon_phi);
+                 Double_t dist=sqrt((Xe-Xph)*(Xe-Xph)+(Ye-Yph)*(Ye-Yph));  
+              if(dist>2*Rm){
+                  NelDist0++;
+                    }
            else {nElNORm0++; 
                  EnCalNORm0->Fill(detKinBeamRot_Ee,wgt_full); 
                  ThCalNORm0->Fill(detKinBeamRot_the,wgt_full); 
@@ -405,22 +451,25 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
     energyThEl->SaveAs("thetaEn.png");*/
     cout << "numero di elettroni nel calorimetro: " << nElNO << endl;
     cout << "numero di elettroni con fotoni fuori dal calorimetro: " << nElPh << endl;
-    cout << "numero di elettroni con fotoni nel calorimetro: " << nEl << endl;
-    cout << "numero di elettroni con fotoni senza richiesta raggio Moliere: " << nElNORm << endl;
+    cout << "numero di elettroni con fotoni nel calorimetro a d>2 RM impatto: " << nEl << endl;
+    cout << "numero di elettroni con fotoni raggio Moliere in uscita: " <<NelDist << endl;
+    cout << "numero di elettroni con fotoni senza raggio Moliere impatto/uscita: " << nElNORm << endl;
     cout << "numero di elettroni senza fotoni: " << nElNOph << endl;
     cout<<endl;
     
     cout << "numero di elettroni nel calorimetro dal tar 0: " << nElNO0 << endl;
-    cout << "numero di elettroni con fotoni fuori dal calorimetro dal tar 0: " << nElPh0 << endl;
+    cout << "numero di elettroni con fotoni fuori dal calorimetro a d>2 RM impatto dal tar 0: " << nElPh0 << endl;
     cout << "numero di elettroni con fotoni nel calorimetro dal tar 0: " << nEl0 << endl;
-    cout << "numero di elettroni con fotoni senza richiesta raggio Moliere dal tar 0: " << nElNORm0 << endl;
+    cout << "numero di elettroni con fotoni raggio Moliere in uscita tar 0: " <<NelDist0<< endl;
+    cout << "numero di elettroni con fotoni senza raggio Moliere impatto/uscita dal tar 0: " << nElNORm0 << endl;
     cout << "numero di elettroni senza fotoni dal tar 0: " << nElNOph0 << endl;
     
     cout<<endl;
     cout << "numero di elettroni nel calorimetro dal tar 1: " << nElNO1 << endl;
-    cout << "numero di elettroni con fotoni fuori dal calorimetro dal tar 1: " << nElPh1 << endl;
+    cout << "numero di elettroni con fotoni fuori dal calorimetro a d>2 RM impatto dal tar 1: " << nElPh1 << endl;
     cout << "numero di elettroni con fotoni nel calorimetro dal tar 1: " << nEl1 << endl;
-    cout << "numero di elettroni con fotoni senza richiesta raggio Moliere dal tar 1: " << nElNORm1 << endl;
+    cout << "numero di elettroni con fotoni raggio Moliere in uscita tar 1: " <<NelDist1<< endl;
+    cout << "numero di elettroni con fotoni senza raggio Moliere impatto/uscita dal tar 1: " << nElNORm1 << endl;
     cout << "numero di elettroni senza fotoni: " << nElNOph1 << endl;
     
     

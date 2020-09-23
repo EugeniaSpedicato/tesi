@@ -177,6 +177,8 @@ TH2F  *Eeph_Emu= new TH2F("h2da1" , " Ee+Eph Vs. th mu oh of the photons with d<
               ThCalNORm->Fill(detKinBeamRot_the,wgt_full); 
               Th_E_noRm->Fill(detKinBeamRot_the,detKinBeamRot_Ee,wgt_full); 
               E_ph->Fill(photon_energy,wgt_full);
+                Double_t Etot=photon_energy+detKinBeamRot_Ee;
+                En_tot->Fill(Etot,wgt_full);
               
               
 // MUONI ASSOCIATI AD ELETTRONI CON FOTONI CON PUNTO D'IMPATTO <2*RM          
@@ -257,7 +259,8 @@ if (detKinBeamRot_tar==1)
               ThCalNORm->Fill(detKinBeamRot_the,wgt_full); 
               Th_E_noRm->Fill(detKinBeamRot_the,detKinBeamRot_Ee,wgt_full); 
               E_ph->Fill(photon_energy,wgt_full);
-              
+                Double_t Etot=photon_energy+detKinBeamRot_Ee;
+                En_tot->Fill(Etot,wgt_full);
               
 // MUONI ASSOCIATI AD ELETTRONI CON FOTONI CON PUNTO D'IMPATTO <2*RM          
                 if (abs(detKinBeamRot_cooXmu)<0.07 && abs(detKinBeamRot_cooYmu)<0.07)
@@ -334,8 +337,6 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
                  E_ph1->Fill(photon_energy,wgt_full);
                  Ee_Eph->Fill(detKinBeamRot_Ee,photon_energy,wgt_full);
                 
-                 Double_t Etot=photon_energy+detKinBeamRot_Ee;
-                En_tot->Fill(Etot,wgt_full);
 // MUONI ASSOCIATI AD ELETTRONI CON FOTONI CON PUNTO D'IMPATTO <2*RM          
                 if (abs(detKinBeamRot_cooXmu)<0.07 && abs(detKinBeamRot_cooYmu)<0.07)
                 {
@@ -523,7 +524,9 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
     gPad->SetLogx();
  
     e->cd(5);
+    //differenza distribuzione Etot=Ee+Eph e Ee quanto d<2RM
     EnCalNORm->Draw("HIST");
+    En_tot->SetLineColor(kRed);
     En_tot->Draw("HIST same");
     gPad->SetLogx();
     

@@ -72,11 +72,11 @@ TH1F* ThPhNoCalMU=new TH1F("h2aN", "Theta MU with ph out of calorimete", 180,0,5
 TH1F* ThPhNoCal0MU=new TH1F("h2aN", "Theta MU with ph out of calorimete TAR 0", 180,0,5);
 TH1F* ThPhNoCal1MU=new TH1F("h2aN", "Theta MU with ph out of calorimete TAR 1", 180,0,5); 
 
-TH2F  *Th_E_noph  = new TH2F("h2da" , " Th e Vs. Th  of the electrons whitout photons (LO)",140,0,100,140,0,160);
+TH2F  *Th_E_noph  = new TH2F("h2da" , " Th e Vs. Th  of the electrons whitout photons (LO)",140,0,160,140,0,100);
 TH2F  *Th_E_noRm = new TH2F("h2da" , " Th  Vs. E of the electrons with photons <2Rm",140,0,100,140,0,160);
 TH2F  *Th_E_PhNoCal = new TH2F("h2da" , " Th  Vs. E of the electrons with photons out of cal",140,0,100,140,0,160);
 
-TH2F  *Th_E_nophMU  = new TH2F("h2da" , " Th MU Vs. Ee whitout photons (LO)",140,0,5,140,0,160);
+TH2F  *Th_E_nophMU  = new TH2F("h2da" , " Th MU Vs. Ee whitout photons (LO)",140,0,160,140,0,5);
 TH2F  *Th_E_noRmMU = new TH2F("h2da" , " Th MU Vs. Ee with photons <2Rm",140,0,5,140,0,160);
 TH2F  *Th_E_PhNoCalMU = new TH2F("h2da" , " Th MU Vs. Ee with photons out of cal",140,0,5,140,0,160);
 
@@ -200,13 +200,13 @@ TH2F  *Ee_Eph = new TH2F("h2da1" , " E e Vs. E oh of the photons with d<2Rm",140
 else {nElNOph++;
       EnCalNoPh->Fill(detKinBeamRot_Ee,wgt_full); 
       ThCalNoPh->Fill(detKinBeamRot_the,wgt_full);
-      Th_E_noph->Fill(detKinBeamRot_the, detKinBeamRot_Ee,wgt_full);
+      Th_E_noph->Fill(detKinBeamRot_Ee, detKinBeamRot_the,wgt_full);
      
      if (abs(detKinBeamRot_cooXmu)<0.07 && abs(detKinBeamRot_cooYmu)<0.07)
      {
       ThCalNoPhMU->Fill(detKinBeamRot_thmu,wgt_full);
-      Th_E_nophMU->Fill(detKinBeamRot_thmu, detKinBeamRot_Ee,wgt_full);
-         Th_E_eNoph->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+      Th_E_nophMU->Fill(detKinBeamRot_Ee, detKinBeamRot_thmu,wgt_full);
+       Th_E_eNoph->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
      }
      }
 }
@@ -386,7 +386,7 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
                  Double_t Xph=r*cos(photon_phi);
                  Double_t Yph=r*sin(photon_phi);
                  Double_t dist=sqrt((Xe-Xph)*(Xe-Xph)+(Ye-Yph)*(Ye-Yph));  
-              if(dist>Rm){
+              if(dist>2*Rm){
                   NelDist0++;
                     }
            else {nElNORm0++; 

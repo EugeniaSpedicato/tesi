@@ -190,7 +190,6 @@ TH2F  *Eeph_Ee= new TH2F("h2da1" , " Ee+Eph Vs. Ee oh of the photons with d<2Rm"
               Th_E_eph->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full); 
               
               Ee_thmu->Fill(detKinBeamRot_Ee,detKinBeamRot_thmu,wgt_full);
-              Double_t Etot=detKinBeamRot_Ee+photon_energy;
               Eeph_Ee->Fill(Etot,detKinBeamRot_Ee,wgt_full); 
             
                 }}

@@ -848,11 +848,6 @@ TCanvas * E= new TCanvas("A","A",1000,100,2500,2000);
     Ee_thmu->Draw("HIST same");
     etot->SaveAs("Ephe-thetamu.png");
     
-    TCanvas * etot= new TCanvas("etot","etot",1000,100,2500,2000);
-    Eeph_Emu->SetMarkerColor(kRed);
-    Eeph_Emu->Draw("HIST");
-    Ee_thmu->SetMarkerColor(kBlue);
-    Ee_thmu->Draw("HIST same");
-    etot->SaveAs("Ephe-thetamu.png");
+
     
 }

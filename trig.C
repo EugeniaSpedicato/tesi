@@ -183,7 +183,7 @@ TH2F  *Eeph_Ee= new TH2F("h2da1" , " Ee+Eph Vs. Ee oh of the photons with d<2Rm"
               E_ph->Fill(photon_energy,wgt_full);
                 En_tot->Fill(Etot,wgt_full);
               Th_PhNORM->Fill(photon_theta,wgt_full);
-              
+             Eeph_Ee->Fill(Etot,detKinBeamRot_Ee,wgt_full); 
 // MUONI ASSOCIATI AD ELETTRONI CON FOTONI CON PUNTO D'IMPATTO <2*RM          
                 if (abs(detKinBeamRot_cooXmu)<0.07 && abs(detKinBeamRot_cooYmu)<0.07)
                 {
@@ -193,7 +193,7 @@ TH2F  *Eeph_Ee= new TH2F("h2da1" , " Ee+Eph Vs. Ee oh of the photons with d<2Rm"
               Th_E_eph->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full); 
               
               Ee_thmu->Fill(detKinBeamRot_Ee,detKinBeamRot_thmu,wgt_full);
-              Eeph_Ee->Fill(Etot,detKinBeamRot_Ee,wgt_full); 
+
             
                 }}
        }}
@@ -263,9 +263,9 @@ if (detKinBeamRot_tar==1)
               ThCalNORm->Fill(detKinBeamRot_the,wgt_full); 
               Th_E_noRm->Fill(detKinBeamRot_the,Etot,wgt_full); 
               E_ph->Fill(photon_energy,wgt_full);
-                En_tot->Fill(Etot,wgt_full);
-                   Th_PhNORM->Fill(photon_theta,wgt_full);
-              
+            En_tot->Fill(Etot,wgt_full);
+            Th_PhNORM->Fill(photon_theta,wgt_full);
+           Eeph_Ee->Fill(Etot,detKinBeamRot_Ee,wgt_full); 
 // MUONI ASSOCIATI AD ELETTRONI CON FOTONI CON PUNTO D'IMPATTO <2*RM          
                 if (abs(detKinBeamRot_cooXmu)<0.07 && abs(detKinBeamRot_cooYmu)<0.07)
                 {

@@ -72,6 +72,9 @@ TH1F* ThPhNoCalMU=new TH1F("h2aN", "Theta MU with ph out of calorimete", 180,0,5
 TH1F* ThPhNoCal0MU=new TH1F("h2aN", "Theta MU with ph out of calorimete TAR 0", 180,0,5);
 TH1F* ThPhNoCal1MU=new TH1F("h2aN", "Theta MU with ph out of calorimete TAR 1", 180,0,5); 
 
+TH1F* Th_PhNORM=new TH1F("h2aN", "Theta photons d>2*RM", 180,0,100); 
+        
+    
 TH2F  *Th_E_noph  = new TH2F("h2da" , " Th e Vs. Th  of the electrons whitout photons (LO)",140,0,100,140,0,160);
 TH2F  *Th_E_noRm = new TH2F("h2da" , " Th  Vs. E of the electrons with photons <2Rm",140,0,100,140,0,160);
 TH2F  *Th_E_PhNoCal = new TH2F("h2da" , " Th  Vs. E of the electrons with photons out of cal",140,0,100,140,0,160);
@@ -179,7 +182,7 @@ TH2F  *Eeph_Ee= new TH2F("h2da1" , " Ee+Eph Vs. Ee oh of the photons with d<2Rm"
               Th_E_noRm->Fill(detKinBeamRot_the,Etot,wgt_full); 
               E_ph->Fill(photon_energy,wgt_full);
                 En_tot->Fill(Etot,wgt_full);
-              
+              Th_PhNORM->Fill(photon_theta,wgt_full);
               
 // MUONI ASSOCIATI AD ELETTRONI CON FOTONI CON PUNTO D'IMPATTO <2*RM          
                 if (abs(detKinBeamRot_cooXmu)<0.07 && abs(detKinBeamRot_cooYmu)<0.07)
@@ -261,6 +264,7 @@ if (detKinBeamRot_tar==1)
               Th_E_noRm->Fill(detKinBeamRot_the,Etot,wgt_full); 
               E_ph->Fill(photon_energy,wgt_full);
                 En_tot->Fill(Etot,wgt_full);
+                   Th_PhNORM->Fill(photon_theta,wgt_full);
               
 // MUONI ASSOCIATI AD ELETTRONI CON FOTONI CON PUNTO D'IMPATTO <2*RM          
                 if (abs(detKinBeamRot_cooXmu)<0.07 && abs(detKinBeamRot_cooYmu)<0.07)
@@ -856,6 +860,9 @@ TCanvas * E= new TCanvas("A","A",1000,100,2500,2000);
     fa1->Draw("same");
     etot->SaveAs("Ephe-thetamu.png");
     
-
+TCanvas * thph= new TCanvas("thph","thph",1000,100,2500,2000);  
+Th_PhNORM->Draw("HIST");
+Th_PhNORM->GetXaxis()->SetTitle("Th [mrad]");
+thph->SaveAs("thetaPH.png");
     
 }

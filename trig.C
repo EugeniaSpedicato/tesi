@@ -849,11 +849,11 @@ TCanvas * E= new TCanvas("A","A",1000,100,2500,2000);
   incrocioLO->SaveAs("incrocioEnergye-thetaLO.png");
     
     TCanvas * etot= new TCanvas("etot","etot",1000,100,2500,2000);
-    TLine *line1 = new TLine(0,100,0,100); 
-    line1->SetLineColor(kRed);
+   TF1 *fa1 = new TF1("fa1","x",0,100);
     Eeph_Ee->Draw("HIST");
     Eeph_Ee->GetXaxis()->SetTitle("Ee+Eph [GeV]");
     Eeph_Ee->GetYaxis()->SetTitle("Ee [GeV]");
+    fa1->Draw("same");
     etot->SaveAs("Ephe-thetamu.png");
     
 

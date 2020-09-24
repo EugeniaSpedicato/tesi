@@ -38,7 +38,8 @@ Double_t nElNO1=0; // numero di elettroni nel cal dal target 1
 Double_t nElNORm1=0; // numero di elettroni con un fotone ma senza richesta Rm dal target 1
 Double_t nElNOph1=0; // numero di elettroni senza fotone dal target 1
 Double_t NelDist1=0; // numero di elettroni con un fotone a 2*Rm alla fine del cal
-
+Double_t NmuTr=0; // numero di muoni che arrivano nel calorimetro
+   
 
 TH1F* EnCalNORm=new TH1F("h2aN", "Energy e not 2 Rm distant from photons", 200,0,160);
 TH1F* EnCalNORm0=new TH1F("h2aN", "Energy e not 2 Rm distant from photons TAR 0", 200,0,160);
@@ -91,7 +92,8 @@ TH2F  *Th_E_PhNoCal0 = new TH2F("h2da" , " Th  Vs. E of the electrons with photo
 TH2F  *Th_E_noph0MU  = new TH2F("h2da" , " Th MU Vs. Ee whitout photons (LO) tar 0",140,0,5,140,0,160);
 TH2F  *Th_E_noRm0MU = new TH2F("h2da" , " Th MU Vs. Ee with photons <2Rm tar 0",140,0,5,140,0,160);
 TH2F  *Th_E_PhNoCal0MU = new TH2F("h2da" , " Th MU Vs. Ee with photons out of cal tar 0",140,0,5,140,0,160);
-    
+
+TH2F  *Thmu_emu_cal = new TH2F("h2da" , " Th MU Vs. Ee inside Cal distant from e",140,0,5,140,60,110);
     
 TH2F  *Th_E_noph1  = new TH2F("h2da1" , " Th  Vs. E of the electrons whitout photons (LO) tar 1",140,0,100,140,0,160);
 TH2F  *Th_E_noRm1 = new TH2F("h2da1" , " Th  Vs. E of the electrons with photons <2Rm tar 1",140,0,100,140,0,160);
@@ -186,7 +188,7 @@ TH2F  *Eeph_Ee= new TH2F("h2da1" , " Ee+Eph Vs. Ee oh of the photons with d<2Rm"
              Eeph_Ee->Fill(Etot,detKinBeamRot_Ee,wgt_full); 
 // MUONI ASSOCIATI AD ELETTRONI CON FOTONI CON PUNTO D'IMPATTO <2*RM          
                 if (abs(detKinBeamRot_cooXmu)<0.07 && abs(detKinBeamRot_cooYmu)<0.07)
-                {
+                { NmuTr++;
               ThCalNORmMU->Fill(detKinBeamRot_thmu,wgt_full);
                 Double_t Etot=photon_energy+detKinBeamRot_Ee;
               Th_E_noRmMU->Fill(detKinBeamRot_thmu,Etot,wgt_full);
@@ -220,6 +222,13 @@ else {nElNOph++;
       ThCalNoPhMU->Fill(detKinBeamRot_thmu,wgt_full);
       Th_E_nophMU->Fill(detKinBeamRot_thmu, detKinBeamRot_Ee,wgt_full);
          Th_E_eNoph->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+
+        Double_t demu=sqrt((detKinBeamRot_cooXe-detKinBeamRot_cooXmu)*(detKinBeamRot_cooXe-detKinBeamRot_cooXmu)+(detKinBeamRot_cooYe-detKinBeamRot_cooYmu)*(detKinBeamRot_cooYe-detKinBeamRot_cooYmu));   
+         if (demu>Rm)
+         {
+             Thmu_emu_cal->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+         }
+            
      }
      }
 }
@@ -268,7 +277,7 @@ if (detKinBeamRot_tar==1)
            Eeph_Ee->Fill(Etot,detKinBeamRot_Ee,wgt_full); 
 // MUONI ASSOCIATI AD ELETTRONI CON FOTONI CON PUNTO D'IMPATTO <2*RM          
                 if (abs(detKinBeamRot_cooXmu)<0.07 && abs(detKinBeamRot_cooYmu)<0.07)
-                {
+                { NmuTr++;
               ThCalNORmMU->Fill(detKinBeamRot_thmu,wgt_full);
                 Double_t Etot=photon_energy+detKinBeamRot_Ee;
               Th_E_noRmMU->Fill(detKinBeamRot_thmu,Etot,wgt_full);
@@ -298,6 +307,11 @@ else {nElNOph++;
       ThCalNoPhMU->Fill(detKinBeamRot_thmu,wgt_full);
       Th_E_nophMU->Fill(detKinBeamRot_thmu, detKinBeamRot_Ee,wgt_full);
          Th_E_eNoph->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+        Double_t demu=sqrt((detKinBeamRot_cooXe-detKinBeamRot_cooXmu)*(detKinBeamRot_cooXe-detKinBeamRot_cooXmu)+(detKinBeamRot_cooYe-detKinBeamRot_cooYmu)*(detKinBeamRot_cooYe-detKinBeamRot_cooYmu));   
+         if (demu>Rm)
+         {
+             Thmu_emu_cal->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+         }
      }
      }
 }
@@ -865,4 +879,9 @@ Th_PhNORM->Draw("HIST");
 Th_PhNORM->GetXaxis()->SetTitle("Th [mrad]");
 thph->SaveAs("thetaPH.png");
     
+TCanvas * tmue= new TCanvas("thph","thph",1000,100,2500,2000);     
+Th_E_noph->Draw("HIST");
+Thmu_emu_cal->SetMarkerColor(kBlack);
+Thmu_emu_cal->Draw("HIST");
+tmue ->SaveAs("muCalthE.png");  
 }

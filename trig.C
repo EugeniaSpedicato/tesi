@@ -853,7 +853,7 @@ TCanvas * E= new TCanvas("A","A",1000,100,2500,2000);
   incrocioLO->SaveAs("incrocioEnergye-thetaLO.png");
     
     TCanvas * etot= new TCanvas("etot","etot",1000,100,2500,2000);
-   TF1 *fa1 = new TF1("fa1","x",0,100);
+   TF1 *fa1 = new TF1("fa1","x",0,10);
     Eeph_Ee->Draw("HIST");
     Eeph_Ee->GetXaxis()->SetTitle("Ee+Eph [GeV]");
     Eeph_Ee->GetYaxis()->SetTitle("Ee [GeV]");

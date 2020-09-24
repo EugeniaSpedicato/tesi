@@ -122,7 +122,7 @@ TH1F* E_ph1=new TH1F("h2aN3", "E ph d>2Rm tar 1",180,0,100);
 TH2F  *Ee_Eph = new TH2F("h2da1" , " E e Vs. E oh of the photons with d<2Rm",140,0,100,140,0,100);
     
 TH2F  *Ee_thmu= new TH2F("h2da1" , " E e Vs. th mu oh of the photons with d<2Rm",140,0,100,140,0,5);
-TH2F  *Eeph_Ee= new TH2F("h2da1" , " Ee+Eph Vs. Ee oh of the photons with d<2Rm",140,0,10,140,0,10);
+TH2F  *Eeph_Ee= new TH2F("h2da1" , " Ee+Eph Vs. Ee oh of the photons with d<2Rm",140,0,100,140,0,100);
 
     
      if (fChain == 0) return;
@@ -853,7 +853,7 @@ TCanvas * E= new TCanvas("A","A",1000,100,2500,2000);
   incrocioLO->SaveAs("incrocioEnergye-thetaLO.png");
     
     TCanvas * etot= new TCanvas("etot","etot",1000,100,2500,2000);
-   TF1 *fa1 = new TF1("fa1","x",0,10);
+   TF1 *fa1 = new TF1("fa1","x",0,100);
     Eeph_Ee->Draw("HIST");
     Eeph_Ee->GetXaxis()->SetTitle("Ee+Eph [GeV]");
     Eeph_Ee->GetYaxis()->SetTitle("Ee [GeV]");

@@ -72,7 +72,7 @@ TH1F* ThPhNoCalMU=new TH1F("h2aN", "Theta MU with ph out of calorimete", 180,0,5
 TH1F* ThPhNoCal0MU=new TH1F("h2aN", "Theta MU with ph out of calorimete TAR 0", 180,0,5);
 TH1F* ThPhNoCal1MU=new TH1F("h2aN", "Theta MU with ph out of calorimete TAR 1", 180,0,5); 
 
-TH1F* Th_PhNORM=new TH1F("h2aN", "Theta photons d>2*RM", 180,0,100); 
+TH1F* Th_PhNORM=new TH1F("h2aN", "Theta photons d<2*RM", 180,0,100); 
         
     
 TH2F  *Th_E_noph  = new TH2F("h2da" , " Th e Vs. Th  of the electrons whitout photons (LO)",140,0,100,140,0,160);
@@ -122,7 +122,7 @@ TH1F* E_ph1=new TH1F("h2aN3", "E ph d>2Rm tar 1",180,0,100);
 TH2F  *Ee_Eph = new TH2F("h2da1" , " E e Vs. E oh of the photons with d<2Rm",140,0,100,140,0,100);
     
 TH2F  *Ee_thmu= new TH2F("h2da1" , " E e Vs. th mu oh of the photons with d<2Rm",140,0,100,140,0,5);
-TH2F  *Eeph_Ee= new TH2F("h2da1" , " Ee+Eph Vs. Ee oh of the photons with d<2Rm",140,0,100,140,0,100);
+TH2F  *Eeph_Ee= new TH2F("h2da1" , " Ee+Eph Vs. Ee oh of the photons with d<2Rm",140,0,10,140,0,10);
 
     
      if (fChain == 0) return;

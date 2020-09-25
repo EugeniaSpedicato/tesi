@@ -80,7 +80,7 @@ TH2F  *Th_E_noph  = new TH2F("h2da" , " Th e Vs. Th  of the electrons whitout ph
 TH2F  *Th_E_noRm = new TH2F("h2da" , " Th  Vs. E of the electrons with photons <2Rm",140,0,100,140,0,160);
 TH2F  *Th_E_PhNoCal = new TH2F("h2da" , " Th  Vs. E of the electrons with photons out of cal",140,0,100,140,0,160);
 
-TH2F  *Th_E_nophMU  = new TH2F("h2da" , " Th MU Vs. Ee whitout photons (LO)",140,0,5,140,0,160);
+TH2F  *Th_E_nophMU  = new TH2F("h2da" , " Th MU Vs. Ee whitout photons (LO)",140,0,5,140,60,100);
 TH2F  *Th_E_noRmMU = new TH2F("h2da" , " Th MU Vs. Ee with photons <2Rm",140,0,5,140,0,160);
 TH2F  *Th_E_PhNoCalMU = new TH2F("h2da" , " Th MU Vs. Ee with photons out of cal",140,0,5,140,0,160);
 
@@ -863,6 +863,8 @@ TCanvas * E= new TCanvas("A","A",1000,100,2500,2000);
     //Th_E_noph->SetXaxis
     //Th_E_noph->SetXaxis
     Th_E_noph->Draw("HIST");
+    Th_E_noph->SetMarkerSize(5);
+    Th_E_nophMU->SetMarkerSize(5);
     Th_E_nophMU->SetMarkerColor(kBlack);
     Th_E_nophMU->Draw("HIST same");
   incrocioLO->SaveAs("incrocioEnergye-thetaLO.png");
@@ -882,7 +884,9 @@ thph->SaveAs("thetaPH.png");
     
 TCanvas * tmue= new TCanvas("thph","thph",1000,100,2500,2000);     
 Th_E_noph->Draw("HIST");
-Thmu_emu_cal->SetMarkerColor(kOrange);
+Th_E_noph->SetMarkerSize(5);
+Thmu_emu_cal->SetMarkerSize(5);
+Thmu_emu_cal->SetMarkerColor(kBlack);
 Thmu_emu_cal->Draw("HIST same");
 tmue ->SaveAs("muCalthE.png");  
 }

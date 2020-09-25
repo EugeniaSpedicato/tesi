@@ -222,7 +222,7 @@ else {nElNOph++;
       ThCalNoPhMU->Fill(detKinBeamRot_thmu,wgt_full);
       Th_E_nophMU->Fill(detKinBeamRot_thmu, detKinBeamRot_Ee,wgt_full);
     
-         Th_E_eNoph->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+      Th_E_eNoph->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
 
         Double_t demu=sqrt((detKinBeamRot_cooXe-detKinBeamRot_cooXmu)*(detKinBeamRot_cooXe-detKinBeamRot_cooXmu)+(detKinBeamRot_cooYe-detKinBeamRot_cooYmu)*(detKinBeamRot_cooYe-detKinBeamRot_cooYmu));   
          if (demu<Rm)
@@ -881,8 +881,8 @@ Th_PhNORM->GetXaxis()->SetTitle("Th [mrad]");
 thph->SaveAs("thetaPH.png");
     
 TCanvas * tmue= new TCanvas("thph","thph",1000,100,2500,2000);     
-Th_E_noph->Draw("HIST");
-Thmu_emu_cal->SetMarkerColor(kBlack);
+Th_E_nophMU->Draw("HIST");
+Thmu_emu_cal->SetMarkerColor(kOrange);
 Thmu_emu_cal->Draw("HIST");
 tmue ->SaveAs("muCalthE.png");  
 }

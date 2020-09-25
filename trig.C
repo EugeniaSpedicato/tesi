@@ -227,7 +227,7 @@ else {nElNOph++;
         Double_t demu=sqrt((detKinBeamRot_cooXe-detKinBeamRot_cooXmu)*(detKinBeamRot_cooXe-detKinBeamRot_cooXmu)+(detKinBeamRot_cooYe-detKinBeamRot_cooYmu)*(detKinBeamRot_cooYe-detKinBeamRot_cooYmu));   
          if (demu<Rm)
          {
-             Thmu_emu_cal->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+             Thmu_emu_cal->Fill(detKinBeamRot_thmu,detKinBeamRot_Ee,wgt_full);
          }
             
      }
@@ -311,7 +311,7 @@ else {nElNOph++;
         Double_t demu=sqrt((detKinBeamRot_cooXe-detKinBeamRot_cooXmu)*(detKinBeamRot_cooXe-detKinBeamRot_cooXmu)+(detKinBeamRot_cooYe-detKinBeamRot_cooYmu)*(detKinBeamRot_cooYe-detKinBeamRot_cooYmu));   
          if (demu<Rm)
          {
-             Thmu_emu_cal->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+             Thmu_emu_cal->Fill(detKinBeamRot_thmu,detKinBeamRot_Ee,wgt_full);
          }
      }
      }

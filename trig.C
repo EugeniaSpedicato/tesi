@@ -512,45 +512,45 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
     EnCalNoPh->SetLineColor(kRed);
     EnCalNoPh->GetXaxis()->SetTitle("E [GeV] log scale");
     EnCalNORm->SetLineColor(kBlack);
-    EnCalNoPh->Draw("HIST");
-    EnCalNORm->Draw("HIST same");
+    EnCalNoPh->Draw("COLZ");
+    EnCalNORm->Draw("COLZ same");
     EnPhNoCal->SetLineColor(kOrange);
-    EnPhNoCal->Draw("HIST same");
+    EnPhNoCal->Draw("COLZ same");
     gPad->SetLogx();
     
     e->cd(2);
     EnCalNoPh0->SetLineColor(kRed);
     EnCalNoPh0->GetXaxis()->SetTitle("E [GeV] log scale");
     EnCalNORm0->SetLineColor(kBlack);
-    EnCalNoPh0->Draw("HIST");
-    EnCalNORm0->Draw("HIST same");
+    EnCalNoPh0->Draw("COLZ");
+    EnCalNORm0->Draw("COLZ same");
     EnPhNoCal0->SetLineColor(kOrange);
-    EnPhNoCal0->Draw("HIST same");
+    EnPhNoCal0->Draw("COLZ same");
     gPad->SetLogx();
     
     e->cd(3);
     EnCalNoPh1->SetLineColor(kRed);
     EnCalNoPh1->GetXaxis()->SetTitle("E [GeV] log scale");
-    EnCalNoPh1->Draw("HIST");
+    EnCalNoPh1->Draw("COLZ");
     EnCalNORm1->SetLineColor(kBlack);
-    EnCalNORm1->Draw("HIST same");
+    EnCalNORm1->Draw("COLZ same");
     EnPhNoCal1->SetLineColor(kOrange);
-    EnPhNoCal1->Draw("HIST same");
+    EnPhNoCal1->Draw("COLZ same");
     gPad->SetLogx();
     
     e->cd(4);
     E_ph->SetLineColor(31);
-    E_ph->Draw("HIST");
-    E_ph0->Draw("HIST same");
+    E_ph->Draw("COLZ");
+    E_ph0->Draw("COLZ same");
     E_ph1->SetLineColor(49);
-    E_ph1->Draw("HIST same");
+    E_ph1->Draw("COLZ same");
     gPad->SetLogx();
  
     e->cd(5);
     //differenza distribuzione Etot=Ee+Eph e Ee quanto d<2RM
-    EnCalNORm->Draw("HIST");
+    EnCalNORm->Draw("COLZ");
     En_tot->SetLineColor(kRed);
-    En_tot->Draw("HIST same");
+    En_tot->Draw("COLZ same");
     gPad->SetLogx();
     
     e->SaveAs("EnergyElnoRm.png");
@@ -560,31 +560,31 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
     te->cd(1);
     ThCalNoPh->SetLineColor(kRed);
     ThCalNoPh->GetXaxis()->SetTitle("Th [mrad]");
-    ThCalNoPh->Draw("HIST");
+    ThCalNoPh->Draw("COLZ");
     ThCalNORm->SetLineColor(kBlack);
-    ThCalNORm->Draw("HIST same");
+    ThCalNORm->Draw("COLZ same");
     ThPhNoCal->SetLineColor(kOrange);
-    ThPhNoCal->Draw("HIST same");
+    ThPhNoCal->Draw("COLZ same");
 
     
     te->cd(2);
     ThCalNoPh0->SetLineColor(kRed);
     ThCalNoPh0->GetXaxis()->SetTitle("Th [mrad]");
-    ThCalNoPh0->Draw("HIST");
+    ThCalNoPh0->Draw("COLZ");
     ThCalNORm0->SetLineColor(kBlack);
-    ThCalNORm0->Draw("HIST same");
+    ThCalNORm0->Draw("COLZ same");
     ThPhNoCal0->SetLineColor(kOrange);
-    ThPhNoCal0->Draw("HIST same");
+    ThPhNoCal0->Draw("COLZ same");
    
     
     te->cd(3);
     ThCalNoPh1->SetLineColor(kRed);
     ThCalNoPh1->GetXaxis()->SetTitle("Th [mrad]");
-    ThCalNoPh1->Draw("HIST");
+    ThCalNoPh1->Draw("COLZ");
     ThCalNORm1->SetLineColor(kBlack);
-    ThCalNORm1->Draw("HIST same");
+    ThCalNORm1->Draw("COLZ same");
     ThPhNoCal1->SetLineColor(kOrange);
-    ThPhNoCal1->Draw("HIST same");
+    ThPhNoCal1->Draw("COLZ same");
     
     te->SaveAs("ThElnoRm.png");
 
@@ -593,46 +593,46 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
     teMU->cd(1);
     ThCalNoPhMU->SetLineColor(kRed);
     ThCalNoPhMU->GetXaxis()->SetTitle("Th [mrad]");
-    ThCalNoPhMU->Draw("HIST");
+    ThCalNoPhMU->Draw("COLZ");
     ThCalNORmMU->SetLineColor(kBlack);
-    ThCalNORmMU->Draw("HIST same");
+    ThCalNORmMU->Draw("COLZ same");
     ThPhNoCalMU->SetLineColor(kOrange);
-    ThPhNoCalMU->Draw("HIST same");
+    ThPhNoCalMU->Draw("COLZ same");
 
     
     teMU->cd(2);
     ThCalNoPh0MU->SetLineColor(kRed);
     ThCalNoPh0MU->GetXaxis()->SetTitle("Th [mrad]");
-    ThCalNoPh0MU->Draw("HIST");
+    ThCalNoPh0MU->Draw("COLZ");
     ThCalNORm0MU->SetLineColor(kBlack);
-    ThCalNORm0MU->Draw("HIST same");
+    ThCalNORm0MU->Draw("COLZ same");
     ThPhNoCal0MU->SetLineColor(kOrange);
-    ThPhNoCal0MU->Draw("HIST same");
+    ThPhNoCal0MU->Draw("COLZ same");
    
     
     teMU->cd(3);
     ThCalNoPh1MU->SetLineColor(kRed);
     ThCalNoPh1MU->GetXaxis()->SetTitle("Th [mrad]");
-    ThCalNoPh1MU->Draw("HIST");
+    ThCalNoPh1MU->Draw("COLZ");
     ThCalNORm1MU->SetLineColor(kBlack);
-    ThCalNORm1MU->Draw("HIST same");
+    ThCalNORm1MU->Draw("COLZ same");
     ThPhNoCal1MU->SetLineColor(kOrange);
-    ThPhNoCal1MU->Draw("HIST same");
+    ThPhNoCal1MU->Draw("COLZ same");
     
     teMU->SaveAs("ThElnoRmMU.png");
     
     TCanvas * dued1= new TCanvas("dued1","dued1",1000,100,2500,2000);
     Th_E_noph1->SetMarkerColor(kRed);
-    Th_E_noph1->Draw("HIST");
+    Th_E_noph1->Draw("COLZ");
     Th_E_noph1->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_noph1->GetYaxis()->SetTitle("E [GeV]");
 
-    Th_E_noRm1->Draw("HIST same");
+    Th_E_noRm1->Draw("COLZ same");
     Th_E_noRm1->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_noRm1->GetYaxis()->SetTitle("E [GeV]");
         
     Th_E_PhNoCal1->SetMarkerColor(kOrange);
-    Th_E_PhNoCal1->Draw("HIST same");
+    Th_E_PhNoCal1->Draw("COLZ same");
     Th_E_PhNoCal1->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_PhNoCal1->GetYaxis()->SetTitle("E [GeV]");
   dued1->SaveAs("Eth1.png");
@@ -640,16 +640,16 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
     TCanvas * dued= new TCanvas("dued","dued",1000,100,2500,2000);
 
     Th_E_noph->SetMarkerColor(kRed);
-    Th_E_noph->Draw("HIST");
+    Th_E_noph->Draw("COLZ");
     Th_E_noph->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_noph->GetYaxis()->SetTitle("E [GeV]");
 
-    Th_E_noRm->Draw("HIST same");
+    Th_E_noRm->Draw("COLZ same");
     Th_E_noRm->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_noRm->GetYaxis()->SetTitle("E [GeV]");
         
     Th_E_PhNoCal->SetMarkerColor(kOrange);
-    Th_E_PhNoCal->Draw("HIST same");
+    Th_E_PhNoCal->Draw("COLZ same");
     Th_E_PhNoCal->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_PhNoCal->GetYaxis()->SetTitle("E [GeV]");
   dued->SaveAs("Eth.png");
@@ -657,16 +657,16 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
     TCanvas * dued0= new TCanvas("dued0","dued0",1000,100,2500,2000);
 
     Th_E_noph0->SetMarkerColor(kRed);
-    Th_E_noph0->Draw("HIST");
+    Th_E_noph0->Draw("COLZ");
     Th_E_noph0->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_noph0->GetYaxis()->SetTitle("E [GeV]");
 
-    Th_E_noRm0->Draw("HIST same");
+    Th_E_noRm0->Draw("COLZ same");
     Th_E_noRm0->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_noRm0->GetYaxis()->SetTitle("E [GeV]");
         
     Th_E_PhNoCal0->SetMarkerColor(kOrange);
-    Th_E_PhNoCal0->Draw("HIST same");
+    Th_E_PhNoCal0->Draw("COLZ same");
     Th_E_PhNoCal0->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_PhNoCal0->GetYaxis()->SetTitle("E [GeV]");
   dued0->SaveAs("Eth0.png");
@@ -678,53 +678,53 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
     
     separati->cd(7);
     Th_E_noph1->SetMarkerColor(kRed);
-    Th_E_noph1->Draw("HIST");
+    Th_E_noph1->Draw("COLZ");
     Th_E_noph1->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_noph1->GetYaxis()->SetTitle("E [GeV]");
     
     separati->cd(8);
-    Th_E_noRm1->Draw("HIST");
+    Th_E_noRm1->Draw("COLZ");
     Th_E_noRm1->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_noRm1->GetYaxis()->SetTitle("E [GeV]");
     
     separati->cd(9); 
     Th_E_PhNoCal1->SetMarkerColor(kOrange);
-    Th_E_PhNoCal1->Draw("HIST ");
+    Th_E_PhNoCal1->Draw("COLZ ");
     Th_E_PhNoCal1->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_PhNoCal1->GetYaxis()->SetTitle("E [GeV]");
 
     separati->cd(1);
     Th_E_noph->SetMarkerColor(kRed);
-    Th_E_noph->Draw("HIST");
+    Th_E_noph->Draw("COLZ");
     Th_E_noph->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_noph->GetYaxis()->SetTitle("E [GeV]");
 
     separati->cd(2);
-    Th_E_noRm->Draw("HIST");
+    Th_E_noRm->Draw("COLZ");
     Th_E_noRm->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_noRm->GetYaxis()->SetTitle("E [GeV]");
         
     separati->cd(3);
     Th_E_PhNoCal->SetMarkerColor(kOrange);
-    Th_E_PhNoCal->Draw("HIST");
+    Th_E_PhNoCal->Draw("COLZ");
     Th_E_PhNoCal->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_PhNoCal->GetYaxis()->SetTitle("E [GeV]");
     
   
     separati->cd(4);
     Th_E_noph0->SetMarkerColor(kRed);
-    Th_E_noph0->Draw("HIST");
+    Th_E_noph0->Draw("COLZ");
     Th_E_noph0->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_noph0->GetYaxis()->SetTitle("E [GeV]");
 
     separati->cd(5);
-    Th_E_noRm0->Draw("HIST");
+    Th_E_noRm0->Draw("COLZ");
     Th_E_noRm0->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_noRm0->GetYaxis()->SetTitle("E [GeV]");
         
     separati->cd(6);
     Th_E_PhNoCal0->SetMarkerColor(kOrange);
-    Th_E_PhNoCal0->Draw("HIST same");
+    Th_E_PhNoCal0->Draw("COLZ same");
     Th_E_PhNoCal0->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_PhNoCal0->GetYaxis()->SetTitle("E [GeV]");
   separati->SaveAs("Energy-theta.png");
@@ -734,35 +734,35 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
     
     separatiA->cd(7);
     Th_E_eNoph1->SetMarkerColor(kRed);
-    Th_E_eNoph1->Draw("HIST");
+    Th_E_eNoph1->Draw("COLZ");
     Th_E_eNoph1->GetXaxis()->SetTitle("Th el[mrad]");
     Th_E_eNoph1->GetYaxis()->SetTitle("Th mu [mrad]");
     
     separatiA->cd(8);
-    Th_E_eph1->Draw("HIST");
+    Th_E_eph1->Draw("COLZ");
     Th_E_eph1->GetXaxis()->SetTitle("Th el[mrad]");
     Th_E_eph1->GetYaxis()->SetTitle("Th mu [mrad]");
     
     separatiA->cd(9); 
     Th_E_mu1->SetMarkerColor(kOrange);
-    Th_E_mu1->Draw("HIST ");
+    Th_E_mu1->Draw("COLZ ");
     Th_E_mu1->GetXaxis()->SetTitle("Th el[mrad]");
     Th_E_mu1->GetYaxis()->SetTitle("Th mu [mrad]");
 
     separatiA->cd(1);
     Th_E_eNoph->SetMarkerColor(kRed);
-    Th_E_eNoph->Draw("HIST");
+    Th_E_eNoph->Draw("COLZ");
     Th_E_eNoph->GetXaxis()->SetTitle("Th el[mrad]");
     Th_E_eNoph->GetYaxis()->SetTitle("Th mu [mrad]");
 
     separatiA->cd(2);
-    Th_E_eph->Draw("HIST");
+    Th_E_eph->Draw("COLZ");
     Th_E_eph->GetXaxis()->SetTitle("Th el[mrad]");
     Th_E_eph->GetYaxis()->SetTitle("Th mu [mrad]");
         
     separatiA->cd(3);
     Th_E_mu->SetMarkerColor(kOrange);
-    Th_E_mu->Draw("HIST");
+    Th_E_mu->Draw("COLZ");
     Th_E_mu->GetXaxis()->SetTitle("Th el[mrad]");
     Th_E_mu->GetYaxis()->SetTitle("Th mu [mrad]");
 
@@ -770,25 +770,25 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
   
     separatiA->cd(4);
     Th_E_eNoph0->SetMarkerColor(kRed);
-    Th_E_eNoph0->Draw("HIST");
+    Th_E_eNoph0->Draw("COLZ");
     Th_E_eNoph0->GetXaxis()->SetTitle("Th el [mrad]");
     Th_E_eNoph0->GetYaxis()->SetTitle("Th mu [mrad]");
 
     separatiA->cd(5);
-    Th_E_eph0->Draw("HIST");
+    Th_E_eph0->Draw("COLZ");
     Th_E_eph0->GetXaxis()->SetTitle("Th el [mrad]");
     Th_E_eph0->GetYaxis()->SetTitle("Th mu [mrad]");
         
     separatiA->cd(6);
     Th_E_mu0->SetMarkerColor(kOrange);
-    Th_E_mu0->Draw("HIST same");
+    Th_E_mu0->Draw("COLZ same");
     Th_E_mu0->GetXaxis()->SetTitle("Th el [mrad]");
     Th_E_mu0->GetYaxis()->SetTitle("Th mu [mrad]");
   separatiA->SaveAs("thetae-thetamu.png");   
     
 TCanvas * E= new TCanvas("A","A",1000,100,2500,2000);
     
-    Ee_Eph->Draw("HIST");
+    Ee_Eph->Draw("COLZ");
   E->SaveAs("Ee-Eph.png"); 
 
 
@@ -798,87 +798,87 @@ TCanvas * E= new TCanvas("A","A",1000,100,2500,2000);
     
     separatiMU->cd(7);
     Th_E_noph1MU->SetMarkerColor(kRed);
-    Th_E_noph1MU->Draw("HIST");
+    Th_E_noph1MU->Draw("COLZ");
     Th_E_noph1MU->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_noph1MU->GetYaxis()->SetTitle("E [GeV]");
     
     separatiMU->cd(8);
-    Th_E_noRm1MU->Draw("HIST");
+    Th_E_noRm1MU->Draw("COLZ");
     Th_E_noRm1MU->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_noRm1MU->GetYaxis()->SetTitle("E [GeV]");
     
     separatiMU->cd(9); 
     Th_E_PhNoCal1MU->SetMarkerColor(kOrange);
-    Th_E_PhNoCal1MU->Draw("HIST ");
+    Th_E_PhNoCal1MU->Draw("COLZ ");
     Th_E_PhNoCal1MU->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_PhNoCal1MU->GetYaxis()->SetTitle("E [GeV]");
 
     separatiMU->cd(1);
     Th_E_nophMU->SetMarkerColor(kRed);
-    Th_E_nophMU->Draw("HIST");
+    Th_E_nophMU->Draw("COLZ");
     Th_E_nophMU->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_nophMU->GetYaxis()->SetTitle("E [GeV]");
 
     separatiMU->cd(2);
-    Th_E_noRmMU->Draw("HIST");
+    Th_E_noRmMU->Draw("COLZ");
     Th_E_noRmMU->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_noRmMU->GetYaxis()->SetTitle("E [GeV]");
         
     separatiMU->cd(3);
     Th_E_PhNoCalMU->SetMarkerColor(kOrange);
-    Th_E_PhNoCalMU->Draw("HIST");
+    Th_E_PhNoCalMU->Draw("COLZ");
     Th_E_PhNoCalMU->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_PhNoCalMU->GetYaxis()->SetTitle("E [GeV]");
     
   
     separatiMU->cd(4);
     Th_E_noph0MU->SetMarkerColor(kRed);
-    Th_E_noph0MU->Draw("HIST");
+    Th_E_noph0MU->Draw("COLZ");
     Th_E_noph0MU->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_noph0MU->GetYaxis()->SetTitle("E [GeV]");
 
     separatiMU->cd(5);
-    Th_E_noRm0MU->Draw("HIST");
+    Th_E_noRm0MU->Draw("COLZ");
     Th_E_noRm0MU->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_noRm0MU->GetYaxis()->SetTitle("E [GeV]");
         
     separatiMU->cd(6);
     Th_E_PhNoCal0MU->SetMarkerColor(kOrange);
-    Th_E_PhNoCal0MU->Draw("HIST same");
+    Th_E_PhNoCal0MU->Draw("COLZ same");
     Th_E_PhNoCal0MU->GetXaxis()->SetTitle("Th [mrad]");
     Th_E_PhNoCal0MU->GetYaxis()->SetTitle("E [GeV]");
   separatiMU->SaveAs("Energye-thetaMU.png");
     
        
     TCanvas * incrocio= new TCanvas("incrocio","incrocio",1000,100,2500,2000);
-    Th_E_noRm->Draw("HIST");
-    Th_E_PhNoCal->Draw("HIST same");
+    Th_E_noRm->Draw("COLZ");
+    Th_E_PhNoCal->Draw("COLZ same");
     Th_E_noRmMU->SetMarkerColor(kRed);
     Th_E_PhNoCalMU->SetMarkerColor(kRed);
-    Th_E_noRmMU->Draw("HIST same");
-    Th_E_PhNoCalMU->Draw("HIST same");
+    Th_E_noRmMU->Draw("COLZ same");
+    Th_E_PhNoCalMU->Draw("COLZ same");
   incrocio->SaveAs("incrocioEnergye-thetaNLO.png");
     
         TCanvas * incrocioLO= new TCanvas("incrocioLO","incrocioLO",1000,100,2500,2000);
     //Th_E_noph->SetXaxis
     //Th_E_noph->SetXaxis
-    Th_E_noph->Draw("HIST");
+    Th_E_noph->Draw("COLZ");
     Th_E_noph->SetMarkerSize(5);
     Th_E_nophMU->SetMarkerSize(5);
     Th_E_nophMU->SetMarkerColor(kBlack);
-    Th_E_nophMU->Draw("HIST same");
+    Th_E_nophMU->Draw("COLZ same");
   incrocioLO->SaveAs("incrocioEnergye-thetaLO.png");
     
     TCanvas * etot= new TCanvas("etot","etot",1000,100,2500,2000);
    TF1 *fa1 = new TF1("fa1","x",0,100);
-    Eeph_Ee->Draw("HIST");
+    Eeph_Ee->Draw("COLZ");
     Eeph_Ee->GetXaxis()->SetTitle("Ee+Eph [GeV]");
     Eeph_Ee->GetYaxis()->SetTitle("Ee [GeV]");
     fa1->Draw("same");
     etot->SaveAs("Ephe-thetamu.png");
     
 TCanvas * thph= new TCanvas("thph","thph",1000,100,2500,2000);  
-Th_PhNORM->Draw("HIST");
+Th_PhNORM->Draw("COLZ");
 Th_PhNORM->GetXaxis()->SetTitle("Th [mrad]");
 thph->SaveAs("thetaPH.png");
     

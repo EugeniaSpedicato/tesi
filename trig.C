@@ -883,10 +883,7 @@ Th_PhNORM->GetXaxis()->SetTitle("Th [mrad]");
 thph->SaveAs("thetaPH.png");
     
 TCanvas * tmue= new TCanvas("thph","thph",1000,100,2500,2000);     
-Th_E_noph->Draw("HIST");
+Th_E_noph->Draw("LEGO");
 Th_E_noph->SetMarkerSize(5);
-Thmu_emu_cal->SetMarkerSize(5);
-Thmu_emu_cal->SetMarkerColor(kBlack);
-Thmu_emu_cal->Draw("HIST same");
 tmue ->SaveAs("muCalthE.png");  
 }

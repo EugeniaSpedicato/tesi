@@ -14,7 +14,7 @@ void atree::Loop()
 {
     TH1::SetDefaultSumw2();
     
-Double_t Rm = 0.022; //raggio di Moliere in metri
+Double_t Rm = 0.01959 ; //raggio di Moliere in metri
 Double_t d; //distanza elettrone fotone.
 Double_t z  = 2.025; //distanza origine-calorimetro in metri.
 Double_t nEl=0; // numero di elettroni con un fotone

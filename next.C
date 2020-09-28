@@ -89,7 +89,7 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
  
-       if (detKinBeamRot_tar==1){
+       //if (detKinBeamRot_tar==1){
        px_mu->Fill(detKinBeamRot_pXmu,wgt_full);
        py_mu->Fill(detKinBeamRot_pYmu,wgt_full);
        pz_mu->Fill(detKinBeamRot_pZmu,wgt_full);
@@ -217,7 +217,7 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0
     dxmp->Fill(Dxmp,wgt_full);
     dymp->Fill(Dymp,wgt_full);}
 
-       }
+    //   }
        
 }
       
@@ -395,21 +395,21 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0
     
     TCanvas * duedmu= new TCanvas("duedmu","duedmu",1000,100,2500,2000);
     X_Y_mu->SetMarkerColor(46);
-    X_Y_mu->Draw("HIST");
+    X_Y_mu->Draw("COLZ");
     X_Y_mu->GetXaxis()->SetTitle("x [m]");
     X_Y_mu->GetYaxis()->SetTitle("y [m]");
   duedmu->SaveAs("duedmu.png");
     
     TCanvas * duede= new TCanvas("duede","duede",1000,100,2500,2000);
     X_Y_e->SetMarkerColor(30);
-    X_Y_e->Draw("HIST");
+    X_Y_e->Draw("COLZ");
     X_Y_e->GetXaxis()->SetTitle("x [m]");
     X_Y_e->GetYaxis()->SetTitle("y [m]");
   duede->SaveAs("duede.png");
     
 
     TCanvas * duedp= new TCanvas("duedp","duedp",1000,100,2500,2000);
-    X_Y_p->Draw("HIST");
+    X_Y_p->Draw("COLZ");
     X_Y_p->GetXaxis()->SetTitle("x [m]");
     X_Y_p->GetYaxis()->SetTitle("y [m]");
   duedp->SaveAs("duedph.png");

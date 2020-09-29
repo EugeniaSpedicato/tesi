@@ -52,30 +52,30 @@ TH1F* thYZmu=new TH1F("c", "theta YZ mu", 150,-0.002,0.002);
 TH1F* thXZe=new TH1F("v", "theta XZ e", 150,-0.1,0.1);
 TH1F* thYZe=new TH1F("b", "theta YZ e", 150,-0.1,0.1);
     
-TH1F* tarONEXmu=new TH1F("h1a", "Coo X mu tar1  ", 140,-0.15,0.15);
-TH1F* tarONEYmu=new TH1F("h2a", "Coo Y mu tar1 ", 140,-0.15,0.15);
-TH1F* tarONEXe=new TH1F("h1ea", "Coo X e tar1 ", 140,-0.15,0.15);
-TH1F* tarONEYe=new TH1F("h2ea", "Coo Y e tar1 ", 140,-0.15,0.15);
+TH1F* tarONEXmu=new TH1F("h1a", "Coo X mu tar1  ", 070,-0.15,0.15);
+TH1F* tarONEYmu=new TH1F("h2a", "Coo Y mu tar1 ", 070,-0.15,0.15);
+TH1F* tarONEXe=new TH1F("h1ea", "Coo X e tar1 ", 070,-0.15,0.15);
+TH1F* tarONEYe=new TH1F("h2ea", "Coo Y e tar1 ", 070,-0.15,0.15);
 TH1F* tarONEXp=new TH1F("h1ea", "Coo X ph tar2 ", 100,-0.5,0.5);
 TH1F* tarONEYp=new TH1F("h2ea", "Coo Y ph tar2 ", 100,-0.5,0.5);
     
-TH1F* tarTWOXmu=new TH1F("h1a", "Coo X mu tar2  ", 140,-0.15,0.15);
-TH1F* tarTWOYmu=new TH1F("h2a", "Coo Y mu tar2 ", 140,-0.15,0.15);
-TH1F* tarTWOXe=new TH1F("h1ea", "Coo X e tar2 ", 140,-0.15,0.15);
-TH1F* tarTWOYe=new TH1F("h2ea", "Coo Y e tar2 ", 140,-0.15,0.15);
+TH1F* tarTWOXmu=new TH1F("h1a", "Coo X mu tar2  ", 070,-0.15,0.15);
+TH1F* tarTWOYmu=new TH1F("h2a", "Coo Y mu tar2 ", 070,-0.15,0.15);
+TH1F* tarTWOXe=new TH1F("h1ea", "Coo X e tar2 ", 070,-0.15,0.15);
+TH1F* tarTWOYe=new TH1F("h2ea", "Coo Y e tar2 ", 070,-0.15,0.15);
 TH1F* tarTWOXp=new TH1F("h1ea", "Coo X ph tar2 ", 100,-0.5,0.5);
 TH1F* tarTWOYp=new TH1F("h2ea", "Coo Y ph tar2 ", 100,-0.5,0.5);
     
-TH1F* dx=new TH1F("h2ea", "diff coo X e and mu", 140,-0.1,0.1);
-TH1F* dy=new TH1F("h2ea", "diff coo Y e and mu ", 140,-0.1,0.1);
-TH1F* dxmp=new TH1F("h2ea", "diff coo X photon and mu", 140,-0.1,0.1);
-TH1F* dymp=new TH1F("h2ea", "diff coo Y photon and mu ", 140,-0.1,0.1);
-TH1F* dxep=new TH1F("h2ea", "diff coo X e and photon", 140,-0.1,0.1);
-TH1F* dyep=new TH1F("h2ea", "diff coo Y e and photon ", 140,-0.1,0.1);
+TH1F* dx=new TH1F("h2ea", "diff coo X e and mu", 070,-0.1,0.1);
+TH1F* dy=new TH1F("h2ea", "diff coo Y e and mu ", 070,-0.1,0.1);
+TH1F* dxmp=new TH1F("h2ea", "diff coo X photon and mu", 070,-0.1,0.1);
+TH1F* dymp=new TH1F("h2ea", "diff coo Y photon and mu ", 070,-0.1,0.1);
+TH1F* dxep=new TH1F("h2ea", "diff coo X e and photon", 070,-0.1,0.1);
+TH1F* dyep=new TH1F("h2ea", "diff coo Y e and photon ", 070,-0.1,0.1);
     
-TH2F  *X_Y_mu  = new TH2F("h2d" , " X  Vs. y of the muon",140,-0.5,0.5,140,-0.5,0.5);
-TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.5,0.5,140,-0.5,0.5);
-TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,0.5,140,-0.5,0.5);
+TH2F  *X_Y_mu  = new TH2F("h2d" , " X  Vs. y of the muon",1000,-0.5,0.5,1000,-0.5,0.5);
+TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",1000,-0.5,0.5,1000,-0.5,0.5);
+TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",1000,-0.5,0.5,1000,-0.5,0.5);
  
     
      if (fChain == 0) return;
@@ -94,7 +94,7 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,0.5,140,-0.
        py_mu->Fill(detKinBeamRot_pYmu,wgt_full);
        pz_mu->Fill(detKinBeamRot_pZmu,wgt_full);
        
-        if (abs(detKinBeamRot_cooXmu) <0.14 && abs(detKinBeamRot_cooYmu) <0.14)
+        if (abs(detKinBeamRot_cooXmu) <0.07 && abs(detKinBeamRot_cooYmu) <0.07)
         {
        px_mu_out->Fill(detKinBeamRot_pXmu_out,wgt_full);
        py_mu_out->Fill(detKinBeamRot_pYmu_out,wgt_full);
@@ -136,7 +136,7 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,0.5,140,-0.
         
        
        
-       if (abs(detKinBeamRot_cooXe) <0.14 && abs(detKinBeamRot_cooYe) <0.14)
+       if (abs(detKinBeamRot_cooXe) <0.07 && abs(detKinBeamRot_cooYe) <0.07)
         {
        px_e_out->Fill(detKinBeamRot_pXe_out,wgt_full);
        py_e_out->Fill(detKinBeamRot_pYe_out,wgt_full);
@@ -182,7 +182,7 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,0.5,140,-0.
                if (detKinBeamRot_tar==0)
        
                {
-             if (photon_coox!=-1 && photon_cooy!=-1)
+             if (abs(photon_coox)<0.07 && abs(photon_cooy)<0.07)
         {tarONEXp->Fill(photon_coox,wgt_full);
          tarONEYp->Fill(photon_cooy,wgt_full);}
                }
@@ -191,19 +191,19 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,0.5,140,-0.
        
                {
 
-         if (photon_coox!=-1)
+         if (abs(photon_coox)<0.07 && abs(photon_cooy)<0.07)
         {tarTWOXp->Fill(photon_coox,wgt_full);
          tarTWOYp->Fill(photon_cooy,wgt_full);}                  
                }
        
-     if (photon_coox!=-1 && photon_cooy!=-1)
+     if (abs(photon_coox)<0.07 && abs(photon_cooy)<0.07)
         {X_Y_p ->Fill(photon_coox, photon_cooy,wgt_full);}    
        }
 
 
 
        
-       if (abs(detKinBeamRot_cooXmu) <0.14 && abs(detKinBeamRot_cooYmu) <0.14 && abs(detKinBeamRot_cooXe) <0.14 && abs(detKinBeamRot_cooYe) <0.14)
+       if (abs(detKinBeamRot_cooXmu) <0.07 && abs(detKinBeamRot_cooYmu) <0.07 && abs(detKinBeamRot_cooXe) <0.07 && abs(detKinBeamRot_cooYe) <0.07)
        {Double_t Dx = detKinBeamRot_cooXe-detKinBeamRot_cooXmu;
     Double_t Dy = detKinBeamRot_cooYe-detKinBeamRot_cooXmu;
     Double_t Dxep = detKinBeamRot_cooXe-photon_coox;

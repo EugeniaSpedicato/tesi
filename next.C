@@ -8,17 +8,7 @@
 #include <TStyle.h>
 #include <TCanvas.h>
 
-void atree::Loop()
-{
-    TH1::SetDefaultSumw2();
-    
-Double_t mmu= 105.6583745 *0.001;
-Double_t me= 0.5109989461 *0.001;
-Double_t Rm= 0.022; //raggio di Moliere in metri
-
-Double_t E_ECAL;
-    
-Double_t energy() {
+Double_t energy(){
     if (photon_coox!=1)
     {  
     Double_t E_ECAL=detKinBeamRot_Ee+photon_energy;
@@ -29,6 +19,17 @@ Double_t energy() {
         return E_ECAL;
     }
 }   
+
+void atree::Loop()
+{
+    TH1::SetDefaultSumw2();
+    
+Double_t mmu= 105.6583745 *0.001;
+Double_t me= 0.5109989461 *0.001;
+Double_t Rm= 0.022; //raggio di Moliere in metri
+
+Double_t E_ECAL;
+
     
 TH1F* px_mu=new TH1F("h1", "pX_in muon", 190,-0.3,0.3);
 TH1F* py_mu=new TH1F("h2", "pY_in muon", 190,-0.3,0.3);

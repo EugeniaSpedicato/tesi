@@ -194,7 +194,7 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",1000,-0.1,0.1,1000,-
                }                  
                
            X_Y_p ->Fill(photon_coox, photon_cooy,wgt_full);}    
-       }
+       
 
 
 

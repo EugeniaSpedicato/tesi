@@ -84,6 +84,8 @@ TH1F* DRmu_cut=new TH1F("DR", "Distanza elettrone-muone cut Ee>1Gev", 70,0,0.14)
 TH2F  *X_Y_mu  = new TH2F("h2d" , " X  Vs. y of the muon",70,-0.1,0.1,70,-0.1,0.1);
 TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",70,-0.1,0.1,70,-0.1,0.1);
 TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",70,-0.1,0.1,70,-0.1,0.1);
+TH2F  *E_r  = new TH2F("h2da" , " X  Vs. y of the photon",70,-0.1,0.1,70,-0.1,0.1);
+
  
     
      if (fChain == 0) return;
@@ -240,7 +242,7 @@ if(E_ECAL>1)
            
            DR->Fill(dist,wgt_full);
            
-           if (detKinBeamRot_Ee>1)
+           if (detKinBeamRot_Ee>10)
            { DR_cut->Fill(dist,wgt_full);}
        }
               if (abs(detKinBeamRot_cooXe) <0.07 && abs(detKinBeamRot_cooYe) <0.07 && abs(detKinBeamRot_cooXmu) < 0.07 && abs(detKinBeamRot_cooYmu) < 0.07 && E_ECAL>1)
@@ -248,7 +250,8 @@ if(E_ECAL>1)
            Double_t dist=sqrt((detKinBeamRot_cooXe-detKinBeamRot_cooXmu)*(detKinBeamRot_cooXe-detKinBeamRot_cooXmu)+(detKinBeamRot_cooYe-detKinBeamRot_cooYmu)*(detKinBeamRot_cooYe-detKinBeamRot_cooYmu));
            
            DRmu->Fill(dist,wgt_full);
-        if (detKinBeamRot_Ee>1)
+
+        if (detKinBeamRot_Ee>10)
            { DRmu_cut->Fill(dist,wgt_full);}
        }
 

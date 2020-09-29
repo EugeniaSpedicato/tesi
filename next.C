@@ -75,6 +75,10 @@ TH1F* dxep=new TH1F("h2ea", "diff coo X e and photon", 070,-0.1,0.1);
 TH1F* dyep=new TH1F("h2ea", "diff coo Y e and photon ", 070,-0.1,0.1);
     
 TH1F* DR=new TH1F("DR", "Distanza elettrone-fotone", 70,0,0.14);
+TH1F* DR_cut=new TH1F("DR", "Distanza elettrone-fotone cut Ee>1Gev", 70,0,0.14);
+TH1F* DRmu=new TH1F("DR", "Distanza elettrone-muone", 70,0,0.14);
+TH1F* DRmu_cut=new TH1F("DR", "Distanza elettrone-muone cut Ee>1Gev", 70,0,0.14);
+
 
     
 TH2F  *X_Y_mu  = new TH2F("h2d" , " X  Vs. y of the muon",70,-0.1,0.1,70,-0.1,0.1);
@@ -230,11 +234,22 @@ if(E_ECAL>1)
     dymp->Fill(Dymp,wgt_full);}
        
        
-       if (abs(detKinBeamRot_cooXe) <0.07 && abs(detKinBeamRot_cooYe) <0.07 && abs(photon_coox) < 0.07 && abs(photon_cooy) < 0.07 && E_ECAL>1 && photon_energy>0.2 && detKinBeamRot_Ee>1)
+       if (abs(detKinBeamRot_cooXe) <0.07 && abs(detKinBeamRot_cooYe) <0.07 && abs(photon_coox) < 0.07 && abs(photon_cooy) < 0.07 && E_ECAL>1 && photon_energy>0.2)
        {
            Double_t dist=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detKinBeamRot_cooYe-photon_cooy)*(detKinBeamRot_cooYe-photon_cooy));
            
            DR->Fill(dist,wgt_full);
+           
+           if (detKinBeamRot_Ee>1)
+           { DR_cut->Fill(dist,wgt_full);}
+       }
+              if (abs(detKinBeamRot_cooXe) <0.07 && abs(detKinBeamRot_cooYe) <0.07 && abs(detKinBeamRot_cooXmu) < 0.07 && abs(detKinBeamRot_cooYmu) < 0.07 && E_ECAL>1)
+       {
+           Double_t dist=sqrt((detKinBeamRot_cooXe-detKinBeamRot_cooXmu)*(detKinBeamRot_cooXe-detKinBeamRot_cooXmu)+(detKinBeamRot_cooYe-detKinBeamRot_cooYmu)*(detKinBeamRot_cooYe-detKinBeamRot_cooYmu));
+           
+           DRmu->Fill(dist,wgt_full);
+        if (detKinBeamRot_Ee>1)
+           { DRmu_cut->Fill(dist,wgt_full);}
        }
 
      //  }
@@ -242,16 +257,10 @@ if(E_ECAL>1)
 }
       
       
-    /*TGraph *energyThEl= new TGraph(4,theV,EeV); 
-    energyThEl->SetTitle("Energy_e(theta_e)");
-    energyThEl->SetMarkerColor(50);
-    energyThEl->SetMarkerStyle(8);
-    energyThEl->SetLineColor(9);
-    energyThEl->GetXaxis()->SetTitle("ThetaEl(mrad)");
-    energyThEl->GetYaxis()->SetTitle("Energy(GeV)"); */
+
     
 
-    TCanvas * p= new TCanvas("p","p",400,10,1500,1000);
+    /* TCanvas * p= new TCanvas("p","p",400,10,1500,1000);
     p->Divide(2,3);
     p->cd(1);
     px_mu_out->SetLineColor(46);
@@ -323,13 +332,9 @@ if(E_ECAL>1)
     gPad->SetLogx();
     
     e->SaveAs("energy.png");
-    
-    /*TCanvas * eth= new TCanvas("eth","eth",400,10,1500,1000);
-    energyThEl->Draw();
-    eth->SaveAs("EnergyTheta.png");*/
-    
+  
 
-        TCanvas * t= new TCanvas("t","t",400,10,1500,1000);
+    TCanvas * t= new TCanvas("t","t",400,10,1500,1000);
     t->Divide(1,2);
     t->cd(1);
     thmu->SetLineColor(46);
@@ -468,9 +473,18 @@ if(E_ECAL>1)
     d->cd(6);
     dymp->Draw("HIST");
     dymp->GetXaxis()->SetTitle("Delta_y [m]");
-  d->SaveAs("diffCoo.png");
+  d->SaveAs("diffCoo.png");*/
     
 TCanvas * DRR= new TCanvas("d","d",1000,100,2500,2000);
+DRR->Divide(2,1);
+DRR->cd(1);
+DRmu->Draw("HIST");
+DRmu_cut->SetColorLine(kRed);
+DRmu_cut->Draw("HIST same");
+DRR->cd(2);
 DR->Draw("HIST");
+DR_cut->SetColorLine(kRed);
+DR_cut->Draw("HIST same");
+    
 DRR->SaveAs("DRphe.png");
       }

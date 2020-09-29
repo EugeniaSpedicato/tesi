@@ -73,9 +73,9 @@ TH1F* dymp=new TH1F("h2ea", "diff coo Y photon and mu ", 070,-0.1,0.1);
 TH1F* dxep=new TH1F("h2ea", "diff coo X e and photon", 070,-0.1,0.1);
 TH1F* dyep=new TH1F("h2ea", "diff coo Y e and photon ", 070,-0.1,0.1);
     
-TH2F  *X_Y_mu  = new TH2F("h2d" , " X  Vs. y of the muon",1000,-0.1,0.1,1000,-0.1,0.1);
-TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",1000,-0.1,0.1,1000,-0.1,0.1);
-TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",1000,-0.1,0.1,1000,-0.1,0.1);
+TH2F  *X_Y_mu  = new TH2F("h2d" , " X  Vs. y of the muon",70,-0.1,0.1,70,-0.1,0.1);
+TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",70,-0.1,0.1,70,-0.1,0.1);
+TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",70,-0.1,0.1,70,-0.1,0.1);
  
     
      if (fChain == 0) return;

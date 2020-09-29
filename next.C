@@ -186,7 +186,7 @@ if(E_ECAL>1)
         
        
        
-       if(abs(photon_coox) < 0.07 && abs(photon_cooy) < 0.07)
+       if(abs(photon_coox) < 0.07 && abs(photon_cooy) < 0.07 && photon_energy>0.2)
        {
         Ep->Fill(photon_energy,wgt_full);            
                if (detKinBeamRot_tar==0)

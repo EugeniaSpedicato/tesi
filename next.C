@@ -73,9 +73,9 @@ TH1F* dymp=new TH1F("h2ea", "diff coo Y photon and mu ", 140,-0.1,0.1);
 TH1F* dxep=new TH1F("h2ea", "diff coo X e and photon", 140,-0.1,0.1);
 TH1F* dyep=new TH1F("h2ea", "diff coo Y e and photon ", 140,-0.1,0.1);
     
-TH2F  *X_Y_mu  = new TH2F("h2d" , " X  Vs. y of the muon",140,-0.5,-0.5,140,-0.5,0.5);
-TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.5,-0.5,140,-0.5,0.5);
-TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0.5,0.5);
+TH2F  *X_Y_mu  = new TH2F("h2d" , " X  Vs. y of the muon",140,-0.5,0.5,140,-0.5,0.5);
+TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.5,0.5,140,-0.5,0.5);
+TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,0.5,140,-0.5,0.5);
  
     
      if (fChain == 0) return;
@@ -89,7 +89,7 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
  
-       //if (detKinBeamRot_tar==1){
+       if (detKinBeamRot_tar==0){
        px_mu->Fill(detKinBeamRot_pXmu,wgt_full);
        py_mu->Fill(detKinBeamRot_pYmu,wgt_full);
        pz_mu->Fill(detKinBeamRot_pZmu,wgt_full);
@@ -217,7 +217,7 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0
     dxmp->Fill(Dxmp,wgt_full);
     dymp->Fill(Dymp,wgt_full);}
 
-    //   }
+       }
        
 }
       

@@ -15,7 +15,7 @@ void atree::Loop()
     
 Double_t mmu= 105.6583745 *0.001;
 Double_t me= 0.5109989461 *0.001;
-Double_t Rm = 0.01959//raggio di Moliere in metri
+Double_t Rm = 0.01959; //raggio di Moliere in metri
 Double_t E_ECAL;
 
     
@@ -230,7 +230,7 @@ if(E_ECAL>1)
     dymp->Fill(Dymp,wgt_full);}
        
        
-       if (abs(detKinBeamRot_cooXe) <0.07 && abs(detKinBeamRot_cooYe) <0.07 && abs(photon_coox) < 0.07 && abs(photon_cooy) < 0.07 && E_CAL>1 && photon_energy>0.2)
+       if (abs(detKinBeamRot_cooXe) <0.07 && abs(detKinBeamRot_cooYe) <0.07 && abs(photon_coox) < 0.07 && abs(photon_cooy) < 0.07 && E_ECAL>1 && photon_energy>0.2)
        {
            Double_t dist=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detKinBeamRot_cooYe-photon_cooy)*(detKinBeamRot_cooYe-photon_cooy));
            
@@ -472,5 +472,5 @@ if(E_ECAL>1)
     
 TCanvas * DRR= new TCanvas("d","d",1000,100,2500,2000);
 DR->Draw("HIST");
-DRR->SaveAs("DRphe.png") 
+DRR->SaveAs("DRphe.png");
       }

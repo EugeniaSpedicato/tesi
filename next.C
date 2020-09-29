@@ -16,7 +16,19 @@ Double_t mmu= 105.6583745 *0.001;
 Double_t me= 0.5109989461 *0.001;
 Double_t Rm= 0.022; //raggio di Moliere in metri
 
+Double_t E_ECAL;
     
+Double_t energy() {
+    if (photon_coox!=1)
+    {  
+    Double_t E_ECAL=detKinBeamRot_Ee+photon_energy;
+       return E_ECAL; 
+    }
+    else 
+    { Double_t E_ECAL=detKinBeamRot_Ee;
+        return E_ECAL;
+    }
+}   
     
 TH1F* px_mu=new TH1F("h1", "pX_in muon", 190,-0.3,0.3);
 TH1F* py_mu=new TH1F("h2", "pY_in muon", 190,-0.3,0.3);
@@ -94,6 +106,8 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",70,-0.1,0.1,70,-0.1,
        py_mu->Fill(detKinBeamRot_pYmu,wgt_full);
        pz_mu->Fill(detKinBeamRot_pZmu,wgt_full);
        
+       E_ECAL=energy();
+       
         if (abs(detKinBeamRot_cooXmu) <0.07 && abs(detKinBeamRot_cooYmu) <0.07)
         {
        px_mu_out->Fill(detKinBeamRot_pXmu_out,wgt_full);
@@ -130,7 +144,8 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",70,-0.1,0.1,70,-0.1,
          tarTWOXmu->Fill(detKinBeamRot_cooXmu,wgt_full);
          tarTWOYmu->Fill(detKinBeamRot_cooYmu,wgt_full);    
               }
-    X_Y_mu ->Fill(detKinBeamRot_cooXmu, detKinBeamRot_cooYmu,wgt_full);
+if(E_ECAL>1)
+{X_Y_mu ->Fill(detKinBeamRot_cooXmu, detKinBeamRot_cooYmu,wgt_full);}
         
         }
         
@@ -170,7 +185,8 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",70,-0.1,0.1,70,-0.1,
              tarTWOYe->Fill(detKinBeamRot_cooYe,wgt_full);  
                } 
            
-            X_Y_e ->Fill(detKinBeamRot_cooXe, detKinBeamRot_cooYe,wgt_full);
+           if(E_ECAL>1)
+           {X_Y_e ->Fill(detKinBeamRot_cooXe, detKinBeamRot_cooYe,wgt_full);}
            
         }
         
@@ -192,8 +208,12 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",70,-0.1,0.1,70,-0.1,
          tarTWOXp->Fill(photon_coox,wgt_full);
          tarTWOYp->Fill(photon_cooy,wgt_full);
                }                  
-               
-           X_Y_p ->Fill(photon_coox, photon_cooy,wgt_full);}    
+        
+                
+        if(E_ECAL>1)   
+        {X_Y_p ->Fill(photon_coox, photon_cooy,wgt_full);}
+       }
+       
        
 
 

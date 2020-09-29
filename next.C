@@ -8,17 +8,6 @@
 #include <TStyle.h>
 #include <TCanvas.h>
 
-Double_t energy(){
-    if (photon_coox!=1)
-    {  
-    Double_t E_ECAL=detKinBeamRot_Ee+photon_energy;
-       return E_ECAL; 
-    }
-    else 
-    { Double_t E_ECAL=detKinBeamRot_Ee;
-        return E_ECAL;
-    }
-}   
 
 void atree::Loop()
 {
@@ -107,7 +96,11 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",70,-0.1,0.1,70,-0.1,
        py_mu->Fill(detKinBeamRot_pYmu,wgt_full);
        pz_mu->Fill(detKinBeamRot_pZmu,wgt_full);
        
-       E_ECAL=energy();
+           if (photon_coox!=-1)
+    {  
+     E_ECAL=detKinBeamRot_Ee+photon_energy;}
+    else 
+    {  E_ECAL=detKinBeamRot_Ee;}
        
         if (abs(detKinBeamRot_cooXmu) <0.07 && abs(detKinBeamRot_cooYmu) <0.07)
         {

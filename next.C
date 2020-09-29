@@ -255,8 +255,6 @@ if(E_ECAL>1)
      //  }
        
 }
-      
-      
 
     
 
@@ -479,11 +477,11 @@ TCanvas * DRR= new TCanvas("d","d",1000,100,2500,2000);
 DRR->Divide(2,1);
 DRR->cd(1);
 DRmu->Draw("HIST");
-DRmu_cut->SetColorLine(kRed);
+DRmu_cut->SetLineColor(kRed);
 DRmu_cut->Draw("HIST same");
 DRR->cd(2);
 DR->Draw("HIST");
-DR_cut->SetColorLine(kRed);
+DR_cut->SetLineColor(kRed);
 DR_cut->Draw("HIST same");
     
 DRR->SaveAs("DRphe.png");

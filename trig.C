@@ -517,6 +517,8 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
     EnPhNoCal->SetLineColor(kOrange);
     EnPhNoCal->Draw("COLZ same");
     gPad->SetLogx();
+    gPad->SetLogy();
+    
     
     e->cd(2);
     EnCalNoPh0->SetLineColor(kRed);
@@ -527,6 +529,7 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
     EnPhNoCal0->SetLineColor(kOrange);
     EnPhNoCal0->Draw("COLZ same");
     gPad->SetLogx();
+    gPad->SetLogy();
     
     e->cd(3);
     EnCalNoPh1->SetLineColor(kRed);
@@ -537,6 +540,7 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
     EnPhNoCal1->SetLineColor(kOrange);
     EnPhNoCal1->Draw("COLZ same");
     gPad->SetLogx();
+    gPad->SetLogy();
     
     e->cd(4);
     E_ph->SetLineColor(31);
@@ -545,6 +549,7 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
     E_ph1->SetLineColor(49);
     E_ph1->Draw("COLZ same");
     gPad->SetLogx();
+    gPad->SetLogy();
  
     e->cd(5);
     //differenza distribuzione Etot=Ee+Eph e Ee quanto d<2RM
@@ -552,6 +557,7 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
     En_tot->SetLineColor(kRed);
     En_tot->Draw("COLZ same");
     gPad->SetLogx();
+    gPad->SetLogy();
     
     e->SaveAs("EnergyElnoRm.png");
     

@@ -53,11 +53,12 @@ void atree::Loop()
                 }
 // SE E' NEL CALORIMETRO MA AD UNA d<2RM
             else n_one++;
+             
                Th_emu->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
            }
 // SE E' NON E' PRODOTTO O NON E' NEL CALORIMETRO        
-        else n_one++;
-            Th_emu->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+        else {n_one++;
+            Th_emu->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);}
     
     }
    
@@ -68,7 +69,7 @@ cout << "Elettroni totali nel calorimetro: " << n_tot << endl;
 cout << "Elettroni ad una distanza 2RM dal fotone: " << n_two << endl;
 cout << "Eventi in cui vedo solo un cluster: " << n_one << endl;
     
-Canvas * tmue= new TCanvas("tmue","tmue",1000,100,2500,2000);     
+TCanvas * tmue= new TCanvas("tmue","tmue",1000,100,2500,2000);     
 Th_emu->Draw("COLZ");
 Th_emu->SetMarkerSize(5);
 tmue ->SaveAs("Th_emu.png");   

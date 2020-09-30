@@ -56,18 +56,20 @@ void atree::Loop()
 // SE IL FOTONE E' PRODOTTO DENTRO AL CALORIMETRO
            if (abs(photon_coox)<0.07 && abs(photon_cooy)<0.07)
                
-           {    if (photon_energy>0.2) DR->Fill(d_e_ph,wgt_full);
+           {    //if (photon_energy>0.2) DR->Fill(d_e_ph,wgt_full);
                
 // SE IL FOTONE E' NEL CALORIMETRO AD UNA d=2RM DALL'ELETTRONE             
                 if (d_e_ph>2*Rm )
                 {
-                    if (photon_energy>0.2) n_two++;
-                }
+                    if (photon_energy>0.2) {n_two++; 
+                                            DR->Fill(d_e_ph,wgt_full);
+                                           }
+                    }
 // SE E' NEL CALORIMETRO MA AD UNA d<2RM
-            else { if (photon_energy>0.2) 
-                        {   n_one++;
-                            Th_emu->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
-                        }
+            else { if (photon_energy>0.2) { n_one++;
+                                            Th_emu->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+                                            DR->Fill(d_e_ph,wgt_full);
+                                          }
                  }
            } 
 // SE E' NON E' PRODOTTO O NON E' NEL CALORIMETRO        

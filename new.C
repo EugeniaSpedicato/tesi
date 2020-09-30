@@ -39,7 +39,7 @@ void atree::Loop()
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
    
-    if (photon_coox!=-1 && photon_cooy!=-1 && photon_energy>0.2)
+    if (photon_coox!=-1 && photon_cooy!=-1)
     {  
      E_CAL=detKinBeamRot_Ee+photon_energy;}
     else 
@@ -48,6 +48,7 @@ void atree::Loop()
     d_e_ph=sqrt( (detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detKinBeamRot_cooYe-photon_cooy)*(detKinBeamRot_cooYe-photon_cooy) ); 
     
        //if(E_CAL>1){
+       
     if (abs(detKinBeamRot_cooXe) < 0.07 && abs(detKinBeamRot_cooYe) < 0.07)
     {
         n_tot++;
@@ -55,22 +56,25 @@ void atree::Loop()
 // SE IL FOTONE E' PRODOTTO DENTRO AL CALORIMETRO
            if (abs(photon_coox)<0.07 && abs(photon_cooy)<0.07)
                
-           {    DR->Fill(d_e_ph,wgt_full);
+           {    if (photon_energy>0.2) DR->Fill(d_e_ph,wgt_full);
                
 // SE IL FOTONE E' NEL CALORIMETRO AD UNA d=2RM DALL'ELETTRONE             
                 if (d_e_ph>2*Rm )
                 {
-                    n_two++;
+                    if (photon_energy>0.2) n_two++;
                 }
 // SE E' NEL CALORIMETRO MA AD UNA d<2RM
-            else {n_one++;
-                  Th_emu->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);}
-           }
+            else { if (photon_energy>0.2) 
+                        {   n_one++;
+                            Th_emu->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+                        }
+                 }
+           } 
 // SE E' NON E' PRODOTTO O NON E' NEL CALORIMETRO        
         else {n_one++;
             Th_emu->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);}
     
-    }
+    } 
   //  }
        
        

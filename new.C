@@ -15,7 +15,9 @@ void atree::Loop()
     TH1::SetDefaultSumw2();
     
     Double_t Rm = 0.01959 ; //raggio di Moliere in metri
+    Double_t E_CAL; //energy in the calorimeter
     Double_t d_e_ph; //distanza elettrone-fotone
+    //distanza elettrone-fotone
     Double_t n_tot=0; //numero di elettroni nel calorimetro
     Double_t n_two=0; //numero di elettroni che hanno una distanza maggiore di 2RM dal fotone, quindi 2 clusters
     Double_t n_one=0; //casi rimanenti che formano 1 cluster
@@ -36,9 +38,17 @@ void atree::Loop()
       Long64_t ientry = LoadTree(jentry);
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
+   
+    if (photon_coox!=-1 && photon_cooy!=-1)
+    {  
+     E_CAL=detKinBeamRot_Ee+photon_energy;}
+    else 
+    {  E_CAL=detKinBeamRot_Ee;}
        
     d_e_ph=sqrt( (detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detKinBeamRot_cooYe-photon_cooy)*(detKinBeamRot_cooYe-photon_cooy) ); 
-       
+    
+       if(E_CAL>1)
+       {
     if (abs(detKinBeamRot_cooXe) < 0.07 && abs(detKinBeamRot_cooYe) < 0.07)
     {
         n_tot++;
@@ -60,7 +70,10 @@ void atree::Loop()
             Th_emu->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);}
     
     }
-   
+    }
+       
+       
+       
    }
     
           

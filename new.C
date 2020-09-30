@@ -137,13 +137,13 @@ tmue->cd(1);
 Th_emu_cut->SetMarkerColor(kRed);
 Th_emu_cut->Draw("COLZ");
 tmue->cd(2);
-Th_emu->Draw("COLZ");
+Th_emu->Draw();
 tmue->cd(3);
 Th_emu->ProjectionY()->DrawClone();
-Th_emu_cut->ProjectionY()->DrawClone();
+Th_emu_cut->ProjectionY()->DrawClone("same");
 tmue->cd(4);
 Th_emu->ProjectionX()->DrawClone();
-Th_emu_cut->ProjectionX()->DrawClone();
+Th_emu_cut->ProjectionX()->DrawClone("same");
 tmue ->SaveAs("Th_emu.png"); 
     
 TCanvas * Drr= new TCanvas("Drr","Drr",1000,100,2500,2000);

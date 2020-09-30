@@ -23,7 +23,7 @@ void atree::Loop()
     Double_t n_one=0; //casi rimanenti che formano 1 cluster
 
     TH2F  *Th_emu = new TH2F("h2da1" , " Th e Vs. Th mu one cluster",500,0,100,500,0,5);
-    
+    TH1F* DR=new TH1F("DR", "Distanza elettrone-fotone", 70,0,0.14);
     
     
     
@@ -47,15 +47,16 @@ void atree::Loop()
        
     d_e_ph=sqrt( (detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detKinBeamRot_cooYe-photon_cooy)*(detKinBeamRot_cooYe-photon_cooy) ); 
     
-       if(E_CAL>1)
-       {
+       //if(E_CAL>1){
     if (abs(detKinBeamRot_cooXe) < 0.07 && abs(detKinBeamRot_cooYe) < 0.07)
     {
         n_tot++;
 
 // SE IL FOTONE E' PRODOTTO DENTRO AL CALORIMETRO
            if (abs(photon_coox)<0.07 && abs(photon_cooy)<0.07)
-           {     
+               
+           {    DR->Fill(d_e_ph,wgt_full);
+               
 // SE IL FOTONE E' NEL CALORIMETRO AD UNA d=2RM DALL'ELETTRONE             
                 if (d_e_ph>2*Rm )
                 {
@@ -70,7 +71,7 @@ void atree::Loop()
             Th_emu->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);}
     
     }
-    }
+  //  }
        
        
        
@@ -91,4 +92,10 @@ Th_emu->ProjectionY()->DrawClone();
 tmue->cd(3);
 Th_emu->ProjectionX()->DrawClone();
 tmue ->SaveAs("Th_emu.png");   
+    
+TCanvas * Drr= new TCanvas("Drr","Drr",1000,100,2500,2000);
+DR->Draw();   
+Drr ->SaveAs("DReph.png");   
+    
+    
 }

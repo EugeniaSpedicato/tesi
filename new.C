@@ -69,11 +69,13 @@ cout << "Elettroni ad una distanza 2RM dal fotone: " << n_two << endl;
 cout << "Eventi in cui vedo solo un cluster: " << n_one << endl;
     
 TCanvas * tmue= new TCanvas("tmue","tmue",1000,100,2500,2000); 
-tmue->Divide(2,1);
+tmue->Divide(2,2);
 tmue->cd(1);
 Th_emu->Draw("LEGO");
 Th_emu->SetMarkerSize(5);
 tmue->cd(2);
-Th_emu.ProjectionY()->DrawClone();
+Th_emu->ProjectionY()->DrawClone();
+tmue->cd(3);
+Th_emu->ProjectionX()->DrawClone();
 tmue ->SaveAs("Th_emu.png");   
 }

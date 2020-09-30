@@ -20,7 +20,7 @@ void atree::Loop()
     Double_t n_two=0; //numero di elettroni che hanno una distanza maggiore di 2RM dal fotone, quindi 2 clusters
     Double_t n_one=0; //casi rimanenti che formano 1 cluster
 
-    TH2F  *Th_emu = new TH2F("h2da1" , " Th e Vs. Th mu one cluster",800,0,100,800,0,5);
+    TH2F  *Th_emu = new TH2F("h2da1" , " Th e Vs. Th mu one cluster",500,0,100,500,0,5);
     
     
     

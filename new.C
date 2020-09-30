@@ -28,6 +28,7 @@ void atree::Loop()
 
     TH2F  *Th_emu = new TH2F("h2da1" , " Th e Vs. Th mu one cluster",500,0,100,500,0,5);
     TH2F  *Th_emu_cut = new TH2F("h2da1" , " Th e Vs. Th mu one cluster with cut",500,0,100,500,0,5);
+    TH2F  *E_R = new TH2F("h2da1" , " R Vs. E_CAL one cluster",70,0,0.14,500,1000,160);
     
     TH1F* DR=new TH1F("DR", "Distanza elettrone-fotone", 70,0,0.14);
     TH1F* DR_cut=new TH1F("DR", "Distanza elettrone-fotone", 70,0,0.14);
@@ -104,18 +105,22 @@ if (abs(detKinBeamRot_cooXe) < 0.07 && abs(detKinBeamRot_cooYe) < 0.07)
                 {
                     if (photon_energy>0.2) {n_two++; 
                                             DR->Fill(d_e_ph,wgt_full);
+                                            E_R->Fill(d_e_ph,E_CAL,wgt_full);
                                            }
                     }
 // SE E' NEL CALORIMETRO MA AD UNA d<2RM
             else { if (photon_energy>0.2) { n_one++;
                                             Th_emu->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
                                             DR->Fill(d_e_ph,wgt_full);
+                                            E_R->Fill(d_e_ph,E_CAL,wgt_full);
+                                           
                                           }
                  }
            } 
 // SE E' NON E' PRODOTTO O NON E' NEL CALORIMETRO        
         else {n_one++;
-            Th_emu->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);}
+            Th_emu->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+             }
     
     } 
     
@@ -147,10 +152,15 @@ Th_emu_cut->ProjectionX()->DrawClone("same");
 tmue ->SaveAs("Th_emu.png"); 
     
 TCanvas * Drr= new TCanvas("Drr","Drr",1000,100,2500,2000);
+Drr->Divide(2,1);
+Drr->cd(1);
 DR->Draw();
 DR_cut->SetLineColor(kRed);
-DR_cut->Draw("same");   
+DR_cut->Draw("same");  
+Drr->cd(2);
+E_R->Draw();
 Drr ->SaveAs("DReph.png");   
+
     
     
 }

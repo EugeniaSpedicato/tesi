@@ -76,54 +76,54 @@ TH1F* ThPhNoCal1MU=new TH1F("h2aN", "Theta MU with ph out of calorimete TAR 1", 
 TH1F* Th_PhNORM=new TH1F("h2aN", "Theta photons d<2*RM", 180,0,100); 
         
     
-TH2F  *Th_E_noph  = new TH2F("h2da" , " Th e Vs. Th  of the electrons whitout photons (LO)",140,0,5,140,0,100);
-TH2F  *Th_E_noRm = new TH2F("h2da" , " Th  Vs. E of the electrons with photons <2Rm",140,0,100,320,0,160);
-TH2F  *Th_E_PhNoCal = new TH2F("h2da" , " Th  Vs. E of the electrons with photons out of cal",140,0,100,140,0,160);
+TH2F  *Th_E_noph  = new TH2F("h2da" , " Th e Vs. Th  of the electrons whitout photons (LO)",1000,0,100,140,0,100);
+TH2F  *Th_E_noRm = new TH2F("h2da" , " Th  Vs. E of the electrons with photons <2Rm",1000,0,100,320,0,160);
+TH2F  *Th_E_PhNoCal = new TH2F("h2da" , " Th  Vs. E of the electrons with photons out of cal",1000,0,100,140,0,160);
 
-TH2F  *Th_E_nophMU  = new TH2F("h2da" , " Th MU Vs. Ee whitout photons (LO)",140,0,5,320,0,160);
-TH2F  *Th_E_noRmMU = new TH2F("h2da" , " Th MU Vs. Ee with photons <2Rm",140,0,5,320,0,160);
-TH2F  *Th_E_PhNoCalMU = new TH2F("h2da" , " Th MU Vs. Ee with photons out of cal",140,0,5,320,0,160);
-
-    
-TH2F  *Th_E_noph0  = new TH2F("h2da0" , " Th  Vs. E of the electrons whitout photons (LO) tar 0 ",140,0,100,320,0,160);
-TH2F  *Th_E_noRm0 = new TH2F("h2da0" , " Th  Vs. E of the electrons with photons <2Rm tar 0",140,0,100,320,0,160);
-TH2F  *Th_E_PhNoCal0 = new TH2F("h2da" , " Th  Vs. E of the electrons with photons out of cal tar 0",140,0,100,320,0,160);
-    
-TH2F  *Th_E_noph0MU  = new TH2F("h2da" , " Th MU Vs. Ee whitout photons (LO) tar 0",140,0,5,320,0,160);
-TH2F  *Th_E_noRm0MU = new TH2F("h2da" , " Th MU Vs. Ee with photons <2Rm tar 0",140,0,5,320,0,160);
-TH2F  *Th_E_PhNoCal0MU = new TH2F("h2da" , " Th MU Vs. Ee with photons out of cal tar 0",140,0,5,320,0,160);
-
-TH2F  *Thmu_emu_cal = new TH2F("h2da" , " Th MU Vs. Ee inside Cal distant from e",140,0,5,320,0,160);
-    
-TH2F  *Th_E_noph1  = new TH2F("h2da1" , " Th  Vs. E of the electrons whitout photons (LO) tar 1",140,0,100,320,0,160);
-TH2F  *Th_E_noRm1 = new TH2F("h2da1" , " Th  Vs. E of the electrons with photons <2Rm tar 1",140,0,100,320,0,160);
-TH2F  *Th_E_PhNoCal1 = new TH2F("h2da1" , " Th  Vs. E of the electrons with photons out of cal tar 1",140,0,100,320,0,160);
-    
-TH2F  *Th_E_noph1MU  = new TH2F("h2da1" , " Th MU Vs. Ee whitout photons (LO) tar 1",140,0,5,320,0,160);
-TH2F  *Th_E_noRm1MU = new TH2F("h2da1" , " Th MU Vs. Ee with photons <2Rm tar 1",140,0,5,320,0,160);
-TH2F  *Th_E_PhNoCal1MU = new TH2F("h2da1" , " Th MU Vs. Ee with photons out of cal tar 1",140,0,5,320,0,160);
-    
-TH2F  *Th_E_mu = new TH2F("h2da1" , " Th mu Vs. Th e when the photons are produced but out of CAL ",140,0,100,140,0,5);
-TH2F  *Th_E_eph = new TH2F("h2da1" , " Th mu Vs. Th e when photons <2RM (NLO)",140,0,100,140,0,5);
-TH2F  *Th_E_eNoph = new TH2F("h2da1" , " Th mu Vs. Th e when the electrons are without photons",140,0,100,140,0,5);
+TH2F  *Th_E_nophMU  = new TH2F("h2da" , " Th MU Vs. Ee whitout photons (LO)",10,0,5,320,0,160);
+TH2F  *Th_E_noRmMU = new TH2F("h2da" , " Th MU Vs. Ee with photons <2Rm",10,0,5,320,0,160);
+TH2F  *Th_E_PhNoCalMU = new TH2F("h2da" , " Th MU Vs. Ee with photons out of cal",10,0,5,320,0,160);
 
     
-TH2F  *Th_E_mu0 = new TH2F("h2da1" , " Th mu Vs. Th e when e and mu when the photons are produced but out of CAL tar 0",140,0,100,140,0,5);
-TH2F  *Th_E_eph0 = new TH2F("h2da1" , " Th mu Vs. Th e with photons <2RM(NLO) tar 0",140,0,100,140,0,5);
-TH2F  *Th_E_eNoph0 = new TH2F("h2da1" , " Th mu Vs. Th e when electrons without photons tar 0",140,0,100,140,0,5);
+TH2F  *Th_E_noph0  = new TH2F("h2da0" , " Th  Vs. E of the electrons whitout photons (LO) tar 0 ",1000,0,100,320,0,160);
+TH2F  *Th_E_noRm0 = new TH2F("h2da0" , " Th  Vs. E of the electrons with photons <2Rm tar 0",1000,0,100,320,0,160);
+TH2F  *Th_E_PhNoCal0 = new TH2F("h2da" , " Th  Vs. E of the electrons with photons out of cal tar 0",1000,0,100,320,0,160);
+    
+TH2F  *Th_E_noph0MU  = new TH2F("h2da" , " Th MU Vs. Ee whitout photons (LO) tar 0",10,0,5,320,0,160);
+TH2F  *Th_E_noRm0MU = new TH2F("h2da" , " Th MU Vs. Ee with photons <2Rm tar 0",10,0,5,320,0,160);
+TH2F  *Th_E_PhNoCal0MU = new TH2F("h2da" , " Th MU Vs. Ee with photons out of cal tar 0",10,0,5,320,0,160);
+
+TH2F  *Thmu_emu_cal = new TH2F("h2da" , " Th MU Vs. Ee inside Cal distant from e",10,0,5,320,0,160);
+    
+TH2F  *Th_E_noph1  = new TH2F("h2da1" , " Th  Vs. E of the electrons whitout photons (LO) tar 1",1000,0,100,320,0,160);
+TH2F  *Th_E_noRm1 = new TH2F("h2da1" , " Th  Vs. E of the electrons with photons <2Rm tar 1",1000,0,100,320,0,160);
+TH2F  *Th_E_PhNoCal1 = new TH2F("h2da1" , " Th  Vs. E of the electrons with photons out of cal tar 1",1000,0,100,320,0,160);
+    
+TH2F  *Th_E_noph1MU  = new TH2F("h2da1" , " Th MU Vs. Ee whitout photons (LO) tar 1",10,0,5,320,0,160);
+TH2F  *Th_E_noRm1MU = new TH2F("h2da1" , " Th MU Vs. Ee with photons <2Rm tar 1",10,0,5,320,0,160);
+TH2F  *Th_E_PhNoCal1MU = new TH2F("h2da1" , " Th MU Vs. Ee with photons out of cal tar 1",10,0,5,320,0,160);
+    
+TH2F  *Th_E_mu = new TH2F("h2da1" , " Th e Vs. Th mu when the photons are produced but out of CAL ",1000,0,100,10,0,5);
+TH2F  *Th_E_eph = new TH2F("h2da1" , " Th e Vs. Th mu when photons <2RM (NLO)",1000,0,100,10,0,5);
+TH2F  *Th_E_eNoph = new TH2F("h2da1" , " Th e Vs. Th mu when the electrons are without photons",1000,0,100,10,0,5);
 
     
-TH2F  *Th_E_mu1 = new TH2F("h2da1" , " Th mu Vs. Th e when e and mu when the photons are produced but out of CAL tar 1",140,0,100,140,0,5);
-TH2F  *Th_E_eph1 = new TH2F("h2da1" , " Th mu Vs. Th e with photons <2RM(NLO) tar 1",140,0,100,140,0,5);
-TH2F  *Th_E_eNoph1 = new TH2F("h2da1" , " Th mu Vs. Th e when electrons without photons tar 1",140,0,100,140,0,5);
+TH2F  *Th_E_mu0 = new TH2F("h2da1" , " Th e Vs. Th mu when e and mu when the photons are produced but out of CAL tar 0",1000,0,100,10,0,5);
+TH2F  *Th_E_eph0 = new TH2F("h2da1" , " Th e Vs. Th mu with photons <2RM(NLO) tar 0",1000,0,100,10,0,5);
+TH2F  *Th_E_eNoph0 = new TH2F("h2da1" , " Th e Vs. Th mu when electrons without photons tar 0",1000,0,100,10,0,5);
+
     
-TH1F* E_ph=new TH1F("h2aN1", "E ph d>2Rm",180,0,100);
-TH1F* E_ph0=new TH1F("h2aN2", "E ph d>2Rm tar 0",180,0,100);
-TH1F* E_ph1=new TH1F("h2aN3", "E ph d>2Rm tar 1",180,0,100);
+TH2F  *Th_E_mu1 = new TH2F("h2da1" , " Th e Vs. Th mu when e and mu when the photons are produced but out of CAL tar 1",1000,0,100,10,0,5);
+TH2F  *Th_E_eph1 = new TH2F("h2da1" , " Th e Vs. Th mu with photons <2RM(NLO) tar 1",1000,0,100,10,0,5);
+TH2F  *Th_E_eNoph1 = new TH2F("h2da1" , " Th e Vs. Th mu when electrons without photons tar 1",1000,0,100,10,0,5);
+    
+TH1F* E_ph=new TH1F("h2aN1", "E ph d>2Rm",1000,0,100);
+TH1F* E_ph0=new TH1F("h2aN2", "E ph d>2Rm tar 0",1000,0,100);
+TH1F* E_ph1=new TH1F("h2aN3", "E ph d>2Rm tar 1",1000,0,100);
     
 TH2F  *Ee_Eph = new TH2F("h2da1" , " E e Vs. E ph of the photons with d<2Rm",320,0,100,320,0,100);
     
-TH2F  *Ee_thmu= new TH2F("h2da1" , " E e Vs. th mu of the photons with d<2Rm",140,0,100,140,0,5);
+TH2F  *Ee_thmu= new TH2F("h2da1" , " E e Vs. th mu of the photons with d<2Rm",320,0,100,10,0,5);
 TH2F  *Eeph_Ee= new TH2F("h2da1" , " Ee+Eph Vs. Ee of the photons with d<2Rm",320,0,100,320,0,100);
 
     
@@ -512,52 +512,47 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
     EnCalNoPh->SetLineColor(kRed);
     EnCalNoPh->GetXaxis()->SetTitle("E [GeV] log scale");
     EnCalNORm->SetLineColor(kBlack);
-    EnCalNoPh->Draw("COLZ");
-    EnCalNORm->Draw("COLZ same");
+    EnCalNoPh->Draw("HIST");
+    EnCalNORm->Draw("HIST same");
     EnPhNoCal->SetLineColor(kOrange);
-    EnPhNoCal->Draw("COLZ same");
+    EnPhNoCal->Draw("HIST same");
     gPad->SetLogx();
-    gPad->SetLogy();
     
     
     e->cd(2);
     EnCalNoPh0->SetLineColor(kRed);
     EnCalNoPh0->GetXaxis()->SetTitle("E [GeV] log scale");
     EnCalNORm0->SetLineColor(kBlack);
-    EnCalNoPh0->Draw("COLZ");
-    EnCalNORm0->Draw("COLZ same");
+    EnCalNoPh0->Draw("HIST");
+    EnCalNORm0->Draw("HIST same");
     EnPhNoCal0->SetLineColor(kOrange);
-    EnPhNoCal0->Draw("COLZ same");
+    EnPhNoCal0->Draw("HIST same");
     gPad->SetLogx();
-    gPad->SetLogy();
     
     e->cd(3);
     EnCalNoPh1->SetLineColor(kRed);
     EnCalNoPh1->GetXaxis()->SetTitle("E [GeV] log scale");
-    EnCalNoPh1->Draw("COLZ");
+    EnCalNoPh1->Draw("HIST");
     EnCalNORm1->SetLineColor(kBlack);
-    EnCalNORm1->Draw("COLZ same");
+    EnCalNORm1->Draw("HIST same");
     EnPhNoCal1->SetLineColor(kOrange);
-    EnPhNoCal1->Draw("COLZ same");
+    EnPhNoCal1->Draw("HIST same");
     gPad->SetLogx();
-    gPad->SetLogy();
     
     e->cd(4);
     E_ph->SetLineColor(31);
-    E_ph->Draw("COLZ");
-    E_ph0->Draw("COLZ same");
+    E_ph->Draw("HIST");
+    E_ph0->Draw("HIST same");
     E_ph1->SetLineColor(49);
-    E_ph1->Draw("COLZ same");
+    E_ph1->Draw("HIST same");
     gPad->SetLogx();
-    gPad->SetLogy();
  
     e->cd(5);
     //differenza distribuzione Etot=Ee+Eph e Ee quanto d<2RM
-    EnCalNORm->Draw("COLZ");
+    EnCalNORm->Draw("HIST");
     En_tot->SetLineColor(kRed);
-    En_tot->Draw("COLZ same");
+    En_tot->Draw("HIST same");
     gPad->SetLogx();
-    gPad->SetLogy();
     
     e->SaveAs("EnergyElnoRm.png");
     
@@ -566,31 +561,31 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
     te->cd(1);
     ThCalNoPh->SetLineColor(kRed);
     ThCalNoPh->GetXaxis()->SetTitle("Th [mrad]");
-    ThCalNoPh->Draw("COLZ");
+    ThCalNoPh->Draw("HIST");
     ThCalNORm->SetLineColor(kBlack);
-    ThCalNORm->Draw("COLZ same");
+    ThCalNORm->Draw("HIST same");
     ThPhNoCal->SetLineColor(kOrange);
-    ThPhNoCal->Draw("COLZ same");
+    ThPhNoCal->Draw("HIST same");
 
     
     te->cd(2);
     ThCalNoPh0->SetLineColor(kRed);
     ThCalNoPh0->GetXaxis()->SetTitle("Th [mrad]");
-    ThCalNoPh0->Draw("COLZ");
+    ThCalNoPh0->Draw("HIST");
     ThCalNORm0->SetLineColor(kBlack);
-    ThCalNORm0->Draw("COLZ same");
+    ThCalNORm0->Draw("HIST same");
     ThPhNoCal0->SetLineColor(kOrange);
-    ThPhNoCal0->Draw("COLZ same");
+    ThPhNoCal0->Draw("HIST same");
    
     
     te->cd(3);
     ThCalNoPh1->SetLineColor(kRed);
     ThCalNoPh1->GetXaxis()->SetTitle("Th [mrad]");
-    ThCalNoPh1->Draw("COLZ");
+    ThCalNoPh1->Draw("HIST");
     ThCalNORm1->SetLineColor(kBlack);
-    ThCalNORm1->Draw("COLZ same");
+    ThCalNORm1->Draw("HIST same");
     ThPhNoCal1->SetLineColor(kOrange);
-    ThPhNoCal1->Draw("COLZ same");
+    ThPhNoCal1->Draw("HIST same");
     
     te->SaveAs("ThElnoRm.png");
 
@@ -599,31 +594,31 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
     teMU->cd(1);
     ThCalNoPhMU->SetLineColor(kRed);
     ThCalNoPhMU->GetXaxis()->SetTitle("Th [mrad]");
-    ThCalNoPhMU->Draw("COLZ");
+    ThCalNoPhMU->Draw("HIST");
     ThCalNORmMU->SetLineColor(kBlack);
-    ThCalNORmMU->Draw("COLZ same");
+    ThCalNORmMU->Draw("HIST same");
     ThPhNoCalMU->SetLineColor(kOrange);
-    ThPhNoCalMU->Draw("COLZ same");
+    ThPhNoCalMU->Draw("HIST same");
 
     
     teMU->cd(2);
     ThCalNoPh0MU->SetLineColor(kRed);
     ThCalNoPh0MU->GetXaxis()->SetTitle("Th [mrad]");
-    ThCalNoPh0MU->Draw("COLZ");
+    ThCalNoPh0MU->Draw("HIST");
     ThCalNORm0MU->SetLineColor(kBlack);
-    ThCalNORm0MU->Draw("COLZ same");
+    ThCalNORm0MU->Draw("HIST same");
     ThPhNoCal0MU->SetLineColor(kOrange);
-    ThPhNoCal0MU->Draw("COLZ same");
+    ThPhNoCal0MU->Draw("HIST same");
    
     
     teMU->cd(3);
     ThCalNoPh1MU->SetLineColor(kRed);
     ThCalNoPh1MU->GetXaxis()->SetTitle("Th [mrad]");
-    ThCalNoPh1MU->Draw("COLZ");
+    ThCalNoPh1MU->Draw("HIST");
     ThCalNORm1MU->SetLineColor(kBlack);
-    ThCalNORm1MU->Draw("COLZ same");
+    ThCalNORm1MU->Draw("HIST same");
     ThPhNoCal1MU->SetLineColor(kOrange);
-    ThPhNoCal1MU->Draw("COLZ same");
+    ThPhNoCal1MU->Draw("HIST same");
     
     teMU->SaveAs("ThElnoRmMU.png");
     

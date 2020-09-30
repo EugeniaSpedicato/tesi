@@ -109,7 +109,7 @@ tmue ->SaveAs("Th_emu.png");
 TCanvas * Drr= new TCanvas("Drr","Drr",1000,100,2500,2000);
 DR->Draw();
 DR_cut->SetLineColor(kRed);
-DR_cut->Draw();   
+DR_cut->Draw("same");   
 Drr ->SaveAs("DReph.png");   
     
     

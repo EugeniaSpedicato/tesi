@@ -158,7 +158,7 @@ DR->Draw();
 DR_cut->SetLineColor(kRed);
 DR_cut->Draw("same");  
 Drr->cd(2);
-E_R->Draw();
+E_R->Draw("COLZ");
 Drr ->SaveAs("DReph.png");   
 
     

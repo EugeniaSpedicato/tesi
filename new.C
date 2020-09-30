@@ -97,7 +97,9 @@ tmue->cd(2);
 Th_emu->ProjectionY()->DrawClone();
 tmue->cd(3);
 Th_emu->ProjectionX()->DrawClone();
-tmue ->SaveAs("Th_emu.png");   
+tmue->cd(4);
+Th_emu->Draw("COLZ");
+tmue ->SaveAs("Th_emu.png"); 
     
 TCanvas * Drr= new TCanvas("Drr","Drr",1000,100,2500,2000);
 DR->Draw();   

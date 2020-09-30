@@ -51,23 +51,17 @@ void atree::Loop()
                     n_two++;
                 }
 // SE E' NEL CALORIMETRO MA AD UNA d<2RM
-            else n_one++_
+            else n_one++;
            }
 // SE E' NON E' PRODOTTO O NON E' NEL CALORIMETRO        
         else n_one++;
     
     }
-      
+   
+   }
+    
+          
 cout << "Elettroni totali nel calorimetro: " << n_tot << endl;
 cout << "Elettroni ad una distanza 2RM dal fotone: " << n_two << endl;
 cout << "Eventi in cui vedo solo un cluster: " << n_one << endl;
-    
-    
-    
-    
-    
-    
-    
-    
-   }
 }

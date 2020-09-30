@@ -222,7 +222,7 @@ else {nElNOph++;
       ThCalNoPhMU->Fill(detKinBeamRot_thmu,wgt_full);
       Th_E_nophMU->Fill(detKinBeamRot_thmu, detKinBeamRot_Ee,wgt_full);
     
-      Th_E_eNoph->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+      Th_E_eNoph->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_LO);
 
         Double_t demu=sqrt((detKinBeamRot_cooXe-detKinBeamRot_cooXmu)*(detKinBeamRot_cooXe-detKinBeamRot_cooXmu)+(detKinBeamRot_cooYe-detKinBeamRot_cooYmu)*(detKinBeamRot_cooYe-detKinBeamRot_cooYmu));   
          if (demu>Rm)
@@ -388,7 +388,7 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
      {
           ThCalNoPh1MU->Fill(detKinBeamRot_thmu,wgt_full); 
           Th_E_noph1MU->Fill(detKinBeamRot_thmu, detKinBeamRot_Ee,wgt_full);
-         Th_E_eNoph1->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+         Th_E_eNoph1->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_LO);
      }}
 
            }
@@ -459,7 +459,7 @@ d=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detK
      {  
           ThCalNoPh0MU->Fill(detKinBeamRot_thmu,wgt_full); 
           Th_E_noph0MU->Fill(detKinBeamRot_thmu, detKinBeamRot_Ee,wgt_full);
-         Th_E_eNoph0->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+         Th_E_eNoph0->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_LO);
      }}
   
            }

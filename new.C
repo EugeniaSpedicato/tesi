@@ -20,6 +20,7 @@ void atree::Loop()
     Double_t n_two=0; //numero di elettroni che hanno una distanza maggiore di 2RM dal fotone, quindi 2 clusters
     Double_t n_one=0; //casi rimanenti che formano 1 cluster
 
+    TH2F  *Th_emu = new TH2F("h2da1" , " Th e Vs. Th mu one cluster",800,0,100,800,0,5);
     
     
     
@@ -38,7 +39,7 @@ void atree::Loop()
        
     d_e_ph=sqrt( (detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detKinBeamRot_cooYe-photon_cooy)*(detKinBeamRot_cooYe-photon_cooy) ); 
        
-    if (detKinBeamRot_cooXe < 0.07 && detKinBeamRot_cooYe < 0.07 && detKinBeamRot_cooXe > -0.07 && detKinBeamRot_cooYe > -0.07)
+    if (abs(detKinBeamRot_cooXe) < 0.07 && abs(detKinBeamRot_cooYe) < 0.07)
     {
         n_tot++;
 
@@ -52,9 +53,11 @@ void atree::Loop()
                 }
 // SE E' NEL CALORIMETRO MA AD UNA d<2RM
             else n_one++;
+               Th_emu->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
            }
 // SE E' NON E' PRODOTTO O NON E' NEL CALORIMETRO        
         else n_one++;
+            Th_emu->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
     
     }
    
@@ -64,4 +67,9 @@ void atree::Loop()
 cout << "Elettroni totali nel calorimetro: " << n_tot << endl;
 cout << "Elettroni ad una distanza 2RM dal fotone: " << n_two << endl;
 cout << "Eventi in cui vedo solo un cluster: " << n_one << endl;
+    
+Canvas * tmue= new TCanvas("tmue","tmue",1000,100,2500,2000);     
+Th_emu->Draw("COLZ");
+Th_emu->SetMarkerSize(5);
+tmue ->SaveAs("Th_emu.png");   
 }

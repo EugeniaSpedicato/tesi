@@ -69,7 +69,7 @@ cout << "Elettroni ad una distanza 2RM dal fotone: " << n_two << endl;
 cout << "Eventi in cui vedo solo un cluster: " << n_one << endl;
     
 TCanvas * tmue= new TCanvas("tmue","tmue",1000,100,2500,2000);     
-Th_emu->Draw("COLZ");
+Th_emu->Draw("HIST");
 Th_emu->SetMarkerSize(5);
 tmue ->SaveAs("Th_emu.png");   
 }

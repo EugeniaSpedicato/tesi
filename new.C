@@ -1,0 +1,73 @@
+#define atree_cxx
+#include "next.h"
+#include <TH2.h>
+#include <TH1.h>
+#include <TGraph.h>
+#include <TTree.h>
+#include <cmath>
+using namespace std;
+
+#include <TStyle.h>
+#include <TCanvas.h>
+
+void atree::Loop()
+{
+    TH1::SetDefaultSumw2();
+    
+    Double_t Rm = 0.01959 ; //raggio di Moliere in metri
+    Double_t d_e_ph; //distanza elettrone-fotone
+    Double_t n_tot=0; //numero di elettroni nel calorimetro
+    Double_t n_two=0; //numero di elettroni che hanno una distanza maggiore di 2RM dal fotone, quindi 2 clusters
+    Double_t n_one=0; //casi rimanenti che formano 1 cluster
+
+    
+    
+    
+    
+    
+    if (fChain == 0) return;
+
+   Long64_t nentries = fChain->GetEntriesFast();
+
+
+    Long64_t nbytes = 0, nb = 0;
+   for (Long64_t jentry=0; jentry<nentries;jentry++) {
+      Long64_t ientry = LoadTree(jentry);
+      if (ientry < 0) break;
+      nb = fChain->GetEntry(jentry);   nbytes += nb;
+       
+    d_e_ph=sqrt( (detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detKinBeamRot_cooYe-photon_cooy)*(detKinBeamRot_cooYe-photon_cooy) ); 
+       
+    if (detKinBeamRot_cooXe < 0.07 && detKinBeamRot_cooYe < 0.07 && detKinBeamRot_cooXe > -0.07 && detKinBeamRot_cooYe > -0.07)
+    {
+        n_tot++;
+
+// SE IL FOTONE E' PRODOTTO DENTRO AL CALORIMETRO
+           if (abs(photon_coox)<0.07 && abs(photon_cooy)<0.07)
+           {     
+// SE IL FOTONE E' NEL CALORIMETRO AD UNA d=2RM DALL'ELETTRONE             
+                if (d_e_ph>2*Rm )
+                {
+                    n_two++;
+                }
+// SE E' NEL CALORIMETRO MA AD UNA d<2RM
+            else n_one++_
+           }
+// SE E' NON E' PRODOTTO O NON E' NEL CALORIMETRO        
+        else n_one++;
+    
+    }
+      
+cout << "Elettroni totali nel calorimetro: " << n_tot << endl;
+cout << "Elettroni ad una distanza 2RM dal fotone: " << n_two << endl;
+cout << "Eventi in cui vedo solo un cluster: " << n_one << endl;
+    
+    
+    
+    
+    
+    
+    
+    
+   }
+}

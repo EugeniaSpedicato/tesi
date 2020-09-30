@@ -39,7 +39,7 @@ void atree::Loop()
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
    
-    if (photon_coox!=-1 && photon_cooy!=-1)
+    if (photon_coox!=-1 && photon_cooy!=-1 && photon_energy>0.2)
     {  
      E_CAL=detKinBeamRot_Ee+photon_energy;}
     else 
@@ -55,7 +55,7 @@ void atree::Loop()
 // SE IL FOTONE E' PRODOTTO DENTRO AL CALORIMETRO
            if (abs(photon_coox)<0.07 && abs(photon_cooy)<0.07)
                
-           {    DR->Fill(d_e_ph);
+           {    DR->Fill(d_e_ph,wgt_full);
                
 // SE IL FOTONE E' NEL CALORIMETRO AD UNA d=2RM DALL'ELETTRONE             
                 if (d_e_ph>2*Rm )

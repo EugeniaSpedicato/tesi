@@ -47,7 +47,7 @@ void atree::Loop()
        
     d_e_ph=sqrt( (detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detKinBeamRot_cooYe-photon_cooy)*(detKinBeamRot_cooYe-photon_cooy) ); 
     
-       if(E_CAL>20){
+       if(E_CAL>10){
        
     if (abs(detKinBeamRot_cooXe) < 0.07 && abs(detKinBeamRot_cooYe) < 0.07)
     {

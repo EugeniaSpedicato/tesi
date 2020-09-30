@@ -77,31 +77,31 @@ TH1F* Th_PhNORM=new TH1F("h2aN", "Theta photons d<2*RM", 180,0,100);
         
     
 TH2F  *Th_E_noph  = new TH2F("h2da" , " Th e Vs. Th  of the electrons whitout photons (LO)",1000,0,100,140,0,100);
-TH2F  *Th_E_noRm = new TH2F("h2da" , " Th  Vs. E of the electrons with photons <2Rm",1000,0,100,320,0,160);
+TH2F  *Th_E_noRm = new TH2F("h2da" , " Th  Vs. E of the electrons with photons <2Rm",1000,0,100,1000,0,160);
 TH2F  *Th_E_PhNoCal = new TH2F("h2da" , " Th  Vs. E of the electrons with photons out of cal",1000,0,100,140,0,160);
 
-TH2F  *Th_E_nophMU  = new TH2F("h2da" , " Th MU Vs. Ee whitout photons (LO)",1000,0,5,320,0,160);
-TH2F  *Th_E_noRmMU = new TH2F("h2da" , " Th MU Vs. Ee with photons <2Rm",1000,0,5,320,0,160);
-TH2F  *Th_E_PhNoCalMU = new TH2F("h2da" , " Th MU Vs. Ee with photons out of cal",1000,0,5,320,0,160);
+TH2F  *Th_E_nophMU  = new TH2F("h2da" , " Th MU Vs. Ee whitout photons (LO)",1000,0,5,1000,0,160);
+TH2F  *Th_E_noRmMU = new TH2F("h2da" , " Th MU Vs. Ee with photons <2Rm",1000,0,5,1000,0,160);
+TH2F  *Th_E_PhNoCalMU = new TH2F("h2da" , " Th MU Vs. Ee with photons out of cal",1000,0,5,1000,0,160);
 
     
-TH2F  *Th_E_noph0  = new TH2F("h2da0" , " Th  Vs. E of the electrons whitout photons (LO) tar 0 ",1000,0,100,320,0,160);
-TH2F  *Th_E_noRm0 = new TH2F("h2da0" , " Th  Vs. E of the electrons with photons <2Rm tar 0",1000,0,100,320,0,160);
-TH2F  *Th_E_PhNoCal0 = new TH2F("h2da" , " Th  Vs. E of the electrons with photons out of cal tar 0",1000,0,100,320,0,160);
+TH2F  *Th_E_noph0  = new TH2F("h2da0" , " Th  Vs. E of the electrons whitout photons (LO) tar 0 ",1000,0,100,1000,0,160);
+TH2F  *Th_E_noRm0 = new TH2F("h2da0" , " Th  Vs. E of the electrons with photons <2Rm tar 0",1000,0,100,1000,0,160);
+TH2F  *Th_E_PhNoCal0 = new TH2F("h2da" , " Th  Vs. E of the electrons with photons out of cal tar 0",1000,0,100,1000,0,160);
     
-TH2F  *Th_E_noph0MU  = new TH2F("h2da" , " Th MU Vs. Ee whitout photons (LO) tar 0",1000,0,5,320,0,160);
-TH2F  *Th_E_noRm0MU = new TH2F("h2da" , " Th MU Vs. Ee with photons <2Rm tar 0",1000,0,5,320,0,160);
-TH2F  *Th_E_PhNoCal0MU = new TH2F("h2da" , " Th MU Vs. Ee with photons out of cal tar 0",1000,0,5,320,0,160);
+TH2F  *Th_E_noph0MU  = new TH2F("h2da" , " Th MU Vs. Ee whitout photons (LO) tar 0",1000,0,5,1000,0,160);
+TH2F  *Th_E_noRm0MU = new TH2F("h2da" , " Th MU Vs. Ee with photons <2Rm tar 0",1000,0,5,1000,0,160);
+TH2F  *Th_E_PhNoCal0MU = new TH2F("h2da" , " Th MU Vs. Ee with photons out of cal tar 0",1000,0,5,1000,0,160);
 
-TH2F  *Thmu_emu_cal = new TH2F("h2da" , " Th MU Vs. Ee inside Cal distant from e",1000,0,5,320,0,160);
+TH2F  *Thmu_emu_cal = new TH2F("h2da" , " Th MU Vs. Ee inside Cal distant from e",1000,0,5,1000,0,160);
     
-TH2F  *Th_E_noph1  = new TH2F("h2da1" , " Th  Vs. E of the electrons whitout photons (LO) tar 1",1000,0,100,320,0,160);
-TH2F  *Th_E_noRm1 = new TH2F("h2da1" , " Th  Vs. E of the electrons with photons <2Rm tar 1",1000,0,100,320,0,160);
-TH2F  *Th_E_PhNoCal1 = new TH2F("h2da1" , " Th  Vs. E of the electrons with photons out of cal tar 1",1000,0,100,320,0,160);
+TH2F  *Th_E_noph1  = new TH2F("h2da1" , " Th  Vs. E of the electrons whitout photons (LO) tar 1",1000,0,100,1000,0,160);
+TH2F  *Th_E_noRm1 = new TH2F("h2da1" , " Th  Vs. E of the electrons with photons <2Rm tar 1",1000,0,100,1000,0,160);
+TH2F  *Th_E_PhNoCal1 = new TH2F("h2da1" , " Th  Vs. E of the electrons with photons out of cal tar 1",1000,0,100,1000,0,160);
     
-TH2F  *Th_E_noph1MU  = new TH2F("h2da1" , " Th MU Vs. Ee whitout photons (LO) tar 1",1000,0,5,320,0,160);
-TH2F  *Th_E_noRm1MU = new TH2F("h2da1" , " Th MU Vs. Ee with photons <2Rm tar 1",1000,0,5,320,0,160);
-TH2F  *Th_E_PhNoCal1MU = new TH2F("h2da1" , " Th MU Vs. Ee with photons out of cal tar 1",1000,0,5,320,0,160);
+TH2F  *Th_E_noph1MU  = new TH2F("h2da1" , " Th MU Vs. Ee whitout photons (LO) tar 1",1000,0,5,1000,0,160);
+TH2F  *Th_E_noRm1MU = new TH2F("h2da1" , " Th MU Vs. Ee with photons <2Rm tar 1",1000,0,5,1000,0,160);
+TH2F  *Th_E_PhNoCal1MU = new TH2F("h2da1" , " Th MU Vs. Ee with photons out of cal tar 1",1000,0,5,1000,0,160);
     
 TH2F  *Th_E_mu = new TH2F("h2da1" , " Th e Vs. Th mu when the photons are produced but out of CAL ",1000,0,100,1000,0,5);
 TH2F  *Th_E_eph = new TH2F("h2da1" , " Th e Vs. Th mu when photons <2RM (NLO)",1000,0,100,1000,0,5);

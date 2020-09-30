@@ -55,7 +55,7 @@ void atree::Loop()
        
     d_e_ph=sqrt( (detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detKinBeamRot_cooYe-photon_cooy)*(detKinBeamRot_cooYe-photon_cooy) ); 
     
-       if(E_CAL>10){
+       if(E_CAL>1){
        
     if (abs(detKinBeamRot_cooXe) < 0.07 && abs(detKinBeamRot_cooYe) < 0.07)
     {
@@ -137,7 +137,7 @@ tmue->cd(1);
 Th_emu_cut->SetMarkerColor(kRed);
 Th_emu_cut->Draw("COLZ");
 tmue->cd(2);
-Th_emu->Draw();
+Th_emu->Draw("COLZ");
 tmue->cd(3);
 Th_emu->ProjectionY()->DrawClone();
 Th_emu_cut->ProjectionY()->DrawClone("same");

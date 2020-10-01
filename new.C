@@ -29,8 +29,8 @@ void atree::Loop()
     TH2F  *Th_emu = new TH2F("h2da1" , " Th e Vs. Th mu one cluster",500,0,100,500,0,5);
     TH2F  *Th_emu_cut = new TH2F("h2da1" , " Th e Vs. Th mu one cluster with cut",500,0,100,500,0,5);
     TH2F  *E_R = new TH2F("h2da1" , " R Vs. E_CAL one cluster",70,0,0.14,500,1000,160);
-    TH2F  *Th_E_el  = new TH2F("h2da" , " Th e Vs. Ee one cluster",500,0,5,500,0,160);
-    TH2F  *Th_E_el_cut  = new TH2F("h2da" , " Th e Vs. Ee one cluster with cut",500,0,5,500,0,160);
+    TH2F  *Th_E_el  = new TH2F("h2da" , " Th e Vs. Ee one cluster",500,0,100,500,0,160);
+    TH2F  *Th_E_el_cut  = new TH2F("h2da" , " Th e Vs. Ee one cluster with cut",500,0,100,500,0,160);
     
     TH1F* DR=new TH1F("DR", "Distanza elettrone-fotone", 70,0,0.14);
     TH1F* DR_cut=new TH1F("DR", "Distanza elettrone-fotone", 70,0,0.14);
@@ -172,8 +172,9 @@ Drr ->SaveAs("DReph.png");
 TCanvas * th_en= new TCanvas("th_en","th_en",1000,100,2500,2000); 
 th_en->Divide(2,1);
 th_en->cd(1);
-Th_E_el->Draw("HIST");  
+Th_E_el->Draw("COLZ2");  
 th_en->cd(2);
-Th_E_el_cut->Draw("HIST");    
+Th_E_el_cut->Draw("COLZ");  
+gStyle->SetPalette(kPearl);
 th_en->SaveAs("theta-energy-electron.png");    
 }

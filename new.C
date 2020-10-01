@@ -82,14 +82,14 @@ void atree::Loop()
             else { if (photon_energy>0.2) { n_one_cut++;
                                             Th_emu_cut->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
                                             DR_cut->Fill(d_e_ph,wgt_full);
-                                            Th_E_el_cut->Fill(detKinBeamRot_the,detKinBeamRot_Ee,wgt_full);
+                                            Th_E_el_cut->Fill(detKinBeamRot_the,E_CAL,wgt_full);
                                           }
                  }
            } 
 // SE E' NON E' PRODOTTO O NON E' NEL CALORIMETRO        
         else {n_one_cut++;
             Th_emu_cut->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
-            Th_E_el_cut->Fill(detKinBeamRot_the,detKinBeamRot_Ee,wgt_full);
+            Th_E_el_cut->Fill(detKinBeamRot_the,E_CAL,wgt_full);
 }
     
     } 
@@ -120,14 +120,14 @@ if (abs(detKinBeamRot_cooXe) < 0.07 && abs(detKinBeamRot_cooYe) < 0.07)
                                             Th_emu->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
                                             DR->Fill(d_e_ph,wgt_full);
                                             E_R->Fill(Re,E_CAL,wgt_full);
-                                            Th_E_el->Fill(detKinBeamRot_the,detKinBeamRot_Ee,wgt_full);
+                                            Th_E_el->Fill(detKinBeamRot_the,E_CAL,wgt_full);
                                           }
                  }
            } 
 // SE E' NON E' PRODOTTO O NON E' NEL CALORIMETRO        
         else {n_one++;
             Th_emu->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
-            Th_E_el->Fill(detKinBeamRot_the,detKinBeamRot_Ee,wgt_full);
+            Th_E_el->Fill(detKinBeamRot_the,E_CAL,wgt_full);
              }
     
     } 

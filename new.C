@@ -153,7 +153,6 @@ tmue->cd(2);
 Th_emu->Draw("COLZ");
 gStyle->SetPalette(kCherry);
 TColor::InvertPalette();
-palette[0] = 0;
 tmue->cd(3);
 Th_emu->ProjectionY()->DrawClone("HIST");
 Th_emu_cut->ProjectionY()->DrawClone("HIST same");

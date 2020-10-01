@@ -50,9 +50,9 @@ void atree::Loop()
    
     if (photon_coox!=-1 && photon_cooy!=-1)
     {  
-     E_CAL=detKinBeamRot_Ee+photon_energy+detKinBeamRot_Emu;}
+     E_CAL=detKinBeamRot_Ee+photon_energy;}
     else 
-    {  E_CAL=detKinBeamRot_Ee+detKinBeamRot_Emu;}
+    {  E_CAL=detKinBeamRot_Ee;}
        
     d_e_ph=sqrt( (detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detKinBeamRot_cooYe-photon_cooy)*(detKinBeamRot_cooYe-photon_cooy) ); 
     
@@ -70,7 +70,7 @@ void atree::Loop()
            {    //if (photon_energy>0.2) DR->Fill(d_e_ph,wgt_full);
                
 // SE IL FOTONE E' NEL CALORIMETRO AD UNA d=2RM DALL'ELETTRONE             
-                if (d_e_ph>2*Rm )
+                if (d_e_ph>2*Rm)
                 {
                     if (photon_energy>0.2) {n_two_cut++; 
                                             DR_cut->Fill(d_e_ph,wgt_full);

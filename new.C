@@ -155,11 +155,11 @@ gStyle->SetPalette(kCherry);
 TColor::InvertPalette();
 palette[0] = 0;
 tmue->cd(3);
-Th_emu->ProjectionY()->DrawClone();
-Th_emu_cut->ProjectionY()->DrawClone("same");
+Th_emu->ProjectionY()->DrawClone("HIST");
+Th_emu_cut->ProjectionY()->DrawClone("HIST same");
 tmue->cd(4);
-Th_emu->ProjectionX()->DrawClone();
-Th_emu_cut->ProjectionX()->DrawClone("same");
+Th_emu->ProjectionX()->DrawClone("HIST");
+Th_emu_cut->ProjectionX()->DrawClone("HIST same");
 tmue ->SaveAs("Th_emu.png"); 
     
 TCanvas * Drr= new TCanvas("Drr","Drr",1000,100,2500,2000);

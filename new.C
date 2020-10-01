@@ -60,7 +60,7 @@ void atree::Loop()
     
     Re=sqrt( (detKinBeamRot_cooXe*detKinBeamRot_cooXe)+(detKinBeamRot_cooYe*detKinBeamRot_cooYe));
     
-       if(E_CAL>1){
+       if(E_CAL>10){
        
     if (abs(detKinBeamRot_cooXe) < 0.07 && abs(detKinBeamRot_cooYe) < 0.07)
     {

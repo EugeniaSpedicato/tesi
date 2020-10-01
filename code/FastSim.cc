@@ -233,8 +233,8 @@ Double_t sigBE=(13.6/(k.E()*1000))*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad
 Double_t sigBE2in=(13.6/(k.E()*1000))*sqrt(sB/(2*x0B))*(1+0.038*log(sB/(2*x0B))); //rad   
 
 
-Double_t divthx = gRandom->Gaus(0., 0.);
-Double_t divthy = gRandom->Gaus(0., 0.); 
+Double_t divthx = gRandom->Gaus(0., 0.00027);
+Double_t divthy = gRandom->Gaus(0., 0.00020); 
     
 Int_t tar=gRandom->Integer(2);
      

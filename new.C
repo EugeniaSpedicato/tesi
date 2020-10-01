@@ -97,7 +97,7 @@ void atree::Loop()
       
        
     //TUTTI I TARGET   
-       if(E_CAL>10){
+       if(E_CAL>1){
        
     if (abs(detKinBeamRot_cooXe) < 0.07 && abs(detKinBeamRot_cooYe) < 0.07)
     {
@@ -176,7 +176,7 @@ if (abs(detKinBeamRot_cooXe) < 0.07 && abs(detKinBeamRot_cooYe) < 0.07)
        
 // DAL TARGET 0 
 if (detKinBeamRot_tar==0){
-    if(E_CAL>10){
+    if(E_CAL>1){
        
     if (abs(detKinBeamRot_cooXe) < 0.07 && abs(detKinBeamRot_cooYe) < 0.07)
     {
@@ -252,7 +252,7 @@ if (abs(detKinBeamRot_cooXe) < 0.07 && abs(detKinBeamRot_cooYe) < 0.07)
        
 // DAL TARGET 1
 if (detKinBeamRot_tar==1){
-    if(E_CAL>10){
+    if(E_CAL>1){
        
     if (abs(detKinBeamRot_cooXe) < 0.07 && abs(detKinBeamRot_cooYe) < 0.07)
     {

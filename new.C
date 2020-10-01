@@ -17,7 +17,7 @@ void atree::Loop()
     Double_t Rm = 0.01959 ; //raggio di Moliere in metri
     Double_t E_CAL; //energy in the calorimeter
     Double_t d_e_ph; //distanza elettrone-fotone
-    //distanza elettrone-fotone
+    Double_t Re; //posizione elettrone
     Double_t n_tot=0; //numero di elettroni nel calorimetro
     Double_t n_two=0; //numero di elettroni che hanno una distanza maggiore di 2RM dal fotone, quindi 2 clusters
     Double_t n_one=0; //casi rimanenti che formano 1 cluster
@@ -50,12 +50,13 @@ void atree::Loop()
    
     if (photon_coox!=-1 && photon_cooy!=-1)
     {  
-     E_CAL=detKinBeamRot_Ee+photon_energy;}
+     E_CAL=detKinBeamRot_Ee+photon_energy+detKinBeamRot_Emu;}
     else 
-    {  E_CAL=detKinBeamRot_Ee;}
+    {  E_CAL=detKinBeamRot_Ee+detKinBeamRot_Emu;}
        
     d_e_ph=sqrt( (detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detKinBeamRot_cooYe-photon_cooy)*(detKinBeamRot_cooYe-photon_cooy) ); 
-    Doube_t Re=sqrt( (detKinBeamRot_cooXe*detKinBeamRot_cooXe)+(detKinBeamRot_cooYe*detKinBeamRot_cooYe));
+    
+    Re=sqrt( (detKinBeamRot_cooXe*detKinBeamRot_cooXe)+(detKinBeamRot_cooYe*detKinBeamRot_cooYe));
     
        if(E_CAL>1){
        
@@ -159,7 +160,7 @@ DR->Draw();
 DR_cut->SetLineColor(kRed);
 DR_cut->Draw("same");  
 Drr->cd(2);
-E_R->Draw("COLZ");
+E_R->Draw("HIST");
 Drr ->SaveAs("DReph.png");   
 
     

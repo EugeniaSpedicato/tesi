@@ -251,7 +251,7 @@ if (abs(detKinBeamRot_cooXe) < 0.07 && abs(detKinBeamRot_cooYe) < 0.07)
        
        
 // DAL TARGET 1
-if (detKinBeamRot==1){
+if (detKinBeamRot_tar==1){
     if(E_CAL>10){
        
     if (abs(detKinBeamRot_cooXe) < 0.07 && abs(detKinBeamRot_cooYe) < 0.07)
@@ -381,7 +381,7 @@ Th_emu1->ProjectionY()->DrawClone("HIST");
 Th_emu_cut1->ProjectionY()->DrawClone("HIST same");
 tmue1->cd(4);
 Th_emu1->ProjectionX()->DrawClone("HIST");
-Th_emu1_cut->ProjectionX()->DrawClone("HIST same");
+Th_emu_cut1->ProjectionX()->DrawClone("HIST same");
 tmue1->SaveAs("Th_emu1.png");    
     
 TCanvas * tmue0= new TCanvas("tmue0","tmue0",1000,100,2500,2000); 

@@ -29,6 +29,8 @@ void atree::Loop()
     TH2F  *Th_emu = new TH2F("h2da1" , " Th e Vs. Th mu one cluster",500,0,100,500,0,5);
     TH2F  *Th_emu_cut = new TH2F("h2da1" , " Th e Vs. Th mu one cluster with cut",500,0,100,500,0,5);
     TH2F  *E_R = new TH2F("h2da1" , " R Vs. E_CAL one cluster",70,0,0.14,500,1000,160);
+    TH2F  *Th_E_el  = new TH2F("h2da" , " Th e Vs. Ee one cluster",500,0,5,500,0,160);
+    TH2F  *Th_E_el_cut  = new TH2F("h2da" , " Th e Vs. Ee one cluster with cut",500,0,5,500,0,160);
     
     TH1F* DR=new TH1F("DR", "Distanza elettrone-fotone", 70,0,0.14);
     TH1F* DR_cut=new TH1F("DR", "Distanza elettrone-fotone", 70,0,0.14);
@@ -80,12 +82,15 @@ void atree::Loop()
             else { if (photon_energy>0.2) { n_one_cut++;
                                             Th_emu_cut->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
                                             DR_cut->Fill(d_e_ph,wgt_full);
+                                            Th_E_el_cut->Fill(detKinBeamRot_the,detKinBeamRot_Ee,wgt_full);
                                           }
                  }
            } 
 // SE E' NON E' PRODOTTO O NON E' NEL CALORIMETRO        
         else {n_one_cut++;
-            Th_emu_cut->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);}
+            Th_emu_cut->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+            Th_E_el_cut->Fill(detKinBeamRot_the,detKinBeamRot_Ee,wgt_full);
+}
     
     } 
     }
@@ -115,13 +120,14 @@ if (abs(detKinBeamRot_cooXe) < 0.07 && abs(detKinBeamRot_cooYe) < 0.07)
                                             Th_emu->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
                                             DR->Fill(d_e_ph,wgt_full);
                                             E_R->Fill(Re,E_CAL,wgt_full);
-                                           
+                                            Th_E_el->Fill(detKinBeamRot_the,detKinBeamRot_Ee,wgt_full);
                                           }
                  }
            } 
 // SE E' NON E' PRODOTTO O NON E' NEL CALORIMETRO        
         else {n_one++;
             Th_emu->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+            Th_E_el->Fill(detKinBeamRot_the,detKinBeamRot_Ee,wgt_full);
              }
     
     } 
@@ -163,6 +169,11 @@ Drr->cd(2);
 E_R->Draw("HIST");
 Drr ->SaveAs("DReph.png");   
 
-    
-    
+TCanvas * th_en= new TCanvas("th_en","th_en",1000,100,2500,2000); 
+th_en->Divide(2,1);
+th_en->cd(1);
+Th_E_el->Draw("HIST");  
+th_en->cd(2);
+Th_E_el_cut->Draw("HIST");    
+th_en->SaveAs("theta-energy-electron.png");    
 }

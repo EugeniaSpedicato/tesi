@@ -112,7 +112,7 @@ if (abs(detKinBeamRot_cooXe)<7.125 && abs(detKinBeamRot_cooYe)<7.125)
        
        
        
-if (abs(photon_coox)<7.125 && abs(photon_cooy)<7.125)
+if (abs(photon_coox)<7.125 && abs(photon_cooy)<7.125 && photon_energy>0.2)
     
 {
     if (photon_coox>-7.125 && photon_coox<-4.275 && photon_cooy<7.125 && photon_cooy>4.275) {n_cell_ph=1;}
@@ -175,13 +175,13 @@ if (abs(photon_coox)<7.125 && abs(photon_cooy)<7.125)
     
 }    
   
-    
+  if (n_cell_ph!=0 && n_cell==n_cell_ph)
+{same_cell++;}
+if(n_cell_ph!=0 && n_cell!=n_cell_ph) different_cell++;  
 }
        
 
-if (n_cell!=0 && n_cell_ph!=0 && n_cell==n_cell_ph)
-{same_cell++;}
-if(n_cell!=0 && n_cell_ph!=0 && n_cell!=n_cell_ph) different_cell++;
+
        
        
    }

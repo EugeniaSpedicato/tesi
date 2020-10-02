@@ -16,6 +16,7 @@ void atree::Loop()
     
 Int_t n_cell=0; //numero di cella in cui cade l'ELETTRONE
 Int_t n_cell_ph=0; //numero di cella in cui cade il fotone
+Int_t n_tot=0;
 Int_t same_cell=0;
 Int_t different_cell=0;
     
@@ -39,7 +40,7 @@ Int_t different_cell=0;
        
 if (abs(detKinBeamRot_cooXe)<7.125 && abs(detKinBeamRot_cooYe)<7.125)
     
-{
+{   n_tot++;
     if (detKinBeamRot_cooXe>-7.125 && detKinBeamRot_cooXe<-4.275 && detKinBeamRot_cooYe<7.125 && detKinBeamRot_cooYe>4.275) {n_cell=1;}
     
     if (detKinBeamRot_cooXe>-4.275 && detKinBeamRot_cooXe<-1.425 && detKinBeamRot_cooYe<7.125 && detKinBeamRot_cooYe>4.275) {n_cell=2;}
@@ -180,12 +181,13 @@ if (abs(photon_coox)<7.125 && abs(photon_cooy)<7.125)
 
 if (n_cell!=0 && n_cell_ph!=0 && n_cell==n_cell_ph)
 {same_cell++;}
-if(n_cell!=0 && n_cell_ph!=0 && n_cell=!n_cell_ph) different_cell++;
+if(n_cell!=0 && n_cell_ph!=0 && n_cell!=n_cell_ph) different_cell++;
        
        
    }
     
  cout << "Elettroni e fotoni nella stessa cella: " << same_cell << endl;
  cout << "Elettroni e fotoni in una diversa cella: " << different_cell << endl;   
+cout << "n tot= " << n_tot << endl;
     
 }

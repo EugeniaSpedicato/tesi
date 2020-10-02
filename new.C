@@ -99,12 +99,12 @@ void atree::Loop()
     //TUTTI I TARGET   
        if(E_CAL>1){
        
-    if (abs(detKinBeamRot_cooXe) < 0.07 && abs(detKinBeamRot_cooYe) < 0.07)
+    if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
     {
         n_tot_cut++;
 
 // SE IL FOTONE E' PRODOTTO DENTRO AL CALORIMETRO
-           if (abs(photon_coox)<0.07 && abs(photon_cooy)<0.07)
+           if (abs(photon_coox)<0.07125 && abs(photon_cooy)<0.07125)
                
            {    //if (photon_energy>0.2) DR->Fill(d_e_ph,wgt_full);
                
@@ -135,12 +135,12 @@ void atree::Loop()
        
        // senza TAGLIO
        
-if (abs(detKinBeamRot_cooXe) < 0.07 && abs(detKinBeamRot_cooYe) < 0.07)
+if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
     {
         n_tot++;
 
 // SE IL FOTONE E' PRODOTTO DENTRO AL CALORIMETRO
-           if (abs(photon_coox)<0.07 && abs(photon_cooy)<0.07)
+           if (abs(photon_coox)<0.07125 && abs(photon_cooy)<0.07125)
                
            {    //if (photon_energy>0.2) DR->Fill(d_e_ph,wgt_full);
                
@@ -178,12 +178,12 @@ if (abs(detKinBeamRot_cooXe) < 0.07 && abs(detKinBeamRot_cooYe) < 0.07)
 if (detKinBeamRot_tar==0){
     if(E_CAL>1){
        
-    if (abs(detKinBeamRot_cooXe) < 0.07 && abs(detKinBeamRot_cooYe) < 0.07)
+    if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
     {
         n_tot_cut0++;
 
 // SE IL FOTONE E' PRODOTTO DENTRO AL CALORIMETRO
-           if (abs(photon_coox)<0.07 && abs(photon_cooy)<0.07)
+           if (abs(photon_coox)<0.07125 && abs(photon_cooy)<0.07125)
                
            {    //if (photon_energy>0.2) DR->Fill(d_e_ph,wgt_full);
                
@@ -214,12 +214,12 @@ if (detKinBeamRot_tar==0){
        
        // senza TAGLIO
        
-if (abs(detKinBeamRot_cooXe) < 0.07 && abs(detKinBeamRot_cooYe) < 0.07)
+if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
     {
         n_tot0++;
 
 // SE IL FOTONE E' PRODOTTO DENTRO AL CALORIMETRO
-           if (abs(photon_coox)<0.07 && abs(photon_cooy)<0.07)
+           if (abs(photon_coox)<0.07125 && abs(photon_cooy)<0.07125)
                
            {    //if (photon_energy>0.2) DR->Fill(d_e_ph,wgt_full);
                
@@ -254,12 +254,12 @@ if (abs(detKinBeamRot_cooXe) < 0.07 && abs(detKinBeamRot_cooYe) < 0.07)
 if (detKinBeamRot_tar==1){
     if(E_CAL>1){
        
-    if (abs(detKinBeamRot_cooXe) < 0.07 && abs(detKinBeamRot_cooYe) < 0.07)
+    if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
     {
         n_tot_cut1++;
 
 // SE IL FOTONE E' PRODOTTO DENTRO AL CALORIMETRO
-           if (abs(photon_coox)<0.07 && abs(photon_cooy)<0.07)
+           if (abs(photon_coox)<0.07125 && abs(photon_cooy)<0.07125)
                
            {    //if (photon_energy>0.2) DR->Fill(d_e_ph,wgt_full);
                
@@ -290,12 +290,12 @@ if (detKinBeamRot_tar==1){
        
        // senza TAGLIO
        
-if (abs(detKinBeamRot_cooXe) < 0.07 && abs(detKinBeamRot_cooYe) < 0.07)
+if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
     {
         n_tot1++;
 
 // SE IL FOTONE E' PRODOTTO DENTRO AL CALORIMETRO
-           if (abs(photon_coox)<0.07 && abs(photon_cooy)<0.07)
+           if (abs(photon_coox)<0.07125 && abs(photon_cooy)<0.07125)
                
            {    //if (photon_energy>0.2) DR->Fill(d_e_ph,wgt_full);
                

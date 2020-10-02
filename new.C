@@ -432,7 +432,7 @@ Drr1->cd(2);
 E_R1->Draw("COLZ");
 Drr1->SaveAs("DReph1.png");  
 
-TCanvas * a= new TCanvas("a","a",1000,100,2500,2000);
+TCanvas * a= new TCanvas("a","a",100,500,2000,2500);
 a->Divide(1,3);
 a->cd(1);
 DR0->SetMarkerSize(6);

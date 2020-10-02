@@ -14,7 +14,7 @@ void atree::Loop()
 {
     TH1::SetDefaultSumw2();
     
-Int_t n_cell=0; //numero di cella in cui cade l'ELETTRONE
+Int_t n_cell; //numero di cella in cui cade l'ELETTRONE
 Int_t n_cell_ph=0; //numero di cella in cui cade il fotone
 Int_t n_tot=0;
 Int_t same_cell=0;
@@ -175,9 +175,11 @@ if (abs(photon_coox)<7.125 && abs(photon_cooy)<7.125 && photon_energy>0.2)
     
 }    
   
-  if (n_cell_ph!=0 && n_cell==n_cell_ph)
+if (n_cell_ph!=0 && n_cell==n_cell_ph)
 {same_cell++;}
+ 
 if(n_cell_ph!=0 && n_cell!=n_cell_ph) different_cell++;  
+ 
 }
        
 

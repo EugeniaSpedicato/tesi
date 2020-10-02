@@ -334,7 +334,7 @@ cout << "Elettroni totali nel calorimetro CON TAGLIO: " << n_tot_cut << endl;
 cout << "Elettroni ad una distanza 2RM dal fotone CON TAGLIO: " << n_two_cut << endl;
 cout << "Eventi in cui vedo solo un cluster CON TAGLIO: " << n_one_cut << endl;
     
-<< endl;
+cout << endl;
     
 cout << "Elettroni totali nel calorimetro TAR 0: " << n_tot0 << endl;
 cout << "Elettroni ad una distanza 2RM dal fotone TAR 0: " << n_two0 << endl;
@@ -343,7 +343,7 @@ cout << "Elettroni totali nel calorimetro CON TAGLIO TAR 0: " << n_tot_cut0 << e
 cout << "Elettroni ad una distanza 2RM dal fotone CON TAGLIO TAR 0: " << n_two_cut0 << endl;
 cout << "Eventi in cui vedo solo un cluster CON TAGLIO TAR 0: " << n_one_cut0 << endl;
     
-<< endl;
+cout << endl;
     
 cout << "Elettroni totali nel calorimetro TAR 1: " << n_tot1 << endl;
 cout << "Elettroni ad una distanza 2RM dal fotone TAR 1: " << n_two1 << endl;
@@ -351,6 +351,8 @@ cout << "Eventi in cui vedo solo un cluster TAR 1: " << n_one1 << endl;
 cout << "Elettroni totali nel calorimetro CON TAGLIO TAR 1: " << n_tot_cut1 << endl;
 cout << "Elettroni ad una distanza 2RM dal fotone CON TAGLIO TAR 1: " << n_two_cut1 << endl;
 cout << "Eventi in cui vedo solo un cluster CON TAGLIO TAR 1: " << n_one_cut1 << endl;
+
+cout << endl;
     
 TCanvas * tmue= new TCanvas("tmue","tmue",1000,100,2500,2000); 
 tmue->Divide(2,2);

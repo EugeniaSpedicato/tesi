@@ -432,6 +432,28 @@ Drr1->cd(2);
 E_R1->Draw("COLZ");
 Drr1->SaveAs("DReph1.png");  
 
+TCanvas * a= new TCanvas("a","a",1000,100,2500,2000);
+a->Divide(1,3);
+a->cd(1);
+DR0->SetMarkerSize(6);
+DR_cut0->SetMarkerSize(6);
+DR0->Draw();
+DR_cut0->SetLineColor(kRed);
+DR_cut0->Draw("same");  
+a->cd(2);
+DR1->SetMarkerSize(6);
+DR_cut1->SetMarkerSize(6);
+DR1->Draw();
+DR_cut1->SetLineColor(kRed);
+DR_cut1->Draw("same");  
+a->cd(3);
+DR->SetMarkerSize(6);
+DR_cut->SetMarkerSize(6);
+DR->Draw();
+DR_cut->SetLineColor(kRed);
+DR_cut->Draw("same");  
+a->SaveAs("dist01tot.png");  
+
 TCanvas * th_en= new TCanvas("th_en","th_en",1000,100,2500,2000); 
 th_en->Divide(2,1);
 th_en->cd(1);

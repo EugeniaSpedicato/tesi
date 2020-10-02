@@ -180,7 +180,7 @@ if (abs(photon_coox)<7.125 && abs(photon_cooy)<7.125)
 
 if (n_cell!=0 && n_cell_ph!=0 && n_cell==n_cell_ph)
 {same_cell++;}
-       else if(n_cell!=0 && n_cell_ph!=0) different_cell++;
+if(n_cell!=0 && n_cell_ph!=0 && n_cell=!n_cell_ph) different_cell++;
        
        
    }

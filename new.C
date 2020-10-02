@@ -409,7 +409,7 @@ DR->Draw();
 DR_cut->SetLineColor(kRed);
 DR_cut->Draw("same");  
 Drr->cd(2);
-E_R->Draw("HIST");
+E_R->Draw("COLZ");
 Drr->SaveAs("DReph.png");  
     
 TCanvas * Drr0= new TCanvas("Drr0","Drr0",1000,100,2500,2000);
@@ -419,7 +419,7 @@ DR0->Draw();
 DR_cut0->SetLineColor(kRed);
 DR_cut0->Draw("same");  
 Drr0->cd(2);
-E_R0->Draw("HIST");
+E_R0->Draw("COLZ");
 Drr0->SaveAs("DReph0.png"); 
     
 TCanvas * Drr1= new TCanvas("Drr1","Drr1",1000,100,2500,2000);
@@ -429,7 +429,7 @@ DR1->Draw();
 DR_cut1->SetLineColor(kRed);
 DR_cut1->Draw("same");  
 Drr1->cd(2);
-E_R1->Draw("HIST");
+E_R1->Draw("COLZ");
 Drr1->SaveAs("DReph1.png");  
 
 TCanvas * th_en= new TCanvas("th_en","th_en",1000,100,2500,2000); 

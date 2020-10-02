@@ -19,7 +19,7 @@ Int_t n_cell_ph; //numero di cella in cui cade il fotone
 Int_t n_tot=0;
 Int_t same_cell=0;
 Int_t different_cell=0;
-    
+Double_t Rm = 0.01959 ; //raggio di Moliere in metri    
     
     
     if (fChain == 0) return;
@@ -37,6 +37,9 @@ Int_t different_cell=0;
         detKinBeamRot_cooYe=detKinBeamRot_cooYe*100;
         photon_coox=photon_coox*100;
         photon_cooy=photon_cooy*100;
+       
+       
+    Double_t d_e_ph=sqrt( (detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detKinBeamRot_cooYe-photon_cooy)*(detKinBeamRot_cooYe-photon_cooy) ); 
        
 if (abs(detKinBeamRot_cooXe)<7.125 && abs(detKinBeamRot_cooYe)<7.125)
     
@@ -109,10 +112,10 @@ if (abs(detKinBeamRot_cooXe)<7.125 && abs(detKinBeamRot_cooYe)<7.125)
        
        
        
+    
        
        
-       
-if (abs(photon_coox)<7.125 && abs(photon_cooy)<7.125 && photon_energy>0.2)
+if (abs(photon_coox)<7.125 && abs(photon_cooy)<7.125 && photon_energy>0.2 && d_e_ph>Rm)
     
 { n_tot++;
     if (photon_coox>-7.125 && photon_coox<-4.275 && photon_cooy<7.125 && photon_cooy>4.275) {n_cell_ph=1;}
@@ -176,8 +179,9 @@ if (abs(photon_coox)<7.125 && abs(photon_cooy)<7.125 && photon_energy>0.2)
 if (n_cell_ph==n_cell)
 {same_cell++;}
 else {different_cell++;} 
-}    
- 
+} 
+      
+
  
 }
        

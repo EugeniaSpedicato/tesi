@@ -503,7 +503,7 @@ E_CAL1->SetMarkerColor(kBlack);
 E_CAL2->SetMarkerColor(kOrange);    
 E_CAL1->Draw("HIST");
 E_CAL2->Draw("HIST same"); 
-ee->cd(1);
+ee->cd(2);
 E_CAL_cut1->SetMarkerColor(kBlack);    
 E_CAL_cut2->SetMarkerColor(kOrange);    
 E_CAL_cut1->Draw("HIST");

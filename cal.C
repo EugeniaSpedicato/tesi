@@ -19,7 +19,7 @@ Int_t n_cell_ph; //numero di cella in cui cade il fotone
 Int_t n_tot=0;
 Int_t same_cell=0;
 Int_t different_cell=0;
-Double_t Rm = 0.01959 ; //raggio di Moliere in metri    
+Double_t Rm = 1.959 ; //raggio di Moliere in metri    
     
     
     if (fChain == 0) return;

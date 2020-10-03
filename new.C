@@ -52,6 +52,12 @@ void atree::Loop()
     
     TH1F* DR=new TH1F("DR", "Distanza elettrone-fotone", 70,0,0.14);
     TH1F* DR_cut=new TH1F("DR", "Distanza elettrone-fotone", 70,0,0.14);
+    TH1F* E_CAL1=new TH1F("DR", "Energia calorimetro", 500,0,160);
+    TH1F* E_CAL_cut1=new TH1F("DR", "Energia calorimetro con taglio", 500,0,160);
+    TH1F* E_CAL2=new TH1F("DR", "Energia calorimetro", 500,0,160);
+    TH1F* E_CAL_cut2=new TH1F("DR", "Energia calorimetro con taglio", 500,0,160);
+    
+    
     
     TH2F  *Th_emu0 = new TH2F("h2da1" , " Th e Vs. Th mu one cluster TAR 0",500,0,100,500,0,5);
     TH2F  *Th_emu_cut0 = new TH2F("h2da1" , " Th e Vs. Th mu one cluster with cut TAR 0",500,0,100,500,0,5);
@@ -113,6 +119,7 @@ void atree::Loop()
                 {
                     if (photon_energy>0.2) {n_two_cut++; 
                                             DR_cut->Fill(d_e_ph,wgt_full);
+                                            E_CAL_cut2->(E_CAL,wgt_full);
                                            }
                     }
 // SE E' NEL CALORIMETRO MA AD UNA d<2RM
@@ -120,6 +127,7 @@ void atree::Loop()
                                             Th_emu_cut->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
                                             DR_cut->Fill(d_e_ph,wgt_full);
                                             Th_E_el_cut->Fill(detKinBeamRot_the,E_CAL,wgt_full);
+                                            E_CAL_cut1->(E_CAL,wgt_full);
                                           }
                  }
            } 
@@ -127,6 +135,7 @@ void atree::Loop()
         else {n_one_cut++;
             Th_emu_cut->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
             Th_E_el_cut->Fill(detKinBeamRot_the,E_CAL,wgt_full);
+            E_CAL_cut1->(E_CAL,wgt_full);
 }
     
     } 
@@ -150,6 +159,7 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
                     if (photon_energy>0.2) {n_two++; 
                                             DR->Fill(d_e_ph,wgt_full);
                                             E_R->Fill(Re,E_CAL,wgt_full);
+                                            E_CAL2->(E_CAL,wgt_full);
                                            }
                     }
 // SE E' NEL CALORIMETRO MA AD UNA d<2RM
@@ -158,6 +168,7 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
                                             DR->Fill(d_e_ph,wgt_full);
                                             E_R->Fill(Re,E_CAL,wgt_full);
                                             Th_E_el->Fill(detKinBeamRot_the,E_CAL,wgt_full);
+                                            E_CAL1->(E_CAL,wgt_full);
                                           }
                  }
            } 
@@ -165,6 +176,7 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
         else {n_one++;
             Th_emu->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
             Th_E_el->Fill(detKinBeamRot_the,E_CAL,wgt_full);
+            E_CAL1->(E_CAL,wgt_full);
              }
     
     } 
@@ -354,7 +366,7 @@ cout << "Eventi in cui vedo solo un cluster CON TAGLIO TAR 1: " << n_one_cut1 <<
 
 cout << endl;
     
-TCanvas * tmue= new TCanvas("tmue","tmue",1000,100,2500,2000); 
+/*TCanvas * tmue= new TCanvas("tmue","tmue",1000,100,2500,2000); 
 tmue->Divide(2,2);
 tmue->cd(1);
 Th_emu_cut->SetMarkerColor(kOrange);
@@ -482,5 +494,19 @@ Th_E_el_cut0->SetMarkerColor(kOrange);
 Th_E_el0->Draw("COLZ");  
 th_en0->cd(2);
 Th_E_el_cut0->Draw("COLZ");  
-th_en0->SaveAs("theta-energy-electron0.png");   
+th_en0->SaveAs("theta-energy-electron0.png");  */
+    
+TCanvas * ee= new TCanvas("ee","ee",1000,100,2500,2000);
+ee->Divide(2,1);
+ee->cd(1);
+E_CAL1->SetMarkerColor(kBlack);    
+E_CAL2->SetMarkerColor(kOrange);    
+E_CAL1->Draw("HIST");
+E_CAL2->Draw("HIST same"); 
+ee->cd(1);
+E_CAL_cut1->SetMarkerColor(kBlack);    
+E_CAL_cut2->SetMarkerColor(kOrange);    
+E_CAL_cut1->Draw("HIST");
+E_CAL_cut2->Draw("HIST same"); 
+ee->SaveAs("ECALen.png");  
 }

@@ -52,10 +52,10 @@ void atree::Loop()
     
     TH1F* DR=new TH1F("DR", "Distanza elettrone-fotone", 70,0,0.14);
     TH1F* DR_cut=new TH1F("DR", "Distanza elettrone-fotone", 70,0,0.14);
-    TH1F* E_CAL1=new TH1F("DR", "Energia calorimetro", 500,0,160);
-    TH1F* E_CAL_cut1=new TH1F("DR", "Energia calorimetro con taglio", 500,0,160);
-    TH1F* E_CAL2=new TH1F("DR", "Energia calorimetro", 500,0,160);
-    TH1F* E_CAL_cut2=new TH1F("DR", "Energia calorimetro con taglio", 500,0,160);
+    TH1F* E_CAL1=new TH1F("DR", "Energia calorimetro 1 cluster", 500,0,160);
+    TH1F* E_CAL_cut1=new TH1F("DR", "Energia calorimetro 1 cluster con taglio", 500,0,160);
+    TH1F* E_CAL2=new TH1F("DR", "Energia calorimetro 2 clusters", 500,0,160);
+    TH1F* E_CAL_cut2=new TH1F("DR", "Energia calorimetro 2 clusters con taglio", 500,0,160);
     
     
     
@@ -502,7 +502,10 @@ ee->cd(1);
 E_CAL1->SetLineColor(32);    
 E_CAL2->SetLineColor(46);    
 E_CAL1->Draw("HIST");
+gPad->SetLogx();
 ee->cd(2);
-E_CAL2->Draw("HIST"); 
+E_CAL2->Draw("HIST");
+gPad->SetLogx();
+
 ee->SaveAs("ECALen.png");  
 }

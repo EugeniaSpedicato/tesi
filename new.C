@@ -119,7 +119,7 @@ void atree::Loop()
                 {
                     if (photon_energy>0.2) {n_two_cut++; 
                                             DR_cut->Fill(d_e_ph,wgt_full);
-                                            E_CAL_cut2->(E_CAL,wgt_full);
+                                            E_CAL_cut2->Fill(E_CAL,wgt_full);
                                            }
                     }
 // SE E' NEL CALORIMETRO MA AD UNA d<2RM
@@ -127,7 +127,7 @@ void atree::Loop()
                                             Th_emu_cut->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
                                             DR_cut->Fill(d_e_ph,wgt_full);
                                             Th_E_el_cut->Fill(detKinBeamRot_the,E_CAL,wgt_full);
-                                            E_CAL_cut1->(E_CAL,wgt_full);
+                                            E_CAL_cut1->Fill(E_CAL,wgt_full);
                                           }
                  }
            } 
@@ -135,7 +135,7 @@ void atree::Loop()
         else {n_one_cut++;
             Th_emu_cut->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
             Th_E_el_cut->Fill(detKinBeamRot_the,E_CAL,wgt_full);
-            E_CAL_cut1->(E_CAL,wgt_full);
+            E_CAL_cut1->Fill(E_CAL,wgt_full);
 }
     
     } 
@@ -159,7 +159,7 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
                     if (photon_energy>0.2) {n_two++; 
                                             DR->Fill(d_e_ph,wgt_full);
                                             E_R->Fill(Re,E_CAL,wgt_full);
-                                            E_CAL2->(E_CAL,wgt_full);
+                                            E_CAL2->Fill(E_CAL,wgt_full);
                                            }
                     }
 // SE E' NEL CALORIMETRO MA AD UNA d<2RM
@@ -168,7 +168,7 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
                                             DR->Fill(d_e_ph,wgt_full);
                                             E_R->Fill(Re,E_CAL,wgt_full);
                                             Th_E_el->Fill(detKinBeamRot_the,E_CAL,wgt_full);
-                                            E_CAL1->(E_CAL,wgt_full);
+                                            E_CAL1->Fill(E_CAL,wgt_full);
                                           }
                  }
            } 
@@ -176,7 +176,7 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
         else {n_one++;
             Th_emu->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
             Th_E_el->Fill(detKinBeamRot_the,E_CAL,wgt_full);
-            E_CAL1->(E_CAL,wgt_full);
+            E_CAL1->Fill(E_CAL,wgt_full);
              }
     
     } 

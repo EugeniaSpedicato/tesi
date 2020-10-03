@@ -115,7 +115,7 @@ void atree::Loop()
            {    //if (photon_energy>0.2) DR->Fill(d_e_ph,wgt_full);
                
 // SE IL FOTONE E' NEL CALORIMETRO AD UNA d=2RM DALL'ELETTRONE             
-                if (d_e_ph>3*Rm)
+                if (d_e_ph>2*Rm)
                 {
                     if (photon_energy>0.2) {n_two_cut++; 
                                             DR_cut->Fill(d_e_ph,wgt_full);
@@ -154,7 +154,7 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
            {    //if (photon_energy>0.2) DR->Fill(d_e_ph,wgt_full);
                
 // SE IL FOTONE E' NEL CALORIMETRO AD UNA d=2RM DALL'ELETTRONE             
-                if (d_e_ph>3*Rm )
+                if (d_e_ph>2*Rm )
                 {
                     if (photon_energy>0.2) {n_two++; 
                                             DR->Fill(d_e_ph,wgt_full);
@@ -200,7 +200,7 @@ if (detKinBeamRot_tar==0){
            {    //if (photon_energy>0.2) DR->Fill(d_e_ph,wgt_full);
                
 // SE IL FOTONE E' NEL CALORIMETRO AD UNA d=2RM DALL'ELETTRONE             
-                if (d_e_ph>3*Rm)
+                if (d_e_ph>2*Rm)
                 {
                     if (photon_energy>0.2) {n_two_cut0++; 
                                             DR_cut0->Fill(d_e_ph,wgt_full);
@@ -236,7 +236,7 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
            {    //if (photon_energy>0.2) DR->Fill(d_e_ph,wgt_full);
                
 // SE IL FOTONE E' NEL CALORIMETRO AD UNA d=2RM DALL'ELETTRONE             
-                if (d_e_ph>3*Rm )
+                if (d_e_ph>2*Rm )
                 {
                     if (photon_energy>0.2) {n_two0++; 
                                             DR0->Fill(d_e_ph,wgt_full);
@@ -276,7 +276,7 @@ if (detKinBeamRot_tar==1){
            {    //if (photon_energy>0.2) DR->Fill(d_e_ph,wgt_full);
                
 // SE IL FOTONE E' NEL CALORIMETRO AD UNA d=2RM DALL'ELETTRONE             
-                if (d_e_ph>3*Rm)
+                if (d_e_ph>2*Rm)
                 {
                     if (photon_energy>0.2) {n_two_cut1++; 
                                             DR_cut1->Fill(d_e_ph,wgt_full);
@@ -312,7 +312,7 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
            {    //if (photon_energy>0.2) DR->Fill(d_e_ph,wgt_full);
                
 // SE IL FOTONE E' NEL CALORIMETRO AD UNA d=2RM DALL'ELETTRONE             
-                if (d_e_ph>3*Rm )
+                if (d_e_ph>2*Rm )
                 {
                     if (photon_energy>0.2) {n_two1++; 
                                             DR1->Fill(d_e_ph,wgt_full);
@@ -499,13 +499,13 @@ th_en0->SaveAs("theta-energy-electron0.png");  */
 TCanvas * ee= new TCanvas("ee","ee",1000,100,2500,2000);
 ee->Divide(2,1);
 ee->cd(1);
-E_CAL1->SetMarkerColor(kBlack);    
-E_CAL2->SetMarkerColor(kOrange);    
+E_CAL1->SetLineColor(kBlack);    
+E_CAL2->SetLineColor(kOrange);    
 E_CAL1->Draw("HIST");
 E_CAL2->Draw("HIST same"); 
 ee->cd(2);
-E_CAL_cut1->SetMarkerColor(kBlack);    
-E_CAL_cut2->SetMarkerColor(kOrange);    
+E_CAL_cut1->SetLineColor(kBlack);    
+E_CAL_cut2->SetLineColor(kOrange);    
 E_CAL_cut1->Draw("HIST");
 E_CAL_cut2->Draw("HIST same"); 
 ee->SaveAs("ECALen.png");  

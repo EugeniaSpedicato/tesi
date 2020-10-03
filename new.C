@@ -499,14 +499,10 @@ th_en0->SaveAs("theta-energy-electron0.png");  */
 TCanvas * ee= new TCanvas("ee","ee",1000,100,2500,2000);
 ee->Divide(2,1);
 ee->cd(1);
-E_CAL1->SetLineColor(kBlack);    
-E_CAL2->SetLineColor(kOrange);    
+E_CAL1->SetLineColor(32);    
+E_CAL2->SetLineColor(46);    
 E_CAL1->Draw("HIST");
-E_CAL2->Draw("HIST same"); 
 ee->cd(2);
-E_CAL_cut1->SetLineColor(kBlack);    
-E_CAL_cut2->SetLineColor(kOrange);    
-E_CAL_cut1->Draw("HIST");
-E_CAL_cut2->Draw("HIST same"); 
+E_CAL2->Draw("HIST"); 
 ee->SaveAs("ECALen.png");  
 }

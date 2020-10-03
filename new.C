@@ -500,10 +500,12 @@ TCanvas * ee= new TCanvas("ee","ee",1000,100,2500,2000);
 ee->Divide(2,1);
 ee->cd(1);
 E_CAL1->SetLineColor(32);    
-E_CAL2->SetLineColor(46);    
+E_CAL2->SetLineColor(46);
+E_CAL1->GetXaxis()->SetTitle("E [GeV] (log scale)");   
 E_CAL1->Draw("HIST");
 gPad->SetLogx();
 ee->cd(2);
+E_CAL2->GetXaxis()->SetTitle("E [GeV] (log scale)");
 E_CAL2->Draw("HIST");
 gPad->SetLogx();
 

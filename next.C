@@ -110,7 +110,7 @@ TH2F  *E_r  = new TH2F("h2da" , " X  Vs. y of the photon",70,-0.1,0.1,70,-0.1,0.
     else 
     {  E_ECAL=detKinBeamRot_Ee;}
        
-        if (abs(detKinBeamRot_cooXmu) <0.07 && abs(detKinBeamRot_cooYmu) <0.07)
+        if (abs(detKinBeamRot_cooXmu) <0.07125 && abs(detKinBeamRot_cooYmu) <0.07125)
         {
        px_mu_out->Fill(detKinBeamRot_pXmu_out,wgt_full);
        py_mu_out->Fill(detKinBeamRot_pYmu_out,wgt_full);
@@ -153,7 +153,7 @@ if(E_ECAL>1)
         
        
        
-       if (abs(detKinBeamRot_cooXe) <0.07 && abs(detKinBeamRot_cooYe) <0.07)
+       if (abs(detKinBeamRot_cooXe) <0.07125 && abs(detKinBeamRot_cooYe) <0.07125)
         {
        px_e_out->Fill(detKinBeamRot_pXe_out,wgt_full);
        py_e_out->Fill(detKinBeamRot_pYe_out,wgt_full);
@@ -194,7 +194,7 @@ if(E_ECAL>1)
         
        
        
-       if(abs(photon_coox) < 0.07 && abs(photon_cooy) < 0.07 && photon_energy>0.2)
+       if(abs(photon_coox) < 0.07125 && abs(photon_cooy) < 0.07125 && photon_energy>0.2)
        {
         Ep->Fill(photon_energy,wgt_full);            
                if (detKinBeamRot_tar==0)
@@ -221,7 +221,7 @@ if(E_ECAL>1)
 
 
        
-       if (abs(detKinBeamRot_cooXmu) <0.07 && abs(detKinBeamRot_cooYmu) <0.07 && abs(detKinBeamRot_cooXe) <0.07 && abs(detKinBeamRot_cooYe) <0.07 && abs(photon_coox) < 0.07 && abs(photon_cooy) < 0.07)
+       if (abs(detKinBeamRot_cooXmu) <0.07125 && abs(detKinBeamRot_cooYmu) <0.07125 && abs(detKinBeamRot_cooXe) <0.07125 && abs(detKinBeamRot_cooYe) <0.07125 && abs(photon_coox) < 0.07125 && abs(photon_cooy) < 0.07125)
        {Double_t Dx = detKinBeamRot_cooXe-detKinBeamRot_cooXmu;
     Double_t Dy = detKinBeamRot_cooYe-detKinBeamRot_cooXmu;
     Double_t Dxep = detKinBeamRot_cooXe-photon_coox;
@@ -236,7 +236,7 @@ if(E_ECAL>1)
     dymp->Fill(Dymp,wgt_full);}
        
        
-       if (abs(detKinBeamRot_cooXe) <0.07 && abs(detKinBeamRot_cooYe) <0.07 && abs(photon_coox) < 0.07 && abs(photon_cooy) < 0.07 && E_ECAL>1 && photon_energy>0.2)
+       if (abs(detKinBeamRot_cooXe) <0.07125 && abs(detKinBeamRot_cooYe) <0.07125 && abs(photon_coox) < 0.07125 && abs(photon_cooy) < 0.07125 && E_ECAL>1 && photon_energy>0.2)
        {
            Double_t dist=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detKinBeamRot_cooYe-photon_cooy)*(detKinBeamRot_cooYe-photon_cooy));
            
@@ -245,7 +245,7 @@ if(E_ECAL>1)
            if (detKinBeamRot_Ee>10)
            { DR_cut->Fill(dist,wgt_full);}
        }
-              if (abs(detKinBeamRot_cooXe) <0.07 && abs(detKinBeamRot_cooYe) <0.07 && abs(detKinBeamRot_cooXmu) < 0.07 && abs(detKinBeamRot_cooYmu) < 0.07 && E_ECAL>1)
+              if (abs(detKinBeamRot_cooXe) <0.07125 && abs(detKinBeamRot_cooYe) <0.07125 && abs(detKinBeamRot_cooXmu) < 0.07125 && abs(detKinBeamRot_cooYmu) < 0.07125 && E_ECAL>1)
        {
            Double_t dist=sqrt((detKinBeamRot_cooXe-detKinBeamRot_cooXmu)*(detKinBeamRot_cooXe-detKinBeamRot_cooXmu)+(detKinBeamRot_cooYe-detKinBeamRot_cooYmu)*(detKinBeamRot_cooYe-detKinBeamRot_cooYmu));
            
@@ -417,9 +417,11 @@ if(E_ECAL>1)
     tarTWOYp->GetXaxis()->SetTitle("y [m]");
     
     
-  tar->SaveAs("tar.png");
+  tar->SaveAs("tar.png");*/
     
     TCanvas * duedmu= new TCanvas("duedmu","duedmu",1000,100,2500,2000);
+    gStyle->SetPalette(kCherry);
+    TColor::InvertPalette();
     X_Y_mu->SetMarkerColor(46);
     X_Y_mu->Draw("COLZ");
     X_Y_mu->GetXaxis()->SetTitle("x [m]");
@@ -439,7 +441,7 @@ if(E_ECAL>1)
     X_Y_p->GetXaxis()->SetTitle("x [m]");
     X_Y_p->GetYaxis()->SetTitle("y [m]");
   duedp->SaveAs("duedph.png");
-    
+  /*  
         TCanvas * Pin= new TCanvas("Pin","Pin",400,10,1500,1000);
     Pin->Divide(1,3);
     Pin->cd(1);
@@ -474,7 +476,7 @@ if(E_ECAL>1)
     d->cd(6);
     dymp->Draw("HIST");
     dymp->GetXaxis()->SetTitle("Delta_y [m]");
-  d->SaveAs("diffCoo.png");*/
+  d->SaveAs("diffCoo.png");
     
 TCanvas * DRR= new TCanvas("d","d",1000,100,2500,2000);
 DRR->Divide(2,1);
@@ -487,5 +489,5 @@ DR->Draw("HIST");
 DR_cut->SetLineColor(kRed);
 DR_cut->Draw("HIST same");
     
-DRR->SaveAs("DRphe.png");
+DRR->SaveAs("DRphe.png");*/
       }

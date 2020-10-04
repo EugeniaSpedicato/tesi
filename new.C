@@ -520,7 +520,7 @@ gPad->SetLogx();
 ee->SaveAs("ECALen.png"); 
 gStyle->SetPalette(kCherry);
 TColor::InvertPalette();
-TCanvas * ER= new TCanvas("ER","ER",1000,1000,2500,2000);
+TCanvas * ER= new TCanvas("ER","ER",1000,1500,200,2500);
     ER->Divide(3,1);
     ER->cd(1);
     E_R->GetYaxis()->SetTitle("E [GeV]");

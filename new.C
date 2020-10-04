@@ -102,7 +102,7 @@ void atree::Loop()
     Re=sqrt( (detKinBeamRot_cooXe*detKinBeamRot_cooXe)+(detKinBeamRot_cooYe*detKinBeamRot_cooYe));
     Rph=sqrt( (photon_coox*photon_coox)+(photon_cooy*photon_cooy));
        
-    
+   if (E_CAL>10){ 
       
        
     //TUTTI I TARGET   
@@ -343,7 +343,7 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
              }
     
     } }
-       
+   }
    }
     
           

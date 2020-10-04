@@ -528,10 +528,10 @@ TCanvas * ER= new TCanvas("ER","ER",1000,100,2500,2000);
     E_R->GetXaxis()->SetTitle("R [m]");
     E_R0->GetXaxis()->SetTitle("R [m]");
     E_R1->GetXaxis()->SetTitle("R [m]");
-    E_R->Draw("COLZ");
+    E_R->Draw("HIST");
     ER->cd(2);
-    E_R0->Draw("COLZ");
+    E_R0->Draw("HIST");
     ER->cd(3);
-    E_R1->Draw("COLZ");
+    E_R1->Draw("HIST");
 ER->SaveAs("ER.png");
 }

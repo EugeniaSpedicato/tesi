@@ -47,7 +47,7 @@ void atree::Loop()
 
     TH2F  *Th_emu = new TH2F("h2da1" , " Th e Vs. Th mu one cluster",500,0,100,500,0,5);
     TH2F  *Th_emu_cut = new TH2F("h2da1" , " Th e Vs. Th mu one cluster with cut",500,0,100,500,0,5);
-    TH2F  *E_R = new TH2F("h2da1" , " R Vs. E_CAL one cluster",70,0,0.14,500,0,160);
+    TH2F  *E_R = new TH2F("h2da1" , " R Vs. E_CAL one cluster",70,0,0.07125,500,0,160);
     TH2F  *Th_E_el  = new TH2F("h2da" , " Th e Vs. E_CAL one cluster",500,0,100,500,0,160);
     TH2F  *Th_E_el_cut  = new TH2F("h2da" , " Th e Vs. E_CAL one cluster with cut",500,0,100,500,0,160);
     
@@ -62,7 +62,7 @@ void atree::Loop()
     
     TH2F  *Th_emu0 = new TH2F("h2da1" , " Th e Vs. Th mu one cluster TAR 0",500,0,100,500,0,5);
     TH2F  *Th_emu_cut0 = new TH2F("h2da1" , " Th e Vs. Th mu one cluster with cut TAR 0",500,0,100,500,0,5);
-    TH2F  *E_R0 = new TH2F("h2da1" , " R Vs. E_CAL one cluster TAR 0",70,0,0.14,500,0,160);
+    TH2F  *E_R0 = new TH2F("h2da1" , " R Vs. E_CAL one cluster TAR 0",70,0,0.07125,500,0,160);
     TH2F  *Th_E_el0  = new TH2F("h2da" , " Th e Vs. E_CAL one cluster TAR 0",500,0,100,500,0,160);
     TH2F  *Th_E_el_cut0  = new TH2F("h2da" , " Th e Vs. E_CAL one cluster with cut TAR 0",500,0,100,500,0,160);
     
@@ -71,7 +71,7 @@ void atree::Loop()
     
     TH2F  *Th_emu1 = new TH2F("h2da1" , " Th e Vs. Th mu one cluster TAR 1",500,0,100,500,0,5);
     TH2F  *Th_emu_cut1 = new TH2F("h2da1" , " Th e Vs. Th mu one cluster with cut TAR 1",500,0,100,500,0,5);
-    TH2F  *E_R1 = new TH2F("h2da1" , " R Vs. E_CAL one cluster TAR 1",70,0,0.14,500,0,160);
+    TH2F  *E_R1 = new TH2F("h2da1" , " R Vs. E_CAL one cluster TAR 1",70,0,0.07125,500,0,160);
     TH2F  *Th_E_el1  = new TH2F("h2da" , " Th e Vs. E_CAL one cluster TAR 1",500,0,100,500,0,160);
     TH2F  *Th_E_el_cut1  = new TH2F("h2da" , " Th e Vs. E_CAL one cluster with cut TAR 1",500,0,100,500,0,160);
     
@@ -520,7 +520,7 @@ gPad->SetLogx();
 ee->SaveAs("ECALen.png"); 
 gStyle->SetPalette(kCherry);
 TColor::InvertPalette();
-TCanvas * ER= new TCanvas("ER","ER",1000,1000,2500,2500);
+TCanvas * ER= new TCanvas("ER","ER",1000,1000,2500,2000);
     ER->Divide(1,3);
     ER->cd(1);
     E_R->GetYaxis()->SetTitle("E [GeV]");

@@ -503,7 +503,7 @@ Th_E_el0->Draw("COLZ");
 th_en0->cd(2);
 Th_E_el_cut0->Draw("COLZ");  
 th_en0->SaveAs("theta-energy-electron0.png");  
-    
+    */ 
 TCanvas * ee= new TCanvas("ee","ee",1000,100,2500,2000);
 ee->Divide(2,1);
 ee->cd(1);
@@ -517,8 +517,9 @@ E_CAL2->GetXaxis()->SetTitle("E [GeV] (log scale)");
 E_CAL2->Draw("HIST");
 gPad->SetLogx();
 
-ee->SaveAs("ECALen.png"); */ 
-
+ee->SaveAs("ECALen.png"); 
+gStyle->SetPalette(kCherry);
+TColor::InvertPalette();
 TCanvas * ER= new TCanvas("ER","ER",1000,100,2500,2000);
     ER->Divide(3,1);
     ER->cd(1);
@@ -528,10 +529,10 @@ TCanvas * ER= new TCanvas("ER","ER",1000,100,2500,2000);
     E_R->GetXaxis()->SetTitle("R [m]");
     E_R0->GetXaxis()->SetTitle("R [m]");
     E_R1->GetXaxis()->SetTitle("R [m]");
-    E_R->Draw("HIST");
+    E_R->Draw("COLZ");
     ER->cd(2);
-    E_R0->Draw("HIST");
+    E_R0->Draw("COLZ");
     ER->cd(3);
-    E_R1->Draw("HIST");
+    E_R1->Draw("COLZ");
 ER->SaveAs("ER.png");
 }

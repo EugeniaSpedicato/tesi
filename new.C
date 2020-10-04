@@ -99,6 +99,8 @@ void atree::Loop()
     d_e_ph=sqrt( (detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detKinBeamRot_cooYe-photon_cooy)*(detKinBeamRot_cooYe-photon_cooy) ); 
     
     Re=sqrt( (detKinBeamRot_cooXe*detKinBeamRot_cooXe)+(detKinBeamRot_cooYe*detKinBeamRot_cooYe));
+    Rph=sqrt( (photon_coox*photon_coox)+(photon_cooy*photon_cooy));
+       
     
       
        
@@ -158,7 +160,8 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
                 {
                     if (photon_energy>0.2) {n_two++; 
                                             DR->Fill(d_e_ph,wgt_full);
-                                            E_R->Fill(Re,E_CAL,wgt_full);
+                                            E_R->Fill(Re,detKinBeamRot_Ee,wgt_full);
+                                            E_R->Fill(Rph,photon_energy,wgt_full);
                                             E_CAL2->Fill(E_CAL,wgt_full);
                                            }
                     }
@@ -177,6 +180,7 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
             Th_emu->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
             Th_E_el->Fill(detKinBeamRot_the,E_CAL,wgt_full);
             E_CAL1->Fill(E_CAL,wgt_full);
+            E_R->Fill(Re,E_CAL,wgt_full);
              }
     
     } 
@@ -239,8 +243,8 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
                 if (d_e_ph>2*Rm )
                 {
                     if (photon_energy>0.2) {n_two0++; 
-                                            DR0->Fill(d_e_ph,wgt_full);
-                                            E_R0->Fill(Re,E_CAL,wgt_full);
+                                            DR0->Fill(d_e_ph,wgt_full);                                           E_R0->Fill(Re,detKinBeamRot_Ee,wgt_full);
+                                            E_R0->Fill(Rph,photon_energy,wgt_full);
                                            }
                     }
 // SE E' NEL CALORIMETRO MA AD UNA d<2RM
@@ -256,6 +260,7 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
         else {n_one0++;
             Th_emu0->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
             Th_E_el0->Fill(detKinBeamRot_the,E_CAL,wgt_full);
+            E_R0->Fill(Re,E_CAL,wgt_full);
              }
     
     } }
@@ -315,8 +320,9 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
                 if (d_e_ph>2*Rm )
                 {
                     if (photon_energy>0.2) {n_two1++; 
-                                            DR1->Fill(d_e_ph,wgt_full);
-                                            E_R1->Fill(Re,E_CAL,wgt_full);
+                                            DR1->Fill(d_e_ph,wgt_full);E_R0->Fill(Re,E_CAL,wgt_full);             E_R1->Fill(Re,detKinBeamRot_Ee,wgt_full);
+                                            E_R1->Fill(Rph,photon_energy,wgt_full);
+                                    
                                            }
                     }
 // SE E' NEL CALORIMETRO MA AD UNA d<2RM
@@ -332,6 +338,7 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
         else {n_one1++;
             Th_emu1->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
             Th_E_el1->Fill(detKinBeamRot_the,E_CAL,wgt_full);
+            E_R1->Fill(Re,E_CAL,wgt_full);
              }
     
     } }
@@ -494,7 +501,7 @@ Th_E_el_cut0->SetMarkerColor(kOrange);
 Th_E_el0->Draw("COLZ");  
 th_en0->cd(2);
 Th_E_el_cut0->Draw("COLZ");  
-th_en0->SaveAs("theta-energy-electron0.png");  */
+th_en0->SaveAs("theta-energy-electron0.png");  
     
 TCanvas * ee= new TCanvas("ee","ee",1000,100,2500,2000);
 ee->Divide(2,1);
@@ -509,5 +516,21 @@ E_CAL2->GetXaxis()->SetTitle("E [GeV] (log scale)");
 E_CAL2->Draw("HIST");
 gPad->SetLogx();
 
-ee->SaveAs("ECALen.png");  
+ee->SaveAs("ECALen.png"); */ 
+
+TCanvas * ER= new TCanvas("ER","ER",1000,100,2500,2000);
+    ER->Divide(3,1);
+    ER->cd(1);
+    E_R->GetYaxis()->SetTitle("E [GeV]");
+    E_R0->GetYaxis()->SetTitle("E [GeV]");
+    E_R1->GetYaxis()->SetTitle("E [GeV]");
+    E_R->GetXaxis()->SetTitle("R [m]");
+    E_R0->GetXaxis()->SetTitle("R [m]");
+    E_R1->GetXaxis()->SetTitle("R [m]");
+    E_R->Draw("COLZ");
+    ER->cd(2);
+    E_R0->Draw("COLZ");
+    ER->cd(3);
+    E_R1->Draw("COLZ");
+ER->SaveAs("ER.png");
 }

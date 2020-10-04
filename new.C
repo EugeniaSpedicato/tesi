@@ -18,6 +18,7 @@ void atree::Loop()
     Double_t E_CAL; //energy in the calorimeter
     Double_t d_e_ph; //distanza elettrone-fotone
     Double_t Re; //posizione elettrone
+    Double_t Rph; //posizione fotone
     Double_t n_tot=0; //numero di elettroni nel calorimetro
     Double_t n_two=0; //numero di elettroni che hanno una distanza maggiore di 2RM dal fotone, quindi 2 clusters
     Double_t n_one=0; //casi rimanenti che formano 1 cluster

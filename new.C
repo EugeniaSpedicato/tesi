@@ -524,7 +524,7 @@ th_en->SaveAs("theta-energy-electron.png");
 Int_t nx9 = Th_E_el1->GetNbinsX();
 Int_t ny9 = Th_E_el1->GetNbinsY();
 for (Int_t i=1; i<nx9+1; i++) {
-for (Int_t j=1; j<ny0+1; j++) {
+for (Int_t j=1; j<ny9+1; j++) {
     if (Th_E_el1->GetBinContent(i,j)<1) Th_E_el1->SetBinContent(i,j,0);}}  
 Int_t nx10 = Th_E_el_cut1->GetNbinsX();
 Int_t ny10 = Th_E_el_cut1->GetNbinsY();

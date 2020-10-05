@@ -19,7 +19,7 @@ Int_t n_cell_ph; //numero di cella in cui cade il fotone
 Int_t n_tot=0;
 Int_t same_cell=0;
 Int_t different_cell=0;
-Double_t Rm = 1.959 ; //raggio di Moliere in metri    
+Double_t Rm = 1.959 ; //raggio di Moliere in centimetri    
     
     
     if (fChain == 0) return;
@@ -35,11 +35,15 @@ Double_t Rm = 1.959 ; //raggio di Moliere in metri
        
         detKinBeamRot_cooXe=detKinBeamRot_cooXe*100;
         detKinBeamRot_cooYe=detKinBeamRot_cooYe*100;
+        detKinBeamRot_cooXmu=detKinBeamRot_cooXmu*100;
+        detKinBeamRot_cooYmu=detKinBeamRot_cooYmu*100;
         photon_coox=photon_coox*100;
         photon_cooy=photon_cooy*100;
        
        
     Double_t d_e_ph=sqrt( (detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detKinBeamRot_cooYe-photon_cooy)*(detKinBeamRot_cooYe-photon_cooy) ); 
+       
+    Double_t d_e_mu=sqrt( (detKinBeamRot_cooXe-detKinBeamRot_cooXmu)*(detKinBeamRot_cooXe-detKinBeamRot_cooXmu)+(detKinBeamRot_cooYe-detKinBeamRot_cooYmu)*(detKinBeamRot_cooYe-detKinBeamRot_cooYmu) ); 
        
 if (abs(detKinBeamRot_cooXe)<7.125 && abs(detKinBeamRot_cooYe)<7.125)
     
@@ -115,7 +119,7 @@ if (abs(detKinBeamRot_cooXe)<7.125 && abs(detKinBeamRot_cooYe)<7.125)
     
        
        
-if (abs(photon_coox)<7.125 && abs(photon_cooy)<7.125 && photon_energy>0.2 && d_e_ph>3*Rm)
+/*if (abs(photon_coox)<7.125 && abs(photon_cooy)<7.125 && photon_energy>0.2 && d_e_ph>3*Rm)
     
 { n_tot++;
     if (photon_coox>-7.125 && photon_coox<-4.275 && photon_cooy<7.125 && photon_cooy>4.275) {n_cell_ph=1;}
@@ -179,9 +183,73 @@ if (abs(photon_coox)<7.125 && abs(photon_cooy)<7.125 && photon_energy>0.2 && d_e
 if (n_cell_ph==n_cell)
 {same_cell++;}
 else {different_cell++;} 
-} 
+} */
       
+if (abs(detKinBeamRot_cooXmu)<7.125 && abs(detKinBeamRot_cooYmu)<7.125 && d_e_mu>1*Rm)
+    
+{ n_tot++;
+    if (detKinBeamRot_cooXmu>-7.125 && detKinBeamRot_cooXmu<-4.275 && detKinBeamRot_cooYmu<7.125 && detKinBeamRot_cooYmu>4.275) {n_cell_ph=1;}
+    
+    if (detKinBeamRot_cooXmu>-4.275 && detKinBeamRot_cooXmu<-1.425 && detKinBeamRot_cooYmu<7.125 && detKinBeamRot_cooYmu>4.275) {n_cell_ph=2;}
 
+    if (detKinBeamRot_cooXmu>-1.425 && detKinBeamRot_cooXmu<1.425 && detKinBeamRot_cooYmu<7.125 && detKinBeamRot_cooYmu>4.275) {n_cell_ph=3;}
+
+    if (detKinBeamRot_cooXmu>1.425 && detKinBeamRot_cooXmu<4.275 && detKinBeamRot_cooYmu<7.125 && detKinBeamRot_cooYmu>4.275) {n_cell_ph=4;}
+
+    if (detKinBeamRot_cooXmu>4.275 && detKinBeamRot_cooXmu<7.125 && detKinBeamRot_cooYmu<7.125 && detKinBeamRot_cooYmu>4.275) {n_cell_ph=5;}
+    
+    
+    if (detKinBeamRot_cooXmu>-7.125 && detKinBeamRot_cooXmu<-4.275 && detKinBeamRot_cooYmu<4.275 && detKinBeamRot_cooYmu>1.425) {n_cell_ph=6;}
+    
+    if (detKinBeamRot_cooXmu>-4.275 && detKinBeamRot_cooXmu<-1.425 && detKinBeamRot_cooYmu<4.275 && detKinBeamRot_cooYmu>1.425) {n_cell_ph=7;}
+
+    if (detKinBeamRot_cooXmu>-1.425 && detKinBeamRot_cooXmu<1.425 && detKinBeamRot_cooYmu<4.275 && detKinBeamRot_cooYmu>1.425) {n_cell_ph=8;}
+
+    if (detKinBeamRot_cooXmu>1.425 && detKinBeamRot_cooXmu<4.275 && detKinBeamRot_cooYmu<4.275 && detKinBeamRot_cooYmu>1.425) {n_cell_ph=9;}
+
+    if (detKinBeamRot_cooXmu>4.275 && detKinBeamRot_cooXmu<7.125 && detKinBeamRot_cooYmu<4.275 && detKinBeamRot_cooYmu>1.425) {n_cell_ph=10;}
+    
+
+    
+    if (detKinBeamRot_cooXmu>-7.125 && detKinBeamRot_cooXmu<-4.275 && detKinBeamRot_cooYmu<1.425 && detKinBeamRot_cooYmu>-1.425) {n_cell_ph=11;}
+    
+    if (detKinBeamRot_cooXmu>-4.275 && detKinBeamRot_cooXmu<-1.425 && detKinBeamRot_cooYmu<1.425 && detKinBeamRot_cooYmu>-1.425) {n_cell_ph=12;}
+
+    if (detKinBeamRot_cooXmu>-1.425 && detKinBeamRot_cooXmu<1.425 && detKinBeamRot_cooYmu<1.425 && detKinBeamRot_cooYmu>-1.425) {n_cell_ph=13;}
+
+    if (detKinBeamRot_cooXmu>1.425 && detKinBeamRot_cooXmu<4.275 && detKinBeamRot_cooYmu<1.425 && detKinBeamRot_cooYmu>-1.425) {n_cell_ph=14;}
+
+    if (detKinBeamRot_cooXmu>4.275 && detKinBeamRot_cooXmu<7.125 && detKinBeamRot_cooYmu<1.425 && detKinBeamRot_cooYmu>-1.425) {n_cell_ph=15;}
+    
+    
+    
+    
+    if (detKinBeamRot_cooXmu>-7.125 && detKinBeamRot_cooXmu<-4.275 && detKinBeamRot_cooYmu<-1.425 && detKinBeamRot_cooYmu>-4.275) {n_cell_ph=16;}
+    
+    if (detKinBeamRot_cooXmu>-4.275 && detKinBeamRot_cooXmu<-1.425 && detKinBeamRot_cooYmu<-1.425 && detKinBeamRot_cooYmu>-4.275) {n_cell_ph=17;}
+
+    if (detKinBeamRot_cooXmu>-1.425 && detKinBeamRot_cooXmu<1.425 && detKinBeamRot_cooYmu<-1.425 && detKinBeamRot_cooYmu>-4.275) {n_cell_ph=18;}
+
+    if (detKinBeamRot_cooXmu>1.425 && detKinBeamRot_cooXmu<4.275 && detKinBeamRot_cooYmu<-1.425 && detKinBeamRot_cooYmu>-4.275) {n_cell_ph=19;}
+
+    if (detKinBeamRot_cooXmu>4.275 && detKinBeamRot_cooXmu<7.125 && detKinBeamRot_cooYmu<-1.425 && detKinBeamRot_cooYmu>-4.275) {n_cell_ph=20;}
+    
+    
+    
+    if (detKinBeamRot_cooXmu>-7.125 && detKinBeamRot_cooXmu<-4.275 && detKinBeamRot_cooYmu<-4.275 && detKinBeamRot_cooYmu>-7.125) {n_cell_ph=21;}
+    
+    if (detKinBeamRot_cooXmu>-4.275 && detKinBeamRot_cooXmu<-1.425 && detKinBeamRot_cooYmu<-4.275 && detKinBeamRot_cooYmu>-7.125) {n_cell_ph=22;}
+
+    if (detKinBeamRot_cooXmu>-1.425 && detKinBeamRot_cooXmu<1.425 && detKinBeamRot_cooYmu<-4.275 && detKinBeamRot_cooYmu>-7.125) {n_cell_ph=23;}
+
+    if (detKinBeamRot_cooXmu>1.425 && detKinBeamRot_cooXmu<4.275 && detKinBeamRot_cooYmu<-4.275 && detKinBeamRot_cooYmu>-7.125) {n_cell_ph=24;}
+
+    if (detKinBeamRot_cooXmu>4.275 && detKinBeamRot_cooXmu<7.125 && detKinBeamRot_cooYmu<-4.275 && detKinBeamRot_cooYmu>-7.125) {n_cell_ph=25;}
+ 
+if (n_cell_ph==n_cell)
+{same_cell++;}
+else {different_cell++;} 
+}
  
 }
        
@@ -191,8 +259,8 @@ else {different_cell++;}
        
    }
     
- cout << "Elettroni e fotoni nella stessa cella: " << same_cell << endl;
- cout << "Elettroni e fotoni in una diversa cella: " << different_cell << endl;   
-cout << "n tot con fotone= " << n_tot << endl;
+ cout << "Elettroni e Muoni nella stessa cella: " << same_cell << endl;
+ cout << "Elettroni e Muoni in una diversa cella: " << different_cell << endl;   
+cout << "n tot con Muoni= " << n_tot << endl;
     
 }

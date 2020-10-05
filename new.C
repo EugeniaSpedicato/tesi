@@ -167,7 +167,7 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
                                            }
                     }
 // SE E' NEL CALORIMETRO MA AD UNA d<2RM
-            else { if (photon_energy>0.2) { n_one++;
+            else { if (photon_energy>0.2) { if (photon_energy>0.2) {n_one++;}
                                             Th_emu->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
                                             DR->Fill(d_e_ph,wgt_full);
                                             E_R->Fill(Re,E_CAL,wgt_full);

@@ -176,7 +176,7 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
                                           }
                  }
            } 
-// SE E' NON E' PRODOTTO O NON E' NEL CALORIMETRO        
+// SE gamma NON E' PRODOTTO O NON E' NEL CALORIMETRO        
         else {n_one++;
             Th_emu->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
             Th_E_el->Fill(detKinBeamRot_the,E_CAL,wgt_full);

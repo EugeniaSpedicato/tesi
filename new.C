@@ -579,8 +579,6 @@ E_CAL2->Draw("HIST");
 gPad->SetLogx();
 
 ee->SaveAs("ECALen.png"); 
-gStyle->SetPalette(kCherry);
-TColor::InvertPalette();
     
     
 Int_t nx13 = E_R->GetNbinsX();
@@ -600,6 +598,8 @@ for (Int_t j=1; j<ny15+1; j++) {
     if (E_R1->GetBinContent(i,j)<1) E_R1->SetBinContent(i,j,0);}} 
     
 TCanvas * ER= new TCanvas("ER","ER",1000,100,2500,2000);
+    gStyle->SetPalette(kCherry);
+TColor::InvertPalette();
     ER->Divide(3,1);
     ER->cd(1);
     E_R->GetYaxis()->SetTitle("E [GeV]");

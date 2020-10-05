@@ -99,7 +99,7 @@ TH2F  *E_r  = new TH2F("h2da" , " X  Vs. y of the photon",70,-0.1,0.1,70,-0.1,0.
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
  
-       //if (detKinBeamRot_tar==1){
+       if (detKinBeamRot_tar==0){
        px_mu->Fill(detKinBeamRot_pXmu,wgt_full);
        py_mu->Fill(detKinBeamRot_pYmu,wgt_full);
        pz_mu->Fill(detKinBeamRot_pZmu,wgt_full);
@@ -255,7 +255,7 @@ if(E_ECAL>1)
            { DRmu_cut->Fill(dist,wgt_full);}
        }
 
-      // }
+       }
        
 }
 

@@ -477,7 +477,7 @@ DR_cut1->SetLineColor(kRed);
 DR_cut1->Draw("same");  
 Drr1->SaveAs("DReph1.png");  
 
-TCanvas * a= new TCanvas("a","a",100,500,2000,2500);
+TCanvas * a= new TCanvas("a","a",1000,100,2500,2000);
 a->Divide(1,3);
 a->cd(1);
 DR0->SetMarkerSize(6);
@@ -568,6 +568,8 @@ ee->Divide(2,1);
 ee->cd(1);
 E_CAL1->SetLineColor(32);    
 E_CAL2->SetLineColor(46);
+E_CAL1->SetLineWidth(7);
+E_CAL2->SetLineWidth(7);
 E_CAL1->GetXaxis()->SetTitle("E [GeV] (log scale)");   
 E_CAL1->Draw("HIST");
 gPad->SetLogx();

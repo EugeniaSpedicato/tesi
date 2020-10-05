@@ -53,7 +53,7 @@ Double_t Rm = 1.959 ; //raggio di Moliere in centimetri
     Double_t d_e_mu=sqrt( (detKinBeamRot_cooXe-detKinBeamRot_cooXmu)*(detKinBeamRot_cooXe-detKinBeamRot_cooXmu)+(detKinBeamRot_cooYe-detKinBeamRot_cooYmu)*(detKinBeamRot_cooYe-detKinBeamRot_cooYmu) ); 
        
        
-if (E_CAL>1){
+//if (E_CAL>1){
 if (abs(detKinBeamRot_cooXe)<7.125 && abs(detKinBeamRot_cooYe)<7.125)
     
 {  
@@ -266,7 +266,8 @@ else {different_cell++;}
 
        
        
-   }}
+   //}
+}
     
  cout << "Elettroni e Muoni nella stessa cella: " << same_cell << endl;
  cout << "Elettroni e Muoni in una diversa cella: " << different_cell << endl;   

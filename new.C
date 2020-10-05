@@ -157,7 +157,7 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
            {    //if (photon_energy>0.2) DR->Fill(d_e_ph,wgt_full);
                
 // SE IL FOTONE E' NEL CALORIMETRO AD UNA d=2RM DALL'ELETTRONE             
-                /*if (d_e_ph>3*Rm )
+                if (d_e_ph>3*Rm )
                 {
                     if (photon_energy>0.2) {n_two++; 
                                             DR->Fill(d_e_ph,wgt_full);
@@ -167,17 +167,17 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
                                            }
                     }
 // SE E' NEL CALORIMETRO MA AD UNA d<2RM
-            else {*/ if (photon_energy>0.2) { n_one++;
+            else { if (photon_energy>0.2) { n_one++;
                                             Th_emu->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
                                             DR->Fill(d_e_ph,wgt_full);
                                             E_R->Fill(Re,E_CAL,wgt_full);
                                             Th_E_el->Fill(detKinBeamRot_the,E_CAL,wgt_full);
                                             E_CAL1->Fill(E_CAL,wgt_full);
                                           }
-                 //}
+                 }
            } 
 // SE E' NON E' PRODOTTO O NON E' NEL CALORIMETRO        
-        else {//n_one++;
+        else {n_one++;
             Th_emu->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
             Th_E_el->Fill(detKinBeamRot_the,E_CAL,wgt_full);
             E_CAL1->Fill(E_CAL,wgt_full);

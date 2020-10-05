@@ -160,6 +160,7 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
                 if (d_e_ph>3*Rm )
                 {
                     if (photon_energy>0.2) {n_two++; 
+                                            
                                             DR->Fill(d_e_ph,wgt_full);
                                             E_R->Fill(Re,detKinBeamRot_Ee,wgt_full);
                                             E_R->Fill(Rph,photon_energy,wgt_full);
@@ -244,7 +245,8 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
                 if (d_e_ph>3*Rm )
                 {
                     if (photon_energy>0.2) {n_two0++; 
-                                            DR0->Fill(d_e_ph,wgt_full);                                           E_R0->Fill(Re,detKinBeamRot_Ee,wgt_full);
+                                            DR0->Fill(d_e_ph,wgt_full);                                  
+                                            E_R0->Fill(Re,detKinBeamRot_Ee,wgt_full);
                                             E_R0->Fill(Rph,photon_energy,wgt_full);
                                            }
                     }
@@ -373,8 +375,20 @@ cout << "Elettroni ad una distanza 2RM dal fotone CON TAGLIO TAR 1: " << n_two_c
 cout << "Eventi in cui vedo solo un cluster CON TAGLIO TAR 1: " << n_one_cut1 << endl;
 
 cout << endl;
+   
+Int_t nx1 = Th_emu->GetNbinsX();
+Int_t ny1 = Th_emu->GetNbinsY();
+for (Int_t i=1; i<nx1+1; i++) {
+for (Int_t j=1; j<ny1+1; j++) {
+    if (Th_emu->GetBinContent(i,j)<1) Th_emu->SetBinContent(i,j,0);}}  
+Int_t nx2 = Th_emu_cut->GetNbinsX();
+Int_t ny2 = Th_emu_cut->GetNbinsY();
+for (Int_t i=1; i<nx2+1; i++) {
+for (Int_t j=1; j<ny2+1; j++) {
+    if (Th_emu_cut->GetBinContent(i,j)<1) Th_emu_cut->SetBinContent(i,j,0);}}  
     
-/*TCanvas * tmue= new TCanvas("tmue","tmue",1000,100,2500,2000); 
+    
+TCanvas * tmue= new TCanvas("tmue","tmue",1000,100,2500,2000); 
 tmue->Divide(2,2);
 tmue->cd(1);
 Th_emu_cut->SetMarkerColor(kOrange);
@@ -391,6 +405,17 @@ Th_emu->ProjectionX()->DrawClone("HIST");
 Th_emu_cut->ProjectionX()->DrawClone("HIST same");
 tmue->SaveAs("Th_emu.png"); 
     
+Int_t nx3 = Th_emu_cut1->GetNbinsX();
+Int_t ny3 = Th_emu_cut1->GetNbinsY();
+for (Int_t i=1; i<nx3+1; i++) {
+for (Int_t j=1; j<ny3+1; j++) {
+    if (Th_emu_cut1->GetBinContent(i,j)<1) Th_emu_cut1->SetBinContent(i,j,0);}}      
+Int_t nx4 = Th_emu1->GetNbinsX();
+Int_t ny4 = Th_emu1->GetNbinsY();
+for (Int_t i=1; i<nx4+1; i++) {
+for (Int_t j=1; j<ny4+1; j++) {
+    if (Th_emu1->GetBinContent(i,j)<1) Th_emu1->SetBinContent(i,j,0);}}       
+    
 TCanvas * tmue1= new TCanvas("tmue1","tmue1",1000,100,2500,2000); 
 tmue1->Divide(2,2);
 tmue1->cd(1);
@@ -405,6 +430,17 @@ tmue1->cd(4);
 Th_emu1->ProjectionX()->DrawClone("HIST");
 Th_emu_cut1->ProjectionX()->DrawClone("HIST same");
 tmue1->SaveAs("Th_emu1.png");    
+    
+Int_t nx5 = Th_emu_cut0->GetNbinsX();
+Int_t ny5 = Th_emu_cut0->GetNbinsY();
+for (Int_t i=1; i<nx5+1; i++) {
+for (Int_t j=1; j<ny5+1; j++) {
+    if (Th_emu_cut0->GetBinContent(i,j)<1) Th_emu_cut0->SetBinContent(i,j,0);}} 
+Int_t nx6 = Th_emu0->GetNbinsX();
+Int_t ny6 = Th_emu0->GetNbinsY();
+for (Int_t i=1; i<nx6+1; i++) {
+for (Int_t j=1; j<ny6+1; j++) {
+    if (Th_emu0->GetBinContent(i,j)<1) Th_emu0->SetBinContent(i,j,0);}} 
     
 TCanvas * tmue0= new TCanvas("tmue0","tmue0",1000,100,2500,2000); 
 tmue0->Divide(2,2);
@@ -423,33 +459,22 @@ tmue0->SaveAs("Th_emu0.png");
 
     
 TCanvas * Drr= new TCanvas("Drr","Drr",1000,100,2500,2000);
-Drr->Divide(2,1);
-Drr->cd(1);
 DR->Draw();
 DR_cut->SetLineColor(kRed);
 DR_cut->Draw("same");  
-Drr->cd(2);
-E_R->Draw("COLZ");
 Drr->SaveAs("DReph.png");  
     
 TCanvas * Drr0= new TCanvas("Drr0","Drr0",1000,100,2500,2000);
-Drr0->Divide(2,1);
-Drr0->cd(1);
 DR0->Draw();
 DR_cut0->SetLineColor(kRed);
 DR_cut0->Draw("same");  
-Drr0->cd(2);
-E_R0->Draw("COLZ");
+
 Drr0->SaveAs("DReph0.png"); 
     
 TCanvas * Drr1= new TCanvas("Drr1","Drr1",1000,100,2500,2000);
-Drr1->Divide(2,1);
-Drr1->cd(1);
 DR1->Draw();
 DR_cut1->SetLineColor(kRed);
 DR_cut1->Draw("same");  
-Drr1->cd(2);
-E_R1->Draw("COLZ");
 Drr1->SaveAs("DReph1.png");  
 
 TCanvas * a= new TCanvas("a","a",100,500,2000,2500);
@@ -474,6 +499,18 @@ DR_cut->SetLineColor(kRed);
 DR_cut->Draw("same");  
 a->SaveAs("dist01tot.png");  
 
+
+Int_t nx7 = Th_E_el->GetNbinsX();
+Int_t ny7 = Th_E_el->GetNbinsY();
+for (Int_t i=1; i<nx7+1; i++) {
+for (Int_t j=1; j<ny7+1; j++) {
+    if (Th_E_el->GetBinContent(i,j)<1) Th_E_el->SetBinContent(i,j,0);}} 
+Int_t nx8 = Th_E_el_cut->GetNbinsX();
+Int_t ny8 = Th_E_el_cut->GetNbinsY();
+for (Int_t i=1; i<nx8+1; i++) {
+for (Int_t j=1; j<ny8+1; j++) {
+    if (Th_E_el_cut->GetBinContent(i,j)<1) Th_E_el_cut->SetBinContent(i,j,0);}}     
+    
 TCanvas * th_en= new TCanvas("th_en","th_en",1000,100,2500,2000); 
 th_en->Divide(2,1);
 th_en->cd(1);
@@ -482,7 +519,18 @@ Th_E_el_cut->SetMarkerColor(kOrange);
 Th_E_el->Draw("COLZ");  
 th_en->cd(2);
 Th_E_el_cut->Draw("COLZ");  
-th_en->SaveAs("theta-energy-electron.png");   
+th_en->SaveAs("theta-energy-electron.png");
+    
+Int_t nx9 = Th_E_el1->GetNbinsX();
+Int_t ny9 = Th_E_el1->GetNbinsY();
+for (Int_t i=1; i<nx9+1; i++) {
+for (Int_t j=1; j<ny0+1; j++) {
+    if (Th_E_el1->GetBinContent(i,j)<1) Th_E_el1->SetBinContent(i,j,0);}}  
+Int_t nx10 = Th_E_el_cut1->GetNbinsX();
+Int_t ny10 = Th_E_el_cut1->GetNbinsY();
+for (Int_t i=1; i<nx10+1; i++) {
+for (Int_t j=1; j<ny10+1; j++) {
+    if (Th_E_el_cut1->GetBinContent(i,j)<1) Th_E_el_cut1->SetBinContent(i,j,0);}}  
 
 TCanvas * th_en1= new TCanvas("th_en1","th_en1",1000,100,2500,2000); 
 th_en1->Divide(2,1);
@@ -492,7 +540,18 @@ Th_E_el_cut1->SetMarkerColor(kOrange);
 Th_E_el1->Draw("COLZ");  
 th_en1->cd(2);
 Th_E_el_cut1->Draw("COLZ");  
-th_en1->SaveAs("theta-energy-electron1.png");  
+th_en1->SaveAs("theta-energy-electron1.png"); 
+    
+Int_t nx11 = Th_E_el0->GetNbinsX();
+Int_t ny11 = Th_E_el0->GetNbinsY();
+for (Int_t i=1; i<nx11+1; i++) {
+for (Int_t j=1; j<ny11+1; j++) {
+    if (Th_E_el0->GetBinContent(i,j)<1) Th_E_el0->SetBinContent(i,j,0);}} 
+Int_t nx12 = Th_E_el_cut0->GetNbinsX();
+Int_t ny12 = Th_E_el_cut0->GetNbinsY();
+for (Int_t i=1; i<nx12+1; i++) {
+for (Int_t j=1; j<ny12+1; j++) {
+    if (Th_E_el_cut0->GetBinContent(i,j)<1) Th_E_el_cut0->SetBinContent(i,j,0);}} 
     
 TCanvas * th_en0= new TCanvas("th_en0","th_en0",1000,100,2500,2000); 
 th_en0->Divide(2,1);
@@ -503,7 +562,7 @@ Th_E_el0->Draw("COLZ");
 th_en0->cd(2);
 Th_E_el_cut0->Draw("COLZ");  
 th_en0->SaveAs("theta-energy-electron0.png");  
-    */ 
+    
 TCanvas * ee= new TCanvas("ee","ee",1000,100,2500,2000);
 ee->Divide(2,1);
 ee->cd(1);
@@ -520,6 +579,24 @@ gPad->SetLogx();
 ee->SaveAs("ECALen.png"); 
 gStyle->SetPalette(kCherry);
 TColor::InvertPalette();
+    
+    
+Int_t nx13 = E_R->GetNbinsX();
+Int_t ny13 = E_R->GetNbinsY();
+for (Int_t i=1; i<nx13+1; i++) {
+for (Int_t j=1; j<ny13+1; j++) {
+    if (E_R->GetBinContent(i,j)<1) E_R->SetBinContent(i,j,0);}} 
+Int_t nx14 = E_R0->GetNbinsX();
+Int_t ny14 = E_R0->GetNbinsY();
+for (Int_t i=1; i<nx14+1; i++) {
+for (Int_t j=1; j<ny14+1; j++) {
+    if (E_R0->GetBinContent(i,j)<1) E_R0->SetBinContent(i,j,0);}} 
+Int_t nx15 = E_R1->GetNbinsX();
+Int_t ny15 = E_R1->GetNbinsY();
+for (Int_t i=1; i<nx15+1; i++) {
+for (Int_t j=1; j<ny15+1; j++) {
+    if (E_R1->GetBinContent(i,j)<1) E_R1->SetBinContent(i,j,0);}} 
+    
 TCanvas * ER= new TCanvas("ER","ER",1000,100,2500,2000);
     ER->Divide(3,1);
     ER->cd(1);

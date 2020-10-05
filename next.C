@@ -99,7 +99,7 @@ TH2F  *E_r  = new TH2F("h2da" , " X  Vs. y of the photon",70,-0.1,0.1,70,-0.1,0.
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
  
-       if (detKinBeamRot_tar==1){
+       //if (detKinBeamRot_tar==1){
        px_mu->Fill(detKinBeamRot_pXmu,wgt_full);
        py_mu->Fill(detKinBeamRot_pYmu,wgt_full);
        pz_mu->Fill(detKinBeamRot_pZmu,wgt_full);
@@ -255,7 +255,7 @@ if(E_ECAL>1)
            { DRmu_cut->Fill(dist,wgt_full);}
        }
 
-       }
+      // }
        
 }
 
@@ -418,6 +418,26 @@ if(E_ECAL>1)
     
     
   tar->SaveAs("tar.png");*/
+        
+Int_t nx1 = X_Y_mu->GetNbinsX();
+Int_t ny1 = X_Y_mu->GetNbinsY();
+for (Int_t i=1; i<nx1+1; i++) {
+for (Int_t j=1; j<ny1+1; j++) {
+    if (X_Y_mu->GetBinContent(i,j)<1) X_Y_mu->SetBinContent(i,j,0);}} 
+        
+Int_t nx2 = X_Y_e->GetNbinsX();
+Int_t ny2 = X_Y_e->GetNbinsY();
+for (Int_t i=1; i<nx2+1; i++) {
+for (Int_t j=1; j<ny2+1; j++) {
+    if (X_Y_e->GetBinContent(i,j)<1) X_Y_e->SetBinContent(i,j,0);}} 
+        
+Int_t nx3 = X_Y_p->GetNbinsX();
+Int_t ny3 = X_Y_p->GetNbinsY();
+for (Int_t i=1; i<nx3+1; i++) {
+for (Int_t j=1; j<ny3+1; j++) {
+    if (X_Y_p->GetBinContent(i,j)<1) X_Y_p->SetBinContent(i,j,0);}} 
+    
+    
     
     TCanvas * duedmu= new TCanvas("duedmu","duedmu",1000,100,2500,2000);
     gStyle->SetPalette(kCherry);

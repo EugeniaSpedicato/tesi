@@ -860,23 +860,20 @@ TMatrixD FastSim::MCSphoton(const Double_t & tar, const PxPyPzEVector & kp,const
 
 
 TMatrixD FastSim::Def_angle(const PxPyPzEVector & p_mu_in_div,const PxPyPzEVector & p_mu_out_div,const PxPyPzEVector & p_e_out_div) const {
-TVector3 p_mu_in_div3 = p_mu_in_div.Vect();    
-TVector3 p_e_out_div3 = p_e_out_div.Vect();
-TVector3 p_mu_out_div3 = p_mu_out_div.Vect();
-Double_t A_DIR_mu=100;
-Double_t A_DIR_e=100;
     
-  
-Double_t mod_Pmuin=sqrt(p_mu_in_div.X()*p_mu_in_div.X()+p_mu_in_div.Y()*p_mu_in_div.Y()+p_mu_in_div.Z()*p_mu_in_div.Z());
-Double_t mod_Pmuout=sqrt(p_mu_out_div.X()*p_mu_out_div.X()+p_mu_out_div.Y()*p_mu_out_div.Y()+p_mu_out_div.Z()*p_mu_out_div.Z());
-Double_t mod_Peout=sqrt(p_e_out_div.X()*p_e_out_div.X()+p_e_out_div.Y()*p_e_out_div.Y()+p_e_out_div.Z()*p_e_out_div.Z());
+
+
+XYZVector p_mu_in_div3 = p_mu_in_div.Vect().Unit();    
+XYZVector p_e_out_div3 = p_e_out_div.Vect().Unit();
+XYZVector p_mu_out_div3 = p_mu_out_div.Vect().Unit();
+
 
     
-Double_t DIR_mu=(p_mu_in_div3.Dot(p_mu_out_div3))/(mod_Pmuin*mod_Pmuout);
-if (abs(DIR_mu)<=1) A_DIR_mu=acos(DIR_mu);
+Double_t DIR_mu=p_mu_in_div3.Dot(p_mu_out_div3);
+Double_t A_DIR_e=abs(DIR_e)<1. ? 1000.*acos(DIR_e) : 100.;
     
-Double_t DIR_e=(p_mu_in_div3.Dot(p_e_out_div3))/(mod_Pmuin*mod_Peout);
-if (abs(DIR_e)<=1) A_DIR_e=acos(DIR_e);
+Double_t DIR_e=p_mu_in_div3.Dot(p_e_out_div3);
+Double_t A_DIR_e=abs(DIR_e)<1. ? 1000.*acos(DIR_e) : 100.;
 
 TMatrixD def_angle(2,1);
   def_angle[0][0]=A_DIR_mu;

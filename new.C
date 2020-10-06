@@ -132,7 +132,7 @@ void atree::Loop()
                     }
 // SE E' NEL CALORIMETRO MA AD UNA d<2RM
             else { if (photon_energy>0.2) { n_one_cut++;
-                                            Th_emu_cut->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
+                                            Th_emu_cut->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
                                             DR_cut->Fill(d_e_ph,wgt_full);
                                             Th_E_el_cut->Fill(detKinBeamRot_the,E_CAL,wgt_full);
                                             E_CAL_cut1->Fill(E_CAL,wgt_full);
@@ -141,7 +141,7 @@ void atree::Loop()
            } 
 // SE E' NON E' PRODOTTO O NON E' NEL CALORIMETRO        
         else {n_one_cut++;
-            Th_emu_cut->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
+            Th_emu_cut->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
             Th_E_el_cut->Fill(detKinBeamRot_the,E_CAL,wgt_full);
             E_CAL_cut1->Fill(E_CAL,wgt_full);
 }
@@ -174,7 +174,7 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
                     }
 // SE E' NEL CALORIMETRO MA AD UNA d<2RM
             else { if (photon_energy>0.2) { n_one++;
-                                            Th_emu->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
+                                            Th_emu->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
                                             DR->Fill(d_e_ph,wgt_full);
                                             E_R->Fill(Re,E_CAL,wgt_full);
                                             Th_E_el->Fill(detKinBeamRot_the,E_CAL,wgt_full);
@@ -184,7 +184,7 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
            } 
 // SE gamma NON E' PRODOTTO O NON E' NEL CALORIMETRO        
         else {n_one++;
-            Th_emu->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
+            Th_emu->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
             Th_E_el->Fill(detKinBeamRot_the,E_CAL,wgt_full);
             E_CAL1->Fill(E_CAL,wgt_full);
             E_R->Fill(Re,E_CAL,wgt_full);
@@ -219,7 +219,7 @@ if (detKinBeamRot_tar==0){
                     }
 // SE E' NEL CALORIMETRO MA AD UNA d<2RM
             else { if (photon_energy>0.2) { n_one_cut0++;
-                                            Th_emu_cut0->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
+                                            Th_emu_cut0->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
                                             DR_cut0->Fill(d_e_ph,wgt_full);
                                             Th_E_el_cut0->Fill(detKinBeamRot_the,E_CAL,wgt_full);
                                           }
@@ -227,7 +227,7 @@ if (detKinBeamRot_tar==0){
            } 
 // SE E' NON E' PRODOTTO O NON E' NEL CALORIMETRO        
         else {n_one_cut0++;
-            Th_emu_cut0->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
+            Th_emu_cut0->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
             Th_E_el_cut0->Fill(detKinBeamRot_the,E_CAL,wgt_full);
 }
     
@@ -257,7 +257,7 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
                     }
 // SE E' NEL CALORIMETRO MA AD UNA d<2RM
             else { if (photon_energy>0.2) { n_one0++;
-                                            Th_emu0->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
+                                            Th_emu0->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
                                             DR0->Fill(d_e_ph,wgt_full);
                                             E_R0->Fill(Re,E_CAL,wgt_full);
                                             Th_E_el0->Fill(detKinBeamRot_the,E_CAL,wgt_full);
@@ -266,7 +266,7 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
            } 
 // SE E' NON E' PRODOTTO O NON E' NEL CALORIMETRO        
         else {n_one0++;
-            Th_emu0->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
+            Th_emu0->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
             Th_E_el0->Fill(detKinBeamRot_the,E_CAL,wgt_full);
             E_R0->Fill(Re,E_CAL,wgt_full);
              }
@@ -297,7 +297,7 @@ if (detKinBeamRot_tar==1){
                     }
 // SE E' NEL CALORIMETRO MA AD UNA d<2RM
             else { if (photon_energy>0.2) { n_one_cut1++;
-                                            Th_emu_cut1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
+                                            Th_emu_cut1->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
                                             DR_cut1->Fill(d_e_ph,wgt_full);
                                             Th_E_el_cut1->Fill(detKinBeamRot_the,E_CAL,wgt_full);
                                           }
@@ -305,7 +305,7 @@ if (detKinBeamRot_tar==1){
            } 
 // SE E' NON E' PRODOTTO O NON E' NEL CALORIMETRO        
         else {n_one_cut1++;
-            Th_emu_cut1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
+            Th_emu_cut1->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
             Th_E_el_cut1->Fill(detKinBeamRot_the,E_CAL,wgt_full);
 }
     
@@ -335,7 +335,7 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
                     }
 // SE E' NEL CALORIMETRO MA AD UNA d<2RM
             else { if (photon_energy>0.2) { n_one1++;
-                                            Th_emu1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
+                                            Th_emu1->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
                                             DR1->Fill(d_e_ph,wgt_full);
                                             E_R1->Fill(Re,E_CAL,wgt_full);
                                             Th_E_el1->Fill(detKinBeamRot_the,E_CAL,wgt_full);
@@ -344,7 +344,7 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
            } 
 // SE E' NON E' PRODOTTO O NON E' NEL CALORIMETRO        
         else {n_one1++;
-            Th_emu1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
+            Th_emu1->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
             Th_E_el1->Fill(detKinBeamRot_the,E_CAL,wgt_full);
             E_R1->Fill(Re,E_CAL,wgt_full);
              }

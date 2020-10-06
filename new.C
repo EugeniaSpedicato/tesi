@@ -118,11 +118,12 @@ void atree::Loop()
            {    //if (photon_energy>0.2) DR->Fill(d_e_ph,wgt_full);
                
 // SE IL FOTONE E' NEL CALORIMETRO AD UNA d=2RM DALL'ELETTRONE             
-                if (d_e_ph>3*Rm)
+                if (d_e_ph>2*Rm)
                 {
                     if (photon_energy>0.2) {n_two_cut++; 
                                             DR_cut->Fill(d_e_ph,wgt_full);
                                             E_CAL_cut2->Fill(E_CAL,wgt_full);
+                                            
                                            }
                     }
 // SE E' NEL CALORIMETRO MA AD UNA d<2RM
@@ -157,7 +158,7 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
            {    //if (photon_energy>0.2) DR->Fill(d_e_ph,wgt_full);
                
 // SE IL FOTONE E' NEL CALORIMETRO AD UNA d=2RM DALL'ELETTRONE             
-                if (d_e_ph>3*Rm )
+                if (d_e_ph>2*Rm )
                 {
                     if (photon_energy>0.2) {n_two++; 
                                             
@@ -206,7 +207,7 @@ if (detKinBeamRot_tar==0){
            {    //if (photon_energy>0.2) DR->Fill(d_e_ph,wgt_full);
                
 // SE IL FOTONE E' NEL CALORIMETRO AD UNA d=2RM DALL'ELETTRONE             
-                if (d_e_ph>3*Rm)
+                if (d_e_ph>2*Rm)
                 {
                     if (photon_energy>0.2) {n_two_cut0++; 
                                             DR_cut0->Fill(d_e_ph,wgt_full);
@@ -242,7 +243,7 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
            {    //if (photon_energy>0.2) DR->Fill(d_e_ph,wgt_full);
                
 // SE IL FOTONE E' NEL CALORIMETRO AD UNA d=2RM DALL'ELETTRONE             
-                if (d_e_ph>3*Rm )
+                if (d_e_ph>2*Rm )
                 {
                     if (photon_energy>0.2) {n_two0++; 
                                             DR0->Fill(d_e_ph,wgt_full);                                  
@@ -284,7 +285,7 @@ if (detKinBeamRot_tar==1){
            {    //if (photon_energy>0.2) DR->Fill(d_e_ph,wgt_full);
                
 // SE IL FOTONE E' NEL CALORIMETRO AD UNA d=2RM DALL'ELETTRONE             
-                if (d_e_ph>3*Rm)
+                if (d_e_ph>2*Rm)
                 {
                     if (photon_energy>0.2) {n_two_cut1++; 
                                             DR_cut1->Fill(d_e_ph,wgt_full);
@@ -320,7 +321,7 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
            {    //if (photon_energy>0.2) DR->Fill(d_e_ph,wgt_full);
                
 // SE IL FOTONE E' NEL CALORIMETRO AD UNA d=2RM DALL'ELETTRONE             
-                if (d_e_ph>3*Rm )
+                if (d_e_ph>2*Rm )
                 {
                     if (photon_energy>0.2) {n_two1++; 
                                             DR1->Fill(d_e_ph,wgt_full);E_R0->Fill(Re,E_CAL,wgt_full);             E_R1->Fill(Re,detKinBeamRot_Ee,wgt_full);
@@ -388,7 +389,7 @@ for (Int_t j=1; j<ny2+1; j++) {
     if (Th_emu_cut->GetBinContent(i,j)<1) Th_emu_cut->SetBinContent(i,j,0);}}  
     
     
-TCanvas * tmue= new TCanvas("tmue","tmue",1000,100,2500,2000); 
+/*TCanvas * tmue= new TCanvas("tmue","tmue",1000,100,2500,2000); 
 tmue->Divide(2,2);
 tmue->cd(1);
 Th_emu_cut->SetMarkerColor(kOrange);
@@ -403,9 +404,18 @@ Th_emu_cut->ProjectionY()->DrawClone("HIST same");
 tmue->cd(4);
 Th_emu->ProjectionX()->DrawClone("HIST");
 Th_emu_cut->ProjectionX()->DrawClone("HIST same");
+tmue->SaveAs("Th_emu.png"); */
+    
+    
+TCanvas * tmue= new TCanvas("tmue","tmue",1000,100,2500,2000); 
+tmue->Divide(2,1);
+tmue->cd(1);
+Th_emu->Draw("COLZ");
+tmue->cd(2);
+Th_emu->ProjectionY()->DrawClone("HIST");
 tmue->SaveAs("Th_emu.png"); 
     
-Int_t nx3 = Th_emu_cut1->GetNbinsX();
+/*Int_t nx3 = Th_emu_cut1->GetNbinsX();
 Int_t ny3 = Th_emu_cut1->GetNbinsY();
 for (Int_t i=1; i<nx3+1; i++) {
 for (Int_t j=1; j<ny3+1; j++) {
@@ -612,5 +622,5 @@ TCanvas * ER= new TCanvas("ER","ER",1000,100,2500,2000);
     E_R0->Draw("COLZ");
     ER->cd(3);
     E_R1->Draw("COLZ");
-ER->SaveAs("ER.png");
+ER->SaveAs("ER.png");*/
 }

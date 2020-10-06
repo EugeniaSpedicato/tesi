@@ -22,29 +22,33 @@ void atree::Loop()
     Double_t n_tot=0; //numero di elettroni nel calorimetro
     Double_t n_two=0; //numero di elettroni che hanno una distanza maggiore di 2RM dal fotone, quindi 2 clusters
     Double_t n_one=0; //casi rimanenti che formano 1 cluster
+    Double_t ratio=0; // ratio of two clusters over total, events to drop
     
     Double_t n_tot_cut=0; //numero di elettroni nel calorimetro
     Double_t n_two_cut=0; //numero di elettroni che hanno una distanza maggiore di 2RM dal fotone, quindi 2 clusters
     Double_t n_one_cut=0; //casi rimanenti che formano 1 cluster
-    
+    Double_t ratio_cut=0; // ratio of two clusters over total, events to drop
     
     Double_t n_tot0=0; //numero di elettroni nel calorimetro
     Double_t n_two0=0; //numero di elettroni che hanno una distanza maggiore di 2RM dal fotone, quindi 2 clusters
     Double_t n_one0=0; //casi rimanenti che formano 1 cluster
+    Double_t ratio0=0; // ratio of two clusters over total, events to drop
     
     Double_t n_tot_cut0=0; //numero di elettroni nel calorimetro
     Double_t n_two_cut0=0; //numero di elettroni che hanno una distanza maggiore di 2RM dal fotone, quindi 2 clusters
     Double_t n_one_cut0=0; //casi rimanenti che formano 1 cluster
-    
+    Double_t ratio_cut0=0;
     
     Double_t n_tot1=0; //numero di elettroni nel calorimetro
     Double_t n_two1=0; //numero di elettroni che hanno una distanza maggiore di 2RM dal fotone, quindi 2 clusters
     Double_t n_one1=0; //casi rimanenti che formano 1 cluster
+    Double_t ratio1=0; // ratio of two clusters over total, events to drop
     
     Double_t n_tot_cut1=0; //numero di elettroni nel calorimetro
     Double_t n_two_cut1=0; //numero di elettroni che hanno una distanza maggiore di 2RM dal fotone, quindi 2 clusters
     Double_t n_one_cut1=0; //casi rimanenti che formano 1 cluster
-
+    Double_t ratio_cut1=0;
+    
     TH2F  *Th_emu = new TH2F("h2da1" , " Th e Vs. Th mu one cluster",500,0,100,500,0,5);
     TH2F  *Th_emu_cut = new TH2F("h2da1" , " Th e Vs. Th mu one cluster with cut",500,0,100,500,0,5);
     TH2F  *E_R = new TH2F("h2da1" , " R Vs. E_CAL one cluster",70,0,0.07125,500,0,160);
@@ -118,7 +122,7 @@ void atree::Loop()
            {    //if (photon_energy>0.2) DR->Fill(d_e_ph,wgt_full);
                
 // SE IL FOTONE E' NEL CALORIMETRO AD UNA d=2RM DALL'ELETTRONE             
-                if (d_e_ph>2*Rm)
+                if (d_e_ph>1*Rm)
                 {
                     if (photon_energy>0.2) {n_two_cut++; 
                                             DR_cut->Fill(d_e_ph,wgt_full);
@@ -158,7 +162,7 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
            {    //if (photon_energy>0.2) DR->Fill(d_e_ph,wgt_full);
                
 // SE IL FOTONE E' NEL CALORIMETRO AD UNA d=2RM DALL'ELETTRONE             
-                if (d_e_ph>2*Rm )
+                if (d_e_ph>1*Rm )
                 {
                     if (photon_energy>0.2) {n_two++; 
                                             
@@ -207,7 +211,7 @@ if (detKinBeamRot_tar==0){
            {    //if (photon_energy>0.2) DR->Fill(d_e_ph,wgt_full);
                
 // SE IL FOTONE E' NEL CALORIMETRO AD UNA d=2RM DALL'ELETTRONE             
-                if (d_e_ph>2*Rm)
+                if (d_e_ph>1*Rm)
                 {
                     if (photon_energy>0.2) {n_two_cut0++; 
                                             DR_cut0->Fill(d_e_ph,wgt_full);
@@ -243,7 +247,7 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
            {    //if (photon_energy>0.2) DR->Fill(d_e_ph,wgt_full);
                
 // SE IL FOTONE E' NEL CALORIMETRO AD UNA d=2RM DALL'ELETTRONE             
-                if (d_e_ph>2*Rm )
+                if (d_e_ph>1*Rm )
                 {
                     if (photon_energy>0.2) {n_two0++; 
                                             DR0->Fill(d_e_ph,wgt_full);                                  
@@ -253,7 +257,7 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
                     }
 // SE E' NEL CALORIMETRO MA AD UNA d<2RM
             else { if (photon_energy>0.2) { n_one0++;
-                                            Th_emu0->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+                                            Th_emu0->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
                                             DR0->Fill(d_e_ph,wgt_full);
                                             E_R0->Fill(Re,E_CAL,wgt_full);
                                             Th_E_el0->Fill(detKinBeamRot_the,E_CAL,wgt_full);
@@ -262,7 +266,7 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
            } 
 // SE E' NON E' PRODOTTO O NON E' NEL CALORIMETRO        
         else {n_one0++;
-            Th_emu0->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+            Th_emu0->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
             Th_E_el0->Fill(detKinBeamRot_the,E_CAL,wgt_full);
             E_R0->Fill(Re,E_CAL,wgt_full);
              }
@@ -285,7 +289,7 @@ if (detKinBeamRot_tar==1){
            {    //if (photon_energy>0.2) DR->Fill(d_e_ph,wgt_full);
                
 // SE IL FOTONE E' NEL CALORIMETRO AD UNA d=2RM DALL'ELETTRONE             
-                if (d_e_ph>2*Rm)
+                if (d_e_ph>1*Rm)
                 {
                     if (photon_energy>0.2) {n_two_cut1++; 
                                             DR_cut1->Fill(d_e_ph,wgt_full);
@@ -293,7 +297,7 @@ if (detKinBeamRot_tar==1){
                     }
 // SE E' NEL CALORIMETRO MA AD UNA d<2RM
             else { if (photon_energy>0.2) { n_one_cut1++;
-                                            Th_emu_cut1->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+                                            Th_emu_cut1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
                                             DR_cut1->Fill(d_e_ph,wgt_full);
                                             Th_E_el_cut1->Fill(detKinBeamRot_the,E_CAL,wgt_full);
                                           }
@@ -301,7 +305,7 @@ if (detKinBeamRot_tar==1){
            } 
 // SE E' NON E' PRODOTTO O NON E' NEL CALORIMETRO        
         else {n_one_cut1++;
-            Th_emu_cut1->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+            Th_emu_cut1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
             Th_E_el_cut1->Fill(detKinBeamRot_the,E_CAL,wgt_full);
 }
     
@@ -321,7 +325,7 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
            {    //if (photon_energy>0.2) DR->Fill(d_e_ph,wgt_full);
                
 // SE IL FOTONE E' NEL CALORIMETRO AD UNA d=2RM DALL'ELETTRONE             
-                if (d_e_ph>2*Rm )
+                if (d_e_ph>1*Rm )
                 {
                     if (photon_energy>0.2) {n_two1++; 
                                             DR1->Fill(d_e_ph,wgt_full);E_R0->Fill(Re,E_CAL,wgt_full);             E_R1->Fill(Re,detKinBeamRot_Ee,wgt_full);
@@ -331,7 +335,7 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
                     }
 // SE E' NEL CALORIMETRO MA AD UNA d<2RM
             else { if (photon_energy>0.2) { n_one1++;
-                                            Th_emu1->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+                                            Th_emu1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
                                             DR1->Fill(d_e_ph,wgt_full);
                                             E_R1->Fill(Re,E_CAL,wgt_full);
                                             Th_E_el1->Fill(detKinBeamRot_the,E_CAL,wgt_full);
@@ -340,40 +344,54 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
            } 
 // SE E' NON E' PRODOTTO O NON E' NEL CALORIMETRO        
         else {n_one1++;
-            Th_emu1->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
+            Th_emu1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
             Th_E_el1->Fill(detKinBeamRot_the,E_CAL,wgt_full);
             E_R1->Fill(Re,E_CAL,wgt_full);
              }
     
     } }
    
+ratio=n_two/n_tot;
+ratio_cut=n_two_cut/n_tot_cut;   
+ratio0=n_two0/n_tot0;
+ratio_cut0=n_two_cut0/n_tot_cut0; 
+ratio1=n_two1/n_tot1;
+ratio_cut1=n_two_cut1/n_tot_cut1;   
+       
+       
    }
     
           
 cout << "Elettroni totali nel calorimetro: " << n_tot << endl;
 cout << "Elettroni ad una distanza 2RM dal fotone: " << n_two << endl;
 cout << "Eventi in cui vedo solo un cluster: " << n_one << endl;
+cout << "Frazione di eventi scartabili: " << ratio <<endl;
 cout << "Elettroni totali nel calorimetro CON TAGLIO: " << n_tot_cut << endl;
 cout << "Elettroni ad una distanza 2RM dal fotone CON TAGLIO: " << n_two_cut << endl;
 cout << "Eventi in cui vedo solo un cluster CON TAGLIO: " << n_one_cut << endl;
+cout << "Frazione di eventi scartabili CON TAGLIO: " << ratio_cut <<endl;
     
 cout << endl;
     
 cout << "Elettroni totali nel calorimetro TAR 0: " << n_tot0 << endl;
 cout << "Elettroni ad una distanza 2RM dal fotone TAR 0: " << n_two0 << endl;
 cout << "Eventi in cui vedo solo un cluster TAR 0: " << n_one0 << endl;
+    cout << "Frazione di eventi scartabili TAR 0: " << ratio0 <<endl;
 cout << "Elettroni totali nel calorimetro CON TAGLIO TAR 0: " << n_tot_cut0 << endl;
 cout << "Elettroni ad una distanza 2RM dal fotone CON TAGLIO TAR 0: " << n_two_cut0 << endl;
 cout << "Eventi in cui vedo solo un cluster CON TAGLIO TAR 0: " << n_one_cut0 << endl;
+cout << "Frazione di eventi scartabili CON TAGLIO TAR0: " << ratio_cut0 <<endl;
     
 cout << endl;
     
 cout << "Elettroni totali nel calorimetro TAR 1: " << n_tot1 << endl;
 cout << "Elettroni ad una distanza 2RM dal fotone TAR 1: " << n_two1 << endl;
 cout << "Eventi in cui vedo solo un cluster TAR 1: " << n_one1 << endl;
+cout << "Frazione di eventi scartabili TAR 1: " << ratio1 <<endl;
 cout << "Elettroni totali nel calorimetro CON TAGLIO TAR 1: " << n_tot_cut1 << endl;
 cout << "Elettroni ad una distanza 2RM dal fotone CON TAGLIO TAR 1: " << n_two_cut1 << endl;
 cout << "Eventi in cui vedo solo un cluster CON TAGLIO TAR 1: " << n_one_cut1 << endl;
+cout << "Frazione di eventi scartabili CON TAGLIO TAR 1: " << ratio_cut1 <<endl;
 
 cout << endl;
    
@@ -404,7 +422,7 @@ Th_emu_cut->ProjectionY()->DrawClone("HIST same");
 tmue->cd(4);
 Th_emu->ProjectionX()->DrawClone("HIST");
 Th_emu_cut->ProjectionX()->DrawClone("HIST same");
-tmue->SaveAs("Th_emu.png"); */
+tmue->SaveAs("Th_emu.png");
     
     
 TCanvas * tmue= new TCanvas("tmue","tmue",1000,100,2500,2000); 
@@ -415,7 +433,7 @@ tmue->cd(2);
 Th_emu->ProjectionY()->DrawClone("HIST");
 tmue->SaveAs("Th_emu.png"); 
     
-/*Int_t nx3 = Th_emu_cut1->GetNbinsX();
+Int_t nx3 = Th_emu_cut1->GetNbinsX();
 Int_t ny3 = Th_emu_cut1->GetNbinsY();
 for (Int_t i=1; i<nx3+1; i++) {
 for (Int_t j=1; j<ny3+1; j++) {

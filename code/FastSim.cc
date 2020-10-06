@@ -858,7 +858,7 @@ TMatrixD FastSim::MCSphoton(const Double_t & tar, const PxPyPzEVector & kp,const
 }
 
 
-TMatrixD FastSim::Def_angle(const PxPyPzEVector p_mu_in_div,const PxPyPzEVector p_mu_out_div,const PxPyPzEVector p_e_out_div){
+TMatrixD FastSim::Def_angle(const PxPyPzEVector & p_mu_in_div,const PxPyPzEVector & p_mu_out_div,const PxPyPzEVector & p_e_out_div){
 TVector3 p_mu_in_div3 = p_mu_in_div.Vect();    
 TVector3 p_e_out_div3 = p_e_out_div.Vect();
 TVector3 p_mu_out_div3 = p_mu_out_div.Vect();
@@ -922,7 +922,7 @@ kv.tar = coo[4][0];
 kv.Pmu_out = p_mu_out.P();
 kv.Pe_out = p_e_out.P();
 
-TMatrix def_angle=Def_angle(p_mu_in,p_mu_out,p_e_out);
+TMatrixD def_angle=Def_angle(p_mu_in,p_mu_out,p_e_out);
     
 kv.def_angle_mu = Def_angle[0][0];
 kv.def_angle_e = Def_angle[1][0]; 

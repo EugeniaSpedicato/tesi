@@ -10,6 +10,7 @@
 #include "TMatrixFBase.h"
 #include <TMatrixFSym.h>
 #include "TString.h"
+#include "TVector3.h"
 #include <TApplication.h>
 
 using namespace MuE;
@@ -872,10 +873,10 @@ Double_t mod_Peout=sqrt(p_e_out_div.X()*p_e_out_div.X()+p_e_out_div.Y()*p_e_out_
 
     
 Double_t DIR_mu=(p_mu_in_div3.Dot(p_mu_out_div3))/(mod_Pmuin*mod_Pmuout);
-if (abs(DIR_mu)<=1) A_DIR_mu=arcos(DIR_mu);
+if (abs(DIR_mu)<=1) A_DIR_mu=acos(DIR_mu);
     
 Double_t DIR_e=(p_mu_in_div3.Dot(p_e_out_div3))/(mod_Pmuin*mod_Peout);
-if (abs(DIR_e)<=1) A_DIR_e=arcos(DIR_e);
+if (abs(DIR_e)<=1) A_DIR_e=acos(DIR_e);
 
 TMatrixD def_angle(2,1);
   def_angle[0][0]=A_DIR_mu;

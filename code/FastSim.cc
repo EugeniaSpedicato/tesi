@@ -922,8 +922,8 @@ kv.Pe_out = p_e_out.P();
 
 TMatrixD def_angle=Def_angle(p_mu_in,p_mu_out,p_e_out);
     
-kv.def_angle_mu = Def_angle[0][0];
-kv.def_angle_e = Def_angle[1][0]; 
+kv.def_angle_mu = def_angle[0][0];
+kv.def_angle_e = def_angle[1][0]; 
     
     
   // Note: here Ebeam is the average beam energy, so tt_e and xt_e are defined under this assumption

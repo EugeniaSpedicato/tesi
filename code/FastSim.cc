@@ -90,6 +90,7 @@ void FastSim::Process(const MuE::Event & event) {
     //DETKIN RUOTATE (const PxPyPzEVector & k, const Double_t tar, const Double_t xx, const Double_t yy, const Double_t thX, const Double_t thY)
 TMatrixD muin=RotDivIN(p_mu_in);
 PxPyPzEVector p_mu_in_div(muin[0][0],muin[1][0],muin[2][0],muin[3][0]);
+    
 //TMatrixD a=MCSin(p_mu_in_div);//effetto MCS, ritorna una matrice con coo, angoli e momento
 //PxPyPzEVector p_mu_in_smeared(a[4][0],a[4][1],a[4][2],a[4][3]);
 
@@ -97,10 +98,8 @@ PxPyPzEVector p_e_in_div=(p_e_in);
     
 //cioe div della cinematica e smear del MCS
 PxPyPzEVector p_mu_out_div=RotDiv(p_mu_in_div,p_mu_out);
-PxPyPzEVector p_e_out_div=RotDiv(p_mu_in_div,p_e_out);
-  
 
-    
+PxPyPzEVector p_e_out_div=RotDiv(p_mu_in_div,p_e_out);
     
 //effetto MCS out, ritorna una matrice con coo, angoli e momento per muone ed elettrone
 TMatrixD b=MCSout(p_mu_in_div,p_mu_out_div,p_e_out_div,muin[4][0]);
@@ -859,6 +858,34 @@ TMatrixD FastSim::MCSphoton(const Double_t & tar, const PxPyPzEVector & kp,const
 }
 
 
+TMatrixD FastSim::Def_angle(const PxPyPzEVector p_mu_in_div,const PxPyPzEVector p_mu_out_div,const PxPyPzEVector p_e_out_div){
+TVector3 p_mu_in_div3 = p_mu_in_div.Vect();    
+TVector3 p_e_out_div3 = p_e_out_div.Vect();
+TVector3 p_mu_out_div3 = p_mu_out_div.Vect();
+Double_t A_DIR_mu=100;
+Double_t A_DIR_e=100;
+    
+  
+Double_t mod_Pmuin=sqrt(p_mu_in_div.X()*p_mu_in_div.X()+p_mu_in_div.Y()*p_mu_in_div.Y()+p_mu_in_div.Z()*p_mu_in_div.Z());
+Double_t mod_Pmuout=sqrt(p_mu_out_div.X()*p_mu_out_div.X()+p_mu_out_div.Y()*p_mu_out_div.Y()+p_mu_out_div.Z()*p_mu_out_div.Z());
+Double_t mod_Peout=sqrt(p_e_out_div.X()*p_e_out_div.X()+p_e_out_div.Y()*p_e_out_div.Y()+p_e_out_div.Z()*p_e_out_div.Z());
+
+    
+Double_t DIR_mu=(p_mu_in_div3.Dot(p_mu_out_div3))/(mod_Pmuin*mod_Pmuout);
+if (abs(DIR_mu)<=1) A_DIR_mu=arcos(DIR_mu);
+    
+Double_t DIR_e=(p_mu_in_div3.Dot(p_e_out_div3))/(mod_Pmuin*mod_Peout);
+if (abs(DIR_e)<=1) A_DIR_e=arcos(DIR_e);
+
+TMatrixD def_angle(2,0);
+  def_angle[0][0]=A_DIR_mu;
+  def_angle[1][0]=A_DIR_e;
+    
+return def_angle;
+}
+
+
+
 void FastSim::LoadKineVars(const PxPyPzEVector & p_mu_in,  const PxPyPzEVector & p_e_in, 
 			   const PxPyPzEVector & p_mu_out, const PxPyPzEVector & p_e_out, const TMatrixD & coo, const Double_t & TheINT,
 			   MuE::KineVars & kv) {
@@ -895,7 +922,12 @@ kv.tar = coo[4][0];
 kv.Pmu_out = p_mu_out.P();
 kv.Pe_out = p_e_out.P();
 
-        
+TMatrix def_angle=Def_angle(p_mu_in,p_mu_out,p_e_out);
+    
+kv.def_angle_mu = Def_angle[0][0];
+kv.def_angle_e = Def_angle[1][0]; 
+    
+    
   // Note: here Ebeam is the average beam energy, so tt_e and xt_e are defined under this assumption
   MuE::ElasticState emu_state(Ebeam,mm,me, kv.the);
   kv.tt_e = emu_state.GetT();

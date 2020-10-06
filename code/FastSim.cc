@@ -870,7 +870,7 @@ XYZVector p_mu_out_div3 = p_mu_out_div.Vect().Unit();
 
     
 Double_t DIR_mu=p_mu_in_div3.Dot(p_mu_out_div3);
-Double_t A_DIR_e=abs(DIR_e)<1. ? 1000.*acos(DIR_e) : 100.;
+Double_t A_DIR_mu=abs(DIR_mu)<1. ? 1000.*acos(DIR_mu) : 100.;
     
 Double_t DIR_e=p_mu_in_div3.Dot(p_e_out_div3);
 Double_t A_DIR_e=abs(DIR_e)<1. ? 1000.*acos(DIR_e) : 100.;

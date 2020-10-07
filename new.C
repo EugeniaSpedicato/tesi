@@ -647,9 +647,10 @@ TCanvas * ER= new TCanvas("ER","ER",1000,100,2500,2000);
 
     ER->Divide(3,1);
     ER->cd(1);
-    E_R->SetMarkerWidth(6);
-    E_R0->SetMarkerWidth(6);
-    E_R1->SetMarkerWidth(6);
+    E_R->SetMarkerSize(6);
+    E_R0->SetMarkerSize(6);
+    E_R1->SetMarkerSize(6);
+    
     E_R->GetYaxis()->SetTitle("E [GeV]");
     E_R0->GetYaxis()->SetTitle("E [GeV]");
     E_R1->GetYaxis()->SetTitle("E [GeV]");

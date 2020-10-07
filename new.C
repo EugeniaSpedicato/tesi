@@ -54,7 +54,7 @@ void atree::Loop()
     TH2F  *Th_emu = new TH2F("h2da1" , " Th e Vs. Th mu one cluster",500,0,100,500,0,5);
     TH2F  *Th_emu_cut = new TH2F("h2da1" , " Th e Vs. Th mu one cluster with cut",500,0,100,500,0,5);
     TProfile  *E_R = new TProfile("h2da1" , " R Vs. E_CAL one cluster",70,0,0.07125,0,160);
-    TProfile  *E_R_cut = new TProfile("h2da1" , " R Vs. E_CAL one cluster with cut TAR 0",70,0,0.07125,0,160);
+    TProfile  *E_R_cut = new TProfile("h2da1" , " R Vs. E_CAL one cluster with cut",70,0,0.07125,0,160);
     TH2F  *Th_E_el  = new TH2F("h2da" , " Th e Vs. E_CAL one cluster",500,0,100,500,0,160);
     TH2F  *Th_E_el_cut  = new TH2F("h2da" , " Th e Vs. E_CAL one cluster with cut",500,0,100,500,0,160);
     
@@ -643,7 +643,7 @@ for (Int_t i=1; i<nx15+1; i++) {
 for (Int_t j=1; j<ny15+1; j++) {
     if (E_R1->GetBinContent(i,j)<1) E_R1->SetBinContent(i,j,0);}} 
     
-TCanvas * ER= new TCanvas("ER","ER",1000,100,2500,2000);
+TCanvas * ER= new TCanvas("ER","ER",1000,1000,2000,2500);
 
     ER->Divide(3,2);
     ER->cd(1);

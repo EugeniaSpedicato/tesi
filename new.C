@@ -5,6 +5,8 @@
 #include <TGraph.h>
 #include <TTree.h>
 #include <cmath>
+#include <TProfile.h>
+
 using namespace std;
 
 #include <TStyle.h>
@@ -51,7 +53,7 @@ void atree::Loop()
     
     TH2F  *Th_emu = new TH2F("h2da1" , " Th e Vs. Th mu one cluster",500,0,100,500,0,5);
     TH2F  *Th_emu_cut = new TH2F("h2da1" , " Th e Vs. Th mu one cluster with cut",500,0,100,500,0,5);
-    TH2F  *E_R = new TH2F("h2da1" , " R Vs. E_CAL one cluster",70,0,0.07125,500,0,160);
+    TProfile  *E_R = new TProfile("h2da1" , " R Vs. E_CAL one cluster",70,0,0.07125,0,160,'s');
     TH2F  *Th_E_el  = new TH2F("h2da" , " Th e Vs. E_CAL one cluster",500,0,100,500,0,160);
     TH2F  *Th_E_el_cut  = new TH2F("h2da" , " Th e Vs. E_CAL one cluster with cut",500,0,100,500,0,160);
     
@@ -66,7 +68,7 @@ void atree::Loop()
     
     TH2F  *Th_emu0 = new TH2F("h2da1" , " Th e Vs. Th mu one cluster TAR 0",500,0,100,500,0,5);
     TH2F  *Th_emu_cut0 = new TH2F("h2da1" , " Th e Vs. Th mu one cluster with cut TAR 0",500,0,100,500,0,5);
-    TH2F  *E_R0 = new TH2F("h2da1" , " R Vs. E_CAL one cluster TAR 0",70,0,0.07125,500,0,160);
+    TProfile  *E_R0 = new TProfile("h2da1" , " R Vs. E_CAL one cluster TAR 0",70,0,0.07125,0,160,'s');
     TH2F  *Th_E_el0  = new TH2F("h2da" , " Th e Vs. E_CAL one cluster TAR 0",500,0,100,500,0,160);
     TH2F  *Th_E_el_cut0  = new TH2F("h2da" , " Th e Vs. E_CAL one cluster with cut TAR 0",500,0,100,500,0,160);
     
@@ -75,7 +77,7 @@ void atree::Loop()
     
     TH2F  *Th_emu1 = new TH2F("h2da1" , " Th e Vs. Th mu one cluster TAR 1",500,0,100,500,0,5);
     TH2F  *Th_emu_cut1 = new TH2F("h2da1" , " Th e Vs. Th mu one cluster with cut TAR 1",500,0,100,500,0,5);
-    TH2F  *E_R1 = new TH2F("h2da1" , " R Vs. E_CAL one cluster TAR 1",70,0,0.07125,500,0,160);
+    TProfile  *E_R1 = new TProfile("h2da1" , " R Vs. E_CAL one cluster TAR 1",70,0,0.07125,0,160,'s');
     TH2F  *Th_E_el1  = new TH2F("h2da" , " Th e Vs. E_CAL one cluster TAR 1",500,0,100,500,0,160);
     TH2F  *Th_E_el_cut1  = new TH2F("h2da" , " Th e Vs. E_CAL one cluster with cut TAR 1",500,0,100,500,0,160);
     
@@ -607,7 +609,7 @@ E_CAL2->Draw("HIST");
 gPad->SetLogx();
 
 ee->SaveAs("ECALen.png"); 
-    
+*/    
     
 Int_t nx13 = E_R->GetNbinsX();
 Int_t ny13 = E_R->GetNbinsY();
@@ -640,5 +642,5 @@ TCanvas * ER= new TCanvas("ER","ER",1000,100,2500,2000);
     E_R0->Draw("COLZ");
     ER->cd(3);
     E_R1->Draw("COLZ");
-ER->SaveAs("ER.png");*/
+ER->SaveAs("ER.png");
 }

@@ -234,7 +234,7 @@ if (detKinBeamRot_tar==0){
                                             Th_emu_cut0->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
                                             DR_cut0->Fill(d_e_ph,wgt_full);
                                             Th_E_el_cut0->Fill(detKinBeamRot_the,E_CAL,wgt_full);
-                                           E_R0_cut->Fill(Re,E_CAL,wgt_full)
+                                           E_R0_cut->Fill(Re,E_CAL,wgt_full);
                                           }
                  }
            } 
@@ -242,7 +242,7 @@ if (detKinBeamRot_tar==0){
         else {n_one_cut0++;
             Th_emu_cut0->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
             Th_E_el_cut0->Fill(detKinBeamRot_the,E_CAL,wgt_full);
-              E_R0_cut->Fill(Re,E_CAL,wgt_full)
+              E_R0_cut->Fill(Re,E_CAL,wgt_full);
 }
     
     } 

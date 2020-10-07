@@ -661,16 +661,16 @@ TCanvas * ER= new TCanvas("ER","ER",1000,100,2500,2000);
     E_R0_cut->SetMarkerColor(kRed);
     E_R1_cut->SetMarkerColor(kRed);
     
-    E_R->Draw();
-    E_R_cut->Draw("same");
+    E_R_cut->Draw();
+    E_R->Draw("same");
     
     ER->cd(2);
-    E_R0->Draw();
-    E_R0_cut->Draw("same");
+    E_R0_cut->Draw();
+    E_R0->Draw("same");
     
     ER->cd(3);
-    E_R1->Draw();
-    E_R1_cut->Draw("same");
+    E_R1_cut->Draw();
+    E_R1->Draw("same");
     
 ER->SaveAs("ER.png");
 }

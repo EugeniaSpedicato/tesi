@@ -645,7 +645,7 @@ for (Int_t j=1; j<ny15+1; j++) {
     
 TCanvas * ER= new TCanvas("ER","ER",1000,100,2500,2000);
 
-    ER->Divide(3,1);
+    ER->Divide(3,2);
     ER->cd(1);
     E_R->SetMarkerSize(6);
     E_R0->SetMarkerSize(6);
@@ -657,20 +657,30 @@ TCanvas * ER= new TCanvas("ER","ER",1000,100,2500,2000);
     E_R->GetXaxis()->SetTitle("R [m]");
     E_R0->GetXaxis()->SetTitle("R [m]");
     E_R1->GetXaxis()->SetTitle("R [m]");
+    E_R_cut->GetYaxis()->SetTitle("E [GeV]");
+    E_R0_cut->GetYaxis()->SetTitle("E [GeV]");
+    E_R1_cut->GetYaxis()->SetTitle("E [GeV]");
+    E_R_cut->GetXaxis()->SetTitle("R [m]");
+    E_R0_cut->GetXaxis()->SetTitle("R [m]");
+    E_R1_cut->GetXaxis()->SetTitle("R [m]");
     E_R_cut->SetMarkerColor(kRed);
     E_R0_cut->SetMarkerColor(kRed);
     E_R1_cut->SetMarkerColor(kRed);
     
-  //  E_R_cut->Draw();
     E_R->Draw();
-    
     ER->cd(2);
-   // E_R0_cut->Draw();
-    E_R0->Draw();
+    E_R_cut->Draw();
     
     ER->cd(3);
-   // E_R1_cut->Draw();
+    E_R0->Draw();
+    ER->cd(4);
+    E_R0_cut->Draw();
+   
+    ER->cd(5);
     E_R1->Draw();
+    ER->cd(6);
+    E_R1_cut->Draw();
+
     
 ER->SaveAs("ER.png");
 }

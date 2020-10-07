@@ -54,7 +54,7 @@ void atree::Loop()
     TH2F  *Th_emu = new TH2F("h2da1" , " Th e Vs. Th mu one cluster",500,0,100,500,0,5);
     TH2F  *Th_emu_cut = new TH2F("h2da1" , " Th e Vs. Th mu one cluster with cut",500,0,100,500,0,5);
     TProfile  *E_R = new TProfile("h2da1" , " R Vs. E_CAL one cluster",70,0,0.07125,0,160);
-
+    TProfile  *E_R_cut = new TProfile("h2da1" , " R Vs. E_CAL one cluster with cut TAR 0",70,0,0.07125,0,160);
     TH2F  *Th_E_el  = new TH2F("h2da" , " Th e Vs. E_CAL one cluster",500,0,100,500,0,160);
     TH2F  *Th_E_el_cut  = new TH2F("h2da" , " Th e Vs. E_CAL one cluster with cut",500,0,100,500,0,160);
     
@@ -70,6 +70,7 @@ void atree::Loop()
     TH2F  *Th_emu0 = new TH2F("h2da1" , " Th e Vs. Th mu one cluster TAR 0",500,0,100,500,0,5);
     TH2F  *Th_emu_cut0 = new TH2F("h2da1" , " Th e Vs. Th mu one cluster with cut TAR 0",500,0,100,500,0,5);
     TProfile  *E_R0 = new TProfile("h2da1" , " R Vs. E_CAL one cluster TAR 0",70,0,0.07125,0,160);
+    TProfile  *E_R0_cut = new TProfile("h2da1" , " R Vs. E_CAL one cluster with cut TAR 0",70,0,0.07125,0,160);
 
     TH2F  *Th_E_el0  = new TH2F("h2da" , " Th e Vs. E_CAL one cluster TAR 0",500,0,100,500,0,160);
     TH2F  *Th_E_el_cut0  = new TH2F("h2da" , " Th e Vs. E_CAL one cluster with cut TAR 0",500,0,100,500,0,160);
@@ -80,7 +81,7 @@ void atree::Loop()
     TH2F  *Th_emu1 = new TH2F("h2da1" , " Th e Vs. Th mu one cluster TAR 1",500,0,100,500,0,5);
     TH2F  *Th_emu_cut1 = new TH2F("h2da1" , " Th e Vs. Th mu one cluster with cut TAR 1",500,0,100,500,0,5);
     TProfile  *E_R1 = new TProfile("h2da1" , " R Vs. E_CAL one cluster TAR 1",70,0,0.07125,0,160);
-
+    TProfile  *E_R1_cut = new TProfile("h2da1" , " R Vs. E_CAL one cluster with cut TAR 0",70,0,0.07125,0,160);
     TH2F  *Th_E_el1  = new TH2F("h2da" , " Th e Vs. E_CAL one cluster TAR 1",500,0,100,500,0,160);
     TH2F  *Th_E_el_cut1  = new TH2F("h2da" , " Th e Vs. E_CAL one cluster with cut TAR 1",500,0,100,500,0,160);
     
@@ -127,12 +128,13 @@ void atree::Loop()
            {    //if (photon_energy>0.2) DR->Fill(d_e_ph,wgt_full);
                
 // SE IL FOTONE E' NEL CALORIMETRO AD UNA d=2RM DALL'ELETTRONE             
-                if (d_e_ph>3*Rm)
+                if (d_e_ph>2*Rm)
                 {
                     if (photon_energy>0.2) {n_two_cut++; 
                                             DR_cut->Fill(d_e_ph,wgt_full);
                                             E_CAL_cut2->Fill(E_CAL,wgt_full);
-                                            
+                                            E_R_cut->Fill(Re,detKinBeamRot_Ee,wgt_full);
+                                            E_R_cut->Fill(Rph,photon_energy,wgt_full);
                                            }
                     }
 // SE E' NEL CALORIMETRO MA AD UNA d<2RM
@@ -141,6 +143,7 @@ void atree::Loop()
                                             DR_cut->Fill(d_e_ph,wgt_full);
                                             Th_E_el_cut->Fill(detKinBeamRot_the,E_CAL,wgt_full);
                                             E_CAL_cut1->Fill(E_CAL,wgt_full);
+                                           E_R_cut->Fill(Re,E_CAL,wgt_full);
                                           }
                  }
            } 
@@ -149,7 +152,9 @@ void atree::Loop()
             Th_emu_cut->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
             Th_E_el_cut->Fill(detKinBeamRot_the,E_CAL,wgt_full);
             E_CAL_cut1->Fill(E_CAL,wgt_full);
+            E_R_cut->Fill(Re,E_CAL,wgt_full);
 }
+
     
     } 
     }
@@ -167,7 +172,7 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
            {    //if (photon_energy>0.2) DR->Fill(d_e_ph,wgt_full);
                
 // SE IL FOTONE E' NEL CALORIMETRO AD UNA d=2RM DALL'ELETTRONE             
-                if (d_e_ph>3*Rm )
+                if (d_e_ph>2*Rm )
                 {
                     if (photon_energy>0.2) {n_two++; 
                                             
@@ -216,10 +221,12 @@ if (detKinBeamRot_tar==0){
            {    //if (photon_energy>0.2) DR->Fill(d_e_ph,wgt_full);
                
 // SE IL FOTONE E' NEL CALORIMETRO AD UNA d=2RM DALL'ELETTRONE             
-                if (d_e_ph>3*Rm)
+                if (d_e_ph>2*Rm)
                 {
                     if (photon_energy>0.2) {n_two_cut0++; 
                                             DR_cut0->Fill(d_e_ph,wgt_full);
+                                            E_R0_cut->Fill(Re,detKinBeamRot_Ee,wgt_full);
+                                            E_R0_cut->Fill(Rph,photon_energy,wgt_full);
                                            }
                     }
 // SE E' NEL CALORIMETRO MA AD UNA d<2RM
@@ -227,6 +234,7 @@ if (detKinBeamRot_tar==0){
                                             Th_emu_cut0->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
                                             DR_cut0->Fill(d_e_ph,wgt_full);
                                             Th_E_el_cut0->Fill(detKinBeamRot_the,E_CAL,wgt_full);
+                                           E_R0_cut->Fill(Re,E_CAL,wgt_full)
                                           }
                  }
            } 
@@ -234,6 +242,7 @@ if (detKinBeamRot_tar==0){
         else {n_one_cut0++;
             Th_emu_cut0->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
             Th_E_el_cut0->Fill(detKinBeamRot_the,E_CAL,wgt_full);
+              E_R0_cut->Fill(Re,E_CAL,wgt_full)
 }
     
     } 
@@ -252,7 +261,7 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
            {    //if (photon_energy>0.2) DR->Fill(d_e_ph,wgt_full);
                
 // SE IL FOTONE E' NEL CALORIMETRO AD UNA d=2RM DALL'ELETTRONE             
-                if (d_e_ph>3*Rm )
+                if (d_e_ph>2*Rm )
                 {
                     if (photon_energy>0.2) {n_two0++; 
                                             DR0->Fill(d_e_ph,wgt_full);                                  
@@ -294,10 +303,12 @@ if (detKinBeamRot_tar==1){
            {    //if (photon_energy>0.2) DR->Fill(d_e_ph,wgt_full);
                
 // SE IL FOTONE E' NEL CALORIMETRO AD UNA d=2RM DALL'ELETTRONE             
-                if (d_e_ph>3*Rm)
+                if (d_e_ph>2*Rm)
                 {
                     if (photon_energy>0.2) {n_two_cut1++; 
                                             DR_cut1->Fill(d_e_ph,wgt_full);
+                                            E_R1_cut->Fill(Re,detKinBeamRot_Ee,wgt_full);
+                                            E_R1_cut->Fill(Rph,photon_energy,wgt_full);
                                            }
                     }
 // SE E' NEL CALORIMETRO MA AD UNA d<2RM
@@ -305,6 +316,7 @@ if (detKinBeamRot_tar==1){
                                             Th_emu_cut1->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
                                             DR_cut1->Fill(d_e_ph,wgt_full);
                                             Th_E_el_cut1->Fill(detKinBeamRot_the,E_CAL,wgt_full);
+                                           E_R1_cut->Fill(Re,E_CAL,wgt_full);
                                           }
                  }
            } 
@@ -312,6 +324,7 @@ if (detKinBeamRot_tar==1){
         else {n_one_cut1++;
             Th_emu_cut1->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
             Th_E_el_cut1->Fill(detKinBeamRot_the,E_CAL,wgt_full);
+              E_R1_cut->Fill(Re,E_CAL,wgt_full);
 }
     
     } 
@@ -330,7 +343,7 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
            {    //if (photon_energy>0.2) DR->Fill(d_e_ph,wgt_full);
                
 // SE IL FOTONE E' NEL CALORIMETRO AD UNA d=2RM DALL'ELETTRONE             
-                if (d_e_ph>3*Rm )
+                if (d_e_ph>2*Rm )
                 {
                     if (photon_energy>0.2) {n_two1++; 
                                             DR1->Fill(d_e_ph,wgt_full);E_R0->Fill(Re,E_CAL,wgt_full);             E_R1->Fill(Re,detKinBeamRot_Ee,wgt_full);
@@ -634,16 +647,29 @@ TCanvas * ER= new TCanvas("ER","ER",1000,100,2500,2000);
 
     ER->Divide(3,1);
     ER->cd(1);
+    E_R->SetMarkerWidth(6);
+    E_R0->SetMarkerWidth(6);
+    E_R1->SetMarkerWidth(6);
     E_R->GetYaxis()->SetTitle("E [GeV]");
     E_R0->GetYaxis()->SetTitle("E [GeV]");
     E_R1->GetYaxis()->SetTitle("E [GeV]");
     E_R->GetXaxis()->SetTitle("R [m]");
     E_R0->GetXaxis()->SetTitle("R [m]");
     E_R1->GetXaxis()->SetTitle("R [m]");
-    E_R->Draw("COLZ");
+    E_R_cut->SetMarkerColor(kRed);
+    E_R0_cut->SetMarkerColor(kRed);
+    E_R1_cut->SetMarkerColor(kRed);
+    
+    E_R->Draw();
+    E_R_cut->Draw("same");
+    
     ER->cd(2);
-    E_R0->Draw("COLZ");
+    E_R0->Draw();
+    E_R0_cut->Draw("same");
+    
     ER->cd(3);
-    E_R1->Draw("COLZ");
+    E_R1->Draw();
+    E_R1_cut->Draw("same");
+    
 ER->SaveAs("ER.png");
 }

@@ -645,7 +645,7 @@ for (Int_t j=1; j<ny15+1; j++) {
     
 TCanvas * ER= new TCanvas("ER","ER",1000,1000,2000,2500);
 
-    ER->Divide(3,2);
+    ER->Divide(2,3);
     ER->cd(1);
     E_R->SetMarkerSize(6);
     E_R0->SetMarkerSize(6);

@@ -666,20 +666,20 @@ for (Int_t i=1; i<nx15+1; i++) {
 for (Int_t j=1; j<ny15+1; j++) {
 if (E_R1->GetBinContent(i,j)<1) E_R1->SetBinContent(i,j,0);}} 
     
-Int_t nx13 = E_R_cut->GetNbinsX();
-Int_t ny13 = E_R_cut->GetNbinsY();
-for (Int_t i=1; i<nx13+1; i++) {
-for (Int_t j=1; j<ny13+1; j++) {
+Int_t nx13_cut = E_R_cut->GetNbinsX();
+Int_t ny13_cut = E_R_cut->GetNbinsY();
+for (Int_t i=1; i<nx13_cut+1; i++) {
+for (Int_t j=1; j<ny13_cut+1; j++) {
     if (E_R_cut->GetBinContent(i,j)<1) E_R_cut->SetBinContent(i,j,0);}} 
-Int_t nx14 = E_R0_cut->GetNbinsX();
-Int_t ny14 = E_R0_cut->GetNbinsY();
-for (Int_t i=1; i<nx14+1; i++) {
-for (Int_t j=1; j<ny14+1; j++) {
+Int_t nx14_cut = E_R0_cut->GetNbinsX();
+Int_t ny14_cut = E_R0_cut->GetNbinsY();
+for (Int_t i=1; i<nx14_cut+1; i++) {
+for (Int_t j=1; j<ny14_cut+1; j++) {
     if (E_R0_cut->GetBinContent(i,j)<1) E_R0_cut->SetBinContent(i,j,0);}} 
-Int_t nx15 = E_R1_cut->GetNbinsX();
-Int_t ny15 = E_R1_cut->GetNbinsY();
-for (Int_t i=1; i<nx15+1; i++) {
-for (Int_t j=1; j<ny15+1; j++) {
+Int_t nx15_cut = E_R1_cut->GetNbinsX();
+Int_t ny15_cut = E_R1_cut->GetNbinsY();
+for (Int_t i=1; i<nx15_cut+1; i++) {
+for (Int_t j=1; j<ny15_cut+1; j++) {
 if (E_R1_cut->GetBinContent(i,j)<1) E_R1_cut->SetBinContent(i,j,0);}} 
     
 TCanvas * ER= new TCanvas("ER","ER",1000,1000,2000,2500);

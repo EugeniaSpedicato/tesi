@@ -55,7 +55,7 @@ void atree::Loop()
     TH2F  *Th_emu_cut = new TH2F("h2da1" , " Th e Vs. Th mu one cluster with cut",500,0,100,500,0,5);
     TProfile  *E_R = new TProfile("h2da1" , " R Vs. E_CAL one cluster",70,0,0.07125,0,160);
     TProfile  *E_R_cut = new TProfile("h2da1" , " R Vs. E_CAL one cluster with cut",70,0,0.07125,0,160);
-    E_R->SetErrorOption("s");
+    E_R->SetErrorOption("s"); // errore sulla distribuzione delle Y e non sulla media (quindi non prop. 1/sqrtN)
     E_R_cut->SetErrorOption("s");
     TH2F  *Th_E_el  = new TH2F("h2da" , " Th e Vs. E_CAL one cluster",500,0,100,500,0,160);
     TH2F  *Th_E_el_cut  = new TH2F("h2da" , " Th e Vs. E_CAL one cluster with cut",500,0,100,500,0,160);
@@ -664,7 +664,23 @@ Int_t nx15 = E_R1->GetNbinsX();
 Int_t ny15 = E_R1->GetNbinsY();
 for (Int_t i=1; i<nx15+1; i++) {
 for (Int_t j=1; j<ny15+1; j++) {
-    if (E_R1->GetBinContent(i,j)<1) E_R1->SetBinContent(i,j,0);}} 
+if (E_R1->GetBinContent(i,j)<1) E_R1->SetBinContent(i,j,0);}} 
+    
+Int_t nx13 = E_R_cut->GetNbinsX();
+Int_t ny13 = E_R_cut->GetNbinsY();
+for (Int_t i=1; i<nx13+1; i++) {
+for (Int_t j=1; j<ny13+1; j++) {
+    if (E_R_cut->GetBinContent(i,j)<1) E_R_cut->SetBinContent(i,j,0);}} 
+Int_t nx14 = E_R0_cut->GetNbinsX();
+Int_t ny14 = E_R0_cut->GetNbinsY();
+for (Int_t i=1; i<nx14+1; i++) {
+for (Int_t j=1; j<ny14+1; j++) {
+    if (E_R0_cut->GetBinContent(i,j)<1) E_R0_cut->SetBinContent(i,j,0);}} 
+Int_t nx15 = E_R1_cut->GetNbinsX();
+Int_t ny15 = E_R1_cut->GetNbinsY();
+for (Int_t i=1; i<nx15+1; i++) {
+for (Int_t j=1; j<ny15+1; j++) {
+if (E_R1_cut->GetBinContent(i,j)<1) E_R1_cut->SetBinContent(i,j,0);}} 
     
 TCanvas * ER= new TCanvas("ER","ER",1000,1000,2000,2500);
 

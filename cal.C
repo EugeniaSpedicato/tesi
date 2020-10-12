@@ -18,8 +18,8 @@ Int_t n_cell; //numero di cella in cui cade l'ELETTRONE
 Int_t n_cell_ph; //numero di cella in cui cade il fotone
 Int_t n_tot=0;
 
-Int_t same_cell=0;
-Int_t different_cell=0;
+Double_t same_cell=0;
+Double_t different_cell=0;
 Double_t E_CAL;
 Double_t Rm = 1.959 ; //raggio di Moliere in centimetri    
  
@@ -191,8 +191,8 @@ if (abs(photon_coox)<7.125 && abs(photon_cooy)<7.125 && photon_energy>0.2 && d_e
     if (photon_coox>4.275 && photon_coox<7.125 && photon_cooy<-4.275 && photon_cooy>-7.125) {n_cell_ph=25;}
  
 if (n_cell_ph==n_cell)
-{same_cell++;}
-else {different_cell++;}  // contatori double 
+{same_cell+=wgt_full;}
+else {different_cell+=wgt_full;}  // contatori double 
 } 
       
 /*if (abs(detKinBeamRot_cooXmu)<7.125 && abs(detKinBeamRot_cooYmu)<7.125 && d_e_mu>3*Rm)
@@ -257,8 +257,8 @@ else {different_cell++;}  // contatori double
     if (detKinBeamRot_cooXmu>4.275 && detKinBeamRot_cooXmu<7.125 && detKinBeamRot_cooYmu<-4.275 && detKinBeamRot_cooYmu>-7.125) {n_cell_ph=25;}
  
 if (n_cell_ph==n_cell)
-{same_cell++;}
-else {different_cell++;} 
+{same_cell+=wgt_full;}
+else {different_cell+=wgt_full;} 
 }*/
  
 }

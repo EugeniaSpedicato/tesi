@@ -22,35 +22,35 @@ void atree::Loop()
     Double_t Re; //posizione elettrone
     Double_t Rph; //posizione fotone
     //CONSIDERANDO I PESI
-    Double_t n_tot=0; //numero di elettroni nel calorimetro
-    Double_t n_two=0; //numero di elettroni che hanno una distanza maggiore di 2RM dal fotone, quindi 2 clusters
-    Double_t n_one=0; //casi rimanenti che formano 1 cluster
-    Double_t ratio=0; // ratio of two clusters over total, events to drop
+    Double_t n_tot=0.; //numero di elettroni nel calorimetro
+    Double_t n_two=0.; //numero di elettroni che hanno una distanza maggiore di 2RM dal fotone, quindi 2 clusters
+    Double_t n_one=0.; //casi rimanenti che formano 1 cluster
+    Double_t ratio=0.; // ratio of two clusters over total, events to drop
     
-    Double_t n_tot_cut=0; //numero di elettroni nel calorimetro
-    Double_t n_two_cut=0; //numero di elettroni che hanno una distanza maggiore di 2RM dal fotone, quindi 2 clusters
-    Double_t n_one_cut=0; //casi rimanenti che formano 1 cluster
-    Double_t ratio_cut=0; // ratio of two clusters over total, events to drop
+    Double_t n_tot_cut=0.; //numero di elettroni nel calorimetro
+    Double_t n_two_cut=0.; //numero di elettroni che hanno una distanza maggiore di 2RM dal fotone, quindi 2 clusters
+    Double_t n_one_cut=0.; //casi rimanenti che formano 1 cluster
+    Double_t ratio_cut=0.; // ratio of two clusters over total, events to drop
     
-    Double_t n_tot0=0; //numero di elettroni nel calorimetro
-    Double_t n_two0=0; //numero di elettroni che hanno una distanza maggiore di 2RM dal fotone, quindi 2 clusters
-    Double_t n_one0=0; //casi rimanenti che formano 1 cluster
-    Double_t ratio0=0; // ratio of two clusters over total, events to drop
+    Double_t n_tot0=0.; //numero di elettroni nel calorimetro
+    Double_t n_two0=0.; //numero di elettroni che hanno una distanza maggiore di 2RM dal fotone, quindi 2 clusters
+    Double_t n_one0=0.; //casi rimanenti che formano 1 cluster
+    Double_t ratio0=0.; // ratio of two clusters over total, events to drop
     
-    Double_t n_tot_cut0=0; //numero di elettroni nel calorimetro
-    Double_t n_two_cut0=0; //numero di elettroni che hanno una distanza maggiore di 2RM dal fotone, quindi 2 clusters
-    Double_t n_one_cut0=0; //casi rimanenti che formano 1 cluster
-    Double_t ratio_cut0=0;
+    Double_t n_tot_cut0=0.; //numero di elettroni nel calorimetro
+    Double_t n_two_cut0=0.; //numero di elettroni che hanno una distanza maggiore di 2RM dal fotone, quindi 2 clusters
+    Double_t n_one_cut0=0.; //casi rimanenti che formano 1 cluster
+    Double_t ratio_cut0=0.;
     
-    Double_t n_tot1=0; //numero di elettroni nel calorimetro
-    Double_t n_two1=0; //numero di elettroni che hanno una distanza maggiore di 2RM dal fotone, quindi 2 clusters
-    Double_t n_one1=0; //casi rimanenti che formano 1 cluster
-    Double_t ratio1=0; // ratio of two clusters over total, events to drop
+    Double_t n_tot1=0.; //numero di elettroni nel calorimetro
+    Double_t n_two1=0.; //numero di elettroni che hanno una distanza maggiore di 2RM dal fotone, quindi 2 clusters
+    Double_t n_one1=0.; //casi rimanenti che formano 1 cluster
+    Double_t ratio1=0.; // ratio of two clusters over total, events to drop
     
-    Double_t n_tot_cut1=0; //numero di elettroni nel calorimetro
-    Double_t n_two_cut1=0; //numero di elettroni che hanno una distanza maggiore di 2RM dal fotone, quindi 2 clusters
-    Double_t n_one_cut1=0; //casi rimanenti che formano 1 cluster
-    Double_t ratio_cut1=0;
+    Double_t n_tot_cut1=0.; //numero di elettroni nel calorimetro
+    Double_t n_two_cut1=0.; //numero di elettroni che hanno una distanza maggiore di 2RM dal fotone, quindi 2 clusters
+    Double_t n_one_cut1=0.; //casi rimanenti che formano 1 cluster
+    Double_t ratio_cut1=0.;
     
     TH2F  *Th_emu = new TH2F("h2da1" , " Th e Vs. Th mu one cluster",500,0,100,500,0,5);
     TH2F  *Th_emu_cut = new TH2F("h2da1" , " Th e Vs. Th mu one cluster with cut",500,0,100,500,0,5);

@@ -55,11 +55,11 @@ TF2 *fxy = new TF2("fxy","(1/(2*M_PI*[0]*[1]))*( Exp(((x-[2])*(x-[2])+(y-[3])*(y
        
     Double_t d_e_mu=sqrt( (detKinBeamRot_cooXe-detKinBeamRot_cooXmu)*(detKinBeamRot_cooXe-detKinBeamRot_cooXmu)+(detKinBeamRot_cooYe-detKinBeamRot_cooYmu)*(detKinBeamRot_cooYe-detKinBeamRot_cooYmu) ); 
        
-    fxy->SetParameter(0,Rm);
+    /*fxy->SetParameter(0,Rm);
     fxy->SetParameter(1,Rm);
     fxy->SetParameter(2,detKinBeamRot_cooXe);
     fxy->SetParameter(3,detKinBeamRot_cooYe);
-       
+     */  
        
        
 //if (E_CAL>1){

@@ -205,5 +205,10 @@ if (abs(photon_coox)<7.125 && abs(photon_cooy)<7.125 && photon_energy>0.2 && d_e
 } 
 }
 }
-    
+
+        fxy->SetParameter(0,Rm);
+    fxy->SetParameter(1,Rm);
+    fxy->SetParameter(2,1);
+    fxy->SetParameter(3,3);
+          fxy->Draw(); 
 }

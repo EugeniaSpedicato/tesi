@@ -615,7 +615,7 @@ Th_E_el_cut0->SetMarkerColor(kOrange);
 Th_E_el0->Draw("COLZ");  
 th_en0->cd(2);
 Th_E_el_cut0->Draw("COLZ");  
-th_en0->SaveAs("theta-energy-electron0.png");  */
+th_en0->SaveAs("theta-energy-electron0.png");  
     
 TCanvas * ee= new TCanvas("ee","ee",1000,100,2500,2000);
 ee->Divide(2,2);
@@ -649,7 +649,7 @@ gPad->SetLogx();
 
 ee->SaveAs("ECALen.png"); 
    
- /*   
+ */   
 Int_t nx13 = E_R->GetNbinsX();
 Int_t ny13 = E_R->GetNbinsY();
 for (Int_t i=1; i<nx13+1; i++) {
@@ -705,5 +705,5 @@ TCanvas * ER= new TCanvas("ER","ER",1000,1000,2000,2500);
     E_R1_cut->Draw();
 
     
-ER->SaveAs("ER.png");*/ 
+ER->SaveAs("ER.png");
 }

@@ -21,6 +21,7 @@ void atree::Loop()
     Double_t d_e_ph; //distanza elettrone-fotone
     Double_t Re; //posizione elettrone
     Double_t Rph; //posizione fotone
+    //CONSIDERANDO I PESI
     Double_t n_tot=0; //numero di elettroni nel calorimetro
     Double_t n_two=0; //numero di elettroni che hanno una distanza maggiore di 2RM dal fotone, quindi 2 clusters
     Double_t n_one=0; //casi rimanenti che formano 1 cluster
@@ -62,10 +63,10 @@ void atree::Loop()
     
     TH1F* DR=new TH1F("DR", "Distanza elettrone-fotone", 70,0,0.14);
     TH1F* DR_cut=new TH1F("DR", "Distanza elettrone-fotone", 70,0,0.14);
-    TH1F* E_CAL1=new TH1F("DR", "Energia calorimetro 1 cluster", 500,0,160);
-    TH1F* E_CAL_cut1=new TH1F("DR", "Energia calorimetro 1 cluster con taglio", 500,0,160);
-    TH1F* E_CAL2=new TH1F("DR", "Energia calorimetro 2 clusters", 500,0,160);
-    TH1F* E_CAL_cut2=new TH1F("DR", "Energia calorimetro 2 clusters con taglio", 500,0,160);
+    TH1F* E_CAL1=new TH1F("DR", "Energia calorimetro 1 cluster", 500,0.2,160);
+    TH1F* E_CAL_cut1=new TH1F("DR", "Energia calorimetro 1 cluster con taglio", 500,0.2,160);
+    TH1F* E_CAL2=new TH1F("DR", "Energia calorimetro 2 clusters", 500,0.2,160);
+    TH1F* E_CAL_cut2=new TH1F("DR", "Energia calorimetro 2 clusters con taglio", 500,0.2,160);
     
     
     
@@ -101,7 +102,7 @@ void atree::Loop()
 
 
     Long64_t nbytes = 0, nb = 0;
-   for (Long64_t jentry=0; jentry<nentries;jentry++) {
+   for (Long64_t jentry=0; jentry<nentries;jentry+=wgt_full) {
       Long64_t ientry = LoadTree(jentry);
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
@@ -125,7 +126,7 @@ void atree::Loop()
        
     if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
     {
-        n_tot_cut++;
+        n_tot_cut+=wgt_full;
 
 // SE IL FOTONE E' PRODOTTO DENTRO AL CALORIMETRO
            if (abs(photon_coox)<0.07125 && abs(photon_cooy)<0.07125)
@@ -135,7 +136,7 @@ void atree::Loop()
 // SE IL FOTONE E' NEL CALORIMETRO AD UNA d=2RM DALL'ELETTRONE             
                 if (d_e_ph>2*Rm)
                 {
-                    if (photon_energy>0.2) {n_two_cut++; 
+                    if (photon_energy>0.2) {n_two_cut+=wgt_full; 
                                             DR_cut->Fill(d_e_ph,wgt_full);
                                             E_CAL_cut2->Fill(E_CAL,wgt_full);
                                             E_R_cut->Fill(Re,detKinBeamRot_Ee,wgt_full);
@@ -144,7 +145,7 @@ void atree::Loop()
                                            }
                     }
 // SE E' NEL CALORIMETRO MA AD UNA d<2RM
-            else { if (photon_energy>0.2) { n_one_cut++;
+            else { if (photon_energy>0.2) { n_one_cut+=wgt_full;
                                             Th_emu_cut->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
                                             DR_cut->Fill(d_e_ph,wgt_full);
                                             Th_E_el_cut->Fill(detKinBeamRot_the,E_CAL,wgt_full);
@@ -155,7 +156,7 @@ void atree::Loop()
                  }
            } 
 // SE E' NON E' PRODOTTO O NON E' NEL CALORIMETRO        
-        else {n_one_cut++;
+        else {n_one_cut+=wgt_full;
             Th_emu_cut->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
             Th_E_el_cut->Fill(detKinBeamRot_the,E_CAL,wgt_full);
             E_CAL_cut1->Fill(E_CAL,wgt_full);
@@ -172,7 +173,7 @@ void atree::Loop()
        
 if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
     {
-        n_tot++;
+        n_tot+=wgt_full;
 
 // SE IL FOTONE E' PRODOTTO DENTRO AL CALORIMETRO
            if (abs(photon_coox)<0.07125 && abs(photon_cooy)<0.07125)
@@ -182,7 +183,7 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
 // SE IL FOTONE E' NEL CALORIMETRO AD UNA d=2RM DALL'ELETTRONE             
                 if (d_e_ph>2*Rm )
                 {
-                    if (photon_energy>0.2) {n_two++; 
+                    if (photon_energy>0.2) {n_two+=wgt_full; 
                                             
                                             DR->Fill(d_e_ph,wgt_full);
                                             E_R->Fill(Re,detKinBeamRot_Ee,wgt_full);
@@ -191,7 +192,7 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
                                            }
                     }
 // SE E' NEL CALORIMETRO MA AD UNA d<2RM
-            else { if (photon_energy>0.2) { n_one++;
+            else { if (photon_energy>0.2) { n_one+=wgt_full;
                                             Th_emu->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
                                             DR->Fill(d_e_ph,wgt_full);
                                             E_R->Fill(Re,E_CAL,wgt_full);
@@ -201,7 +202,7 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
                  }
            } 
 // SE gamma NON E' PRODOTTO O NON E' NEL CALORIMETRO        
-        else {n_one++;
+        else {n_one+=wgt_full;
             Th_emu->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
             Th_E_el->Fill(detKinBeamRot_the,E_CAL,wgt_full);
             E_CAL1->Fill(E_CAL,wgt_full);
@@ -221,7 +222,7 @@ if (detKinBeamRot_tar==0){
        
     if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
     {
-        n_tot_cut0++;
+        n_tot_cut0+=wgt_full;
 
 // SE IL FOTONE E' PRODOTTO DENTRO AL CALORIMETRO
            if (abs(photon_coox)<0.07125 && abs(photon_cooy)<0.07125)
@@ -231,14 +232,14 @@ if (detKinBeamRot_tar==0){
 // SE IL FOTONE E' NEL CALORIMETRO AD UNA d=2RM DALL'ELETTRONE             
                 if (d_e_ph>2*Rm)
                 {
-                    if (photon_energy>0.2) {n_two_cut0++; 
+                    if (photon_energy>0.2) {n_two_cut0+=wgt_full; 
                                             DR_cut0->Fill(d_e_ph,wgt_full);
                                             E_R0_cut->Fill(Re,detKinBeamRot_Ee,wgt_full);
                                             E_R0_cut->Fill(Rph,photon_energy,wgt_full);
                                            }
                     }
 // SE E' NEL CALORIMETRO MA AD UNA d<2RM
-            else { if (photon_energy>0.2) { n_one_cut0++;
+            else { if (photon_energy>0.2) { n_one_cut0+=wgt_full;
                                             Th_emu_cut0->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
                                             DR_cut0->Fill(d_e_ph,wgt_full);
                                             Th_E_el_cut0->Fill(detKinBeamRot_the,E_CAL,wgt_full);
@@ -247,7 +248,7 @@ if (detKinBeamRot_tar==0){
                  }
            } 
 // SE E' NON E' PRODOTTO O NON E' NEL CALORIMETRO        
-        else {n_one_cut0++;
+        else {n_one_cut0+=wgt_full;
             Th_emu_cut0->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
             Th_E_el_cut0->Fill(detKinBeamRot_the,E_CAL,wgt_full);
               E_R0_cut->Fill(Re,E_CAL,wgt_full);
@@ -261,7 +262,7 @@ if (detKinBeamRot_tar==0){
        
 if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
     {
-        n_tot0++;
+        n_tot0+=wgt_full;
 
 // SE IL FOTONE E' PRODOTTO DENTRO AL CALORIMETRO
            if (abs(photon_coox)<0.07125 && abs(photon_cooy)<0.07125)
@@ -271,14 +272,14 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
 // SE IL FOTONE E' NEL CALORIMETRO AD UNA d=2RM DALL'ELETTRONE             
                 if (d_e_ph>2*Rm )
                 {
-                    if (photon_energy>0.2) {n_two0++; 
+                    if (photon_energy>0.2) {n_two0+=wgt_full; 
                                             DR0->Fill(d_e_ph,wgt_full);                                  
                                             E_R0->Fill(Re,detKinBeamRot_Ee,wgt_full);
                                             E_R0->Fill(Rph,photon_energy,wgt_full);
                                            }
                     }
 // SE E' NEL CALORIMETRO MA AD UNA d<2RM
-            else { if (photon_energy>0.2) { n_one0++;
+            else { if (photon_energy>0.2) { n_one0+=wgt_full;
                                             Th_emu0->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
                                             DR0->Fill(d_e_ph,wgt_full);
                                             E_R0->Fill(Re,E_CAL,wgt_full);
@@ -287,7 +288,7 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
                  }
            } 
 // SE E' NON E' PRODOTTO O NON E' NEL CALORIMETRO        
-        else {n_one0++;
+        else {n_one0+=wgt_full;
             Th_emu0->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
             Th_E_el0->Fill(detKinBeamRot_the,E_CAL,wgt_full);
             E_R0->Fill(Re,E_CAL,wgt_full);
@@ -303,7 +304,7 @@ if (detKinBeamRot_tar==1){
        
     if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
     {
-        n_tot_cut1++;
+        n_tot_cut1+=wgt_full;
 
 // SE IL FOTONE E' PRODOTTO DENTRO AL CALORIMETRO
            if (abs(photon_coox)<0.07125 && abs(photon_cooy)<0.07125)
@@ -313,14 +314,14 @@ if (detKinBeamRot_tar==1){
 // SE IL FOTONE E' NEL CALORIMETRO AD UNA d=2RM DALL'ELETTRONE             
                 if (d_e_ph>2*Rm)
                 {
-                    if (photon_energy>0.2) {n_two_cut1++; 
+                    if (photon_energy>0.2) {n_two_cut1+=wgt_full; 
                                             DR_cut1->Fill(d_e_ph,wgt_full);
                                             E_R1_cut->Fill(Re,detKinBeamRot_Ee,wgt_full);
                                             E_R1_cut->Fill(Rph,photon_energy,wgt_full);
                                            }
                     }
 // SE E' NEL CALORIMETRO MA AD UNA d<2RM
-            else { if (photon_energy>0.2) { n_one_cut1++;
+            else { if (photon_energy>0.2) { n_one_cut1+=wgt_full;
                                             Th_emu_cut1->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
                                             DR_cut1->Fill(d_e_ph,wgt_full);
                                             Th_E_el_cut1->Fill(detKinBeamRot_the,E_CAL,wgt_full);
@@ -329,7 +330,7 @@ if (detKinBeamRot_tar==1){
                  }
            } 
 // SE E' NON E' PRODOTTO O NON E' NEL CALORIMETRO        
-        else {n_one_cut1++;
+        else {n_one_cut1+=wgt_full;
             Th_emu_cut1->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
             Th_E_el_cut1->Fill(detKinBeamRot_the,E_CAL,wgt_full);
               E_R1_cut->Fill(Re,E_CAL,wgt_full);
@@ -343,7 +344,7 @@ if (detKinBeamRot_tar==1){
        
 if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
     {
-        n_tot1++;
+        n_tot1+=wgt_full;
 
 // SE IL FOTONE E' PRODOTTO DENTRO AL CALORIMETRO
            if (abs(photon_coox)<0.07125 && abs(photon_cooy)<0.07125)
@@ -353,14 +354,14 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
 // SE IL FOTONE E' NEL CALORIMETRO AD UNA d=2RM DALL'ELETTRONE             
                 if (d_e_ph>2*Rm )
                 {
-                    if (photon_energy>0.2) {n_two1++; 
+                    if (photon_energy>0.2) {n_two1+=wgt_full; 
                                             DR1->Fill(d_e_ph,wgt_full);E_R0->Fill(Re,E_CAL,wgt_full);             E_R1->Fill(Re,detKinBeamRot_Ee,wgt_full);
                                             E_R1->Fill(Rph,photon_energy,wgt_full);
                                     
                                            }
                     }
 // SE E' NEL CALORIMETRO MA AD UNA d<2RM
-            else { if (photon_energy>0.2) { n_one1++;
+            else { if (photon_energy>0.2) { n_one1+=wgt_full;
                                             Th_emu1->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
                                             DR1->Fill(d_e_ph,wgt_full);
                                             E_R1->Fill(Re,E_CAL,wgt_full);
@@ -369,7 +370,7 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
                  }
            } 
 // SE E' NON E' PRODOTTO O NON E' NEL CALORIMETRO        
-        else {n_one1++;
+        else {n_one1+=wgt_full;
             Th_emu1->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
             Th_E_el1->Fill(detKinBeamRot_the,E_CAL,wgt_full);
             E_R1->Fill(Re,E_CAL,wgt_full);
@@ -423,13 +424,13 @@ cout << endl;
    
 Int_t nx1 = Th_emu->GetNbinsX();
 Int_t ny1 = Th_emu->GetNbinsY();
-for (Int_t i=1; i<nx1+1; i++) {
-for (Int_t j=1; j<ny1+1; j++) {
+for (Int_t i=1; i<nx1+1; i+=wgt_full) {
+for (Int_t j=1; j<ny1+1; j+=wgt_full) {
     if (Th_emu->GetBinContent(i,j)<1) Th_emu->SetBinContent(i,j,0);}}  
 Int_t nx2 = Th_emu_cut->GetNbinsX();
 Int_t ny2 = Th_emu_cut->GetNbinsY();
-for (Int_t i=1; i<nx2+1; i++) {
-for (Int_t j=1; j<ny2+1; j++) {
+for (Int_t i=1; i<nx2+1; i+=wgt_full) {
+for (Int_t j=1; j<ny2+1; j+=wgt_full) {
     if (Th_emu_cut->GetBinContent(i,j)<1) Th_emu_cut->SetBinContent(i,j,0);}}  
     
     
@@ -461,13 +462,13 @@ tmue->SaveAs("Th_emu.png");
     
 Int_t nx3 = Th_emu_cut1->GetNbinsX();
 Int_t ny3 = Th_emu_cut1->GetNbinsY();
-for (Int_t i=1; i<nx3+1; i++) {
-for (Int_t j=1; j<ny3+1; j++) {
+for (Int_t i=1; i<nx3+1; i+=wgt_full) {
+for (Int_t j=1; j<ny3+1; j+=wgt_full) {
     if (Th_emu_cut1->GetBinContent(i,j)<1) Th_emu_cut1->SetBinContent(i,j,0);}}      
 Int_t nx4 = Th_emu1->GetNbinsX();
 Int_t ny4 = Th_emu1->GetNbinsY();
-for (Int_t i=1; i<nx4+1; i++) {
-for (Int_t j=1; j<ny4+1; j++) {
+for (Int_t i=1; i<nx4+1; i+=wgt_full) {
+for (Int_t j=1; j<ny4+1; j+=wgt_full) {
     if (Th_emu1->GetBinContent(i,j)<1) Th_emu1->SetBinContent(i,j,0);}}       
     
 TCanvas * tmue1= new TCanvas("tmue1","tmue1",1000,100,2500,2000); 
@@ -487,13 +488,13 @@ tmue1->SaveAs("Th_emu1.png");
     
 Int_t nx5 = Th_emu_cut0->GetNbinsX();
 Int_t ny5 = Th_emu_cut0->GetNbinsY();
-for (Int_t i=1; i<nx5+1; i++) {
-for (Int_t j=1; j<ny5+1; j++) {
+for (Int_t i=1; i<nx5+1; i+=wgt_full) {
+for (Int_t j=1; j<ny5+1; j+=wgt_full) {
     if (Th_emu_cut0->GetBinContent(i,j)<1) Th_emu_cut0->SetBinContent(i,j,0);}} 
 Int_t nx6 = Th_emu0->GetNbinsX();
 Int_t ny6 = Th_emu0->GetNbinsY();
-for (Int_t i=1; i<nx6+1; i++) {
-for (Int_t j=1; j<ny6+1; j++) {
+for (Int_t i=1; i<nx6+1; i+=wgt_full) {
+for (Int_t j=1; j<ny6+1; j+=wgt_full) {
     if (Th_emu0->GetBinContent(i,j)<1) Th_emu0->SetBinContent(i,j,0);}} 
     
 TCanvas * tmue0= new TCanvas("tmue0","tmue0",1000,100,2500,2000); 
@@ -556,13 +557,13 @@ a->SaveAs("dist01tot.png");
 
 Int_t nx7 = Th_E_el->GetNbinsX();
 Int_t ny7 = Th_E_el->GetNbinsY();
-for (Int_t i=1; i<nx7+1; i++) {
-for (Int_t j=1; j<ny7+1; j++) {
+for (Int_t i=1; i<nx7+1; i+=wgt_full) {
+for (Int_t j=1; j<ny7+1; j+=wgt_full) {
     if (Th_E_el->GetBinContent(i,j)<1) Th_E_el->SetBinContent(i,j,0);}} 
 Int_t nx8 = Th_E_el_cut->GetNbinsX();
 Int_t ny8 = Th_E_el_cut->GetNbinsY();
-for (Int_t i=1; i<nx8+1; i++) {
-for (Int_t j=1; j<ny8+1; j++) {
+for (Int_t i=1; i<nx8+1; i+=wgt_full) {
+for (Int_t j=1; j<ny8+1; j+=wgt_full) {
     if (Th_E_el_cut->GetBinContent(i,j)<1) Th_E_el_cut->SetBinContent(i,j,0);}}     
     
 TCanvas * th_en= new TCanvas("th_en","th_en",1000,100,2500,2000); 
@@ -577,13 +578,13 @@ th_en->SaveAs("theta-energy-electron.png");
     
 Int_t nx9 = Th_E_el1->GetNbinsX();
 Int_t ny9 = Th_E_el1->GetNbinsY();
-for (Int_t i=1; i<nx9+1; i++) {
-for (Int_t j=1; j<ny9+1; j++) {
+for (Int_t i=1; i<nx9+1; i+=wgt_full) {
+for (Int_t j=1; j<ny9+1; j+=wgt_full) {
     if (Th_E_el1->GetBinContent(i,j)<1) Th_E_el1->SetBinContent(i,j,0);}}  
 Int_t nx10 = Th_E_el_cut1->GetNbinsX();
 Int_t ny10 = Th_E_el_cut1->GetNbinsY();
-for (Int_t i=1; i<nx10+1; i++) {
-for (Int_t j=1; j<ny10+1; j++) {
+for (Int_t i=1; i<nx10+1; i+=wgt_full) {
+for (Int_t j=1; j<ny10+1; j+=wgt_full) {
     if (Th_E_el_cut1->GetBinContent(i,j)<1) Th_E_el_cut1->SetBinContent(i,j,0);}}  
 
 TCanvas * th_en1= new TCanvas("th_en1","th_en1",1000,100,2500,2000); 
@@ -598,13 +599,13 @@ th_en1->SaveAs("theta-energy-electron1.png");
     
 Int_t nx11 = Th_E_el0->GetNbinsX();
 Int_t ny11 = Th_E_el0->GetNbinsY();
-for (Int_t i=1; i<nx11+1; i++) {
-for (Int_t j=1; j<ny11+1; j++) {
+for (Int_t i=1; i<nx11+1; i+=wgt_full) {
+for (Int_t j=1; j<ny11+1; j+=wgt_full) {
     if (Th_E_el0->GetBinContent(i,j)<1) Th_E_el0->SetBinContent(i,j,0);}} 
 Int_t nx12 = Th_E_el_cut0->GetNbinsX();
 Int_t ny12 = Th_E_el_cut0->GetNbinsY();
-for (Int_t i=1; i<nx12+1; i++) {
-for (Int_t j=1; j<ny12+1; j++) {
+for (Int_t i=1; i<nx12+1; i+=wgt_full) {
+for (Int_t j=1; j<ny12+1; j+=wgt_full) {
     if (Th_E_el_cut0->GetBinContent(i,j)<1) Th_E_el_cut0->SetBinContent(i,j,0);}} 
     
 TCanvas * th_en0= new TCanvas("th_en0","th_en0",1000,100,2500,2000); 
@@ -652,34 +653,34 @@ ee->SaveAs("ECALen.png");
  */   
 Int_t nx13 = E_R->GetNbinsX();
 Int_t ny13 = E_R->GetNbinsY();
-for (Int_t i=1; i<nx13+1; i++) {
-for (Int_t j=1; j<ny13+1; j++) {
+for (Int_t i=1; i<nx13+1; i+=wgt_full) {
+for (Int_t j=1; j<ny13+1; j+=wgt_full) {
     if (E_R->GetBinContent(i,j)<1) E_R->SetBinContent(i,j,0);}} 
 Int_t nx14 = E_R0->GetNbinsX();
 Int_t ny14 = E_R0->GetNbinsY();
-for (Int_t i=1; i<nx14+1; i++) {
-for (Int_t j=1; j<ny14+1; j++) {
+for (Int_t i=1; i<nx14+1; i+=wgt_full) {
+for (Int_t j=1; j<ny14+1; j+=wgt_full) {
     if (E_R0->GetBinContent(i,j)<1) E_R0->SetBinContent(i,j,0);}} 
 Int_t nx15 = E_R1->GetNbinsX();
 Int_t ny15 = E_R1->GetNbinsY();
-for (Int_t i=1; i<nx15+1; i++) {
-for (Int_t j=1; j<ny15+1; j++) {
+for (Int_t i=1; i<nx15+1; i+=wgt_full) {
+for (Int_t j=1; j<ny15+1; j+=wgt_full) {
 if (E_R1->GetBinContent(i,j)<1) E_R1->SetBinContent(i,j,0);}} 
     
 Int_t nx13_cut = E_R_cut->GetNbinsX();
 Int_t ny13_cut = E_R_cut->GetNbinsY();
-for (Int_t i=1; i<nx13_cut+1; i++) {
-for (Int_t j=1; j<ny13_cut+1; j++) {
+for (Int_t i=1; i<nx13_cut+1; i+=wgt_full) {
+for (Int_t j=1; j<ny13_cut+1; j+=wgt_full) {
     if (E_R_cut->GetBinContent(i,j)<1) E_R_cut->SetBinContent(i,j,0);}} 
 Int_t nx14_cut = E_R0_cut->GetNbinsX();
 Int_t ny14_cut = E_R0_cut->GetNbinsY();
-for (Int_t i=1; i<nx14_cut+1; i++) {
-for (Int_t j=1; j<ny14_cut+1; j++) {
+for (Int_t i=1; i<nx14_cut+1; i+=wgt_full) {
+for (Int_t j=1; j<ny14_cut+1; j+=wgt_full) {
     if (E_R0_cut->GetBinContent(i,j)<1) E_R0_cut->SetBinContent(i,j,0);}} 
 Int_t nx15_cut = E_R1_cut->GetNbinsX();
 Int_t ny15_cut = E_R1_cut->GetNbinsY();
-for (Int_t i=1; i<nx15_cut+1; i++) {
-for (Int_t j=1; j<ny15_cut+1; j++) {
+for (Int_t i=1; i<nx15_cut+1; i+=wgt_full) {
+for (Int_t j=1; j<ny15_cut+1; j+=wgt_full) {
 if (E_R1_cut->GetBinContent(i,j)<1) E_R1_cut->SetBinContent(i,j,0);}} 
     
 TCanvas * ER= new TCanvas("ER","ER",1000,1000,2000,2500);

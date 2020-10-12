@@ -192,7 +192,7 @@ if (abs(photon_coox)<7.125 && abs(photon_cooy)<7.125 && photon_energy>0.2 && d_e
  
 if (n_cell_ph==n_cell)
 {same_cell++;}
-else {different_cell++;} 
+else {different_cell++;}  // contatori double 
 } 
       
 /*if (abs(detKinBeamRot_cooXmu)<7.125 && abs(detKinBeamRot_cooYmu)<7.125 && d_e_mu>3*Rm)

@@ -19,9 +19,9 @@ TCanvas * ER= new TCanvas("ER","ER",1000,1000,2000,2500);
 
     fxy->SetParameter(0,Rm);
     fxy->SetParameter(1,Rm);
-    fxy->SetParameter(2,1);
+    fxy->SetParameter(2,-1);
     fxy->SetParameter(3,3);
-    fxy->Draw(); 
+    fxy->Draw("COLZ"); 
     
     ER->SaveAs("functionE.png");
 }

@@ -135,7 +135,7 @@ void atree::Loop()
                                             E_CAL_cut2->Fill(E_CAL,wgt_full);
                                             E_R_cut->Fill(Re,detKinBeamRot_Ee,wgt_full);
                                             E_R_cut->Fill(Rph,photon_energy,wgt_full);
-                                            E_CAL_cut2->Fill(E_CAL,wgt_full);
+                                        
                                            }
                     }
 // SE E' NEL CALORIMETRO MA AD UNA d<2RM
@@ -144,8 +144,8 @@ void atree::Loop()
                                             DR_cut->Fill(d_e_ph,wgt_full);
                                             Th_E_el_cut->Fill(detKinBeamRot_the,E_CAL,wgt_full);
                                             E_CAL_cut1->Fill(E_CAL,wgt_full);
-                                           E_R_cut->Fill(Re,E_CAL,wgt_full);
-                                           E_CAL_cut1->Fill(E_CAL,wgt_full);
+                                            E_R_cut->Fill(Re,E_CAL,wgt_full);
+                                        
                                           }
                  }
            } 
@@ -155,7 +155,7 @@ void atree::Loop()
             Th_E_el_cut->Fill(detKinBeamRot_the,E_CAL,wgt_full);
             E_CAL_cut1->Fill(E_CAL,wgt_full);
             E_R_cut->Fill(Re,E_CAL,wgt_full);
-            E_CAL_cut1->Fill(E_CAL,wgt_full);
+            
 }
 
     
@@ -237,7 +237,7 @@ if (detKinBeamRot_tar==0){
                                             Th_emu_cut0->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
                                             DR_cut0->Fill(d_e_ph,wgt_full);
                                             Th_E_el_cut0->Fill(detKinBeamRot_the,E_CAL,wgt_full);
-                                           E_R0_cut->Fill(Re,E_CAL,wgt_full);
+                                            E_R0_cut->Fill(Re,E_CAL,wgt_full);
                                           }
                  }
            } 
@@ -319,7 +319,7 @@ if (detKinBeamRot_tar==1){
                                             Th_emu_cut1->Fill(detKinBeamRot_the,detKinBeamRot_thmu,wgt_full);
                                             DR_cut1->Fill(d_e_ph,wgt_full);
                                             Th_E_el_cut1->Fill(detKinBeamRot_the,E_CAL,wgt_full);
-                                           E_R1_cut->Fill(Re,E_CAL,wgt_full);
+                                            E_R1_cut->Fill(Re,E_CAL,wgt_full);
                                           }
                  }
            } 

@@ -23,7 +23,7 @@ Double_t different_cell=0;
 Double_t E_CAL;
 Double_t Rm = 1.959 ; //raggio di Moliere in centimetri 
     
-TF2 *fxy = new TF2("(1/(2*M_PI*[0]*[1]))*( Exp(((x-[2])*(x-[2])+(y-[3])*(y-[3]))/(2*[0]*[1])",-7.125,7.125,-7.125,7.125 );
+TF2 *fxy = new TF2("fxy","(1/(2*M_PI*[0]*[1]))*( Exp(((x-[2])*(x-[2])+(y-[3])*(y-[3]))/(2*[0]*[1])",-7.125,7.125,-7.125,7.125 );
  
 
     
@@ -204,4 +204,6 @@ if (abs(photon_coox)<7.125 && abs(photon_cooy)<7.125 && photon_energy>0.2 && d_e
 
 } 
 }
+}
+    
 }

@@ -21,7 +21,7 @@ TCanvas * ER= new TCanvas("ER","ER",1000,1000,2000,2500);
     fxy->SetParameter(1,Rm);
     fxy->SetParameter(2,0);
     fxy->SetParameter(3,0);
-    fxy->Draw("surf1z"); 
+    fxy->Draw(); 
     
     ER->SaveAs("functionE.png");
 }

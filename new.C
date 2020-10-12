@@ -81,7 +81,7 @@ void atree::Loop()
     TH2F  *Th_emu1 = new TH2F("h2da1" , " Th e Vs. Th mu one cluster TAR 1",500,0,100,500,0,5);
     TH2F  *Th_emu_cut1 = new TH2F("h2da1" , " Th e Vs. Th mu one cluster with cut TAR 1",500,0,100,500,0,5);
     TProfile  *E_R1 = new TProfile("h2da1" , " R Vs. E_CAL one cluster TAR 1",70,0,0.07125,0,160);
-    TProfile  *E_R1_cut = new TProfile("h2da1" , " R Vs. E_CAL one cluster with cut TAR 0",70,0,0.07125,0,160);
+    TProfile  *E_R1_cut = new TProfile("h2da1" , " R Vs. E_CAL one cluster with cut TAR 1",70,0,0.07125,0,160);
     TH2F  *Th_E_el1  = new TH2F("h2da" , " Th e Vs. E_CAL one cluster TAR 1",500,0,100,500,0,160);
     TH2F  *Th_E_el_cut1  = new TH2F("h2da" , " Th e Vs. E_CAL one cluster with cut TAR 1",500,0,100,500,0,160);
     
@@ -135,6 +135,7 @@ void atree::Loop()
                                             E_CAL_cut2->Fill(E_CAL,wgt_full);
                                             E_R_cut->Fill(Re,detKinBeamRot_Ee,wgt_full);
                                             E_R_cut->Fill(Rph,photon_energy,wgt_full);
+                                            E_CAL_cut2->Fill(E_CAL,wgt_full);
                                            }
                     }
 // SE E' NEL CALORIMETRO MA AD UNA d<2RM
@@ -144,6 +145,7 @@ void atree::Loop()
                                             Th_E_el_cut->Fill(detKinBeamRot_the,E_CAL,wgt_full);
                                             E_CAL_cut1->Fill(E_CAL,wgt_full);
                                            E_R_cut->Fill(Re,E_CAL,wgt_full);
+                                           E_CAL_cut1->Fill(E_CAL,wgt_full);
                                           }
                  }
            } 
@@ -153,6 +155,7 @@ void atree::Loop()
             Th_E_el_cut->Fill(detKinBeamRot_the,E_CAL,wgt_full);
             E_CAL_cut1->Fill(E_CAL,wgt_full);
             E_R_cut->Fill(Re,E_CAL,wgt_full);
+            E_CAL_cut1->Fill(E_CAL,wgt_full);
 }
 
     
@@ -607,15 +610,21 @@ Th_E_el_cut0->SetMarkerColor(kOrange);
 Th_E_el0->Draw("COLZ");  
 th_en0->cd(2);
 Th_E_el_cut0->Draw("COLZ");  
-th_en0->SaveAs("theta-energy-electron0.png");  
+th_en0->SaveAs("theta-energy-electron0.png");  */
     
 TCanvas * ee= new TCanvas("ee","ee",1000,100,2500,2000);
-ee->Divide(2,1);
+ee->Divide(2,2);
 ee->cd(1);
-E_CAL1->SetLineColor(32);    
+E_CAL1->SetLineColor(32); 
+E_CAL_cut1->SetLineColor(32);    
+    
 E_CAL2->SetLineColor(46);
+E_CAL_cut2->SetLineColor(46);
+    
 E_CAL1->SetLineWidth(7);
 E_CAL2->SetLineWidth(7);
+E_CAL_cut1->SetLineWidth(7);
+E_CAL_cut2->SetLineWidth(7);
 E_CAL1->GetXaxis()->SetTitle("E [GeV] (log scale)");   
 E_CAL1->Draw("HIST");
 gPad->SetLogx();
@@ -623,10 +632,19 @@ ee->cd(2);
 E_CAL2->GetXaxis()->SetTitle("E [GeV] (log scale)");
 E_CAL2->Draw("HIST");
 gPad->SetLogx();
+ 
+ee->cd(3);
+E_CAL_cut1->GetXaxis()->SetTitle("E [GeV] (log scale)");   
+E_CAL_cut1->Draw("HIST");
+gPad->SetLogx();
+ee->cd(4);
+E_CAL_cut2->GetXaxis()->SetTitle("E [GeV] (log scale)");
+E_CAL_cut2->Draw("HIST");
+gPad->SetLogx();
 
 ee->SaveAs("ECALen.png"); 
-*/    
-    
+   
+ /*   
 Int_t nx13 = E_R->GetNbinsX();
 Int_t ny13 = E_R->GetNbinsY();
 for (Int_t i=1; i<nx13+1; i++) {
@@ -682,5 +700,5 @@ TCanvas * ER= new TCanvas("ER","ER",1000,1000,2000,2500);
     E_R1_cut->Draw();
 
     
-ER->SaveAs("ER.png");
+ER->SaveAs("ER.png");*/ 
 }

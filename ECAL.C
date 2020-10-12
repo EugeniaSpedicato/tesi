@@ -9,7 +9,7 @@ using namespace std;
 #include <TStyle.h>
 #include <TCanvas.h>
 
-void Loop()
+void ECAL()
 {
     TH1::SetDefaultSumw2();
     
@@ -22,7 +22,7 @@ Double_t different_cell=0;
 Double_t E_CAL;
 Double_t Rm = 1.959 ; //raggio di Moliere in centimetri 
     
-TF2 *fxy = new TF2("fxy","(1/(2*Pi()*[0]*[1]))*(Exp(((x-[2])*(x-[2])+(y-[3])*(y-[3]))/(2*[0]*[1])",-7.125,7.125,-7.125,7.125 );
+TF2 *fxy = new TF2("fxy","(1/(2*Pi()*[0]*[1]))*(Exp(((x-[2])*(x-[2])+(y-[3])*(y-[3]))/(2*[0]*[1])))",-7.125,7.125,-7.125,7.125 );
  
 
     fxy->SetParameter(0,Rm);

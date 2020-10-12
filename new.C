@@ -55,8 +55,8 @@ void atree::Loop()
     TH2F  *Th_emu_cut = new TH2F("h2da1" , " Th e Vs. Th mu one cluster with cut",500,0,100,500,0,5);
     TProfile  *E_R = new TProfile("h2da1" , " R Vs. E_CAL one cluster",70,0,0.07125,0,160);
     TProfile  *E_R_cut = new TProfile("h2da1" , " R Vs. E_CAL one cluster with cut",70,0,0.07125,0,160);
-    E_R->SetErrorOption(*'s');
-    E_R_cut->SetErrorOption(*'s');
+    E_R->SetErrorOption("s");
+    E_R_cut->SetErrorOption("s");
     TH2F  *Th_E_el  = new TH2F("h2da" , " Th e Vs. E_CAL one cluster",500,0,100,500,0,160);
     TH2F  *Th_E_el_cut  = new TH2F("h2da" , " Th e Vs. E_CAL one cluster with cut",500,0,100,500,0,160);
     
@@ -73,8 +73,8 @@ void atree::Loop()
     TH2F  *Th_emu_cut0 = new TH2F("h2da1" , " Th e Vs. Th mu one cluster with cut TAR 0",500,0,100,500,0,5);
     TProfile  *E_R0 = new TProfile("h2da1" , " R Vs. E_CAL one cluster TAR 0",70,0,0.07125,0,160);
     TProfile  *E_R0_cut = new TProfile("h2da1" , " R Vs. E_CAL one cluster with cut TAR 0",70,0,0.07125,0,160);
-    E_R0->SetErrorOption(*'s');
-    E_R0_cut->SetErrorOption(*'s');
+    E_R0->SetErrorOption("s");
+    E_R0_cut->SetErrorOption("s");
     TH2F  *Th_E_el0  = new TH2F("h2da" , " Th e Vs. E_CAL one cluster TAR 0",500,0,100,500,0,160);
     TH2F  *Th_E_el_cut0  = new TH2F("h2da" , " Th e Vs. E_CAL one cluster with cut TAR 0",500,0,100,500,0,160);
     
@@ -85,8 +85,8 @@ void atree::Loop()
     TH2F  *Th_emu_cut1 = new TH2F("h2da1" , " Th e Vs. Th mu one cluster with cut TAR 1",500,0,100,500,0,5);
     TProfile  *E_R1 = new TProfile("h2da1" , " R Vs. E_CAL one cluster TAR 1",70,0,0.07125,0,160);
     TProfile  *E_R1_cut = new TProfile("h2da1" , " R Vs. E_CAL one cluster with cut TAR 1",70,0,0.07125,0,160);
-    E_R1->SetErrorOption(*'s');
-    E_R1_cut->SetErrorOption(*'s');
+    E_R1->SetErrorOption("s");
+    E_R1_cut->SetErrorOption("s");
     TH2F  *Th_E_el1  = new TH2F("h2da" , " Th e Vs. E_CAL one cluster TAR 1",500,0,100,500,0,160);
     TH2F  *Th_E_el_cut1  = new TH2F("h2da" , " Th e Vs. E_CAL one cluster with cut TAR 1",500,0,100,500,0,160);
     

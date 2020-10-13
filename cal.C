@@ -18,8 +18,8 @@ Int_t n_cell; //numero di cella in cui cade l'ELETTRONE
 Int_t n_cell_ph; //numero di cella in cui cade il fotone
 Int_t n_tot=0;
 
-Double_t same_cell=0;
-Double_t different_cell=0;
+Double_t same_cell=0.;
+Double_t different_cell=0.;
 Double_t E_CAL;
 Double_t Rm = 1.959 ; //raggio di Moliere in centimetri    
  

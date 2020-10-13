@@ -16,7 +16,7 @@ void atree::Loop()
     
 Int_t n_cell; //numero di cella in cui cade l'ELETTRONE
 Int_t n_cell_ph; //numero di cella in cui cade il fotone
-Int_t n_tot=0;
+Double_t n_tot=0.;
 
 Double_t same_cell=0.;
 Double_t different_cell=0.;
@@ -131,7 +131,8 @@ if (abs(detKinBeamRot_cooXe)<7.125 && abs(detKinBeamRot_cooYe)<7.125)
        
 if (abs(photon_coox)<7.125 && abs(photon_cooy)<7.125 && photon_energy>0.2 && d_e_ph>2*Rm)
     
-{ n_tot+=wgt_full;
+{ n_tot += wgt_full;
+ 
     if (photon_coox>-7.125 && photon_coox<-4.275 && photon_cooy<7.125 && photon_cooy>4.275) {n_cell_ph=1;}
     
     if (photon_coox>-4.275 && photon_coox<-1.425 && photon_cooy<7.125 && photon_cooy>4.275) {n_cell_ph=2;}
@@ -191,8 +192,8 @@ if (abs(photon_coox)<7.125 && abs(photon_cooy)<7.125 && photon_energy>0.2 && d_e
     if (photon_coox>4.275 && photon_coox<7.125 && photon_cooy<-4.275 && photon_cooy>-7.125) {n_cell_ph=25;}
  
 if (n_cell_ph==n_cell)
-{same_cell+=wgt_full;}
-else {different_cell+=wgt_full;}  // contatori double 
+{same_cell += wgt_full;}
+else {different_cell += wgt_full;}  // contatori double 
 } 
       
 /*if (abs(detKinBeamRot_cooXmu)<7.125 && abs(detKinBeamRot_cooYmu)<7.125 && d_e_mu>3*Rm)

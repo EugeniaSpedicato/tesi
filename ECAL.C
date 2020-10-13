@@ -131,7 +131,7 @@ if (abs(detKinBeamRot_cooXe)<7.125 && abs(detKinBeamRot_cooYe)<7.125)
 
     if (detKinBeamRot_cooXe>4.275 && detKinBeamRot_cooXe<7.125 && detKinBeamRot_cooYe<-4.275 && detKinBeamRot_cooYe>-7.125) {n_cell=25;}
     
-    cout << "cella elettrone:" << n_cell << endl; 
+    //cout << "cella elettrone:" << n_cell << endl; 
        
 E[0][0]= detKinBeamRot_Ee*fxy_e->Integral(-7.125,-4.275,4.275,7.125); //cella 1
 E[0][1]= detKinBeamRot_Ee*fxy_e->Integral(-4.275,-1.425,4.275,7.125); //cella 2
@@ -224,7 +224,7 @@ if (abs(photon_coox)<7.125 && abs(photon_cooy)<7.125 && photon_energy>0.2)
 
     if (photon_coox>4.275 && photon_coox<7.125 && photon_cooy<-4.275 && photon_cooy>-7.125) {n_cell_ph=25;} 
  
- cout << "cella fotone:" << n_cell_ph << endl; 
+ //cout << "cella fotone:" << n_cell_ph << endl; 
     
 E[1][0]= photon_energy*fxy_ph->Integral(-7.125,-4.275,4.275,7.125); //cella 1
 E[1][1]= photon_energy*fxy_ph->Integral(-4.275,-1.425,4.275,7.125); //cella 2
@@ -309,7 +309,7 @@ E[2][22]= E[0][22]; //cella 23
 E[2][23]= E[0][23]; //cella 24
 E[2][24]= E[0][24]; //cella 25 
         }
-    if (jentry==132941) {for (Int_t i=0;i<25;i++){cout << "Energia nella cella " << i <<" : " << E[3][i] << endl;}}
+    if (jentry==136) {for (Int_t i=0;i<25;i++){cout << "Energia nella cella " << i <<" : " << E[3][i] << endl;}}
     
    }
        

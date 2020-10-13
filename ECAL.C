@@ -307,6 +307,7 @@ E[2][24]= E[0][24]; //cella 25
         }
    }
        
-  if (n_cell==13 && n_cell_ph) {cout << "Elettrone nella 13" << jentry << endl; }     
+  if (n_cell==13 && n_cell_ph) {cout << "Elettrone nella 13" << jentry << endl;}     
        
+}
 }

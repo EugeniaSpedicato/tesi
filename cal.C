@@ -196,7 +196,7 @@ if (n_cell_ph==n_cell)
 else {different_cell += wgt_full;}  // contatori double 
 } */
       
-if (abs(detKinBeamRot_cooXmu)<7.125 && abs(detKinBeamRot_cooYmu)<7.125 && d_e_mu>2*Rm)
+if (abs(detKinBeamRot_cooXmu)<7.125 && abs(detKinBeamRot_cooYmu)<7.125 && d_e_mu>3*Rm)
     
 { n_tot+=wgt_full;
     if (detKinBeamRot_cooXmu>-7.125 && detKinBeamRot_cooXmu<-4.275 && detKinBeamRot_cooYmu<7.125 && detKinBeamRot_cooYmu>4.275) {n_cell_ph=1;}

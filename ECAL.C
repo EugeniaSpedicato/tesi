@@ -18,8 +18,8 @@ Int_t n_cell; //numero di cella in cui cade l'ELETTRONE
 Int_t n_cell_ph; //numero di cella in cui cade il fotone
 Int_t n_tot=0;
 
-Double_t same_cell=0;
-Double_t different_cell=0;
+Double_t same_cell=0.;
+Double_t different_cell=0.;
 Double_t E_CAL;
 Double_t Rm = 1.959 ; //raggio di Moliere in centimetri    
 
@@ -27,6 +27,59 @@ TF2 *fxy_e = new TF2("fxy_e","(1/(2*3.14159265358979323846*[0]*[1]))*(exp(((x-[2
     
 TF2 *fxy_ph = new TF2("fxy_ph","(1/(2*3.14159265358979323846*[0]*[1]))*(exp(((x-[2])*(x-[2])+(y-[3])*(y-[3]))/(2*[0]*[1])))",-7.125,7.125,-7.125,7.125 );
   
+Double_t E1;
+Double_t E2;
+Double_t E3;
+Double_t E4;
+Double_t E5;
+Double_t E6;
+Double_t E7;
+Double_t E8;
+Double_t E9;
+Double_t E10;
+Double_t E11;
+Double_t E12;
+Double_t E13;
+Double_t E14;
+Double_t E15;
+Double_t E16;
+Double_t E17;
+Double_t E18;
+Double_t E19;
+Double_t E20;
+Double_t E21;
+Double_t E22;
+Double_t E23;
+Double_t E24;
+Double_t E25;
+    
+Double_t phE1;
+Double_t phE2;
+Double_t phE3;
+Double_t phE4;
+Double_t phE5;
+Double_t phE6;
+Double_t phE7;
+Double_t phE8;
+Double_t phE9;
+Double_t phE10;
+Double_t phE11;
+Double_t phE12;
+Double_t phE13;
+Double_t phE14;
+Double_t phE15;
+Double_t phE16;
+Double_t phE17;
+Double_t phE18;
+Double_t phE19;
+Double_t phE20;
+Double_t phE21;
+Double_t phE22;
+Double_t phE23;
+Double_t phE24;
+Double_t phE25;
+    
+    
 
     
     if (fChain == 0) return;
@@ -86,103 +139,103 @@ if (abs(detKinBeamRot_cooXe)<7.125 && abs(detKinBeamRot_cooYe)<7.125)
     
     if (detKinBeamRot_cooXe>-4.275 && detKinBeamRot_cooXe<-1.425 && detKinBeamRot_cooYe<7.125 && detKinBeamRot_cooYe>4.275) {
         n_cell=2;
-        Double_t E2 = detKinBeamRot_Ee*fxy_e->Integer(-4.275,-1.425,7.125,4.275);
-        Double_t E1 = detKinBeamRot_Ee*fxy_e->Integer(-7.125,-4.275,7.125,4.275);
-        Double_t E6 = detKinBeamRot_Ee*fxy_e->Integer(-7.125,-4.275,4.275,1.425);
-        Double_t E7 = detKinBeamRot_Ee*fxy_e->Integer(4.275,1.425,4.275,1.425);
-        Double_t E8 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,4.275,1.425);
-        Double_t E3 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,7.125,4.275);
+         E2 = detKinBeamRot_Ee*fxy_e->Integer(-4.275,-1.425,7.125,4.275);
+         E1 = detKinBeamRot_Ee*fxy_e->Integer(-7.125,-4.275,7.125,4.275);
+         E6 = detKinBeamRot_Ee*fxy_e->Integer(-7.125,-4.275,4.275,1.425);
+         E7 = detKinBeamRot_Ee*fxy_e->Integer(4.275,1.425,4.275,1.425);
+         E8 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,4.275,1.425);
+         E3 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,7.125,4.275);
         
     }
 
     if (detKinBeamRot_cooXe>-1.425 && detKinBeamRot_cooXe<1.425 && detKinBeamRot_cooYe<7.125 && detKinBeamRot_cooYe>4.275) {
         n_cell=3;
-        Double_t E3 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,7.125,4.275);
-        Double_t E2 = detKinBeamRot_Ee*fxy_e->Integer(-4.275,-1.425,7.125,4.275);
-        Double_t E7 = detKinBeamRot_Ee*fxy_e->Integer(4.275,1.425,4.275,1.425);
-        Double_t E8 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,4.275,1.425);
-        Double_t E9 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,4.275,1.425);
-        Double_t E4 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,7.125,4.275);
+         E3 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,7.125,4.275);
+         E2 = detKinBeamRot_Ee*fxy_e->Integer(-4.275,-1.425,7.125,4.275);
+         E7 = detKinBeamRot_Ee*fxy_e->Integer(4.275,1.425,4.275,1.425);
+         E8 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,4.275,1.425);
+         E9 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,4.275,1.425);
+         E4 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,7.125,4.275);
     
     }
 
     if (detKinBeamRot_cooXe>1.425 && detKinBeamRot_cooXe<4.275 && detKinBeamRot_cooYe<7.125 && detKinBeamRot_cooYe>4.275) {
         n_cell=4;        
-        Double_t E4 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,7.125,4.275);
-        Double_t E3 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,7.125,4.275);
-        Double_t E8 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,4.275,1.425);
-        Double_t E9 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,4.275,1.425);
-        Double_t E10 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,4.275,1.425);
-        Double_t E5 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,7.125,4.275);
+         E4 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,7.125,4.275);
+         E3 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,7.125,4.275);
+         E8 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,4.275,1.425);
+         E9 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,4.275,1.425);
+         E10 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,4.275,1.425);
+         E5 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,7.125,4.275);
     }
 
     if (detKinBeamRot_cooXe>4.275 && detKinBeamRot_cooXe<7.125 && detKinBeamRot_cooYe<7.125 && detKinBeamRot_cooYe>4.275) {
         n_cell=5;
-        Double_t E5 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,7.125,4.275);
-        Double_t E4 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,7.125,4.275);
-        Double_t E9 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,4.275,1.425);
-        Double_t E10 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,4.275,1.425);
+         E5 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,7.125,4.275);
+         E4 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,7.125,4.275);
+         E9 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,4.275,1.425);
+         E10 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,4.275,1.425);
     }
     
     
     if (detKinBeamRot_cooXe>-7.125 && detKinBeamRot_cooXe<-4.275 && detKinBeamRot_cooYe<4.275 && detKinBeamRot_cooYe>1.425) {
         n_cell=6;
-        Double_t E6 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,7.125,4.275);
-        Double_t E1 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,7.125,4.275);
-        Double_t E2 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,4.275,1.425);
-        Double_t E7 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,4.275,1.425);
-        Double_t E12 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,4.275,1.425);
-        Double_t E11 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,7.125,4.275);
+         E6 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,7.125,4.275);
+         E1 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,7.125,4.275);
+         E2 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,4.275,1.425);
+         E7 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,4.275,1.425);
+         E12 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,4.275,1.425);
+         E11 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,7.125,4.275);
     }
     
     if (detKinBeamRot_cooXe>-4.275 && detKinBeamRot_cooXe<-1.425 && detKinBeamRot_cooYe<4.275 && detKinBeamRot_cooYe>1.425) {
         n_cell=7;
-        Double_t E7 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,4.275,1.425);
-        Double_t E1 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,7.125,4.275);
-        Double_t E2 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,4.275,1.425);
-        Double_t E3 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,7.125,4.275);
-        Double_t E8 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,4.275,1.425);
-        Double_t E13 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,7.125,4.275);
-        Double_t E12 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,4.275,1.425);
-        Double_t E11 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,7.125,4.275);
-        Double_t E6 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,7.125,4.275);
+         E7 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,4.275,1.425);
+         E1 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,7.125,4.275);
+         E2 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,4.275,1.425);
+         E3 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,7.125,4.275);
+         E8 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,4.275,1.425);
+         E13 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,7.125,4.275);
+         E12 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,4.275,1.425);
+         E11 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,7.125,4.275);
+         E6 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,7.125,4.275);
         
     }
 
     if (detKinBeamRot_cooXe>-1.425 && detKinBeamRot_cooXe<1.425 && detKinBeamRot_cooYe<4.275 && detKinBeamRot_cooYe>1.425) {
         n_cell=8;
-        Double_t E8 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,4.275,1.425);
-        Double_t E2 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,4.275,1.425);
-        Double_t E3 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,7.125,4.275);
-        Double_t E4 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,7.125,4.275);
-        Double_t E9 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,4.275,1.425);
-        Double_t E14 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,1.425,-1.425);
-        Double_t E13 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,7.125,4.275);
-        Double_t E12 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,4.275,1.425);
-        Double_t E7 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,4.275,1.425);
+         E8 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,4.275,1.425);
+         E2 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,4.275,1.425);
+         E3 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,7.125,4.275);
+         E4 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,7.125,4.275);
+         E9 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,4.275,1.425);
+         E14 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,1.425,-1.425);
+         E13 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,7.125,4.275);
+         E12 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,4.275,1.425);
+         E7 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,4.275,1.425);
     }
 
     if (detKinBeamRot_cooXe>1.425 && detKinBeamRot_cooXe<4.275 && detKinBeamRot_cooYe<4.275 && detKinBeamRot_cooYe>1.425) {
         n_cell=9;
-        Double_t E9 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,4.275,1.425);
-        Double_t E3 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,7.125,4.275);
-        Double_t E4 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,7.125,4.275);
-        Double_t E5 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,7.125,4.275);
-        Double_t E10 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,4.275,1.425);
-        Double_t E15 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,1.425,-1.425);
-        Double_t E14 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,1.425,-1.425);
-        Double_t E13 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,7.125,4.275);
-        Double_t E8 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,4.275,1.425);
+         E9 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,4.275,1.425);
+         E3 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,7.125,4.275);
+         E4 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,7.125,4.275);
+         E5 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,7.125,4.275);
+         E10 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,4.275,1.425);
+         E15 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,1.425,-1.425);
+         E14 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,1.425,-1.425);
+         E13 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,7.125,4.275);
+         E8 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,4.275,1.425);
     }
 
     if (detKinBeamRot_cooXe>4.275 && detKinBeamRot_cooXe<7.125 && detKinBeamRot_cooYe<4.275 && detKinBeamRot_cooYe>1.425) {
         n_cell=10;
-        Double_t E10 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,4.275,1.425);
-        Double_t E5 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,7.125,4.275);
-        Double_t E4 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,7.125,4.275);
-        Double_t E9 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,4.275,1.425);
-        Double_t E14 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,1.425,-1.425);
-        Double_t E15 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,1.425,-1.425);
+         E10 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,4.275,1.425);
+         E5 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,7.125,4.275);
+         E4 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,7.125,4.275);
+         E9 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,4.275,1.425);
+         E14 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,1.425,-1.425);
+         E15 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,1.425,-1.425);
         
     }
     
@@ -190,61 +243,61 @@ if (abs(detKinBeamRot_cooXe)<7.125 && abs(detKinBeamRot_cooYe)<7.125)
     
     if (detKinBeamRot_cooXe>-7.125 && detKinBeamRot_cooXe<-4.275 && detKinBeamRot_cooYe<1.425 && detKinBeamRot_cooYe>-1.425) {
         n_cell=11;
-        Double_t E11 = detKinBeamRot_Ee*fxy_e->Integer(-7.125,-4.275,1.425,-1.425);
-        Double_t E6 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,7.125,4.275);
-        Double_t E7 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,4.275,1.425);
-        Double_t E12 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,4.275,1.425);
-        Double_t E17 = detKinBeamRot_Ee*fxy_e->Integer(-4.275,-1.425,-1.425,-4.275);
-        Double_t E16 = detKinBeamRot_Ee*fxy_e->Integer(-7.125,-4.275,-1.425,-4.275);
+         E11 = detKinBeamRot_Ee*fxy_e->Integer(-7.125,-4.275,1.425,-1.425);
+         E6 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,7.125,4.275);
+         E7 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,4.275,1.425);
+         E12 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,4.275,1.425);
+         E17 = detKinBeamRot_Ee*fxy_e->Integer(-4.275,-1.425,-1.425,-4.275);
+         E16 = detKinBeamRot_Ee*fxy_e->Integer(-7.125,-4.275,-1.425,-4.275);
     }
     
     if (detKinBeamRot_cooXe>-4.275 && detKinBeamRot_cooXe<-1.425 && detKinBeamRot_cooYe<1.425 && detKinBeamRot_cooYe>-1.425) {
         n_cell=12;
-        Double_t E12 = detKinBeamRot_Ee*fxy_e->Integer(-4.275,-1.425,-1.425,1.425);
-        Double_t E6 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,7.125,4.275);
-        Double_t E7 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,4.275,1.425);
-        Double_t E8 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,4.275,1.425);
-        Double_t E13 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,7.125,4.275);
-        Double_t E18 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,-1.425,-4.275);
-        Double_t E17 = detKinBeamRot_Ee*fxy_e->Integer(-4.275,-1.425,-1.425,-4.275);
-        Double_t E16 = detKinBeamRot_Ee*fxy_e->Integer(-7.125,-4.275,-1.425,-4.275);
-        Double_t E11 = detKinBeamRot_Ee*fxy_e->Integer(-7.125,-4.275,1.425,-1.425);
+         E12 = detKinBeamRot_Ee*fxy_e->Integer(-4.275,-1.425,-1.425,1.425);
+         E6 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,7.125,4.275);
+         E7 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,4.275,1.425);
+         E8 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,4.275,1.425);
+         E13 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,7.125,4.275);
+         E18 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,-1.425,-4.275);
+         E17 = detKinBeamRot_Ee*fxy_e->Integer(-4.275,-1.425,-1.425,-4.275);
+         E16 = detKinBeamRot_Ee*fxy_e->Integer(-7.125,-4.275,-1.425,-4.275);
+         E11 = detKinBeamRot_Ee*fxy_e->Integer(-7.125,-4.275,1.425,-1.425);
     }
 
     if (detKinBeamRot_cooXe>-1.425 && detKinBeamRot_cooXe<1.425 && detKinBeamRot_cooYe<1.425 && detKinBeamRot_cooYe>-1.425) {
         n_cell=13;
-        Double_t E13 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,7.125,4.275);
-        Double_t E7 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,4.275,1.425);
-        Double_t E8 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,4.275,1.425);
-        Double_t E9 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,4.275,1.425);
-        Double_t E14 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,1.425,-1.425);
-        Double_t E19 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,-1.425,-4.275);
-        Double_t E18 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,-1.425,-4.275);
-        Double_t E17 = detKinBeamRot_Ee*fxy_e->Integer(-4.275,-1.425,-1.425,-4.275);
-        Double_t E12 = detKinBeamRot_Ee*fxy_e->Integer(-4.275,-1.425,-1.425,1.425);
+         E13 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,7.125,4.275);
+         E7 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,4.275,1.425);
+         E8 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,4.275,1.425);
+         E9 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,4.275,1.425);
+         E14 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,1.425,-1.425);
+         E19 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,-1.425,-4.275);
+         E18 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,-1.425,-4.275);
+         E17 = detKinBeamRot_Ee*fxy_e->Integer(-4.275,-1.425,-1.425,-4.275);
+         E12 = detKinBeamRot_Ee*fxy_e->Integer(-4.275,-1.425,-1.425,1.425);
     }
 
     if (detKinBeamRot_cooXe>1.425 && detKinBeamRot_cooXe<4.275 && detKinBeamRot_cooYe<1.425 && detKinBeamRot_cooYe>-1.425) {
         n_cell=14;
-        Double_t E14 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,1.425,-1.425);
-        Double_t E8 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,4.275,1.425);
-        Double_t E9 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,4.275,1.425);
-        Double_t E10 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,4.275,1.425);
-        Double_t E15 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,1.425,-1.425);
-        Double_t E20 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,-1.425,-4.275);
-        Double_t E19 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,-1.425,-4.275);
-        Double_t E18 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,-1.425,-4.275);
-        Double_t E13 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,7.125,4.275);
+         E14 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,1.425,-1.425);
+         E8 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,4.275,1.425);
+         E9 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,4.275,1.425);
+         E10 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,4.275,1.425);
+         E15 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,1.425,-1.425);
+         E20 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,-1.425,-4.275);
+         E19 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,-1.425,-4.275);
+         E18 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,-1.425,-4.275);
+         E13 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,7.125,4.275);
     }
 
     if (detKinBeamRot_cooXe>4.275 && detKinBeamRot_cooXe<7.125 && detKinBeamRot_cooYe<1.425 && detKinBeamRot_cooYe>-1.425) {
         n_cell=15;
-        Double_t E15 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,1.425,-1.425);
-        Double_t E10 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,4.275,1.425);
-        Double_t E9 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,4.275,1.425);
-        Double_t E14 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,1.425,-1.425);
-        Double_t E19 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,-1.425,-4.275);
-        Double_t E20 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,-1.425,-4.275);
+         E15 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,1.425,-1.425);
+         E10 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,4.275,1.425);
+         E9 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,4.275,1.425);
+         E14 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,1.425,-1.425);
+         E19 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,-1.425,-4.275);
+         E20 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,-1.425,-4.275);
     
     }
     
@@ -253,61 +306,61 @@ if (abs(detKinBeamRot_cooXe)<7.125 && abs(detKinBeamRot_cooYe)<7.125)
     
     if (detKinBeamRot_cooXe>-7.125 && detKinBeamRot_cooXe<-4.275 && detKinBeamRot_cooYe<-1.425 && detKinBeamRot_cooYe>-4.275) {
         n_cell=16;
-        Double_t E16 = detKinBeamRot_Ee*fxy_e->Integer(-7.125,-4.275,-1.425,-4.275);
-        Double_t E11 = detKinBeamRot_Ee*fxy_e->Integer(-7.125,-4.275,1.425,-1.425);
-        Double_t E12 = detKinBeamRot_Ee*fxy_e->Integer(-4.275,-1.425,-1.425,1.425);
-        Double_t E17 = detKinBeamRot_Ee*fxy_e->Integer(-4.275,-1.425,-1.425,-4.275);
-        Double_t E22 = detKinBeamRot_Ee*fxy_e->Integer(-4.275,-1.425,-4.275,-7.125);
-        Double_t E21 = detKinBeamRot_Ee*fxy_e->Integer(-7.125,-4.275,-4.275,-7.125);
+         E16 = detKinBeamRot_Ee*fxy_e->Integer(-7.125,-4.275,-1.425,-4.275);
+         E11 = detKinBeamRot_Ee*fxy_e->Integer(-7.125,-4.275,1.425,-1.425);
+         E12 = detKinBeamRot_Ee*fxy_e->Integer(-4.275,-1.425,-1.425,1.425);
+         E17 = detKinBeamRot_Ee*fxy_e->Integer(-4.275,-1.425,-1.425,-4.275);
+         E22 = detKinBeamRot_Ee*fxy_e->Integer(-4.275,-1.425,-4.275,-7.125);
+         E21 = detKinBeamRot_Ee*fxy_e->Integer(-7.125,-4.275,-4.275,-7.125);
 }
     
     if (detKinBeamRot_cooXe>-4.275 && detKinBeamRot_cooXe<-1.425 && detKinBeamRot_cooYe<-1.425 && detKinBeamRot_cooYe>-4.275) {
         n_cell=17;
-        Double_t E17 = detKinBeamRot_Ee*fxy_e->Integer(-4.275,-1.425,-1.425,-4.275);
-        Double_t E11 = detKinBeamRot_Ee*fxy_e->Integer(-7.125,-4.275,1.425,-1.425);
-        Double_t E12 = detKinBeamRot_Ee*fxy_e->Integer(-4.275,-1.425,-1.425,1.425);
-        Double_t E13 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,7.125,4.275);
-        Double_t E18 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,-1.425,-4.275);
-        Double_t E23 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,-4.275,-7.125);
-        Double_t E22 = detKinBeamRot_Ee*fxy_e->Integer(-4.275,-1.425,-4.275,-7.125);
-        Double_t E21 = detKinBeamRot_Ee*fxy_e->Integer(-7.125,-4.275,-4.275,-7.125);
-        Double_t E16 = detKinBeamRot_Ee*fxy_e->Integer(-7.125,-4.275,-1.425,-4.275);
+         E17 = detKinBeamRot_Ee*fxy_e->Integer(-4.275,-1.425,-1.425,-4.275);
+         E11 = detKinBeamRot_Ee*fxy_e->Integer(-7.125,-4.275,1.425,-1.425);
+         E12 = detKinBeamRot_Ee*fxy_e->Integer(-4.275,-1.425,-1.425,1.425);
+         E13 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,7.125,4.275);
+         E18 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,-1.425,-4.275);
+         E23 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,-4.275,-7.125);
+         E22 = detKinBeamRot_Ee*fxy_e->Integer(-4.275,-1.425,-4.275,-7.125);
+         E21 = detKinBeamRot_Ee*fxy_e->Integer(-7.125,-4.275,-4.275,-7.125);
+         E16 = detKinBeamRot_Ee*fxy_e->Integer(-7.125,-4.275,-1.425,-4.275);
     }
 
     if (detKinBeamRot_cooXe>-1.425 && detKinBeamRot_cooXe<1.425 && detKinBeamRot_cooYe<-1.425 && detKinBeamRot_cooYe>-4.275) {
         n_cell=18;
-        Double_t E18 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,-1.425,-4.275);
-        Double_t E12 = detKinBeamRot_Ee*fxy_e->Integer(-4.275,-1.425,-1.425,1.425);
-        Double_t E13 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,7.125,4.275);
-        Double_t E14 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,1.425,-1.425);
-        Double_t E19 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,-1.425,-4.275);
-        Double_t E24 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,-4.275,-7.125);
-        Double_t E23 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,-4.275,-7.125);
-        Double_t E22 = detKinBeamRot_Ee*fxy_e->Integer(-4.275,-1.425,-4.275,-7.125);
-        Double_t E17 = detKinBeamRot_Ee*fxy_e->Integer(-4.275,-1.425,-1.425,-4.275); 
+         E18 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,-1.425,-4.275);
+         E12 = detKinBeamRot_Ee*fxy_e->Integer(-4.275,-1.425,-1.425,1.425);
+         E13 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,7.125,4.275);
+         E14 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,1.425,-1.425);
+         E19 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,-1.425,-4.275);
+         E24 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,-4.275,-7.125);
+         E23 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,-4.275,-7.125);
+         E22 = detKinBeamRot_Ee*fxy_e->Integer(-4.275,-1.425,-4.275,-7.125);
+         E17 = detKinBeamRot_Ee*fxy_e->Integer(-4.275,-1.425,-1.425,-4.275); 
     }
 
     if (detKinBeamRot_cooXe>1.425 && detKinBeamRot_cooXe<4.275 && detKinBeamRot_cooYe<-1.425 && detKinBeamRot_cooYe>-4.275) {
         n_cell=19;
-        Double_t E19 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,-1.425,-4.275);
-        Double_t E13 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,7.125,4.275);
-        Double_t E14 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,1.425,-1.425);
-        Double_t E15 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,1.425,-1.425);
-        Double_t E20 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,-1.425,-4.275);
-        Double_t E25 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,-4.275,-7.125);
-        Double_t E24 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,-4.275,-7.125);
-        Double_t E23 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,-4.275,-7.125);
-        Double_t E18 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,-1.425,-4.275); 
+         E19 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,-1.425,-4.275);
+         E13 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,7.125,4.275);
+         E14 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,1.425,-1.425);
+         E15 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,1.425,-1.425);
+         E20 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,-1.425,-4.275);
+         E25 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,-4.275,-7.125);
+         E24 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,-4.275,-7.125);
+         E23 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,-4.275,-7.125);
+         E18 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,-1.425,-4.275); 
     }
 
     if (detKinBeamRot_cooXe>4.275 && detKinBeamRot_cooXe<7.125 && detKinBeamRot_cooYe<-1.425 && detKinBeamRot_cooYe>-4.275) {
         n_cell=20;
-        Double_t E20 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,-1.425,-4.275);
-        Double_t E15 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,1.425,-1.425);
-        Double_t E14 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,1.425,-1.425);
-        Double_t E19 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,-1.425,-4.275);
-        Double_t E24 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,-4.275,-7.125);
-        Double_t E25 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,-4.275,-7.125);
+         E20 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,-1.425,-4.275);
+         E15 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,1.425,-1.425);
+         E14 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,1.425,-1.425);
+         E19 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,-1.425,-4.275);
+         E24 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,-4.275,-7.125);
+         E25 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,-4.275,-7.125);
         
     }
     
@@ -315,50 +368,50 @@ if (abs(detKinBeamRot_cooXe)<7.125 && abs(detKinBeamRot_cooYe)<7.125)
     
     if (detKinBeamRot_cooXe>-7.125 && detKinBeamRot_cooXe<-4.275 && detKinBeamRot_cooYe<-4.275 && detKinBeamRot_cooYe>-7.125) {
         n_cell=21;
-        Double_t E21 = detKinBeamRot_Ee*fxy_e->Integer(-7.125,-4.275,-4.275,-7.125);
-        Double_t E14 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,1.425,-1.425);
-        Double_t E17 = detKinBeamRot_Ee*fxy_e->Integer(-4.275,-1.425,-1.425,-4.275);
-        Double_t E22 = detKinBeamRot_Ee*fxy_e->Integer(-4.275,-1.425,-4.275,-7.125);
+         E21 = detKinBeamRot_Ee*fxy_e->Integer(-7.125,-4.275,-4.275,-7.125);
+         E14 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,1.425,-1.425);
+         E17 = detKinBeamRot_Ee*fxy_e->Integer(-4.275,-1.425,-1.425,-4.275);
+         E22 = detKinBeamRot_Ee*fxy_e->Integer(-4.275,-1.425,-4.275,-7.125);
     
     }
     
     if (detKinBeamRot_cooXe>-4.275 && detKinBeamRot_cooXe<-1.425 && detKinBeamRot_cooYe<-4.275 && detKinBeamRot_cooYe>-7.125) {
         n_cell=22;
-        Double_t E22 = detKinBeamRot_Ee*fxy_e->Integer(-4.275,-1.425,-4.275,-7.125);
-        Double_t E21 = detKinBeamRot_Ee*fxy_e->Integer(-7.125,-4.275,-4.275,-7.125);
-        Double_t E16 = detKinBeamRot_Ee*fxy_e->Integer(-7.125,-4.275,-1.425,-4.275);
-        Double_t E17 = detKinBeamRot_Ee*fxy_e->Integer(-4.275,-1.425,-1.425,-4.275);
-        Double_t E18 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,-1.425,-4.275);
-        Double_t E23 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,-4.275,-7.125);
+         E22 = detKinBeamRot_Ee*fxy_e->Integer(-4.275,-1.425,-4.275,-7.125);
+         E21 = detKinBeamRot_Ee*fxy_e->Integer(-7.125,-4.275,-4.275,-7.125);
+         E16 = detKinBeamRot_Ee*fxy_e->Integer(-7.125,-4.275,-1.425,-4.275);
+         E17 = detKinBeamRot_Ee*fxy_e->Integer(-4.275,-1.425,-1.425,-4.275);
+         E18 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,-1.425,-4.275);
+         E23 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,-4.275,-7.125);
     
     }
 
     if (detKinBeamRot_cooXe>-1.425 && detKinBeamRot_cooXe<1.425 && detKinBeamRot_cooYe<-4.275 && detKinBeamRot_cooYe>-7.125) {
         n_cell=23;
-        Double_t E23 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,-4.275,-7.125);
-        Double_t E22 = detKinBeamRot_Ee*fxy_e->Integer(-4.275,-1.425,-4.275,-7.125);
-        Double_t E17 = detKinBeamRot_Ee*fxy_e->Integer(-4.275,-1.425,-1.425,-4.275);
-        Double_t E18 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,-1.425,-4.275);
-        Double_t E19 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,-1.425,-4.275);
-        Double_t E24 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,-4.275,-7.125);
+         E23 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,-4.275,-7.125);
+         E22 = detKinBeamRot_Ee*fxy_e->Integer(-4.275,-1.425,-4.275,-7.125);
+         E17 = detKinBeamRot_Ee*fxy_e->Integer(-4.275,-1.425,-1.425,-4.275);
+         E18 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,-1.425,-4.275);
+         E19 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,-1.425,-4.275);
+         E24 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,-4.275,-7.125);
     }
 
     if (detKinBeamRot_cooXe>1.425 && detKinBeamRot_cooXe<4.275 && detKinBeamRot_cooYe<-4.275 && detKinBeamRot_cooYe>-7.125) {
         n_cell=24;
-        Double_t E24 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,-4.275,-7.125);
-        Double_t E23 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,-4.275,-7.125);
-        Double_t E18 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,-1.425,-4.275);
-        Double_t E19 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,-1.425,-4.275);
-        Double_t E20 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,-1.425,-4.275);
-        Double_t E25 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,-4.275,-7.125);
+         E24 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,-4.275,-7.125);
+         E23 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,-4.275,-7.125);
+         E18 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,-1.425,-4.275);
+         E19 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,-1.425,-4.275);
+         E20 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,-1.425,-4.275);
+         E25 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,-4.275,-7.125);
     }
 
     if (detKinBeamRot_cooXe>4.275 && detKinBeamRot_cooXe<7.125 && detKinBeamRot_cooYe<-4.275 && detKinBeamRot_cooYe>-7.125) {
         n_cell=25;
-        Double_t E25 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,-4.275,-7.125);
-        Double_t E24 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,-4.275,-7.125);
-        Double_t E19 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,-1.425,-4.275);
-        Double_t E20 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,-1.425,-4.275);
+         E25 = detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,-4.275,-7.125);
+         E24 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,-4.275,-7.125);
+         E19 = detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,-1.425,-4.275);
+         E20 = detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,-1.425,-4.275);
     }
     
     
@@ -379,170 +432,170 @@ if (abs(photon_coox)<7.125 && abs(photon_cooy)<7.125 && photon_energy>0.2 && d_e
 { n_tot++;
     if (photon_coox>-7.125 && photon_coox<-4.275 && photon_cooy<7.125 && photon_cooy>4.275) {
         n_cell_ph=1;
-        Double_t E1 = photon_energy*fxy_ph->Integer(-7.125,-4.275,7.125,4.275);
-        Double_t E2 = photon_energy*fxy_ph->Integer(-4.275,-1.425,7.125,4.275);
-        Double_t E6 = photon_energy*fxy_ph->Integer(-7.125,-4.275,4.275,1.425);
-        Double_t E7 = photon_energy*fxy_ph->Integer(4.275,1.425,4.275,1.425);
+         phE1 = photon_energy*fxy_ph->Integer(-7.125,-4.275,7.125,4.275);
+         phE2 = photon_energy*fxy_ph->Integer(-4.275,-1.425,7.125,4.275);
+         phE6 = photon_energy*fxy_ph->Integer(-7.125,-4.275,4.275,1.425);
+         phE7 = photon_energy*fxy_ph->Integer(4.275,1.425,4.275,1.425);
 
 }
     
     if (photon_coox>-4.275 && photon_coox<-1.425 && photon_cooy<7.125 && photon_cooy>4.275) {
         n_cell_ph=2;
-        Double_t E2 = photon_energy*fxy_ph->Integer(-4.275,-1.425,7.125,4.275);
-        Double_t E1 = photon_energy*fxy_ph->Integer(-7.125,-4.275,7.125,4.275);
-        Double_t E6 = photon_energy*fxy_ph->Integer(-7.125,-4.275,4.275,1.425);
-        Double_t E7 = photon_energy*fxy_ph->Integer(4.275,1.425,4.275,1.425);
-        Double_t E8 = photon_energy*fxy_ph->Integer(-1.425,1.425,4.275,1.425);
-        Double_t E3 = photon_energy*fxy_ph->Integer(-1.425,1.425,7.125,4.275);
+         phE2 = photon_energy*fxy_ph->Integer(-4.275,-1.425,7.125,4.275);
+         phE1 = photon_energy*fxy_ph->Integer(-7.125,-4.275,7.125,4.275);
+         phE6 = photon_energy*fxy_ph->Integer(-7.125,-4.275,4.275,1.425);
+         phE7 = photon_energy*fxy_ph->Integer(4.275,1.425,4.275,1.425);
+         phE8 = photon_energy*fxy_ph->Integer(-1.425,1.425,4.275,1.425);
+         phE3 = photon_energy*fxy_ph->Integer(-1.425,1.425,7.125,4.275);
     }
 
     if (photon_coox>-1.425 && photon_coox<1.425 && photon_cooy<7.125 && photon_cooy>4.275) {
         n_cell_ph=3;
-        Double_t E3 = photon_energy*fxy_ph->Integer(-1.425,1.425,7.125,4.275);
-        Double_t E2 = photon_energy*fxy_ph->Integer(-4.275,-1.425,7.125,4.275);
-        Double_t E7 = photon_energy*fxy_ph->Integer(4.275,1.425,4.275,1.425);
-        Double_t E8 = photon_energy*fxy_ph->Integer(-1.425,1.425,4.275,1.425);
-        Double_t E9 = photon_energy*fxy_ph->Integer(1.425,4.275,4.275,1.425);
-        Double_t E4 = photon_energy*fxy_ph->Integer(1.425,4.275,7.125,4.275);
+         phE3 = photon_energy*fxy_ph->Integer(-1.425,1.425,7.125,4.275);
+         phE2 = photon_energy*fxy_ph->Integer(-4.275,-1.425,7.125,4.275);
+         phE7 = photon_energy*fxy_ph->Integer(4.275,1.425,4.275,1.425);
+         phE8 = photon_energy*fxy_ph->Integer(-1.425,1.425,4.275,1.425);
+         phE9 = photon_energy*fxy_ph->Integer(1.425,4.275,4.275,1.425);
+         phE4 = photon_energy*fxy_ph->Integer(1.425,4.275,7.125,4.275);
     }
 
     if (photon_coox>1.425 && photon_coox<4.275 && photon_cooy<7.125 && photon_cooy>4.275) {
         n_cell_ph=4;
-        Double_t E4 = photon_energy*fxy_ph->Integer(1.425,4.275,7.125,4.275);
-        Double_t E3 = photon_energy*fxy_ph->Integer(-1.425,1.425,7.125,4.275);
-        Double_t E8 = photon_energy*fxy_ph->Integer(-1.425,1.425,4.275,1.425);
-        Double_t E9 = photon_energy*fxy_ph->Integer(1.425,4.275,4.275,1.425);
-        Double_t E10 = photon_energy*fxy_ph->Integer(4.275,7.125,4.275,1.425);
-        Double_t E5 = photon_energy*fxy_ph->Integer(4.275,7.125,7.125,4.275);
+         phE4 = photon_energy*fxy_ph->Integer(1.425,4.275,7.125,4.275);
+         phE3 = photon_energy*fxy_ph->Integer(-1.425,1.425,7.125,4.275);
+         phE8 = photon_energy*fxy_ph->Integer(-1.425,1.425,4.275,1.425);
+         phE9 = photon_energy*fxy_ph->Integer(1.425,4.275,4.275,1.425);
+         phE10 = photon_energy*fxy_ph->Integer(4.275,7.125,4.275,1.425);
+         phE5 = photon_energy*fxy_ph->Integer(4.275,7.125,7.125,4.275);
     }
 
     if (photon_coox>4.275 && photon_coox<7.125 && photon_cooy<7.125 && photon_cooy>4.275) {
         n_cell_ph=5;
-        Double_t E5 = photon_energy*fxy_ph->Integer(4.275,7.125,7.125,4.275);
-        Double_t E4 = photon_energy*fxy_ph->Integer(1.425,4.275,7.125,4.275);
-        Double_t E9 = photon_energy*fxy_ph->Integer(1.425,4.275,4.275,1.425);
-        Double_t E10 = photon_energy*fxy_ph->Integer(4.275,7.125,4.275,1.425);
+         phE5 = photon_energy*fxy_ph->Integer(4.275,7.125,7.125,4.275);
+         phE4 = photon_energy*fxy_ph->Integer(1.425,4.275,7.125,4.275);
+         phE9 = photon_energy*fxy_ph->Integer(1.425,4.275,4.275,1.425);
+         phE10 = photon_energy*fxy_ph->Integer(4.275,7.125,4.275,1.425);
     }
     
     
     if (photon_coox>-7.125 && photon_coox<-4.275 && photon_cooy<4.275 && photon_cooy>1.425) {
         n_cell_ph=6;
-        Double_t E6 = photon_energy*fxy_ph->Integer(1.425,4.275,7.125,4.275);
-        Double_t E1 = photon_energy*fxy_ph->Integer(-1.425,1.425,7.125,4.275);
-        Double_t E2 = photon_energy*fxy_ph->Integer(-1.425,1.425,4.275,1.425);
-        Double_t E7 = photon_energy*fxy_ph->Integer(1.425,4.275,4.275,1.425);
-        Double_t E12 = photon_energy*fxy_ph->Integer(4.275,7.125,4.275,1.425);
-        Double_t E11 = photon_energy*fxy_ph->Integer(4.275,7.125,7.125,4.275);
+         phE6 = photon_energy*fxy_ph->Integer(1.425,4.275,7.125,4.275);
+         phE1 = photon_energy*fxy_ph->Integer(-1.425,1.425,7.125,4.275);
+         phE2 = photon_energy*fxy_ph->Integer(-1.425,1.425,4.275,1.425);
+         phE7 = photon_energy*fxy_ph->Integer(1.425,4.275,4.275,1.425);
+         phE12 = photon_energy*fxy_ph->Integer(4.275,7.125,4.275,1.425);
+         phE11 = photon_energy*fxy_ph->Integer(4.275,7.125,7.125,4.275);
     }
     
     if (photon_coox>-4.275 && photon_coox<-1.425 && photon_cooy<4.275 && photon_cooy>1.425) {
         n_cell_ph=7;
-        Double_t E7 = photon_energy*fxy_ph->Integer(1.425,4.275,4.275,1.425);
-        Double_t E1 = photon_energy*fxy_ph->Integer(-1.425,1.425,7.125,4.275);
-        Double_t E2 = photon_energy*fxy_ph->Integer(-1.425,1.425,4.275,1.425);
-        Double_t E3 = photon_energy*fxy_ph->Integer(-1.425,1.425,7.125,4.275);
-        Double_t E8 = photon_energy*fxy_ph->Integer(-1.425,1.425,4.275,1.425);
-        Double_t E13 = photon_energy*fxy_ph->Integer(4.275,7.125,7.125,4.275);
-        Double_t E12 = photon_energy*fxy_ph->Integer(4.275,7.125,4.275,1.425);
-        Double_t E11 = photon_energy*fxy_ph->Integer(4.275,7.125,7.125,4.275);
-        Double_t E6 = photon_energy*fxy_ph->Integer(1.425,4.275,7.125,4.275);
+         phE7 = photon_energy*fxy_ph->Integer(1.425,4.275,4.275,1.425);
+         phE1 = photon_energy*fxy_ph->Integer(-1.425,1.425,7.125,4.275);
+         phE2 = photon_energy*fxy_ph->Integer(-1.425,1.425,4.275,1.425);
+         phE3 = photon_energy*fxy_ph->Integer(-1.425,1.425,7.125,4.275);
+         phE8 = photon_energy*fxy_ph->Integer(-1.425,1.425,4.275,1.425);
+         phE13 = photon_energy*fxy_ph->Integer(4.275,7.125,7.125,4.275);
+         phE12 = photon_energy*fxy_ph->Integer(4.275,7.125,4.275,1.425);
+         phE11 = photon_energy*fxy_ph->Integer(4.275,7.125,7.125,4.275);
+         phE6 = photon_energy*fxy_ph->Integer(1.425,4.275,7.125,4.275);
     }
 
     if (photon_coox>-1.425 && photon_coox<1.425 && photon_cooy<4.275 && photon_cooy>1.425) {
         n_cell_ph=8;
-        Double_t E8 = photon_energy*fxy_ph->Integer(-1.425,1.425,4.275,1.425);
-        Double_t E2 = photon_energy*fxy_ph->Integer(-1.425,1.425,4.275,1.425);
-        Double_t E3 = photon_energy*fxy_ph->Integer(-1.425,1.425,7.125,4.275);
-        Double_t E4 = photon_energy*fxy_ph->Integer(1.425,4.275,7.125,4.275);
-        Double_t E9 = photon_energy*fxy_ph->Integer(1.425,4.275,4.275,1.425);
-        Double_t E14 = photon_energy*fxy_ph->Integer(1.425,4.275,1.425,-1.425);
-        Double_t E13 = photon_energy*fxy_ph->Integer(4.275,7.125,7.125,4.275);
-        Double_t E12 = photon_energy*fxy_ph->Integer(4.275,7.125,4.275,1.425);
-        Double_t E7 = photon_energy*fxy_ph->Integer(1.425,4.275,4.275,1.425);
+         phE8 = photon_energy*fxy_ph->Integer(-1.425,1.425,4.275,1.425);
+         phE2 = photon_energy*fxy_ph->Integer(-1.425,1.425,4.275,1.425);
+         phE3 = photon_energy*fxy_ph->Integer(-1.425,1.425,7.125,4.275);
+         phE4 = photon_energy*fxy_ph->Integer(1.425,4.275,7.125,4.275);
+         phE9 = photon_energy*fxy_ph->Integer(1.425,4.275,4.275,1.425);
+         phE14 = photon_energy*fxy_ph->Integer(1.425,4.275,1.425,-1.425);
+         phE13 = photon_energy*fxy_ph->Integer(4.275,7.125,7.125,4.275);
+         phE12 = photon_energy*fxy_ph->Integer(4.275,7.125,4.275,1.425);
+         phE7 = photon_energy*fxy_ph->Integer(1.425,4.275,4.275,1.425);
     }
 
     if (photon_coox>1.425 && photon_coox<4.275 && photon_cooy<4.275 && photon_cooy>1.425) {
         n_cell_ph=9;
-        Double_t E9 = photon_energy*fxy_ph->Integer(1.425,4.275,4.275,1.425);
-        Double_t E3 = photon_energy*fxy_ph->Integer(-1.425,1.425,7.125,4.275);
-        Double_t E4 = photon_energy*fxy_ph->Integer(1.425,4.275,7.125,4.275);
-        Double_t E5 = photon_energy*fxy_ph->Integer(4.275,7.125,7.125,4.275);
-        Double_t E10 = photon_energy*fxy_ph->Integer(4.275,7.125,4.275,1.425);
-        Double_t E15 = photon_energy*fxy_ph->Integer(4.275,7.125,1.425,-1.425);
-        Double_t E14 = photon_energy*fxy_ph->Integer(1.425,4.275,1.425,-1.425);
-        Double_t E13 = photon_energy*fxy_ph->Integer(4.275,7.125,7.125,4.275);
-        Double_t E8 = photon_energy*fxy_ph->Integer(-1.425,1.425,4.275,1.425);
+         phE9 = photon_energy*fxy_ph->Integer(1.425,4.275,4.275,1.425);
+         phE3 = photon_energy*fxy_ph->Integer(-1.425,1.425,7.125,4.275);
+         phE4 = photon_energy*fxy_ph->Integer(1.425,4.275,7.125,4.275);
+         phE5 = photon_energy*fxy_ph->Integer(4.275,7.125,7.125,4.275);
+         phE10 = photon_energy*fxy_ph->Integer(4.275,7.125,4.275,1.425);
+         phE15 = photon_energy*fxy_ph->Integer(4.275,7.125,1.425,-1.425);
+         phE14 = photon_energy*fxy_ph->Integer(1.425,4.275,1.425,-1.425);
+         phE13 = photon_energy*fxy_ph->Integer(4.275,7.125,7.125,4.275);
+         phE8 = photon_energy*fxy_ph->Integer(-1.425,1.425,4.275,1.425);
     }
 
     if (photon_coox>4.275 && photon_coox<7.125 && photon_cooy<4.275 && photon_cooy>1.425) {
         n_cell_ph=10;
-        Double_t E10 = photon_energy*fxy_ph->Integer(4.275,7.125,4.275,1.425);
-        Double_t E5 = photon_energy*fxy_ph->Integer(4.275,7.125,7.125,4.275);
-        Double_t E4 = photon_energy*fxy_ph->Integer(1.425,4.275,7.125,4.275);
-        Double_t E9 = photon_energy*fxy_ph->Integer(1.425,4.275,4.275,1.425);
-        Double_t E14 = photon_energy*fxy_ph->Integer(1.425,4.275,1.425,-1.425);
-        Double_t E15 = photon_energy*fxy_ph->Integer(4.275,7.125,1.425,-1.425);
+         phE10 = photon_energy*fxy_ph->Integer(4.275,7.125,4.275,1.425);
+         phE5 = photon_energy*fxy_ph->Integer(4.275,7.125,7.125,4.275);
+         phE4 = photon_energy*fxy_ph->Integer(1.425,4.275,7.125,4.275);
+         phE9 = photon_energy*fxy_ph->Integer(1.425,4.275,4.275,1.425);
+         phE14 = photon_energy*fxy_ph->Integer(1.425,4.275,1.425,-1.425);
+         phE15 = photon_energy*fxy_ph->Integer(4.275,7.125,1.425,-1.425);
     }
     
 
     
     if (photon_coox>-7.125 && photon_coox<-4.275 && photon_cooy<1.425 && photon_cooy>-1.425) {
         n_cell_ph=11;
-        Double_t E11 = photon_energy*fxy_ph->Integer(-7.125,-4.275,1.425,-1.425);
-        Double_t E6 = photon_energy*fxy_ph->Integer(1.425,4.275,7.125,4.275);
-        Double_t E7 = photon_energy*fxy_ph->Integer(1.425,4.275,4.275,1.425);
-        Double_t E12 = photon_energy*fxy_ph->Integer(4.275,7.125,4.275,1.425);
-        Double_t E17 = photon_energy*fxy_ph->Integer(-4.275,-1.425,-1.425,-4.275);
-        Double_t E16 = photon_energy*fxy_ph->Integer(-7.125,-4.275,-1.425,-4.275);
+         phE11 = photon_energy*fxy_ph->Integer(-7.125,-4.275,1.425,-1.425);
+         phE6 = photon_energy*fxy_ph->Integer(1.425,4.275,7.125,4.275);
+         phE7 = photon_energy*fxy_ph->Integer(1.425,4.275,4.275,1.425);
+         phE12 = photon_energy*fxy_ph->Integer(4.275,7.125,4.275,1.425);
+         phE17 = photon_energy*fxy_ph->Integer(-4.275,-1.425,-1.425,-4.275);
+         phE16 = photon_energy*fxy_ph->Integer(-7.125,-4.275,-1.425,-4.275);
     }
     
     if (photon_coox>-4.275 && photon_coox<-1.425 && photon_cooy<1.425 && photon_cooy>-1.425) {
         n_cell_ph=12;
-        Double_t E12 = photon_energy*fxy_ph->Integer(-4.275,-1.425,-1.425,1.425);
-        Double_t E6 = photon_energy*fxy_ph->Integer(1.425,4.275,7.125,4.275);
-        Double_t E7 = photon_energy*fxy_ph->Integer(1.425,4.275,4.275,1.425);
-        Double_t E8 = photon_energy*fxy_ph->Integer(-1.425,1.425,4.275,1.425);
-        Double_t E13 = photon_energy*fxy_ph->Integer(4.275,7.125,7.125,4.275);
-        Double_t E18 = photon_energy*fxy_ph->Integer(-1.425,1.425,-1.425,-4.275);
-        Double_t E17 = photon_energy*fxy_ph->Integer(-4.275,-1.425,-1.425,-4.275);
-        Double_t E16 = photon_energy*fxy_ph->Integer(-7.125,-4.275,-1.425,-4.275);
-        Double_t E11 = photon_energy*fxy_ph->Integer(-7.125,-4.275,1.425,-1.425);
+         phE12 = photon_energy*fxy_ph->Integer(-4.275,-1.425,-1.425,1.425);
+         phE6 = photon_energy*fxy_ph->Integer(1.425,4.275,7.125,4.275);
+         phE7 = photon_energy*fxy_ph->Integer(1.425,4.275,4.275,1.425);
+         phE8 = photon_energy*fxy_ph->Integer(-1.425,1.425,4.275,1.425);
+         phE13 = photon_energy*fxy_ph->Integer(4.275,7.125,7.125,4.275);
+         phE18 = photon_energy*fxy_ph->Integer(-1.425,1.425,-1.425,-4.275);
+         phE17 = photon_energy*fxy_ph->Integer(-4.275,-1.425,-1.425,-4.275);
+         phE16 = photon_energy*fxy_ph->Integer(-7.125,-4.275,-1.425,-4.275);
+         phE11 = photon_energy*fxy_ph->Integer(-7.125,-4.275,1.425,-1.425);
     }
 
     if (photon_coox>-1.425 && photon_coox<1.425 && photon_cooy<1.425 && photon_cooy>-1.425) {
         n_cell_ph=13;
-        Double_t E13 = photon_energy*fxy_ph->Integer(4.275,7.125,7.125,4.275);
-        Double_t E7 = photon_energy*fxy_ph->Integer(1.425,4.275,4.275,1.425);
-        Double_t E8 = photon_energy*fxy_ph->Integer(-1.425,1.425,4.275,1.425);
-        Double_t E9 = photon_energy*fxy_ph->Integer(1.425,4.275,4.275,1.425);
-        Double_t E14 = photon_energy*fxy_ph->Integer(1.425,4.275,1.425,-1.425);
-        Double_t E19 = photon_energy*fxy_ph->Integer(1.425,4.275,-1.425,-4.275);
-        Double_t E18 = photon_energy*fxy_ph->Integer(-1.425,1.425,-1.425,-4.275);
-        Double_t E17 = photon_energy*fxy_ph->Integer(-4.275,-1.425,-1.425,-4.275);
-        Double_t E12 = photon_energy*fxy_ph->Integer(-4.275,-1.425,-1.425,1.425);
+         phE13 = photon_energy*fxy_ph->Integer(4.275,7.125,7.125,4.275);
+         phE7 = photon_energy*fxy_ph->Integer(1.425,4.275,4.275,1.425);
+         phE8 = photon_energy*fxy_ph->Integer(-1.425,1.425,4.275,1.425);
+         phE9 = photon_energy*fxy_ph->Integer(1.425,4.275,4.275,1.425);
+         phE14 = photon_energy*fxy_ph->Integer(1.425,4.275,1.425,-1.425);
+         phE19 = photon_energy*fxy_ph->Integer(1.425,4.275,-1.425,-4.275);
+         phE18 = photon_energy*fxy_ph->Integer(-1.425,1.425,-1.425,-4.275);
+         phE17 = photon_energy*fxy_ph->Integer(-4.275,-1.425,-1.425,-4.275);
+         phE12 = photon_energy*fxy_ph->Integer(-4.275,-1.425,-1.425,1.425);
     }
 
     if (photon_coox>1.425 && photon_coox<4.275 && photon_cooy<1.425 && photon_cooy>-1.425) {
         n_cell_ph=14;
-        Double_t E14 = photon_energy*fxy_ph->Integer(1.425,4.275,1.425,-1.425);
-        Double_t E8 = photon_energy*fxy_ph->Integer(-1.425,1.425,4.275,1.425);
-        Double_t E9 = photon_energy*fxy_ph->Integer(1.425,4.275,4.275,1.425);
-        Double_t E10 = photon_energy*fxy_ph->Integer(4.275,7.125,4.275,1.425);
-        Double_t E15 = photon_energy*fxy_ph->Integer(4.275,7.125,1.425,-1.425);
-        Double_t E20 = photon_energy*fxy_ph->Integer(4.275,7.125,-1.425,-4.275);
-        Double_t E19 = photon_energy*fxy_ph->Integer(1.425,4.275,-1.425,-4.275);
-        Double_t E18 = photon_energy*fxy_ph->Integer(-1.425,1.425,-1.425,-4.275);
-        Double_t E13 = photon_energy*fxy_ph->Integer(4.275,7.125,7.125,4.275);
+         phE14 = photon_energy*fxy_ph->Integer(1.425,4.275,1.425,-1.425);
+         phE8 = photon_energy*fxy_ph->Integer(-1.425,1.425,4.275,1.425);
+         phE9 = photon_energy*fxy_ph->Integer(1.425,4.275,4.275,1.425);
+         phE10 = photon_energy*fxy_ph->Integer(4.275,7.125,4.275,1.425);
+         phE15 = photon_energy*fxy_ph->Integer(4.275,7.125,1.425,-1.425);
+         phE20 = photon_energy*fxy_ph->Integer(4.275,7.125,-1.425,-4.275);
+         phE19 = photon_energy*fxy_ph->Integer(1.425,4.275,-1.425,-4.275);
+         phE18 = photon_energy*fxy_ph->Integer(-1.425,1.425,-1.425,-4.275);
+         phE13 = photon_energy*fxy_ph->Integer(4.275,7.125,7.125,4.275);
     }
 
     if (photon_coox>4.275 && photon_coox<7.125 && photon_cooy<1.425 && photon_cooy>-1.425) {
         n_cell_ph=15;
-        Double_t E15 = photon_energy*fxy_ph->Integer(4.275,7.125,1.425,-1.425);
-        Double_t E10 = photon_energy*fxy_ph->Integer(4.275,7.125,4.275,1.425);
-        Double_t E9 = photon_energy*fxy_ph->Integer(1.425,4.275,4.275,1.425);
-        Double_t E14 = photon_energy*fxy_ph->Integer(1.425,4.275,1.425,-1.425);
-        Double_t E19 = photon_energy*fxy_ph->Integer(1.425,4.275,-1.425,-4.275);
-        Double_t E20 = photon_energy*fxy_ph->Integer(4.275,7.125,-1.425,-4.275);
+         phE15 = photon_energy*fxy_ph->Integer(4.275,7.125,1.425,-1.425);
+         phE10 = photon_energy*fxy_ph->Integer(4.275,7.125,4.275,1.425);
+         phE9 = photon_energy*fxy_ph->Integer(1.425,4.275,4.275,1.425);
+         phE14 = photon_energy*fxy_ph->Integer(1.425,4.275,1.425,-1.425);
+         phE19 = photon_energy*fxy_ph->Integer(1.425,4.275,-1.425,-4.275);
+         phE20 = photon_energy*fxy_ph->Integer(4.275,7.125,-1.425,-4.275);
     }
     
     
@@ -550,114 +603,114 @@ if (abs(photon_coox)<7.125 && abs(photon_cooy)<7.125 && photon_energy>0.2 && d_e
     
     if (photon_coox>-7.125 && photon_coox<-4.275 && photon_cooy<-1.425 && photon_cooy>-4.275) {
         n_cell_ph=16;
-        Double_t E16 = photon_energy*fxy_ph->Integer(-7.125,-4.275,-1.425,-4.275);
-        Double_t E11 = photon_energy*fxy_ph->Integer(-7.125,-4.275,1.425,-1.425);
-        Double_t E12 = photon_energy*fxy_ph->Integer(-4.275,-1.425,-1.425,1.425);
-        Double_t E17 = photon_energy*fxy_ph->Integer(-4.275,-1.425,-1.425,-4.275);
-        Double_t E22 = photon_energy*fxy_ph->Integer(-4.275,-1.425,-4.275,-7.125);
-        Double_t E21 = photon_energy*fxy_ph->Integer(-7.125,-4.275,-4.275,-7.125);
+         phE16 = photon_energy*fxy_ph->Integer(-7.125,-4.275,-1.425,-4.275);
+         phE11 = photon_energy*fxy_ph->Integer(-7.125,-4.275,1.425,-1.425);
+         phE12 = photon_energy*fxy_ph->Integer(-4.275,-1.425,-1.425,1.425);
+         phE17 = photon_energy*fxy_ph->Integer(-4.275,-1.425,-1.425,-4.275);
+         phE22 = photon_energy*fxy_ph->Integer(-4.275,-1.425,-4.275,-7.125);
+         phE21 = photon_energy*fxy_ph->Integer(-7.125,-4.275,-4.275,-7.125);
     }
     
     if (photon_coox>-4.275 && photon_coox<-1.425 && photon_cooy<-1.425 && photon_cooy>-4.275) {
         n_cell_ph=17;
-        Double_t E17 = photon_energy*fxy_ph->Integer(-4.275,-1.425,-1.425,-4.275);
-        Double_t E11 = photon_energy*fxy_ph->Integer(-7.125,-4.275,1.425,-1.425);
-        Double_t E12 = photon_energy*fxy_ph->Integer(-4.275,-1.425,-1.425,1.425);
-        Double_t E13 = photon_energy*fxy_ph->Integer(4.275,7.125,7.125,4.275);
-        Double_t E18 = photon_energy*fxy_ph->Integer(-1.425,1.425,-1.425,-4.275);
-        Double_t E23 = photon_energy*fxy_ph->Integer(-1.425,1.425,-4.275,-7.125);
-        Double_t E22 = photon_energy*fxy_ph->Integer(-4.275,-1.425,-4.275,-7.125);
-        Double_t E21 = photon_energy*fxy_ph->Integer(-7.125,-4.275,-4.275,-7.125);
-        Double_t E16 = photon_energy*fxy_ph->Integer(-7.125,-4.275,-1.425,-4.275);
+         phE17 = photon_energy*fxy_ph->Integer(-4.275,-1.425,-1.425,-4.275);
+         phE11 = photon_energy*fxy_ph->Integer(-7.125,-4.275,1.425,-1.425);
+         phE12 = photon_energy*fxy_ph->Integer(-4.275,-1.425,-1.425,1.425);
+         phE13 = photon_energy*fxy_ph->Integer(4.275,7.125,7.125,4.275);
+         phE18 = photon_energy*fxy_ph->Integer(-1.425,1.425,-1.425,-4.275);
+         phE23 = photon_energy*fxy_ph->Integer(-1.425,1.425,-4.275,-7.125);
+         phE22 = photon_energy*fxy_ph->Integer(-4.275,-1.425,-4.275,-7.125);
+         phE21 = photon_energy*fxy_ph->Integer(-7.125,-4.275,-4.275,-7.125);
+         phE16 = photon_energy*fxy_ph->Integer(-7.125,-4.275,-1.425,-4.275);
     }
 
     if (photon_coox>-1.425 && photon_coox<1.425 && photon_cooy<-1.425 && photon_cooy>-4.275) {
         n_cell_ph=18;
-        Double_t E18 = photon_energy*fxy_ph->Integer(-1.425,1.425,-1.425,-4.275);
-        Double_t E12 = photon_energy*fxy_ph->Integer(-4.275,-1.425,-1.425,1.425);
-        Double_t E13 = photon_energy*fxy_ph->Integer(4.275,7.125,7.125,4.275);
-        Double_t E14 = photon_energy*fxy_ph->Integer(1.425,4.275,1.425,-1.425);
-        Double_t E19 = photon_energy*fxy_ph->Integer(1.425,4.275,-1.425,-4.275);
-        Double_t E24 = photon_energy*fxy_ph->Integer(1.425,4.275,-4.275,-7.125);
-        Double_t E23 = photon_energy*fxy_ph->Integer(-1.425,1.425,-4.275,-7.125);
-        Double_t E22 = photon_energy*fxy_ph->Integer(-4.275,-1.425,-4.275,-7.125);
-        Double_t E17 = photon_energy*fxy_ph->Integer(-4.275,-1.425,-1.425,-4.275);
+         phE18 = photon_energy*fxy_ph->Integer(-1.425,1.425,-1.425,-4.275);
+         phE12 = photon_energy*fxy_ph->Integer(-4.275,-1.425,-1.425,1.425);
+         phE13 = photon_energy*fxy_ph->Integer(4.275,7.125,7.125,4.275);
+         phE14 = photon_energy*fxy_ph->Integer(1.425,4.275,1.425,-1.425);
+         phE19 = photon_energy*fxy_ph->Integer(1.425,4.275,-1.425,-4.275);
+         phE24 = photon_energy*fxy_ph->Integer(1.425,4.275,-4.275,-7.125);
+         phE23 = photon_energy*fxy_ph->Integer(-1.425,1.425,-4.275,-7.125);
+         phE22 = photon_energy*fxy_ph->Integer(-4.275,-1.425,-4.275,-7.125);
+         phE17 = photon_energy*fxy_ph->Integer(-4.275,-1.425,-1.425,-4.275);
     }
 
     if (photon_coox>1.425 && photon_coox<4.275 && photon_cooy<-1.425 && photon_cooy>-4.275) {
         n_cell_ph=19;
-        Double_t E19 = photon_energy*fxy_ph->Integer(1.425,4.275,-1.425,-4.275);
-        Double_t E13 = photon_energy*fxy_ph->Integer(4.275,7.125,7.125,4.275);
-        Double_t E14 = photon_energy*fxy_ph->Integer(1.425,4.275,1.425,-1.425);
-        Double_t E15 = photon_energy*fxy_ph->Integer(4.275,7.125,1.425,-1.425);
-        Double_t E20 = photon_energy*fxy_ph->Integer(4.275,7.125,-1.425,-4.275);
-        Double_t E25 = photon_energy*fxy_ph->Integer(4.275,7.125,-4.275,-7.125);
-        Double_t E24 = photon_energy*fxy_ph->Integer(1.425,4.275,-4.275,-7.125);
-        Double_t E23 = photon_energy*fxy_ph->Integer(-1.425,1.425,-4.275,-7.125);
-        Double_t E18 = photon_energy*fxy_ph->Integer(-1.425,1.425,-1.425,-4.275); 
+         phE19 = photon_energy*fxy_ph->Integer(1.425,4.275,-1.425,-4.275);
+         phE13 = photon_energy*fxy_ph->Integer(4.275,7.125,7.125,4.275);
+         phE14 = photon_energy*fxy_ph->Integer(1.425,4.275,1.425,-1.425);
+         phE15 = photon_energy*fxy_ph->Integer(4.275,7.125,1.425,-1.425);
+         phE20 = photon_energy*fxy_ph->Integer(4.275,7.125,-1.425,-4.275);
+         phE25 = photon_energy*fxy_ph->Integer(4.275,7.125,-4.275,-7.125);
+         phE24 = photon_energy*fxy_ph->Integer(1.425,4.275,-4.275,-7.125);
+         phE23 = photon_energy*fxy_ph->Integer(-1.425,1.425,-4.275,-7.125);
+         phE18 = photon_energy*fxy_ph->Integer(-1.425,1.425,-1.425,-4.275); 
     }
 
     if (photon_coox>4.275 && photon_coox<7.125 && photon_cooy<-1.425 && photon_cooy>-4.275) {
         n_cell_ph=20;
-        Double_t E20 = photon_energy*fxy_ph->Integer(4.275,7.125,-1.425,-4.275);
-        Double_t E15 = photon_energy*fxy_ph->Integer(4.275,7.125,1.425,-1.425);
-        Double_t E14 = photon_energy*fxy_ph->Integer(1.425,4.275,1.425,-1.425);
-        Double_t E19 = photon_energy*fxy_ph->Integer(1.425,4.275,-1.425,-4.275);
-        Double_t E24 = photon_energy*fxy_ph->Integer(1.425,4.275,-4.275,-7.125);
-        Double_t E25 = photon_energy*fxy_ph->Integer(4.275,7.125,-4.275,-7.125);
+         phE20 = photon_energy*fxy_ph->Integer(4.275,7.125,-1.425,-4.275);
+         phE15 = photon_energy*fxy_ph->Integer(4.275,7.125,1.425,-1.425);
+         phE14 = photon_energy*fxy_ph->Integer(1.425,4.275,1.425,-1.425);
+         phE19 = photon_energy*fxy_ph->Integer(1.425,4.275,-1.425,-4.275);
+         phE24 = photon_energy*fxy_ph->Integer(1.425,4.275,-4.275,-7.125);
+         phE25 = photon_energy*fxy_ph->Integer(4.275,7.125,-4.275,-7.125);
     }
     
     
     
     if (photon_coox>-7.125 && photon_coox<-4.275 && photon_cooy<-4.275 && photon_cooy>-7.125) {
         n_cell_ph=21;
-        Double_t E21 = photon_energy*fxy_ph->Integer(-7.125,-4.275,-4.275,-7.125);
-        Double_t E14 = photon_energy*fxy_ph->Integer(1.425,4.275,1.425,-1.425);
-        Double_t E17 = photon_energy*fxy_ph->Integer(-4.275,-1.425,-1.425,-4.275);
-        Double_t E22 = photon_energy*fxy_ph->Integer(-4.275,-1.425,-4.275,-7.125);
+         phE21 = photon_energy*fxy_ph->Integer(-7.125,-4.275,-4.275,-7.125);
+         phE14 = photon_energy*fxy_ph->Integer(1.425,4.275,1.425,-1.425);
+         phE17 = photon_energy*fxy_ph->Integer(-4.275,-1.425,-1.425,-4.275);
+         phE22 = photon_energy*fxy_ph->Integer(-4.275,-1.425,-4.275,-7.125);
     }
     
     if (photon_coox>-4.275 && photon_coox<-1.425 && photon_cooy<-4.275 && photon_cooy>-7.125) {
         n_cell_ph=22;
-        Double_t E22 = photon_energy*fxy_ph->Integer(-4.275,-1.425,-4.275,-7.125);
-        Double_t E21 = photon_energy*fxy_ph->Integer(-7.125,-4.275,-4.275,-7.125);
-        Double_t E16 = photon_energy*fxy_ph->Integer(-7.125,-4.275,-1.425,-4.275);
-        Double_t E17 = photon_energy*fxy_ph->Integer(-4.275,-1.425,-1.425,-4.275);
-        Double_t E18 = photon_energy*fxy_ph->Integer(-1.425,1.425,-1.425,-4.275);
-        Double_t E23 = photon_energy*fxy_ph->Integer(-1.425,1.425,-4.275,-7.125);
+         phE22 = photon_energy*fxy_ph->Integer(-4.275,-1.425,-4.275,-7.125);
+         phE21 = photon_energy*fxy_ph->Integer(-7.125,-4.275,-4.275,-7.125);
+         phE16 = photon_energy*fxy_ph->Integer(-7.125,-4.275,-1.425,-4.275);
+         phE17 = photon_energy*fxy_ph->Integer(-4.275,-1.425,-1.425,-4.275);
+         phE18 = photon_energy*fxy_ph->Integer(-1.425,1.425,-1.425,-4.275);
+         phE23 = photon_energy*fxy_ph->Integer(-1.425,1.425,-4.275,-7.125);
     }
 
     if (photon_coox>-1.425 && photon_coox<1.425 && photon_cooy<-4.275 && photon_cooy>-7.125) {
         n_cell_ph=23;
-        Double_t E23 = photon_energy*fxy_ph->Integer(-1.425,1.425,-4.275,-7.125);
-        Double_t E22 = photon_energy*fxy_ph->Integer(-4.275,-1.425,-4.275,-7.125);
-        Double_t E17 = photon_energy*fxy_ph->Integer(-4.275,-1.425,-1.425,-4.275);
-        Double_t E18 = photon_energy*fxy_ph->Integer(-1.425,1.425,-1.425,-4.275);
-        Double_t E19 = photon_energy*fxy_ph->Integer(1.425,4.275,-1.425,-4.275);
-        Double_t E24 = photon_energy*fxy_ph->Integer(1.425,4.275,-4.275,-7.125);
+         phE23 = photon_energy*fxy_ph->Integer(-1.425,1.425,-4.275,-7.125);
+         phE22 = photon_energy*fxy_ph->Integer(-4.275,-1.425,-4.275,-7.125);
+         phE17 = photon_energy*fxy_ph->Integer(-4.275,-1.425,-1.425,-4.275);
+         phE18 = photon_energy*fxy_ph->Integer(-1.425,1.425,-1.425,-4.275);
+         phE19 = photon_energy*fxy_ph->Integer(1.425,4.275,-1.425,-4.275);
+         phE24 = photon_energy*fxy_ph->Integer(1.425,4.275,-4.275,-7.125);
     }
 
     if (photon_coox>1.425 && photon_coox<4.275 && photon_cooy<-4.275 && photon_cooy>-7.125) {
         n_cell_ph=24;
-        Double_t E24 = photon_energy*fxy_ph->Integer(1.425,4.275,-4.275,-7.125);
-        Double_t E23 = photon_energy*fxy_ph->Integer(-1.425,1.425,-4.275,-7.125);
-        Double_t E18 = photon_energy*fxy_ph->Integer(-1.425,1.425,-1.425,-4.275);
-        Double_t E19 = photon_energy*fxy_ph->Integer(-1.425,1.425,-1.425,-4.275);
-        Double_t E20 = photon_energy*fxy_ph->Integer(1.425,4.275,-1.425,-4.275);
-        Double_t E25 = photon_energy*fxy_ph->Integer(4.275,7.125,-4.275,-7.125);
+         phE24 = photon_energy*fxy_ph->Integer(1.425,4.275,-4.275,-7.125);
+         phE23 = photon_energy*fxy_ph->Integer(-1.425,1.425,-4.275,-7.125);
+         phE18 = photon_energy*fxy_ph->Integer(-1.425,1.425,-1.425,-4.275);
+         phE19 = photon_energy*fxy_ph->Integer(-1.425,1.425,-1.425,-4.275);
+         phE20 = photon_energy*fxy_ph->Integer(1.425,4.275,-1.425,-4.275);
+         phE25 = photon_energy*fxy_ph->Integer(4.275,7.125,-4.275,-7.125);
     }
 
     if (photon_coox>4.275 && photon_coox<7.125 && photon_cooy<-4.275 && photon_cooy>-7.125) {
         n_cell_ph=25;
-        Double_t E25 = photon_energy*fxy_ph->Integer(4.275,7.125,-4.275,-7.125);
-        Double_t E24 = photon_energy*fxy_ph->Integer(1.425,4.275,-4.275,-7.125);
-        Double_t E19 = photon_energy*fxy_ph->Integer(-1.425,1.425,-1.425,-4.275);
-        Double_t E20 = photon_energy*fxy_ph->Integer(1.425,4.275,-1.425,-4.275);
+         phE25 = photon_energy*fxy_ph->Integer(4.275,7.125,-4.275,-7.125);
+         phE24 = photon_energy*fxy_ph->Integer(1.425,4.275,-4.275,-7.125);
+         phE19 = photon_energy*fxy_ph->Integer(-1.425,1.425,-1.425,-4.275);
+         phE20 = photon_energy*fxy_ph->Integer(1.425,4.275,-1.425,-4.275);
     }
  
 if (n_cell_ph==n_cell)
 {same_cell+=wgt_full;}
-else {different_cell+=wgt_full ;}  // contatori double 
+else {different_cell+=wgt_full;}  // contatori double 
 } }
 }
 

@@ -131,7 +131,7 @@ if (abs(detKinBeamRot_cooXe)<7.125 && abs(detKinBeamRot_cooYe)<7.125)
        
 if (abs(photon_coox)<7.125 && abs(photon_cooy)<7.125 && photon_energy>0.2 && d_e_ph>2*Rm)
     
-{ n_tot++;
+{ n_tot+=wgt_full;
     if (photon_coox>-7.125 && photon_coox<-4.275 && photon_cooy<7.125 && photon_cooy>4.275) {n_cell_ph=1;}
     
     if (photon_coox>-4.275 && photon_coox<-1.425 && photon_cooy<7.125 && photon_cooy>4.275) {n_cell_ph=2;}
@@ -192,7 +192,7 @@ if (abs(photon_coox)<7.125 && abs(photon_cooy)<7.125 && photon_energy>0.2 && d_e
  
 if (n_cell_ph==n_cell)
 {same_cell+=wgt_full;}
-else {different_cell+=wgt_full ;}  // contatori double 
+else {different_cell+=wgt_full;}  // contatori double 
 } 
       
 /*if (abs(detKinBeamRot_cooXmu)<7.125 && abs(detKinBeamRot_cooYmu)<7.125 && d_e_mu>3*Rm)
@@ -270,8 +270,8 @@ else {different_cell+=wgt_full;}
    //}
 }
     
- cout << "Elettroni e Muoni nella stessa cella: " << same_cell << endl;
- cout << "Elettroni e Muoni in una diversa cella: " << different_cell << endl;   
-cout << "n tot con Muoni= " << n_tot << endl;
+ cout << "Elettroni e fotoni nella stessa cella: " << same_cell << endl;
+ cout << "Elettroni e fotoni in una diversa cella: " << different_cell << endl;   
+cout << "n tot con fotoni= " << n_tot << endl;
     
 }

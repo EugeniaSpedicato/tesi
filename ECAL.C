@@ -309,10 +309,13 @@ E[2][22]= E[0][22]; //cella 23
 E[2][23]= E[0][23]; //cella 24
 E[2][24]= E[0][24]; //cella 25 
         }
+    if (jentry==132941) ( for (Int_t i=0,i<25,i++){cout << "Energia nella cella " << i <<" : " << E[i] << endl;})
+    
    }
        
   
        
        
 }
+    
 }

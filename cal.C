@@ -54,7 +54,7 @@ Double_t Rm = 1.959 ; //raggio di Moliere in centimetri
     Double_t d_e_mu=sqrt( (detKinBeamRot_cooXe-detKinBeamRot_cooXmu)*(detKinBeamRot_cooXe-detKinBeamRot_cooXmu)+(detKinBeamRot_cooYe-detKinBeamRot_cooYmu)*(detKinBeamRot_cooYe-detKinBeamRot_cooYmu) ); 
        
        
-if (E_CAL>1){
+//if (E_CAL>1){
 if (abs(detKinBeamRot_cooXe)<7.125 && abs(detKinBeamRot_cooYe)<7.125)
     
 {  
@@ -129,7 +129,7 @@ if (abs(detKinBeamRot_cooXe)<7.125 && abs(detKinBeamRot_cooYe)<7.125)
     //&& d_e_ph>2*Rm
        
        
-if (abs(photon_coox)<7.125 && abs(photon_cooy)<7.125 && photon_energy>0.2 && d_e_ph>3*Rm)
+/*if (abs(photon_coox)<7.125 && abs(photon_cooy)<7.125 && photon_energy>0.2 && d_e_ph>3*Rm)
     
 { n_tot += wgt_full;
  
@@ -194,11 +194,11 @@ if (abs(photon_coox)<7.125 && abs(photon_cooy)<7.125 && photon_energy>0.2 && d_e
 if (n_cell_ph==n_cell)
 {same_cell += wgt_full;}
 else {different_cell += wgt_full;}  // contatori double 
-} 
+} */
       
-/*if (abs(detKinBeamRot_cooXmu)<7.125 && abs(detKinBeamRot_cooYmu)<7.125 && d_e_mu>3*Rm)
+if (abs(detKinBeamRot_cooXmu)<7.125 && abs(detKinBeamRot_cooYmu)<7.125 && d_e_mu>1*Rm)
     
-{ n_tot++;
+{ n_tot+=wgt_full;
     if (detKinBeamRot_cooXmu>-7.125 && detKinBeamRot_cooXmu<-4.275 && detKinBeamRot_cooYmu<7.125 && detKinBeamRot_cooYmu>4.275) {n_cell_ph=1;}
     
     if (detKinBeamRot_cooXmu>-4.275 && detKinBeamRot_cooXmu<-1.425 && detKinBeamRot_cooYmu<7.125 && detKinBeamRot_cooYmu>4.275) {n_cell_ph=2;}
@@ -260,7 +260,7 @@ else {different_cell += wgt_full;}  // contatori double
 if (n_cell_ph==n_cell)
 {same_cell+=wgt_full;}
 else {different_cell+=wgt_full;} 
-}*/
+}
  
 }
        
@@ -268,7 +268,7 @@ else {different_cell+=wgt_full;}
 
        
        
-   }
+   //}
 }
     
  cout << "Elettroni e fotoni nella stessa cella: " << same_cell << endl;

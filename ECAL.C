@@ -122,10 +122,6 @@ if (abs(detKinBeamRot_cooXe)<7.125 && abs(detKinBeamRot_cooYe)<7.125)
     fxy_e->SetParameter(2,detKinBeamRot_cooXe);
     fxy_e->SetParameter(3,detKinBeamRot_cooYe);
        
-    fxy_ph->SetParameter(0,Rm);
-    fxy_ph->SetParameter(1,Rm);
-    fxy_ph->SetParameter(2,photon_coox);
-    fxy_ph->SetParameter(3,photon_cooy);
     
     
     if (detKinBeamRot_cooXe>-7.125 && detKinBeamRot_cooXe<-4.275 && detKinBeamRot_cooYe<7.125 && detKinBeamRot_cooYe>4.275) {
@@ -430,6 +426,12 @@ if (abs(detKinBeamRot_cooXe)<7.125 && abs(detKinBeamRot_cooYe)<7.125)
 if (abs(photon_coox)<7.125 && abs(photon_cooy)<7.125 && photon_energy>0.2 && d_e_ph>2*Rm)
     
 { n_tot++;
+    
+    fxy_ph->SetParameter(0,Rm);
+    fxy_ph->SetParameter(1,Rm);
+    fxy_ph->SetParameter(2,photon_coox);
+    fxy_ph->SetParameter(3,photon_cooy);
+ 
     if (photon_coox>-7.125 && photon_coox<-4.275 && photon_cooy<7.125 && photon_cooy>4.275) {
         n_cell_ph=1;
          phE1 = photon_energy*fxy_ph->Integer(-7.125,-4.275,7.125,4.275);

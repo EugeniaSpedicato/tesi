@@ -129,7 +129,7 @@ if (abs(detKinBeamRot_cooXe)<7.125 && abs(detKinBeamRot_cooYe)<7.125)
     //&& d_e_ph>2*Rm
        
        
-if (abs(photon_coox)<7.125 && abs(photon_cooy)<7.125 && photon_energy>0.2 && d_e_ph>1*Rm)
+if (abs(photon_coox)<7.125 && abs(photon_cooy)<7.125 && photon_energy>0.2 && d_e_ph>3*Rm)
     
 { n_tot += wgt_full;
  

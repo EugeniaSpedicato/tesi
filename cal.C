@@ -54,7 +54,7 @@ Double_t Rm = 1.959 ; //raggio di Moliere in centimetri
     Double_t d_e_mu=sqrt( (detKinBeamRot_cooXe-detKinBeamRot_cooXmu)*(detKinBeamRot_cooXe-detKinBeamRot_cooXmu)+(detKinBeamRot_cooYe-detKinBeamRot_cooYmu)*(detKinBeamRot_cooYe-detKinBeamRot_cooYmu) ); 
        
        
-//if (E_CAL>1){
+if (E_CAL>1){
 if (abs(detKinBeamRot_cooXe)<7.125 && abs(detKinBeamRot_cooYe)<7.125)
     
 {  
@@ -129,7 +129,7 @@ if (abs(detKinBeamRot_cooXe)<7.125 && abs(detKinBeamRot_cooYe)<7.125)
     //&& d_e_ph>2*Rm
        
        
-if (abs(photon_coox)<7.125 && abs(photon_cooy)<7.125 && photon_energy>0.2 )
+if (abs(photon_coox)<7.125 && abs(photon_cooy)<7.125 && photon_energy>0.2 && d_e_ph>1*Rm)
     
 { n_tot += wgt_full;
  
@@ -268,7 +268,7 @@ else {different_cell+=wgt_full;}
 
        
        
-   //}
+   }
 }
     
  cout << "Elettroni e fotoni nella stessa cella: " << same_cell << endl;

@@ -131,31 +131,31 @@ if (abs(detKinBeamRot_cooXe)<7.125 && abs(detKinBeamRot_cooYe)<7.125)
 
     if (detKinBeamRot_cooXe>4.275 && detKinBeamRot_cooXe<7.125 && detKinBeamRot_cooYe<-4.275 && detKinBeamRot_cooYe>-7.125) {n_cell=25;}
        
-E[0][0]= detKinBeamRot_Ee*fxy_e->Integer(-7.125,-4.275,7.125,4.275); //cella 1
-E[0][1]= detKinBeamRot_Ee*fxy_e->Integer(-4.275,-1.425,7.125,4.275); //cella 2
-E[0][2]= detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,7.125,4.275); //cella 3
-E[0][3]= detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,7.125,4.275); //cella 4
-E[0][4]= detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,7.125,4.275); //cella 5
-E[0][5]= detKinBeamRot_Ee*fxy_e->Integer(-7.125,-4.275,4.275,1.425); //cella 6
-E[0][6]= detKinBeamRot_Ee*fxy_e->Integer(4.275,1.425,4.275,1.425); //cella 7
-E[0][7]= detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,4.275,1.425); //cella 8
-E[0][8]= detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,4.275,1.425); //cella 9
-E[0][9]= detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,4.275,1.425); //cella 10
-E[0][10]= detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,7.125,4.275); //cella 11
-E[0][11]= detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,4.275,1.425); //cella 12
-E[0][12]= detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,7.125,4.275); //cella 13
-E[0][13]= detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,1.425,-1.425); //cella 14
-E[0][14]= detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,1.425,-1.425); //cella 15
-E[0][15]= detKinBeamRot_Ee*fxy_e->Integer(-7.125,-4.275,-1.425,-4.275); //cella 16
-E[0][16]= detKinBeamRot_Ee*fxy_e->Integer(-4.275,-1.425,-1.425,-4.275); //cella 17
-E[0][17]= detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,-1.425,-4.275); //cella 18
-E[0][18]= detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,-1.425,-4.275); //cella 19
-E[0][19]= detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,-1.425,-4.275); //cella 20
-E[0][20]= detKinBeamRot_Ee*fxy_e->Integer(-7.125,-4.275,-4.275,-7.125); //cella 21
-E[0][21]= detKinBeamRot_Ee*fxy_e->Integer(-4.275,-1.425,-4.275,-7.125); //cella 22
-E[0][22]= detKinBeamRot_Ee*fxy_e->Integer(-1.425,1.425,-4.275,-7.125); //cella 23
-E[0][23]= detKinBeamRot_Ee*fxy_e->Integer(1.425,4.275,-4.275,-7.125); //cella 24
-E[0][24]= detKinBeamRot_Ee*fxy_e->Integer(4.275,7.125,-4.275,-7.125); //cella 25
+E[0][0]= detKinBeamRot_Ee*fxy_e->Integral(-7.125,-4.275,7.125,4.275); //cella 1
+E[0][1]= detKinBeamRot_Ee*fxy_e->Integral(-4.275,-1.425,7.125,4.275); //cella 2
+E[0][2]= detKinBeamRot_Ee*fxy_e->Integral(-1.425,1.425,7.125,4.275); //cella 3
+E[0][3]= detKinBeamRot_Ee*fxy_e->Integral(1.425,4.275,7.125,4.275); //cella 4
+E[0][4]= detKinBeamRot_Ee*fxy_e->Integral(4.275,7.125,7.125,4.275); //cella 5
+E[0][5]= detKinBeamRot_Ee*fxy_e->Integral(-7.125,-4.275,4.275,1.425); //cella 6
+E[0][6]= detKinBeamRot_Ee*fxy_e->Integral(4.275,1.425,4.275,1.425); //cella 7
+E[0][7]= detKinBeamRot_Ee*fxy_e->Integral(-1.425,1.425,4.275,1.425); //cella 8
+E[0][8]= detKinBeamRot_Ee*fxy_e->Integral(1.425,4.275,4.275,1.425); //cella 9
+E[0][9]= detKinBeamRot_Ee*fxy_e->Integral(4.275,7.125,4.275,1.425); //cella 10
+E[0][10]= detKinBeamRot_Ee*fxy_e->Integral(4.275,7.125,7.125,4.275); //cella 11
+E[0][11]= detKinBeamRot_Ee*fxy_e->Integral(4.275,7.125,4.275,1.425); //cella 12
+E[0][12]= detKinBeamRot_Ee*fxy_e->Integral(4.275,7.125,7.125,4.275); //cella 13
+E[0][13]= detKinBeamRot_Ee*fxy_e->Integral(1.425,4.275,1.425,-1.425); //cella 14
+E[0][14]= detKinBeamRot_Ee*fxy_e->Integral(4.275,7.125,1.425,-1.425); //cella 15
+E[0][15]= detKinBeamRot_Ee*fxy_e->Integral(-7.125,-4.275,-1.425,-4.275); //cella 16
+E[0][16]= detKinBeamRot_Ee*fxy_e->Integral(-4.275,-1.425,-1.425,-4.275); //cella 17
+E[0][17]= detKinBeamRot_Ee*fxy_e->Integral(-1.425,1.425,-1.425,-4.275); //cella 18
+E[0][18]= detKinBeamRot_Ee*fxy_e->Integral(1.425,4.275,-1.425,-4.275); //cella 19
+E[0][19]= detKinBeamRot_Ee*fxy_e->Integral(4.275,7.125,-1.425,-4.275); //cella 20
+E[0][20]= detKinBeamRot_Ee*fxy_e->Integral(-7.125,-4.275,-4.275,-7.125); //cella 21
+E[0][21]= detKinBeamRot_Ee*fxy_e->Integral(-4.275,-1.425,-4.275,-7.125); //cella 22
+E[0][22]= detKinBeamRot_Ee*fxy_e->Integral(-1.425,1.425,-4.275,-7.125); //cella 23
+E[0][23]= detKinBeamRot_Ee*fxy_e->Integral(1.425,4.275,-4.275,-7.125); //cella 24
+E[0][24]= detKinBeamRot_Ee*fxy_e->Integral(4.275,7.125,-4.275,-7.125); //cella 25
        
 if (abs(photon_coox)<7.125 && abs(photon_cooy)<7.125 && photon_energy>0.2)
     
@@ -222,31 +222,31 @@ if (abs(photon_coox)<7.125 && abs(photon_cooy)<7.125 && photon_energy>0.2)
 
     if (photon_coox>4.275 && photon_coox<7.125 && photon_cooy<-4.275 && photon_cooy>-7.125) {n_cell_ph=25;}    
     
-E[1][0]= photon_energy*fxy_ph->Integer(-7.125,-4.275,7.125,4.275); //cella 1
-E[1][1]= photon_energy*fxy_ph->Integer(-4.275,-1.425,7.125,4.275); //cella 2
-E[1][2]= photon_energy*fxy_ph->Integer(-1.425,1.425,7.125,4.275); //cella 3
-E[1][3]= photon_energy*fxy_ph->Integer(1.425,4.275,7.125,4.275); //cella 4
-E[1][4]= photon_energy*fxy_ph->Integer(4.275,7.125,7.125,4.275); //cella 5
-E[1][5]= photon_energy*fxy_ph->Integer(-7.125,-4.275,4.275,1.425); //cella 6
-E[1][6]= photon_energy*fxy_ph->Integer(4.275,1.425,4.275,1.425); //cella 7
-E[1][7]= photon_energy*fxy_ph->Integer(-1.425,1.425,4.275,1.425); //cella 8
-E[1][8]= photon_energy*fxy_ph->Integer(1.425,4.275,4.275,1.425); //cella 9
-E[1][9]= photon_energy*fxy_ph->Integer(4.275,7.125,4.275,1.425); //cella 10
-E[1][10]= photon_energy*fxy_ph->Integer(4.275,7.125,7.125,4.275); //cella 11
-E[1][11]= photon_energy*fxy_ph->Integer(4.275,7.125,4.275,1.425); //cella 12
-E[1][12]= photon_energy*fxy_ph->Integer(4.275,7.125,7.125,4.275); //cella 13
-E[1][13]= photon_energy*fxy_ph->Integer(1.425,4.275,1.425,-1.425); //cella 14
-E[1][14]= photon_energy*fxy_ph->Integer(4.275,7.125,1.425,-1.425); //cella 15
-E[1][15]= photon_energy*fxy_ph->Integer(-7.125,-4.275,-1.425,-4.275); //cella 16
-E[1][16]= photon_energy*fxy_ph->Integer(-4.275,-1.425,-1.425,-4.275); //cella 17
-E[1][17]= photon_energy*fxy_ph->Integer(-1.425,1.425,-1.425,-4.275); //cella 18
-E[1][18]= photon_energy*fxy_ph->Integer(1.425,4.275,-1.425,-4.275); //cella 19
-E[1][19]= photon_energy*fxy_ph->Integer(4.275,7.125,-1.425,-4.275); //cella 20
-E[1][20]= photon_energy*fxy_ph->Integer(-7.125,-4.275,-4.275,-7.125); //cella 21
-E[1][21]= photon_energy*fxy_ph->Integer(-4.275,-1.425,-4.275,-7.125); //cella 22
-E[1][22]= photon_energy*fxy_ph->Integer(-1.425,1.425,-4.275,-7.125); //cella 23
-E[1][23]= photon_energy*fxy_ph->Integer(1.425,4.275,-4.275,-7.125); //cella 24
-E[1][24]= photon_energy*fxy_ph->Integer(4.275,7.125,-4.275,-7.125); //cella 25 
+E[1][0]= photon_energy*fxy_ph->Integral(-7.125,-4.275,7.125,4.275); //cella 1
+E[1][1]= photon_energy*fxy_ph->Integral(-4.275,-1.425,7.125,4.275); //cella 2
+E[1][2]= photon_energy*fxy_ph->Integral(-1.425,1.425,7.125,4.275); //cella 3
+E[1][3]= photon_energy*fxy_ph->Integral(1.425,4.275,7.125,4.275); //cella 4
+E[1][4]= photon_energy*fxy_ph->Integral(4.275,7.125,7.125,4.275); //cella 5
+E[1][5]= photon_energy*fxy_ph->Integral(-7.125,-4.275,4.275,1.425); //cella 6
+E[1][6]= photon_energy*fxy_ph->Integral(4.275,1.425,4.275,1.425); //cella 7
+E[1][7]= photon_energy*fxy_ph->Integral(-1.425,1.425,4.275,1.425); //cella 8
+E[1][8]= photon_energy*fxy_ph->Integral(1.425,4.275,4.275,1.425); //cella 9
+E[1][9]= photon_energy*fxy_ph->Integral(4.275,7.125,4.275,1.425); //cella 10
+E[1][10]= photon_energy*fxy_ph->Integral(4.275,7.125,7.125,4.275); //cella 11
+E[1][11]= photon_energy*fxy_ph->Integral(4.275,7.125,4.275,1.425); //cella 12
+E[1][12]= photon_energy*fxy_ph->Integral(4.275,7.125,7.125,4.275); //cella 13
+E[1][13]= photon_energy*fxy_ph->Integral(1.425,4.275,1.425,-1.425); //cella 14
+E[1][14]= photon_energy*fxy_ph->Integral(4.275,7.125,1.425,-1.425); //cella 15
+E[1][15]= photon_energy*fxy_ph->Integral(-7.125,-4.275,-1.425,-4.275); //cella 16
+E[1][16]= photon_energy*fxy_ph->Integral(-4.275,-1.425,-1.425,-4.275); //cella 17
+E[1][17]= photon_energy*fxy_ph->Integral(-1.425,1.425,-1.425,-4.275); //cella 18
+E[1][18]= photon_energy*fxy_ph->Integral(1.425,4.275,-1.425,-4.275); //cella 19
+E[1][19]= photon_energy*fxy_ph->Integral(4.275,7.125,-1.425,-4.275); //cella 20
+E[1][20]= photon_energy*fxy_ph->Integral(-7.125,-4.275,-4.275,-7.125); //cella 21
+E[1][21]= photon_energy*fxy_ph->Integral(-4.275,-1.425,-4.275,-7.125); //cella 22
+E[1][22]= photon_energy*fxy_ph->Integral(-1.425,1.425,-4.275,-7.125); //cella 23
+E[1][23]= photon_energy*fxy_ph->Integral(1.425,4.275,-4.275,-7.125); //cella 24
+E[1][24]= photon_energy*fxy_ph->Integral(4.275,7.125,-4.275,-7.125); //cella 25 
   
 // ENERGIA TOTALE NELLE CELLE QUANDO CI SONO ELETTRONE E FOTONE
 E[2][0]= E[0][0]+E[1][0]; //cella 1

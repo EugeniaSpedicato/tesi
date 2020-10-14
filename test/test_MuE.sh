@@ -44,7 +44,7 @@ cat > analysis.cfi <<!
 <cfi>
 1       # bool makeTree; 1(0) = do(not) produce the output Tree
 1       # bool doTemplates; 1(0) = do (not) produce 2D template histos
-32.     # max Theta for selection of events and template histograms
+100.     # max Theta for selection of events and template histograms
 0       # 1(0): do(not) make angle correlation plots in fine bins
 2       # parameterization of hadronic running: 0:pol2; 1:LL; 2:LLmod
 0       # 0:nominal Lumi; 1:LowLumi; 

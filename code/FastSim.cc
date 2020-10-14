@@ -883,7 +883,7 @@ return def_angle;
 }
 
 
-TMatrixD FastSim::ECALe(const Double_t & detKinBeamRot_cooXe, const Double_t & detKinBeamRot_cooYe,detKinBeamRot_Ee) const
+TMatrixD FastSim::ECALe(const Double_t & detKinBeamRot_cooXe, const Double_t & detKinBeamRot_cooYe, const Double_t & detKinBeamRot_Ee) const
 {       
     Int_t n_cell; //numero di cella in cui cade l'ELETTRONE
     Double_t Rm = 1.959 ; //raggio di Moliere in centimetri   
@@ -991,7 +991,7 @@ E[0][25]=n_cell;
 return E;
 }
 
-TMatrixD FastSim::ECALe(const Double_t & photon_coox, const Double_t & photon_cooy,photon_energy) const
+TMatrixD FastSim::ECALe(const Double_t & photon_coox, const Double_t & photon_cooy, const Double_t & photon_energy) const
 {       
     Int_t n_cell_ph; //numero di cella in cui cade il FOTONE
     Double_t Rm = 1.959 ; //raggio di Moliere in centimetri   
@@ -1147,7 +1147,7 @@ kv.def_angle_e = def_angle[1][0];
 { 
     TMatrixD E = ECALe(kv.cooXe,kv.cooYe,kv.Ee);
     
-    kv.n_cell_e=E[0][25]
+    kv.n_cell_e=E[0][25];
     
     kv.E1_e=E[0][0];
     kv.E2_e=E[0][1];
@@ -1268,7 +1268,7 @@ PxPyPzEVector p_gamma_CoM = Lorentz_ToCoM(p_gamma_Lab_div);
    {
     TMatrixD E = ECALph(photon.coox,photon.cooy,photon.energy);
     
-    photon.n_cell_ph=E[0][25]
+    photon.n_cell_ph=E[0][25];
     
     photon.E1_ph=E[0][0];
     photon.E2_ph=E[0][1];

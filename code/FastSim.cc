@@ -992,7 +992,7 @@ E[0][25]=n_cell;
 return E;
 }
 
-TMatrixD FastSim::ECALe(const Double_t & coox, const Double_t & cooy, const Double_t & photon_energy) const
+TMatrixD FastSim::ECALph(const Double_t & coox, const Double_t & cooy, const Double_t & photon_energy) const
 {       
     Int_t n_cell_ph; //numero di cella in cui cade il FOTONE
     Double_t Rm = 1.959 ; //raggio di Moliere in centimetri   

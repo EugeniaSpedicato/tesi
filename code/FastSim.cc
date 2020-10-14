@@ -6,6 +6,7 @@
 #include "ResolutionModels.h"
 #include "FastSim.h"
 #include "TMatrixF.h" 
+#include "TF2.h" 
 #include "TMatrixD.h"
 #include "TMatrixFBase.h"
 #include <TMatrixFSym.h>
@@ -883,7 +884,7 @@ return def_angle;
 }
 
 
-TMatrixD FastSim::ECALe(const Double_t & detKinBeamRot_cooXe, const Double_t & detKinBeamRot_cooYe, const Double_t & detKinBeamRot_Ee) const
+TMatrixD FastSim::ECALe(const Double_t & cooXe, const Double_t & cooYe, const Double_t & detKinBeamRot_Ee) const
 {       
     Int_t n_cell; //numero di cella in cui cade l'ELETTRONE
     Double_t Rm = 1.959 ; //raggio di Moliere in centimetri   
@@ -892,8 +893,8 @@ TMatrixD FastSim::ECALe(const Double_t & detKinBeamRot_cooXe, const Double_t & d
     
     TMatrixD E(1,26);
     
-    detKinBeamRot_cooXe=detKinBeamRot_cooXe*100;
-    detKinBeamRot_cooYe=detKinBeamRot_cooYe*100;
+    Double_t detKinBeamRot_cooXe=cooXe*100;
+    Double_t detKinBeamRot_cooYe=cooYe*100;
     
  
     fxy_e->SetParameter(0,Rm);
@@ -991,7 +992,7 @@ E[0][25]=n_cell;
 return E;
 }
 
-TMatrixD FastSim::ECALe(const Double_t & photon_coox, const Double_t & photon_cooy, const Double_t & photon_energy) const
+TMatrixD FastSim::ECALe(const Double_t & coox, const Double_t & cooy, const Double_t & photon_energy) const
 {       
     Int_t n_cell_ph; //numero di cella in cui cade il FOTONE
     Double_t Rm = 1.959 ; //raggio di Moliere in centimetri   
@@ -1000,8 +1001,8 @@ TMatrixD FastSim::ECALe(const Double_t & photon_coox, const Double_t & photon_co
     
     TMatrixD E(1,26);
     
-    photon_coox=photon_coox*100;
-    photon_cooy=photon_cooy*100;
+    Double_t photon_coox=coox*100;
+    Double_t photon_cooy=cooy*100;
     
  
     fxy_ph->SetParameter(0,Rm);

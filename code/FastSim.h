@@ -55,8 +55,8 @@ namespace MuE {
     TMatrixD MCSout(const PxPyPzEVector & kin, const PxPyPzEVector & k, const PxPyPzEVector & ke,const Double_t & tar) const; 
     TMatrixD MCSphoton(const Double_t & tar,const PxPyPzEVector & p_gamma_Lab_div,const Double_t & xin,const Double_t & yin) const;
     TMatrixD Def_angle(const PxPyPzEVector & p_mu_in_div,const PxPyPzEVector & p_mu_out_div,const PxPyPzEVector & p_e_out_div) const;
-    TMatrixD ECALe(const Double_t & x,const Double_t & y,const Double_t & E) const;
-    TMatrixD ECALph(const Double_t & x,const Double_t & y,const Double_t & E) const;
+    Int_t ECALe(const Double_t & x,const Double_t & y) const;
+    Int_t ECALph(const Double_t & x,const Double_t & y) const;
     void LoadKineVars(const PxPyPzEVector & p_mu_in,  const PxPyPzEVector & p_e_in, const PxPyPzEVector & p_mu_out, const PxPyPzEVector & p_e_out,  const TMatrixD & coo, const Double_t & TheINT, KineVars & kv);
     void LoadPhoton(const Event & event, Photon & photon, const PxPyPzEVector & p_mu_in, const Double_t & tar,const Double_t & xin,const Double_t & yin);
 

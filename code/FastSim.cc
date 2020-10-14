@@ -884,23 +884,14 @@ return def_angle;
 }
 
 
-TMatrixD FastSim::ECALe(const Double_t & cooXe, const Double_t & cooYe, const Double_t & detKinBeamRot_Ee) const
+Int_t FastSim::ECALe(const Double_t & cooXe, const Double_t & cooYe) const
 {       
     Int_t n_cell; //numero di cella in cui cade l'ELETTRONE
     Double_t Rm = 1.959 ; //raggio di Moliere in centimetri   
     
-    TF2 *fxy_e = new TF2("fxy_e","(1/(2*pi*[0]*[1]))*(exp(-((x-[2])*(x-[2])+(y-[3])*(y-[3]))/(2*[0]*[1])))",-7.125,7.125,-7.125,7.125 );
-    
-    TMatrixD E(1,26);
-    
     Double_t detKinBeamRot_cooXe=cooXe*100;
     Double_t detKinBeamRot_cooYe=cooYe*100;
-    
- 
-    fxy_e->SetParameter(0,Rm);
-    fxy_e->SetParameter(1,Rm);
-    fxy_e->SetParameter(2,detKinBeamRot_cooXe);
-    fxy_e->SetParameter(3,detKinBeamRot_cooYe);
+
     
     if (detKinBeamRot_cooXe>-7.125 && detKinBeamRot_cooXe<-4.275 && detKinBeamRot_cooYe<7.125 && detKinBeamRot_cooYe>4.275) {n_cell=1;}
     
@@ -959,56 +950,18 @@ TMatrixD FastSim::ECALe(const Double_t & cooXe, const Double_t & cooYe, const Do
     if (detKinBeamRot_cooXe>1.425 && detKinBeamRot_cooXe<4.275 && detKinBeamRot_cooYe<-4.275 && detKinBeamRot_cooYe>-7.125) {n_cell=24;}
 
     if (detKinBeamRot_cooXe>4.275 && detKinBeamRot_cooXe<7.125 && detKinBeamRot_cooYe<-4.275 && detKinBeamRot_cooYe>-7.125) {n_cell=25;}
-    
-       
-E[0][0]= detKinBeamRot_Ee*fxy_e->Integral(-7.125,-4.275,4.275,7.125); //cella 1
-E[0][1]= detKinBeamRot_Ee*fxy_e->Integral(-4.275,-1.425,4.275,7.125); //cella 2
-E[0][2]= detKinBeamRot_Ee*fxy_e->Integral(-1.425,1.425,4.275,7.125); //cella 3
-E[0][3]= detKinBeamRot_Ee*fxy_e->Integral(1.425,4.275,4.275,7.125); //cella 4
-E[0][4]= detKinBeamRot_Ee*fxy_e->Integral(4.275,7.125,4.275,7.125); //cella 5
-E[0][5]= detKinBeamRot_Ee*fxy_e->Integral(-7.125,-4.275,1.425,4.275); //cella 6
-E[0][6]= detKinBeamRot_Ee*fxy_e->Integral(-4.275,-1.425,1.425,4.275); //cella 7
-E[0][7]= detKinBeamRot_Ee*fxy_e->Integral(-1.425,1.425,1.425,4.275); //cella 8
-E[0][8]= detKinBeamRot_Ee*fxy_e->Integral(1.425,4.275,1.425,4.275); //cella 9
-E[0][9]= detKinBeamRot_Ee*fxy_e->Integral(4.275,7.125,1.425,4.275); //cella 10
-E[0][10]= detKinBeamRot_Ee*fxy_e->Integral(-7.125,-4.275,-1.425,1.425); //cella 11
-E[0][11]= detKinBeamRot_Ee*fxy_e->Integral(-4.275,-1.425,-1.425,1.425); //cella 12
-E[0][12]= detKinBeamRot_Ee*fxy_e->Integral(-1.425,1.425,-1.425,1.425); //cella 13
-E[0][13]= detKinBeamRot_Ee*fxy_e->Integral(1.425,4.275,-1.425,1.425); //cella 14
-E[0][14]= detKinBeamRot_Ee*fxy_e->Integral(4.275,7.125,-1.425,1.425); //cella 15
-E[0][15]= detKinBeamRot_Ee*fxy_e->Integral(-7.125,-4.275,-4.275,-1.425); //cella 16
-E[0][16]= detKinBeamRot_Ee*fxy_e->Integral(-4.275,-1.425,-4.275,-1.425); //cella 17
-E[0][17]= detKinBeamRot_Ee*fxy_e->Integral(-1.425,1.425,-4.275,-1.425); //cella 18
-E[0][18]= detKinBeamRot_Ee*fxy_e->Integral(1.425,4.275,-4.275,-1.425); //cella 19
-E[0][19]= detKinBeamRot_Ee*fxy_e->Integral(4.275,7.125,-4.275,-1.425); //cella 20
-E[0][20]= detKinBeamRot_Ee*fxy_e->Integral(-7.125,-4.275,-7.125,-4.275); //cella 21
-E[0][21]= detKinBeamRot_Ee*fxy_e->Integral(-4.275,-1.425,-7.125,-4.275); //cella 22
-E[0][22]= detKinBeamRot_Ee*fxy_e->Integral(-1.425,1.425,-7.125,-4.275); //cella 23
-E[0][23]= detKinBeamRot_Ee*fxy_e->Integral(1.425,4.275,-7.125,-4.275); //cella 24
-E[0][24]= detKinBeamRot_Ee*fxy_e->Integral(4.275,7.125,-7.125,-4.275); //cella 25
-
-E[0][25]=n_cell;
         
-return E;
+return n_cell;
 }
 
-TMatrixD FastSim::ECALph(const Double_t & coox, const Double_t & cooy, const Double_t & photon_energy) const
+Int_t FastSim::ECALph(const Double_t & coox, const Double_t & cooy) const
 {       
     Int_t n_cell_ph; //numero di cella in cui cade il FOTONE
     Double_t Rm = 1.959 ; //raggio di Moliere in centimetri   
     
-    TF2 *fxy_ph = new TF2("fxy_ph","(1/(2*pi*[0]*[1]))*(exp(-((x-[2])*(x-[2])+(y-[3])*(y-[3]))/(2*[0]*[1])))",-7.125,7.125,-7.125,7.125 );
-    
-    TMatrixD E(1,26);
-    
     Double_t photon_coox=coox*100;
     Double_t photon_cooy=cooy*100;
-    
- 
-    fxy_ph->SetParameter(0,Rm);
-    fxy_ph->SetParameter(1,Rm);
-    fxy_ph->SetParameter(2,photon_coox);
-    fxy_ph->SetParameter(3,photon_cooy);
+
     
     if (photon_coox>-7.125 && photon_coox<-4.275 && photon_cooy<7.125 && photon_cooy>4.275) {n_cell_ph=1;}
     
@@ -1067,38 +1020,9 @@ TMatrixD FastSim::ECALph(const Double_t & coox, const Double_t & cooy, const Dou
     if (photon_coox>1.425 && photon_coox<4.275 && photon_cooy<-4.275 && photon_cooy>-7.125) {n_cell_ph=24;}
 
     if (photon_coox>4.275 && photon_coox<7.125 && photon_cooy<-4.275 && photon_cooy>-7.125) {n_cell_ph=25;} 
- 
- //cout << "cella fotone:" << n_cell_ph << endl; 
-    
-E[0][0]= photon_energy*fxy_ph->Integral(-7.125,-4.275,4.275,7.125); //cella 1
-E[0][1]= photon_energy*fxy_ph->Integral(-4.275,-1.425,4.275,7.125); //cella 2
-E[0][2]= photon_energy*fxy_ph->Integral(-1.425,1.425,4.275,7.125); //cella 3
-E[0][3]= photon_energy*fxy_ph->Integral(1.425,4.275,4.275,7.125); //cella 4
-E[0][4]= photon_energy*fxy_ph->Integral(4.275,7.125,4.275,7.125); //cella 5
-E[0][5]= photon_energy*fxy_ph->Integral(-7.125,-4.275,1.425,4.275); //cella 6
-E[0][6]= photon_energy*fxy_ph->Integral(-4.275,-1.425,1.425,4.275); //cella 7
-E[0][7]= photon_energy*fxy_ph->Integral(-1.425,1.425,1.425,4.275); //cella 8
-E[0][8]= photon_energy*fxy_ph->Integral(1.425,4.275,1.425,4.275); //cella 9
-E[0][9]= photon_energy*fxy_ph->Integral(4.275,7.125,1.425,4.275); //cella 10
-E[0][10]= photon_energy*fxy_ph->Integral(-7.125,-4.275,-1.425,1.425); //cella 11
-E[0][11]= photon_energy*fxy_ph->Integral(-4.275,-1.425,-1.425,1.425); //cella 12
-E[0][12]= photon_energy*fxy_ph->Integral(-1.425,1.425,-1.425,1.425); //cella 13
-E[0][13]= photon_energy*fxy_ph->Integral(1.425,4.275,-1.425,1.425); //cella 14
-E[0][14]= photon_energy*fxy_ph->Integral(4.275,7.125,-1.425,1.425); //cella 15
-E[0][15]= photon_energy*fxy_ph->Integral(-7.125,-4.275,-4.275,-1.425); //cella 16
-E[0][16]= photon_energy*fxy_ph->Integral(-4.275,-1.425,-4.275,-1.425); //cella 17
-E[0][17]= photon_energy*fxy_ph->Integral(-1.425,1.425,-4.275,-1.425); //cella 18
-E[0][18]= photon_energy*fxy_ph->Integral(1.425,4.275,-4.275,-1.425); //cella 19
-E[0][19]= photon_energy*fxy_ph->Integral(4.275,7.125,-4.275,-1.425); //cella 20
-E[0][20]= photon_energy*fxy_ph->Integral(-7.125,-4.275,-7.125,-4.275); //cella 21
-E[0][21]= photon_energy*fxy_ph->Integral(-4.275,-1.425,-7.125,-4.275); //cella 22
-E[0][22]= photon_energy*fxy_ph->Integral(-1.425,1.425,-7.125,-4.275); //cella 23
-E[0][23]= photon_energy*fxy_ph->Integral(1.425,4.275,-7.125,-4.275); //cella 24
-E[0][24]= photon_energy*fxy_ph->Integral(4.275,7.125,-7.125,-4.275); //cella 25 
-  
-E[0][25]=n_cell_ph;
+
         
-return E;
+return n_cell_ph;
 }
 
 
@@ -1144,68 +1068,8 @@ kv.def_angle_mu = def_angle[0][0];
 kv.def_angle_e = def_angle[1][0]; 
     
     if (abs(kv.cooXe)<0.07125 && abs(kv.cooYe)<0.07125)
-    
-{ 
-    TMatrixD E = ECALe(kv.cooXe,kv.cooYe,kv.Ee);
-    
-    kv.n_cell_e=E[0][25];
-    
-    kv.E1_e=E[0][0];
-    kv.E2_e=E[0][1];
-    kv.E3_e=E[0][2];
-    kv.E4_e=E[0][3];
-    kv.E5_e=E[0][4];
-    kv.E6_e=E[0][5];
-    kv.E7_e=E[0][6];
-    kv.E8_e=E[0][7];
-    kv.E9_e=E[0][8];
-    kv.E10_e=E[0][9];
-    kv.E11_e=E[0][10];
-    kv.E12_e=E[0][11];
-    kv.E13_e=E[0][12];
-    kv.E14_e=E[0][13];
-    kv.E15_e=E[0][14];
-    kv.E16_e=E[0][15];
-    kv.E17_e=E[0][16];
-    kv.E18_e=E[0][17];
-    kv.E19_e=E[0][18];
-    kv.E20_e=E[0][19];
-    kv.E21_e=E[0][20];
-    kv.E22_e=E[0][21];
-    kv.E23_e=E[0][22];
-    kv.E24_e=E[0][23];
-    kv.E25_e=E[0][24];
-        
-    }
-    
-    else {    
-    kv.n_cell_e=0;
-    
-    kv.E1_e=0;
-    kv.E2_e=0;
-    kv.E3_e=0;
-    kv.E4_e=0;
-    kv.E5_e=0;
-    kv.E6_e=0;
-    kv.E7_e=0;
-    kv.E8_e=0;
-    kv.E9_e=0;
-    kv.E10_e=0;
-    kv.E11_e=0;
-    kv.E12_e=0;
-    kv.E13_e=0;
-    kv.E14_e=0;
-    kv.E15_e=0;
-    kv.E16_e=0;
-    kv.E17_e=0;
-    kv.E18_e=0;
-    kv.E19_e=0;
-    kv.E20_e=0;
-    kv.E21_e=0;
-    kv.E22_e=0;
-    kv.E23_e=0;
-    kv.E24_e=0;
-    kv.E25_e=0;}
+    {kv.n_cell_e = ECALe(kv.cooXe,kv.cooYe);}
+    else {kv.n_cell_e=0;}
     
   // Note: here Ebeam is the average beam energy, so tt_e and xt_e are defined under this assumption
   MuE::ElasticState emu_state(Ebeam,mm,me, kv.the);
@@ -1266,67 +1130,8 @@ PxPyPzEVector p_gamma_CoM = Lorentz_ToCoM(p_gamma_Lab_div);
     photon.cooy=coo[0][1];
       
    if (abs(photon.coox)<0.07125 && abs(photon.cooy)<0.07125 && photon.energy>0.2)
-   {
-    TMatrixD E = ECALph(photon.coox,photon.cooy,photon.energy);
-    
-    photon.n_cell_ph=E[0][25];
-    
-    photon.E1_ph=E[0][0];
-    photon.E2_ph=E[0][1];
-    photon.E3_ph=E[0][2];
-    photon.E4_ph=E[0][3];
-    photon.E5_ph=E[0][4];
-    photon.E6_ph=E[0][5];
-    photon.E7_ph=E[0][6];
-    photon.E8_ph=E[0][7];
-    photon.E9_ph=E[0][8];
-    photon.E10_ph=E[0][9];
-    photon.E11_ph=E[0][10];
-    photon.E12_ph=E[0][11];
-    photon.E13_ph=E[0][12];
-    photon.E14_ph=E[0][13];
-    photon.E15_ph=E[0][14];
-    photon.E16_ph=E[0][15];
-    photon.E17_ph=E[0][16];
-    photon.E18_ph=E[0][17];
-    photon.E19_ph=E[0][18];
-    photon.E20_ph=E[0][19];
-    photon.E21_ph=E[0][20];
-    photon.E22_ph=E[0][21];
-    photon.E23_ph=E[0][22];
-    photon.E24_ph=E[0][23];
-    photon.E25_ph=E[0][24];
-        
-    }
-    
-    else {    
-    photon.n_cell_ph=0;
-    
-    photon.E1_ph=0;
-    photon.E2_ph=0;
-    photon.E3_ph=0;
-    photon.E4_ph=0;
-    photon.E5_ph=0;
-    photon.E6_ph=0;
-    photon.E7_ph=0;
-    photon.E8_ph=0;
-    photon.E9_ph=0;
-    photon.E10_ph=0;
-    photon.E11_ph=0;
-    photon.E12_ph=0;
-    photon.E13_ph=0;
-    photon.E14_ph=0;
-    photon.E15_ph=0;
-    photon.E16_ph=0;
-    photon.E17_ph=0;
-    photon.E18_ph=0;
-    photon.E19_ph=0;
-    photon.E20_ph=0;
-    photon.E21_ph=0;
-    photon.E22_ph=0;
-    photon.E23_ph=0;
-    photon.E24_ph=0;
-    photon.E25_ph=0;}   
+   {photon.n_cell_ph = ECALph(photon.coox,photon.cooy);}
+    else{photon.n_cell_ph=0;}   
    
     
   }
@@ -1340,33 +1145,6 @@ PxPyPzEVector p_gamma_CoM = Lorentz_ToCoM(p_gamma_Lab_div);
     photon.cooy     = -1;
     
     photon.n_cell_ph=0;
-    
-    photon.E1_ph=0;
-    photon.E2_ph=0;
-    photon.E3_ph=0;
-    photon.E4_ph=0;
-    photon.E5_ph=0;
-    photon.E6_ph=0;
-    photon.E7_ph=0;
-    photon.E8_ph=0;
-    photon.E9_ph=0;
-    photon.E10_ph=0;
-    photon.E11_ph=0;
-    photon.E12_ph=0;
-    photon.E13_ph=0;
-    photon.E14_ph=0;
-    photon.E15_ph=0;
-    photon.E16_ph=0;
-    photon.E17_ph=0;
-    photon.E18_ph=0;
-    photon.E19_ph=0;
-    photon.E20_ph=0;
-    photon.E21_ph=0;
-    photon.E22_ph=0;
-    photon.E23_ph=0;
-    photon.E24_ph=0;
-    photon.E25_ph=0;
-      
   }
       
       

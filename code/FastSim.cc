@@ -887,7 +887,7 @@ return def_angle;
 Int_t FastSim::ECALe(const Double_t & cooXe, const Double_t & cooYe) const
 {       
     Int_t n_cell; //numero di cella in cui cade l'ELETTRONE
-    Double_t Rm = 1.959 ; //raggio di Moliere in centimetri   
+   
     
     Double_t detKinBeamRot_cooXe=cooXe*100;
     Double_t detKinBeamRot_cooYe=cooYe*100;
@@ -957,7 +957,7 @@ return n_cell;
 Int_t FastSim::ECALph(const Double_t & coox, const Double_t & cooy) const
 {       
     Int_t n_cell_ph; //numero di cella in cui cade il FOTONE
-    Double_t Rm = 1.959 ; //raggio di Moliere in centimetri   
+  
     
     Double_t photon_coox=coox*100;
     Double_t photon_cooy=cooy*100;

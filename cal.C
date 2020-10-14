@@ -54,7 +54,7 @@ Double_t Rm = 1.959 ; //raggio di Moliere in centimetri
        
 if (d_e_ph>1*Rm)
 {
-    if (photon_n_cell_ph==detKinBeamRot_n_cell_e)
+    if (photon_n_cell_ph==detKinBeamRot_n_cell_e && photon_n_cell_ph!=0)
 {same_cell+=wgt_full;}
 else {different_cell+=wgt_full;}  // contatori double 
 }

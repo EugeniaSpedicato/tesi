@@ -81,7 +81,7 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
                
            {
 // SE IL FOTONE E' NEL CALORIMETRO AD UNA d=N*RM DALL'ELETTRONE             
-                if (d_e_ph>2*Rm)
+                if (d_e_ph>1*Rm)
                 {
                     if (photon_energy>0.2) {n_two+=wgt_full;}
                 }
@@ -104,7 +104,7 @@ if (E_CAL>1) {if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe)
                
            {
 // SE IL FOTONE E' NEL CALORIMETRO AD UNA d=N*RM DALL'ELETTRONE             
-                if (d_e_ph>2*Rm)
+                if (d_e_ph>1*Rm)
                 {
                     if (photon_energy>0.2) {n_two_cut+=wgt_full;}
                 }
@@ -129,7 +129,7 @@ if (detKinBeamRot_tar==0)
                
            {
 // SE IL FOTONE E' NEL CALORIMETRO AD UNA d=N*RM DALL'ELETTRONE             
-                if (d_e_ph>2*Rm)
+                if (d_e_ph>1*Rm)
                 {
                     if (photon_energy>0.2) {n_two0+=wgt_full;}
                 }
@@ -152,7 +152,7 @@ if (E_CAL>1) {if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe)
                
            {
 // SE IL FOTONE E' NEL CALORIMETRO AD UNA d=N*RM DALL'ELETTRONE             
-                if (d_e_ph>2*Rm)
+                if (d_e_ph>1*Rm)
                 {
                     if (photon_energy>0.2) {n_two_cut0+=wgt_full;}
                 }
@@ -171,46 +171,46 @@ if (detKinBeamRot_tar==1)
 {
     if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
     {
-        n_tot0+=wgt_full;
+        n_tot1+=wgt_full;
 
 // SE IL FOTONE E' PRODOTTO DENTRO AL CALORIMETRO
            if (abs(photon_coox)<0.07125 && abs(photon_cooy)<0.07125)
                
            {
 // SE IL FOTONE E' NEL CALORIMETRO AD UNA d=N*RM DALL'ELETTRONE             
-                if (d_e_ph>2*Rm)
+                if (d_e_ph>1*Rm)
                 {
-                    if (photon_energy>0.2) {n_two0+=wgt_full;}
+                    if (photon_energy>0.2) {n_two1+=wgt_full;}
                 }
 // SE E' NEL CALORIMETRO MA AD UNA d<2RM
-            else { if (photon_energy>0.2) {n_one0+=wgt_full;}
+            else { if (photon_energy>0.2) {n_one1+=wgt_full;}
                  }
            } 
 // SE E' NON E' PRODOTTO O NON E' NEL CALORIMETRO        
-        else {n_one0+=wgt_full;}
+        else {n_one1+=wgt_full;}
     } 
 
 
 //CON TAGLIO
 if (E_CAL>1) {if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
     {
-        n_tot_cut0+=wgt_full;
+        n_tot_cut1+=wgt_full;
 
 // SE IL FOTONE E' PRODOTTO DENTRO AL CALORIMETRO
            if (abs(photon_coox)<0.07125 && abs(photon_cooy)<0.07125)
                
            {
 // SE IL FOTONE E' NEL CALORIMETRO AD UNA d=N*RM DALL'ELETTRONE             
-                if (d_e_ph>2*Rm)
+                if (d_e_ph>1*Rm)
                 {
-                    if (photon_energy>0.2) {n_two_cut0+=wgt_full;}
+                    if (photon_energy>0.2) {n_two_cut1+=wgt_full;}
                 }
 // SE E' NEL CALORIMETRO MA AD UNA d<2RM
-            else { if (photon_energy>0.2) {n_one_cut0+=wgt_full;}
+            else { if (photon_energy>0.2) {n_one_cut1+=wgt_full;}
                  }
            } 
 // SE E' NON E' PRODOTTO O NON E' NEL CALORIMETRO        
-        else {n_one_cut0+=wgt_full;}
+        else {n_one_cut1+=wgt_full;}
     } }
 }
 

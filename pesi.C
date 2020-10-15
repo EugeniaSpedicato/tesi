@@ -74,7 +74,7 @@ void atree::Loop()
 //SENZA TAGLIO
 if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
     {
-        n_tot+=wgt_full;
+        //n_tot+=wgt_full;
 
 // SE IL FOTONE E' PRODOTTO DENTRO AL CALORIMETRO
            if (abs(photon_coox)<0.07125 && abs(photon_cooy)<0.07125)
@@ -97,7 +97,7 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
 // CON TAGLIO
 if (E_CAL>1) {if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
     {
-        n_tot_cut+=wgt_full;
+        //n_tot_cut+=wgt_full;
 
 // SE IL FOTONE E' PRODOTTO DENTRO AL CALORIMETRO
            if (abs(photon_coox)<0.07125 && abs(photon_cooy)<0.07125)
@@ -215,9 +215,9 @@ if (E_CAL>1) {if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe)
     }*/
 
 
-ratio=n_two/n_tot;
+/*ratio=n_two/n_tot;
 ratio_cut=n_two_cut/n_tot_cut;   
-/*ratio0=n_two0/n_tot0;
+ratio0=n_two0/n_tot0;
 ratio_cut0=n_two_cut0/n_tot_cut0; 
 ratio1=n_two1/n_tot1;
 ratio_cut1=n_two_cut1/n_tot_cut1;   */
@@ -225,15 +225,15 @@ ratio_cut1=n_two_cut1/n_tot_cut1;   */
        
    }
     
-cout << "Elettroni totali nel calorimetro: " << n_tot << endl;
+//cout << "Elettroni totali nel calorimetro: " << n_tot << endl;
 cout << "Elettroni ad una distanza 2RM dal fotone: " << n_two << endl;
 cout << "Eventi in cui vedo solo un cluster: " << n_one << endl;
-cout << "Frazione di eventi scartabili: " << ratio <<endl;
+//cout << "Frazione di eventi scartabili: " << ratio <<endl;
 cout << "-------------------------------------------"<<endl;
-cout << "Elettroni totali nel calorimetro CON TAGLIO: " << n_tot_cut << endl;
+//cout << "Elettroni totali nel calorimetro CON TAGLIO: " << n_tot_cut << endl;
 cout << "Elettroni ad una distanza 2RM dal fotone CON TAGLIO: " << n_two_cut << endl;
 cout << "Eventi in cui vedo solo un cluster CON TAGLIO: " << n_one_cut << endl;
-cout << "Frazione di eventi scartabili CON TAGLIO: " << ratio_cut <<endl;
+//cout << "Frazione di eventi scartabili CON TAGLIO: " << ratio_cut <<endl;
     
 cout << endl;
     

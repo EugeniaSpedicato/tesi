@@ -85,7 +85,7 @@ Double_t Rm = 1.959 ; //raggio di Moliere in centimetri
        
   if (photon_n_cell_ph!=0 && detKinBeamRot_n_cell_e!=0){ 
       
-if (d_e_ph>1*Rm)
+if (d_e_ph>2*Rm)
 {   n_tot_eph+=wgt_full;
  if (photon_n_cell_ph==detKinBeamRot_n_cell_e)
     {same_cell+=wgt_full;}
@@ -102,7 +102,7 @@ if (detKinBeamRot_n_cell_e!=0)
            if (photon_n_cell_ph!=0)    
            {
 // SE IL FOTONE E' NEL CALORIMETRO AD UNA d=N*RM DALL'ELETTRONE             
-                if (d_e_ph>1*Rm)
+                if (d_e_ph>2*Rm)
                 {
                     //if (photon_energy>0.2) {
                     n_two+=wgt_full;
@@ -126,7 +126,7 @@ if (E_CAL>1)
            if (photon_n_cell_ph!=0)    
            {
 // SE IL FOTONE E' NEL CALORIMETRO AD UNA d=N*RM DALL'ELETTRONE             
-                if (d_e_ph>1*Rm)
+                if (d_e_ph>2*Rm)
                 {
                     n_two_cut+=wgt_full;
                 }
@@ -151,7 +151,7 @@ if (detKinBeamRot_tar==0)
            if (photon_n_cell_ph!=0)    
            {
 // SE IL FOTONE E' NEL CALORIMETRO AD UNA d=N*RM DALL'ELETTRONE             
-                if (d_e_ph>1*Rm)
+                if (d_e_ph>2*Rm)
                 {
                     //if (photon_energy>0.2) {
                     n_two0+=wgt_full;
@@ -175,7 +175,7 @@ if (E_CAL>1)
            if (photon_n_cell_ph!=0)    
            {
 // SE IL FOTONE E' NEL CALORIMETRO AD UNA d=N*RM DALL'ELETTRONE             
-                if (d_e_ph>1*Rm)
+                if (d_e_ph>2*Rm)
                 {
                     n_two_cut0+=wgt_full;
                 }
@@ -200,7 +200,7 @@ if(detKinBeamRot_tar==1)
            if (photon_n_cell_ph!=0)    
            {
 // SE IL FOTONE E' NEL CALORIMETRO AD UNA d=N*RM DALL'ELETTRONE             
-                if (d_e_ph>1*Rm)
+                if (d_e_ph>2*Rm)
                 {
                     //if (photon_energy>0.2) {
                     n_two1+=wgt_full;
@@ -224,7 +224,7 @@ if (E_CAL>1)
            if (photon_n_cell_ph!=0)    
            {
 // SE IL FOTONE E' NEL CALORIMETRO AD UNA d=N*RM DALL'ELETTRONE             
-                if (d_e_ph>1*Rm)
+                if (d_e_ph>2*Rm)
                 {
                     n_two_cut1+=wgt_full;
                 }

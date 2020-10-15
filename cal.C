@@ -97,5 +97,8 @@ if (d_e_ph>1*Rm)
  /*cout << "Elettroni e fotoni nella stessa cella: " << same_cell << endl;
  cout << "Elettroni e fotoni in una diversa cella: " << different_cell << endl;   
 cout << "n tot con fotoni= " << n_tot << endl;*/
+cout << "Elettroni totali nel calorimetro: " << n_tot << endl;
+cout << "Elettroni ad una distanza 2RM dal fotone: " << n_two << endl;
+cout << "Eventi in cui vedo solo un cluster: " << n_one << endl;
     
 }

@@ -116,7 +116,7 @@ if (E_CAL>1) {if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe)
         else {n_one_cut+=wgt_full;}
     } }
 
-//---->TARGET 0
+/*//---->TARGET 0
 
 if (detKinBeamRot_tar==0)
 {
@@ -211,15 +211,15 @@ if (E_CAL>1) {if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe)
            } 
 // SE E' NON E' PRODOTTO O NON E' NEL CALORIMETRO        
         else {n_one_cut1+=wgt_full;}
-    } }
+    } }*/
 }
 
 ratio=n_two/n_tot;
 ratio_cut=n_two_cut/n_tot_cut;   
-ratio0=n_two0/n_tot0;
+/*ratio0=n_two0/n_tot0;
 ratio_cut0=n_two_cut0/n_tot_cut0; 
 ratio1=n_two1/n_tot1;
-ratio_cut1=n_two_cut1/n_tot_cut1;   
+ratio_cut1=n_two_cut1/n_tot_cut1;   */
        
        
    }
@@ -236,7 +236,7 @@ cout << "Frazione di eventi scartabili CON TAGLIO: " << ratio_cut <<endl;
     
 cout << endl;
     
-cout << "Elettroni totali nel calorimetro TAR 0: " << n_tot0 << endl;
+/*cout << "Elettroni totali nel calorimetro TAR 0: " << n_tot0 << endl;
 cout << "Elettroni ad una distanza 2RM dal fotone TAR 0: " << n_two0 << endl;
 cout << "Eventi in cui vedo solo un cluster TAR 0: " << n_one0 << endl;
 cout << "Frazione di eventi scartabili TAR 0: " << ratio0 <<endl;
@@ -256,7 +256,7 @@ cout << "-------------------------------------------"<<endl;
 cout << "Elettroni totali nel calorimetro CON TAGLIO TAR 1: " << n_tot_cut1 << endl;
 cout << "Elettroni ad una distanza 2RM dal fotone CON TAGLIO TAR 1: " << n_two_cut1 << endl;
 cout << "Eventi in cui vedo solo un cluster CON TAGLIO TAR 1: " << n_one_cut1 << endl;
-cout << "Frazione di eventi scartabili CON TAGLIO TAR 1: " << ratio_cut1 <<endl;
+cout << "Frazione di eventi scartabili CON TAGLIO TAR 1: " << ratio_cut1 <<endl;*/
   
 
 

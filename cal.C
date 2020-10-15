@@ -50,8 +50,8 @@ Double_t n_tot_eph=0.;
 
         
 
-//Double_t same_cell=0.;
-//Double_t different_cell=0.;
+Double_t same_cell=0.;
+Double_t different_cell=0.;
 Double_t E_CAL;
 Double_t Rm = 1.959 ; //raggio di Moliere in centimetri    
  

@@ -97,7 +97,7 @@ if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
     } 
 
 
-// CON TAGLIO
+/*// CON TAGLIO
 if (E_CAL>1) {if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
     {
         n_tot_cut+=wgt_full;
@@ -122,7 +122,7 @@ if (E_CAL>1) {if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe)
         else {n_one_cut+=wgt_full;}
     } }
 
-/*//---->TARGET 0
+//---->TARGET 0
 
 if (detKinBeamRot_tar==0)
 {
@@ -236,10 +236,10 @@ cout << "Elettroni ad una distanza 2RM dal fotone: " << n_two << endl;
 cout << "Eventi in cui vedo solo un cluster: " << n_one << endl;
 cout << "Frazione di eventi scartabili: " << ratio <<endl;
 cout << "-------------------------------------------"<<endl;
-cout << "Elettroni totali nel calorimetro CON TAGLIO: " << n_tot_cut << endl;
+/*cout << "Elettroni totali nel calorimetro CON TAGLIO: " << n_tot_cut << endl;
 cout << "Elettroni ad una distanza 2RM dal fotone CON TAGLIO: " << n_two_cut << endl;
 cout << "Eventi in cui vedo solo un cluster CON TAGLIO: " << n_one_cut << endl;
-cout << "Frazione di eventi scartabili CON TAGLIO: " << ratio_cut <<endl;
+cout << "Frazione di eventi scartabili CON TAGLIO: " << ratio_cut <<endl;*/
     
 cout << endl;
     

@@ -211,8 +211,9 @@ if (E_CAL>1) {if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe)
            } 
 // SE E' NON E' PRODOTTO O NON E' NEL CALORIMETRO        
         else {n_one_cut1+=wgt_full;}
-    } }*/
-}
+    } }
+    }*/
+
 
 ratio=n_two/n_tot;
 ratio_cut=n_two_cut/n_tot_cut;   

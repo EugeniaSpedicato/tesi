@@ -99,9 +99,6 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0
        px_mu_out->Fill(detKinBeamRot_pXmu_out,wgt_LO);
        py_mu_out->Fill(detKinBeamRot_pYmu_out,wgt_LO);
        pz_mu_out->Fill(detKinBeamRot_pZmu_out,wgt_LO); 
-       px_mu_outLO->Fill(detKinBeamRot_pXmu_out,wgt_LO);
-       py_mu_outLO->Fill(detKinBeamRot_pYmu_out,wgt_LO);
-       pz_mu_outLO->Fill(detKinBeamRot_pZmu_out,wgt_LO);
             
     Double_t Pmu=sqrt(detKinBeamRot_pXmu_out*detKinBeamRot_pXmu_out+detKinBeamRot_pYmu_out*detKinBeamRot_pYmu_out+detKinBeamRot_pZmu_out*detKinBeamRot_pZmu_out);
             
@@ -140,10 +137,7 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0
         {
        px_e_out->Fill(detKinBeamRot_pXe_out,wgt_LO);
        py_e_out->Fill(detKinBeamRot_pYe_out,wgt_LO);
-       pz_e_out->Fill(detKinBeamRot_pZe_out,wgt_LO);  
-       px_e_outLO->Fill(detKinBeamRot_pXe_out,wgt_LO);
-       py_e_outLO->Fill(detKinBeamRot_pYe_out,wgt_LO);
-       pz_e_outLO->Fill(detKinBeamRot_pZe_out,wgt_LO);
+       pz_e_out->Fill(detKinBeamRot_pZe_out,wgt_LO); 
       
        Double_t Pe=sqrt(detKinBeamRot_pXe_out*detKinBeamRot_pXe_out+detKinBeamRot_pYe_out*detKinBeamRot_pYe_out+detKinBeamRot_pZe_out*detKinBeamRot_pZe_out);
    
@@ -235,15 +229,11 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0
     p->cd(1);
     px_mu_out->SetLineColor(46);
     px_mu_out->Draw("HIST");
-    px_mu_outLO->SetLineColor(kBlack);
-    px_mu_outLO->Draw("HIST same");
     px_mu_out->GetXaxis()->SetTitle("Px [GeV]");
     
     p->cd(2);    
     py_mu_out->SetLineColor(46);
     py_mu_out->Draw("HIST");
-    py_mu_outLO->SetLineColor(kBlack);
-    py_mu_outLO->Draw("HIST same");
     py_mu_out->GetXaxis()->SetTitle("Py [GeV]");
     p->cd(3);
     pz_mu_out->SetLineColor(46);
@@ -253,18 +243,12 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0
     pz_mu_out->GetXaxis()->SetTitle("Pz [GeV]");
     p->cd(4);
     px_e_out->Draw("HIST");
-    px_e_outLO->SetLineColor(kBlack);
-    px_e_outLO->Draw("HIST same"); 
     px_e_out->GetXaxis()->SetTitle("Px [GeV]");
     p->cd(5);
     py_e_out->Draw("HIST"); 
-    py_e_outLO->SetLineColor(kBlack);
-    py_e_outLO->Draw("HIST same");
     py_e_out->GetXaxis()->SetTitle("Py [GeV]");
     p->cd(6);
     pz_e_out->Draw("HIST");
-    pz_e_outLO->SetLineColor(kBlack);
-    pz_e_outLO->Draw("HIST same");
     pz_e_out->GetXaxis()->SetTitle("Pz [GeV]");
     p->SaveAs("PemuLO.png");
     

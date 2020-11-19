@@ -12,7 +12,8 @@ void atree::Loop()
     
 Double_t d0=2.10; //meters
 Double_t d1=1.10; //meters 
-    
+   
+// UTILE QUANDO SI FA VEDERE CON E SENZA DIVERGENZA
            
 TH1F* Npx_mu_out=new TH1F("h1a", "pX_out muon BR", 150,-0.3,0.3);
 TH1F* Npy_mu_out=new TH1F("h2a", "pY_out muon BR", 150,-0.3,0.3);

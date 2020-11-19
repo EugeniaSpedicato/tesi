@@ -99,7 +99,7 @@ TH2F  *E_r  = new TH2F("h2da" , " X  Vs. y of the photon",70,-0.1,0.1,70,-0.1,0.
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
  
-       if (detKinBeamRot_tar==1){
+       //if (detKinBeamRot_tar==1){
        px_mu->Fill(detKinBeamRot_pXmu,wgt_full);
        py_mu->Fill(detKinBeamRot_pYmu,wgt_full);
        pz_mu->Fill(detKinBeamRot_pZmu,wgt_full);
@@ -123,7 +123,7 @@ TH2F  *E_r  = new TH2F("h2da" , " X  Vs. y of the photon",70,-0.1,0.1,70,-0.1,0.
             
     Double_t Emu_out=sqrt(Pmu*Pmu+mmu*mmu);
     Emuout->Fill(Emu_out,wgt_full);  
-    Emuin->Fill(detKinBeamRot_Emu,wgt_LO);   
+    Emuin->Fill(detKinBeamRot_Emu,wgt_full);   
             
     thmu->Fill(detKinBeamRot_thmu,wgt_full);
     Double_t anglex_mu = atan2(detKinBeamRot_pXmu_out, detKinBeamRot_pZmu_out);
@@ -166,7 +166,7 @@ if(E_ECAL>1)
    
        Double_t Ee_out=sqrt(Pe*Pe+me*me);
        Eeout->Fill(Ee_out,wgt_full);
-       Eein->Fill(detKinBeamRot_Ee,wgt_LO);
+       Eein->Fill(detKinBeamRot_Ee,wgt_full);
            
        the->Fill(detKinBeamRot_the,wgt_full);  
         Double_t anglex_e = atan2(detKinBeamRot_pXe_out, detKinBeamRot_pZe_out);
@@ -222,7 +222,7 @@ if(E_ECAL>1)
 
        
        if (abs(detKinBeamRot_cooXmu) <0.07125 && abs(detKinBeamRot_cooYmu) <0.07125 && abs(detKinBeamRot_cooXe) <0.07125 && abs(detKinBeamRot_cooYe) <0.07125 && abs(photon_coox) < 0.07125 && abs(photon_cooy) < 0.07125)
-       {Double_t Dx = detKinBeamRot_cooXe-detKinBeamRot_cooXmu;
+    {Double_t Dx = detKinBeamRot_cooXe-detKinBeamRot_cooXmu;
     Double_t Dy = detKinBeamRot_cooYe-detKinBeamRot_cooXmu;
     Double_t Dxep = detKinBeamRot_cooXe-photon_coox;
     Double_t Dyep = detKinBeamRot_cooYe-photon_cooy;    
@@ -255,7 +255,7 @@ if(E_ECAL>1)
            { DRmu_cut->Fill(dist,wgt_full);}
        }
 
-       }
+    //   } //tar
        
 }
 

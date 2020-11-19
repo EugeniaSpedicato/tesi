@@ -21,18 +21,17 @@ void Analysis::BeginJob()
   
   cout<<"\n"<<"Analysis Inputs: thetaMax for preselection and histograms = "<< paran.thetaMax << " mrad"<<endl;
 
-  //histos = new Histos(pargen, paran);
+  histos = new Histos(pargen, paran);
 }
 
 void Analysis::Analyze(const MuE::Event & event, const MuE::FastSim & fs)
 {
   const MuE::KineVars & genKin = fs.GetGenKin();
   const MuE::KineVars & detKin = fs.GetDetKin();
-    
   const MuE::Photon & photon = fs.GetPhoton();
 
   // apply preselection if both the gen-level and det-level electron angle are above the cut (default 30mrad)
-  if (genKin.the > paran.thetaMax && detKin.the > paran.thetaMax ) return;
+  if (genKin.the > paran.thetaMax && detKin.the > paran.thetaMax) return;
 
   // filling my analysis variables
   myAna.RunNr = event.RunNr;
@@ -50,7 +49,7 @@ void Analysis::Analyze(const MuE::Event & event, const MuE::FastSim & fs)
   if (paran.makeTree) atree->Fill();
   
   // filling my histos
-  //histos->Fill(event, myAna);
+  histos->Fill(event, myAna);
 }
 
 void Analysis::EndJob(const MCstat & mcsums) 
@@ -59,14 +58,14 @@ void Analysis::EndJob(const MCstat & mcsums)
 
   if (n_events >=0) {
     cerr << "Final histogram normalizations, ratios, fits, plots "<<endl<<endl;
-    /*histos->SetSums(mcsums);
+    histos->SetSums(mcsums);
     histos->Normalize(n_events);
 
     histos->Do_Ratios();
     histos->Plot();
     if (paran.doTemplates) histos->Plot2D();
     histos->Fit();
-    histos->PlotResolutions();*/
+    histos->PlotResolutions();
 
     // write out root tree
     if (paran.makeTree) {
@@ -95,7 +94,7 @@ void  Analysis::EndJob(const MCstat & mcsums, const std::vector<std::pair<std::s
   Long64_t n_events = parmain.n_events;
 
   if (n_events >=0) {
-    /*cerr <<endl<< "Final histogram normalizations, ratios, fits, plots "<<endl<<endl;
+    cerr <<endl<< "Final histogram normalizations, ratios, fits, plots "<<endl<<endl;
     histos->SetSums(mcsums);
     histos->Normalize(n_events);
 
@@ -103,7 +102,7 @@ void  Analysis::EndJob(const MCstat & mcsums, const std::vector<std::pair<std::s
     histos->Plot();
     if (paran.doTemplates) histos->Plot2D();
     histos->Fit();
-    histos->PlotResolutions();*/
+    histos->PlotResolutions();
 
     // write out root tree
     if (paran.makeTree) {
@@ -122,15 +121,15 @@ void  Analysis::EndJob(const MCstat & mcsums, const std::vector<std::pair<std::s
 
   else {
     // load histos from existing external file
-    /*TFile *fp = new TFile(parmain.histo_ifname.c_str());
+    TFile *fp = new TFile(parmain.histo_ifname.c_str());
 
-       output_hist_file->cd();
+    //    output_hist_file->cd();
     
     TFile *projfile = new TFile("projstat.root","RECREATE");
     projfile->cd();
     histos->RatioFinal(n_events, fp, "hn_thmu");
     histos->RatioFinal(n_events, fp, "hn_the");
-    projfile->Write();*/
+    projfile->Write();
 
     cerr <<"\n"<< "*** WARNING: missing code to normalize histograms to be used in analysis !!! \n"<<endl;
 

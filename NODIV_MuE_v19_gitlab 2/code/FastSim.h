@@ -7,9 +7,6 @@
 // G.Abbiendi  4/Sep/2018 
 ///////////////////////////////////////////////
 #include "Math/Vector4D.h"
-#include "Math/Vector3D.h"
-#include "Math/GenVector/DisplacementVector3D.h"
-#include "Math/Vector3Dfwd.h"
 #include "MuEtree.h"
 #include "MuEana.h"
 #include "Inputs.h"
@@ -32,7 +29,7 @@ namespace MuE {
 
   private:
     typedef ROOT::Math::PxPyPzEVector PxPyPzEVector;
-	typedef ROOT::Math::XYZVector XYZVector;
+
     Double_t P_2bodies_CoM(Double_t Mass, Double_t mass_mu, Double_t mass_e) const;
 
     PxPyPzEVector Lorentz_ToCoM(const PxPyPzEVector & plab) const;

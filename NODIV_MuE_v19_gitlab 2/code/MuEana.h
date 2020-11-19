@@ -31,14 +31,10 @@ namespace MuE {
     Double_t deltaPhi; // acoplanarity (deltaPhi)
     Double_t openingAngle; // opening angle mu-e out in the Lab
     Double_t tripleProduct; // triple product btw normalized vectors i . mu x e
-      Double_t cooXe;
-      Double_t cooXmu;
-      Double_t cooYe;
-      Double_t cooYmu;
 
     KineVars():
     t13(0),t24(0),x13(0),x24(0),tt_e(0),xt_e(0),Ee(0),Emu(0),the(0),thmu(0),phe(0),phmu(0),
-    deltaPhi(0),openingAngle(0),tripleProduct(0),cooXe(0),cooXmu(0),cooYe(0),cooYmu(0)
+    deltaPhi(0),openingAngle(0),tripleProduct(0)
     {};
 
     virtual ~KineVars(){};
@@ -71,9 +67,8 @@ namespace MuE {
     Double_t wgt_full, wgt_norun, wgt_lep, wgt_LO;   // event weights 
     Double_t E_mu_in;  // incoming muon energy
     KineVars genKin;   // kinematic variables at Generator-level for e and mu tracks
-    KineVars detKin; // kinematic variables at Detector-level for e and mu tracks
-    KineVars detKinBeamRot; 
-      Photon photon;     // photon kinematic variables at Gen-level
+    KineVars detKin;   // kinematic variables at Detector-level for e and mu tracks
+    Photon photon;     // photon kinematic variables at Gen-level
     
     MuEana():
      RunNr(0),EventNr(0),wgt_full(0),wgt_norun(0),wgt_lep(0),wgt_LO(0),E_mu_in(0)

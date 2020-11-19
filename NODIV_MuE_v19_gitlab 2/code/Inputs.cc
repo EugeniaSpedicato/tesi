@@ -39,8 +39,8 @@ void Inputs::configure(const string & cfi, bool debug) {
   }
 
 }
-template<typename T> 
-void Inputs::readin(ifstream & ifile, T & par, bool debug) {
+
+void Inputs::readin(ifstream & ifile, auto & par, bool debug) {
   string line, dump;
   getline(ifile, line);
   istringstream stream(line);
@@ -51,7 +51,7 @@ void Inputs::readin(ifstream & ifile, T & par, bool debug) {
 void One_Input::readcfi(ifstream & ifile, bool debug) {
   readin(ifile, (*this).input_dirs_file, debug);
   readin(ifile, (*this).n_events, debug);
-  //readin(ifile, (*this).histo_ifname, debug);
+  readin(ifile, (*this).histo_ifname, debug);
   readin(ifile, (*this).output_dir, debug);
   readin(ifile, (*this).fastSim_ifname, debug);
   readin(ifile, (*this).analysis_ifname, debug);

@@ -12,7 +12,7 @@
 #include "MuEtree.h"
 #include "MuEana.h"
 #include "FastSim.h"
-//#include "Histos.h"
+#include "Histos.h"
 #include "Inputs.h"
 
 namespace MuE {

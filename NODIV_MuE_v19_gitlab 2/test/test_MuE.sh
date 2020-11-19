@@ -18,9 +18,9 @@ gfortran ${FOPTIONS} ${code}/muerad.f
 OPTIONS="-O2 -Wall"
 #OPTIONS="-g -Wall"
 
-g++ ${OPTIONS} -I${code} -I${ROOTINCDIR} ${code}/${MAIN}.cc MuEtreeDict.C ${code}/MuEtree.cc ${code}/Inputs.cc ${code}/Analysis.cc ${code}/FastSim.cc ${code}/Utils.cc ${code}/ElasticState.cc ${code}/dalpha.cc summa.o hadr5n12.o muerad.o ${ROOTLIBS} -L/opt/local/include/X11/ -lgfortran -lX11 -o ${MAIN}.exe
+g++ ${OPTIONS} -I${code} -I${ROOTINCDIR} ${code}/${MAIN}.cc MuEtreeDict.C ${code}/MuEtree.cc ${code}/Inputs.cc ${code}/Analysis.cc ${code}/FastSim.cc ${code}/Utils.cc ${code}/ElasticState.cc ${code}/Histos.cc ${code}/dalpha.cc summa.o hadr5n12.o muerad.o ${ROOTLIBS} -lgfortran -lX11 -o ${MAIN}.exe
 
-#exit  -L/opt/local/include/X11/
+#exit
 
 OUTDIR=job_`date +"%y-%m-%d_%T"`
 
@@ -42,7 +42,7 @@ cat > fastSim.cfi <<!
 ################################################################################
 cat > analysis.cfi <<!
 <cfi>
-0       # bool makeTree; 1(0) = do(not) produce the output Tree
+1       # bool makeTree; 1(0) = do(not) produce the output Tree
 0       # bool doTemplates; 1(0) = do (not) produce 2D template histos
 100.     # max Theta for selection of events and template histograms
 0       # 1(0): do(not) make angle correlation plots in fine bins
@@ -59,7 +59,7 @@ cat > analysis.cfi <<!
 ################################################################################
 cat > input.cfi <<!
 <cfi>
-mysample.txt  #mcsamples_test_1file.txt # string input_dirs_file; // file containing a list of directory paths where to look for NLO MC events
+mysample.txt # string input_dirs_file; // file containing a list of directory paths where to look for NLO MC events
 10000000                       # long long n_events; // events to be processed (N>0:N; 0:all; <0: read histograms from existing results)
 results.root            # string histo_ifname; // path to input histo file (kinematical distributions when n_events<0)
 ${OUTDIR}               # string output_dir; // output directory name

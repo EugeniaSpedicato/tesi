@@ -9,8 +9,7 @@ namespace MuE {
     virtual ~Inputs(){};
     void configure(const std::string & cfi, bool debug=false);
     virtual void readcfi(std::ifstream & ifile, bool debug=false){};
-    template<typename T> 
-    void readin(std::ifstream & ifile, T & vvv, bool debug=false);
+    void readin(std::ifstream & ifile, auto & vvv, bool debug=false);
   };
 
   class One_Input : public Inputs {
@@ -21,7 +20,7 @@ namespace MuE {
 
     std::string input_dirs_file; // file with list of dir. paths with input MC events
     long long n_events;          // n.events to be processed (N>0:N; 0:all; <0: read histograms from existing results)
-    //std::string histo_ifname;    // complete path of file with input histos (for n_events<0)
+    std::string histo_ifname;    // complete path of file with input histos (for n_events<0)
     std::string output_dir;      // output directory name 
     std::string fastSim_ifname;  // FastSim input cfg 
     std::string analysis_ifname; // Analysis input cfg

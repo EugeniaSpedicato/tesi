@@ -14,6 +14,7 @@ void atree::Loop()
     
 Double_t mmu= 105.6583745 *0.001;
 Double_t me= 0.5109989461 *0.001;
+Double_t E_ECAL;
 
 TH1F* Emuout=new TH1F("EnergyMU", "Energy Mu out", 75,0.2,150); 
 TH1F* Emuout_E =new TH1F("EnergyMU_E", "Energy Mu out", 75,0.2,150); 
@@ -86,8 +87,14 @@ TH2F  *X_Y_p2  = new TH2F("CooPH2" , " X  Vs. Y of the photon TAR 2",140,-0.5,-0
       Long64_t ientry = LoadTree(jentry);
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
-
        
+       
+    if (photon_coox!=-1)
+    {  E_ECAL=detKinBeamRot_Ee+photon_energy;}
+    else 
+    {  E_ECAL=detKinBeamRot_Ee;}
+
+      if (E_ECAL>1){
         if (abs(detKinBeamRot_cooXmu) < 0.07125 && abs(detKinBeamRot_cooYmu) < 0.07125)
         {
             
@@ -187,6 +194,7 @@ TH2F  *X_Y_p2  = new TH2F("CooPH2" , " X  Vs. Y of the photon TAR 2",140,-0.5,-0
            
         X_Y_p->Fill(photon_coox, photon_cooy,wgt_full);
       }       
+   }
    }
     
     

@@ -30,11 +30,11 @@ TH1F* Eelout2=new TH1F("EnergyEL1", "Energy El out Tar 1", 1000,0,100);
 TH1F* Eelout_E2 =new TH1F("EnergyEL_E1", "Energy El out Tar 1", 1000,0,100);
 
 TH1F* Ephout=new TH1F("EnergyPH", "Energy Ph out", 1000,0,100); 
-TH1F* Ephout_E =new TH1F("EnergyPH_E", "Energy Ph out", 1000,0,100);   
+
 TH1F* Ephout1=new TH1F("EnergyPH1", "Energy Ph out Tar 1", 1000,0,100); 
-TH1F* Ephout_E1 =new TH1F("EnergyPH_E1", "Energy Ph out Tar 1", 1000,0,100); 
+ 
 TH1F* Ephout2=new TH1F("EnergyPH2", "Energy Ph out Tar 2", 1000,0,100); 
-TH1F* Ephout_E2 =new TH1F("EnergyPH_E2", "Energy Ph out Tar 2", 1000,0,100);  
+
 
     
 TH1F* thmu=new TH1F("thetaMU", "Muon Polar Angle", 180,0,0.002);  
@@ -122,6 +122,7 @@ TH2F  *X_Y_p2  = new TH2F("CooPH2" , " X  Vs. Y of the photon TAR 2",140,-0.5,-0
    
        Double_t Ee_out=sqrt(Pe*Pe+me*me);
        Eelout->Fill(Ee_out,wgt_full);
+        Eelout_E->Fill(detKinBeamRot_Ee,wgt_full);
            
        the->Fill(detKinBeamRot_the*0.001,wgt_full);  
         Double_t anglex_e = atan2(detKinBeamRot_pXe_out, detKinBeamRot_pZe_out);
@@ -151,52 +152,60 @@ TH2F  *X_Y_p2  = new TH2F("CooPH2" , " X  Vs. Y of the photon TAR 2",140,-0.5,-0
         
        
        
-       if(abs(photon_coox) < 0.07 && abs(photon_cooy) < 0.07 && photon_energy>0.2)
+       if(abs(photon_coox) < 0.07125 && abs(photon_cooy) < 0.07125 && photon_energy>0.2)
        {
         Ephout->Fill(photon_energy,wgt_full);            
             
         if (detKinBeamRot_tar==0)
-        {X_Y_p1->Fill(photon_coox, photon_cooy,wgt_full);}
+        {X_Y_p1->Fill(photon_coox, photon_cooy,wgt_full);
+        Ephout1->Fill(photon_energy,wgt_full); }
 
             
            if (detKinBeamRot_tar==1)
-           {X_Y_p2->Fill(photon_coox, photon_cooy,wgt_full);}                  
+           {X_Y_p2->Fill(photon_coox, photon_cooy,wgt_full);
+           Ephout2->Fill(photon_energy,wgt_full);}                  
            
         X_Y_p->Fill(photon_coox, photon_cooy,wgt_full);
       }       
    }
     
     
-    TCanvas * e= new TCanvas("e","e",400,10,1500,1000);
+    TCanvas * e= new TCanvas("e","e",1500,1000,3500,2000);
     e->Divide(2,3);
     e->cd(1);
     Emuout->GetXaxis()->SetTitle("E [GeV]");
+    Emuout->SetLineColor(kRed);
     Emuout->Draw("HIST");
     gPad->SetLogy();
     e->cd(2);
     Emuout_E->GetXaxis()->SetTitle("E [GeV]");
+    Emuout_E->SetLineColor(kRed);
     Emuout_E->Draw("HIST");
     gPad->SetLogy();
     e->cd(3);
     Emuout1->GetXaxis()->SetTitle("E [GeV]");
+    Emuout1->SetLineColor(kOrange);
     Emuout1->Draw("HIST");
     gPad->SetLogy();
     e->cd(4);
     Emuout_E1->GetXaxis()->SetTitle("E [GeV]");
+    Emuout_E1->SetLineColor(kOrange);
     Emuout_E1->Draw("HIST");
     gPad->SetLogy();
     e->cd(5);
     Emuout2->GetXaxis()->SetTitle("E [GeV]");
+    Emuout2->SetLineColor(kBlack);
     Emuout2->Draw("HIST");
     gPad->SetLogy();
     e->cd(6);
     Emuout_E2->GetXaxis()->SetTitle("E [GeV]");
+    Emuout_E2->SetLineColor(kBlack);
     Emuout_E2->Draw("HIST");
     gPad->SetLogy();
     
     e->SaveAs("energyMU.png");
     
-    TCanvas * ee= new TCanvas("e","e",400,10,1500,1000);
+    TCanvas * ee= new TCanvas("e","e",1500,1000,3500,2000);
     ee->Divide(2,3);
     ee->cd(1);
     Eelout->GetXaxis()->SetTitle("E [GeV]");
@@ -208,24 +217,28 @@ TH2F  *X_Y_p2  = new TH2F("CooPH2" , " X  Vs. Y of the photon TAR 2",140,-0.5,-0
     gPad->SetLogy();
     ee->cd(3);
     Eelout1->GetXaxis()->SetTitle("E [GeV]");
+    Eelout1->SetLineColor(kOrange);
     Eelout1->Draw("HIST");
     gPad->SetLogy();
     ee->cd(4);
     Eelout_E1->GetXaxis()->SetTitle("E [GeV]");
+    Eelout_E1->SetLineColor(kOrange);
     Eelout_E1->Draw("HIST");
     gPad->SetLogy();
     ee->cd(5);
     Eelout2->GetXaxis()->SetTitle("E [GeV]");
+    Eelout2->SetLineColor(kBlack);
     Eelout2->Draw("HIST");
     gPad->SetLogy();
     ee->cd(6);
     Eelout_E2->GetXaxis()->SetTitle("E [GeV]");
+    Eelout_E2->SetLineColor(kBlack);
     Eelout_E2->Draw("HIST");
     gPad->SetLogy();
     
     ee->SaveAs("energyEL.png");
 
-    TCanvas * eew= new TCanvas("ew","ew",400,10,1500,1000);
+    TCanvas * eew= new TCanvas("ew","ew",1500,1000,3500,2000);
     eew->Divide(1,3);
     eew->cd(1);
     Ephout->GetXaxis()->SetTitle("E [GeV]");
@@ -233,10 +246,12 @@ TH2F  *X_Y_p2  = new TH2F("CooPH2" , " X  Vs. Y of the photon TAR 2",140,-0.5,-0
     gPad->SetLogy();
     eew->cd(2);
     Ephout1->GetXaxis()->SetTitle("E [GeV]");
+    Ephout1->SetLineColor(kOrange);
     Ephout1->Draw("HIST");
     gPad->SetLogy();
     eew->cd(3);
     Ephout2->GetXaxis()->SetTitle("E [GeV]");
+    Ephout2->SetLineColor(kBlack);
     Ephout2->Draw("HIST");
     gPad->SetLogy();    
     
@@ -244,7 +259,7 @@ TH2F  *X_Y_p2  = new TH2F("CooPH2" , " X  Vs. Y of the photon TAR 2",140,-0.5,-0
 
 
     
-    TCanvas * t= new TCanvas("t","t",400,10,1500,1000);
+    TCanvas * t= new TCanvas("t","t",1500,1000,3500,2000);
     t->Divide(1,2);
     t->cd(1);
     thmu->SetLineColor(46);
@@ -266,7 +281,7 @@ TH2F  *X_Y_p2  = new TH2F("CooPH2" , " X  Vs. Y of the photon TAR 2",140,-0.5,-0
     t->SaveAs("THpolar.png");    
 
 
-TCanvas * theC= new TCanvas("tar","tar",400,10,1500,1000);
+TCanvas * theC= new TCanvas("tar","tar",1500,1000,3500,2000);
     theC->Divide(2,2);
     theC->cd(1);
     thXZmu->SetLineColor(46);
@@ -286,7 +301,7 @@ TCanvas * theC= new TCanvas("tar","tar",400,10,1500,1000);
   theC->SaveAs("ThXZYZ.png");
 
 
-Int_t nx13_cut = X_Y_mu->GetNbinsX();
+/*Int_t nx13_cut = X_Y_mu->GetNbinsX();
 Int_t ny13_cut = X_Y_mu->GetNbinsY();
 for (Int_t i=1; i<nx13_cut+1; i+=wgt_full) {
 for (Int_t j=1; j<ny13_cut+1; j+=wgt_full) {
@@ -380,7 +395,7 @@ if (X_Y_p2->GetBinContent(i,j)<1) X_Y_p2->SetBinContent(i,j,0);}}
     X_Y_p2->GetXaxis()->SetTitle("x [m]");
     X_Y_p2->GetYaxis()->SetTitle("y [m]");
     
-  duedmu->SaveAs("dued.png");   
+  duedmu->SaveAs("dued.png"); */  
     
     
 

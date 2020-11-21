@@ -121,8 +121,7 @@ TH2F  *X_Y_p2  = new TH2F("CooPH2" , " X  Vs. Y of the photon TAR 2",140,-0.5,-0
        Double_t Pe=sqrt(detKinBeamRot_pXe_out*detKinBeamRot_pXe_out+detKinBeamRot_pYe_out*detKinBeamRot_pYe_out+detKinBeamRot_pZe_out*detKinBeamRot_pZe_out);
    
        Double_t Ee_out=sqrt(Pe*Pe+me*me);
-       Eeout->Fill(Ee_out,wgt_full);
-       Eein->Fill(detKinBeamRot_Ee,wgt_full);
+       Eelout->Fill(Ee_out,wgt_full);
            
        the->Fill(detKinBeamRot_the*0.001,wgt_full);  
         Double_t anglex_e = atan2(detKinBeamRot_pXe_out, detKinBeamRot_pZe_out);
@@ -132,16 +131,16 @@ TH2F  *X_Y_p2  = new TH2F("CooPH2" , " X  Vs. Y of the photon TAR 2",140,-0.5,-0
               
            if (detKinBeamRot_tar==0)
               {
-        Eeout1->Fill(Ee_out,wgt_full); 
-        Eeout_E1->Fill(detKinBeamRot_Ee,wgt_full); 
+        Eelout1->Fill(Ee_out,wgt_full); 
+        Eelout_E1->Fill(detKinBeamRot_Ee,wgt_full); 
         tarONEthe->Fill(detKinBeamRot_the*0.001,wgt_full);
         X_Y_e1->Fill(detKinBeamRot_cooXe, detKinBeamRot_cooYe,wgt_full);            
               }
             
             if (detKinBeamRot_tar==1)
             {
-        Eeout2->Fill(Ee_out,wgt_full); 
-        Eeout_E2->Fill(detKinBeamRot_Ee,wgt_full); 
+        Eelout2->Fill(Ee_out,wgt_full); 
+        Eelout_E2->Fill(detKinBeamRot_Ee,wgt_full); 
         tarTWOthe->Fill(detKinBeamRot_the*0.001,wgt_full);
         X_Y_e2->Fill(detKinBeamRot_cooXe, detKinBeamRot_cooYe,wgt_full);    
              } 
@@ -257,7 +256,7 @@ TH2F  *X_Y_p2  = new TH2F("CooPH2" , " X  Vs. Y of the photon TAR 2",140,-0.5,-0
     thmu->GetXaxis()->SetTitle("Polar Theta [mrad]");
 
     t->cd(2);
-    tarONEthe>SetLineColor(kOrange);
+    tarONEthe->SetLineColor(kOrange);
     tarTWOthe->SetLineColor(kBlack);
     the->Draw("HIST");
     tarONEthe->Draw("HIST SAME");

@@ -46,6 +46,18 @@ TH1F* thYZmu=new TH1F("thetaYZ", "theta YZ plane mu", 150,-0.002,0.002);
 TH1F* thXZe=new TH1F("thetaXZ", "theta XZ plane e", 150,-0.1,0.1);
 TH1F* thYZe=new TH1F("thetaYZ", "theta YZ plane e", 150,-0.1,0.1);
     
+TH1F* thXZmu1=new TH1F("thetaXZ1", "theta XZ plane mu1", 150,-0.002,0.002);
+TH1F* thYZmu1=new TH1F("thetaYZ1", "theta YZ plane mu1", 150,-0.002,0.002);
+    
+TH1F* thXZe1=new TH1F("thetaXZ1", "theta XZ plane e1", 150,-0.1,0.1);
+TH1F* thYZe1=new TH1F("thetaYZ1", "theta YZ plane e1", 150,-0.1,0.1);
+    
+TH1F* thXZmu2=new TH1F("thetaXZ2", "theta XZ plane mu2", 150,-0.002,0.002);
+TH1F* thYZmu2=new TH1F("thetaYZ2", "theta YZ plane mu2", 150,-0.002,0.002);
+    
+TH1F* thXZe2=new TH1F("thetaXZ2", "theta XZ plane e2", 150,-0.1,0.1);
+TH1F* thYZe2=new TH1F("thetaYZ2", "theta YZ plane e2", 150,-0.1,0.1);
+    
 TH1F* tarONEthe=new TH1F("thetaEL1", "Electron Polar Angle Tar 1", 180,0,0.1);
 TH1F* tarTWOthe=new TH1F("thetaEL2", "Electron Polar Angle Tar 2", 180,0,0.1);
 TH1F* tarONEthmu=new TH1F("thetaMU1", "Muon Polar Angle Tar 1", 180,0,0.002);
@@ -100,6 +112,8 @@ TH2F  *X_Y_p2  = new TH2F("CooPH2" , " X  Vs. Y of the photon TAR 2",140,-0.5,-0
         Emuout_E1->Fill(detKinBeamRot_Emu,wgt_full); 
         tarONEthmu->Fill(detKinBeamRot_thmu*0.001,wgt_full);
         X_Y_mu1->Fill(detKinBeamRot_cooXmu, detKinBeamRot_cooYmu,wgt_full);
+        thXZmu1->Fill(anglex_mu,wgt_full);
+        thYZmu1->Fill(angley_mu,wgt_full);
               }
             
                 if (detKinBeamRot_tar==1)
@@ -109,6 +123,8 @@ TH2F  *X_Y_p2  = new TH2F("CooPH2" , " X  Vs. Y of the photon TAR 2",140,-0.5,-0
         Emuout_E2->Fill(detKinBeamRot_Emu,wgt_full); 
         tarTWOthmu->Fill(detKinBeamRot_thmu*0.001,wgt_full);
         X_Y_mu2->Fill(detKinBeamRot_cooXmu, detKinBeamRot_cooYmu,wgt_full); 
+        thXZmu2->Fill(anglex_mu,wgt_full);
+        thYZmu2->Fill(angley_mu,wgt_full);
                }
     X_Y_mu ->Fill(detKinBeamRot_cooXmu, detKinBeamRot_cooYmu,wgt_full);
         
@@ -135,7 +151,9 @@ TH2F  *X_Y_p2  = new TH2F("CooPH2" , " X  Vs. Y of the photon TAR 2",140,-0.5,-0
         Eelout1->Fill(Ee_out,wgt_full); 
         Eelout_E1->Fill(detKinBeamRot_Ee,wgt_full); 
         tarONEthe->Fill(detKinBeamRot_the*0.001,wgt_full);
-        X_Y_e1->Fill(detKinBeamRot_cooXe, detKinBeamRot_cooYe,wgt_full);            
+        X_Y_e1->Fill(detKinBeamRot_cooXe, detKinBeamRot_cooYe,wgt_full);
+        thXZe1->Fill(anglex_e,wgt_full);
+        thYZe1->Fill(angley_e,wgt_full);              
               }
             
             if (detKinBeamRot_tar==1)
@@ -143,7 +161,9 @@ TH2F  *X_Y_p2  = new TH2F("CooPH2" , " X  Vs. Y of the photon TAR 2",140,-0.5,-0
         Eelout2->Fill(Ee_out,wgt_full); 
         Eelout_E2->Fill(detKinBeamRot_Ee,wgt_full); 
         tarTWOthe->Fill(detKinBeamRot_the*0.001,wgt_full);
-        X_Y_e2->Fill(detKinBeamRot_cooXe, detKinBeamRot_cooYe,wgt_full);    
+        X_Y_e2->Fill(detKinBeamRot_cooXe, detKinBeamRot_cooYe,wgt_full);  
+        thXZe2->Fill(anglex_e,wgt_full);
+        thYZe2->Fill(angley_e,wgt_full);    
              } 
            
             X_Y_e ->Fill(detKinBeamRot_cooXe, detKinBeamRot_cooYe,wgt_full);
@@ -251,20 +271,23 @@ TH2F  *X_Y_p2  = new TH2F("CooPH2" , " X  Vs. Y of the photon TAR 2",140,-0.5,-0
     ee->SaveAs("energyEL.png");
 
     TCanvas * eew= new TCanvas("ew","ew",1500,1000,3500,2000);
-    eew->Divide(1,3);
+    eew->Divide(2,3);
     eew->cd(1);
     Ephout->GetXaxis()->SetTitle("E [GeV]");
+    Ephout->SetLineColor(9);
     Ephout->SetLineWidth(2);
     Ephout->Draw("HIST");
     gPad->SetLogy();
-    eew->cd(2);
+    eew->cd(3);
     Ephout1->GetXaxis()->SetTitle("E [GeV]");
+    Ephout1->SetLineColor(9);
     Ephout1->SetLineWidth(2);
     Ephout1->SetLineColor(8);
     Ephout1->Draw("HIST");
     gPad->SetLogy();
-    eew->cd(3);
+    eew->cd(5);
     Ephout2->GetXaxis()->SetTitle("E [GeV]");
+    Ephout2->SetLineColor(9);
     Ephout2->SetLineWidth(2);
     Ephout2->SetLineColor(kBlack);
     Ephout2->Draw("HIST");
@@ -301,18 +324,35 @@ TCanvas * theC= new TCanvas("tar","tar",1500,1000,3500,2000);
     theC->cd(1);
     thXZmu->SetLineColor(46);
     thXZmu->Draw("HIST");
+    thXZmu1->SetLineColor(8);
+    thXZmu1->Draw("HIST SAME");
+    thXZmu2->SetLineColor(kBlack);
+    thXZmu2->Draw("HIST SAME");
     thXZmu->GetXaxis()->SetTitle("Theta XZ [rad]");
     theC->cd(2);
     thXZe->Draw("HIST");
+    thXZe1->SetLineColor(8);
+    thXZe1->Draw("HIST SAME");
+    thXZe2->SetLineColor(kBlack);
+    thXZe2->Draw("HIST SAME");
     thXZe->GetXaxis()->SetTitle("Theta XZ [rad]");
     theC->cd(3);
     thYZmu->SetLineColor(46);
     thYZmu->Draw("HIST");
+    thYZmu1->SetLineColor(8);
+    thYZmu1->Draw("HIST SAME");
+    thYZmu2->SetLineColor(kBlack);
+    thYZmu2->Draw("HIST SAME");
     thYZmu->GetXaxis()->SetTitle("Theta YZ [rad]");
     theC->cd(4);
     thYZe->Draw("HIST");
+    thYZe1->SetLineColor(8);
+    thYZe1->Draw("HIST SAME");
+    thYZe2->SetLineColor(kBlack);
+    thYZe2->Draw("HIST SAME");
     thYZe->GetXaxis()->SetTitle("Theta YZ [rad]");
     
+
   theC->SaveAs("ThXZYZ.png");
 
 

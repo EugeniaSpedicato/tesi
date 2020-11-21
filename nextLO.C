@@ -15,25 +15,25 @@ void atree::Loop()
 Double_t mmu= 105.6583745 *0.001;
 Double_t me= 0.5109989461 *0.001;
 
-TH1F* Emuout=new TH1F("EnergyMU", "Energy Mu out", 1000,0,100); 
-TH1F* Emuout_E =new TH1F("EnergyMU_E", "Energy Mu out", 1000,0,100); 
-TH1F* Emuout1=new TH1F("EnergyMU1", "Energy Mu out Tar 1", 1000,0,100); 
-TH1F* Emuout_E1 =new TH1F("EnergyMU_E1", "Energy Mu out Tar 1", 1000,0,100); 
-TH1F* Emuout2=new TH1F("EnergyMU2", "Energy Mu out Tar 2", 1000,0,100); 
-TH1F* Emuout_E2 =new TH1F("EnergyMU_E2", "Energy Mu out Tar 2", 1000,0,100); 
+TH1F* Emuout=new TH1F("EnergyMU", "Energy Mu out", 75,0.2,150); 
+TH1F* Emuout_E =new TH1F("EnergyMU_E", "Energy Mu out", 75,0.2,150); 
+TH1F* Emuout1=new TH1F("EnergyMU1", "Energy Mu out Tar 1", 75,0.2,150); 
+TH1F* Emuout_E1 =new TH1F("EnergyMU_E1", "Energy Mu out Tar 1", 75,0.2,150); 
+TH1F* Emuout2=new TH1F("EnergyMU2", "Energy Mu out Tar 2", 75,0.2,150); 
+TH1F* Emuout_E2 =new TH1F("EnergyMU_E2", "Energy Mu out Tar 2", 75,0.2,150); 
     
-TH1F* Eelout=new TH1F("EnergyEL", "Energy El out", 1000,0,100); 
-TH1F* Eelout_E =new TH1F("EnergyEL_E", "Energy El out", 1000,0,100);
-TH1F* Eelout1=new TH1F("EnergyEL1", "Energy El out Tar 1", 1000,0,100); 
-TH1F* Eelout_E1 =new TH1F("EnergyEL_E1", "Energy El out Tar 1", 1000,0,100);
-TH1F* Eelout2=new TH1F("EnergyEL1", "Energy El out Tar 1", 1000,0,100); 
-TH1F* Eelout_E2 =new TH1F("EnergyEL_E1", "Energy El out Tar 1", 1000,0,100);
+TH1F* Eelout=new TH1F("EnergyEL", "Energy El out", 70,0.2,140); 
+TH1F* Eelout_E =new TH1F("EnergyEL_E", "Energy El out", 70,0.2,140);
+TH1F* Eelout1=new TH1F("EnergyEL1", "Energy El out Tar 1", 70,0.2,140); 
+TH1F* Eelout_E1 =new TH1F("EnergyEL_E1", "Energy El out Tar 1", 70,0.2,140);
+TH1F* Eelout2=new TH1F("EnergyEL1", "Energy El out Tar 1", 70,0.2,140); 
+TH1F* Eelout_E2 =new TH1F("EnergyEL_E1", "Energy El out Tar 1", 70,0.2,140);
 
-TH1F* Ephout=new TH1F("EnergyPH", "Energy Ph out", 1000,0,100); 
+TH1F* Ephout=new TH1F("EnergyPH", "Energy Ph out", 75,0.2,150); 
 
-TH1F* Ephout1=new TH1F("EnergyPH1", "Energy Ph out Tar 1", 1000,0,100); 
+TH1F* Ephout1=new TH1F("EnergyPH1", "Energy Ph out Tar 1", 75,0.2,150); 
  
-TH1F* Ephout2=new TH1F("EnergyPH2", "Energy Ph out Tar 2", 1000,0,100); 
+TH1F* Ephout2=new TH1F("EnergyPH2", "Energy Ph out Tar 2", 75,0.2,150); 
 
 
     
@@ -255,7 +255,7 @@ TH2F  *X_Y_p2  = new TH2F("CooPH2" , " X  Vs. Y of the photon TAR 2",140,-0.5,-0
     Ephout2->Draw("HIST");
     gPad->SetLogy();    
     
-    eew->SaveAs("energyEL.png");
+    eew->SaveAs("energyPh.png");
 
 
     

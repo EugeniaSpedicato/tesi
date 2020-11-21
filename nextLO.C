@@ -1,5 +1,5 @@
 #define atree_cxx
-#include "nextLO.h"
+#include "next.h"
 #include <TH2.h>
 #include <TH1.h>
 #include <TGraph.h>
@@ -14,66 +14,54 @@ void atree::Loop()
     
 Double_t mmu= 105.6583745 *0.001;
 Double_t me= 0.5109989461 *0.001;
+
+TH1F* Emuout=new TH1F("EnergyMU", "Energy Mu out", 1000,0,100); 
+TH1F* Emuout_E =new TH1F("EnergyMU_E", "Energy Mu out", 1000,0,100); 
+TH1F* Emuout1=new TH1F("EnergyMU1", "Energy Mu out Tar 1", 1000,0,100); 
+TH1F* Emuout_E1 =new TH1F("EnergyMU_E1", "Energy Mu out Tar 1", 1000,0,100); 
+TH1F* Emuout2=new TH1F("EnergyMU2", "Energy Mu out Tar 2", 1000,0,100); 
+TH1F* Emuout_E2 =new TH1F("EnergyMU_E2", "Energy Mu out Tar 2", 1000,0,100); 
     
-    
-TH1F* px_mu=new TH1F("h1", "pX_in muon", 190,-0.3,0.3);
-TH1F* py_mu=new TH1F("h2", "pY_in muon", 190,-0.3,0.3);
-TH1F* pz_mu=new TH1F("h3", "pZ_in muon", 190,50,180);
-    
-TH1F* px_mu_out=new TH1F("h1a", "pX_out muon", 150,-0.3,0.3);
-TH1F* py_mu_out=new TH1F("h2a", "pY_out muon", 150,-0.3,0.3);
-TH1F* pz_mu_out=new TH1F("h3a", "pZ_out muon", 150,0,180);
-TH1F* px_mu_outLO=new TH1F("h1a", "pX_out muon LO", 150,-0.3,0.3);
-TH1F* py_mu_outLO=new TH1F("h2a", "pY_out muon LO", 150,-0.3,0.3);
-TH1F* pz_mu_outLO=new TH1F("h3a", "pZ_out muon LO", 150,0,180);
-TH1F* Emuin=new TH1F("h1aN", "Energy in mu", 150,0,160);
-TH1F* Emuout=new TH1F("h1aN", "Energy out mu", 150,0,160);
-TH1F* Ep=new TH1F("h1aN", "Energy out p", 250,0,0.2);
+TH1F* Eelout=new TH1F("EnergyEL", "Energy El out", 1000,0,100); 
+TH1F* Eelout_E =new TH1F("EnergyEL_E", "Energy El out", 1000,0,100);
+TH1F* Eelout1=new TH1F("EnergyEL1", "Energy El out Tar 1", 1000,0,100); 
+TH1F* Eelout_E1 =new TH1F("EnergyEL_E1", "Energy El out Tar 1", 1000,0,100);
+TH1F* Eelout2=new TH1F("EnergyEL1", "Energy El out Tar 1", 1000,0,100); 
+TH1F* Eelout_E2 =new TH1F("EnergyEL_E1", "Energy El out Tar 1", 1000,0,100);
+
+TH1F* Ephout=new TH1F("EnergyPH", "Energy Ph out", 1000,0,100); 
+TH1F* Ephout_E =new TH1F("EnergyPH_E", "Energy Ph out", 1000,0,100);   
+TH1F* Ephout1=new TH1F("EnergyPH1", "Energy Ph out Tar 1", 1000,0,100); 
+TH1F* Ephout_E1 =new TH1F("EnergyPH_E1", "Energy Ph out Tar 1", 1000,0,100); 
+TH1F* Ephout2=new TH1F("EnergyPH2", "Energy Ph out Tar 2", 1000,0,100); 
+TH1F* Ephout_E2 =new TH1F("EnergyPH_E2", "Energy Ph out Tar 2", 1000,0,100);  
 
     
-    
-TH1F* px_e_out=new TH1F("h1b", "pX_out electron", 150,-0.3,0.3);
-TH1F* py_e_out=new TH1F("h2b", "pY_out electron", 150,-0.3,0.3);
-TH1F* pz_e_out=new TH1F("h3b", "pZ_out electron", 150,0,5);
-TH1F* px_e_outLO=new TH1F("h1b", "pX_out electron LO", 150,-0.3,0.3);
-TH1F* py_e_outLO=new TH1F("h2b", "pY_out electron LO", 150,-0.3,0.3);
-TH1F* pz_e_outLO=new TH1F("h3b", "pZ_out electron LO", 150,0,5);
-TH1F* Eein=new TH1F("h2aN", "Energ in e", 250,0,40);
-TH1F* Eeout=new TH1F("h2aN", "Energy out e", 250,0,40);
-    
-TH1F* thmu=new TH1F("h3bNj", "theta", 180,0,0.002);  
-TH1F* the=new TH1F("h3bNj", "theta", 180,0,0.1);
+TH1F* thmu=new TH1F("thetaMU", "Muon Polar Angle", 180,0,0.002);  
+TH1F* the=new TH1F("thetaEL", "Electron Polar Angle", 180,0,0.1);
 
-TH1F* thXZmu=new TH1F("a", "theta XZ mu", 150,-0.002,0.002);
-TH1F* thYZmu=new TH1F("c", "theta YZ mu", 150,-0.002,0.002);
+TH1F* thXZmu=new TH1F("thetaXZ", "theta XZ plane mu", 150,-0.002,0.002);
+TH1F* thYZmu=new TH1F("thetaYZ", "theta YZ plane mu", 150,-0.002,0.002);
     
-TH1F* thXZe=new TH1F("v", "theta XZ e", 150,-0.1,0.1);
-TH1F* thYZe=new TH1F("b", "theta YZ e", 150,-0.1,0.1);
+TH1F* thXZe=new TH1F("thetaXZ", "theta XZ plane e", 150,-0.1,0.1);
+TH1F* thYZe=new TH1F("thetaYZ", "theta YZ plane e", 150,-0.1,0.1);
     
-TH1F* tarONEXmu=new TH1F("h1a", "Coo X mu tar1  ", 140,-0.15,0.15);
-TH1F* tarONEYmu=new TH1F("h2a", "Coo Y mu tar1 ", 140,-0.15,0.15);
-TH1F* tarONEXe=new TH1F("h1ea", "Coo X e tar1 ", 140,-0.15,0.15);
-TH1F* tarONEYe=new TH1F("h2ea", "Coo Y e tar1 ", 140,-0.15,0.15);
-TH1F* tarONEXp=new TH1F("h1ea", "Coo X ph tar1 ", 100,-0.5,0.5);
-TH1F* tarONEYp=new TH1F("h2ea", "Coo Y ph tar1 ", 100,-0.5,0.5);
+TH1F* tarONEthe=new TH1F("thetaEL1", "Electron Polar Angle Tar 1", 180,0,0.1);
+TH1F* tarTWOthe=new TH1F("thetaEL2", "Electron Polar Angle Tar 2", 180,0,0.1);
+TH1F* tarONEthmu=new TH1F("thetaMU1", "Muon Polar Angle Tar 1", 180,0,0.002);
+TH1F* tarTWOthmu=new TH1F("thetaMU2", "Muon Polar Angle Tar 2", 180,0,0.002);
     
-TH1F* tarTWOXmu=new TH1F("h1a", "Coo X mu tar2  ", 140,-0.15,0.15);
-TH1F* tarTWOYmu=new TH1F("h2a", "Coo Y mu tar2 ", 140,-0.15,0.15);
-TH1F* tarTWOXe=new TH1F("h1ea", "Coo X e tar2 ", 140,-0.15,0.15);
-TH1F* tarTWOYe=new TH1F("h2ea", "Coo Y e tar2 ", 140,-0.15,0.15);
-TH1F* tarTWOXp=new TH1F("h1ea", "Coo X ph tar2 ", 100,-0.5,0.5);
-TH1F* tarTWOYp=new TH1F("h2ea", "Coo Y ph tar2 ", 100,-0.5,0.5);
+TH2F  *X_Y_mu  = new TH2F("CooMU" , " X  Vs. Y of the muon",140,-0.5,-0.5,140,-0.5,0.5);
+TH2F  *X_Y_e  = new TH2F("CooEL" , " X  Vs. Y of the electron",140,-0.5,-0.5,140,-0.5,0.5);
+TH2F  *X_Y_p  = new TH2F("CooPH" , " X  Vs. Y of the photon",140,-0.5,-0.5,140,-0.5,0.5);
     
-TH1F* dx=new TH1F("h2ea", "diff coo X e and mu", 140,-0.1,0.1);
-TH1F* dy=new TH1F("h2ea", "diff coo Y e and mu ", 140,-0.1,0.1);
-TH1F* dxmp=new TH1F("h2ea", "diff coo X photon and mu", 140,-0.1,0.1);
-TH1F* dymp=new TH1F("h2ea", "diff coo Y photon and mu ", 140,-0.1,0.1);
-TH1F* dxep=new TH1F("h2ea", "diff coo X e and photon", 140,-0.1,0.1);
-TH1F* dyep=new TH1F("h2ea", "diff coo Y e and photon ", 140,-0.1,0.1);
+TH2F  *X_Y_mu1  = new TH2F("CooMU1" , " X  Vs. Y of the muon TAR 1",140,-0.5,-0.5,140,-0.5,0.5);
+TH2F  *X_Y_e1  = new TH2F("CooEL1" , " X  Vs. Y of the electron TAR 1",140,-0.5,-0.5,140,-0.5,0.5);
+TH2F  *X_Y_p1  = new TH2F("CooPH1" , " X  Vs. Y of the photon TAR 1",140,-0.5,-0.5,140,-0.5,0.5);
     
-TH2F  *X_Y_mu  = new TH2F("h2d" , " X  Vs. y of the muon",140,-0.5,-0.5,140,-0.5,0.5);
-TH2F  *X_Y_e  = new TH2F("h2da" , " X  Vs. y of the electron",140,-0.5,-0.5,140,-0.5,0.5);
-TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0.5,0.5);
+TH2F  *X_Y_mu2  = new TH2F("CooMU2" , " X  Vs. Y of the muon TAR 2",140,-0.5,-0.5,140,-0.5,0.5);
+TH2F  *X_Y_e2  = new TH2F("CooEL2" , " X  Vs. Y of the electron TAR 2",140,-0.5,-0.5,140,-0.5,0.5);
+TH2F  *X_Y_p2  = new TH2F("CooPH2" , " X  Vs. Y of the photon TAR 2",140,-0.5,-0.5,140,-0.5,0.5);
  
     
      if (fChain == 0) return;
@@ -86,226 +74,200 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0
       Long64_t ientry = LoadTree(jentry);
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
- 
-       if (detKinBeamRot_tar==0)
-       {
+
        
-       px_mu->Fill(detKinBeamRot_pXmu,wgt_LO);
-       py_mu->Fill(detKinBeamRot_pYmu,wgt_LO);
-       pz_mu->Fill(detKinBeamRot_pZmu,wgt_LO);
-       
-        if (detKinBeamRot_cooXmu < 0.07 && detKinBeamRot_cooYmu < 0.07 && detKinBeamRot_cooXmu > -0.07 && detKinBeamRot_cooYmu > -0.07)
+        if (abs(detKinBeamRot_cooXmu) < 0.07125 && abs(detKinBeamRot_cooYmu) < 0.07125)
         {
-       px_mu_out->Fill(detKinBeamRot_pXmu_out,wgt_LO);
-       py_mu_out->Fill(detKinBeamRot_pYmu_out,wgt_LO);
-       pz_mu_out->Fill(detKinBeamRot_pZmu_out,wgt_LO); 
             
     Double_t Pmu=sqrt(detKinBeamRot_pXmu_out*detKinBeamRot_pXmu_out+detKinBeamRot_pYmu_out*detKinBeamRot_pYmu_out+detKinBeamRot_pZmu_out*detKinBeamRot_pZmu_out);
             
     Double_t Emu_out=sqrt(Pmu*Pmu+mmu*mmu);
     Emuout->Fill(Emu_out,wgt_full);  
-    Emuin->Fill(detKinBeamRot_Emu,wgt_LO);   
+    Emuout_E->Fill(detKinBeamRot_Emu,wgt_full);   
             
-    thmu->Fill(detKinBeamRot_thmu*0.001,wgt_LO);
+    thmu->Fill(detKinBeamRot_thmu*0.001,wgt_full);
     Double_t anglex_mu = atan2(detKinBeamRot_pXmu_out, detKinBeamRot_pZmu_out);
     Double_t angley_mu = atan2(detKinBeamRot_pYmu_out, detKinBeamRot_pZmu_out);
             
            
-    thXZmu->Fill(anglex_mu,wgt_LO);
-    thYZmu->Fill(angley_mu,wgt_LO);
+    thXZmu->Fill(anglex_mu,wgt_full);
+    thYZmu->Fill(angley_mu,wgt_full);
             
-              // if (detKinBeamRot_tar==0)
+               if (detKinBeamRot_tar==0)
        
-             //  {
-         tarONEXmu->Fill(detKinBeamRot_cooXmu,wgt_LO);
-         tarONEYmu->Fill(detKinBeamRot_cooYmu,wgt_LO);  
-             //  }
+              {
+        Emuout1->Fill(Emu_out,wgt_full); 
+        Emuout_E1->Fill(detKinBeamRot_Emu,wgt_full); 
+        tarONEthmu->Fill(detKinBeamRot_thmu*0.001,wgt_full);
+        X_Y_mu1->Fill(detKinBeamRot_cooXmu, detKinBeamRot_cooYmu,wgt_full);
+              }
             
-           //    if (detKinBeamRot_tar==1)
+                if (detKinBeamRot_tar==1)
        
-           //    {
-         tarTWOXmu->Fill(detKinBeamRot_cooXmu,wgt_LO);
-         tarTWOYmu->Fill(detKinBeamRot_cooYmu,wgt_LO);    
-            //   }
-    X_Y_mu ->Fill(detKinBeamRot_cooXmu, detKinBeamRot_cooYmu,wgt_LO);
+               {
+        Emuout2->Fill(Emu_out,wgt_full); 
+        Emuout_E2->Fill(detKinBeamRot_Emu,wgt_full); 
+        tarTWOthmu->Fill(detKinBeamRot_thmu*0.001,wgt_full);
+        X_Y_mu2->Fill(detKinBeamRot_cooXmu, detKinBeamRot_cooYmu,wgt_full); 
+               }
+    X_Y_mu ->Fill(detKinBeamRot_cooXmu, detKinBeamRot_cooYmu,wgt_full);
         
         }
         
        
        
-       if (detKinBeamRot_cooXe < 0.07 && detKinBeamRot_cooYe < 0.07 && detKinBeamRot_cooXe > -0.07 && detKinBeamRot_cooYe > -0.07)
+       if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
         {
-       px_e_out->Fill(detKinBeamRot_pXe_out,wgt_LO);
-       py_e_out->Fill(detKinBeamRot_pYe_out,wgt_LO);
-       pz_e_out->Fill(detKinBeamRot_pZe_out,wgt_LO); 
-      
        Double_t Pe=sqrt(detKinBeamRot_pXe_out*detKinBeamRot_pXe_out+detKinBeamRot_pYe_out*detKinBeamRot_pYe_out+detKinBeamRot_pZe_out*detKinBeamRot_pZe_out);
    
        Double_t Ee_out=sqrt(Pe*Pe+me*me);
        Eeout->Fill(Ee_out,wgt_full);
-       Eein->Fill(detKinBeamRot_Ee,wgt_LO);
+       Eein->Fill(detKinBeamRot_Ee,wgt_full);
            
-       the->Fill(detKinBeamRot_the*0.001,wgt_LO);  
+       the->Fill(detKinBeamRot_the*0.001,wgt_full);  
         Double_t anglex_e = atan2(detKinBeamRot_pXe_out, detKinBeamRot_pZe_out);
         Double_t angley_e = atan2(detKinBeamRot_pYe_out, detKinBeamRot_pZe_out);
-        thXZe->Fill(anglex_e,wgt_LO);
-        thYZe->Fill(angley_e,wgt_LO);            
-              // if (detKinBeamRot_tar==0)
-       
-              // {
-             tarONEXe->Fill(detKinBeamRot_cooXe,wgt_LO);
-             tarONEYe->Fill(detKinBeamRot_cooYe,wgt_LO);               
-              // }
+        thXZe->Fill(anglex_e,wgt_full);
+        thYZe->Fill(angley_e,wgt_full);            
+              
+           if (detKinBeamRot_tar==0)
+              {
+        Eeout1->Fill(Ee_out,wgt_full); 
+        Eeout_E1->Fill(detKinBeamRot_Ee,wgt_full); 
+        tarONEthe->Fill(detKinBeamRot_the*0.001,wgt_full);
+        X_Y_e1->Fill(detKinBeamRot_cooXe, detKinBeamRot_cooYe,wgt_full);            
+              }
             
-               //if (detKinBeamRot_tar==1)
-       
-              // {
-             tarTWOXe->Fill(detKinBeamRot_cooXe,wgt_LO);
-             tarTWOYe->Fill(detKinBeamRot_cooYe,wgt_LO);  
-             //  } 
+            if (detKinBeamRot_tar==1)
+            {
+        Eeout2->Fill(Ee_out,wgt_full); 
+        Eeout_E2->Fill(detKinBeamRot_Ee,wgt_full); 
+        tarTWOthe->Fill(detKinBeamRot_the*0.001,wgt_full);
+        X_Y_e2->Fill(detKinBeamRot_cooXe, detKinBeamRot_cooYe,wgt_full);    
+             } 
            
-            X_Y_e ->Fill(detKinBeamRot_cooXe, detKinBeamRot_cooYe,wgt_LO);
+            X_Y_e ->Fill(detKinBeamRot_cooXe, detKinBeamRot_cooYe,wgt_full);
            
         }
         
        
        
-       if(photon_coox < 0.07 && photon_cooy < 0.07 && photon_coox > -0.07 && photon_cooy > -0.07)
+       if(abs(photon_coox) < 0.07 && abs(photon_cooy) < 0.07 && photon_energy>0.2)
        {
-        Ep->Fill(photon_energy,wgt_LO);            
-            //   if (detKinBeamRot_tar==0)
-       
-              // {
-             if (photon_coox!=-1 && photon_cooy!=-1)
-        {tarONEXp->Fill(photon_coox,wgt_LO);
-         tarONEYp->Fill(photon_cooy,wgt_LO);}
-            //   }
+        Ephout->Fill(photon_energy,wgt_full);            
             
-            //   if (detKinBeamRot_tar==1)
-       
-             //  {
+        if (detKinBeamRot_tar==0)
+        {X_Y_p1->Fill(photon_coox, photon_cooy,wgt_full);}
 
-         if (photon_coox!=-1)
-        {tarTWOXp->Fill(photon_coox,wgt_LO);
-         tarTWOYp->Fill(photon_cooy,wgt_LO);}                  
-               //}
-       
-     if (photon_coox!=-1 && photon_cooy!=-1)
-        {X_Y_p ->Fill(photon_coox, photon_cooy,wgt_LO);}    
-      }
-
-
-
-       
-       if (detKinBeamRot_cooXmu < 0.07 && detKinBeamRot_cooYmu < 0.07 && detKinBeamRot_cooXmu > -0.07 && detKinBeamRot_cooYmu > -0.07 && detKinBeamRot_cooXe < 0.07 && detKinBeamRot_cooYe < 0.07 && detKinBeamRot_cooXe > -0.07 && detKinBeamRot_cooYe > -0.07)
-       {Double_t Dx = detKinBeamRot_cooXe-detKinBeamRot_cooXmu;
-    Double_t Dy = detKinBeamRot_cooYe-detKinBeamRot_cooXmu;
-    Double_t Dxep = detKinBeamRot_cooXe-photon_coox;
-    Double_t Dyep = detKinBeamRot_cooYe-photon_cooy;    
-    Double_t Dxmp = photon_coox-detKinBeamRot_cooXmu;
-    Double_t Dymp = photon_cooy-detKinBeamRot_cooXmu;
-    dx->Fill(Dx,wgt_LO);
-    dy->Fill(Dy,wgt_LO);
-    dxep->Fill(Dxep,wgt_LO);
-    dyep->Fill(Dyep,wgt_LO);    
-    dxmp->Fill(Dxmp,wgt_LO);
-    dymp->Fill(Dymp,wgt_LO);}
-
-
-       }
+            
+           if (detKinBeamRot_tar==1)
+           {X_Y_p2->Fill(photon_coox, photon_cooy,wgt_full);}                  
+           
+        X_Y_p->Fill(photon_coox, photon_cooy,wgt_full);
+      }       
    }
-      
-    /*TGraph *energyThEl= new TGraph(4,theV,EeV); 
-    energyThEl->SetTitle("Energy_e(theta_e)");
-    energyThEl->SetMarkerColor(50);
-    energyThEl->SetMarkerStyle(8);
-    energyThEl->SetLineColor(9);
-    energyThEl->GetXaxis()->SetTitle("ThetaEl(mrad)");
-    energyThEl->GetYaxis()->SetTitle("Energy(GeV)"); */
-    
-
-    TCanvas * p= new TCanvas("p","p",400,10,1500,1000);
-    p->Divide(2,3);
-    p->cd(1);
-    px_mu_out->SetLineColor(46);
-    px_mu_out->Draw("HIST");
-    px_mu_out->GetXaxis()->SetTitle("Px [GeV]");
-    
-    p->cd(2);    
-    py_mu_out->SetLineColor(46);
-    py_mu_out->Draw("HIST");
-    py_mu_out->GetXaxis()->SetTitle("Py [GeV]");
-    p->cd(3);
-    pz_mu_out->SetLineColor(46);
-    pz_mu_out->Draw("HIST");  
-    pz_mu_outLO->SetLineColor(kBlack);
-    pz_mu_outLO->Draw("HIST same");
-    pz_mu_out->GetXaxis()->SetTitle("Pz [GeV]");
-    p->cd(4);
-    px_e_out->Draw("HIST");
-    px_e_out->GetXaxis()->SetTitle("Px [GeV]");
-    p->cd(5);
-    py_e_out->Draw("HIST"); 
-    py_e_out->GetXaxis()->SetTitle("Py [GeV]");
-    p->cd(6);
-    pz_e_out->Draw("HIST");
-    pz_e_out->GetXaxis()->SetTitle("Pz [GeV]");
-    p->SaveAs("PemuLO.png");
     
     
     TCanvas * e= new TCanvas("e","e",400,10,1500,1000);
-    e->Divide(3,2);
+    e->Divide(2,3);
     e->cd(1);
-    Emuin->SetLineColor(46);
-    Emuin->GetXaxis()->SetTitle("E [GeV]");
-    Emuin->Draw("HIST");
-    Emuout->SetLineColor(kBlack);
-    Emuout->Draw("HIST same");
-    
-    
-    e->cd(2);
     Emuout->GetXaxis()->SetTitle("E [GeV]");
     Emuout->Draw("HIST");
-    
+    gPad->SetLogy();
+    e->cd(2);
+    Emuout_E->GetXaxis()->SetTitle("E [GeV]");
+    Emuout_E->Draw("HIST");
+    gPad->SetLogy();
     e->cd(3);
-    Eein->Draw("HIST");
-    Eein->GetXaxis()->SetTitle("E [GeV] (log scale)");
-    gPad->SetLogx();
-    Eeout->SetLineColor(kBlack);
-    Eeout->Draw("HIST same");
-    
+    Emuout1->GetXaxis()->SetTitle("E [GeV]");
+    Emuout1->Draw("HIST");
+    gPad->SetLogy();
     e->cd(4);
-    Eeout->Draw("HIST");
-    Eeout->GetXaxis()->SetTitle("E [GeV] (log scale)");
-    gPad->SetLogx();
-    
+    Emuout_E1->GetXaxis()->SetTitle("E [GeV]");
+    Emuout_E1->Draw("HIST");
+    gPad->SetLogy();
     e->cd(5);
-    Ep->SetLineColor(30);
-    Ep->Draw("HIST");
-    Ep->GetXaxis()->SetTitle("E [GeV] (log scale)");
-    gPad->SetLogx();
+    Emuout2->GetXaxis()->SetTitle("E [GeV]");
+    Emuout2->Draw("HIST");
+    gPad->SetLogy();
+    e->cd(6);
+    Emuout_E2->GetXaxis()->SetTitle("E [GeV]");
+    Emuout_E2->Draw("HIST");
+    gPad->SetLogy();
     
-    e->SaveAs("energyLO.png");
+    e->SaveAs("energyMU.png");
     
-    /*TCanvas * eth= new TCanvas("eth","eth",400,10,1500,1000);
-    energyThEl->Draw();
-    eth->SaveAs("EnergyThetaLO.png");*/
+    TCanvas * ee= new TCanvas("e","e",400,10,1500,1000);
+    ee->Divide(2,3);
+    ee->cd(1);
+    Eelout->GetXaxis()->SetTitle("E [GeV]");
+    Eelout->Draw("HIST");
+    gPad->SetLogy();
+    ee->cd(2);
+    Eelout_E->GetXaxis()->SetTitle("E [GeV]");
+    Eelout_E->Draw("HIST");
+    gPad->SetLogy();
+    ee->cd(3);
+    Eelout1->GetXaxis()->SetTitle("E [GeV]");
+    Eelout1->Draw("HIST");
+    gPad->SetLogy();
+    ee->cd(4);
+    Eelout_E1->GetXaxis()->SetTitle("E [GeV]");
+    Eelout_E1->Draw("HIST");
+    gPad->SetLogy();
+    ee->cd(5);
+    Eelout2->GetXaxis()->SetTitle("E [GeV]");
+    Eelout2->Draw("HIST");
+    gPad->SetLogy();
+    ee->cd(6);
+    Eelout_E2->GetXaxis()->SetTitle("E [GeV]");
+    Eelout_E2->Draw("HIST");
+    gPad->SetLogy();
     
+    ee->SaveAs("energyEL.png");
 
-        TCanvas * t= new TCanvas("t","t",400,10,1500,1000);
+    TCanvas * eew= new TCanvas("ew","ew",400,10,1500,1000);
+    eew->Divide(1,3);
+    eew->cd(1);
+    Ephout->GetXaxis()->SetTitle("E [GeV]");
+    Ephout->Draw("HIST");
+    gPad->SetLogy();
+    eew->cd(2);
+    Ephout1->GetXaxis()->SetTitle("E [GeV]");
+    Ephout1->Draw("HIST");
+    gPad->SetLogy();
+    eew->cd(3);
+    Ephout2->GetXaxis()->SetTitle("E [GeV]");
+    Ephout2->Draw("HIST");
+    gPad->SetLogy();    
+    
+    eew->SaveAs("energyEL.png");
+
+
+    
+    TCanvas * t= new TCanvas("t","t",400,10,1500,1000);
     t->Divide(1,2);
     t->cd(1);
     thmu->SetLineColor(46);
+    tarONEthmu->SetLineColor(kOrange);
+    tarTWOthmu->SetLineColor(kBlack);
     thmu->Draw("HIST");
+    tarONEthmu->Draw("HIST SAME");
+    tarTWOthmu->Draw("HIST SAME");
     thmu->GetXaxis()->SetTitle("Polar Theta [mrad]");
 
     t->cd(2);
+    tarONEthe>SetLineColor(kOrange);
+    tarTWOthe->SetLineColor(kBlack);
     the->Draw("HIST");
+    tarONEthe->Draw("HIST SAME");
+    tarTWOthe->Draw("HIST SAME");
     the->GetXaxis()->SetTitle("Polar Theta [mrad]");
 
-    t->SaveAs("THpolarLO.png");
-    
-    TCanvas * theC= new TCanvas("tar","tar",400,10,1500,1000);
+    t->SaveAs("THpolar.png");    
+
+
+TCanvas * theC= new TCanvas("tar","tar",400,10,1500,1000);
     theC->Divide(2,2);
     theC->cd(1);
     thXZmu->SetLineColor(46);
@@ -322,117 +284,107 @@ TH2F  *X_Y_p  = new TH2F("h2da" , " X  Vs. y of the photon",140,-0.5,-0.5,140,-0
     thYZe->Draw("HIST");
     thYZe->GetXaxis()->SetTitle("Theta YZ [rad]");
     
-  theC->SaveAs("ThOriginalLO.png");
+  theC->SaveAs("ThXZYZ.png");
+
+
+Int_t nx13_cut = X_Y_mu->GetNbinsX();
+Int_t ny13_cut = X_Y_mu->GetNbinsY();
+for (Int_t i=1; i<nx13_cut+1; i+=wgt_full) {
+for (Int_t j=1; j<ny13_cut+1; j+=wgt_full) {
+    if (X_Y_mu->GetBinContent(i,j)<1) X_Y_mu->SetBinContent(i,j,0);}} 
+Int_t nx14_cut = X_Y_e->GetNbinsX();
+Int_t ny14_cut = X_Y_e->GetNbinsY();
+for (Int_t i=1; i<nx14_cut+1; i+=wgt_full) {
+for (Int_t j=1; j<ny14_cut+1; j+=wgt_full) {
+    if (X_Y_e->GetBinContent(i,j)<1) X_Y_e->SetBinContent(i,j,0);}} 
+Int_t nx15_cut = X_Y_p->GetNbinsX();
+Int_t ny15_cut = X_Y_p->GetNbinsY();
+for (Int_t i=1; i<nx15_cut+1; i+=wgt_full) {
+for (Int_t j=1; j<ny15_cut+1; j+=wgt_full) {
+if (X_Y_p->GetBinContent(i,j)<1) X_Y_p->SetBinContent(i,j,0);}} 
+
+Int_t nx13 = X_Y_mu1->GetNbinsX();
+Int_t ny13 = X_Y_mu1->GetNbinsY();
+for (Int_t i=1; i<nx13+1; i+=wgt_full) {
+for (Int_t j=1; j<ny13+1; j+=wgt_full) {
+    if (X_Y_mu1->GetBinContent(i,j)<1) X_Y_mu1->SetBinContent(i,j,0);}} 
+Int_t nx14 = X_Y_e1->GetNbinsX();
+Int_t ny14 = X_Y_e1->GetNbinsY();
+for (Int_t i=1; i<nx14+1; i+=wgt_full) {
+for (Int_t j=1; j<ny14+1; j+=wgt_full) {
+    if (X_Y_e1->GetBinContent(i,j)<1) X_Y_e1->SetBinContent(i,j,0);}} 
+Int_t nx15 = X_Y_p1->GetNbinsX();
+Int_t ny15 = X_Y_p1->GetNbinsY();
+for (Int_t i=1; i<nx15+1; i+=wgt_full) {
+for (Int_t j=1; j<ny15+1; j+=wgt_full) {
+if (X_Y_p1->GetBinContent(i,j)<1) X_Y_p1->SetBinContent(i,j,0);}} 
+
+
+Int_t nx1 = X_Y_mu2->GetNbinsX();
+Int_t ny1 = X_Y_mu2->GetNbinsY();
+for (Int_t i=1; i<nx1+1; i+=wgt_full) {
+for (Int_t j=1; j<ny1+1; j+=wgt_full) {
+    if (X_Y_mu2->GetBinContent(i,j)<1) X_Y_mu2->SetBinContent(i,j,0);}} 
+Int_t nx4 = X_Y_e2->GetNbinsX();
+Int_t ny4 = X_Y_e2->GetNbinsY();
+for (Int_t i=1; i<nx4+1; i+=wgt_full) {
+for (Int_t j=1; j<ny4+1; j+=wgt_full) {
+    if (X_Y_e2->GetBinContent(i,j)<1) X_Y_e2->SetBinContent(i,j,0);}} 
+Int_t nx5 = X_Y_p2->GetNbinsX();
+Int_t ny5 = X_Y_p2->GetNbinsY();
+for (Int_t i=1; i<nx5+1; i+=wgt_full) {
+for (Int_t j=1; j<ny5+1; j+=wgt_full) {
+if (X_Y_p2->GetBinContent(i,j)<1) X_Y_p2->SetBinContent(i,j,0);}} 
     
-    
-    
-        TCanvas * tar= new TCanvas("tar","tar",400,10,1500,1000);
-    tar->Divide(3,4);
-    tar->cd(1);
-    tarONEXmu->SetLineColor(46);
-    tarONEXmu->Draw("HIST");
-    tarONEXmu->GetXaxis()->SetTitle("x [m]");
-    tar->cd(2);    
-    tarONEYmu->SetLineColor(46);
-    tarONEYmu->Draw("HIST");
-    tarONEYmu->GetXaxis()->SetTitle("y [m]");
-    tar->cd(3);
-    tarONEXe->Draw("HIST");
-    tarONEXe->GetXaxis()->SetTitle("x [m]");
-    tar->cd(4);
-    tarONEYe->Draw("HIST");
-    tarONEYe->GetXaxis()->SetTitle("y [m]");
-    tar->cd(5);
-    tarTWOXmu->SetLineColor(46);
-    tarTWOXmu->Draw("HIST");
-    tarTWOXmu->GetXaxis()->SetTitle("x [m]");
-    tar->cd(6);
-    tarTWOYmu->SetLineColor(46);
-    tarTWOYmu->Draw("HIST");
-    tarTWOYmu->GetXaxis()->SetTitle("y [m]");
-    tar->cd(7);
-    tarTWOXe->Draw("HIST");
-    tarTWOXe->GetXaxis()->SetTitle("x [m]");
-    tar->cd(8);
-    tarTWOYe->Draw("HIST");
-    tarTWOYe->GetXaxis()->SetTitle("y [m]");
-    tar->cd(9);
-    tarONEXp->SetLineColor(30);
-    tarONEXp->Draw("HIST");
-    tarONEXp->GetXaxis()->SetTitle("x [m]");
-    tar->cd(10);
-    tarONEYp->SetLineColor(30);
-    tarONEYp->Draw("HIST");
-    tarONEYp->GetXaxis()->SetTitle("y [m]");
-    tar->cd(11);
-    tarTWOXp->SetLineColor(30);
-    tarTWOXp->Draw("HIST");
-    tarTWOXp->GetXaxis()->SetTitle("x [m]");
-    tar->cd(12);
-    tarTWOYp->SetLineColor(30);
-    tarTWOYp->Draw("HIST");
-    tarTWOYp->GetXaxis()->SetTitle("y [m]");
-    
-    
-  tar->SaveAs("tarLO.png");
     
     TCanvas * duedmu= new TCanvas("duedmu","duedmu",1000,100,2500,2000);
-    X_Y_mu->SetMarkerColor(46);
-    X_Y_mu->Draw("HIST");
+    duedmu->Divide(3,3);
+    duedmu->cd(1);
+    gStyle->SetPalette(kAquamarine);  
+    X_Y_mu->Draw("COLZ");
     X_Y_mu->GetXaxis()->SetTitle("x [m]");
     X_Y_mu->GetYaxis()->SetTitle("y [m]");
-  duedmu->SaveAs("duedmuLO.png");
+    duedmu->cd(2);
+    X_Y_mu1->Draw("COLZ");
+    X_Y_mu1->GetXaxis()->SetTitle("x [m]");
+    X_Y_mu1->GetYaxis()->SetTitle("y [m]");
+    duedmu->cd(3);
+    X_Y_mu2->Draw("COLZ");
+    X_Y_mu2->GetXaxis()->SetTitle("x [m]");
+    X_Y_mu2->GetYaxis()->SetTitle("y [m]");
     
-    TCanvas * duede= new TCanvas("duede","duede",1000,100,2500,2000);
-    X_Y_e->SetMarkerColor(30);
-    X_Y_e->Draw("HIST");
+    duedmu->cd(4);
+    gStyle->SetPalette(kCherry);
+    X_Y_e->Draw("COLZ");
     X_Y_e->GetXaxis()->SetTitle("x [m]");
     X_Y_e->GetYaxis()->SetTitle("y [m]");
-  duede->SaveAs("duedeLO.png");
+    duedmu->cd(5);
+    X_Y_e1->Draw("COLZ");
+    X_Y_e1->GetXaxis()->SetTitle("x [m]");
+    X_Y_e1->GetYaxis()->SetTitle("y [m]");
+    duedmu->cd(6);
+    X_Y_e2->Draw("COLZ");
+    X_Y_e2->GetXaxis()->SetTitle("x [m]");
+    X_Y_e2->GetYaxis()->SetTitle("y [m]");
     
-
-    TCanvas * duedp= new TCanvas("duedp","duedp",1000,100,2500,2000);
-    X_Y_p->Draw("HIST");
+    duedmu->cd(7);
+    gStyle->SetPalette(kAvocado);
+    X_Y_p->Draw("COLZ");
     X_Y_p->GetXaxis()->SetTitle("x [m]");
     X_Y_p->GetYaxis()->SetTitle("y [m]");
-  duedp->SaveAs("duedphLO.png");
+    duedmu->cd(8);
+    X_Y_p1->Draw("COLZ");
+    X_Y_p1->GetXaxis()->SetTitle("x [m]");
+    X_Y_p1->GetYaxis()->SetTitle("y [m]");
+    duedmu->cd(9);
+    X_Y_p2->Draw("COLZ");
+    X_Y_p2->GetXaxis()->SetTitle("x [m]");
+    X_Y_p2->GetYaxis()->SetTitle("y [m]");
     
-        TCanvas * Pin= new TCanvas("Pin","Pin",400,10,1500,1000);
-    Pin->Divide(1,3);
-    Pin->cd(1);
-    px_mu->Draw("HIST");
-    px_mu->GetXaxis()->SetTitle("Px [GeV]");
-    Pin->cd(2);
-    py_mu->Draw("HIST");
-    py_mu->GetXaxis()->SetTitle("Py [GeV]");
-    Pin->cd(3);
-    pz_mu->Draw("HIST");
-    pz_mu->GetXaxis()->SetTitle("Pz [GeV]");
+  duedmu->SaveAs("dued.png");   
     
-   Pin->SaveAs("p_inLO.png");
     
-    TCanvas * d= new TCanvas("d","d",1000,100,2500,2000);
-    d->Divide(3,2);
-    d->cd(1);
-    dx->Draw("HIST");
-    dx->GetXaxis()->SetTitle("Delta_x [m]");
-    d->cd(2);
-    dy->Draw("HIST");
-    dy->GetXaxis()->SetTitle("Delta_y [m]");
-    d->cd(3);
-    dxep->Draw("HIST");
-    dxep->GetXaxis()->SetTitle("Delta_x [m]");
-    d->cd(4);
-    dyep->Draw("HIST");
-    dyep->GetXaxis()->SetTitle("Delta_y [m]");
-    d->cd(5);
-    dxmp->Draw("HIST");
-    dxmp->GetXaxis()->SetTitle("Delta_x [m]");
-    d->cd(6);
-    dymp->Draw("HIST");
-    dymp->GetXaxis()->SetTitle("Delta_y [m]");
-  d->SaveAs("diffCooLO.png");
-    
+
 
     
       }

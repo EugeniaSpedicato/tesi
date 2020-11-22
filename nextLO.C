@@ -371,7 +371,7 @@ TCanvas * theC= new TCanvas("tar","tar",1500,1000,3500,2000);
   theC->SaveAs("ThXZYZ.png");*/
 
 
-Int_t nx13_cut = X_Y_mu->GetNbinsX();
+/*Int_t nx13_cut = X_Y_mu->GetNbinsX();
 Int_t ny13_cut = X_Y_mu->GetNbinsY();
 for (Int_t i=1; i<nx13_cut+1; i+=wgt_full) {
 for (Int_t j=1; j<ny13_cut+1; j+=wgt_full) {
@@ -465,7 +465,7 @@ if (X_Y_p2->GetBinContent(i,j)<1) X_Y_p2->SetBinContent(i,j,0);}}
     X_Y_p2->GetXaxis()->SetTitle("x [m]");
     X_Y_p2->GetYaxis()->SetTitle("y [m]");
     
-  duedmu->SaveAs("dued.png");  
+  duedmu->SaveAs("dued.png");  */
     
     
 Int_t nx7 = Th_E_el->GetNbinsX();

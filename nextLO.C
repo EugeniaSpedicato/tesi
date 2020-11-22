@@ -424,7 +424,8 @@ if (X_Y_p2->GetBinContent(i,j)<1) X_Y_p2->SetBinContent(i,j,0);}}
     TCanvas * duedmu= new TCanvas("duedmu","duedmu",1000,100,2500,2000);
     duedmu->Divide(3,3);
     duedmu->cd(1);
-    gStyle->SetPalette(kAquamarine);  
+    gStyle->SetPalette(kLake);
+    TColor::InvertPalette(); 
     X_Y_mu->Draw("COLZ");
     X_Y_mu->GetXaxis()->SetTitle("x [m]");
     X_Y_mu->GetYaxis()->SetTitle("y [m]");
@@ -438,7 +439,6 @@ if (X_Y_p2->GetBinContent(i,j)<1) X_Y_p2->SetBinContent(i,j,0);}}
     X_Y_mu2->GetYaxis()->SetTitle("y [m]");
     
     duedmu->cd(4);
-    gStyle->SetPalette(kCherry);
     X_Y_e->Draw("COLZ");
     X_Y_e->GetXaxis()->SetTitle("x [m]");
     X_Y_e->GetYaxis()->SetTitle("y [m]");
@@ -452,7 +452,6 @@ if (X_Y_p2->GetBinContent(i,j)<1) X_Y_p2->SetBinContent(i,j,0);}}
     X_Y_e2->GetYaxis()->SetTitle("y [m]");
     
     duedmu->cd(7);
-    gStyle->SetPalette(kAvocado);
     X_Y_p->Draw("COLZ");
     X_Y_p->GetXaxis()->SetTitle("x [m]");
     X_Y_p->GetYaxis()->SetTitle("y [m]");

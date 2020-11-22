@@ -76,9 +76,9 @@ TH2F  *X_Y_mu2  = new TH2F("CooMU2" , " X  Vs. Y of the muon TAR 2",140,-0.5,-0.
 TH2F  *X_Y_e2  = new TH2F("CooEL2" , " X  Vs. Y of the electron TAR 2",140,-0.5,-0.5,140,-0.5,0.5);
 TH2F  *X_Y_p2  = new TH2F("CooPH2" , " X  Vs. Y of the photon TAR 2",140,-0.5,-0.5,140,-0.5,0.5);
  
-TH2F  *Th_E_el  = new TH2F("ThEel" , " Theta el Vs. E_ECAL",500,0,100,500,0,160);
-TH2F  *Th_E_el1  = new TH2F("ThEel1" , " Theta el Vs. E_ECAL TAR 1",500,0,100,500,0,160);
-TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",500,0,100,500,0,160);
+TH2F  *Th_E_el  = new TH2F("ThEel" , " Theta el Vs. E_ECAL",180,0,0.1,70,0.2,140);
+TH2F  *Th_E_el1  = new TH2F("ThEel1" , " Theta el Vs. E_ECAL TAR 1",180,0,0.1,70,0.2,140);
+TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70,0.2,140);
     
      if (fChain == 0) return;
 
@@ -468,31 +468,31 @@ if (X_Y_p2->GetBinContent(i,j)<1) X_Y_p2->SetBinContent(i,j,0);}}
   duedmu->SaveAs("dued.png");  */
     
     
-Int_t nx7 = Th_E_el->GetNbinsX();
+/*Int_t nx7 = Th_E_el->GetNbinsX();
 Int_t ny7 = Th_E_el->GetNbinsY();
 for (Int_t i=1; i<nx7+1; i+=wgt_full) {
 for (Int_t j=1; j<ny7+1; j+=wgt_full) {
-    if (Th_E_el->GetBinContent(i,j)<1) Th_E_el->SetBinContent(i,j,0);}}     
+    if (Th_E_el->GetBinContent(i,j)<1) Th_E_el->SetBinContent(i,j,0);}} */    
     
 TCanvas * th_en= new TCanvas("th_en","th_en",1000,100,2500,2000);      
 Th_E_el->Draw("COLZ");  
 th_en->SaveAs("theta-energy-electron.png");
     
-Int_t nx9 = Th_E_el1->GetNbinsX();
+/*Int_t nx9 = Th_E_el1->GetNbinsX();
 Int_t ny9 = Th_E_el1->GetNbinsY();
 for (Int_t i=1; i<nx9+1; i+=wgt_full) {
 for (Int_t j=1; j<ny9+1; j+=wgt_full) {
-    if (Th_E_el1->GetBinContent(i,j)<1) Th_E_el1->SetBinContent(i,j,0);}}  
+    if (Th_E_el1->GetBinContent(i,j)<1) Th_E_el1->SetBinContent(i,j,0);}}  */
 
 TCanvas * th_en1= new TCanvas("th_en1","th_en1",1000,100,2500,2000);    
 Th_E_el1->Draw("COLZ");  
 th_en1->SaveAs("theta-energy-electron1.png"); 
     
-Int_t nx11 = Th_E_el2->GetNbinsX();
+/*Int_t nx11 = Th_E_el2->GetNbinsX();
 Int_t ny11 = Th_E_el2->GetNbinsY();
 for (Int_t i=1; i<nx11+1; i+=wgt_full) {
 for (Int_t j=1; j<ny11+1; j+=wgt_full) {
-    if (Th_E_el2->GetBinContent(i,j)<1) Th_E_el2->SetBinContent(i,j,0);}} 
+    if (Th_E_el2->GetBinContent(i,j)<1) Th_E_el2->SetBinContent(i,j,0);}} */
     
 TCanvas * th_en2= new TCanvas("th_en0","th_en0",1000,100,2500,2000);   
 Th_E_el2->Draw("COLZ");  

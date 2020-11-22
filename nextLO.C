@@ -205,7 +205,7 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",500,0,100,50
    }
     
     
-    TCanvas * e= new TCanvas("e","e",1500,1000,3500,2000);
+    /*TCanvas * e= new TCanvas("e","e",1500,1000,3500,2000);
     e->Divide(2,3);
     e->cd(1);
     Emuout->GetXaxis()->SetTitle("E [GeV]");
@@ -246,7 +246,7 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",500,0,100,50
     
     e->SaveAs("energyMU.png");
     
-    /*TCanvas * ee= new TCanvas("e","e",1500,1000,3500,2000);
+    TCanvas * ee= new TCanvas("e","e",1500,1000,3500,2000);
     ee->Divide(2,3);
     ee->cd(1);
     Eelout->GetXaxis()->SetTitle("E [GeV]");

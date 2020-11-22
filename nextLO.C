@@ -202,12 +202,6 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
         X_Y_p->Fill(photon_coox, photon_cooy,wgt_full);
       }       
    }
-       
-    Int_t nx7 = Th_E_el->GetNbinsX();
-Int_t ny7 = Th_E_el->GetNbinsY();
-for (Int_t i=1; i<nx7+1; i+=wgt_full) {
-for (Int_t j=1; j<ny7+1; j+=wgt_full) {
-    if (Th_E_el->GetBinContent(i,j)<1) Th_E_el->SetBinContent(i,j,0);}}  
    }
     
     
@@ -377,53 +371,53 @@ TCanvas * theC= new TCanvas("tar","tar",1500,1000,3500,2000);
   theC->SaveAs("ThXZYZ.png");*/
 
 
-/*Int_t nx13_cut = X_Y_mu->GetNbinsX();
+Int_t nx13_cut = X_Y_mu->GetNbinsX();
 Int_t ny13_cut = X_Y_mu->GetNbinsY();
-for (Int_t i=1; i<nx13_cut+1; i+=wgt_full) {
-for (Int_t j=1; j<ny13_cut+1; j+=wgt_full) {
+for (Int_t i=1; i<nx13_cut+1; i++) {
+for (Int_t j=1; j<ny13_cut+1; j++) {
     if (X_Y_mu->GetBinContent(i,j)<1) X_Y_mu->SetBinContent(i,j,0);}} 
 Int_t nx14_cut = X_Y_e->GetNbinsX();
 Int_t ny14_cut = X_Y_e->GetNbinsY();
-for (Int_t i=1; i<nx14_cut+1; i+=wgt_full) {
-for (Int_t j=1; j<ny14_cut+1; j+=wgt_full) {
+for (Int_t i=1; i<nx14_cut+1; i++) {
+for (Int_t j=1; j<ny14_cut+1; j++) {
     if (X_Y_e->GetBinContent(i,j)<1) X_Y_e->SetBinContent(i,j,0);}} 
 Int_t nx15_cut = X_Y_p->GetNbinsX();
 Int_t ny15_cut = X_Y_p->GetNbinsY();
-for (Int_t i=1; i<nx15_cut+1; i+=wgt_full) {
-for (Int_t j=1; j<ny15_cut+1; j+=wgt_full) {
+for (Int_t i=1; i<nx15_cut+1; i++) {
+for (Int_t j=1; j<ny15_cut+1; j++) {
 if (X_Y_p->GetBinContent(i,j)<1) X_Y_p->SetBinContent(i,j,0);}} 
 
 Int_t nx13 = X_Y_mu1->GetNbinsX();
 Int_t ny13 = X_Y_mu1->GetNbinsY();
-for (Int_t i=1; i<nx13+1; i+=wgt_full) {
-for (Int_t j=1; j<ny13+1; j+=wgt_full) {
+for (Int_t i=1; i<nx13+1; i++) {
+for (Int_t j=1; j<ny13+1; j++) {
     if (X_Y_mu1->GetBinContent(i,j)<1) X_Y_mu1->SetBinContent(i,j,0);}} 
 Int_t nx14 = X_Y_e1->GetNbinsX();
 Int_t ny14 = X_Y_e1->GetNbinsY();
-for (Int_t i=1; i<nx14+1; i+=wgt_full) {
-for (Int_t j=1; j<ny14+1; j+=wgt_full) {
+for (Int_t i=1; i<nx14+1; i++) {
+for (Int_t j=1; j<ny14+1; j++) {
     if (X_Y_e1->GetBinContent(i,j)<1) X_Y_e1->SetBinContent(i,j,0);}} 
 Int_t nx15 = X_Y_p1->GetNbinsX();
 Int_t ny15 = X_Y_p1->GetNbinsY();
-for (Int_t i=1; i<nx15+1; i+=wgt_full) {
-for (Int_t j=1; j<ny15+1; j+=wgt_full) {
+for (Int_t i=1; i<nx15+1; i++) {
+for (Int_t j=1; j<ny15+1; j++) {
 if (X_Y_p1->GetBinContent(i,j)<1) X_Y_p1->SetBinContent(i,j,0);}} 
 
 
 Int_t nx1 = X_Y_mu2->GetNbinsX();
 Int_t ny1 = X_Y_mu2->GetNbinsY();
-for (Int_t i=1; i<nx1+1; i+=wgt_full) {
-for (Int_t j=1; j<ny1+1; j+=wgt_full) {
+for (Int_t i=1; i<nx1+1; i++) {
+for (Int_t j=1; j<ny1+1; j++) {
     if (X_Y_mu2->GetBinContent(i,j)<1) X_Y_mu2->SetBinContent(i,j,0);}} 
 Int_t nx4 = X_Y_e2->GetNbinsX();
 Int_t ny4 = X_Y_e2->GetNbinsY();
-for (Int_t i=1; i<nx4+1; i+=wgt_full) {
-for (Int_t j=1; j<ny4+1; j+=wgt_full) {
+for (Int_t i=1; i<nx4+1; i++) {
+for (Int_t j=1; j<ny4+1; j++) {
     if (X_Y_e2->GetBinContent(i,j)<1) X_Y_e2->SetBinContent(i,j,0);}} 
 Int_t nx5 = X_Y_p2->GetNbinsX();
 Int_t ny5 = X_Y_p2->GetNbinsY();
-for (Int_t i=1; i<nx5+1; i+=wgt_full) {
-for (Int_t j=1; j<ny5+1; j+=wgt_full) {
+for (Int_t i=1; i<nx5+1; i++) {
+for (Int_t j=1; j<ny5+1; j++) {
 if (X_Y_p2->GetBinContent(i,j)<1) X_Y_p2->SetBinContent(i,j,0);}} 
     
     
@@ -471,29 +465,34 @@ if (X_Y_p2->GetBinContent(i,j)<1) X_Y_p2->SetBinContent(i,j,0);}}
     X_Y_p2->GetXaxis()->SetTitle("x [m]");
     X_Y_p2->GetYaxis()->SetTitle("y [m]");
     
-  duedmu->SaveAs("dued.png");  */
+  duedmu->SaveAs("dued.png");  
     
-       
+    
+Int_t nx7 = Th_E_el->GetNbinsX();
+Int_t ny7 = Th_E_el->GetNbinsY();
+for (Int_t i=1; i<nx7+1; i++) {
+for (Int_t j=1; j<ny7+1; j++) {
+    if (Th_E_el->GetBinContent(i,j)<1) Th_E_el->SetBinContent(i,j,0);}}     
     
 TCanvas * th_en= new TCanvas("th_en","th_en",1000,100,2500,2000);      
 Th_E_el->Draw("COLZ");  
 th_en->SaveAs("theta-energy-electron.png");
     
-/*Int_t nx9 = Th_E_el1->GetNbinsX();
+Int_t nx9 = Th_E_el1->GetNbinsX();
 Int_t ny9 = Th_E_el1->GetNbinsY();
-for (Int_t i=1; i<nx9+1; i+=wgt_full) {
-for (Int_t j=1; j<ny9+1; j+=wgt_full) {
-    if (Th_E_el1->GetBinContent(i,j)<1) Th_E_el1->SetBinContent(i,j,0);}}  */
+for (Int_t i=1; i<nx9+1; i++) {
+for (Int_t j=1; j<ny9+1; j++) {
+    if (Th_E_el1->GetBinContent(i,j)<1) Th_E_el1->SetBinContent(i,j,0);}}  
 
 TCanvas * th_en1= new TCanvas("th_en1","th_en1",1000,100,2500,2000);    
 Th_E_el1->Draw("COLZ");  
 th_en1->SaveAs("theta-energy-electron1.png"); 
     
-/*Int_t nx11 = Th_E_el2->GetNbinsX();
+Int_t nx11 = Th_E_el2->GetNbinsX();
 Int_t ny11 = Th_E_el2->GetNbinsY();
-for (Int_t i=1; i<nx11+1; i+=wgt_full) {
-for (Int_t j=1; j<ny11+1; j+=wgt_full) {
-    if (Th_E_el2->GetBinContent(i,j)<1) Th_E_el2->SetBinContent(i,j,0);}} */
+for (Int_t i=1; i<nx11+1; i++) {
+for (Int_t j=1; j<ny11+1; j++) {
+    if (Th_E_el2->GetBinContent(i,j)<1) Th_E_el2->SetBinContent(i,j,0);}} 
     
 TCanvas * th_en2= new TCanvas("th_en0","th_en0",1000,100,2500,2000);   
 Th_E_el2->Draw("COLZ");  

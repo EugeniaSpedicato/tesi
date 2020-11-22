@@ -77,8 +77,8 @@ TH2F  *X_Y_e2  = new TH2F("CooEL2" , " X  Vs. Y of the electron TAR 2",140,-0.5,
 TH2F  *X_Y_p2  = new TH2F("CooPH2" , " X  Vs. Y of the photon TAR 2",140,-0.5,-0.5,140,-0.5,0.5);
  
 TH2F  *Th_E_el  = new TH2F("ThEel" , " Theta el Vs. E_ECAL",500,0,100,500,0,160);
-TH2F  *Th_E_el0  = new TH2F("ThEel1" , " Theta el Vs. E_ECAL TAR 1",500,0,100,500,0,160);
-TH2F  *Th_E_el1  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",500,0,100,500,0,160);
+TH2F  *Th_E_el1  = new TH2F("ThEel1" , " Theta el Vs. E_ECAL TAR 1",500,0,100,500,0,160);
+TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",500,0,100,500,0,160);
     
      if (fChain == 0) return;
 
@@ -488,15 +488,15 @@ TCanvas * th_en1= new TCanvas("th_en1","th_en1",1000,100,2500,2000);
 Th_E_el1->Draw("COLZ");  
 th_en1->SaveAs("theta-energy-electron1.png"); 
     
-Int_t nx11 = Th_E_el0->GetNbinsX();
-Int_t ny11 = Th_E_el0->GetNbinsY();
+Int_t nx11 = Th_E_el2->GetNbinsX();
+Int_t ny11 = Th_E_el2->GetNbinsY();
 for (Int_t i=1; i<nx11+1; i+=wgt_full) {
 for (Int_t j=1; j<ny11+1; j+=wgt_full) {
-    if (Th_E_el0->GetBinContent(i,j)<1) Th_E_el0->SetBinContent(i,j,0);}} 
+    if (Th_E_el2->GetBinContent(i,j)<1) Th_E_el2->SetBinContent(i,j,0);}} 
     
-TCanvas * th_en0= new TCanvas("th_en0","th_en0",1000,100,2500,2000);   
-Th_E_el0->Draw("COLZ");  
-th_en0->SaveAs("theta-energy-electron0.png");  
+TCanvas * th_en2= new TCanvas("th_en0","th_en0",1000,100,2500,2000);   
+Th_E_el2->Draw("COLZ");  
+th_en2->SaveAs("theta-energy-electron2.png");  
 
     
       }

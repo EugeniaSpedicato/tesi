@@ -239,7 +239,7 @@ TH2F  *X_Y_p2  = new TH2F("CooPH2" , " X  Vs. Y of the photon TAR 2",140,-0.5,-0
     
     e->SaveAs("energyMU.png");
     
-    TCanvas * ee= new TCanvas("e","e",1500,1000,3500,2000);
+    /*TCanvas * ee= new TCanvas("e","e",1500,1000,3500,2000);
     ee->Divide(2,3);
     ee->cd(1);
     Eelout->GetXaxis()->SetTitle("E [GeV]");
@@ -361,7 +361,7 @@ TCanvas * theC= new TCanvas("tar","tar",1500,1000,3500,2000);
     thYZe->GetXaxis()->SetTitle("Theta YZ [rad]");
     
 
-  theC->SaveAs("ThXZYZ.png");
+  theC->SaveAs("ThXZYZ.png");*/
 
 
 /*Int_t nx13_cut = X_Y_mu->GetNbinsX();

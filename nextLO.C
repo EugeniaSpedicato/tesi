@@ -76,6 +76,9 @@ TH2F  *X_Y_mu2  = new TH2F("CooMU2" , " X  Vs. Y of the muon TAR 2",140,-0.5,-0.
 TH2F  *X_Y_e2  = new TH2F("CooEL2" , " X  Vs. Y of the electron TAR 2",140,-0.5,-0.5,140,-0.5,0.5);
 TH2F  *X_Y_p2  = new TH2F("CooPH2" , " X  Vs. Y of the photon TAR 2",140,-0.5,-0.5,140,-0.5,0.5);
  
+TH2F  *Th_E_el  = new TH2F("ThEel" , " Th e Vs. E_CAL one cluster",500,0,100,500,0,160);
+TH2F  *Th_E_el0  = new TH2F("ThEel1" , " Th e Vs. E_CAL one cluster TAR 1",500,0,100,500,0,160);
+TH2F  *Th_E_el1  = new TH2F("ThEel2" , " Th e Vs. E_CAL one cluster TAR 2",500,0,100,500,0,160);
     
      if (fChain == 0) return;
 
@@ -94,7 +97,7 @@ TH2F  *X_Y_p2  = new TH2F("CooPH2" , " X  Vs. Y of the photon TAR 2",140,-0.5,-0
     else 
     {  E_ECAL=detKinBeamRot_Ee;}
 
-      if (E_ECAL>1){
+      if (E_ECAL>0.2){
         if (abs(detKinBeamRot_cooXmu) < 0.07125 && abs(detKinBeamRot_cooYmu) < 0.07125)
         {
             
@@ -146,13 +149,15 @@ TH2F  *X_Y_p2  = new TH2F("CooPH2" , " X  Vs. Y of the photon TAR 2",140,-0.5,-0
        Double_t Ee_out=sqrt(Pe*Pe+me*me);
        Eelout->Fill(Ee_out,wgt_full);
         Eelout_E->Fill(detKinBeamRot_Ee,wgt_full);
-           
+        
        the->Fill(detKinBeamRot_the*0.001,wgt_full);  
         Double_t anglex_e = atan2(detKinBeamRot_pXe_out, detKinBeamRot_pZe_out);
         Double_t angley_e = atan2(detKinBeamRot_pYe_out, detKinBeamRot_pZe_out);
         thXZe->Fill(anglex_e,wgt_full);
         thYZe->Fill(angley_e,wgt_full);            
-              
+         
+        Th_E_el->Fill(detKinBeamRot_the*0.001,E_CAL,wgt_full);
+           
            if (detKinBeamRot_tar==0)
               {
         Eelout1->Fill(Ee_out,wgt_full); 
@@ -160,7 +165,8 @@ TH2F  *X_Y_p2  = new TH2F("CooPH2" , " X  Vs. Y of the photon TAR 2",140,-0.5,-0
         tarONEthe->Fill(detKinBeamRot_the*0.001,wgt_full);
         X_Y_e1->Fill(detKinBeamRot_cooXe, detKinBeamRot_cooYe,wgt_full);
         thXZe1->Fill(anglex_e,wgt_full);
-        thYZe1->Fill(angley_e,wgt_full);              
+        thYZe1->Fill(angley_e,wgt_full);
+        Th_E_el1->Fill(detKinBeamRot_the*0.001,E_CAL,wgt_full);
               }
             
             if (detKinBeamRot_tar==1)
@@ -170,7 +176,8 @@ TH2F  *X_Y_p2  = new TH2F("CooPH2" , " X  Vs. Y of the photon TAR 2",140,-0.5,-0
         tarTWOthe->Fill(detKinBeamRot_the*0.001,wgt_full);
         X_Y_e2->Fill(detKinBeamRot_cooXe, detKinBeamRot_cooYe,wgt_full);  
         thXZe2->Fill(anglex_e,wgt_full);
-        thYZe2->Fill(angley_e,wgt_full);    
+        thYZe2->Fill(angley_e,wgt_full);
+        Th_E_el2->Fill(detKinBeamRot_the*0.001,E_CAL,wgt_full);    
              } 
            
             X_Y_e ->Fill(detKinBeamRot_cooXe, detKinBeamRot_cooYe,wgt_full);
@@ -364,7 +371,7 @@ TCanvas * theC= new TCanvas("tar","tar",1500,1000,3500,2000);
   theC->SaveAs("ThXZYZ.png");*/
 
 
-/*Int_t nx13_cut = X_Y_mu->GetNbinsX();
+Int_t nx13_cut = X_Y_mu->GetNbinsX();
 Int_t ny13_cut = X_Y_mu->GetNbinsY();
 for (Int_t i=1; i<nx13_cut+1; i+=wgt_full) {
 for (Int_t j=1; j<ny13_cut+1; j+=wgt_full) {
@@ -458,10 +465,53 @@ if (X_Y_p2->GetBinContent(i,j)<1) X_Y_p2->SetBinContent(i,j,0);}}
     X_Y_p2->GetXaxis()->SetTitle("x [m]");
     X_Y_p2->GetYaxis()->SetTitle("y [m]");
     
-  duedmu->SaveAs("dued.png"); */  
+  duedmu->SaveAs("dued.png");  
     
     
+Int_t nx7 = Th_E_el->GetNbinsX();
+Int_t ny7 = Th_E_el->GetNbinsY();
+for (Int_t i=1; i<nx7+1; i+=wgt_full) {
+for (Int_t j=1; j<ny7+1; j+=wgt_full) {
+    if (Th_E_el->GetBinContent(i,j)<1) Th_E_el->SetBinContent(i,j,0);}} 
+Int_t nx8 = Th_E_el_cut->GetNbinsX();
+Int_t ny8 = Th_E_el_cut->GetNbinsY();
+for (Int_t i=1; i<nx8+1; i+=wgt_full) {
+for (Int_t j=1; j<ny8+1; j+=wgt_full) {
+    if (Th_E_el_cut->GetBinContent(i,j)<1) Th_E_el_cut->SetBinContent(i,j,0);}}     
+    
+TCanvas * th_en= new TCanvas("th_en","th_en",1000,100,2500,2000);      
+Th_E_el->Draw("COLZ");  
+th_en->SaveAs("theta-energy-electron.png");
+    
+Int_t nx9 = Th_E_el1->GetNbinsX();
+Int_t ny9 = Th_E_el1->GetNbinsY();
+for (Int_t i=1; i<nx9+1; i+=wgt_full) {
+for (Int_t j=1; j<ny9+1; j+=wgt_full) {
+    if (Th_E_el1->GetBinContent(i,j)<1) Th_E_el1->SetBinContent(i,j,0);}}  
+Int_t nx10 = Th_E_el_cut1->GetNbinsX();
+Int_t ny10 = Th_E_el_cut1->GetNbinsY();
+for (Int_t i=1; i<nx10+1; i+=wgt_full) {
+for (Int_t j=1; j<ny10+1; j+=wgt_full) {
+    if (Th_E_el_cut1->GetBinContent(i,j)<1) Th_E_el_cut1->SetBinContent(i,j,0);}}  
 
+TCanvas * th_en1= new TCanvas("th_en1","th_en1",1000,100,2500,2000);    
+Th_E_el1->Draw("COLZ");  
+th_en1->SaveAs("theta-energy-electron1.png"); 
+    
+Int_t nx11 = Th_E_el0->GetNbinsX();
+Int_t ny11 = Th_E_el0->GetNbinsY();
+for (Int_t i=1; i<nx11+1; i+=wgt_full) {
+for (Int_t j=1; j<ny11+1; j+=wgt_full) {
+    if (Th_E_el0->GetBinContent(i,j)<1) Th_E_el0->SetBinContent(i,j,0);}} 
+Int_t nx12 = Th_E_el_cut0->GetNbinsX();
+Int_t ny12 = Th_E_el_cut0->GetNbinsY();
+for (Int_t i=1; i<nx12+1; i+=wgt_full) {
+for (Int_t j=1; j<ny12+1; j+=wgt_full) {
+    if (Th_E_el_cut0->GetBinContent(i,j)<1) Th_E_el_cut0->SetBinContent(i,j,0);}} 
+    
+TCanvas * th_en0= new TCanvas("th_en0","th_en0",1000,100,2500,2000);   
+Th_E_el0->Draw("COLZ");  
+th_en0->SaveAs("theta-energy-electron0.png");  
 
     
       }

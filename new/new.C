@@ -128,7 +128,7 @@ void atree::Loop()
       
        
     //TUTTI I TARGET   
-       if(E_CAL>1){
+       if(E_CAL>0.2){
        
     if (abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125)
     {

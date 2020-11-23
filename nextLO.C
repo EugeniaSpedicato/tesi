@@ -321,7 +321,7 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
     thmu->Draw("HIST");
     tarONEthmu->Draw("HIST SAME");
     tarTWOthmu->Draw("HIST SAME");
-    gPad->SetLogx();    
+    gPad->SetLogy();    
     thmu->GetXaxis()->SetTitle("Polar Theta [mrad]");
 
     t->cd(2);

@@ -38,7 +38,7 @@ TH1F* Ephout2=new TH1F("EnergyPH2", "Energy Ph out Tar 2", 75,0.2,150);
 
 
     
-TH1F* thmu=new TH1F("thetaMU", "Muon Polar Angle", 180,0,0.002);  
+TH1F* thmu=new TH1F("thetaMU", "Muon Polar Angle", 180,0,0.005);  
 TH1F* the=new TH1F("thetaEL", "Electron Polar Angle", 180,0,0.1);
 
 TH1F* thXZmu=new TH1F("thetaXZ", "theta XZ plane mu", 150,-0.002,0.002);
@@ -372,7 +372,7 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
   theC->SaveAs("ThXZYZ.png");*/
 
 
-Int_t nx13_cut = X_Y_mu->GetNbinsX();
+/*Int_t nx13_cut = X_Y_mu->GetNbinsX();
 Int_t ny13_cut = X_Y_mu->GetNbinsY();
 for (Int_t i=1; i<nx13_cut+1; i++) {
 for (Int_t j=1; j<ny13_cut+1; j++) {
@@ -496,7 +496,7 @@ for (Int_t j=1; j<ny11+1; j++) {
     
 TCanvas * th_en2= new TCanvas("th_en0","th_en0",1000,100,2500,2000);   
 Th_E_el2->Draw("COLZ");  
-th_en2->SaveAs("theta-energy-electron2.png");  
+th_en2->SaveAs("theta-energy-electron2.png");  */
 
     
       }

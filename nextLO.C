@@ -64,17 +64,17 @@ TH1F* tarTWOthe=new TH1F("thetaEL2", "Electron Polar Angle Tar 2", 180,0,0.1);
 TH1F* tarONEthmu=new TH1F("thetaMU1", "Muon Polar Angle Tar 1", 180,0,0.002);
 TH1F* tarTWOthmu=new TH1F("thetaMU2", "Muon Polar Angle Tar 2", 180,0,0.002);
     
-TH2F  *X_Y_mu  = new TH2F("CooMU" , " X  Vs. Y of the muon",140,-0.1,0.1,140,-0.1,0.1);
-TH2F  *X_Y_e  = new TH2F("CooEL" , " X  Vs. Y of the electron",140,-0.1,0.1,140,-0.1,0.1);
-TH2F  *X_Y_p  = new TH2F("CooPH" , " X  Vs. Y of the photon",140,-0.1,0.1,140,-0.1,0.1);
+TH2F  *X_Y_mu  = new TH2F("CooMU" , " X  Vs. Y of the muon",10,-0.1,0.1,100,-0.1,0.1);
+TH2F  *X_Y_e  = new TH2F("CooEL" , " X  Vs. Y of the electron",100,-0.1,0.1,100,-0.1,0.1);
+TH2F  *X_Y_p  = new TH2F("CooPH" , " X  Vs. Y of the photon",100,-0.1,0.1,100,-0.1,0.1);
     
-TH2F  *X_Y_mu1  = new TH2F("CooMU1" , " X  Vs. Y of the muon TAR 1",140,-0.1,0.1,140,-0.1,0.1);
-TH2F  *X_Y_e1  = new TH2F("CooEL1" , " X  Vs. Y of the electron TAR 1",140,-0.1,0.1,140,-0.1,0.1);
-TH2F  *X_Y_p1  = new TH2F("CooPH1" , " X  Vs. Y of the photon TAR 1",140,-0.1,0.1,140,-0.1,0.1);
+TH2F  *X_Y_mu1  = new TH2F("CooMU1" , " X  Vs. Y of the muon TAR 1",100,-0.1,0.1,100,-0.1,0.1);
+TH2F  *X_Y_e1  = new TH2F("CooEL1" , " X  Vs. Y of the electron TAR 1",100,-0.1,0.1,100,-0.1,0.1);
+TH2F  *X_Y_p1  = new TH2F("CooPH1" , " X  Vs. Y of the photon TAR 1",100,-0.1,0.1,100,-0.1,0.1);
     
-TH2F  *X_Y_mu2  = new TH2F("CooMU2" , " X  Vs. Y of the muon TAR 2",140,-0.1,0.1,140,-0.1,0.1);
-TH2F  *X_Y_e2  = new TH2F("CooEL2" , " X  Vs. Y of the electron TAR 2",140,-0.1,0.1,140,-0.1,0.1);
-TH2F  *X_Y_p2  = new TH2F("CooPH2" , " X  Vs. Y of the photon TAR 2",140,-0.1,0.1,140,-0.1,0.1);
+TH2F  *X_Y_mu2  = new TH2F("CooMU2" , " X  Vs. Y of the muon TAR 2",100,-0.1,0.1,100,-0.1,0.1);
+TH2F  *X_Y_e2  = new TH2F("CooEL2" , " X  Vs. Y of the electron TAR 2",100,-0.1,0.1,100,-0.1,0.1);
+TH2F  *X_Y_p2  = new TH2F("CooPH2" , " X  Vs. Y of the photon TAR 2",100,-0.1,0.1,100,-0.1,0.1);
  
 TH2F  *Th_E_el  = new TH2F("ThEel" , " Theta el Vs. E_ECAL",180,0,0.1,70,0.2,140);
 TH2F  *Th_E_el1  = new TH2F("ThEel1" , " Theta el Vs. E_ECAL TAR 1",180,0,0.1,70,0.2,140);

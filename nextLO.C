@@ -316,63 +316,81 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
     t->Divide(1,2);
     t->cd(1);
     thmu->SetLineColor(46);
+    thmu->SetLineWidth(2);
     tarONEthmu->SetLineColor(8);
+    tarONEthmu->SetLineWidth(2);
     tarTWOthmu->SetLineColor(kBlack);
+    tarTWOthmu->SetLineWidth(2);
     thmu->Draw("HIST");
     tarONEthmu->Draw("HIST SAME");
     tarTWOthmu->Draw("HIST SAME");
     gPad->SetLogy();    
-    thmu->GetXaxis()->SetTitle("Polar Theta [mrad]");
+    thmu->GetXaxis()->SetTitle("Polar Theta [rad]");
 
     t->cd(2);
     tarONEthe->SetLineColor(8);
+    tarONEthe->SetLineWidth(2);
     tarTWOthe->SetLineColor(kBlack);
+    tarTWOthe->SetLineWidth(2);
+    the->SetLineWidth(2);
     the->Draw("HIST");
     tarONEthe->Draw("HIST SAME");
     tarTWOthe->Draw("HIST SAME");
-    the->GetXaxis()->SetTitle("Polar Theta [mrad]");
+    the->GetXaxis()->SetTitle("Polar Theta [rad]");
 
     t->SaveAs("THpolar.png");    
 
 
-/*TCanvas * theC= new TCanvas("tar","tar",1500,1000,3500,2000);
+TCanvas * theC= new TCanvas("tar","tar",1500,1000,3500,2000);
     theC->Divide(2,2);
     theC->cd(1);
     thXZmu->SetLineColor(46);
+    thXZmu->SetLineWidth(2);
     thXZmu->Draw("HIST");
     thXZmu1->SetLineColor(8);
+    thXZmu1->SetLineWidth(2);
     thXZmu1->Draw("HIST SAME");
     thXZmu2->SetLineColor(kBlack);
+    thXZmu2->SetLineWidth(2);
     thXZmu2->Draw("HIST SAME");
     thXZmu->GetXaxis()->SetTitle("Theta XZ [rad]");
     theC->cd(2);
+    thXZe->SetLineWidth(2);
     thXZe->Draw("HIST");
     thXZe1->SetLineColor(8);
+    thXZe1->SetLineWidth(2);
     thXZe1->Draw("HIST SAME");
     thXZe2->SetLineColor(kBlack);
+    thXZe2->SetLineWidth(2);
     thXZe2->Draw("HIST SAME");
     thXZe->GetXaxis()->SetTitle("Theta XZ [rad]");
     theC->cd(3);
     thYZmu->SetLineColor(46);
+    thYZmu->SetLineWidth(2);
     thYZmu->Draw("HIST");
     thYZmu1->SetLineColor(8);
+    thYZmu1->SetLineWidth(2);
     thYZmu1->Draw("HIST SAME");
     thYZmu2->SetLineColor(kBlack);
+    thYZmu2->SetLineWidth(2);
     thYZmu2->Draw("HIST SAME");
     thYZmu->GetXaxis()->SetTitle("Theta YZ [rad]");
     theC->cd(4);
+    thYZe->SetLineWidth(2);
     thYZe->Draw("HIST");
     thYZe1->SetLineColor(8);
+    thYZe1->SetLineWidth(2);
     thYZe1->Draw("HIST SAME");
     thYZe2->SetLineColor(kBlack);
+    thYZe2->SetLineWidth(2);
     thYZe2->Draw("HIST SAME");
     thYZe->GetXaxis()->SetTitle("Theta YZ [rad]");
     
 
-  theC->SaveAs("ThXZYZ.png");*/
+  theC->SaveAs("ThXZYZ.png");
 
 
-Int_t nx13_cut = X_Y_mu->GetNbinsX();
+/*Int_t nx13_cut = X_Y_mu->GetNbinsX();
 Int_t ny13_cut = X_Y_mu->GetNbinsY();
 for (Int_t i=1; i<nx13_cut+1; i++) {
 for (Int_t j=1; j<ny13_cut+1; j++) {
@@ -468,7 +486,7 @@ if (X_Y_p2->GetBinContent(i,j)<1) X_Y_p2->SetBinContent(i,j,0);}}
   duedmu->SaveAs("dued.png");  
     
     
-/*Int_t nx7 = Th_E_el->GetNbinsX();
+Int_t nx7 = Th_E_el->GetNbinsX();
 Int_t ny7 = Th_E_el->GetNbinsY();
 for (Int_t i=1; i<nx7+1; i++) {
 for (Int_t j=1; j<ny7+1; j++) {

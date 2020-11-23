@@ -61,8 +61,8 @@ TH1F* thYZe2=new TH1F("thetaYZ2", "theta YZ plane e2", 150,-0.1,0.1);
     
 TH1F* tarONEthe=new TH1F("thetaEL1", "Electron Polar Angle Tar 1", 180,0,0.1);
 TH1F* tarTWOthe=new TH1F("thetaEL2", "Electron Polar Angle Tar 2", 180,0,0.1);
-TH1F* tarONEthmu=new TH1F("thetaMU1", "Muon Polar Angle Tar 1", 180,0,0.002);
-TH1F* tarTWOthmu=new TH1F("thetaMU2", "Muon Polar Angle Tar 2", 180,0,0.002);
+TH1F* tarONEthmu=new TH1F("thetaMU1", "Muon Polar Angle Tar 1", 180,0,0.005);
+TH1F* tarTWOthmu=new TH1F("thetaMU2", "Muon Polar Angle Tar 2", 180,0,0.005);
     
 TH2F  *X_Y_mu  = new TH2F("CooMU" , " X  Vs. Y of the muon",100,-0.1,0.1,100,-0.1,0.1);
 TH2F  *X_Y_e  = new TH2F("CooEL" , " X  Vs. Y of the electron",100,-0.1,0.1,100,-0.1,0.1);

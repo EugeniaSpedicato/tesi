@@ -372,7 +372,7 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
   theC->SaveAs("ThXZYZ.png");*/
 
 
-/*Int_t nx13_cut = X_Y_mu->GetNbinsX();
+Int_t nx13_cut = X_Y_mu->GetNbinsX();
 Int_t ny13_cut = X_Y_mu->GetNbinsY();
 for (Int_t i=1; i<nx13_cut+1; i++) {
 for (Int_t j=1; j<ny13_cut+1; j++) {
@@ -468,7 +468,7 @@ if (X_Y_p2->GetBinContent(i,j)<1) X_Y_p2->SetBinContent(i,j,0);}}
   duedmu->SaveAs("dued.png");  
     
     
-Int_t nx7 = Th_E_el->GetNbinsX();
+/*Int_t nx7 = Th_E_el->GetNbinsX();
 Int_t ny7 = Th_E_el->GetNbinsY();
 for (Int_t i=1; i<nx7+1; i++) {
 for (Int_t j=1; j<ny7+1; j++) {

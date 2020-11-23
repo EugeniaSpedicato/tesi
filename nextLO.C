@@ -97,7 +97,7 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
     else 
     {  E_ECAL=detKinBeamRot_Ee;}
 
-      if (E_ECAL>1){
+      if (E_ECAL>0.2){
         if (abs(detKinBeamRot_cooXmu) < 0.07125 && abs(detKinBeamRot_cooYmu) < 0.07125)
         {
             
@@ -325,7 +325,7 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
     tarONEthmu->Draw("HIST SAME");
     tarTWOthmu->Draw("HIST SAME");
     gPad->SetLogy();    
-    thmu->GetXaxis()->SetTitle("Polar Theta [rad]");
+    thmu->GetXaxis()->SetTitle("Polar Angle [rad]");
 
     t->cd(2);
     tarONEthe->SetLineColor(8);
@@ -336,7 +336,7 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
     the->Draw("HIST");
     tarONEthe->Draw("HIST SAME");
     tarTWOthe->Draw("HIST SAME");
-    the->GetXaxis()->SetTitle("Polar Theta [rad]");
+    the->GetXaxis()->SetTitle("Polar Angle [rad]");
 
     t->SaveAs("THpolar.png");    
 

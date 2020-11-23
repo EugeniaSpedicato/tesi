@@ -97,7 +97,7 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
     else 
     {  E_ECAL=detKinBeamRot_Ee;}
 
-      if (E_ECAL>1){
+      if (E_ECAL>1 ){
         if (abs(detKinBeamRot_cooXmu) < 0.07125 && abs(detKinBeamRot_cooYmu) < 0.07125)
         {
             
@@ -115,7 +115,7 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
     thXZmu->Fill(anglex_mu,wgt_full);
     thYZmu->Fill(angley_mu,wgt_full);
             
-               if (detKinBeamRot_tar==0)
+               if (detKinBeamRot_tar==0 && detKinBeamRot_tar!=1)
        
               {
         Emuout1->Fill(Emu_out,wgt_full); 
@@ -126,7 +126,7 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
         thYZmu1->Fill(angley_mu,wgt_full);
               }
             
-                if (detKinBeamRot_tar==1)
+                if (detKinBeamRot_tar==0 && detKinBeamRot_tar!=1)
        
                {
         Emuout2->Fill(Emu_out,wgt_full); 

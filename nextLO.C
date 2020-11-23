@@ -64,17 +64,17 @@ TH1F* tarTWOthe=new TH1F("thetaEL2", "Electron Polar Angle Tar 2", 180,0,0.1);
 TH1F* tarONEthmu=new TH1F("thetaMU1", "Muon Polar Angle Tar 1", 180,0,0.002);
 TH1F* tarTWOthmu=new TH1F("thetaMU2", "Muon Polar Angle Tar 2", 180,0,0.002);
     
-TH2F  *X_Y_mu  = new TH2F("CooMU" , " X  Vs. Y of the muon",140,-0.5,-0.5,140,-0.5,0.5);
-TH2F  *X_Y_e  = new TH2F("CooEL" , " X  Vs. Y of the electron",140,-0.5,-0.5,140,-0.5,0.5);
-TH2F  *X_Y_p  = new TH2F("CooPH" , " X  Vs. Y of the photon",140,-0.5,-0.5,140,-0.5,0.5);
+TH2F  *X_Y_mu  = new TH2F("CooMU" , " X  Vs. Y of the muon",140,-0.1,0.1,140,-0.1,0.1);
+TH2F  *X_Y_e  = new TH2F("CooEL" , " X  Vs. Y of the electron",140,-0.1,0.1,140,-0.1,0.1);
+TH2F  *X_Y_p  = new TH2F("CooPH" , " X  Vs. Y of the photon",140,-0.1,0.1,140,-0.1,0.1);
     
-TH2F  *X_Y_mu1  = new TH2F("CooMU1" , " X  Vs. Y of the muon TAR 1",140,-0.5,-0.5,140,-0.5,0.5);
-TH2F  *X_Y_e1  = new TH2F("CooEL1" , " X  Vs. Y of the electron TAR 1",140,-0.5,-0.5,140,-0.5,0.5);
-TH2F  *X_Y_p1  = new TH2F("CooPH1" , " X  Vs. Y of the photon TAR 1",140,-0.5,-0.5,140,-0.5,0.5);
+TH2F  *X_Y_mu1  = new TH2F("CooMU1" , " X  Vs. Y of the muon TAR 1",140,-0.1,0.1,140,-0.1,0.1);
+TH2F  *X_Y_e1  = new TH2F("CooEL1" , " X  Vs. Y of the electron TAR 1",140,-0.1,0.1,140,-0.1,0.1);
+TH2F  *X_Y_p1  = new TH2F("CooPH1" , " X  Vs. Y of the photon TAR 1",140,-0.1,0.1,140,-0.1,0.1);
     
-TH2F  *X_Y_mu2  = new TH2F("CooMU2" , " X  Vs. Y of the muon TAR 2",140,-0.5,-0.5,140,-0.5,0.5);
-TH2F  *X_Y_e2  = new TH2F("CooEL2" , " X  Vs. Y of the electron TAR 2",140,-0.5,-0.5,140,-0.5,0.5);
-TH2F  *X_Y_p2  = new TH2F("CooPH2" , " X  Vs. Y of the photon TAR 2",140,-0.5,-0.5,140,-0.5,0.5);
+TH2F  *X_Y_mu2  = new TH2F("CooMU2" , " X  Vs. Y of the muon TAR 2",140,-0.1,0.1,140,-0.1,0.1);
+TH2F  *X_Y_e2  = new TH2F("CooEL2" , " X  Vs. Y of the electron TAR 2",140,-0.1,0.1,140,-0.1,0.1);
+TH2F  *X_Y_p2  = new TH2F("CooPH2" , " X  Vs. Y of the photon TAR 2",140,-0.1,0.1,140,-0.1,0.1);
  
 TH2F  *Th_E_el  = new TH2F("ThEel" , " Theta el Vs. E_ECAL",180,0,0.1,70,0.2,140);
 TH2F  *Th_E_el1  = new TH2F("ThEel1" , " Theta el Vs. E_ECAL TAR 1",180,0,0.1,70,0.2,140);
@@ -205,7 +205,7 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
    }
     
     
-    /*TCanvas * e= new TCanvas("e","e",1500,1000,3500,2000);
+    TCanvas * e= new TCanvas("e","e",1500,1000,3500,2000);
     e->Divide(2,3);
     e->cd(1);
     Emuout->GetXaxis()->SetTitle("E [GeV]");
@@ -246,7 +246,7 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
     
     e->SaveAs("energyMU.png");
     
-    TCanvas * ee= new TCanvas("e","e",1500,1000,3500,2000);
+    /*TCanvas * ee= new TCanvas("e","e",1500,1000,3500,2000);
     ee->Divide(2,3);
     ee->cd(1);
     Eelout->GetXaxis()->SetTitle("E [GeV]");
@@ -371,7 +371,7 @@ TCanvas * theC= new TCanvas("tar","tar",1500,1000,3500,2000);
   theC->SaveAs("ThXZYZ.png");*/
 
 
-Int_t nx13_cut = X_Y_mu->GetNbinsX();
+/*Int_t nx13_cut = X_Y_mu->GetNbinsX();
 Int_t ny13_cut = X_Y_mu->GetNbinsY();
 for (Int_t i=1; i<nx13_cut+1; i++) {
 for (Int_t j=1; j<ny13_cut+1; j++) {
@@ -495,7 +495,7 @@ for (Int_t j=1; j<ny11+1; j++) {
     
 TCanvas * th_en2= new TCanvas("th_en0","th_en0",1000,100,2500,2000);   
 Th_E_el2->Draw("COLZ");  
-th_en2->SaveAs("theta-energy-electron2.png");  
+th_en2->SaveAs("theta-energy-electron2.png");  */
 
     
       }

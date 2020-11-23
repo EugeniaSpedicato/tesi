@@ -64,7 +64,7 @@ TH1F* tarTWOthe=new TH1F("thetaEL2", "Electron Polar Angle Tar 2", 180,0,0.1);
 TH1F* tarONEthmu=new TH1F("thetaMU1", "Muon Polar Angle Tar 1", 180,0,0.002);
 TH1F* tarTWOthmu=new TH1F("thetaMU2", "Muon Polar Angle Tar 2", 180,0,0.002);
     
-TH2F  *X_Y_mu  = new TH2F("CooMU" , " X  Vs. Y of the muon",10,-0.1,0.1,100,-0.1,0.1);
+TH2F  *X_Y_mu  = new TH2F("CooMU" , " X  Vs. Y of the muon",100,-0.1,0.1,100,-0.1,0.1);
 TH2F  *X_Y_e  = new TH2F("CooEL" , " X  Vs. Y of the electron",100,-0.1,0.1,100,-0.1,0.1);
 TH2F  *X_Y_p  = new TH2F("CooPH" , " X  Vs. Y of the photon",100,-0.1,0.1,100,-0.1,0.1);
     
@@ -308,7 +308,7 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
     Ephout2->Draw("HIST");
     gPad->SetLogy();    
     
-    eew->SaveAs("energyPh.png");
+    eew->SaveAs("energyPh.png");*/
 
 
     
@@ -321,6 +321,7 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
     thmu->Draw("HIST");
     tarONEthmu->Draw("HIST SAME");
     tarTWOthmu->Draw("HIST SAME");
+    gPad->SetLogx();    
     thmu->GetXaxis()->SetTitle("Polar Theta [mrad]");
 
     t->cd(2);
@@ -334,7 +335,7 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
     t->SaveAs("THpolar.png");    
 
 
-TCanvas * theC= new TCanvas("tar","tar",1500,1000,3500,2000);
+/*TCanvas * theC= new TCanvas("tar","tar",1500,1000,3500,2000);
     theC->Divide(2,2);
     theC->cd(1);
     thXZmu->SetLineColor(46);

@@ -205,44 +205,50 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
    }
     
     
-    /*TCanvas * e= new TCanvas("e","e",1500,1000,3500,2000);
+    TCanvas * e= new TCanvas("e","e",1500,1000,3500,2000);
     e->Divide(2,3);
     e->cd(1);
     Emuout->GetXaxis()->SetTitle("E [GeV]");
     Emuout->SetLineColor(kRed);
     Emuout->SetLineWidth(2);
+    Emuout->SetMaximum(10E7);
+    Emuout->SetMinimum(1);
     Emuout->Draw("HIST");
     gPad->SetLogy();
-    e->cd(2);
+   /* e->cd(2);
     Emuout_E->GetXaxis()->SetTitle("E [GeV]");
     Emuout_E->SetLineColor(kRed);
     Emuout_E->SetLineWidth(2);
     Emuout_E->Draw("HIST");
-    gPad->SetLogy();
+    gPad->SetLogy();*/
     e->cd(3);
     Emuout1->GetXaxis()->SetTitle("E [GeV]");
+    Emuout1->SetMaximum(10E6);
+    Emuout1->SetMinimum(1);
     Emuout1->SetLineColor(8);
     Emuout1->SetLineWidth(2);
     Emuout1->Draw("HIST");
     gPad->SetLogy();
-    e->cd(4);
+   /* e->cd(4);
     Emuout_E1->GetXaxis()->SetTitle("E [GeV]");
     Emuout_E1->SetLineColor(8);
     Emuout_E1->SetLineWidth(2);
     Emuout_E1->Draw("HIST");
-    gPad->SetLogy();
+    gPad->SetLogy();*/
     e->cd(5);
+    Emuout2->SetMaximum(10E7);
+    Emuout2->SetMinimum(1);
     Emuout2->GetXaxis()->SetTitle("E [GeV]");
     Emuout2->SetLineColor(kBlack);
     Emuout2->SetLineWidth(2);
     Emuout2->Draw("HIST");
     gPad->SetLogy();
-    e->cd(6);
+    /*e->cd(6);
     Emuout_E2->GetXaxis()->SetTitle("E [GeV]");
     Emuout_E2->SetLineColor(kBlack);
     Emuout_E2->SetLineWidth(2);
     Emuout_E2->Draw("HIST");
-    gPad->SetLogy();
+    gPad->SetLogy();*/
     
     e->SaveAs("energyMU.png");
     
@@ -291,6 +297,7 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
     Ephout->GetXaxis()->SetTitle("E [GeV]");
     Ephout->SetLineColor(9);
     Ephout->SetLineWidth(2);
+    Ephout->SetMinimum(1);
     Ephout->Draw("HIST");
     gPad->SetLogy();
     eew->cd(3);
@@ -298,6 +305,7 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
     Ephout1->SetLineColor(9);
     Ephout1->SetLineWidth(2);
     Ephout1->SetLineColor(8);
+    Ephout1->SetMinimum(1);
     Ephout1->Draw("HIST");
     gPad->SetLogy();
     eew->cd(5);
@@ -305,14 +313,15 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
     Ephout2->SetLineColor(9);
     Ephout2->SetLineWidth(2);
     Ephout2->SetLineColor(kBlack);
+    Ephout2->SetMinimum(1);
     Ephout2->Draw("HIST");
     gPad->SetLogy();    
     
-    eew->SaveAs("energyPh.png");*/
+    eew->SaveAs("energyPh.png");
 
 
     
-    TCanvas * t= new TCanvas("t","t",1500,1000,3500,2000);
+   /* TCanvas * t= new TCanvas("t","t",1500,1000,3500,2000);
     t->Divide(1,2);
     t->cd(1);
     thmu->SetLineColor(46);
@@ -390,7 +399,7 @@ TCanvas * theC= new TCanvas("tar","tar",1500,1000,3500,2000);
   theC->SaveAs("ThXZYZ.png");
 
 
-/*Int_t nx13_cut = X_Y_mu->GetNbinsX();
+Int_t nx13_cut = X_Y_mu->GetNbinsX();
 Int_t ny13_cut = X_Y_mu->GetNbinsY();
 for (Int_t i=1; i<nx13_cut+1; i++) {
 for (Int_t j=1; j<ny13_cut+1; j++) {

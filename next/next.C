@@ -110,7 +110,9 @@ TH2F  *E_r  = new TH2F("h2da" , " X  Vs. y of the photon",70,-0.1,0.1,70,-0.1,0.
     else 
     {  E_ECAL=detKinBeamRot_Ee;}
        
-        if (abs(detKinBeamRot_cooXmu) <0.07125 && abs(detKinBeamRot_cooYmu) <0.07125)
+       
+       //La condizione è sempre se c'è e- o no.
+        if (abs(detKinBeamRot_cooXe) <0.07125 && abs(detKinBeamRot_cooYe) <0.07125)
         {
        px_mu_out->Fill(detKinBeamRot_pXmu_out,wgt_full);
        py_mu_out->Fill(detKinBeamRot_pYmu_out,wgt_full);
@@ -270,24 +272,24 @@ if(E_ECAL>1)
     px_mu_outLO->Draw("HIST same");
     px_mu_out->GetXaxis()->SetTitle("Px [GeV]");
     
-    p->cd(2);    
+    p->cd(3);    
     py_mu_out->SetLineColor(46);
     py_mu_out->Draw("HIST");
     py_mu_outLO->SetLineColor(kBlack);
     py_mu_outLO->Draw("HIST same");
     py_mu_out->GetXaxis()->SetTitle("Py [GeV]");
-    p->cd(3);
+    p->cd(5);
     pz_mu_out->SetLineColor(46);
     pz_mu_out->Draw("HIST");  
     pz_mu_outLO->SetLineColor(kBlack);
     pz_mu_outLO->Draw("HIST same");
     pz_mu_out->GetXaxis()->SetTitle("Pz [GeV]");
-    p->cd(4);
+    p->cd(2);
     px_e_out->Draw("HIST");
     px_e_outLO->SetLineColor(kBlack);
     px_e_outLO->Draw("HIST same"); 
     px_e_out->GetXaxis()->SetTitle("Px [GeV]");
-    p->cd(5);
+    p->cd(4);
     py_e_out->Draw("HIST"); 
     py_e_outLO->SetLineColor(kBlack);
     py_e_outLO->Draw("HIST same");
@@ -300,7 +302,7 @@ if(E_ECAL>1)
     p->SaveAs("Pemu.png");
     
     
-    TCanvas * e= new TCanvas("e","e",400,10,1500,1000);
+    /*TCanvas * e= new TCanvas("e","e",400,10,1500,1000);
     e->Divide(3,2);
     e->cd(1);
     Emuin->SetLineColor(46);
@@ -509,5 +511,5 @@ DR->Draw("HIST");
 DR_cut->SetLineColor(kRed);
 DR_cut->Draw("HIST same");
     
-DRR->SaveAs("DRphe.png");
+DRR->SaveAs("DRphe.png");*/
       }

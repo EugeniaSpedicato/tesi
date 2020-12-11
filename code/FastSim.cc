@@ -744,7 +744,7 @@ else return coo_in;
 
 
 
-TMatrixD FastSim::MCSphoton(const Double_t & tar, const PxPyPzEVector & kp,const Double_t & xin, const Double_t & yin) const
+TMatrixD FastSim::MCSphoton(const PxPyPzEVector & kp,const Double_t & xin, const Double_t & yin) const
 
 { Double_t d0 =2.025; //m
   Double_t d1 =1.025;
@@ -976,7 +976,7 @@ kv.cooYmu = coo[1][0];
 kv.cooXe = coo[2][0];
 kv.cooYe = coo[3][0];
 
-kv.tar = coo[4][0];
+kv.tar = tar;
  kv.ThEl_interaction = 1e3*TheINT; // angolo elettrone al momento della produzione, in mrad
 
   kv.pXmu = p_mu_in.Px();
@@ -1035,7 +1035,7 @@ kv.def_angle_e = def_angle[1][0];
 
 
       
-void FastSim::LoadPhoton(const MuE::Event & event, MuE::Photon & photon,const PxPyPzEVector & p_mu_in,const Double_t & tar,const Double_t & xin,const Double_t & yin) {
+void FastSim::LoadPhoton(const MuE::Event & event, MuE::Photon & photon,const PxPyPzEVector & p_mu_in,const Double_t & xin,const Double_t & yin) {
   // by now at most one photon
   auto n_photons = event.photons.size();
   
@@ -1056,7 +1056,7 @@ PxPyPzEVector p_gamma_CoM = Lorentz_ToCoM(p_gamma_Lab_div);
     photon.phi       = p_gamma_Lab_div.Phi();
     photon.energyCoM = p_gamma_CoM.E(); 
 
-    TMatrixD coo=MCSphoton(tar,p_gamma_Lab,xin,yin);
+    TMatrixD coo=MCSphoton(p_gamma_Lab,xin,yin);
       
     photon.coox=coo[0][0];
     photon.cooy=coo[0][1];

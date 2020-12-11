@@ -68,10 +68,10 @@ void FastSim::Process(const MuE::Event & event) {
   PxPyPzEVector p_mu_out(event.P_mu_out.px, event.P_mu_out.py, event.P_mu_out.pz, event.P_mu_out.E);
   PxPyPzEVector p_e_out(event.P_e_out.px, event.P_e_out.py, event.P_e_out.pz, event.P_e_out.E);
    
-sS    = 6*0.00064; //m spessore silicio !!!EHIIII CAMBIAMIIIIII
-x0S = 0.094; // m
-sB    = 0.015; //m spessore berillio
-x0B = 0.353; // m
+const sS    = 6*0.00064; //m spessore silicio !!!EHIIII CAMBIAMIIIIII
+const x0S = 0.094; // m
+const sB    = 0.015; //m spessore berillio
+const x0B = 0.353; // m
 tar=gRandom->Integer(2);  // target where the interaction happens
 vertex=gRandom->Uniform(); // where inc. muon interacts in the Beryllium tar.
     
@@ -348,7 +348,7 @@ Double_t sigBEe=(13.6/(ke.E()*1000))*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad
     Double_t anglexin = atan2(kin.Px(), kin.Pz());
     Double_t angleyin = atan2(kin.Py(), kin.Pz()); 
   
-    // sono gli angoli dai momenti già ruotati
+    // sono gli angoli dai momenti già ruotati!
     Double_t anglex = atan2(k.Px(), k.Pz());
     Double_t angley = atan2(k.Py(), k.Pz()); 
     Double_t anglexe = atan2(ke.Px(), ke.Pz());
@@ -607,8 +607,8 @@ for (Int_t p=1; p<7; p++)  {
                 Double_t y1 = gRandom->Gaus(yR,(1/sqrt(3))*sSin*sigSI);
         
                 //coo dopo berillio
-                Double_t x2 = gRandom->Gaus(x1,(1/sqrt(3))*2*sB*sigBEin);
-                Double_t y2 = gRandom->Gaus(y1,(1/sqrt(3))*2*sB*sigBEin);
+                Double_t x2 = gRandom->Gaus(x1,(1/sqrt(3))*2*sB*sigBE);
+                Double_t y2 = gRandom->Gaus(y1,(1/sqrt(3))*2*sB*sigBE);
          
                 //coo dopo il silicio
                 Double_t x3 = gRandom->Gaus(x2,(1/sqrt(3))*sSin*sigSI);

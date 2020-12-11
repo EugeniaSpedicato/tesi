@@ -24,8 +24,7 @@ const Double_t FastSim::me_PDG = 0.5109989461 *0.001;
 
 FastSim::FastSim(const MuE::MCpara & pargen, const MuE::FS_Input & fsi, bool _debug_):
   mm(pargen.mass_mu), me(pargen.mass_e), Ebeam(pargen.Ebeam), EbeamRMS(pargen.EbeamRMS),
-  model(fsi.model), MSopt(fsi.MSopt), thickness(fsi.thickness), intrinsic_resolution(fsi.resolution), debug(_debug_), Minv(0)
-  
+  model(fsi.model), MSopt(fsi.MSopt), thickness(fsi.thickness), intrinsic_resolution(fsi.resolution), debug(_debug_), Minv(0),sS(6*0.00064),x0S(0.094),sB(0.015),x0B(0.353)
 {
   if (std::abs(mm - mm_PDG)/mm_PDG > 1e-7) {
     cout<<"\n"<< "***WARNING: muon mass = "<<mm<<" is different from the PDG mass: "<<mm_PDG<<endl;
@@ -68,10 +67,6 @@ void FastSim::Process(const MuE::Event & event) {
   PxPyPzEVector p_mu_out(event.P_mu_out.px, event.P_mu_out.py, event.P_mu_out.pz, event.P_mu_out.E);
   PxPyPzEVector p_e_out(event.P_e_out.px, event.P_e_out.py, event.P_e_out.pz, event.P_e_out.E);
    
-const sS    = 6*0.00064; //m spessore silicio !!!EHIIII CAMBIAMIIIIII
-const x0S = 0.094; // m
-const sB    = 0.015; //m spessore berillio
-const x0B = 0.353; // m
 tar=gRandom->Integer(2);  // target where the interaction happens
 vertex=gRandom->Uniform(); // where inc. muon interacts in the Beryllium tar.
     

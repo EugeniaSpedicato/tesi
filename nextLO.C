@@ -321,7 +321,7 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
 
 
     
-   /* TCanvas * t= new TCanvas("t","t",1500,1000,3500,2000);
+   TCanvas * t= new TCanvas("t","t",1500,1000,3500,2000);
     t->Divide(1,2);
     t->cd(1);
     thmu->SetLineColor(46);
@@ -523,7 +523,7 @@ for (Int_t j=1; j<ny11+1; j++) {
     
 TCanvas * th_en2= new TCanvas("th_en0","th_en0",1000,100,2500,2000);   
 Th_E_el2->Draw("COLZ");  
-th_en2->SaveAs("theta-energy-electron2.png");  */
+th_en2->SaveAs("theta-energy-electron2.png");  
 
     
       }

@@ -52,7 +52,7 @@ namespace MuE {
     //TMatrixD coo(const Double_t & a, const Double_t & s,const Double_t & ae, const Double_t & se) const; 
     //TMatrixD coo(const PxPyPzEVector & p,const PxPyPzEVector & q) const; 
     // TMatrixD MCSin(const PxPyPzEVector & k) const; 
-    TMatrixD MCSout(const PxPyPzEVector & kin, const PxPyPzEVector & k, const PxPyPzEVector & ke,const Double_t & tar) const; 
+    TMatrixD MCSout(const PxPyPzEVector & kin, const PxPyPzEVector & k, const PxPyPzEVector & ke) const; 
     TMatrixD MCSphoton(const Double_t & tar,const PxPyPzEVector & p_gamma_Lab_div,const Double_t & xin,const Double_t & yin) const;
     TMatrixD Def_angle(const PxPyPzEVector & p_mu_in_div,const PxPyPzEVector & p_mu_out_div,const PxPyPzEVector & p_e_out_div) const;
     Int_t ECALe(const Double_t & x,const Double_t & y) const;
@@ -72,6 +72,18 @@ namespace MuE {
     const Int_t & MSopt; // options for multiple scattering (default/only Xplane/only polar)
     const Double_t & thickness; // material thickness (in X0) for model_=0
     const Double_t & intrinsic_resolution; // intrinsic resolution (in mrad) for model_=0
+    
+    Double_t sigSI; //sigma distribuzione angolare MCS da PDG nel silicio
+    Double_t sigBE; //sigma distribuzione angolare MCS da PDG nel Berillio
+    Double_t sigBE2in; //sigma distribuzione angolare MCS da PDG nel Berillio fino dove interagisce
+    Double_t const sS; //m spessore silicio
+    Double_t const x0S; // m
+    Double_t const sB; //m spessore berillio
+    Double_t const x0B; // m
+    Int_t tar; // target where mu interacts
+    Double_t vertex; // where mu interacts in the target
+
+      
     bool debug;
 
     PxPyPzEVector p_system; // mu-e centre-of-mass system fourmomentum

@@ -68,44 +68,29 @@ void FastSim::Process(const MuE::Event & event) {
   PxPyPzEVector p_mu_out(event.P_mu_out.px, event.P_mu_out.py, event.P_mu_out.pz, event.P_mu_out.E);
   PxPyPzEVector p_e_out(event.P_e_out.px, event.P_e_out.py, event.P_e_out.pz, event.P_e_out.E);
    
-   /* LoadKineVars(p_mu_in, p_e_in, p_mu_out, p_e_out, genKin); 
-     
-    //DETKIN NORMALI
-    PxPyPzEVector p_mu_out_smeared, p_e_out_smeared; 
-  if (MSopt ==0) {
-    p_mu_out_smeared = Smear(p_mu_out);
-    p_e_out_smeared = Smear(p_e_out);
-  }
-  else if (MSopt ==1) {
-    p_mu_out_smeared = SmearX(p_mu_out);
-    p_e_out_smeared = SmearX(p_e_out);
-  }
-  else if (MSopt ==2) {
-    p_mu_out_smeared = SmearPolar(p_mu_out);
-    p_e_out_smeared = SmearPolar(p_e_out);
-  }
-  else cout<<"\n"<<"*** ERROR : FastSim, undefined detector MS option = "<<MSopt<<endl;
-  
-  LoadKineVars(p_mu_in, p_e_in, p_mu_out_smeared, p_e_out_smeared, detKin);
-  
-   */ 
-    //DETKIN RUOTATE (const PxPyPzEVector & k, const Double_t tar, const Double_t xx, const Double_t yy, const Double_t thX, const Double_t thY)
+sS    = 6*0.00064; //m spessore silicio !!!EHIIII CAMBIAMIIIIII
+x0S = 0.094; // m
+sB    = 0.015; //m spessore berillio
+x0B = 0.353; // m
+tar=gRandom->Integer(2);  // target where the interaction happens
+vertex=gRandom->Uniform(); // where inc. muon interacts in the Beryllium tar.
+    
+sigSI=(13.6/(p_mu_in.E()*1000))*sqrt(sS/x0S)*(1+0.038*log(sS/x0S)); //rad e energy in MeV
+sigBE=(13.6/(p_mu_in.E()*1000))*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad  
+sigBE2in=(13.6/(p_mu_in.E()*1000))*sqrt((sB*vertex)/x0B)*(1+0.038*log((sB*vertex)/x0B)); //rad      
+
+// Appply beam divergence on incoming muon and MCS of station0 + vertex*tar0 (tar 0) 
+// or station0 + tar0 + station1 + vertex*tar1
 TMatrixD muin=RotDivIN(p_mu_in);
-PxPyPzEVector p_mu_in_div(muin[0][0],muin[1][0],muin[2][0],muin[3][0]);
+PxPyPzEVector p_mu_in_div(muin[0][0],muin[1][0],muin[2][0],muin[3][0]); // divergent P incoming mu   
+PxPyPzEVector p_e_in_div=p_e_in; //it's the same as =0
     
-//TMatrixD a=MCSin(p_mu_in_div);//effetto MCS, ritorna una matrice con coo, angoli e momento
-//PxPyPzEVector p_mu_in_smeared(a[4][0],a[4][1],a[4][2],a[4][3]);
-
-PxPyPzEVector p_e_in_div=(p_e_in);
-    
-//cioe div della cinematica e smear del MCS
+//Applay rotation on P outgoing mu and e- in the reference system of the div. beam with also initial MCS
 PxPyPzEVector p_mu_out_div=RotDiv(p_mu_in_div,p_mu_out);
-
 PxPyPzEVector p_e_out_div=RotDiv(p_mu_in_div,p_e_out);
     
-//effetto MCS out, ritorna una matrice con coo, angoli e momento per muone ed elettrone
-TMatrixD b=MCSout(p_mu_in_div,p_mu_out_div,p_e_out_div,muin[4][0]);
-    
+//MCS effect on outgoing particles, gives matrix with coo, angles and momenta for e- and mu
+TMatrixD b=MCSout(p_mu_in_div,p_mu_out_div,p_e_out_div);
 PxPyPzEVector p_mu_out_div_smeared(b[8][3],b[8][4],b[8][5],b[8][6]);
 PxPyPzEVector p_e_out_div_smeared(b[17][3],b[17][4],b[17][5],b[17][6]);
 
@@ -191,55 +176,12 @@ PxPyPzEVector FastSim::Lorentz_ToLab(const PxPyPzEVector & pCoM) const
   }
 }
 
-// RMS Theta smearing due to Multiple scattering distribution and intrinsic resolution
-//
-/*
-Double_t FastSim::ThetaRMS(const PxPyPzEVector & k) const
-{
-  Double_t pmom = k.P();
-  
-  // resolution: gaussian sigma
-  Double_t thrms(0); 
-  
-  if (model == 0) {
-    Double_t msc = thickness > 0 ? MuE::Target_thrms(pmom, thickness) : 0; // in mrad
-    thrms = sqrt(msc*msc + intrinsic_resolution*intrinsic_resolution);
-  }
-  else if (model == 1) {
-    thrms = MuE::Antonio_thrms(pmom); // in mrad
-  }
-  else {
-    cout << "\n" << "***ERROR: Undefined smearing model = "<<model << endl;
-    exit(999);
-  }
+TMatrixD FastSim::RotDivIN(const PxPyPzEVector & k) const
+ {   
 
-  return thrms;
-}
-
-
-*/
-
-
- TMatrixD FastSim::RotDivIN(const PxPyPzEVector & k) const
- {
-     
-Double_t const sS    = 3*0.00128; //m spessore silicio
-Double_t const x0S = 0.094; // m
-Double_t const sB    = 0.015; //m spessore berillio
-Double_t const x0B = 0.353; // m
-
+Double_t divthx = gRandom->Gaus(0., 0.00027);
+Double_t divthy = gRandom->Gaus(0., 0.00020); 
     
-Double_t sigSI=(13.6/(k.E()*1000))*sqrt(sS/x0S)*(1+0.038*log(sS/x0S)); //rad e energy in MeV
-Double_t sigBE=(13.6/(k.E()*1000))*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad   
-Double_t sigBE2in=(13.6/(k.E()*1000))*sqrt(sB/(2*x0B))*(1+0.038*log(sB/(2*x0B))); //rad   
-
-
-/*Double_t divthx = gRandom->Gaus(0., 0.00027);
-Double_t divthy = gRandom->Gaus(0., 0.00020); */
-Double_t divthx = 0.;
-Double_t divthy = 0.; 
-    
-Int_t tar=gRandom->Integer(2);
      
 if (tar==0){
 Double_t Thx=gRandom->Gaus(divthx,sigSI);
@@ -261,12 +203,11 @@ Double_t py=pz*tan(angley);
 Double_t px=pz*tan(anglex);
 
 
-TMatrixD pnewdiv(5,1);
+TMatrixD pnewdiv(4,1);
 pnewdiv[0][0]=px;
 pnewdiv[1][0]=py;
 pnewdiv[2][0]=pz; 
 pnewdiv[3][0]=k.E();
-pnewdiv[4][0]=tar;
 return pnewdiv;  }
      
 if (tar==1){
@@ -349,11 +290,11 @@ return pnewdiv;
  }   
 
 
-TMatrixD FastSim::MCSout(const PxPyPzEVector & kin, const PxPyPzEVector & k, const PxPyPzEVector & ke, const Double_t & tar) const
+TMatrixD FastSim::MCSout(const PxPyPzEVector & kin, const PxPyPzEVector & k, const PxPyPzEVector & ke) const
 {
         
     
-Double_t const sSin    = 3*0.00128; //m spessore silicio per fascio entrante
+Double_t const sSin    = 6*0.00064; //m spessore silicio per fascio entrante
 
 Double_t const sS    = 0.00064; //m spessore silicio
 Double_t const x0S = 0.094; // m
@@ -371,20 +312,16 @@ Double_t const d = 0.25-0.005;
 // m la distanza tra coppie di silici è 0.25. Però 0.25 è tra i due della coppia, quindi considero -dSS/2=0.005
 Double_t const dCAL = 0.10; // m distanza silicio calorimetro
     
-
-Double_t sigSIinP=(13.6/(kin.E()*1000))*sqrt(sSin/x0S)*(1+0.038*log(sSin/x0S)); //rad
-Double_t sigBE2in=(13.6/(kin.E()*1000))*sqrt(sB/(2*x0B))*(1+0.038*log(sB/(2*x0B))); //rad   
-Double_t sigBEin=(13.6/(kin.E()*1000))*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad   
     
     
 Double_t sigSImu=(13.6/(k.E()*1000))*sqrt(sS/x0S)*(1+0.038*log(sS/x0S)); //rad
 // considero sB/2 per quando interagisce a metà 
 Double_t sigSIe=(13.6/(ke.E()*1000))*sqrt(sS/x0S)*(1+0.038*log(sS/x0S)); //rad
 // considero sB/2 per quando interagisce a metà 
-Double_t sigBE2mu=(13.6/(k.E()*1000))*sqrt(sB/(2*x0B))*(1+0.038*log(sB/(2*x0B))); //rad
-// considero sB/2 per quando interagisce a metà 
-Double_t sigBE2e=(13.6/(ke.E()*1000))*sqrt(sB/(2*x0B))*(1+0.038*log(sB/(2*x0B))); //rad
-// considero sB/2 per quando interagisce a metà 
+Double_t sigBE2mu=(13.6/(k.E()*1000))*sqrt((sB*(1-vertex))/x0B)*(1+0.038*log((sB*(1-vertex))/x0B)); //rad
+// considero sB per quando interagisce a nel target in vertex 
+Double_t sigBE2e=(13.6/(ke.E()*1000))*sqrt((sB*(1-vertex))/x0B)*(1+0.038*log((sB*(1-vertex))/x0B)); //rad
+// considero sB per quando interagisce a nel target in vertex 
 Double_t sigBEmu=(13.6/(k.E()*1000))*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad   
 Double_t sigBEe=(13.6/(ke.E()*1000))*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad   
     
@@ -392,7 +329,7 @@ Double_t sigBEe=(13.6/(ke.E()*1000))*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad
     
     TMatrixD thetaX(2,7);
     TMatrixD thetaY(2,7);
-    //coordinate prima dell'entrata entrata 
+    //coordinate prima dell'entrata  
     TMatrixD xi(2,7);
     TMatrixD yi(2,7);
     //coordinate dopo uscite con effetto MCS
@@ -411,6 +348,7 @@ Double_t sigBEe=(13.6/(ke.E()*1000))*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad
     Double_t anglexin = atan2(kin.Px(), kin.Pz());
     Double_t angleyin = atan2(kin.Py(), kin.Pz()); 
   
+    // sono gli angoli dai momenti già ruotati
     Double_t anglex = atan2(k.Px(), k.Pz());
     Double_t angley = atan2(k.Py(), k.Pz()); 
     Double_t anglexe = atan2(ke.Px(), ke.Pz());
@@ -426,42 +364,40 @@ Double_t sigBEe=(13.6/(ke.E()*1000))*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad
     coo_in[0][1]=100;
     coo_in[0][2]=100;
     
-    /*Double_t xR = gRandom->Gaus(0,0.026);
-    Double_t yR = gRandom->Gaus(0,0.027);*/
-    Double_t xR = 0.;
-    Double_t yR = 0.;
+    Double_t xR = gRandom->Gaus(0,0.026);
+    Double_t yR = gRandom->Gaus(0,0.027);
 
     
     if(tar==0)
     {
-       // siamo nelle stazioni con il target di berillio. Ora entra nel berillio, la distanza che percorre nel vuoto il fascio è approssimativamente 1m-spessore_silici=1-sSin che serve per il calcolo della coordinata. Considero interazione a metà (7.5 mm) del berillio.
+       // siamo nelle stazioni con il target di berillio. Ora entra nel berillio, la distanza che percorre nel vuoto il fascio è approssimativamente 1m-spessore_silici=1-sSin che serve per il calcolo della coordinata. Considero interazione in "vertex" nel berillio.
         
-        
+                //angoli di uscita dal berillio per e- e mu
                  thetaX[0][0]= gRandom->Gaus(anglex,sigBE2mu);
                  thetaY[0][0]= gRandom->Gaus(angley,sigBE2mu); 
                  thetaXe[0][0]= gRandom->Gaus(anglexe,sigBE2e);
                  thetaYe[0][0]= gRandom->Gaus(angleye,sigBE2e); 
         
-                //coo dopo il silicio
-                Double_t x1 = gRandom->Gaus(xR,(1/sqrt(3))*sSin*sigSIinP);
-                Double_t y1 = gRandom->Gaus(yR,(1/sqrt(3))*sSin*sigSIinP);
+                //coo dell'incoming muon dopo l'effetto del materiale (6 silici) della stazione 0
+                Double_t x1 = gRandom->Gaus(xR,(1/sqrt(3))*sSin*sigSI);
+                Double_t y1 = gRandom->Gaus(yR,(1/sqrt(3))*sSin*sigSI);
         
-                //arrivano sul berillio, uguali ovviamente per elettrone e mu perchè ancora non nati..
+                //I muoni arrivano sul berillio, uguali ovviamente per elettrone e mu perchè ancora non nati..
                 xi[0][0] = x1+(1-sSin)*tan(anglexin);
                 yi[0][0] = y1+(1-sSin)*tan(angleyin);
                 xei[0][0] = x1+(1-sSin)*tan(anglexin);
                 yei[0][0] = y1+(1-sSin)*tan(angleyin);
         
                 //coo d'interazione dopo metà berillio
-                Double_t x2 = gRandom->Gaus(xi[0][0],(1/sqrt(3))*0.0075*sigBE2in);
-                Double_t y2 = gRandom->Gaus(yi[0][0],(1/sqrt(3))*0.0075*sigBE2in);
+                Double_t x2 = gRandom->Gaus(xi[0][0],(1/sqrt(3))*(sB*vertex)*sigBE2in);
+                Double_t y2 = gRandom->Gaus(yi[0][0],(1/sqrt(3))*(sB*vertex)*sigBE2in);
 
                 // dopo l'interazione, coordinate d'uscita dal berillio
-                 x[0][0]=gRandom->Gaus(x2,(1/sqrt(3))*0.0075*sigBE2mu);
-                 y[0][0]=gRandom->Gaus(y2,(1/sqrt(3))*0.0075*sigBE2mu);  
+                 x[0][0]=gRandom->Gaus(x2,(1/sqrt(3))*(sB*(1-vertex))*sigBE2mu);
+                 y[0][0]=gRandom->Gaus(y2,(1/sqrt(3))*(sB*(1-vertex))*sigBE2mu);  
     
-                 xe[0][0]=gRandom->Gaus(x2,(1/sqrt(3))*0.0075*sigBE2e);
-                 ye[0][0]=gRandom->Gaus(y2,(1/sqrt(3))*0.0075*sigBE2e); 
+                 xe[0][0]=gRandom->Gaus(x2,(1/sqrt(3))*(sB*(1-vertex))*sigBE2e);
+                 ye[0][0]=gRandom->Gaus(y2,(1/sqrt(3))*(sB*(1-vertex))*sigBE2e); 
             
 
 
@@ -667,31 +603,31 @@ for (Int_t p=1; p<7; p++)  {
                  }}
 
                  //coo dopo il silicio
-                Double_t x1 = gRandom->Gaus(xR,(1/sqrt(3))*sSin*sigSIinP);
-                Double_t y1 = gRandom->Gaus(yR,(1/sqrt(3))*sSin*sigSIinP);
+                Double_t x1 = gRandom->Gaus(xR,(1/sqrt(3))*sSin*sigSI);
+                Double_t y1 = gRandom->Gaus(yR,(1/sqrt(3))*sSin*sigSI);
         
                 //coo dopo berillio
-                Double_t x2 = gRandom->Gaus(x1,(1/sqrt(3))*2*0.0075*sigBEin);
-                Double_t y2 = gRandom->Gaus(y1,(1/sqrt(3))*2*0.0075*sigBEin);
+                Double_t x2 = gRandom->Gaus(x1,(1/sqrt(3))*2*sB*sigBEin);
+                Double_t y2 = gRandom->Gaus(y1,(1/sqrt(3))*2*sB*sigBEin);
          
                 //coo dopo il silicio
-                Double_t x3 = gRandom->Gaus(x2,(1/sqrt(3))*sSin*sigSIinP);
-                Double_t y3 = gRandom->Gaus(y2,(1/sqrt(3))*sSin*sigSIinP);
+                Double_t x3 = gRandom->Gaus(x2,(1/sqrt(3))*sSin*sigSI);
+                Double_t y3 = gRandom->Gaus(y2,(1/sqrt(3))*sSin*sigSI);
         
                 
                 xi[1][0]=(2-2*sSin-sB)*tan(anglexin)+x3;
                 yi[1][0]=(2-2*sSin-sB)*tan(angleyin)+y3;
         
                 //coo dopo metà berillio, poi avviene interazione
-                Double_t x4 = gRandom->Gaus(xi[1][0],(1/sqrt(3))*0.0075*sigBE2in);
-                Double_t y4 = gRandom->Gaus(yi[1][0],(1/sqrt(3))*0.0075*sigBE2in);
+                Double_t x4 = gRandom->Gaus(xi[1][0],(1/sqrt(3))*(sB*vertex)*sigBE2in);
+                Double_t y4 = gRandom->Gaus(yi[1][0],(1/sqrt(3))*(sB*vertex)*sigBE2in);
         
                 //coo all'uscita del berillio dopo l'interazione
-                 x[1][0]=gRandom->Gaus(x4,(1/sqrt(3))*0.0075*sigBE2mu);
-                 y[1][0]=gRandom->Gaus(y4,(1/sqrt(3))*0.0075*sigBE2mu);  
+                 x[1][0]=gRandom->Gaus(x4,(1/sqrt(3))*(sB*(1-vertex))*sigBE2mu);
+                 y[1][0]=gRandom->Gaus(y4,(1/sqrt(3))*(sB*(1-vertex))*sigBE2mu);  
     
-                 xe[1][0]=gRandom->Gaus(x4,(1/sqrt(3))*0.0075*sigBE2e);
-                 ye[1][0]=gRandom->Gaus(y4,(1/sqrt(3))*0.0075*sigBE2e); 
+                 xe[1][0]=gRandom->Gaus(x4,(1/sqrt(3))*(sB*(1-vertex))*sigBE2e);
+                 ye[1][0]=gRandom->Gaus(y4,(1/sqrt(3))*(sB*(1-vertex))*sigBE2e); 
         
                 
                 thetaX[1][0]=gRandom->Gaus(anglex,sigBE2mu);

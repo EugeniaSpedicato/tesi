@@ -119,7 +119,7 @@ Double_t TheINT=b[18][2]; // angolo che ha nel momento dell'interazione, senza e
   
   LoadKineVars(p_mu_in_div, p_e_in_div, p_mu_out_div_smeared, p_e_out_div_smeared, coo, TheINT, detKinBeamRot);
   
-  LoadPhoton(event, photon, p_mu_in_div,muin[4][0],xin,yin);
+  LoadPhoton(event, photon, p_mu_in_div,xin,yin);
     
 }
 

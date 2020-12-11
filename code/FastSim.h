@@ -73,15 +73,15 @@ namespace MuE {
     const Double_t & thickness; // material thickness (in X0) for model_=0
     const Double_t & intrinsic_resolution; // intrinsic resolution (in mrad) for model_=0
     
-    Double_t sigSI; //sigma distribuzione angolare MCS da PDG nel silicio
-    Double_t sigBE; //sigma distribuzione angolare MCS da PDG nel Berillio
-    Double_t sigBE2in; //sigma distribuzione angolare MCS da PDG nel Berillio fino dove interagisce
-    Double_t const sS; //m spessore silicio
-    Double_t const x0S; // m
-    Double_t const sB; //m spessore berillio
-    Double_t const x0B; // m
-    Int_t tar; // target where mu interacts
-    Double_t vertex; // where mu interacts in the target
+   const Double_t sigSI; //sigma distribuzione angolare MCS da PDG nel silicio
+   const Double_t sigBE; //sigma distribuzione angolare MCS da PDG nel Berillio
+   const Double_t sigBE2in; //sigma distribuzione angolare MCS da PDG nel Berillio fino dove interagisce
+   const Double_t sSin; //m spessore silicio
+   const Double_t x0S; // m
+   const Double_t sB; //m spessore berillio
+   const Double_t x0B; // m
+      Int_t tar; // target where mu interacts
+      Double_t vertex; // where mu interacts in the target
 
       
     bool debug;

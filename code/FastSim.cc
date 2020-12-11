@@ -24,7 +24,7 @@ const Double_t FastSim::me_PDG = 0.5109989461 *0.001;
 
 FastSim::FastSim(const MuE::MCpara & pargen, const MuE::FS_Input & fsi, bool _debug_):
   mm(pargen.mass_mu), me(pargen.mass_e), Ebeam(pargen.Ebeam), EbeamRMS(pargen.EbeamRMS),
-  model(fsi.model), MSopt(fsi.MSopt), thickness(fsi.thickness), intrinsic_resolution(fsi.resolution), debug(_debug_), Minv(0),sS(6*0.00064),x0S(0.094),sB(0.015),x0B(0.353)
+  model(fsi.model), MSopt(fsi.MSopt), thickness(fsi.thickness), intrinsic_resolution(fsi.resolution), debug(_debug_), Minv(0),sSin(6*0.00064),x0S(0.094),sB(0.015),x0B(0.353)
 {
   if (std::abs(mm - mm_PDG)/mm_PDG > 1e-7) {
     cout<<"\n"<< "***WARNING: muon mass = "<<mm<<" is different from the PDG mass: "<<mm_PDG<<endl;
@@ -70,7 +70,7 @@ void FastSim::Process(const MuE::Event & event) {
 tar=gRandom->Integer(2);  // target where the interaction happens
 vertex=gRandom->Uniform(); // where inc. muon interacts in the Beryllium tar.
     
-sigSI=(13.6/(p_mu_in.E()*1000))*sqrt(sS/x0S)*(1+0.038*log(sS/x0S)); //rad e energy in MeV
+sigSI=(13.6/(p_mu_in.E()*1000))*sqrt(sSin/x0S)*(1+0.038*log(sSin/x0S)); //rad e energy in MeV
 sigBE=(13.6/(p_mu_in.E()*1000))*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad  
 sigBE2in=(13.6/(p_mu_in.E()*1000))*sqrt((sB*vertex)/x0B)*(1+0.038*log((sB*vertex)/x0B)); //rad      
 

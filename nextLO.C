@@ -452,7 +452,7 @@ if (X_Y_p2->GetBinContent(i,j)<1) X_Y_p2->SetBinContent(i,j,0);}}
     TCanvas * duedmu= new TCanvas("duedmu","duedmu",1000,100,2500,2000);
     duedmu->Divide(3,3);
     duedmu->cd(1);
-    gStyle->SetPalette(kLake);
+    gStyle->SetPalette(kCherry);
     TColor::InvertPalette(); 
     X_Y_mu->Draw("COLZ");
     X_Y_mu->GetXaxis()->SetTitle("x [m]");

@@ -174,9 +174,10 @@ PxPyPzEVector FastSim::Lorentz_ToLab(const PxPyPzEVector & pCoM) const
 TMatrixD FastSim::RotDivIN(const PxPyPzEVector & k) const
  {   
 
-Double_t divthx = gRandom->Gaus(0., 0.00027);
-Double_t divthy = gRandom->Gaus(0., 0.00020); 
-    
+/*Double_t divthx = gRandom->Gaus(0., 0.00027);
+Double_t divthy = gRandom->Gaus(0., 0.00020); */
+Double_t divthx = 0.;
+Double_t divthy = 0.; 
      
 if (tar==0){
 Double_t Thx=gRandom->Gaus(divthx,sigSI);
@@ -253,8 +254,6 @@ Double_t px=k.Px();
 
 Double_t ptz=sqrt(px*px+pz*pz);
 
-/* PxPyPzEVector pnewdiv(px, py, pz, k.E());     
-return pnewdiv;  */
 
 // costruzione della matrice di rotazione
 Double_t psi=atan2(px,pz); 
@@ -289,12 +288,6 @@ TMatrixD FastSim::MCSout(const PxPyPzEVector & kin, const PxPyPzEVector & k, con
 {
 
 Double_t const sS    = 0.00064; //m spessore silicio
-Double_t const x0S = 0.094; // m
-
-Double_t const sB    = 0.015; //m spessore berillio
-Double_t const x0B = 0.353; // m
-
-
 
 Double_t const dSS = 0.01; // m distanza tra i due 2S
 
@@ -356,9 +349,10 @@ Double_t sigBEe=(13.6/(ke.E()*1000))*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad
     coo_in[0][1]=100;
     coo_in[0][2]=100;
     
-    Double_t xR = gRandom->Gaus(0,0.026);
-    Double_t yR = gRandom->Gaus(0,0.027);
-
+    /*Double_t xR = gRandom->Gaus(0,0.026);
+    Double_t yR = gRandom->Gaus(0,0.027);*/
+    Double_t xR = 0.;
+    Double_t yR = 0.;
     
     if(tar==0)
     {

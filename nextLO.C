@@ -205,7 +205,7 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
    }
     
     
-    TCanvas * e= new TCanvas("e","e",1500,1000,3500,2000);
+    /*TCanvas * e= new TCanvas("e","e",1500,1000,3500,2000);
     e->Divide(2,3);
     e->cd(1);
     Emuout->GetXaxis()->SetTitle("E [GeV]");
@@ -215,12 +215,7 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
     Emuout->SetMinimum(1);
     Emuout->Draw("HIST");
     gPad->SetLogy();
-   /* e->cd(2);
-    Emuout_E->GetXaxis()->SetTitle("E [GeV]");
-    Emuout_E->SetLineColor(kRed);
-    Emuout_E->SetLineWidth(2);
-    Emuout_E->Draw("HIST");
-    gPad->SetLogy();*/
+
     e->cd(3);
     Emuout1->GetXaxis()->SetTitle("E [GeV]");
     Emuout1->SetMaximum(10E6);
@@ -229,12 +224,7 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
     Emuout1->SetLineWidth(2);
     Emuout1->Draw("HIST");
     gPad->SetLogy();
-   /* e->cd(4);
-    Emuout_E1->GetXaxis()->SetTitle("E [GeV]");
-    Emuout_E1->SetLineColor(8);
-    Emuout_E1->SetLineWidth(2);
-    Emuout_E1->Draw("HIST");
-    gPad->SetLogy();*/
+
     e->cd(5);
     Emuout2->SetMaximum(10E7);
     Emuout2->SetMinimum(1);
@@ -243,12 +233,7 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
     Emuout2->SetLineWidth(2);
     Emuout2->Draw("HIST");
     gPad->SetLogy();
-    /*e->cd(6);
-    Emuout_E2->GetXaxis()->SetTitle("E [GeV]");
-    Emuout_E2->SetLineColor(kBlack);
-    Emuout_E2->SetLineWidth(2);
-    Emuout_E2->Draw("HIST");
-    gPad->SetLogy();*/
+
     
     e->SaveAs("energyMU.png");
     
@@ -396,7 +381,7 @@ TCanvas * theC= new TCanvas("tar","tar",1500,1000,3500,2000);
     thYZe->GetXaxis()->SetTitle("Theta YZ [rad]");
     
 
-  theC->SaveAs("ThXZYZ.png");
+  theC->SaveAs("ThXZYZ.png");*/
 
 
 Int_t nx13_cut = X_Y_mu->GetNbinsX();
@@ -452,7 +437,7 @@ if (X_Y_p2->GetBinContent(i,j)<1) X_Y_p2->SetBinContent(i,j,0);}}
     TCanvas * duedmu= new TCanvas("duedmu","duedmu",1000,100,2500,2000);
     duedmu->Divide(3,3);
     duedmu->cd(1);
-    gStyle->SetPalette(kCherry);
+    gStyle->SetPalette(kLake);
     TColor::InvertPalette(); 
     X_Y_mu->Draw("COLZ");
     X_Y_mu->GetXaxis()->SetTitle("x [m]");

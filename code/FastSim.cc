@@ -174,10 +174,9 @@ PxPyPzEVector FastSim::Lorentz_ToLab(const PxPyPzEVector & pCoM) const
 TMatrixD FastSim::RotDivIN(const PxPyPzEVector & k) const
  {   
 
-/*Double_t divthx = gRandom->Gaus(0., 0.00027);
-Double_t divthy = gRandom->Gaus(0., 0.00020); */
-Double_t divthx = 0.;
-Double_t divthy = 0.; 
+Double_t divthx = gRandom->Gaus(0., 0.00027);
+Double_t divthy = gRandom->Gaus(0., 0.00020); 
+    
      
 if (tar==0){
 Double_t Thx=gRandom->Gaus(divthx,sigSI);
@@ -349,10 +348,9 @@ Double_t sigBEe=(13.6/(ke.E()*1000))*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad
     coo_in[0][1]=100;
     coo_in[0][2]=100;
     
-    /*Double_t xR = gRandom->Gaus(0,0.026);
-    Double_t yR = gRandom->Gaus(0,0.027);*/
-    Double_t xR = 0.;
-    Double_t yR = 0.;
+    Double_t xR = gRandom->Gaus(0,0.026);
+    Double_t yR = gRandom->Gaus(0,0.027);
+
     
     if(tar==0)
     {

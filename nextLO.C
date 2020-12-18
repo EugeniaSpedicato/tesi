@@ -100,7 +100,7 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
        //prende solo eventi che hanno elettroni nel calorimetro
        
        
-      if (E_ECAL>0.2 && abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125){
+      if (E_ECAL>1 && abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125){
 
   // per muone          
     Double_t Pmu=sqrt(detKinBeamRot_pXmu_out*detKinBeamRot_pXmu_out+detKinBeamRot_pYmu_out*detKinBeamRot_pYmu_out+detKinBeamRot_pZmu_out*detKinBeamRot_pZmu_out);
@@ -205,7 +205,7 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
    }
     
     
-    /*TCanvas * e= new TCanvas("e","e",1500,1000,3500,2000);
+    TCanvas * e= new TCanvas("e","e",1500,1000,3500,2000);
     e->Divide(2,3);
     e->cd(1);
     Emuout->GetXaxis()->SetTitle("E [GeV]");
@@ -381,7 +381,7 @@ TCanvas * theC= new TCanvas("tar","tar",1500,1000,3500,2000);
     thYZe->GetXaxis()->SetTitle("Theta YZ [rad]");
     
 
-  theC->SaveAs("ThXZYZ.png");*/
+  theC->SaveAs("ThXZYZ.png");
 
 
 Int_t nx13_cut = X_Y_mu->GetNbinsX();

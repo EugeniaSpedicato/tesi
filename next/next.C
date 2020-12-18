@@ -464,7 +464,7 @@ for (Int_t j=1; j<ny3+1; j++) {
     X_Y_p->GetYaxis()->SetTitle("y [m]");
   duedp->SaveAs("duedph.png");*/
 
-        TCanvas * Pin= new TCanvas("Pin","Pin",1500,1000,3500,2000);
+        TCanvas * Pin= new TCanvas("Pin","Pin",1000,1000,2000,2000);
     Pin->Divide(1,3);
     Pin->cd(1);
     px_mu->SetLineWidth(2);

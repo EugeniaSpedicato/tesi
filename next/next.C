@@ -263,7 +263,7 @@ if(E_ECAL>1)
 
     
 
- TCanvas * p= new TCanvas("p","p",400,10,1500,1000);
+/* TCanvas * p= new TCanvas("p","p",400,10,1500,1000);
     p->Divide(2,3);
     p->cd(1);
     px_mu_out->SetLineColor(46);
@@ -302,7 +302,7 @@ if(E_ECAL>1)
     p->SaveAs("Pemu.png");
     
     
-    /*TCanvas * e= new TCanvas("e","e",400,10,1500,1000);
+    TCanvas * e= new TCanvas("e","e",400,10,1500,1000);
     e->Divide(3,2);
     e->cd(1);
     Emuin->SetLineColor(46);
@@ -462,23 +462,26 @@ for (Int_t j=1; j<ny3+1; j++) {
     X_Y_p->Draw("COLZ");
     X_Y_p->GetXaxis()->SetTitle("x [m]");
     X_Y_p->GetYaxis()->SetTitle("y [m]");
-  duedp->SaveAs("duedph.png");
+  duedp->SaveAs("duedph.png");*/
 
-        TCanvas * Pin= new TCanvas("Pin","Pin",400,100,2500,2500);
+        TCanvas * Pin= new TCanvas("Pin","Pin",1500,1000,3500,2000);
     Pin->Divide(1,3);
     Pin->cd(1);
+    px_mu->SetLineWidth(2);
     px_mu->Draw("HIST");
     px_mu->GetXaxis()->SetTitle("Px [GeV]");
     Pin->cd(2);
+    py_mu->SetLineWidth(2);
     py_mu->Draw("HIST");
     py_mu->GetXaxis()->SetTitle("Py [GeV]");
     Pin->cd(3);
+    pz_mu->SetLineWidth(2);
     pz_mu->Draw("HIST");
     pz_mu->GetXaxis()->SetTitle("Pz [GeV]");
     
    Pin->SaveAs("p_in.png");
     
-    TCanvas * d= new TCanvas("d","d",1000,100,2500,2000);
+    /*TCanvas * d= new TCanvas("d","d",1000,100,2500,2000);
     d->Divide(3,2);
     d->cd(1);
     dx->Draw("HIST");

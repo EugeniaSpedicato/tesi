@@ -282,7 +282,7 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
     Ephout2->Draw("HIST");
     gPad->SetLogy();    
     
-    eew->SaveAs("energytot.png");
+    e->SaveAs("energytot.png");
 
 
     

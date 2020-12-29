@@ -100,7 +100,7 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
        //prende solo eventi che hanno elettroni nel calorimetro
        
        
-      if (E_ECAL>1 && abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125){
+      if (E_ECAL>0.2 && abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125){
 
         if (abs(detKinBeamRot_cooXmu) < 0.07125 && abs(detKinBeamRot_cooYmu) < 0.07125){
   // per muone          
@@ -207,7 +207,8 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
     
     
     TCanvas * e= new TCanvas("e","e",1500,1000,3500,2000);
-    e->Divide(2,3);
+    e->Divide(3,3);
+    
     e->cd(1);
     Emuout->GetXaxis()->SetTitle("E [GeV]");
     Emuout->SetLineColor(kRed);
@@ -217,7 +218,7 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
     Emuout->Draw("HIST");
     gPad->SetLogy();
 
-    e->cd(3);
+    e->cd(4);
     Emuout1->GetXaxis()->SetTitle("E [GeV]");
     Emuout1->SetMaximum(10E6);
     Emuout1->SetMinimum(1);
@@ -226,7 +227,7 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
     Emuout1->Draw("HIST");
     gPad->SetLogy();
 
-    e->cd(5);
+    e->cd(7);
     Emuout2->SetMaximum(10E7);
     Emuout2->SetMinimum(1);
     Emuout2->GetXaxis()->SetTitle("E [GeV]");
@@ -236,57 +237,35 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
     gPad->SetLogy();
 
     
-    e->SaveAs("energyMU.png");
     
-    TCanvas * ee= new TCanvas("e","e",1500,1000,3500,2000);
-    ee->Divide(2,3);
-    ee->cd(1);
+    e->cd(2);
     Eelout->GetXaxis()->SetTitle("E [GeV]");
     Eelout->SetLineWidth(3);
     Eelout->Draw("HIST");
     gPad->SetLogy();
-    ee->cd(2);
-    Eelout_E->GetXaxis()->SetTitle("E [GeV]");
-    Eelout_E->SetLineWidth(3);
-    Eelout_E->Draw("HIST");
-    gPad->SetLogy();
-    ee->cd(3);
+    e->cd(5);
     Eelout1->GetXaxis()->SetTitle("E [GeV]");
     Eelout1->SetLineWidth(3);
     Eelout1->SetLineColor(8);
     Eelout1->Draw("HIST");
     gPad->SetLogy();
-    ee->cd(4);
-    Eelout_E1->GetXaxis()->SetTitle("E [GeV]");
-    Eelout_E1->SetLineWidth(3);
-    Eelout_E1->SetLineColor(8);
-    Eelout_E1->Draw("HIST");
-    gPad->SetLogy();
-    ee->cd(5);
+    e->cd(8);
     Eelout2->GetXaxis()->SetTitle("E [GeV]");
     Eelout2->SetLineWidth(3);
     Eelout2->SetLineColor(kBlack);
     Eelout2->Draw("HIST");
     gPad->SetLogy();
-    ee->cd(6);
-    Eelout_E2->GetXaxis()->SetTitle("E [GeV]");
-    Eelout_E2->SetLineWidth(3);
-    Eelout_E2->SetLineColor(kBlack);
-    Eelout_E2->Draw("HIST");
-    gPad->SetLogy();
-    
-    ee->SaveAs("energyEL.png");
 
-    TCanvas * eew= new TCanvas("ew","ew",1500,1000,3500,2000);
-    eew->Divide(2,3);
-    eew->cd(1);
+    
+    
+    e->cd(3);
     Ephout->GetXaxis()->SetTitle("E [GeV]");
     Ephout->SetLineColor(9);
     Ephout->SetLineWidth(3);
     Ephout->SetMinimum(1);
     Ephout->Draw("HIST");
     gPad->SetLogy();
-    eew->cd(3);
+    e->cd(6);
     Ephout1->GetXaxis()->SetTitle("E [GeV]");
     Ephout1->SetLineColor(9);
     Ephout1->SetLineWidth(3);
@@ -294,7 +273,7 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
     Ephout1->SetMinimum(1);
     Ephout1->Draw("HIST");
     gPad->SetLogy();
-    eew->cd(5);
+    e->cd(9);
     Ephout2->GetXaxis()->SetTitle("E [GeV]");
     Ephout2->SetLineColor(9);
     Ephout2->SetLineWidth(3);
@@ -303,11 +282,15 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
     Ephout2->Draw("HIST");
     gPad->SetLogy();    
     
-    eew->SaveAs("energyPh.png");
+    eew->SaveAs("energytot.png");
 
 
     
-   TCanvas * t= new TCanvas("t","t",1500,1000,3500,2000);
+    
+    
+    
+    
+   /*TCanvas * t= new TCanvas("t","t",1500,1000,3500,2000);
     t->Divide(1,2);
     t->cd(1);
     thmu->SetLineColor(46);
@@ -509,7 +492,7 @@ for (Int_t j=1; j<ny11+1; j++) {
     
 TCanvas * th_en2= new TCanvas("th_en0","th_en0",1000,100,2500,2000);   
 Th_E_el2->Draw("COLZ");  
-th_en2->SaveAs("theta-energy-electron2.png"); 
+th_en2->SaveAs("theta-energy-electron2.png"); */
 
     
       }

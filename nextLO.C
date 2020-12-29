@@ -100,7 +100,7 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
        //prende solo eventi che hanno elettroni nel calorimetro
        
        
-      if (E_ECAL>1 && abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125){
+      if (E_ECAL>0.2 && abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125){
 
   // per muone          
     Double_t Pmu=sqrt(detKinBeamRot_pXmu_out*detKinBeamRot_pXmu_out+detKinBeamRot_pYmu_out*detKinBeamRot_pYmu_out+detKinBeamRot_pZmu_out*detKinBeamRot_pZmu_out);
@@ -205,12 +205,12 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
    }
     
     
-    TCanvas * e= new TCanvas("e","e",1500,1000,3500,2000);
+    /*TCanvas * e= new TCanvas("e","e",1500,1000,3500,2000);
     e->Divide(2,3);
     e->cd(1);
     Emuout->GetXaxis()->SetTitle("E [GeV]");
     Emuout->SetLineColor(kRed);
-    Emuout->SetLineWidth(3);
+    Emuout->SetLineWidth(2);
     Emuout->SetMaximum(10E7);
     Emuout->SetMinimum(1);
     Emuout->Draw("HIST");
@@ -221,7 +221,7 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
     Emuout1->SetMaximum(10E6);
     Emuout1->SetMinimum(1);
     Emuout1->SetLineColor(8);
-    Emuout1->SetLineWidth(3);
+    Emuout1->SetLineWidth(2);
     Emuout1->Draw("HIST");
     gPad->SetLogy();
 
@@ -230,7 +230,7 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
     Emuout2->SetMinimum(1);
     Emuout2->GetXaxis()->SetTitle("E [GeV]");
     Emuout2->SetLineColor(kBlack);
-    Emuout2->SetLineWidth(3);
+    Emuout2->SetLineWidth(2);
     Emuout2->Draw("HIST");
     gPad->SetLogy();
 
@@ -241,35 +241,35 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
     ee->Divide(2,3);
     ee->cd(1);
     Eelout->GetXaxis()->SetTitle("E [GeV]");
-    Eelout->SetLineWidth(3);
+    Eelout->SetLineWidth(2);
     Eelout->Draw("HIST");
     gPad->SetLogy();
     ee->cd(2);
     Eelout_E->GetXaxis()->SetTitle("E [GeV]");
-    Eelout_E->SetLineWidth(3);
+    Eelout_E->SetLineWidth(2);
     Eelout_E->Draw("HIST");
     gPad->SetLogy();
     ee->cd(3);
     Eelout1->GetXaxis()->SetTitle("E [GeV]");
-    Eelout1->SetLineWidth(3);
+    Eelout1->SetLineWidth(2);
     Eelout1->SetLineColor(8);
     Eelout1->Draw("HIST");
     gPad->SetLogy();
     ee->cd(4);
     Eelout_E1->GetXaxis()->SetTitle("E [GeV]");
-    Eelout_E1->SetLineWidth(3);
+    Eelout_E1->SetLineWidth(2);
     Eelout_E1->SetLineColor(8);
     Eelout_E1->Draw("HIST");
     gPad->SetLogy();
     ee->cd(5);
     Eelout2->GetXaxis()->SetTitle("E [GeV]");
-    Eelout2->SetLineWidth(3);
+    Eelout2->SetLineWidth(2);
     Eelout2->SetLineColor(kBlack);
     Eelout2->Draw("HIST");
     gPad->SetLogy();
     ee->cd(6);
     Eelout_E2->GetXaxis()->SetTitle("E [GeV]");
-    Eelout_E2->SetLineWidth(3);
+    Eelout_E2->SetLineWidth(2);
     Eelout_E2->SetLineColor(kBlack);
     Eelout_E2->Draw("HIST");
     gPad->SetLogy();
@@ -281,14 +281,14 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
     eew->cd(1);
     Ephout->GetXaxis()->SetTitle("E [GeV]");
     Ephout->SetLineColor(9);
-    Ephout->SetLineWidth(3);
+    Ephout->SetLineWidth(2);
     Ephout->SetMinimum(1);
     Ephout->Draw("HIST");
     gPad->SetLogy();
     eew->cd(3);
     Ephout1->GetXaxis()->SetTitle("E [GeV]");
     Ephout1->SetLineColor(9);
-    Ephout1->SetLineWidth(3);
+    Ephout1->SetLineWidth(2);
     Ephout1->SetLineColor(8);
     Ephout1->SetMinimum(1);
     Ephout1->Draw("HIST");
@@ -296,7 +296,7 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
     eew->cd(5);
     Ephout2->GetXaxis()->SetTitle("E [GeV]");
     Ephout2->SetLineColor(9);
-    Ephout2->SetLineWidth(3);
+    Ephout2->SetLineWidth(2);
     Ephout2->SetLineColor(kBlack);
     Ephout2->SetMinimum(1);
     Ephout2->Draw("HIST");
@@ -310,11 +310,11 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
     t->Divide(1,2);
     t->cd(1);
     thmu->SetLineColor(46);
-    thmu->SetLineWidth(3);
+    thmu->SetLineWidth(2);
     tarONEthmu->SetLineColor(8);
-    tarONEthmu->SetLineWidth(3);
+    tarONEthmu->SetLineWidth(2);
     tarTWOthmu->SetLineColor(kBlack);
-    tarTWOthmu->SetLineWidth(3);
+    tarTWOthmu->SetLineWidth(2);
     thmu->Draw("HIST");
     tarONEthmu->Draw("HIST SAME");
     tarTWOthmu->Draw("HIST SAME");
@@ -323,10 +323,10 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
 
     t->cd(2);
     tarONEthe->SetLineColor(8);
-    tarONEthe->SetLineWidth(3);
+    tarONEthe->SetLineWidth(2);
     tarTWOthe->SetLineColor(kBlack);
-    tarTWOthe->SetLineWidth(3);
-    the->SetLineWidth(3);
+    tarTWOthe->SetLineWidth(2);
+    the->SetLineWidth(2);
     the->Draw("HIST");
     tarONEthe->Draw("HIST SAME");
     tarTWOthe->Draw("HIST SAME");
@@ -339,44 +339,44 @@ TCanvas * theC= new TCanvas("tar","tar",1500,1000,3500,2000);
     theC->Divide(2,2);
     theC->cd(1);
     thXZmu->SetLineColor(46);
-    thXZmu->SetLineWidth(3);
+    thXZmu->SetLineWidth(2);
     thXZmu->Draw("HIST");
     thXZmu1->SetLineColor(8);
-    thXZmu1->SetLineWidth(3);
+    thXZmu1->SetLineWidth(2);
     thXZmu1->Draw("HIST SAME");
     thXZmu2->SetLineColor(kBlack);
-    thXZmu2->SetLineWidth(3);
+    thXZmu2->SetLineWidth(2);
     thXZmu2->Draw("HIST SAME");
     thXZmu->GetXaxis()->SetTitle("Theta XZ [rad]");
     theC->cd(2);
-    thXZe->SetLineWidth(3);
+    thXZe->SetLineWidth(2);
     thXZe->Draw("HIST");
     thXZe1->SetLineColor(8);
-    thXZe1->SetLineWidth(3);
+    thXZe1->SetLineWidth(2);
     thXZe1->Draw("HIST SAME");
     thXZe2->SetLineColor(kBlack);
-    thXZe2->SetLineWidth(3);
+    thXZe2->SetLineWidth(2);
     thXZe2->Draw("HIST SAME");
     thXZe->GetXaxis()->SetTitle("Theta XZ [rad]");
     theC->cd(3);
     thYZmu->SetLineColor(46);
-    thYZmu->SetLineWidth(3);
+    thYZmu->SetLineWidth(2);
     thYZmu->Draw("HIST");
     thYZmu1->SetLineColor(8);
-    thYZmu1->SetLineWidth(3);
+    thYZmu1->SetLineWidth(2);
     thYZmu1->Draw("HIST SAME");
     thYZmu2->SetLineColor(kBlack);
-    thYZmu2->SetLineWidth(3);
+    thYZmu2->SetLineWidth(2);
     thYZmu2->Draw("HIST SAME");
     thYZmu->GetXaxis()->SetTitle("Theta YZ [rad]");
     theC->cd(4);
-    thYZe->SetLineWidth(3);
+    thYZe->SetLineWidth(2);
     thYZe->Draw("HIST");
     thYZe1->SetLineColor(8);
-    thYZe1->SetLineWidth(3);
+    thYZe1->SetLineWidth(2);
     thYZe1->Draw("HIST SAME");
     thYZe2->SetLineColor(kBlack);
-    thYZe2->SetLineWidth(3);
+    thYZe2->SetLineWidth(2);
     thYZe2->Draw("HIST SAME");
     thYZe->GetXaxis()->SetTitle("Theta YZ [rad]");
     
@@ -431,7 +431,7 @@ Int_t nx5 = X_Y_p2->GetNbinsX();
 Int_t ny5 = X_Y_p2->GetNbinsY();
 for (Int_t i=1; i<nx5+1; i++) {
 for (Int_t j=1; j<ny5+1; j++) {
-if (X_Y_p2->GetBinContent(i,j)<1) X_Y_p2->SetBinContent(i,j,0);}} 
+if (X_Y_p2->GetBinContent(i,j)<1) X_Y_p2->SetBinContent(i,j,0);}} */
     
     
     TCanvas * duedmu= new TCanvas("duedmu","duedmu",1000,100,2500,2000);
@@ -480,7 +480,7 @@ if (X_Y_p2->GetBinContent(i,j)<1) X_Y_p2->SetBinContent(i,j,0);}}
   duedmu->SaveAs("dued.png");  
     
     
-Int_t nx7 = Th_E_el->GetNbinsX();
+/*Int_t nx7 = Th_E_el->GetNbinsX();
 Int_t ny7 = Th_E_el->GetNbinsY();
 for (Int_t i=1; i<nx7+1; i++) {
 for (Int_t j=1; j<ny7+1; j++) {
@@ -508,7 +508,7 @@ for (Int_t j=1; j<ny11+1; j++) {
     
 TCanvas * th_en2= new TCanvas("th_en0","th_en0",1000,100,2500,2000);   
 Th_E_el2->Draw("COLZ");  
-th_en2->SaveAs("theta-energy-electron2.png"); 
+th_en2->SaveAs("theta-energy-electron2.png"); */ 
 
     
       }

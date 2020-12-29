@@ -205,7 +205,7 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
    }
     
     
-    TCanvas * e= new TCanvas("e","e",1500,1000,3500,2000);
+    /*TCanvas * e= new TCanvas("e","e",1500,1000,3500,2000);
     e->Divide(2,3);
     e->cd(1);
     Emuout->GetXaxis()->SetTitle("E [GeV]");
@@ -431,7 +431,7 @@ Int_t nx5 = X_Y_p2->GetNbinsX();
 Int_t ny5 = X_Y_p2->GetNbinsY();
 for (Int_t i=1; i<nx5+1; i++) {
 for (Int_t j=1; j<ny5+1; j++) {
-if (X_Y_p2->GetBinContent(i,j)<1) X_Y_p2->SetBinContent(i,j,0);}} 
+if (X_Y_p2->GetBinContent(i,j)<1) X_Y_p2->SetBinContent(i,j,0);}} */
     
     
     TCanvas * duedmu= new TCanvas("duedmu","duedmu",1000,100,2500,2000);
@@ -480,7 +480,7 @@ if (X_Y_p2->GetBinContent(i,j)<1) X_Y_p2->SetBinContent(i,j,0);}}
   duedmu->SaveAs("dued.png");  
     
     
-Int_t nx7 = Th_E_el->GetNbinsX();
+/*Int_t nx7 = Th_E_el->GetNbinsX();
 Int_t ny7 = Th_E_el->GetNbinsY();
 for (Int_t i=1; i<nx7+1; i++) {
 for (Int_t j=1; j<ny7+1; j++) {
@@ -508,7 +508,7 @@ for (Int_t j=1; j<ny11+1; j++) {
     
 TCanvas * th_en2= new TCanvas("th_en0","th_en0",1000,100,2500,2000);   
 Th_E_el2->Draw("COLZ");  
-th_en2->SaveAs("theta-energy-electron2.png"); 
+th_en2->SaveAs("theta-energy-electron2.png"); */ 
 
     
       }

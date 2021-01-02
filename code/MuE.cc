@@ -23,6 +23,8 @@
 #include "Utils.h"
 #include "Inputs.h"
 #include "TRandom.h"
+#include "ECALProperties.h"
+
 
 using namespace std;
 using namespace MuE;
@@ -215,9 +217,13 @@ int main(int argc, char* argv[]) {
   cout<<"Cross section (above max) =  *** TO BE DEFINED *** " << endl;
   cout<<"================================================================"<< endl;
 
+GammaFunctionGenerator* gamma= new GammaFunctionGenerator;
+ECALProperties *ecalprop= new ECALProperties();    
+EMECALShowerParametrization *myparam = new EMECALShowerParametrization(ecalprop,{100.0,0.1},{1.0,0.1,100.0,1.0},1,1);
+ECAL *TheEcal= new ECAL(5,-7.125,7.125,5,-7.125,7.125);   
   // Fast Simulation //
   //%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  MuE::FastSim fs(pargen, fsi);  
+  MuE::FastSim fs(pargen, fsi,gamma,myparam,TheEcal);  
   //%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   // ANALYSIS //
@@ -245,8 +251,8 @@ int main(int argc, char* argv[]) {
   if (_debug_) cerr << "event chain ... " << endl;
 
   // number of events with negligible weight (skipped)
-  int zero_wgt_events = 0;
-
+  int zero_wgt_events = 0;    
+    
   for (Long64_t iEvent=0; iEvent < n_events; ++iEvent) {
     Long64_t ientry = chain.LoadTree(iEvent);
     if (ientry <0) {
@@ -273,7 +279,13 @@ int main(int argc, char* argv[]) {
       fs.RandomNrSync();
     }
   }
-
+    
+    
+//questo lo devi fare alla fine di tutti gli eventi
+  TheEcal->Print_();
+    
+    
+    
   cout<<endl<< "End reading MuE events. Read "<< n_events << " events." <<endl;
   cout<<"number of zero-weight events = "<< zero_wgt_events <<endl;
 

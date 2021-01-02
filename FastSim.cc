@@ -12,8 +12,6 @@
 #include <TMatrixFSym.h>
 #include "TString.h"
 #include "TVector3.h"
-#include "EMShower.h"
-
 #include <TApplication.h>
 
 using namespace MuE;
@@ -24,12 +22,9 @@ using namespace ROOT::Math;
 const Double_t FastSim::mm_PDG = 105.6583745 *0.001;
 const Double_t FastSim::me_PDG = 0.5109989461 *0.001;
 
-FastSim::FastSim(const MuE::MCpara & pargen, const MuE::FS_Input & fsi, bool _debug_,
-                 GammaFunctionGenerator* gamma,
-                 EMECALShowerParametrization* const myParam,
-                 ECAL* const myGrid):
+FastSim::FastSim(const MuE::MCpara & pargen, const MuE::FS_Input & fsi, bool _debug_):
   mm(pargen.mass_mu), me(pargen.mass_e), Ebeam(pargen.Ebeam), EbeamRMS(pargen.EbeamRMS),
-  model(fsi.model), MSopt(fsi.MSopt), thickness(fsi.thickness), intrinsic_resolution(fsi.resolution), sSin(6*0.00064), x0S(0.094), sB(0.015), x0B(0.353), debug(_debug_), Minv(0),myGammaGenerator(gamma),theParam(myParam),theGrid(myGrid),
+  model(fsi.model), MSopt(fsi.MSopt), thickness(fsi.thickness), intrinsic_resolution(fsi.resolution), sSin(6*0.00064), x0S(0.094), sB(0.015), x0B(0.353), debug(_debug_), Minv(0)
 {
   if (std::abs(mm - mm_PDG)/mm_PDG > 1e-7) {
     cout<<"\n"<< "***WARNING: muon mass = "<<mm<<" is different from the PDG mass: "<<mm_PDG<<endl;
@@ -123,59 +118,36 @@ Double_t TheINT=b[18][2]; // angolo che ha nel momento dell'interazione, senza e
   else cout<<"\n"<<"*** ERROR : FastSim, undefined detector MS option = "<<MSopt<<endl;*/
   
   LoadKineVars(p_mu_in_div, p_e_in_div, p_mu_out_div_smeared, p_e_out_div_smeared, coo, TheINT, detKinBeamRot);
+  
+  LoadPhoton(event, photon, p_mu_in_div,xin,yin);
+  
+/*auto n_photons = event.photons.size();
 
-//prepare for EMShower
+NB CONVERTI COO DI FAST SIM (m) IN cm PERCHE ECAL E' IN cm, poi puoi usare la percentuale perchè così è indipendente dal valore iniziale dell'energia
+
 bool bFixedLength=true;
 int nPart;
 double X0depth;
-std::vector<double> energy_in_e;
-std::vector<double> energy_in_ph;
-
-std::vector<double> coo_el;
-std::vector<double> coo_ph;
-    
-   
-//for electrons
-nPart=1; 
-X0depth=0;
-coo_el.push_back(coo[2][0]*100);//cm
-coo_el.push_back(coo[3][0]*100);//cm
-energy_in_el.push_back(p_e_out_div_smeared[3]/2);
-TheEcal->SetEnergy(p_e_out_div_smeared[3]);
-EMShower TheShower(gamma, myparam, TheEcal,bFixedLength,nPart,X0depth,energy_in_el,coo_el);
-TheShower.compute();
+GammaFunctionGenerator* gamma= new GammaFunctionGenerator;
+std::vector<double> energy_in;
+ECALProperties *ecalprop= new ECALProperties();    
+EMECALShowerParametrization *myparam = new EMECALShowerParametrization(ecalprop,{100.0,0.1},{1.0,0.1,100.0,1.0},1,1);
+ECAL *TheEcal= new ECAL(5,-7.125,7.125,5,-7.125,7.125);   
     
     
-//for photons  
-auto n_photons = event.photons.size();     
 if (n_photons>0){
- PxPyPzEVector p_gamma_Lab = {
-                 event.photons[0].px, 
-				 event.photons[0].py,
-				 event.photons[0].pz,
-			     event.photons[0].E};
-
-TMatrixD cooPH=MCSphoton(p_gamma_Lab_div,xin,yin);
-
-PxPyPzEVector p_gamma_Lab_div=RotDiv(p_mu_in,p_gamma_Lab);
-LoadPhoton(event, photon, p_gamma_Lab_div,cooPH[0][0],cooPH[0][1]);
-
-
-//NB CONVERTI COO DI FAST SIM (m) IN cm PERCHE ECAL E' IN cm, poi puoi usare la percentuale perchè così è indipendente dal valore iniziale dell'energia
-
-    nPart=2; 
-    X0depth=-log(gRandom->Uniform())*(9./7.);
-    coo_pyh.push_back(cooPH[0][0]*100);//cm
-    coo_ph.push_back(cooPH[0][1]*100);//cm
-    energy_in_ph.push_back(p_gamma_Lab_div[3]/2);
-    energy_in_ph.push_back(p_gamma_Lab_div[3]/2);
-    TheEcal->SetEnergy(p_gamma_Lab_div[3]);
-    EMShower TheShower(gamma, myparam, TheEcal,bFixedLength,nPart,X0depth,energy_in_ph,coo_ph);
-    TheShower.compute();
- }
+    nPart=2; X0depth=-log(gRandom->Uniform())*(9./7.);
+    energy_in.push_back(photon.)
     
-else LoadPhoton(event, photon, p_gamma_Lab_div,xin,yin);
-        
+    EMShower TheShower(gamma, myparam, TheEcal,bFixedLength,nPart,X0depth,energy_in);
+    TheShower.compute();
+} 
+    
+
+TheEcal->Print_();*/
+
+    
+    
     
 }
 
@@ -938,11 +910,19 @@ kv.def_angle_e = def_angle[1][0];
 
 
       
-void FastSim::LoadPhoton(const MuE::Event & event, MuE::Photon & photon,const PxPyPzEVector & p_gamma_Lab_div,const Double_t & x,const Double_t & y) {
+void FastSim::LoadPhoton(const MuE::Event & event, MuE::Photon & photon,const PxPyPzEVector & p_mu_in,const Double_t & xin,const Double_t & yin) {
   // by now at most one photon
   auto n_photons = event.photons.size();
   
   if (n_photons >0) {  
+    PxPyPzEVector p_gamma_Lab = {
+                 event.photons[0].px, 
+				 event.photons[0].py,
+				 event.photons[0].pz,
+			     event.photons[0].E};
+
+      
+PxPyPzEVector p_gamma_Lab_div=RotDiv(p_mu_in,p_gamma_Lab);
 PxPyPzEVector p_gamma_CoM = Lorentz_ToCoM(p_gamma_Lab_div);
   
     
@@ -951,9 +931,10 @@ PxPyPzEVector p_gamma_CoM = Lorentz_ToCoM(p_gamma_Lab_div);
     photon.phi       = p_gamma_Lab_div.Phi();
     photon.energyCoM = p_gamma_CoM.E(); 
 
+    TMatrixD coo=MCSphoton(p_gamma_Lab_div,xin,yin);
       
-    photon.coox=x;
-    photon.cooy=y;
+    photon.coox=coo[0][0];
+    photon.cooy=coo[0][1];
       
   // photon.n_cell_ph = ECAL::GiveCentralCell(photon.coox,photon.cooy,TheEcal);
    

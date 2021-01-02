@@ -20,7 +20,7 @@ gfortran ${FOPTIONS} ${code}/muerad.f
 OPTIONS="-O2 -Wall"
 OPTIONS="-g -Wall"
 
-g++ ${OPTIONS} -I${code} -I${ROOTINCDIR} ${code}/${MAIN}.cc MuEtreeDict.C ${code}/MuEtree.cc ${code}/Inputs.cc ${code}/Analysis.cc ${code}/FastSim.cc ${code}/Utils.cc ${code}/ElasticState.cc ${code}/Histos.cc ${code}/dalpha.cc ${codeEMCAL}/ECAL.cc ${codeEMCAL}/EMShower.cc ${codeEMCAL}/RadialInterval.cc ${codeEMCAL}/GammaFunctionGenerator.cc ${codeEMCAL}/BaseNumericalRandomGenerator.cc ${codeEMCAL}/IncGamma.cc
+g++ ${OPTIONS} -I${code} -I${ROOTINCDIR} ${code}/${MAIN}.cc MuEtreeDict.C ${code}/MuEtree.cc ${code}/Inputs.cc ${code}/Analysis.cc ${code}/FastSim.cc ${code}/Utils.cc ${code}/ElasticState.cc ${code}/dalpha.cc ${codeEMCAL}/ECAL.cc ${codeEMCAL}/EMShower.cc ${codeEMCAL}/RadialInterval.cc ${codeEMCAL}/GammaFunctionGenerator.cc ${codeEMCAL}/BaseNumericalRandomGenerator.cc ${codeEMCAL}/IncGamma.cc
 summa.o hadr5n12.o muerad.o ${ROOTLIBS} -lgfortran -lX11 -o ${MAIN}.exe
 
 #exit

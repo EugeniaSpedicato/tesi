@@ -120,6 +120,31 @@ Double_t TheINT=b[18][2]; // angolo che ha nel momento dell'interazione, senza e
   LoadKineVars(p_mu_in_div, p_e_in_div, p_mu_out_div_smeared, p_e_out_div_smeared, coo, TheINT, detKinBeamRot);
   
   LoadPhoton(event, photon, p_mu_in_div,xin,yin);
+  
+/*auto n_photons = event.photons.size();
+bool bFixedLength=true;
+int nPart;
+double X0depth;
+GammaFunctionGenerator* gamma= new GammaFunctionGenerator;
+std::vector<double> energy_in;
+ECALProperties *ecalprop= new ECALProperties();    
+EMECALShowerParametrization *myparam = new EMECALShowerParametrization(ecalprop,{100.0,0.1},{1.0,0.1,100.0,1.0},1,1);
+ECAL *TheEcal= new ECAL(5,-7.125,7.125,5,-7.125,7.125);   
+    
+    
+if (n_photons>0){
+    nPart=2; X0depth=-log(gRandom->Uniform())*(9./7.);
+    energy_in.push_back(photon.)
+    
+    EMShower TheShower(gamma, myparam, TheEcal,bFixedLength,nPart,X0depth,energy_in);
+    TheShower.compute();
+} 
+    
+
+TheEcal->Print_();*/
+
+    
+    
     
 }
 
@@ -807,149 +832,6 @@ TMatrixD def_angle(2,1);
 return def_angle;
 }
 
-
-Int_t FastSim::ECALe(const Double_t & cooXe, const Double_t & cooYe) const
-{       
-    Int_t n_cell; //numero di cella in cui cade l'ELETTRONE
-   
-    
-    Double_t detKinBeamRot_cooXe=cooXe*100;
-    Double_t detKinBeamRot_cooYe=cooYe*100;
-
-    
-    if (detKinBeamRot_cooXe>-7.125 && detKinBeamRot_cooXe<-4.275 && detKinBeamRot_cooYe<7.125 && detKinBeamRot_cooYe>4.275) {n_cell=1;}
-    
-    if (detKinBeamRot_cooXe>-4.275 && detKinBeamRot_cooXe<-1.425 && detKinBeamRot_cooYe<7.125 && detKinBeamRot_cooYe>4.275) {n_cell=2;}
-
-    if (detKinBeamRot_cooXe>-1.425 && detKinBeamRot_cooXe<1.425 && detKinBeamRot_cooYe<7.125 && detKinBeamRot_cooYe>4.275) {n_cell=3;}
-
-    if (detKinBeamRot_cooXe>1.425 && detKinBeamRot_cooXe<4.275 && detKinBeamRot_cooYe<7.125 && detKinBeamRot_cooYe>4.275) {n_cell=4;}
-
-    if (detKinBeamRot_cooXe>4.275 && detKinBeamRot_cooXe<7.125 && detKinBeamRot_cooYe<7.125 && detKinBeamRot_cooYe>4.275) {n_cell=5;}
-    
-    
-    if (detKinBeamRot_cooXe>-7.125 && detKinBeamRot_cooXe<-4.275 && detKinBeamRot_cooYe<4.275 && detKinBeamRot_cooYe>1.425) {n_cell=6;}
-    
-    if (detKinBeamRot_cooXe>-4.275 && detKinBeamRot_cooXe<-1.425 && detKinBeamRot_cooYe<4.275 && detKinBeamRot_cooYe>1.425) {n_cell=7;}
-
-    if (detKinBeamRot_cooXe>-1.425 && detKinBeamRot_cooXe<1.425 && detKinBeamRot_cooYe<4.275 && detKinBeamRot_cooYe>1.425) {n_cell=8;}
-
-    if (detKinBeamRot_cooXe>1.425 && detKinBeamRot_cooXe<4.275 && detKinBeamRot_cooYe<4.275 && detKinBeamRot_cooYe>1.425) {n_cell=9;}
-
-    if (detKinBeamRot_cooXe>4.275 && detKinBeamRot_cooXe<7.125 && detKinBeamRot_cooYe<4.275 && detKinBeamRot_cooYe>1.425) {n_cell=10;}
-    
-
-    
-    if (detKinBeamRot_cooXe>-7.125 && detKinBeamRot_cooXe<-4.275 && detKinBeamRot_cooYe<1.425 && detKinBeamRot_cooYe>-1.425) {n_cell=11;}
-    
-    if (detKinBeamRot_cooXe>-4.275 && detKinBeamRot_cooXe<-1.425 && detKinBeamRot_cooYe<1.425 && detKinBeamRot_cooYe>-1.425) {n_cell=12;}
-
-    if (detKinBeamRot_cooXe>-1.425 && detKinBeamRot_cooXe<1.425 && detKinBeamRot_cooYe<1.425 && detKinBeamRot_cooYe>-1.425) {n_cell=13;}
-
-    if (detKinBeamRot_cooXe>1.425 && detKinBeamRot_cooXe<4.275 && detKinBeamRot_cooYe<1.425 && detKinBeamRot_cooYe>-1.425) {n_cell=14;}
-
-    if (detKinBeamRot_cooXe>4.275 && detKinBeamRot_cooXe<7.125 && detKinBeamRot_cooYe<1.425 && detKinBeamRot_cooYe>-1.425) {n_cell=15;}
-    
-    
-    
-    
-    if (detKinBeamRot_cooXe>-7.125 && detKinBeamRot_cooXe<-4.275 && detKinBeamRot_cooYe<-1.425 && detKinBeamRot_cooYe>-4.275) {n_cell=16;}
-    
-    if (detKinBeamRot_cooXe>-4.275 && detKinBeamRot_cooXe<-1.425 && detKinBeamRot_cooYe<-1.425 && detKinBeamRot_cooYe>-4.275) {n_cell=17;}
-
-    if (detKinBeamRot_cooXe>-1.425 && detKinBeamRot_cooXe<1.425 && detKinBeamRot_cooYe<-1.425 && detKinBeamRot_cooYe>-4.275) {n_cell=18;}
-
-    if (detKinBeamRot_cooXe>1.425 && detKinBeamRot_cooXe<4.275 && detKinBeamRot_cooYe<-1.425 && detKinBeamRot_cooYe>-4.275) {n_cell=19;}
-
-    if (detKinBeamRot_cooXe>4.275 && detKinBeamRot_cooXe<7.125 && detKinBeamRot_cooYe<-1.425 && detKinBeamRot_cooYe>-4.275) {n_cell=20;}
-    
-    
-    
-    if (detKinBeamRot_cooXe>-7.125 && detKinBeamRot_cooXe<-4.275 && detKinBeamRot_cooYe<-4.275 && detKinBeamRot_cooYe>-7.125) {n_cell=21;}
-    
-    if (detKinBeamRot_cooXe>-4.275 && detKinBeamRot_cooXe<-1.425 && detKinBeamRot_cooYe<-4.275 && detKinBeamRot_cooYe>-7.125) {n_cell=22;}
-
-    if (detKinBeamRot_cooXe>-1.425 && detKinBeamRot_cooXe<1.425 && detKinBeamRot_cooYe<-4.275 && detKinBeamRot_cooYe>-7.125) {n_cell=23;}
-
-    if (detKinBeamRot_cooXe>1.425 && detKinBeamRot_cooXe<4.275 && detKinBeamRot_cooYe<-4.275 && detKinBeamRot_cooYe>-7.125) {n_cell=24;}
-
-    if (detKinBeamRot_cooXe>4.275 && detKinBeamRot_cooXe<7.125 && detKinBeamRot_cooYe<-4.275 && detKinBeamRot_cooYe>-7.125) {n_cell=25;}
-        
-return n_cell;
-}
-
-Int_t FastSim::ECALph(const Double_t & coox, const Double_t & cooy) const
-{       
-    Int_t n_cell_ph; //numero di cella in cui cade il FOTONE
-  
-    
-    Double_t photon_coox=coox*100;
-    Double_t photon_cooy=cooy*100;
-
-    
-    if (photon_coox>-7.125 && photon_coox<-4.275 && photon_cooy<7.125 && photon_cooy>4.275) {n_cell_ph=1;}
-    
-    if (photon_coox>-4.275 && photon_coox<-1.425 && photon_cooy<7.125 && photon_cooy>4.275) {n_cell_ph=2;}
-
-    if (photon_coox>-1.425 && photon_coox<1.425 && photon_cooy<7.125 && photon_cooy>4.275) {n_cell_ph=3;}
-
-    if (photon_coox>1.425 && photon_coox<4.275 && photon_cooy<7.125 && photon_cooy>4.275) {n_cell_ph=4;}
-
-    if (photon_coox>4.275 && photon_coox<7.125 && photon_cooy<7.125 && photon_cooy>4.275) {n_cell_ph=5;}
-    
-    
-    if (photon_coox>-7.125 && photon_coox<-4.275 && photon_cooy<4.275 && photon_cooy>1.425) {n_cell_ph=6;}
-    
-    if (photon_coox>-4.275 && photon_coox<-1.425 && photon_cooy<4.275 && photon_cooy>1.425) {n_cell_ph=7;}
-
-    if (photon_coox>-1.425 && photon_coox<1.425 && photon_cooy<4.275 && photon_cooy>1.425) {n_cell_ph=8;}
-
-    if (photon_coox>1.425 && photon_coox<4.275 && photon_cooy<4.275 && photon_cooy>1.425) {n_cell_ph=9;}
-
-    if (photon_coox>4.275 && photon_coox<7.125 && photon_cooy<4.275 && photon_cooy>1.425) {n_cell_ph=10;}
-    
-
-    
-    if (photon_coox>-7.125 && photon_coox<-4.275 && photon_cooy<1.425 && photon_cooy>-1.425) {n_cell_ph=11;}
-    
-    if (photon_coox>-4.275 && photon_coox<-1.425 && photon_cooy<1.425 && photon_cooy>-1.425) {n_cell_ph=12;}
-
-    if (photon_coox>-1.425 && photon_coox<1.425 && photon_cooy<1.425 && photon_cooy>-1.425) {n_cell_ph=13;}
-
-    if (photon_coox>1.425 && photon_coox<4.275 && photon_cooy<1.425 && photon_cooy>-1.425) {n_cell_ph=14;}
-
-    if (photon_coox>4.275 && photon_coox<7.125 && photon_cooy<1.425 && photon_cooy>-1.425) {n_cell_ph=15;}
-    
-    
-    
-    
-    if (photon_coox>-7.125 && photon_coox<-4.275 && photon_cooy<-1.425 && photon_cooy>-4.275) {n_cell_ph=16;}
-    
-    if (photon_coox>-4.275 && photon_coox<-1.425 && photon_cooy<-1.425 && photon_cooy>-4.275) {n_cell_ph=17;}
-
-    if (photon_coox>-1.425 && photon_coox<1.425 && photon_cooy<-1.425 && photon_cooy>-4.275) {n_cell_ph=18;}
-
-    if (photon_coox>1.425 && photon_coox<4.275 && photon_cooy<-1.425 && photon_cooy>-4.275) {n_cell_ph=19;}
-
-    if (photon_coox>4.275 && photon_coox<7.125 && photon_cooy<-1.425 && photon_cooy>-4.275) {n_cell_ph=20;}
-    
-    
-    
-    if (photon_coox>-7.125 && photon_coox<-4.275 && photon_cooy<-4.275 && photon_cooy>-7.125) {n_cell_ph=21;}
-    
-    if (photon_coox>-4.275 && photon_coox<-1.425 && photon_cooy<-4.275 && photon_cooy>-7.125) {n_cell_ph=22;}
-
-    if (photon_coox>-1.425 && photon_coox<1.425 && photon_cooy<-4.275 && photon_cooy>-7.125) {n_cell_ph=23;}
-
-    if (photon_coox>1.425 && photon_coox<4.275 && photon_cooy<-4.275 && photon_cooy>-7.125) {n_cell_ph=24;}
-
-    if (photon_coox>4.275 && photon_coox<7.125 && photon_cooy<-4.275 && photon_cooy>-7.125) {n_cell_ph=25;} 
-
-        
-return n_cell_ph;
-}
-
-
 void FastSim::LoadKineVars(const PxPyPzEVector & p_mu_in,  const PxPyPzEVector & p_e_in, 
 			   const PxPyPzEVector & p_mu_out, const PxPyPzEVector & p_e_out, const TMatrixD & coo, const Double_t & TheINT,
 			   MuE::KineVars & kv) {
@@ -990,10 +872,8 @@ TMatrixD def_angle=Def_angle(p_mu_in,p_mu_out,p_e_out);
     
 kv.def_angle_mu = def_angle[0][0];
 kv.def_angle_e = def_angle[1][0]; 
-    
-    if (abs(kv.cooXe)<0.07125 && abs(kv.cooYe)<0.07125)
-    {kv.n_cell_e = ECALe(kv.cooXe,kv.cooYe);}
-    else {kv.n_cell_e=0;}
+
+//kv.n_cell_e = ECAL::GiveCentralCell(kv.cooXe,kv.cooYe,TheEcal);
     
   // Note: here Ebeam is the average beam energy, so tt_e and xt_e are defined under this assumption
   MuE::ElasticState emu_state(Ebeam,mm,me, kv.the);
@@ -1048,14 +928,12 @@ PxPyPzEVector p_gamma_CoM = Lorentz_ToCoM(p_gamma_Lab_div);
     photon.phi       = p_gamma_Lab_div.Phi();
     photon.energyCoM = p_gamma_CoM.E(); 
 
-    TMatrixD coo=MCSphoton(p_gamma_Lab,xin,yin);
+    TMatrixD coo=MCSphoton(p_gamma_Lab_div,xin,yin);
       
     photon.coox=coo[0][0];
     photon.cooy=coo[0][1];
       
-   if (abs(photon.coox)<0.07125 && abs(photon.cooy)<0.07125 && photon.energy>0.2)
-   {photon.n_cell_ph = ECALph(photon.coox,photon.cooy);}
-    else{photon.n_cell_ph=0;}   
+  // photon.n_cell_ph = ECAL::GiveCentralCell(photon.coox,photon.cooy,TheEcal);
    
     
   }

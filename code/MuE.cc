@@ -223,7 +223,7 @@ EMECALShowerParametrization *myparam = new EMECALShowerParametrization(ecalprop,
 ECAL *TheEcal= new ECAL(5,-7.125,7.125,5,-7.125,7.125);   
   // Fast Simulation //
   //%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  MuE::FastSim fs(pargen, fsi,gamma,myparam,TheEcal);  
+  MuE::FastSim fs(pargen,fsi,gamma,myparam,TheEcal);  
   //%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   // ANALYSIS //

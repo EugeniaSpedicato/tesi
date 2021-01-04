@@ -25,9 +25,9 @@ const Double_t FastSim::mm_PDG = 105.6583745 *0.001;
 const Double_t FastSim::me_PDG = 0.5109989461 *0.001;
 
 FastSim::FastSim(const MuE::MCpara & pargen, const MuE::FS_Input & fsi, bool _debug_,
-                 GammaFunctionGenerator* gamma,
-                 EMECALShowerParametrization* const myParam,
-                 ECAL* const myGrid):
+                 GammaFunctionGenerator* & gamma,
+                 EMECALShowerParametrization* const & myParam,
+                 ECAL* const & myGrid):
   mm(pargen.mass_mu), me(pargen.mass_e), Ebeam(pargen.Ebeam), EbeamRMS(pargen.EbeamRMS),
   model(fsi.model), MSopt(fsi.MSopt), thickness(fsi.thickness), intrinsic_resolution(fsi.resolution), sSin(6*0.00064), x0S(0.094), sB(0.015), x0B(0.353), debug(_debug_), Minv(0),myGammaGenerator(gamma),theParam(myParam),theGrid(myGrid),
 {
@@ -128,7 +128,7 @@ Double_t TheINT=b[18][2]; // angolo che ha nel momento dell'interazione, senza e
 bool bFixedLength=true;
 int nPart;
 double X0depth;
-std::vector<double> energy_in_e;
+std::vector<double> energy_in_el;
 std::vector<double> energy_in_ph;
 
 std::vector<double> coo_el;
@@ -141,8 +141,8 @@ X0depth=0;
 coo_el.push_back(coo[2][0]*100);//cm
 coo_el.push_back(coo[3][0]*100);//cm
 energy_in_el.push_back(p_e_out_div_smeared[3]/2);
-TheEcal->SetEnergy(p_e_out_div_smeared[3]);
-EMShower TheShower(gamma, myparam, TheEcal,bFixedLength,nPart,X0depth,energy_in_el,coo_el);
+myGrid->SetEnergy(p_e_out_div_smeared[3]);
+EMShower TheShower(gamma, myParam, myGrid,bFixedLength,nPart,X0depth,energy_in_el,coo_el);
 TheShower.compute();
     
     
@@ -155,9 +155,9 @@ if (n_photons>0){
 				 event.photons[0].pz,
 			     event.photons[0].E};
 
-TMatrixD cooPH=MCSphoton(p_gamma_Lab_div,xin,yin);
-
 PxPyPzEVector p_gamma_Lab_div=RotDiv(p_mu_in,p_gamma_Lab);
+TMatrixD cooPH=MCSphoton(p_gamma_Lab_div,xin,yin);
+    
 LoadPhoton(event, photon, p_gamma_Lab_div,cooPH[0][0],cooPH[0][1]);
 
 
@@ -169,8 +169,8 @@ LoadPhoton(event, photon, p_gamma_Lab_div,cooPH[0][0],cooPH[0][1]);
     coo_ph.push_back(cooPH[0][1]*100);//cm
     energy_in_ph.push_back(p_gamma_Lab_div[3]/2);
     energy_in_ph.push_back(p_gamma_Lab_div[3]/2);
-    TheEcal->SetEnergy(p_gamma_Lab_div[3]);
-    EMShower TheShower(gamma, myparam, TheEcal,bFixedLength,nPart,X0depth,energy_in_ph,coo_ph);
+    myGrid->SetEnergy(p_gamma_Lab_div[3]);
+    EMShower TheShower(gamma, myParam, myGrid,bFixedLength,nPart,X0depth,energy_in_ph,coo_ph);
     TheShower.compute();
  }
     
@@ -904,7 +904,7 @@ TMatrixD def_angle=Def_angle(p_mu_in,p_mu_out,p_e_out);
 kv.def_angle_mu = def_angle[0][0];
 kv.def_angle_e = def_angle[1][0]; 
 
-//kv.n_cell_e = ECAL::GiveCentralCell(kv.cooXe,kv.cooYe,TheEcal);
+//kv.n_cell_e = ECAL::GiveCentralCell(kv.cooXe,kv.cooYe,myGrid);
     
   // Note: here Ebeam is the average beam energy, so tt_e and xt_e are defined under this assumption
   MuE::ElasticState emu_state(Ebeam,mm,me, kv.the);
@@ -955,7 +955,7 @@ PxPyPzEVector p_gamma_CoM = Lorentz_ToCoM(p_gamma_Lab_div);
     photon.coox=x;
     photon.cooy=y;
       
-  // photon.n_cell_ph = ECAL::GiveCentralCell(photon.coox,photon.cooy,TheEcal);
+  // photon.n_cell_ph = ECAL::GiveCentralCell(photon.coox,photon.cooy,myGrid);
    
     
   }

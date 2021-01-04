@@ -23,7 +23,7 @@
 #include "Utils.h"
 #include "Inputs.h"
 #include "TRandom.h"
-#include "ECALProperties.h"
+#include "ECALProprieties.h"
 
 
 using namespace std;

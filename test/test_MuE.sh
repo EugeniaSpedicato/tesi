@@ -6,7 +6,6 @@ ROOTINCDIR=`$ROOTSYS/bin/root-config --incdir`
 ROOTLIBS=`$ROOTSYS/bin/root-config --cflags --libs`
 
 code=../code
-code=../code
 
 
 echo "Compiling ..."

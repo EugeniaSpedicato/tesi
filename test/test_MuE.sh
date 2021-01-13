@@ -4,6 +4,7 @@ MAIN=MuE
 
 ROOTINCDIR=`$ROOTSYS/bin/root-config --incdir`
 ROOTLIBS=`$ROOTSYS/bin/root-config --cflags --libs`
+CXXFLGS=`$ROOTSYS/root-config --cflags'
 
 code=../code
 
@@ -19,7 +20,7 @@ gfortran ${FOPTIONS} ${code}/muerad.f
 OPTIONS="-O2 -Wall"
 OPTIONS="-g -Wall"
 
-g++ ${OPTIONS} -I${code} -I${ROOTINCDIR} -I${ROOTLIBS} ${code}/${MAIN}.cc MuEtreeDict.C ${code}/MuEtree.cc ${code}/Inputs.cc ${code}/Analysis.cc ${code}/FastSim.cc ${code}/Utils.cc ${code}/ElasticState.cc ${code}/dalpha.cc ${code}/ECAL.cc ${code}/EMShower.cc ${code}/RadialInterval.cc ${code}/GammaFunctionGenerator.cc ${code}/BaseNumericalRandomGenerator.cc ${code}/IncGamma.cc
+g++ ${OPTIONS} -I${code} -I${ROOTINCDIR} -I${ROOTLIBS} -I${CXXFLGS} ${code}/${MAIN}.cc MuEtreeDict.C ${code}/MuEtree.cc ${code}/Inputs.cc ${code}/Analysis.cc ${code}/FastSim.cc ${code}/Utils.cc ${code}/ElasticState.cc ${code}/dalpha.cc ${code}/ECAL.cc ${code}/EMShower.cc ${code}/RadialInterval.cc ${code}/GammaFunctionGenerator.cc ${code}/BaseNumericalRandomGenerator.cc ${code}/IncGamma.cc
 summa.o hadr5n12.o muerad.o -lgfortran -lX11 -o ${MAIN}.exe
 
 #exit

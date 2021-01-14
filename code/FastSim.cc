@@ -47,7 +47,7 @@ FastSim::FastSim(const MuE::MCpara & pargen, const MuE::FS_Input & fsi, bool _de
 
 // process an event
 //
-void FastSim::Process(const MuE::Event & event,GammaFunctionGenerator* & gamma, EMECALShowerParametrization* const & TheParam, ECAL* const & TheGrid) {
+void FastSim::Process(const MuE::Event & event,GammaFunctionGenerator* & gamma, EMECALShowerParametrization* const & myParam, ECAL* const & myGrid) {
   
   if (debug) cout<<"\n Process:  Run = "<<event.RunNr << " , Event = "<< event.EventNr << endl;
   
@@ -139,8 +139,8 @@ X0depth=0;
 coo_el.push_back(coo[2][0]*100);//cm
 coo_el.push_back(coo[3][0]*100);//cm
 energy_in_el.push_back(energy_sm_el);
-theGrid->SetEnergy(energy_sm_el);
-EMShower TheShower(gamma,TheParam,theGrid,bFixedLength,nPart,X0depth,energy_in_el,coo_el);
+myGrid->SetEnergy(energy_sm_el);
+EMShower TheShower(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_el,coo_el);
 TheShower.compute();
     
     
@@ -171,8 +171,8 @@ LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1]);
     coo_ph.push_back(cooPH[0][1]*100);//cm
     energy_in_ph.push_back(en_ph_sm/2);
     energy_in_ph.push_back(en_ph_sm/2);
-    theGrid->SetEnergy(en_ph_sm);
-    EMShower TheShower(gamma, TheParam, theGrid,bFixedLength,nPart,X0depth,energy_in_ph,coo_ph);
+    myGrid->SetEnergy(en_ph_sm);
+    EMShower TheShower(gamma, myParam, myGrid,bFixedLength,nPart,X0depth,energy_in_ph,coo_ph);
     TheShower.compute();
  }
 else LoadPhoton(event, photon,pNO,0.,0.);

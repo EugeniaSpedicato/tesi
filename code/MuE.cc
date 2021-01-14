@@ -216,14 +216,10 @@ int main(int argc, char* argv[]) {
   //  cout<<"Cross section (above max) = "<< sumc.Xsec_OverMax << " +/- " << sumc.Xsec_OverMax_Err << endl;
   cout<<"Cross section (above max) =  *** TO BE DEFINED *** " << endl;
   cout<<"================================================================"<< endl;
-
-GammaFunctionGenerator* gamma= new GammaFunctionGenerator;
-ECALProperties *ecalprop= new ECALProperties();    
-EMECALShowerParametrization *myparam = new EMECALShowerParametrization(ecalprop,{100.0,0.1},{1.0,0.1,100.0,1.0},1,1);
-ECAL *TheEcal= new ECAL(5,-7.125,7.125,5,-7.125,7.125);   
+  
   // Fast Simulation //
   //%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  MuE::FastSim fs(pargen,fsi,gamma,myparam,TheEcal,_debug_);  
+  MuE::FastSim fs(pargen,fsi,_debug_);  
   //%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   // ANALYSIS //

@@ -24,12 +24,9 @@ using namespace ROOT::Math;
 const Double_t FastSim::mm_PDG = 105.6583745 *0.001;
 const Double_t FastSim::me_PDG = 0.5109989461 *0.001;
 
-FastSim::FastSim(const MuE::MCpara & pargen, const MuE::FS_Input & fsi,
-                 GammaFunctionGenerator* & gamma,
-                 EMECALShowerParametrization* const & myParam,
-                 ECAL* const & myGrid, bool _debug_):
+FastSim::FastSim(const MuE::MCpara & pargen, const MuE::FS_Input & fsi,bool _debug_):
   mm(pargen.mass_mu), me(pargen.mass_e), Ebeam(pargen.Ebeam), EbeamRMS(pargen.EbeamRMS),
-  model(fsi.model), MSopt(fsi.MSopt), thickness(fsi.thickness), intrinsic_resolution(fsi.resolution), sSin(6*0.00064), x0S(0.094), sB(0.015), x0B(0.353), debug(_debug_), Minv(0),myGammaGenerator(gamma),theParam(myParam),theGrid(myGrid)
+  model(fsi.model), MSopt(fsi.MSopt), thickness(fsi.thickness), intrinsic_resolution(fsi.resolution), sSin(6*0.00064), x0S(0.094), sB(0.015), x0B(0.353), debug(_debug_), Minv(0)
 {
   if (std::abs(mm - mm_PDG)/mm_PDG > 1e-7) {
     cout<<"\n"<< "***WARNING: muon mass = "<<mm<<" is different from the PDG mass: "<<mm_PDG<<endl;
@@ -51,6 +48,11 @@ FastSim::FastSim(const MuE::MCpara & pargen, const MuE::FS_Input & fsi,
 // process an event
 //
 void FastSim::Process(const MuE::Event & event) {
+    
+GammaFunctionGenerator* gamma= new GammaFunctionGenerator;
+ECALProperties *ecalprop= new ECALProperties();    
+EMECALShowerParametrization *theParam = new EMECALShowerParametrization(ecalprop,{100.0,0.1},{1.0,0.1,100.0,1.0},1,1);
+ECAL *TheGrid= new ECAL(5,-7.125,7.125,5,-7.125,7.125); 
   
   if (debug) cout<<"\n Process:  Run = "<<event.RunNr << " , Event = "<< event.EventNr << endl;
   
@@ -143,7 +145,7 @@ coo_el.push_back(coo[2][0]*100);//cm
 coo_el.push_back(coo[3][0]*100);//cm
 energy_in_el.push_back(energy_sm_el);
 theGrid->SetEnergy(energy_sm_el);
-EMShower TheShower(gamma, theParam, theGrid,bFixedLength,nPart,X0depth,energy_in_el,coo_el);
+EMShower TheShower(gamma,theParam,theGrid,bFixedLength,nPart,X0depth,energy_in_el,coo_el);
 TheShower.compute();
     
     

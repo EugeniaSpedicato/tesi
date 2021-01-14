@@ -30,8 +30,7 @@ class EMShower {
   typedef Steps::const_iterator step_iterator;
 
 public:
-  EMShower(//TRandom3 const* engine,
-           GammaFunctionGenerator* gamma,
+  EMShower(GammaFunctionGenerator* gamma,
            EMECALShowerParametrization* const myParam,
            //std::vector<const RawParticle*>* const myPart,
            ECAL* const myGrid,

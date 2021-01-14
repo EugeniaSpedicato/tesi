@@ -26,7 +26,7 @@ namespace MuE {
   class FastSim {
 
   public:
-    FastSim(const MCpara & pargen, const FS_Input & fsi, GammaFunctionGenerator* & gamma, EMECALShowerParametrization* const & myParam, ECAL* const & myGrid,bool _debug_=false);
+    FastSim(const MCpara & pargen, const FS_Input & fsi,bool _debug_=false);
     virtual ~FastSim(){};
 
     void Process(const Event & event);
@@ -96,12 +96,6 @@ namespace MuE {
     KineVars detKinBeamRot; // kinematic variables at Detector-level for e and mu track with divergence
     Photon photon; // photon variables at Gen-level
 
- // integer gamma function generator
-  GammaFunctionGenerator* myGammaGenerator;
-  EMECALShowerParametrization* const theParam;
-
-  // the grid
-    ECAL* theGrid;
   };
 }
 

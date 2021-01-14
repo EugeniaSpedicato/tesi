@@ -32,7 +32,6 @@ class EMShower {
 public:
   EMShower(GammaFunctionGenerator* gamma,
            EMECALShowerParametrization* const myParam,
-           //std::vector<const RawParticle*>* const myPart,
            ECAL* const myGrid,
            bool bFixedLength,
            int nPart,

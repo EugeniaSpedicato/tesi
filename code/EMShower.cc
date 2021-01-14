@@ -18,10 +18,8 @@
 
 using std::vector;
 
-EMShower::EMShower(//const TRandom3* engine,
-                   GammaFunctionGenerator* gamma,
+EMShower::EMShower(GammaFunctionGenerator* gamma,
                    EMECALShowerParametrization* const myParam,
-                   //vector<const RawParticle*>* const myPart,
                    ECAL* const myGrid,
                    bool bFixedLength,
                    int nPart,

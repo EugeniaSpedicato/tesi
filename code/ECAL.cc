@@ -181,7 +181,7 @@ Ecal_->SaveAs("/home/LHCB-T3/espedicato/tesi/Ecal.png");
 int binMax=a->GetMaximumBin();  
 int CentralCell=number[binMax];
 cout << "cella centrale rev " << Rev_number[CentralCell] <<" and vera " << CentralCell << endl;
-Energy_dist1->Fill(a->GetBinContent((binMax)/energy_IN)*100);
+Energy_dist1->Fill((a->GetBinContent(binMax)/energy_IN)*100);
 
 double energy3x3=0.;    
 ECAL::GiveArray3x3(CentralCell);
@@ -210,6 +210,4 @@ Energy_dist3x3->GetXaxis()->SetTitle("E_rec/E_in");
 Energy_dist3x3->Draw();
 encell->SaveAs("/home/LHCB-T3/espedicato/tesi/EnCell.png");
 
-Energy_dist1->Fill(a->GetBinContent(binMax)/energy_IN);
-Energy_dist3x3->Fill(energy3x3/energy_IN);   
 }

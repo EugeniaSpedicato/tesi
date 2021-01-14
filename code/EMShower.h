@@ -81,11 +81,12 @@ private:
     
   // The crystal grid
   ECAL* theGrid;
-  TH2F* EcalGrid;   
-
+  TH2F* EcalGrid; 
+  bool bFixedLength_;
+  int nPart;
   // The incident particle(s)
   //std::vector<const RawParticle*>* const thePart;
-  int nPart;
+
   double X0depth;
     
   std::vector<double> energy_in;
@@ -160,7 +161,6 @@ double Yi;
   //const RandomEngineAndDistribution* random;
 
 
-  bool bFixedLength_;
 };
 
 #endif

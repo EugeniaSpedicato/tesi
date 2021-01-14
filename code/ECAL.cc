@@ -161,8 +161,7 @@ void ECAL::AddHitCooDepth(double r, double phi,double xi, double yi, double w, d
     double x=r*cos(phi)+xi; // coo x in cm
     double y=r*sin(phi)+yi; // coo y in cm
  if (24.7-X0depth>depth) 
- {a->Fill(x,y,w);   
-double number=ECAL::GiveCentralCell(x,y,a); cout <<"è giusto"<< endl;}
+ {a->Fill(x,y,w);}
 
 };
 
@@ -193,14 +192,13 @@ double energy3x3=0.;
 ECAL::GiveArray3x3(CentralCell);
 for (int i=0; i<9; ++i)
 {
-    if (Array9[i]>0 & Array9[i]<25 & Array9[i]!=0) energy3x3+=a->GetBinContent(Rev_number[Array9[i]]);
+    if ((Array9[i])>0 & (Array9[i])<25 & (Array9[i])!=0) energy3x3+=a->GetBinContent(Rev_number[Array9[i]]);
     cout << Rev_number[Array9[i]] << " and vera " << Array9[i]<< " c'è energia " << energy3x3 << endl;
 }
 Energy_dist3x3->Fill((energy3x3/energy_IN)*100);  
 };
 
 
-}
 
 void ECAL::Print_()
 {

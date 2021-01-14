@@ -177,7 +177,8 @@ LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1]);
     TheShower.compute();
  }
 
-else LoadPhoton(event, photon,0,0,0);
+PxPyPzEVector pNO(0,0,0,0);
+else LoadPhoton(event, photon,pNO,0.,0.);
         
     
 }

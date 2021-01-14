@@ -24,10 +24,10 @@ using namespace ROOT::Math;
 const Double_t FastSim::mm_PDG = 105.6583745 *0.001;
 const Double_t FastSim::me_PDG = 0.5109989461 *0.001;
 
-FastSim::FastSim(const MuE::MCpara & pargen, const MuE::FS_Input & fsi, bool _debug_,
+FastSim::FastSim(const MuE::MCpara & pargen, const MuE::FS_Input & fsi,
                  GammaFunctionGenerator* & gamma,
-                 const EMECALShowerParametrization* & myParam,
-                 const ECAL* & myGrid):
+                 EMECALShowerParametrization* const & myParam,
+                 ECAL* const & myGrid, bool _debug_):
   mm(pargen.mass_mu), me(pargen.mass_e), Ebeam(pargen.Ebeam), EbeamRMS(pargen.EbeamRMS),
   model(fsi.model), MSopt(fsi.MSopt), thickness(fsi.thickness), intrinsic_resolution(fsi.resolution), sSin(6*0.00064), x0S(0.094), sB(0.015), x0B(0.353), debug(_debug_), Minv(0),myGammaGenerator(gamma),theParam(myParam),theGrid(myGrid)
 {

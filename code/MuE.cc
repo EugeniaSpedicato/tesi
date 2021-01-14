@@ -217,12 +217,6 @@ int main(int argc, char* argv[]) {
   cout<<"Cross section (above max) =  *** TO BE DEFINED *** " << endl;
   cout<<"================================================================"<< endl;
 
-GammaFunctionGenerator* gamma= new GammaFunctionGenerator;
-ECALProperties *ecalprop= new ECALProperties();    
-EMECALShowerParametrization *myparam = new EMECALShowerParametrization(ecalprop,{100.0,0.1},{1.0,0.1,100.0,1.0},1,1);
-ECAL *TheEcal= new ECAL(5,-7.125,7.125,5,-7.125,7.125);   
-    
-
   // Fast Simulation //
   //%%%%%%%%%%%%%%%%%%%%%%%%%%%
   MuE::FastSim fs(pargen,fsi);  
@@ -254,6 +248,11 @@ ECAL *TheEcal= new ECAL(5,-7.125,7.125,5,-7.125,7.125);
 
   // number of events with negligible weight (skipped)
   int zero_wgt_events = 0;    
+    
+GammaFunctionGenerator* gamma= new GammaFunctionGenerator;
+ECALProperties *ecalprop= new ECALProperties();    
+EMECALShowerParametrization *myparam = new EMECALShowerParametrization(ecalprop,{100.0,0.1},{1.0,0.1,100.0,1.0},1,1);
+ECAL *TheEcal= new ECAL(5,-7.125,7.125,5,-7.125,7.125);    
     
   for (Long64_t iEvent=0; iEvent < n_events; ++iEvent) {
     Long64_t ientry = chain.LoadTree(iEvent);

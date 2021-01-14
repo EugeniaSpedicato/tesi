@@ -73,6 +73,9 @@ echo "Running ..."
 
 time ./${MAIN}.exe  input.cfi  > ${MAIN}.log 2>&1
 
+echo "qui ..."
+
+
 mv input.cfi    ${OUTDIR}
 mv fastSim.cfi  ${OUTDIR}
 mv analysis.cfi ${OUTDIR}

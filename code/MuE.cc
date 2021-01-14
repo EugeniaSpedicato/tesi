@@ -221,9 +221,11 @@ GammaFunctionGenerator* gamma= new GammaFunctionGenerator;
 ECALProperties *ecalprop= new ECALProperties();    
 EMECALShowerParametrization *myparam = new EMECALShowerParametrization(ecalprop,{100.0,0.1},{1.0,0.1,100.0,1.0},1,1);
 ECAL *TheEcal= new ECAL(5,-7.125,7.125,5,-7.125,7.125);   
+    
+
   // Fast Simulation //
   //%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  MuE::FastSim fs(pargen,fsi,_debug_);  
+  MuE::FastSim fs(pargen,fsi);  
   //%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   // ANALYSIS //

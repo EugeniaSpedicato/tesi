@@ -254,6 +254,7 @@ ECALProperties *ecalprop= new ECALProperties();
 EMECALShowerParametrization *myparam = new EMECALShowerParametrization(ecalprop,{100.0,0.1},{1.0,0.1,100.0,1.0},1,1);
 ECAL *TheEcal= new ECAL(5,-7.125,7.125,5,-7.125,7.125);    
     
+    cout << " quasi nel loop" << endl;
   for (Long64_t iEvent=0; iEvent < n_events; ++iEvent) {
     Long64_t ientry = chain.LoadTree(iEvent);
     if (ientry <0) {
@@ -270,6 +271,7 @@ ECAL *TheEcal= new ECAL(5,-7.125,7.125,5,-7.125,7.125);
     if (std::abs(evwgt) > 1e-17) {
 
       //%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        cout << " ci siamo dentro" << endl;
       fs.Process(*event,gamma,myparam,TheEcal);
       //%%%%%%%%%%%%%%%%%%%%%%%%%%%
       analyzer.Analyze(*event, fs);

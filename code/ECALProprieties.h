@@ -13,6 +13,35 @@
  */
 
 class ECALProperties : public CalorimeterProperties {
+
+protected:
+  const double lightColl_;
+  const double lightCollUnif_;
+  const double photoStatistics_;
+//double thickness_;
+  const double interactionLength_;
+
+  const double Aeff_;
+  const double Zeff_;
+  const double rho_;
+  double radLenIncm_;
+  double radLenIngcm2_;
+  const double moliereRadius_;
+
+  const double criticalEnergy_;
+
+  double Fs_;
+  double ehat_;
+  const double resE_;
+
+  double da_;
+  double dp_;
+
+  bool bHom_;
+
+  //Es=sqrt(4*Pi/alphaEM)*me*c^2=0.0212 GeV used for Moliere Radius calculation
+  const double scaleEnergy_;
+    
 public:
   ECALProperties() : scaleEnergy_(0.0212),Aeff_(170.87),Zeff_(68.36),rho_(8.280),moliereRadius_(2.190),criticalEnergy_(8.74E-3),interactionLength_(20.27),resE_(1),lightColl_(0.03),photoStatistics_(50.E3),lightCollUnif_(0.003){}
 
@@ -80,34 +109,6 @@ public:
   inline double lightCollectionUniformity() const { return lightCollUnif_; }
     
   //virtual double lightCollectionUniformity() const = 0; 
-
-protected:
-  const double lightColl_;
-  const double lightCollUnif_;
-  const double photoStatistics_;
-//double thickness_;
-  const double interactionLength_;
-
-  const double Aeff_;
-  const double Zeff_;
-  const double rho_;
-  double radLenIncm_;
-  double radLenIngcm2_;
-  const double moliereRadius_;
-
-  const double criticalEnergy_;
-
-  double Fs_;
-  double ehat_;
-  const double resE_;
-
-  double da_;
-  double dp_;
-
-  bool bHom_;
-
-  //Es=sqrt(4*Pi/alphaEM)*me*c^2=0.0212 GeV used for Moliere Radius calculation
-  const double scaleEnergy_;
 };
 
 #endif

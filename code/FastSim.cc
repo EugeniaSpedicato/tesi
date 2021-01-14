@@ -147,6 +147,7 @@ TheShower.compute();
     
     
 //for photons  
+PxPyPzEVector pNO(0,0,0,0);
 auto n_photons = event.photons.size();     
 if (n_photons>0){
  PxPyPzEVector p_gamma_Lab = {
@@ -176,8 +177,6 @@ LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1]);
     EMShower TheShower(gamma, TheParam, theGrid,bFixedLength,nPart,X0depth,energy_in_ph,coo_ph);
     TheShower.compute();
  }
-
-PxPyPzEVector pNO(0,0,0,0);
 else LoadPhoton(event, photon,pNO,0.,0.);
         
     

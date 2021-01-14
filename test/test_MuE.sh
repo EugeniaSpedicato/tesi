@@ -3,7 +3,7 @@
 MAIN=MuE
 
 ROOTINCDIR=`$ROOTSYS/bin/root-config --incdir`
-ROOTLIBS=`$ROOTSYS/bin/root-config --cflags --libs`
+ROOTLIBS=`$ROOTSYS/bin/root-config --cflags --libs` -lRooFit -lRooFitCore
 CXX=$(/bin/root-config --cxx)
 
 code=../code

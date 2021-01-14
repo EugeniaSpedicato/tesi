@@ -97,11 +97,11 @@ namespace MuE {
     Photon photon; // photon variables at Gen-level
 
  // integer gamma function generator
- // GammaFunctionGenerator* myGammaGenerator;
- // EMECALShowerParametrization* const theParam;
+  GammaFunctionGenerator* myGammaGenerator;
+  EMECALShowerParametrization* const theParam;
 
   // the grid
-   // ECAL* theGrid;
+    ECAL* theGrid;
   };
 }
 

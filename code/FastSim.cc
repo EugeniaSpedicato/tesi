@@ -26,10 +26,10 @@ const Double_t FastSim::me_PDG = 0.5109989461 *0.001;
 
 FastSim::FastSim(const MuE::MCpara & pargen, const MuE::FS_Input & fsi, bool _debug_,
                  GammaFunctionGenerator* & gamma,
-                 EMECALShowerParametrization* const & myParam,
-                 ECAL* const & myGrid):
+                 const EMECALShowerParametrization* & myParam,
+                 const ECAL* & myGrid):
   mm(pargen.mass_mu), me(pargen.mass_e), Ebeam(pargen.Ebeam), EbeamRMS(pargen.EbeamRMS),
-  model(fsi.model), MSopt(fsi.MSopt), thickness(fsi.thickness), intrinsic_resolution(fsi.resolution), sSin(6*0.00064), x0S(0.094), sB(0.015), x0B(0.353), debug(_debug_), Minv(0),myGammaGenerator(gamma),theParam(myParam),theGrid(myGrid),
+  model(fsi.model), MSopt(fsi.MSopt), thickness(fsi.thickness), intrinsic_resolution(fsi.resolution), sSin(6*0.00064), x0S(0.094), sB(0.015), x0B(0.353), debug(_debug_), Minv(0),myGammaGenerator(gamma),theParam(myParam),theGrid(myGrid)
 {
   if (std::abs(mm - mm_PDG)/mm_PDG > 1e-7) {
     cout<<"\n"<< "***WARNING: muon mass = "<<mm<<" is different from the PDG mass: "<<mm_PDG<<endl;

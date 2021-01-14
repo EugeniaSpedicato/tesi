@@ -47,9 +47,7 @@ FastSim::FastSim(const MuE::MCpara & pargen, const MuE::FS_Input & fsi, bool _de
 
 // process an event
 //
-void FastSim::Process(const MuE::Event & event,GammaFunctionGenerator* & gamma,
-                 EMECALShowerParametrization* const & TheParam,
-                 ECAL* const & TheGrid) {
+void FastSim::Process(const MuE::Event & event,GammaFunctionGenerator* & gamma, EMECALShowerParametrization* const & TheParam, ECAL* const & TheGrid) {
   
   if (debug) cout<<"\n Process:  Run = "<<event.RunNr << " , Event = "<< event.EventNr << endl;
   

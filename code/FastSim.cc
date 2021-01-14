@@ -134,7 +134,7 @@ std::vector<double> energy_in_ph;
 std::vector<double> coo_el;
 std::vector<double> coo_ph;
     
-double energy_sm_el=p_e_out_div_smeared[3];
+double energy_sm_el=p_e_out_div_smeared.E();
    
 //for electrons
 nPart=1; 
@@ -156,7 +156,8 @@ if (n_photons>0){
 				 event.photons[0].pz,
 			     event.photons[0].E};
 
-PxPyPzEVector p_gamma_Lab_div=RotDiv(p_mu_in,p_gamma_Lab);
+PxPyPzEVector p_gamma_Lab_div = RotDiv(p_mu_in,p_gamma_Lab);
+
 TMatrixD cooPH=MCSphoton(p_gamma_Lab_div,xin,yin);
     
 LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1]);
@@ -164,7 +165,7 @@ LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1]);
 
 //NB CONVERTI COO DI FAST SIM (m) IN cm PERCHE ECAL E' IN cm, poi puoi usare la percentuale perchè così è indipendente dal valore iniziale dell'energia
 
-    double en_ph_sm=p_gamma_Lab_div[3];
+    double en_ph_sm=p_gamma_Lab_div.E();
     
     nPart=2; 
     X0depth=-log(gRandom->Uniform())*(9./7.);
@@ -176,8 +177,8 @@ LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1]);
     EMShower TheShower(gamma, theParam, theGrid,bFixedLength,nPart,X0depth,energy_in_ph,coo_ph);
     TheShower.compute();
  }
-    
-else LoadPhoton(event, photon, p_gamma_Lab_div,xin,yin);
+
+else LoadPhoton(event, photon,0,0,0);
         
     
 }

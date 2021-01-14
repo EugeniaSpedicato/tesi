@@ -26,7 +26,7 @@ namespace MuE {
   class FastSim {
 
   public:
-    FastSim(const MCpara & pargen, const FS_Input & fsi,bool _debug_=false);
+   FastSim(const MCpara & pargen, const FS_Input & fsi, bool _debug_=false);
     virtual ~FastSim(){};
 
     void Process(const Event & event,GammaFunctionGenerator* & gamma,EMECALShowerParametrization* const & myParam, ECAL* const & myGrid);
@@ -98,7 +98,7 @@ namespace MuE {
 
  // integer gamma function generator
   GammaFunctionGenerator* myGammaGenerator;
-  EMECALShowerParametrization* const theParam;
+  EMECALShowerParametrization* theParam;
 
   // the grid
     ECAL* theGrid;

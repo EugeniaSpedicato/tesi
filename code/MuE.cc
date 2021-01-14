@@ -249,7 +249,7 @@ int main(int argc, char* argv[]) {
   // number of events with negligible weight (skipped)
   int zero_wgt_events = 0;    
     
-GammaFunctionGenerator* gamma= new GammaFunctionGenerator();
+GammaFunctionGenerator* gamma= new GammaFunctionGenerator;
 ECALProperties *ecalprop= new ECALProperties();    
 EMECALShowerParametrization *myparam = new EMECALShowerParametrization(ecalprop,{100.0,0.1},{1.0,0.1,100.0,1.0},1,1);
 ECAL *TheEcal= new ECAL(5,-7.125,7.125,5,-7.125,7.125);    

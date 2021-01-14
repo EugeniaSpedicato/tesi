@@ -96,12 +96,7 @@ namespace MuE {
     KineVars detKinBeamRot; // kinematic variables at Detector-level for e and mu track with divergence
     Photon photon; // photon variables at Gen-level
 
- // integer gamma function generator
-  GammaFunctionGenerator* myGammaGenerator;
-  EMECALShowerParametrization* theParam;
 
-  // the grid
-    ECAL* theGrid;
   };
 }
 

@@ -6,18 +6,13 @@
 #include <TCanvas.h>
 #include <TStyle.h>
 #include <TColor.h>
-#include "RooDataHist.h"
-#include "RooCBShape.h"
-#include "RooAddPdf.h"
-#include "RooPlot.h"
-#include "RooRealVar.h"
+
 
 
 #include "ECAL.h"
 
 
 using namespace std;
-using namespace RooFit;
 
 
 ECAL::ECAL(double nbinsx, 
@@ -186,7 +181,7 @@ Ecal_->SaveAs("/home/LHCB-T3/espedicato/tesi/Ecal.png");
 int binMax=a->GetMaximumBin();  
 int CentralCell=number[binMax];
 cout << "cella centrale rev " << Rev_number[CentralCell] <<" and vera " << CentralCell << endl;
-Energy_dist1->Fill(a->GetBinContent(binMax));
+Energy_dist1->Fill(a->GetBinContent((binMax)/energy_IN)*100);
 
 double energy3x3=0.;    
 ECAL::GiveArray3x3(CentralCell);
@@ -195,7 +190,7 @@ for (int i=0; i<9; ++i)
     if (Array9[i]>0 & Array9[i]<25 & Array9[i]!=0) energy3x3+=a->GetBinContent(Rev_number[Array9[i]]);
     cout << Rev_number[Array9[i]] << " and vera " << Array9[i]<< " c'è energia " << energy3x3 << endl;
 }
-Energy_dist3x3->Fill((energy3x3/energy_IN)*100);  
+Energy_dist3x3->Fill((energy3x3/energy_IN)*100);
 };
 
 
@@ -204,34 +199,17 @@ void ECAL::Print_()
 {
    
 TCanvas * encell= new TCanvas("Energy cells","Energy cells",1000,100,2500,2000);
-Energy_dist3x3->Fit("gaus");  
-Energy_dist3x3->SetLineWidth(2);
-Energy_dist3x3->Draw("same");
+encell->Divide(1,2);
+encell->cd(1);
+Energy_dist1->SetLineWidth(3);
+Energy_dist1->GetXaxis()->SetTitle("E_rec/E_in");
+Energy_dist1->Draw();
+encell->cd(2);
+Energy_dist3x3->SetLineWidth(3);
+Energy_dist3x3->GetXaxis()->SetTitle("E_rec/E_in");
+Energy_dist3x3->Draw();
 encell->SaveAs("/home/LHCB-T3/espedicato/tesi/EnCell.png");
 
-    
-// Observable
-RooRealVar energy3("energy3","energy3",80,100) ;
-RooRealVar mean("mean","mean",94,96.5) ;
-RooRealVar sigma("sigma","sigma",0.2,1.6) ;
-RooRealVar alpha("alpha","alpha",1,0,20) ;
-RooRealVar n("n","n",4,1,8) ;
-RooCBShape CrystallBall("CrystallBall", "CrystallBall", energy3, mean, sigma, alpha, n);
-
-
-RooDataHist en3("en3x3","en3x3",energy3,Import(*Energy_dist3x3));
-
-RooPlot *frame = energy3.frame(Title("energy 3x3 cells"));
-en3.plotOn(frame,MarkerStyle(kFullDotMedium));
-CrystallBall.fitTo(en3);
-CrystallBall.plotOn(frame);
-CrystallBall.paramOn(frame,Layout(0.12,0.50));
-frame->Draw();
-    
-TCanvas* cROO= new TCanvas("cROO","cROO",400,10,1100,800);
-frame->GetXaxis()->SetTitle("Energy [GeV]");
-frame->Draw();
-cROO->SaveAs("/home/LHCB-T3/espedicato/tesi/frame.png");
-
-    
+Energy_dist1->Fill(a->GetBinContent(binMax)/energy_IN);
+Energy_dist3x3->Fill(energy3x3/energy_IN);   
 }

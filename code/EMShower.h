@@ -72,11 +72,18 @@ private:
   // Set the intervals for the radial development
   void setIntervals(unsigned icomp, RadialInterval& rad);
 
+  // integer gamma function generator
+  GammaFunctionGenerator* myGammaGenerator; 
+    
   // The parametrization
   EMECALShowerParametrization* const theParam;
 
   // The Calorimeter properties
   const ECALProperties* theECAL;
+    
+  // The crystal grid
+  ECAL* theGrid;
+  TH2F* EcalGrid;   
 
   // The incident particle(s)
   //std::vector<const RawParticle*>* const thePart;
@@ -132,9 +139,6 @@ double Yi;
   unsigned nSteps;
   bool stepsCalculated;
 
-  // The crystal grid
-  ECAL* theGrid;
-  TH2F* EcalGrid;
 
   // Histos
     TH1F* Rad1;
@@ -157,8 +161,6 @@ double Yi;
   // Random engine
   //const RandomEngineAndDistribution* random;
 
-  // integer gamma function generator
-  GammaFunctionGenerator* myGammaGenerator;
 
   bool bFixedLength_;
 };

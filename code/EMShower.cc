@@ -41,7 +41,7 @@ EMShower::EMShower(//const TRandom3* engine,
 
   stepsCalculated = false;
           
-  theECAL = myParam->ecalProperties();
+  theECAL = theParam->ecalProperties();
  
 
 
@@ -81,7 +81,7 @@ double fotos = theECAL->photoStatistics() * theECAL->lightCollectionEfficiency()
       
 
     // The number of spots in ECAL / HCAL
-    theNumberOfSpots.push_back(myParam->nSpots(E[i]));
+    theNumberOfSpots.push_back(theParam->nSpots(E[i]));
 
     // Photo-statistics
     photos.push_back(E[i] * fotos);
@@ -245,11 +245,7 @@ void EMShower::compute() {
     
   // Loop over all segments for the longitudinal development
   double totECalc = 0;
-    
-    realTotalEnergy12=0.;
-    realTotalEnergy56=0.;
-    realTotalEnergy1314=0.;
-    realTotalEnergy2223=0.;            
+         
     
     
   for (unsigned iStep = 0; iStep < nSteps; ++iStep) {
@@ -330,9 +326,8 @@ void EMShower::compute() {
 
         // Expected spot number
         nS = (theNumberOfSpots[i] * gam(bSpot[i] * tt, aSpot[i]) * bSpot[i] * dt / tgamma(aSpot[i]));
-        double nsD = (theNumberOfSpots[i] * deposit(tt, aSpot[i], bSpot[i], dt));
         // cout << "il numero di spot in questo dt è " << nS << endl;
-        // cout << "con l'altro metodo è " << nsD << endl;
+
         
 
       if (detailedShowerTail)

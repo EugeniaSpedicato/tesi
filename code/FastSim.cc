@@ -142,7 +142,7 @@ coo_el.push_back(coo[3][0]*100);//cm
 energy_in_el.push_back(energy_sm_el);
 myGrid->SetEnergy(energy_sm_el);
 EMShower TheShower(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_el,coo_el);
-TheShower.compute();}
+TheShower.compute();} //NB RICORDA DI MODIFICARE Xi Yi
     
  /*   
 //for photons  

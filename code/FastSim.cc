@@ -134,14 +134,15 @@ std::vector<double> coo_ph;
 double energy_sm_el=p_e_out_div_smeared.E();
    
 //for electrons
-int nPart=1; 
+if (energy_sm_el>1)
+{int nPart=1; 
 double X0depth=0.;
 coo_el.push_back(coo[2][0]*100);//cm
 coo_el.push_back(coo[3][0]*100);//cm
 energy_in_el.push_back(energy_sm_el);
 myGrid->SetEnergy(energy_sm_el);
 EMShower TheShower(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_el,coo_el);
-TheShower.compute();
+TheShower.compute();}
     
  /*   
 //for photons  

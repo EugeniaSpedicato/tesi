@@ -61,7 +61,7 @@ cat > analysis.cfi <<!
 cat > input.cfi <<!
 <cfi>
 mysample.txt # string input_dirs_file; // file containing a list of directory paths where to look for NLO MC events
-4000                       # long long n_events; // events to be processed (N>0:N; 0:all; <0: read histograms from existing results)10000000
+10000                       # long long n_events; // events to be processed (N>0:N; 0:all; <0: read histograms from existing results)10000000
 results.root            # string histo_ifname; // path to input histo file (kinematical distributions when n_events<0)
 ${OUTDIR}               # string output_dir; // output directory name
 fastSim.cfi             # string fastSim_ifname; // FastSim cfg file

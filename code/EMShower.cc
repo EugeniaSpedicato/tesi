@@ -51,8 +51,8 @@ double fotos = theECAL->photoStatistics() * theECAL->lightCollectionEfficiency()
   globalMaximum = 0.;
   double meanDepth = 0.;
   // Initialize the shower parameters for each particle
- Xi=0;
- Yi=0;
+ Xi=coo[0];
+ Yi=coo[1];
           
    for ( int i = 0; i < nPart; ++i) {
 

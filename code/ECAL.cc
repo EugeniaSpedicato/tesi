@@ -73,7 +73,7 @@ ECAL::ECAL(double nbinsx,
     
     Energy_dist =new TH1F("Energy", "Energy",100,90,100);
     Energy_dist1 =new TH1F("Energy", "Energy 1 cell",150,0.30,1);
-    Energy_dist3x3 =new TH1F("Energy", "Energy 3x3 cells",150,0.80,1);
+    Energy_dist3x3 =new TH1F("Energy", "Energy 3x3 cells",150,0.80,1.2);
     
 
     sigma =  new TProfile("Res", "Stochastic term",20, 0, 4, 0, 5);

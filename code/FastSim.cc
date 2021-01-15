@@ -138,10 +138,8 @@ int nPart=1;
 double X0depth=0.;
 coo_el.push_back(coo[2][0]*100);//cm
 coo_el.push_back(coo[3][0]*100);//cm
-//energy_in_el.push_back(energy_sm_el);
-//myGrid->SetEnergy(energy_sm_el);
-energy_in_el.push_back(20);
-myGrid->SetEnergy(20);
+energy_in_el.push_back(energy_sm_el);
+myGrid->SetEnergy(energy_sm_el);
 EMShower TheShower(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_el,coo_el);
 TheShower.compute();
     

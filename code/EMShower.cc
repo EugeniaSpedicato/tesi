@@ -51,8 +51,10 @@ double fotos = theECAL->photoStatistics() * theECAL->lightCollectionEfficiency()
   globalMaximum = 0.;
   double meanDepth = 0.;
   // Initialize the shower parameters for each particle
- Xi=coo[0];
- Yi=coo[1];
+ /*Xi=coo[0];
+ Yi=coo[1];*/
+ Xi=gRandom->Gaus(0,2.6);//2.6
+ Yi=gRandom->Gaus(0,2.7);//2.7
           
    for ( int i = 0; i < nPart; ++i) {
 
@@ -294,7 +296,7 @@ void EMShower::compute() {
     if (!usePreviousGrid) {
         // E' UNA PROVA!!!
       //detailedShowerTail = (t - dt > theGrid->getX0back());
-      detailedShowerTail = (t - dt > 25);
+      detailedShowerTail = (t - dt > outerDepth-X0depth);
         
     }
 

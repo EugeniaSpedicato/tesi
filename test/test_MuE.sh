@@ -45,7 +45,7 @@ cat > analysis.cfi <<!
 <cfi>
 1       # bool makeTree; 1(0) = do(not) produce the output Tree
 1       # bool doTemplates; 1(0) = do (not) produce 2D template histos
-100.     # max Theta for selection of events and template histograms
+32.     # max Theta for selection of events and template histograms
 0       # 1(0): do(not) make angle correlation plots in fine bins
 2       # parameterization of hadronic running: 0:pol2; 1:LL; 2:LLmod
 0       # 0:nominal Lumi; 1:LowLumi; 
@@ -61,7 +61,7 @@ cat > analysis.cfi <<!
 cat > input.cfi <<!
 <cfi>
 mysample.txt # string input_dirs_file; // file containing a list of directory paths where to look for NLO MC events
-10000000                       # long long n_events; // events to be processed (N>0:N; 0:all; <0: read histograms from existing results)
+100                       # long long n_events; // events to be processed (N>0:N; 0:all; <0: read histograms from existing results)10000000
 results.root            # string histo_ifname; // path to input histo file (kinematical distributions when n_events<0)
 ${OUTDIR}               # string output_dir; // output directory name
 fastSim.cfi             # string fastSim_ifname; // FastSim cfg file

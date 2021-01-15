@@ -123,8 +123,8 @@ Double_t TheINT=b[18][2]; // angolo che ha nel momento dell'interazione, senza e
 
 //prepare for EMShower
 bool bFixedLength=true;
-int nPart;
-double X0depth;
+//int nPart;
+//double X0depth;
 std::vector<double> energy_in_el;
 std::vector<double> energy_in_ph;
 
@@ -134,8 +134,8 @@ std::vector<double> coo_ph;
 double energy_sm_el=p_e_out_div_smeared.E();
    
 //for electrons
-nPart=1; 
-X0depth=0;
+int nPart=1; 
+double X0depth=0;
 coo_el.push_back(coo[2][0]*100);//cm
 coo_el.push_back(coo[3][0]*100);//cm
 energy_in_el.push_back(energy_sm_el);
@@ -143,7 +143,7 @@ myGrid->SetEnergy(energy_sm_el);
 EMShower TheShower(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_el,coo_el);
 TheShower.compute();
     
-    
+ /*   
 //for photons  
 PxPyPzEVector pNO(0,0,0,0);
 auto n_photons = event.photons.size();     
@@ -175,7 +175,7 @@ LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1]);
     EMShower TheShower(gamma, myParam, myGrid,bFixedLength,nPart,X0depth,energy_in_ph,coo_ph);
     TheShower.compute();
  }
-else LoadPhoton(event, photon,pNO,0.,0.);
+else LoadPhoton(event, photon,pNO,0.,0.);*/
         
     
 }

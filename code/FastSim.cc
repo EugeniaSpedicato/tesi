@@ -134,7 +134,7 @@ std::vector<double> coo_ph;
 double energy_sm_el=p_e_out_div_smeared.E();
    
 //for electrons
-if (energy_sm_el>10)
+if (energy_sm_el>75)
 {int nPart=1; 
 double X0depth=0.;
 coo_el.push_back(coo[2][0]*100);//cm

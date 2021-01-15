@@ -166,8 +166,9 @@ LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1]);
 
     double en_ph_sm=p_gamma_Lab_div.E();
     
-    if (en_ph_sm>1){nPart=2; 
-    X0depth=-log(gRandom->Uniform())*(9./7.);
+    if (en_ph_sm>1){
+        int nPart=2; 
+    double X0depth=-log(gRandom->Uniform())*(9./7.);
     coo_ph.push_back(cooPH[0][0]*100);//cm
     coo_ph.push_back(cooPH[0][1]*100);//cm
     energy_in_ph.push_back(en_ph_sm/2);

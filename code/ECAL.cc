@@ -72,8 +72,8 @@ ECAL::ECAL(double nbinsx,
     Er2->SetErrorOption("S");
     
     Energy_dist =new TH1F("Energy", "Energy",100,90,100);
-    Energy_dist1 =new TH1F("Energy", "Energy 1 cell",150,90,105);
-    Energy_dist3x3 =new TH1F("Energy", "Energy 3x3 cells",150,80,100);
+    Energy_dist1 =new TH1F("Energy", "Energy 1 cell",150,0.30,1);
+    Energy_dist3x3 =new TH1F("Energy", "Energy 3x3 cells",150,0.80,1);
     
 
     sigma =  new TProfile("Res", "Stochastic term",20, 0, 4, 0, 5);
@@ -181,7 +181,7 @@ Ecal_->SaveAs("/home/LHCB-T3/espedicato/tesi/Ecal.png");
 int binMax=a->GetMaximumBin();  
 int CentralCell=number[binMax];
 cout << "cella centrale rev " << Rev_number[CentralCell] <<" and vera " << CentralCell << endl;
-Energy_dist1->Fill((a->GetBinContent(binMax)/energy_IN)*100);
+Energy_dist1->Fill(a->GetBinContent(binMax)/energy_IN);
 
 double energy3x3=0.;    
 ECAL::GiveArray3x3(CentralCell);
@@ -190,7 +190,7 @@ for (int i=0; i<9; ++i)
     if (Array9[i]>0 & Array9[i]<25 & Array9[i]!=0) energy3x3+=a->GetBinContent(Rev_number[Array9[i]]);
     cout << Rev_number[Array9[i]] << " and vera " << Array9[i]<< " c'è energia " << energy3x3 << endl;
 }
-Energy_dist3x3->Fill((energy3x3/energy_IN)*100);
+Energy_dist3x3->Fill(energy3x3/energy_IN);
 };
 
 

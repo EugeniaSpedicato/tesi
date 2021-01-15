@@ -93,10 +93,10 @@ PxPyPzEVector p_e_out_div_smeared(b[17][3],b[17][4],b[17][5],b[17][6]);
 
 
 TMatrixD coo(5,1);
-coo[0][0]=b[8][0];
-coo[1][0]=b[8][1];
-coo[2][0]=b[17][0];
-coo[3][0]=b[17][1];
+coo[0][0]=b[8][0]; // coo x muon
+coo[1][0]=b[8][1]; // coo y muon
+coo[2][0]=b[17][0]; // coo x electron
+coo[3][0]=b[17][1]; // coo y elcetron
 coo[4][0]=b[8][2];
     
 TMatrixD cooIN(5,1);
@@ -135,7 +135,7 @@ double energy_sm_el=p_e_out_div_smeared.E();
    
 //for electrons
 int nPart=1; 
-double X0depth=0;
+double X0depth=0.;
 coo_el.push_back(coo[2][0]*100);//cm
 coo_el.push_back(coo[3][0]*100);//cm
 energy_in_el.push_back(energy_sm_el);

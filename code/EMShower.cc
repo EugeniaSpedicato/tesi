@@ -294,7 +294,7 @@ void EMShower::compute() {
     if (!usePreviousGrid) {
         // E' UNA PROVA!!!
       //detailedShowerTail = (t - dt > theGrid->getX0back());
-      detailedShowerTail = (t - dt > outerDepth-X0depth);
+      detailedShowerTail = (t - dt > 25);
         
     }
 

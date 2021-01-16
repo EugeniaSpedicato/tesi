@@ -134,7 +134,7 @@ std::vector<double> coo_ph;
 double energy_sm_el=p_e_out_div_smeared.E();
    
 //for electrons
-/*if (energy_sm_el>75)
+if (energy_sm_el>10)
 {int nPart=1; 
 double X0depth=0.;
 coo_el.push_back(coo[2][0]*100);//cm
@@ -142,7 +142,7 @@ coo_el.push_back(coo[3][0]*100);//cm
 energy_in_el.push_back(energy_sm_el);
 myGrid->SetEnergy(energy_sm_el);
 EMShower TheShower(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_el,coo_el);
-TheShower.compute();} */
+TheShower.compute();}
     
    
 //for photons  
@@ -166,15 +166,15 @@ LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1]);
 
     double en_ph_sm=p_gamma_Lab_div.E();
     
-    if (en_ph_sm>1){
-        int nPart=2; 
+    if (en_ph_sm>10){
+    int nPart=2; 
     double X0depth=-log(gRandom->Uniform())*(9./7.);
     coo_ph.push_back(cooPH[0][0]*100);//cm
     coo_ph.push_back(cooPH[0][1]*100);//cm
     energy_in_ph.push_back(en_ph_sm/2);
     energy_in_ph.push_back(en_ph_sm/2);
     myGrid->SetEnergy(en_ph_sm);
-    EMShower TheShower(gamma, myParam, myGrid,bFixedLength,nPart,X0depth,energy_in_ph,coo_ph);
+    EMShower TheShower(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_ph,coo_ph);
     TheShower.compute();}
  }
 else LoadPhoton(event, photon,pNO,0.,0.);

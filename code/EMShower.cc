@@ -117,19 +117,12 @@ double fotos = theECAL->photoStatistics() * theECAL->lightCollectionEfficiency()
   globalMaximum /= totalEnergy;
   meanDepth /= totalEnergy;
 EcalGrid=theGrid->CreateGrid(5,-7.125,7.125,5,-7.125,7.125);
-          
-    /*Rad1 = new TH1F("Step1", "Radial Profile Step 2", 20, 0, 4);
-    Rad2 = new TH1F("Step2", "Radial Profile Step 6", 20, 0, 4);
-    Rad3 = new TH1F("Step3", "Radial Profile Step 13", 20, 0, 4);
-    Rad4 = new TH1F("Step4", "Radial Profile Step 20", 20, 0, 4);
-    RadTot = new TH1F("Step", "Radial Profile Total", 20, 0, 4);
-    Longit = new TH1F("Long", "Longitudinal Profile", 25, 0, 25);
-    en_1cell = new TH1F("1cell", "Energy central cell", 20, 0, 4);
-    en_3x3cell = new TH1F("3x3cell", "Energy 3x3 cell", 20, 0, 4);*/
-}
+
+   
+      }
 
 
-void EMShower::prepareSteps() {
+void EMShower::prepareSteps() {    
   double dt;
   double radlen;
   int stps;
@@ -229,6 +222,8 @@ void EMShower::prepareSteps() {
 }
 
 void EMShower::compute() {
+    
+    
 
   double t = 0.;
   double dt = 0.;
@@ -294,7 +289,7 @@ void EMShower::compute() {
     if (!usePreviousGrid) {
         // E' UNA PROVA!!!
       //detailedShowerTail = (t - dt > theGrid->getX0back());
-      detailedShowerTail = (t - dt > outerDepth-X0depth);
+      detailedShowerTail = (t - dt > 24.7-X0depth);
         
     }
 
@@ -417,11 +412,6 @@ void EMShower::compute() {
                     // cout << "depth è " << depth << endl;
                 } while (depth > t);
                 theGrid->AddHitCooDepth(ri,phi,Xi,Yi,spote,depth,X0depth,EcalGrid);
-                /*if (iStep==1) Rad1->Fill(ri,spote);
-                if (iStep==5) Rad2->Fill(ri,spote);
-                if (iStep==18) Rad3->Fill(ri,spote);
-                if (iStep==21) Rad4->Fill(ri,spote);
-                RadTot->Fill(ri,spote);  */          
                 Etot[i] += spote;
                 Etot_step[iStep] += spote;
                 //			   std::// cout << " Done " << std::endl;
@@ -439,12 +429,6 @@ void EMShower::compute() {
             Etot[i] += spote;
            
             Etot_step[iStep] += spote;
-            
-                /*if (iStep==1) Rad1->Fill(ri,spote);
-                if (iStep==5) Rad2->Fill(ri,spote);
-                if (iStep==18) Rad3->Fill(ri,spote);
-                if (iStep==21) Rad4->Fill(ri,spote);
-                RadTot->Fill(ri,spote);*/
                 
               }
           }

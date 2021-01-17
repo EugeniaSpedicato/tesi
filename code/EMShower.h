@@ -149,7 +149,6 @@ double Yi;
     TH1F* en_3x3cell;
     
     
-    
     TH1F* Longit;
     
     

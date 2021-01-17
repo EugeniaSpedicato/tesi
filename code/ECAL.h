@@ -57,21 +57,6 @@ n_cell number;
 n_cell Rev_number;
 
 
-TProfile* EnRad_3;
-TProfile* EnRad_6;
-TProfile* EnRad_13;
-TProfile* EnRad_20;
-TProfile* EnRad_3ERR;
-TProfile* EnRad_6ERR;
-TProfile* EnRad_13ERR;
-TProfile* EnRad_20ERR;
-TProfile* EnRad_tot;
-TProfile* EnLong;
-TProfile* EnLongERR;
-TProfile* Er;
-TProfile* Er2;
-
-TProfile* sigma;
 TH1F* Energy_dist;
 TH1F* Energy_dist1;
 TH1F* Energy_dist3x3;

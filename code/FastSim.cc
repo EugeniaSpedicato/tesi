@@ -184,7 +184,6 @@ LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1]);
  }
 else LoadPhoton(event, photon,pNO,0.,0.);
         
-myGrid->Draw_Ecal(); 
 }
 
 

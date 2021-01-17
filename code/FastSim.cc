@@ -132,9 +132,12 @@ std::vector<double> coo_el;
 std::vector<double> coo_ph;
     
 double energy_sm_el=p_e_out_div_smeared.E();
- PxPyPzEVector pNO(0,0,0,0);
-auto n_photons = event.photons.size();     
-if (n_photons>0){  
+
+
+//If i want to have the image of the event with %energy with e+gamma together do this,
+//otherwise create it inside the shower.
+//TH2F*EcalGrid=theGrid->CreateGrid(5,-7.125,7.125,5,-7.125,7.125);
+
 //for electrons
 if (energy_sm_el>10)
 {int nPart=1; 
@@ -148,7 +151,9 @@ TheShower.compute();}
     
    
 //for photons  
-
+PxPyPzEVector pNO(0,0,0,0);
+auto n_photons = event.photons.size();     
+if (n_photons>0){  
  PxPyPzEVector p_gamma_Lab = {
                  event.photons[0].px, 
 				 event.photons[0].py,
@@ -179,7 +184,7 @@ LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1]);
  }
 else LoadPhoton(event, photon,pNO,0.,0.);
         
-    
+myGrid->Draw_Ecal(); 
 }
 
 

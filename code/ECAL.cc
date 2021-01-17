@@ -48,14 +48,22 @@ ECAL::ECAL(double nbinsx,
         
     }
 
-
-
 // metodo che crea l'istogramma rappresentante il calorimetro
+
 TH2F* ECAL::CreateGrid(double nbinsx,double xlow,double xup,double nbinsy,double ylow,double yup)
 {
     TH2F* EcalGrid = new TH2F("EcalGrid" , "EM Calorimeter with E in GeV",nbinsx,xlow,xup,nbinsy,ylow,yup);
     return EcalGrid;
 };
+
+/*TH2F* ECAL::CreateGrid(double nbinsx,double xlow,double xup,double nbinsy,double ylow,double yup)
+{
+    EcalGrid = new TH2F("EcalGrid" , "EM Calorimeter with E in GeV",nbinsx,xlow,xup,nbinsy,ylow,yup);
+    return EcalGrid;
+};
+
+TH2F* ECAL::GiveEcalGrid()
+{return EcalGrid;};*/
 
 void ECAL::SetEnergy(double energy)
 {
@@ -105,6 +113,8 @@ int* ECAL::GiveArray3x3(int n)
 }
 
 // metodo che aggiunge il punto di coo(x,y) all'istogramma, quindi al calorimetro e dà numero cella
+
+
 double ECAL::AddHitCoo(double r, double phi,double xi, double yi, double w, TH2F* a)
 {   r *= 2.19;
     double x=r*cos(phi)+xi; // coo x in cm

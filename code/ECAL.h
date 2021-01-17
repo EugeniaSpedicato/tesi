@@ -60,6 +60,7 @@ n_cell Rev_number;
 TH1F* Energy_dist;
 TH1F* Energy_dist1;
 TH1F* Energy_dist3x3;
+TH2F* EcalGrid;
 
 int *Array9;
 };

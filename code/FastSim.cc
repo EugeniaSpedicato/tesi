@@ -132,7 +132,9 @@ std::vector<double> coo_el;
 std::vector<double> coo_ph;
     
 double energy_sm_el=p_e_out_div_smeared.E();
-   
+ PxPyPzEVector pNO(0,0,0,0);
+auto n_photons = event.photons.size();     
+if (n_photons>0){  
 //for electrons
 if (energy_sm_el>10)
 {int nPart=1; 
@@ -146,9 +148,7 @@ TheShower.compute();}
     
    
 //for photons  
-PxPyPzEVector pNO(0,0,0,0);
-auto n_photons = event.photons.size();     
-if (n_photons>0){
+
  PxPyPzEVector p_gamma_Lab = {
                  event.photons[0].px, 
 				 event.photons[0].py,

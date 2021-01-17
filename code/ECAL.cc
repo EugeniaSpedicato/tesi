@@ -39,45 +39,10 @@ ECAL::ECAL(double nbinsx,
         Rev_number[21]=8; Rev_number[22]=9; Rev_number[23]=10; Rev_number[24]=11; Rev_number[25]=12;
       
 
-        
-    EnRad_3 = new TProfile("Step3", "Radial Profile 2-3 X0", 20, 0, 4, 0, 5);
-    EnRad_3->SetErrorOption("S");
-    EnRad_6 = new TProfile("Step6", "Radial Profile 6-7 X0", 20, 0, 4, 0, 5);
-    EnRad_6->SetErrorOption("S");
-    EnRad_13 = new TProfile("Step13", "Radial Profile 19-20 X0", 20, 0, 4, 0, 5);
-    EnRad_13->SetErrorOption("S");
-    EnRad_20 = new TProfile("Step20", "Radial Profile 22-23 X0", 20, 0, 4, 0, 5);
-    EnRad_20->SetErrorOption("S");
-    EnRad_tot = new TProfile("Step20", "Radial Profile Total", 20, 0, 4, 0, 2);
-    EnRad_tot->SetErrorOption("S");
-        
-    EnRad_3ERR = new TProfile("Step3", "Radial Profile 1-2 X0 with RMS", 20, 0, 4, 0, 5);
-    EnRad_3ERR->SetErrorOption("S");
-    EnRad_6ERR = new TProfile("Step6", "Radial Profile 5-6 X0 with RMS", 20, 0, 4, 0, 5);
-    EnRad_6ERR->SetErrorOption("S");
-    EnRad_13ERR = new TProfile("Step13", "Radial Profile 13-14 X0 with RMS", 20, 0, 4, 0, 5);
-    EnRad_13ERR->SetErrorOption("S");
-    EnRad_20ERR = new TProfile("Step20", "Radial Profile 22-23 X0 with RMS", 20, 0, 4, 0, 5);
-    EnRad_20ERR->SetErrorOption("S");
-        
-    EnLong = new TProfile("Long", "Longitudinal Profile", 25, 0, 25);
-    EnLong->SetErrorOption("S");
-    EnLongERR = new TProfile("Long", "Longitudinal Profile with RMS", 25, 0, 25);
-    EnLongERR->SetErrorOption("S");
-    
-    Er= new TProfile("<E(r)>/E", "Mean Energy Fraction in r <E(r)>/E ", 20, 0, 4, 0, 5);
-    Er->SetErrorOption("S");
-        
-    Er2= new TProfile("<E(r)>", "Mean Energy Fraction in r <E(r)> ", 20, 0, 4);
-    Er2->SetErrorOption("S");
-    
     Energy_dist =new TH1F("Energy", "Energy",100,90,100);
     Energy_dist1 =new TH1F("Energy", "Energy 1 cell",200,0.20,1);
     Energy_dist3x3 =new TH1F("Energy", "Energy 3x3 cells",200,0.70,1);
-    
 
-    sigma =  new TProfile("Res", "Stochastic term",20, 0, 4, 0, 5);
-    sigma->SetErrorOption("S");
     
     Array9=0;
         

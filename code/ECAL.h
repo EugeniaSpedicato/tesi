@@ -34,6 +34,7 @@ ECAL(double nbinsx,
 //double radlen;
 
 TH2F* CreateGrid(double nbinsx,double xlow,double xup,double nbinsy,double ylow,double yup);
+TH2F* GiveEcalGrid();
 double GiveCentralCell(double coox,double cooy,TH2F* a);
 void SetEnergy(double energy);
 int* GiveArray3x3(int n);

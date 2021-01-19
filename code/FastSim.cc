@@ -136,7 +136,7 @@ double energy_sm_el=p_e_out_div_smeared.E();
 
 //If i want to have the image of the event with %energy with e+gamma together do this,
 //otherwise create it inside the shower.
-TH2F*EcalGrid=theGrid->CreateGrid(5,-7.125,7.125,5,-7.125,7.125);
+TH2F*EcalGrid=myGrid->CreateGrid(5,-7.125,7.125,5,-7.125,7.125);
 
 //for electrons
 if (energy_sm_el>1)
@@ -184,8 +184,8 @@ LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1]);
  }
 else LoadPhoton(event, photon,pNO,0.,0.);
    
-//theGrid->Draw_ECAL(EcalGrid); 
-TMatrixD Ecell=theGrid->EnergyContent(EcalGrid); 
+//myGrid->Draw_ECAL(EcalGrid); 
+vector<double> Ecell=myGrid->EnergyContent(EcalGrid); 
 detKinBeamRot.Ecell1=Ecell[0];
 detKinBeamRot.Ecell2=Ecell[1];    
 detKinBeamRot.Ecell3=Ecell[2];    

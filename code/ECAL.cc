@@ -172,7 +172,7 @@ Energy_dist3x3->Fill(energy3x3/energy_IN);
 vector<double> ECAL::EnergyContent(TH2F* a)
 {
     for (int i=1; i<26 ; ++i)
-    {E_cell=push_back(a->GetBinContent(Rev_number[i]));}
+    {E_cell.push_back(a->GetBinContent(Rev_number[i]));}
     return E_cell;
 }
    

@@ -136,10 +136,10 @@ double energy_sm_el=p_e_out_div_smeared.E();
 
 //If i want to have the image of the event with %energy with e+gamma together do this,
 //otherwise create it inside the shower.
-//TH2F*EcalGrid=theGrid->CreateGrid(5,-7.125,7.125,5,-7.125,7.125);
+TH2F*EcalGrid=theGrid->CreateGrid(5,-7.125,7.125,5,-7.125,7.125);
 
 //for electrons
-if (energy_sm_el>10)
+if (energy_sm_el>1)
 {int nPart=1; 
 double X0depth=0.;
 coo_el.push_back(coo[2][0]*100);//cm
@@ -171,7 +171,7 @@ LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1]);
 
     double en_ph_sm=p_gamma_Lab_div.E();
     
-    if (en_ph_sm>10){
+    if ((energy_sm_el+en_ph_sm)>1){
     int nPart=2; 
     double X0depth=-log(gRandom->Uniform())*(9./7.);
     coo_ph.push_back(cooPH[0][0]*100);//cm
@@ -183,7 +183,35 @@ LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1]);
     TheShower.compute();}
  }
 else LoadPhoton(event, photon,pNO,0.,0.);
-        
+   
+//theGrid->Draw_ECAL(EcalGrid); 
+TMatrixD Ecell=theGrid->EnergyContent(EcalGrid); 
+detKinBeamRot.Ecell1=Ecell[0];
+detKinBeamRot.Ecell2=Ecell[1];    
+detKinBeamRot.Ecell3=Ecell[2];    
+detKinBeamRot.Ecell4=Ecell[3];    
+detKinBeamRot.Ecell5=Ecell[4];    
+detKinBeamRot.Ecell6=Ecell[5];    
+detKinBeamRot.Ecell7=Ecell[6];    
+detKinBeamRot.Ecell8=Ecell[7];    
+detKinBeamRot.Ecell9=Ecell[8];    
+detKinBeamRot.Ecell10=Ecell[9]; 
+detKinBeamRot.Ecell11=Ecell[10]; 
+detKinBeamRot.Ecell12=Ecell[11]; 
+detKinBeamRot.Ecell13=Ecell[12];    
+detKinBeamRot.Ecell14=Ecell[13];    
+detKinBeamRot.Ecell15=Ecell[14];    
+detKinBeamRot.Ecell16=Ecell[15];    
+detKinBeamRot.Ecell17=Ecell[16];    
+detKinBeamRot.Ecell18=Ecell[17];    
+detKinBeamRot.Ecell19=Ecell[18];    
+detKinBeamRot.Ecell20=Ecell[19];    
+detKinBeamRot.Ecell21=Ecell[20];    
+detKinBeamRot.Ecell22=Ecell[21];    
+detKinBeamRot.Ecell23=Ecell[22];    
+detKinBeamRot.Ecell24=Ecell[23];    
+detKinBeamRot.Ecell25=Ecell[24];  
+    
 }
 
 
@@ -915,7 +943,7 @@ kv.def_angle_e = def_angle[1][0];
     
   // Note: here Ebeam is the average beam energy, so tt_e and xt_e are defined under this assumption
   MuE::ElasticState emu_state(Ebeam,mm,me, kv.the);
-  kv.tt_e = emu_state.GetT();
+  /*kv.tt_e = emu_state.GetT();
   kv.xt_e = emu_state.GetX();
   
   PxPyPzEVector q13 = p_mu_in - p_mu_out;
@@ -925,7 +953,7 @@ kv.def_angle_e = def_angle[1][0];
   kv.t13 = q13.M2();
   kv.t24 = q24.M2();
   kv.x13 = emu_state.X(kv.t13); 
-  kv.x24 = emu_state.X(kv.t24);
+  kv.x24 = emu_state.X(kv.t24);*/
   
   XYZVector nvec_mu_in = p_mu_in.Vect().Unit(); 
   XYZVector nvec_mu_out = p_mu_out.Vect().Unit();
@@ -975,7 +1003,6 @@ PxPyPzEVector p_gamma_CoM = Lorentz_ToCoM(p_gamma_lab_div);
     photon.coox     = -1;
     photon.cooy     = -1;
     
-    photon.n_cell_ph=0;
   }
       
       

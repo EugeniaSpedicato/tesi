@@ -50,20 +50,20 @@ ECAL::ECAL(double nbinsx,
 
 // metodo che crea l'istogramma rappresentante il calorimetro
 
-TH2F* ECAL::CreateGrid(double nbinsx,double xlow,double xup,double nbinsy,double ylow,double yup)
+/*TH2F* ECAL::CreateGrid(double nbinsx,double xlow,double xup,double nbinsy,double ylow,double yup)
 {
     TH2F* EcalGrid = new TH2F("EcalGrid" , "EM Calorimeter with E in GeV",nbinsx,xlow,xup,nbinsy,ylow,yup);
     return EcalGrid;
-};
+};*/
 
-/*TH2F* ECAL::CreateGrid(double nbinsx,double xlow,double xup,double nbinsy,double ylow,double yup)
+TH2F* ECAL::CreateGrid(double nbinsx,double xlow,double xup,double nbinsy,double ylow,double yup)
 {
     EcalGrid = new TH2F("EcalGrid" , "EM Calorimeter with E in GeV",nbinsx,xlow,xup,nbinsy,ylow,yup);
     return EcalGrid;
 };
 
 TH2F* ECAL::GiveEcalGrid()
-{return EcalGrid;};*/
+{return EcalGrid;};
 
 void ECAL::SetEnergy(double energy)
 {
@@ -169,11 +169,15 @@ Energy_dist3x3->Fill(energy3x3/energy_IN);
 };
 
 
-
-void ECAL::Print_()
+vector<double> ECAL::EnergyContent(TH2F* a)
 {
+    for (int i=1; i<26 ; ++i)
+    {E_cell=push_back(a->GetBinContent(Rev_number[i]));}
+    return E_cell;
+}
    
-TCanvas * encell= new TCanvas("Energy cells","Energy cells",1000,100,2500,2000);
+void ECAL::Print_()
+{TCanvas * encell= new TCanvas("Energy cells","Energy cells",1000,100,2500,2000);
 encell->Divide(1,2);
 encell->cd(1);
 Energy_dist1->SetLineWidth(3);
@@ -184,5 +188,4 @@ Energy_dist3x3->SetLineWidth(3);
 Energy_dist3x3->GetXaxis()->SetTitle("E_rec/E_in");
 Energy_dist3x3->Draw();
 encell->SaveAs("/home/LHCB-T3/espedicato/tesi/EnCell.png");
-
 }

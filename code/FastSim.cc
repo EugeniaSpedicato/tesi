@@ -104,22 +104,8 @@ Double_t xin=b[18][0];
 Double_t yin=b[18][1];
 Double_t TheINT=b[18][2]; // angolo che ha nel momento dell'interazione, senza effetto di MCS 
     
-
-  /*  if (MSopt ==0) {
-    p_mu_out_div_smeared = Smear(p_mu_out_div);
-    p_e_out_div_smeared = Smear(p_e_out_div);
-  }
-  else if (MSopt ==1) {
-    p_mu_out_div_smeared = SmearX(p_mu_out_div);
-    p_e_out_div_smeared = SmearX(p_e_out_div);
-  }
-  else if (MSopt ==2) {
-    p_mu_out_div_smeared = SmearPolar(p_mu_out_div);
-    p_e_out_div_smeared = SmearPolar(p_e_out_div);
-  }
-  else cout<<"\n"<<"*** ERROR : FastSim, undefined detector MS option = "<<MSopt<<endl;*/
   
-  LoadKineVars(p_mu_in_div, p_e_in_div, p_mu_out_div_smeared, p_e_out_div_smeared, coo, TheINT, detKinBeamRot);
+LoadKineVars(p_mu_in_div, p_e_in_div, p_mu_out_div_smeared, p_e_out_div_smeared, coo, TheINT, detKinBeamRot);
 
 //prepare for EMShower
 bool bFixedLength=true;
@@ -133,11 +119,53 @@ std::vector<double> coo_ph;
     
 double energy_sm_el=p_e_out_div_smeared.E();
 
-
 //If i want to have the image of the event with %energy with e+gamma together do this,
 //otherwise create it inside the shower.
 TH2F*EcalGrid=myGrid->CreateGrid(5,-7.125,7.125,5,-7.125,7.125);
+PxPyPzEVector pNO(0,0,0,0);
+    
 
+auto n_photons = event.photons.size();     
+if (n_photons>0){  
+ PxPyPzEVector p_gamma_Lab = {
+                 event.photons[0].px, 
+				 event.photons[0].py,
+				 event.photons[0].pz,
+			     event.photons[0].E};
+
+PxPyPzEVector p_gamma_Lab_div = RotDiv(p_mu_in,p_gamma_Lab);
+    
+double en_ph_sm=p_gamma_Lab_div.E();
+    
+TMatrixD cooPH=MCSphoton(p_gamma_Lab_div,xin,yin);
+    
+LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1]);
+
+    
+    if ((energy_sm_el+en_ph_sm)>1)
+    {
+    //for electrons
+    int nPart=1; 
+    double X0depth=0.;
+    coo_el.push_back(coo[2][0]*100);//cm
+    coo_el.push_back(coo[3][0]*100);//cm
+    energy_in_el.push_back(energy_sm_el);
+    myGrid->SetEnergy(energy_sm_el);
+    EMShower TheShower(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_el,coo_el);
+    TheShower.compute();    
+    
+    //for photons   
+    int nPart=2; 
+    double X0depth=-log(gRandom->Uniform())*(9./7.);
+    coo_ph.push_back(cooPH[0][0]*100);//cm
+    coo_ph.push_back(cooPH[0][1]*100);//cm
+    energy_in_ph.push_back(en_ph_sm/2);
+    energy_in_ph.push_back(en_ph_sm/2);
+    myGrid->SetEnergy(en_ph_sm);
+    EMShower TheShower(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_ph,coo_ph);
+    TheShower.compute();}
+ }
+else {    
 //for electrons
 if (energy_sm_el>1)
 {int nPart=1; 
@@ -149,42 +177,9 @@ myGrid->SetEnergy(energy_sm_el);
 EMShower TheShower(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_el,coo_el);
 TheShower.compute();}
     
+LoadPhoton(event, photon,pNO,0.,0.);}
    
-//for photons  
-PxPyPzEVector pNO(0,0,0,0);
-auto n_photons = event.photons.size();     
-if (n_photons>0){  
- PxPyPzEVector p_gamma_Lab = {
-                 event.photons[0].px, 
-				 event.photons[0].py,
-				 event.photons[0].pz,
-			     event.photons[0].E};
-
-PxPyPzEVector p_gamma_Lab_div = RotDiv(p_mu_in,p_gamma_Lab);
-
-TMatrixD cooPH=MCSphoton(p_gamma_Lab_div,xin,yin);
-    
-LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1]);
-
-
-//NB CONVERTI COO DI FAST SIM (m) IN cm PERCHE ECAL E' IN cm, poi puoi usare la percentuale perchè così è indipendente dal valore iniziale dell'energia
-
-    double en_ph_sm=p_gamma_Lab_div.E();
-    
-    if ((energy_sm_el+en_ph_sm)>1){
-    int nPart=2; 
-    double X0depth=-log(gRandom->Uniform())*(9./7.);
-    coo_ph.push_back(cooPH[0][0]*100);//cm
-    coo_ph.push_back(cooPH[0][1]*100);//cm
-    energy_in_ph.push_back(en_ph_sm/2);
-    energy_in_ph.push_back(en_ph_sm/2);
-    myGrid->SetEnergy(en_ph_sm);
-    EMShower TheShower(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_ph,coo_ph);
-    TheShower.compute();}
- }
-else LoadPhoton(event, photon,pNO,0.,0.);
-   
-//myGrid->Draw_ECAL(EcalGrid); 
+myGrid->Draw_ECAL(EcalGrid); 
 /*vector<double> Ecell=myGrid->EnergyContent(EcalGrid); 
 detKinBeamRot.Ecell1=Ecell[0];
 detKinBeamRot.Ecell2=Ecell[1];    

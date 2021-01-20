@@ -41,7 +41,7 @@ void SetEnergy(double energy);
 int* GiveArray3x3(int n);
 double AddHitCoo(double r,double phi,double xi,double yi,double w);
 void AddHitCooDepth(double r, double phi,double xi, double yi, double w, double depth, double deX0depthoffset_pth);
-void Draw_ECAL(MuEana::KineVars & kv);
+void Draw_ECAL(KineVars & kv);
 vector<double> EnergyContent();
 void Print_();
 inline void setSpotEnergy(double e) { spotEnergy = e; }

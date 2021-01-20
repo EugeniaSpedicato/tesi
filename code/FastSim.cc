@@ -126,7 +126,7 @@ myGrid->CreateGrid(5,-7.125,7.125,5,-7.125,7.125);
 PxPyPzEVector pNO(0,0,0,0);
 
 
-/*auto n_photons = event.photons.size();     
+auto n_photons = event.photons.size();     
 if (n_photons>0){  
  PxPyPzEVector p_gamma_Lab = {
                  event.photons[0].px, 
@@ -164,9 +164,10 @@ LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1]);
     energy_in_ph.push_back(en_ph_sm/2);
     myGrid->SetEnergy(en_ph_sm);
     EMShower TheShowerPh(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_ph,coo_ph);
-    TheShowerPh.compute();}
+    TheShowerPh.compute();
+    myGrid->Draw_ECAL(); }
  }
-else {  */  
+else {    
 //for electrons
 if (energy_sm_el>10)
 {nPart=1; 
@@ -177,7 +178,7 @@ energy_in_el.push_back(energy_sm_el);
 myGrid->SetEnergy(energy_sm_el);
 EMShower TheShower(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_el,coo_el);
 TheShower.compute();
-myGrid->Draw_ECAL(); 
+//myGrid->Draw_ECAL(); 
 }
    
 LoadPhoton(event, photon,pNO,0.,0.);

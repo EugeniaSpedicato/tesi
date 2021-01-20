@@ -1,6 +1,6 @@
 #ifndef MuEana_H
 #define MuEana_H
-
+#include <vector>
 ///////////////////////////////////////////////
 // Classes defining MuE analysis variables
 //
@@ -31,11 +31,11 @@ namespace MuE {
     Double_t deltaPhi; // acoplanarity (deltaPhi)
     Double_t openingAngle; // opening angle mu-e out in the Lab
     Double_t tripleProduct; // triple product btw normalized vectors i . mu x e
-     Double_t cooXe;
-      Double_t cooXmu;
-      Double_t cooYe;
-      Double_t cooYmu;
-   Double_t pXmu;
+    Double_t cooXe;
+    Double_t cooXmu;
+    Double_t cooYe;
+    Double_t cooYmu;
+    Double_t pXmu;
 Double_t pYmu;
 Double_t pZmu;
 Double_t pXe;

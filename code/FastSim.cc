@@ -109,8 +109,8 @@ LoadKineVars(p_mu_in_div, p_e_in_div, p_mu_out_div_smeared, p_e_out_div_smeared,
 
 //prepare for EMShower
 bool bFixedLength=true;
-//int nPart;
-//double X0depth;
+int nPart; 
+double X0depth=0.;
 std::vector<double> energy_in_el;
 std::vector<double> energy_in_ph;
 
@@ -123,8 +123,7 @@ double energy_sm_el=p_e_out_div_smeared.E();
 //otherwise create it inside the shower.
 TH2F*EcalGrid=myGrid->CreateGrid(5,-7.125,7.125,5,-7.125,7.125);
 PxPyPzEVector pNO(0,0,0,0);
-int nPart; 
-double X0depth=0.;
+
 
 auto n_photons = event.photons.size();     
 if (n_photons>0){  
@@ -181,8 +180,9 @@ TheShower.compute();}
 LoadPhoton(event, photon,pNO,0.,0.);}
    
 //myGrid->Draw_ECAL(EcalGrid); 
-vector<double> Ecell=myGrid->EnergyContent(EcalGrid); 
-detKinBeamRot.Ecell1=Ecell[0];
+vector<double> E_cell=myGrid->EnergyContent(EcalGrid); 
+detKinBeamRot.Ecell=E_cell;
+/*detKinBeamRot.Ecell1=Ecell[0];
 detKinBeamRot.Ecell2=Ecell[1];    
 detKinBeamRot.Ecell3=Ecell[2];    
 detKinBeamRot.Ecell4=Ecell[3];    
@@ -206,7 +206,7 @@ detKinBeamRot.Ecell21=Ecell[20];
 detKinBeamRot.Ecell22=Ecell[21];    
 detKinBeamRot.Ecell23=Ecell[22];    
 detKinBeamRot.Ecell24=Ecell[23];    
-detKinBeamRot.Ecell25=Ecell[24]; 
+detKinBeamRot.Ecell25=Ecell[24]; */
     
 }
 

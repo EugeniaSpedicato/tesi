@@ -180,8 +180,8 @@ TheShower.compute();}
     
 LoadPhoton(event, photon,pNO,0.,0.);}
    
-myGrid->Draw_ECAL(EcalGrid); 
-/*vector<double> Ecell=myGrid->EnergyContent(EcalGrid); 
+//myGrid->Draw_ECAL(EcalGrid); 
+vector<double> Ecell=myGrid->EnergyContent(EcalGrid); 
 detKinBeamRot.Ecell1=Ecell[0];
 detKinBeamRot.Ecell2=Ecell[1];    
 detKinBeamRot.Ecell3=Ecell[2];    
@@ -206,7 +206,7 @@ detKinBeamRot.Ecell21=Ecell[20];
 detKinBeamRot.Ecell22=Ecell[21];    
 detKinBeamRot.Ecell23=Ecell[22];    
 detKinBeamRot.Ecell24=Ecell[23];    
-detKinBeamRot.Ecell25=Ecell[24]; */ 
+detKinBeamRot.Ecell25=Ecell[24]; 
     
 }
 

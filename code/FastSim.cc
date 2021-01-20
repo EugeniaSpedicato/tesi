@@ -123,7 +123,8 @@ double energy_sm_el=p_e_out_div_smeared.E();
 //otherwise create it inside the shower.
 TH2F*EcalGrid=myGrid->CreateGrid(5,-7.125,7.125,5,-7.125,7.125);
 PxPyPzEVector pNO(0,0,0,0);
-    
+int nPart; 
+double X0depth=0.;
 
 auto n_photons = event.photons.size();     
 if (n_photons>0){  
@@ -145,25 +146,25 @@ LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1]);
     if ((energy_sm_el+en_ph_sm)>1)
     {
     //for electrons
-    int nPart=1; 
-    double X0depth=0.;
+    nPart=1;
+    X0depth=0.;
     coo_el.push_back(coo[2][0]*100);//cm
     coo_el.push_back(coo[3][0]*100);//cm
     energy_in_el.push_back(energy_sm_el);
     myGrid->SetEnergy(energy_sm_el);
-    EMShower TheShower(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_el,coo_el);
-    TheShower.compute();    
+    EMShower TheShowerEl(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_el,coo_el);
+    TheShowerEl.compute();    
     
     //for photons   
-    int nPart=2; 
-    double X0depth=-log(gRandom->Uniform())*(9./7.);
+    nPart=2; 
+    X0depth=-log(gRandom->Uniform())*(9./7.);
     coo_ph.push_back(cooPH[0][0]*100);//cm
     coo_ph.push_back(cooPH[0][1]*100);//cm
     energy_in_ph.push_back(en_ph_sm/2);
     energy_in_ph.push_back(en_ph_sm/2);
     myGrid->SetEnergy(en_ph_sm);
-    EMShower TheShower(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_ph,coo_ph);
-    TheShower.compute();}
+    EMShower TheShowerPh(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_ph,coo_ph);
+    TheShowerPh.compute();}
  }
 else {    
 //for electrons

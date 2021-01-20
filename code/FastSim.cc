@@ -179,9 +179,8 @@ TheShower.compute();}
     
 LoadPhoton(event, photon,pNO,0.,0.);}
    
-//myGrid->Draw_ECAL(EcalGrid); 
-vector<double> E_cell=myGrid->EnergyContent(EcalGrid); 
-detKinBeamRot.Ecell=E_cell;
+myGrid->Draw_ECAL(EcalGrid); 
+//vector<double> E_cell=myGrid->EnergyContent(EcalGrid); 
 /*detKinBeamRot.Ecell1=Ecell[0];
 detKinBeamRot.Ecell2=Ecell[1];    
 detKinBeamRot.Ecell3=Ecell[2];    

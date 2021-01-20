@@ -136,7 +136,7 @@ void ECAL::AddHitCooDepth(double r, double phi,double xi, double yi, double w, d
 };
 
 // metodo che disegna l'evento nel calorimetro e le celle che vengono colpite
-void ECAL::Draw_ECAL(){
+void ECAL::Draw_ECAL(KineVars & kv){
 
 TCanvas * Ecal_= new TCanvas("Ecal_","Ecal_",1500,100,3500,2000);
 Ecal_->Divide(2,1);
@@ -151,6 +151,31 @@ Ecal_->cd(2);
 EcalGrid->Draw("LEGO");
 Ecal_->SaveAs("/home/LHCB-T3/espedicato/tesi/Ecal.png");
 
+kv.Ecell1=Ecell[0];
+kv.Ecell2=Ecell[1];    
+kv.Ecell3=Ecell[2];    
+kv.Ecell4=Ecell[3];    
+kv.Ecell5=Ecell[4];    
+kv.Ecell6=Ecell[5];    
+kv.Ecell7=Ecell[6];    
+kv.Ecell8=Ecell[7];    
+kv.Ecell9=Ecell[8];    
+kv.Ecell10=Ecell[9]; 
+kv.Ecell11=Ecell[10]; 
+kv.Ecell12=Ecell[11]; 
+kv.Ecell13=Ecell[12];    
+kv.Ecell14=Ecell[13];    
+kv.Ecell15=Ecell[14];    
+kv.Ecell16=Ecell[15];    
+kv.Ecell17=Ecell[16];    
+kv.Ecell18=Ecell[17];    
+kv.Ecell19=Ecell[18];    
+kv.Ecell20=Ecell[19];    
+kv.Ecell21=Ecell[20];    
+kv.Ecell22=Ecell[21];    
+kv.Ecell23=Ecell[22];    
+kv.Ecell24=Ecell[23];    
+kv.Ecell25=Ecell[24];
 
 // riempi celle    
 int binMax=EcalGrid->GetMaximumBin();  

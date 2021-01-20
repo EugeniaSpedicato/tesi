@@ -50,20 +50,20 @@ ECAL::ECAL(double nbinsx,
 
 // metodo che crea l'istogramma rappresentante il calorimetro
 
-TH2F* ECAL::CreateGrid(double nbinsx,double xlow,double xup,double nbinsy,double ylow,double yup)
+/*TH2F* ECAL::CreateGrid(double nbinsx,double xlow,double xup,double nbinsy,double ylow,double yup)
 {
     TH2F* EcalGrid = new TH2F("EcalGrid" , "EM Calorimeter with E in GeV",nbinsx,xlow,xup,nbinsy,ylow,yup);
     return EcalGrid;
-};
+};*/
 
-/*TH2F* ECAL::CreateGrid(double nbinsx,double xlow,double xup,double nbinsy,double ylow,double yup)
+TH2F* ECAL::CreateGrid(double nbinsx,double xlow,double xup,double nbinsy,double ylow,double yup)
 {
     EcalGrid = new TH2F("EcalGrid" , "EM Calorimeter with E in GeV",nbinsx,xlow,xup,nbinsy,ylow,yup);
     return EcalGrid;
 };
 
 TH2F* ECAL::GiveEcalGrid()
-{return EcalGrid;};*/
+{return EcalGrid;};
 
 void ECAL::SetEnergy(double energy)
 {

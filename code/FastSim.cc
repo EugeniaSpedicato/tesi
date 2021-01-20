@@ -122,7 +122,7 @@ double energy_sm_el=p_e_out_div_smeared.E();
 //If i want to have the image of the event with %energy with e+gamma together do this,
 //otherwise create it inside the shower.
 
-//TH2F*EcalGrid=myGrid->CreateGrid(5,-7.125,7.125,5,-7.125,7.125);
+myGrid->CreateGrid(5,-7.125,7.125,5,-7.125,7.125);
 PxPyPzEVector pNO(0,0,0,0);
 
 
@@ -177,7 +177,8 @@ energy_in_el.push_back(energy_sm_el);
 myGrid->SetEnergy(energy_sm_el);
 EMShower TheShower(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_el,coo_el);
 TheShower.compute();}
-    
+
+TH2F*EcalGrid=myGrid->GiveEcalGrid();    
 LoadPhoton(event, photon,pNO,0.,0.);
 //}
    

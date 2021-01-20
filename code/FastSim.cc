@@ -142,7 +142,7 @@ TMatrixD cooPH=MCSphoton(p_gamma_Lab_div,xin,yin);
 LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1]);
 
     
-    if ((energy_sm_el+en_ph_sm)>1)
+    if ((energy_sm_el+en_ph_sm)>10)
     {
     //for electrons
     nPart=1;
@@ -167,7 +167,7 @@ LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1]);
  }
 else {    
 //for electrons
-if (energy_sm_el>1)
+if (energy_sm_el>10)
 {int nPart=1; 
 double X0depth=0.;
 coo_el.push_back(coo[2][0]*100);//cm

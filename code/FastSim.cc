@@ -182,7 +182,7 @@ TheShower.compute();
 }
    
 LoadPhoton(event, photon,pNO,0.,0.);
-//}
+}
    
 //myGrid->Draw_ECAL(); 
 //vector<double> E_cell=myGrid->EnergyContent(EcalGrid); 

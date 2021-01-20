@@ -121,7 +121,7 @@ double ECAL::AddHitCoo(double r, double phi,double xi, double yi, double w)
     double y=r*sin(phi)+yi; // coo y in cm
     EcalGrid->Fill(x,y,w);   
  
-double number=ECAL::GiveCentralCell(x,y,a);
+double number=ECAL::GiveCentralCell(x,y);
 return number;
 };
 
@@ -169,7 +169,7 @@ Energy_dist3x3->Fill(energy3x3/energy_IN);
 };
 
 
-vector<double> ECAL::EnergyContent(TH2F* a)
+vector<double> ECAL::EnergyContent()
 {
     for (int i=1; i<26 ; ++i)
     {E_cell.push_back(EcalGrid->GetBinContent(Rev_number[i]));}

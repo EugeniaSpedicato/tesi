@@ -33,7 +33,7 @@ ECAL(double nbinsx,
 
 //double radlen;
 
-voi CreateGrid(double nbinsx,double xlow,double xup,double nbinsy,double ylow,double yup);
+void CreateGrid(double nbinsx,double xlow,double xup,double nbinsy,double ylow,double yup);
 TH2F* GiveEcalGrid();
 double GiveCentralCell(double coox,double cooy);
 void SetEnergy(double energy);

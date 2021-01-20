@@ -121,7 +121,8 @@ double energy_sm_el=p_e_out_div_smeared.E();
 
 //If i want to have the image of the event with %energy with e+gamma together do this,
 //otherwise create it inside the shower.
-TH2F*EcalGrid=myGrid->CreateGrid(5,-7.125,7.125,5,-7.125,7.125);
+
+//TH2F*EcalGrid=myGrid->CreateGrid(5,-7.125,7.125,5,-7.125,7.125);
 PxPyPzEVector pNO(0,0,0,0);
 
 
@@ -168,8 +169,8 @@ LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1]);
 else {  */  
 //for electrons
 if (energy_sm_el>10)
-{int nPart=1; 
-double X0depth=0.;
+{nPart=1; 
+X0depth=0.;
 coo_el.push_back(coo[2][0]*100);//cm
 coo_el.push_back(coo[3][0]*100);//cm
 energy_in_el.push_back(energy_sm_el);

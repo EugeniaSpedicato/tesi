@@ -50,20 +50,20 @@ ECAL::ECAL(double nbinsx,
 
 // metodo che crea l'istogramma rappresentante il calorimetro
 
-/*TH2F* ECAL::CreateGrid(double nbinsx,double xlow,double xup,double nbinsy,double ylow,double yup)
+TH2F* ECAL::CreateGrid(double nbinsx,double xlow,double xup,double nbinsy,double ylow,double yup)
 {
     TH2F* EcalGrid = new TH2F("EcalGrid" , "EM Calorimeter with E in GeV",nbinsx,xlow,xup,nbinsy,ylow,yup);
     return EcalGrid;
-};*/
+};
 
-TH2F* ECAL::CreateGrid(double nbinsx,double xlow,double xup,double nbinsy,double ylow,double yup)
+/*TH2F* ECAL::CreateGrid(double nbinsx,double xlow,double xup,double nbinsy,double ylow,double yup)
 {
     EcalGrid = new TH2F("EcalGrid" , "EM Calorimeter with E in GeV",nbinsx,xlow,xup,nbinsy,ylow,yup);
     return EcalGrid;
 };
 
 TH2F* ECAL::GiveEcalGrid()
-{return EcalGrid;};
+{return EcalGrid;};*/
 
 void ECAL::SetEnergy(double energy)
 {
@@ -99,9 +99,9 @@ int* ECAL::GiveArray3x3(int n)
     if (n==14) {Array9= new int[9]{8,9,10,13,14,15,18,19,20};}
     if (n==15) {Array9= new int[9]{9,10,14,15,19,20,0,0,0};}
     if (n==16) {Array9= new int[9]{11,12,16,17,21,22,0,0,0};}
-   if (n==17) {Array9= new int[9]{11,12,13,16,17,18,21,22,23};}
-   if (n==18) {Array9= new int[9]{12,13,14,17,18,19,22,23,24};}
-   if (n==19) {Array9= new int[9]{13,14,15,18,19,20,23,24,25};}
+    if (n==17) {Array9= new int[9]{11,12,13,16,17,18,21,22,23};}
+    if (n==18) {Array9= new int[9]{12,13,14,17,18,19,22,23,24};}
+    if (n==19) {Array9= new int[9]{13,14,15,18,19,20,23,24,25};}
     if (n==20) {Array9= new int[9]{14,15,19,20,24,25,0,0,0};}
     if (n==21) {Array9= new int[9]{16,17,21,22,0,0,0,0,0};}
     if (n==22) {Array9= new int[9]{16,17,18,21,22,23,0,0,0};}

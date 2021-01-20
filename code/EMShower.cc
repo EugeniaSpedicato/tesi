@@ -119,9 +119,9 @@ double fotos = theECAL->photoStatistics() * theECAL->lightCollectionEfficiency()
           
           
 //Se voglio studiare cluster separati:
-//EcalGrid=theGrid->CreateGrid(5,-7.125,7.125,5,-7.125,7.125);
+EcalGrid=theGrid->CreateGrid(5,-7.125,7.125,5,-7.125,7.125);
 //Se voglio studiare cluster evento (e+gamma) insieme:
-EcalGrid=theGrid->GiveEcalGrid();
+//EcalGrid=theGrid->GiveEcalGrid();
    
       }
 

@@ -176,12 +176,14 @@ coo_el.push_back(coo[3][0]*100);//cm
 energy_in_el.push_back(energy_sm_el);
 myGrid->SetEnergy(energy_sm_el);
 EMShower TheShower(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_el,coo_el);
-TheShower.compute();}
+TheShower.compute();
+myGrid->Draw_ECAL(); 
+}
    
 LoadPhoton(event, photon,pNO,0.,0.);
 //}
    
-myGrid->Draw_ECAL(); 
+//myGrid->Draw_ECAL(); 
 //vector<double> E_cell=myGrid->EnergyContent(EcalGrid); 
 /*detKinBeamRot.Ecell1=Ecell[0];
 detKinBeamRot.Ecell2=Ecell[1];    

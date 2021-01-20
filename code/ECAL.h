@@ -33,15 +33,15 @@ ECAL(double nbinsx,
 
 //double radlen;
 
-TH2F* CreateGrid(double nbinsx,double xlow,double xup,double nbinsy,double ylow,double yup);
+voi CreateGrid(double nbinsx,double xlow,double xup,double nbinsy,double ylow,double yup);
 TH2F* GiveEcalGrid();
-double GiveCentralCell(double coox,double cooy,TH2F* a);
+double GiveCentralCell(double coox,double cooy);
 void SetEnergy(double energy);
 int* GiveArray3x3(int n);
-double AddHitCoo(double r,double phi,double xi,double yi,double w,TH2F* a);
-void AddHitCooDepth(double r, double phi,double xi, double yi, double w, double depth, double deX0depthoffset_pth, TH2F* a);
-void Draw_ECAL(TH2F* a);
-vector<double> EnergyContent(TH2F* a);
+double AddHitCoo(double r,double phi,double xi,double yi,double w);
+void AddHitCooDepth(double r, double phi,double xi, double yi, double w, double depth, double deX0depthoffset_pth);
+void Draw_ECAL();
+vector<double> EnergyContent();
 void Print_();
 inline void setSpotEnergy(double e) { spotEnergy = e; }
 

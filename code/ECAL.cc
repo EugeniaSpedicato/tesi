@@ -56,10 +56,10 @@ ECAL::ECAL(double nbinsx,
     return EcalGrid;
 };*/
 
-TH2F* ECAL::CreateGrid(double nbinsx,double xlow,double xup,double nbinsy,double ylow,double yup)
+void ECAL::CreateGrid(double nbinsx,double xlow,double xup,double nbinsy,double ylow,double yup)
 {
     EcalGrid = new TH2F("EcalGrid" , "EM Calorimeter with E in GeV",nbinsx,xlow,xup,nbinsy,ylow,yup);
-    return EcalGrid;
+   // return EcalGrid;
 };
 
 TH2F* ECAL::GiveEcalGrid()
@@ -70,11 +70,11 @@ void ECAL::SetEnergy(double energy)
     energy_IN=energy;
 }
 // metodo che assegna il numero della cella che viene colpita dalla particella 
-double ECAL::GiveCentralCell(double coox,double cooy,TH2F* a)
+double ECAL::GiveCentralCell(double coox,double cooy)
 {   
-    int binx = a->GetXaxis()->FindBin(coox);
-    int biny = a->GetYaxis()->FindBin(cooy);
-    int nbin = a->GetBin(binx,biny);
+    int binx = EcalGrid->GetXaxis()->FindBin(coox);
+    int biny = EcalGrid->GetYaxis()->FindBin(cooy);
+    int nbin = EcalGrid->GetBin(binx,biny);
 
     cout <<"Number of the cell:" << number[nbin] << endl;
 
@@ -115,54 +115,54 @@ int* ECAL::GiveArray3x3(int n)
 // metodo che aggiunge il punto di coo(x,y) all'istogramma, quindi al calorimetro e dà numero cella
 
 
-double ECAL::AddHitCoo(double r, double phi,double xi, double yi, double w, TH2F* a)
+double ECAL::AddHitCoo(double r, double phi,double xi, double yi, double w)
 {   r *= 2.19;
     double x=r*cos(phi)+xi; // coo x in cm
     double y=r*sin(phi)+yi; // coo y in cm
-    a->Fill(x,y,w);   
+    EcalGrid->Fill(x,y,w);   
  
 double number=ECAL::GiveCentralCell(x,y,a);
 return number;
 };
 
-void ECAL::AddHitCooDepth(double r, double phi,double xi, double yi, double w, double depth, double X0depth, TH2F* a)
+void ECAL::AddHitCooDepth(double r, double phi,double xi, double yi, double w, double depth, double X0depth)
 {   depth += X0depth;
     r *= 2.19;
     double x=r*cos(phi)+xi; // coo x in cm
     double y=r*sin(phi)+yi; // coo y in cm
  if (24.7-X0depth>depth) 
- {a->Fill(x,y,w);}
+ {EcalGrid->Fill(x,y,w);}
 
 };
 
 // metodo che disegna l'evento nel calorimetro e le celle che vengono colpite
-void ECAL::Draw_ECAL(TH2F* a){
+void ECAL::Draw_ECAL(){
 
 TCanvas * Ecal_= new TCanvas("Ecal_","Ecal_",1500,100,3500,2000);
 Ecal_->Divide(2,1);
 Ecal_->cd(1);
 gStyle->SetPalette(kAquamarine);
 //TColor::InvertPalette();
-a->SetXTitle("x (cm)");
-a->SetYTitle("y (cm)");
-a->Draw("COL");
-a->Draw("TEXT SAME");
+EcalGrid->SetXTitle("x (cm)");
+EcalGrid->SetYTitle("y (cm)");
+EcalGrid->Draw("COL");
+EcalGrid->Draw("TEXT SAME");
 Ecal_->cd(2);
-a->Draw("LEGO");
+EcalGrid->Draw("LEGO");
 Ecal_->SaveAs("/home/LHCB-T3/espedicato/tesi/Ecal.png");
 
 
 // riempi celle    
-int binMax=a->GetMaximumBin();  
+int binMax=EcalGrid->GetMaximumBin();  
 int CentralCell=number[binMax];
 cout << "cella centrale rev " << Rev_number[CentralCell] <<" and vera " << CentralCell << endl;
-Energy_dist1->Fill(a->GetBinContent(binMax)/energy_IN);
+Energy_dist1->Fill(EcalGrid->GetBinContent(binMax)/energy_IN);
 
 double energy3x3=0.;    
 ECAL::GiveArray3x3(CentralCell);
 for (int i=0; i<9; ++i)
 {
-    if (Array9[i]>0 && Array9[i]<25) energy3x3+=a->GetBinContent(Rev_number[Array9[i]]);
+    if (Array9[i]>0 && Array9[i]<25) energy3x3+=EcalGrid->GetBinContent(Rev_number[Array9[i]]);
     cout << Rev_number[Array9[i]] << " and vera " << Array9[i]<< " c'è energia " << energy3x3 << endl;
 }
 Energy_dist3x3->Fill(energy3x3/energy_IN);
@@ -172,7 +172,7 @@ Energy_dist3x3->Fill(energy3x3/energy_IN);
 vector<double> ECAL::EnergyContent(TH2F* a)
 {
     for (int i=1; i<26 ; ++i)
-    {E_cell.push_back(a->GetBinContent(Rev_number[i]));}
+    {E_cell.push_back(EcalGrid->GetBinContent(Rev_number[i]));}
     return E_cell;
 }
    

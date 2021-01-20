@@ -119,9 +119,9 @@ double fotos = theECAL->photoStatistics() * theECAL->lightCollectionEfficiency()
           
           
 //Se voglio studiare cluster separati:
-EcalGrid=theGrid->CreateGrid(5,-7.125,7.125,5,-7.125,7.125);
+//theGrid->CreateGrid(5,-7.125,7.125,5,-7.125,7.125);
 //Se voglio studiare cluster evento (e+gamma) insieme:
-//EcalGrid=theGrid->GiveEcalGrid();
+//theGrid->GiveEcalGrid();
    
       }
 
@@ -415,7 +415,7 @@ void EMShower::compute() {
                   depth = myGammaGenerator->shoot();
                     // cout << "depth è " << depth << endl;
                 } while (depth > t);
-                theGrid->AddHitCooDepth(ri,phi,Xi,Yi,spote,depth,X0depth,EcalGrid);
+                theGrid->AddHitCooDepth(ri,phi,Xi,Yi,spote,depth,X0depth);
                 Etot[i] += spote;
                 Etot_step[iStep] += spote;
                 //			   std::// cout << " Done " << std::endl;
@@ -426,7 +426,7 @@ void EMShower::compute() {
             // This gives the number of the cell in which the particle impact  
             //numberPart= theGrid->GiveCentralCell(Xi,Yi,EcalGrid);
             // This gives the number of the cell where the spot is set 
-            numberSpot = theGrid->AddHitCoo(ri,phi,Xi,Yi,spote,EcalGrid);
+            numberSpot = theGrid->AddHitCoo(ri,phi,Xi,Yi,spote);
            // if (numberSpot!=0)
             
               

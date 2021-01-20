@@ -81,7 +81,7 @@ private:
     
   // The crystal grid
   ECAL* theGrid;
-  TH2F* EcalGrid; 
+  //TH2F* EcalGrid; 
   bool bFixedLength_;
   int nPart;
   // The incident particle(s)

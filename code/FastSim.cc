@@ -997,9 +997,9 @@ kv.def_angle_e = def_angle[1][0];
       
 void FastSim::LoadPhoton(const MuE::Event & event, MuE::Photon & photon,const PxPyPzEVector & p_gamma_lab_div,const Double_t & x,const Double_t & y) {
   // by now at most one photon
- /* auto n_photons = event.photons.size();
+ auto n_photons = event.photons.size();
   
-  if (n_photons >0) {  */
+  if (n_photons >0) {  
 PxPyPzEVector p_gamma_CoM = Lorentz_ToCoM(p_gamma_lab_div);
   
     

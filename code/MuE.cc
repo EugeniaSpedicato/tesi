@@ -284,7 +284,7 @@ ECAL *TheEcal= new ECAL(5,-7.125,7.125,5,-7.125,7.125);
     
     
 //questo lo devi fare alla fine di tutti gli eventi
-  TheEcal->Print_();
+  //TheEcal->Print_();
     
     
     

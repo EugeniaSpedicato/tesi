@@ -81,7 +81,7 @@ double ECAL::GiveCentralCell(double coox,double cooy)
     return number[nbin];
 };
 
-int* ECAL::GiveArray3x3(int n)
+/*int* ECAL::GiveArray3x3(int n)
 {
     if (n==1) {Array9= new int[9]{1,6,7,2,0,0,0,0,0};}
     if (n==2) {Array9= new int[9]{1,2,6,7,8,3,0,0,0};}
@@ -110,7 +110,7 @@ int* ECAL::GiveArray3x3(int n)
     if (n==25) {Array9= new int[9]{19,20,24,25,0,0,0,0,0};}
     
     return 0;
-}
+}*/
 
 // metodo che aggiunge il punto di coo(x,y) all'istogramma, quindi al calorimetro e dà numero cella
 
@@ -152,7 +152,7 @@ EcalGrid->Draw("LEGO");
 Ecal_->SaveAs("/home/LHCB-T3/espedicato/tesi/Ecal.png");
 
 
-// riempi celle    
+/*// riempi celle    
 int binMax=EcalGrid->GetMaximumBin();  
 int CentralCell=number[binMax];
 cout << "cella centrale rev " << Rev_number[CentralCell] <<" and vera " << CentralCell << endl;
@@ -165,7 +165,7 @@ for (int i=0; i<9; ++i)
     if (Array9[i]>0 && Array9[i]<25) energy3x3+=EcalGrid->GetBinContent(Rev_number[Array9[i]]);
     cout << Rev_number[Array9[i]] << " and vera " << Array9[i]<< " c'è energia " << energy3x3 << endl;
 }
-Energy_dist3x3->Fill(energy3x3/energy_IN);
+Energy_dist3x3->Fill(energy3x3/energy_IN);*/
 };
 
 
@@ -176,7 +176,7 @@ vector<double> ECAL::EnergyContent()
     return E_cell;
 }
    
-void ECAL::Print_()
+/*void ECAL::Print_()
 {TCanvas * encell= new TCanvas("Energy cells","Energy cells",1000,100,2500,2000);
 encell->Divide(1,2);
 encell->cd(1);
@@ -188,4 +188,4 @@ Energy_dist3x3->SetLineWidth(3);
 Energy_dist3x3->GetXaxis()->SetTitle("E_rec/E_in");
 Energy_dist3x3->Draw();
 encell->SaveAs("/home/LHCB-T3/espedicato/tesi/EnCell.png");
-}
+}*/

@@ -140,8 +140,8 @@ TMatrixD cooPH=MCSphoton(p_gamma_Lab_div,xin,yin);
     
 LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1]);
 
-    
-    if ((energy_sm_el+en_ph_sm)>1)
+double ECAL_E= energy_sm_el+en_ph_sm;   
+    if (ECAL_E>1)
     {
     //for electrons
     nPart=1;
@@ -165,8 +165,8 @@ LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1]);
     TheShowerPh.compute();
         
         
-    myGrid->Draw_ECAL(); 
-    vector<double> Ecell=myGrid->EnergyContent(); 
+myGrid->Draw_ECAL(); 
+vector<double> Ecell=myGrid->EnergyContent(); 
 detKinBeamRot.Ecell1=Ecell[0];
 detKinBeamRot.Ecell2=Ecell[1];    
 detKinBeamRot.Ecell3=Ecell[2];    

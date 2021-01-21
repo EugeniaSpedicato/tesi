@@ -1015,7 +1015,7 @@ PxPyPzEVector p_gamma_CoM = Lorentz_ToCoM(p_gamma_lab_div);
   // photon.n_cell_ph = ECAL::GiveCentralCell(photon.coox,photon.cooy,myGrid);
    
     
- // }
+  }
 
   else {
     photon.energyCoM = -1;

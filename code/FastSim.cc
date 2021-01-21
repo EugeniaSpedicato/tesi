@@ -123,8 +123,6 @@ double energy_sm_el=p_e_out_div_smeared.E();
 //otherwise create it inside the shower.
 
 myGrid->CreateGrid(5,-7.125,7.125,5,-7.125,7.125);
-PxPyPzEVector pNO(0,0,0,0);
-
 
 auto n_photons = event.photons.size();     
 if (n_photons>0){  
@@ -165,6 +163,8 @@ LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1]);
     myGrid->SetEnergy(en_ph_sm);
     EMShower TheShowerPh(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_ph,coo_ph);
     TheShowerPh.compute();
+        
+        
     myGrid->Draw_ECAL(); 
     vector<double> Ecell=myGrid->EnergyContent(); 
 detKinBeamRot.Ecell1=Ecell[0];
@@ -232,8 +232,6 @@ detKinBeamRot.Ecell23=Ecell[22];
 detKinBeamRot.Ecell24=Ecell[23];    
 detKinBeamRot.Ecell25=Ecell[24];
 }
-   
-LoadPhoton(event, photon,pNO,0.,0.);
 }
     
 }
@@ -999,9 +997,9 @@ kv.def_angle_e = def_angle[1][0];
       
 void FastSim::LoadPhoton(const MuE::Event & event, MuE::Photon & photon,const PxPyPzEVector & p_gamma_lab_div,const Double_t & x,const Double_t & y) {
   // by now at most one photon
-  auto n_photons = event.photons.size();
+ /* auto n_photons = event.photons.size();
   
-  if (n_photons >0) {  
+  if (n_photons >0) {  */
 PxPyPzEVector p_gamma_CoM = Lorentz_ToCoM(p_gamma_lab_div);
   
     
@@ -1017,7 +1015,7 @@ PxPyPzEVector p_gamma_CoM = Lorentz_ToCoM(p_gamma_lab_div);
   // photon.n_cell_ph = ECAL::GiveCentralCell(photon.coox,photon.cooy,myGrid);
    
     
-  }
+ // }
 
   else {
     photon.energyCoM = -1;

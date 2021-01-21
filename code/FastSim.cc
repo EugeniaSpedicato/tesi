@@ -143,7 +143,7 @@ TMatrixD cooPH=MCSphoton(p_gamma_Lab_div,xin,yin);
 LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1]);
 
     
-    if ((energy_sm_el+en_ph_sm)>10)
+    if ((energy_sm_el+en_ph_sm)>1)
     {
     //for electrons
     nPart=1;
@@ -195,7 +195,7 @@ detKinBeamRot.Ecell25=Ecell[24];}
  }
 else {    
 //for electrons
-if (energy_sm_el>10)
+if (energy_sm_el>1)
 {nPart=1; 
 X0depth=0.;
 coo_el.push_back(coo[2][0]*100);//cm
@@ -235,34 +235,6 @@ detKinBeamRot.Ecell25=Ecell[24];
    
 LoadPhoton(event, photon,pNO,0.,0.);
 }
-   
-//myGrid->Draw_ECAL(); 
-//vector<double> E_cell=myGrid->EnergyContent(EcalGrid); 
-/*detKinBeamRot.Ecell1=Ecell[0];
-detKinBeamRot.Ecell2=Ecell[1];    
-detKinBeamRot.Ecell3=Ecell[2];    
-detKinBeamRot.Ecell4=Ecell[3];    
-detKinBeamRot.Ecell5=Ecell[4];    
-detKinBeamRot.Ecell6=Ecell[5];    
-detKinBeamRot.Ecell7=Ecell[6];    
-detKinBeamRot.Ecell8=Ecell[7];    
-detKinBeamRot.Ecell9=Ecell[8];    
-detKinBeamRot.Ecell10=Ecell[9]; 
-detKinBeamRot.Ecell11=Ecell[10]; 
-detKinBeamRot.Ecell12=Ecell[11]; 
-detKinBeamRot.Ecell13=Ecell[12];    
-detKinBeamRot.Ecell14=Ecell[13];    
-detKinBeamRot.Ecell15=Ecell[14];    
-detKinBeamRot.Ecell16=Ecell[15];    
-detKinBeamRot.Ecell17=Ecell[16];    
-detKinBeamRot.Ecell18=Ecell[17];    
-detKinBeamRot.Ecell19=Ecell[18];    
-detKinBeamRot.Ecell20=Ecell[19];    
-detKinBeamRot.Ecell21=Ecell[20];    
-detKinBeamRot.Ecell22=Ecell[21];    
-detKinBeamRot.Ecell23=Ecell[22];    
-detKinBeamRot.Ecell24=Ecell[23];    
-detKinBeamRot.Ecell25=Ecell[24]; */
     
 }
 

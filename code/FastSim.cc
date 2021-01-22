@@ -148,7 +148,7 @@ double en_ph_sm=p_gamma_Lab_div.E();
 TMatrixD cooPH=MCSphoton(p_gamma_Lab_div,xin,yin);
 double ECAL_E= energy_sm_el+en_ph_sm;   
     
-    if (ECAL_E>1)
+    if (ECAL_E>10)
     {
     //for electrons
 /*    nPart=1;

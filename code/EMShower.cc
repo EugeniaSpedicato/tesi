@@ -207,6 +207,8 @@ void EMShower::prepareSteps() {
       MeanDepth = t - dt;
 
     meanDepth[iStep] = MeanDepth;
+    cout << "qui ci entra?" << endl;    
+      
     if (realTotalEnergy < 0.001) {
       offset -= 1;
     }
@@ -243,7 +245,7 @@ void EMShower::compute() {
   // Loop over all segments for the longitudinal development
   double totECalc = 0;
          
-    
+cout << "qui entra negli step" << endl;    
     
   for (unsigned iStep = 0; iStep < nSteps; ++iStep) {
     // The length of the shower in this segment

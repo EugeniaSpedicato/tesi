@@ -313,7 +313,7 @@ cout << "numero step " << iStep << endl;
       if (dE * E[i] < 0.000001)
         continue;
 
-cout << "se sei qui non lo è " << dE * E[i] << endl;      
+cout << "OK va bene, nello step ho " << dE * E[i] << " su " <<E[i] << endl;      
         
       totECalc += dE;
 
@@ -331,7 +331,9 @@ cout << "se sei qui non lo è " << dE * E[i] << endl;
 
         // Expected spot number
         nS = (theNumberOfSpots[i] * gam(bSpot[i] * tt, aSpot[i]) * bSpot[i] * dt / tgamma(aSpot[i]));
-        // cout << "il numero di spot in questo dt è " << nS << endl;
+        // +
+        
+        cout << "il numero di spot in questo dt è " << nS << endl;
 
         
 

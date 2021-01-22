@@ -160,36 +160,7 @@ double ECAL_E= energy_sm_el+en_ph_sm;
     energy_in_ph.push_back(en_ph_sm/2);
     myGrid->SetEnergy(en_ph_sm);
     EMShower TheShowerPh(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_ph,coo_ph);
-    TheShowerPh.compute();
-        
-        
-myGrid->Draw_ECAL(i); 
-vector<double> Ecell=myGrid->EnergyContent(); 
-detKinBeamRot.Ecell1=Ecell[0];
-detKinBeamRot.Ecell2=Ecell[1];    
-detKinBeamRot.Ecell3=Ecell[2];    
-detKinBeamRot.Ecell4=Ecell[3];    
-detKinBeamRot.Ecell5=Ecell[4];    
-detKinBeamRot.Ecell6=Ecell[5];    
-detKinBeamRot.Ecell7=Ecell[6];    
-detKinBeamRot.Ecell8=Ecell[7];    
-detKinBeamRot.Ecell9=Ecell[8];    
-detKinBeamRot.Ecell10=Ecell[9]; 
-detKinBeamRot.Ecell11=Ecell[10]; 
-detKinBeamRot.Ecell12=Ecell[11]; 
-detKinBeamRot.Ecell13=Ecell[12];    
-detKinBeamRot.Ecell14=Ecell[13];    
-detKinBeamRot.Ecell15=Ecell[14];    
-detKinBeamRot.Ecell16=Ecell[15];    
-detKinBeamRot.Ecell17=Ecell[16];    
-detKinBeamRot.Ecell18=Ecell[17];    
-detKinBeamRot.Ecell19=Ecell[18];    
-detKinBeamRot.Ecell20=Ecell[19];    
-detKinBeamRot.Ecell21=Ecell[20];    
-detKinBeamRot.Ecell22=Ecell[21];    
-detKinBeamRot.Ecell23=Ecell[22];    
-detKinBeamRot.Ecell24=Ecell[23];    
-detKinBeamRot.Ecell25=Ecell[24];}
+    TheShowerPh.compute();}
 LoadKineVars(p_mu_in_div, p_e_in_div, p_mu_out_div_smeared, p_e_out_div_smeared, coo, TheINT, detKinBeamRot);    
 LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1]);
  }
@@ -234,7 +205,34 @@ detKinBeamRot.Ecell25=Ecell[24];
 }
 LoadKineVars(p_mu_in_div, p_e_in_div, p_mu_out_div_smeared, p_e_out_div_smeared, coo, TheINT, detKinBeamRot);    
 }*/
-    
+  
+myGrid->Draw_ECAL(i); 
+vector<double> Ecell=myGrid->EnergyContent(); 
+detKinBeamRot.Ecell1=Ecell[0];
+detKinBeamRot.Ecell2=Ecell[1];    
+detKinBeamRot.Ecell3=Ecell[2];    
+detKinBeamRot.Ecell4=Ecell[3];    
+detKinBeamRot.Ecell5=Ecell[4];    
+detKinBeamRot.Ecell6=Ecell[5];    
+detKinBeamRot.Ecell7=Ecell[6];    
+detKinBeamRot.Ecell8=Ecell[7];    
+detKinBeamRot.Ecell9=Ecell[8];    
+detKinBeamRot.Ecell10=Ecell[9]; 
+detKinBeamRot.Ecell11=Ecell[10]; 
+detKinBeamRot.Ecell12=Ecell[11]; 
+detKinBeamRot.Ecell13=Ecell[12];    
+detKinBeamRot.Ecell14=Ecell[13];    
+detKinBeamRot.Ecell15=Ecell[14];    
+detKinBeamRot.Ecell16=Ecell[15];    
+detKinBeamRot.Ecell17=Ecell[16];    
+detKinBeamRot.Ecell18=Ecell[17];    
+detKinBeamRot.Ecell19=Ecell[18];    
+detKinBeamRot.Ecell20=Ecell[19];    
+detKinBeamRot.Ecell21=Ecell[20];    
+detKinBeamRot.Ecell22=Ecell[21];    
+detKinBeamRot.Ecell23=Ecell[22];    
+detKinBeamRot.Ecell24=Ecell[23];    
+detKinBeamRot.Ecell25=Ecell[24];    
 }
 
 

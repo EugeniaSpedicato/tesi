@@ -124,7 +124,7 @@ double energy_sm_el=p_e_out_div_smeared.E();
 
 myGrid->CreateGrid(5,-7.125,7.125,5,-7.125,7.125);
 
-/*auto n_photons = event.photons.size();     
+auto n_photons = event.photons.size();     
 if (n_photons>0){  
  PxPyPzEVector p_gamma_Lab = {
                  event.photons[0].px, 
@@ -193,7 +193,7 @@ detKinBeamRot.Ecell25=Ecell[24];}
 LoadKineVars(p_mu_in_div, p_e_in_div, p_mu_out_div_smeared, p_e_out_div_smeared, coo, TheINT, detKinBeamRot);    
 LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1]);
  }
-else {    */
+/*else {    
 //for electrons
 if (energy_sm_el>1)
 {nPart=1; 
@@ -233,7 +233,7 @@ detKinBeamRot.Ecell24=Ecell[23];
 detKinBeamRot.Ecell25=Ecell[24];
 }
 LoadKineVars(p_mu_in_div, p_e_in_div, p_mu_out_div_smeared, p_e_out_div_smeared, coo, TheINT, detKinBeamRot);    
-//}
+}*/
     
 }
 

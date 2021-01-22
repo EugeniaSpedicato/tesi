@@ -131,8 +131,11 @@ coo_el.push_back(coo[2][0]*100);//cm
 coo_el.push_back(coo[3][0]*100);//cm
 energy_in_el.push_back(energy_sm_el);
 myGrid->SetEnergy(energy_sm_el);
+ cout << "entro nella shower elettronica N " << i <<endl;
 EMShower TheShowerEl(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_el,coo_el);
-TheShowerEl.compute(); }  
+TheShowerEl.compute(); 
+ cout << "esco dalla shower elettronica N " << i <<endl;
+}  
     
 LoadKineVars(p_mu_in_div, p_e_in_div, p_mu_out_div_smeared, p_e_out_div_smeared, coo, TheINT, detKinBeamRot); 
     
@@ -169,8 +172,10 @@ double ECAL_E= energy_sm_el+en_ph_sm;
     energy_in_ph.push_back(en_ph_sm/2);
     energy_in_ph.push_back(en_ph_sm/2);
     myGrid->SetEnergy(en_ph_sm);
+    cout << "entro nella shower fotonica N " << i <<endl;
     EMShower TheShowerPh(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_ph,coo_ph);
-    TheShowerPh.compute();}
+    TheShowerPh.compute();
+    cout << "esco dalla shower fotonica N " << i <<endl;}
 //LoadKineVars(p_mu_in_div, p_e_in_div, p_mu_out_div_smeared, p_e_out_div_smeared, coo, TheINT, detKinBeamRot);    
 LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1]);
  }

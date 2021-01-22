@@ -77,7 +77,7 @@ double ECAL::GiveCentralCell(double coox,double cooy)
     int biny = EcalGrid->GetYaxis()->FindBin(cooy);
     int nbin = EcalGrid->GetBin(binx,biny);
 
-    cout <<"Number of the cell:" << number[nbin] << endl;
+    //cout <<"Number of the cell:" << number[nbin] << endl;
 
     return number[nbin];
 };

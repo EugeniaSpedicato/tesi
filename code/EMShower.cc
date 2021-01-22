@@ -238,8 +238,6 @@ void EMShower::compute() {
   // Prepare the grids in Ecal
   bool status = false;
 
-    TGraph* nSpot_histo = new TGraph();
-    
     // cout << "Step preparati" << endl;
     
   // Loop over all segments for the longitudinal development
@@ -411,7 +409,7 @@ cout << "se sei qui non lo è " << dE * E[i] << endl;
 
             // Generate phi
             double phi = 2. * M_PI * gRandom->Uniform(); //!!!!!!!!!
-cout << "lo spot " << ispot << " si trova in (r,phi) = (" << ri << ", " << phi << ")" << endl;
+//cout << "lo spot " << ispot << " si trova in (r,phi) = (" << ri << ", " << phi << ")" << endl;
 
             // Now the *moliereRadius is done in EcalHitMaker
 
@@ -450,7 +448,7 @@ cout << "lo spot " << ispot << " si trova in (r,phi) = (" << ri << ", " << phi <
     
 
       
-  // cout << "-------> fine step numero " <<  iStep << " con Etotal_step = " << Etot_step[iStep] << " e con con Etot_step = " << Etot_step[iStep] << " con Etot 1 = " << Etot[0] << " e con Etot 2 = " << Etot[1] << endl;
+  cout << "-------> fine step numero " <<  iStep << " con Etotal_step = " << Etot_step[iStep] << " e con con Etot_step = " << Etot_step[iStep] << " con Etot 1 = " << Etot[0] << " e con Etot 2 = " << Etot[1] << endl;
 
 
   }        

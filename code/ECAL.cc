@@ -136,7 +136,7 @@ void ECAL::AddHitCooDepth(double r, double phi,double xi, double yi, double w, d
 };
 
 // metodo che disegna l'evento nel calorimetro e le celle che vengono colpite
-void ECAL::Draw_ECAL(){
+void ECAL::Draw_ECAL(int i){
 
 TCanvas * Ecal_= new TCanvas("Ecal_","Ecal_",1500,100,3500,2000);
 Ecal_->Divide(2,1);
@@ -149,7 +149,8 @@ EcalGrid->Draw("COL");
 EcalGrid->Draw("TEXT SAME");
 Ecal_->cd(2);
 EcalGrid->Draw("LEGO");
-Ecal_->SaveAs("/home/LHCB-T3/espedicato/tesi/Ecal.png");
+string name = "/home/LHCB-T3/espedicato/tesi/Ecal" +i+ ".png";
+Ecal_->SaveAs(name);
 
 
 /*// riempi celle    

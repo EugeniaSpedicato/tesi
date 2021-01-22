@@ -50,7 +50,7 @@ FastSim::FastSim(const MuE::MCpara & pargen, const MuE::FS_Input & fsi, bool _de
 void FastSim::Process(const MuE::Event & event,GammaFunctionGenerator* & gamma, EMECALShowerParametrization* const & myParam, ECAL* const & myGrid) {
   
   if (debug) cout<<"\n Process:  Run = "<<event.RunNr << " , Event = "<< event.EventNr << endl;
-  
+  int i=event.EventNr;
   Double_t emuin = event.E_mu_in;
   Double_t pmuin = sqrt(emuin*emuin-mm*mm);
   Double_t s = mm*mm + me*me + 2*me*emuin;
@@ -105,7 +105,7 @@ Double_t yin=b[18][1];
 Double_t TheINT=b[18][2]; // angolo che ha nel momento dell'interazione, senza effetto di MCS 
     
   
-LoadKineVars(p_mu_in_div, p_e_in_div, p_mu_out_div_smeared, p_e_out_div_smeared, coo, TheINT, detKinBeamRot);
+//LoadKineVars(p_mu_in_div, p_e_in_div, p_mu_out_div_smeared, p_e_out_div_smeared, coo, TheINT, detKinBeamRot);
 
 //prepare for EMShower
 bool bFixedLength=true;
@@ -137,8 +137,6 @@ PxPyPzEVector p_gamma_Lab_div = RotDiv(p_mu_in,p_gamma_Lab);
 double en_ph_sm=p_gamma_Lab_div.E();
     
 TMatrixD cooPH=MCSphoton(p_gamma_Lab_div,xin,yin);
-    
-LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1]);
 
 double ECAL_E= energy_sm_el+en_ph_sm;   
     if (ECAL_E>10)
@@ -165,7 +163,7 @@ double ECAL_E= energy_sm_el+en_ph_sm;
     TheShowerPh.compute();
         
         
-myGrid->Draw_ECAL(); 
+myGrid->Draw_ECAL(i); 
 vector<double> Ecell=myGrid->EnergyContent(); 
 detKinBeamRot.Ecell1=Ecell[0];
 detKinBeamRot.Ecell2=Ecell[1];    
@@ -192,6 +190,8 @@ detKinBeamRot.Ecell22=Ecell[21];
 detKinBeamRot.Ecell23=Ecell[22];    
 detKinBeamRot.Ecell24=Ecell[23];    
 detKinBeamRot.Ecell25=Ecell[24];}
+LoadKineVars(p_mu_in_div, p_e_in_div, p_mu_out_div_smeared, p_e_out_div_smeared, coo, TheINT, detKinBeamRot);    
+LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1]);
  }
 else {    
 //for electrons
@@ -204,7 +204,7 @@ energy_in_el.push_back(energy_sm_el);
 myGrid->SetEnergy(energy_sm_el);
 EMShower TheShower(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_el,coo_el);
 TheShower.compute();
-myGrid->Draw_ECAL(); 
+myGrid->Draw_ECAL(i); 
  vector<double> Ecell=myGrid->EnergyContent(); 
 detKinBeamRot.Ecell1=Ecell[0];
 detKinBeamRot.Ecell2=Ecell[1];    
@@ -232,6 +232,7 @@ detKinBeamRot.Ecell23=Ecell[22];
 detKinBeamRot.Ecell24=Ecell[23];    
 detKinBeamRot.Ecell25=Ecell[24];
 }
+LoadKineVars(p_mu_in_div, p_e_in_div, p_mu_out_div_smeared, p_e_out_div_smeared, coo, TheINT, detKinBeamRot);    
 }
     
 }

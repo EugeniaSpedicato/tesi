@@ -178,7 +178,7 @@ double ECAL_E= energy_sm_el+en_ph_sm;
 //LoadKineVars(p_mu_in_div, p_e_in_div, p_mu_out_div_smeared, p_e_out_div_smeared, coo, TheINT, detKinBeamRot);    
 LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1]);
  }}
-myGrid->Draw_ECAL(i*1000);
+myGrid->Draw_ECAL(i);
 /*else {    
 //for electrons
 if (energy_sm_el>1)

@@ -141,7 +141,7 @@ TMatrixD cooPH=MCSphoton(p_gamma_Lab_div,xin,yin);
 LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1]);
 
 double ECAL_E= energy_sm_el+en_ph_sm;   
-    if (ECAL_E>1)
+    if (ECAL_E>10)
     {
     //for electrons
     nPart=1;
@@ -195,7 +195,7 @@ detKinBeamRot.Ecell25=Ecell[24];}
  }
 else {    
 //for electrons
-if (energy_sm_el>1)
+if (energy_sm_el>10)
 {nPart=1; 
 X0depth=0.;
 coo_el.push_back(coo[2][0]*100);//cm

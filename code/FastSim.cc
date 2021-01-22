@@ -133,7 +133,7 @@ energy_in_el.push_back(energy_sm_el);
 myGrid->SetEnergy(energy_sm_el);
 EMShower TheShower(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_el,coo_el);
 TheShower.compute();
-myGrid->Draw_ECAL(i);
+//myGrid->Draw_ECAL(i);
 }
 LoadKineVars(p_mu_in_div, p_e_in_div, p_mu_out_div_smeared, p_e_out_div_smeared, coo, TheINT, detKinBeamRot); 
 
@@ -174,11 +174,11 @@ double ECAL_E= energy_sm_el+en_ph_sm;
     myGrid->SetEnergy(en_ph_sm);
     EMShower TheShowerPh(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_ph,coo_ph);
     TheShowerPh.compute();
-    myGrid->Draw_ECAL(i*100); 
+    //myGrid->Draw_ECAL(i*100); 
 //LoadKineVars(p_mu_in_div, p_e_in_div, p_mu_out_div_smeared, p_e_out_div_smeared, coo, TheINT, detKinBeamRot);    
 LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1]);
  }}
-
+myGrid->Draw_ECAL(i*1000);
 /*else {    
 //for electrons
 if (energy_sm_el>1)

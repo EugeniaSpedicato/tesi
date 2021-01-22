@@ -329,7 +329,9 @@ cout << "OK va bene, nello step ho " << dE * E[i] << " su " <<E[i] << endl;
         
         cout << "che dopo aver aggiunto le fluttuazioni diventa " << dE << endl;
 
-        cout << " ns da parametro " << gam(bSpot[i] * tt, aSpot[i]) <<endl;
+        cout << " bspot da parametro " << bSpot[i] * tt <<endl;
+        cout << " aspot da parametro " << aSpot[i] <<endl;
+        
         // Expected spot number
         nS = (theNumberOfSpots[i] * gam(bSpot[i] * tt, aSpot[i]) * bSpot[i] * dt / tgamma(aSpot[i]));
         // +

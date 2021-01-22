@@ -152,7 +152,7 @@ Ecal_->cd(2);
 EcalGrid->Draw("LEGO");
 std::ostringstream name1;
 name1 << i << ".png";
-TString name = "/home/LHCB-T3/espedicato/tesi/ECALpng/Ecal" +name1;
+TString name = "/home/LHCB-T3/espedicato/tesi/ECALpng/Ecal"name1;
 Ecal_->SaveAs(name);
 
 

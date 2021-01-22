@@ -163,7 +163,7 @@ double ECAL_E= energy_sm_el+en_ph_sm;
     TheShowerPh.compute();
         
         
-myGrid->Draw_ECAL(i); 
+//myGrid->Draw_ECAL(i); 
 vector<double> Ecell=myGrid->EnergyContent(); 
 detKinBeamRot.Ecell1=Ecell[0];
 detKinBeamRot.Ecell2=Ecell[1];    
@@ -204,7 +204,7 @@ energy_in_el.push_back(energy_sm_el);
 myGrid->SetEnergy(energy_sm_el);
 EMShower TheShower(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_el,coo_el);
 TheShower.compute();
-//myGrid->Draw_ECAL(i); 
+myGrid->Draw_ECAL(i); 
  vector<double> Ecell=myGrid->EnergyContent(); 
 detKinBeamRot.Ecell1=Ecell[0];
 detKinBeamRot.Ecell2=Ecell[1];    

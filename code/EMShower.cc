@@ -279,10 +279,11 @@ cout << "qui entra negli step" << endl;
     // otherwise put in the previous one.
 
     // If less than 1 kEV. Just skip
-      cout << "qui ci arriva?" << endl;    
+
+      
     if (iStep > 2 && realTotalEnergy < 0.000001)
       continue;
-      cout << "se sei qui energia > 1 KeV" << endl; 
+      
     if (!usePreviousGrid) {
         if (tt>24.5) status=false;
       else status = true;
@@ -290,7 +291,9 @@ cout << "qui entra negli step" << endl;
 
     if (!status)
       continue;
-
+      
+cout << "numero step " << iStep << endl;
+    
     bool detailedShowerTail = false;
     // check if a detailed treatment of the rear leakage should be applied
     if (!usePreviousGrid) {
@@ -307,9 +310,13 @@ cout << "qui entra negli step" << endl;
       double dE = depositedEnergy[iStep][i];
 // cout << " % di enrgia depositata dalla particella è E%= " << dE << endl;
       // no need to do the full machinery if there is ~nothing to distribute)
+        
+    cout << " Sto per verificare se l'energia è piccola" << endl;    
       if (dE * E[i] < 0.000001)
         continue;
 
+cout << "se sei qui non lo è " << dE * E[i] << endl;      
+        
       totECalc += dE;
 
       // The number of energy spots (or mips)

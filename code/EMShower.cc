@@ -207,7 +207,7 @@ void EMShower::prepareSteps() {
       MeanDepth = t - dt;
 
     meanDepth[iStep] = MeanDepth;
-    cout << "qui ci entra?" << endl;    
+  
       
     if (realTotalEnergy < 0.001) {
       offset -= 1;
@@ -279,9 +279,10 @@ cout << "qui entra negli step" << endl;
     // otherwise put in the previous one.
 
     // If less than 1 kEV. Just skip
+      cout << "qui ci arriva?" << endl;    
     if (iStep > 2 && realTotalEnergy < 0.000001)
       continue;
-
+      cout << "se sei qui energia > 1 KeV" << endl; 
     if (!usePreviousGrid) {
         if (tt>24.5) status=false;
       else status = true;

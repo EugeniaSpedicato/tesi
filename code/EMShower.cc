@@ -329,7 +329,7 @@ cout << "se sei qui non lo è " << dE * E[i] << endl;
         double z0 = gRandom->Gaus(0., 1.);
         dE *= 1. + z0 * theECAL->lightCollectionUniformity();
         
-        // cout << "che dopo aver aggiunto le fluttuazioni diventa " << dE << endl;
+        cout << "che dopo aver aggiunto le fluttuazioni diventa " << dE << endl;
 
         // Expected spot number
         nS = (theNumberOfSpots[i] * gam(bSpot[i] * tt, aSpot[i]) * bSpot[i] * dt / tgamma(aSpot[i]));
@@ -348,14 +348,11 @@ cout << "se sei qui non lo è " << dE * E[i] << endl;
       double eSpot = (nS > 0.) ? dE / nS : 0.;
       double SpotEnergy = eSpot * E[i];
         
-        // cout << "La cui energia SpotEnergy " << SpotEnergy << endl;
+         cout << "La cui energia SpotEnergy " << SpotEnergy << endl;
         
 
       int nSpot = (int)(nS + 0.5);
-        
-        double spotttt=(double)nSpot/theNumberOfSpots[i];
-      // Fig. 11 (right) *** Does not match.
-          nSpot_histo->SetPoint(iStep,t,spotttt);
+
 
       //double taui = t/T[i];
       double taui = tt / Ti[i];
@@ -371,8 +368,8 @@ cout << "se sei qui non lo è " << dE * E[i] << endl;
       unsigned nSpots_core = (unsigned)(dSpotsCore + 0.5);
       unsigned nSpots_tail = ((unsigned)nSpot > nSpots_core) ? nSpot - nSpots_core : 0;
         
-        // cout << "il numero di spot nel core " << nSpots_core << endl;
-        // cout << "il numero di spot nella tail " << nSpots_tail << endl;
+         cout << "il numero di spot nel core " << nSpots_core << endl;
+         cout << "il numero di spot nella tail " << nSpots_tail << endl;
         
 
       for (unsigned icomp = 0; icomp < 2; ++icomp) {
@@ -414,7 +411,7 @@ cout << "se sei qui non lo è " << dE * E[i] << endl;
 
             // Generate phi
             double phi = 2. * M_PI * gRandom->Uniform(); //!!!!!!!!!
-// cout << "lo spot " << ispot << " si trova in (r,phi) = (" << ri << ", " << phi << ")" << endl;
+cout << "lo spot " << ispot << " si trova in (r,phi) = (" << ri << ", " << phi << ")" << endl;
 
             // Now the *moliereRadius is done in EcalHitMaker
 

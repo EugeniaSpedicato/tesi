@@ -124,7 +124,7 @@ double energy_sm_el=p_e_out_div_smeared.E();
 
 myGrid->CreateGrid(5,-7.125,7.125,5,-7.125,7.125);
 
-if (energy_sm_el>10)    
+if (energy_sm_el>2)    
 {nPart=1;
 X0depth=0.;
 coo_el.push_back(coo[2][0]*100);//cm
@@ -149,7 +149,7 @@ double en_ph_sm=p_gamma_Lab_div.E();
 TMatrixD cooPH=MCSphoton(p_gamma_Lab_div,xin,yin);
 double ECAL_E= energy_sm_el+en_ph_sm;   
     
-    if (ECAL_E>10)
+    if (ECAL_E>2)
     {
     //for electrons
 /*    nPart=1;

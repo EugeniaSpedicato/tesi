@@ -243,7 +243,6 @@ void EMShower::compute() {
   // Loop over all segments for the longitudinal development
   double totECalc = 0;
          
-  cout << "questa è l'energi della particella " << E[i] << " VS critical energy " << theECAL->criticalEnergy() << endl;
 
     
   for (unsigned iStep = 0; iStep < nSteps; ++iStep) {
@@ -305,6 +304,8 @@ void EMShower::compute() {
     // The particles of the shower are processed in parallel
     for ( int i = 0; i < nPart; ++i) {
 
+          cout << "questa è l'energi della particella " << E[i] << " VS critical energy " << theECAL->criticalEnergy() << endl;
+        
       //  integration of the shower profile between t-dt and t
       double dE = depositedEnergy[iStep][i];
 // cout << " % di enrgia depositata dalla particella è E%= " << dE << endl;

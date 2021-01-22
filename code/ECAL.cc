@@ -149,7 +149,7 @@ EcalGrid->Draw("COL");
 EcalGrid->Draw("TEXT SAME");
 Ecal_->cd(2);
 EcalGrid->Draw("LEGO");
-string name = "/home/LHCB-T3/espedicato/tesi/Ecal" +i+ ".png";
+string name = "/home/LHCB-T3/espedicato/tesi/ECALpng/Ecal" +str(i)+ ".png";
 Ecal_->SaveAs(name);
 
 

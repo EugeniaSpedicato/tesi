@@ -3,6 +3,7 @@
 #include <cmath>
 
 #include <iostream>
+#include <sstream>
 #include <TCanvas.h>
 #include <TStyle.h>
 #include <TColor.h>

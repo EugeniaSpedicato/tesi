@@ -243,7 +243,8 @@ void EMShower::compute() {
   // Loop over all segments for the longitudinal development
   double totECalc = 0;
          
-cout << "qui entra negli step" << endl;    
+  cout << "questa è l'energi della particella " << E[i] << " VS critical energy " << theECAL->criticalEnergy() << endl;
+
     
   for (unsigned iStep = 0; iStep < nSteps; ++iStep) {
     // The length of the shower in this segment
@@ -290,8 +291,8 @@ cout << "qui entra negli step" << endl;
     if (!status)
       continue;
       
-cout << "numero step " << iStep << endl;
-    
+
+      
     bool detailedShowerTail = false;
     // check if a detailed treatment of the rear leakage should be applied
     if (!usePreviousGrid) {
@@ -309,12 +310,11 @@ cout << "numero step " << iStep << endl;
 // cout << " % di enrgia depositata dalla particella è E%= " << dE << endl;
       // no need to do the full machinery if there is ~nothing to distribute)
         
-    cout << " Sto per verificare se l'energia è piccola" << endl;    
+    
       if (dE * E[i] < 0.000001)
         continue;
 
-cout << "OK va bene, nello step ho " << dE * E[i] << " su " <<E[i] << endl;      
-        
+
       totECalc += dE;
 
       // The number of energy spots (or mips)

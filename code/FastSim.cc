@@ -125,7 +125,7 @@ double energy_sm_el=p_e_out_div_smeared.E();
 myGrid->CreateGrid(5,-7.125,7.125,5,-7.125,7.125);
 
 LoadKineVars(p_mu_in_div, p_e_in_div, p_mu_out_div_smeared, p_e_out_div_smeared, coo, TheINT, detKinBeamRot); 
-LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1]);
+
     
 auto n_photons = event.photons.size();     
 if (n_photons>0){  
@@ -164,6 +164,7 @@ double ECAL_E= energy_sm_el+en_ph_sm;
     EMShower TheShowerPh(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_ph,coo_ph);
     TheShowerPh.compute();
     cout << "esco dalla shower fotonica N " << i <<endl;}
+    LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1]);
  }
 else {    
 //for electrons
@@ -176,7 +177,9 @@ energy_in_el.push_back(energy_sm_el);
 myGrid->SetEnergy(energy_sm_el);
 EMShower TheShower(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_el,coo_el);
 TheShower.compute();
-}  
+} 
+PxPyPzEVector pNO(0,0,0,0);
+LoadPhoton(event, photon,pNO,0,0);
 }
   
 myGrid->Draw_ECAL(i); 

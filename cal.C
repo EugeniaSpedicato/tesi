@@ -85,9 +85,9 @@ TH1F* hist_E9=new TH1F("E9", "E9", 1000,0.5,0.8);
         photon_cooy=photon_cooy*100; // cm
        
 
-       //E9=en_c[detKinBeamRot_n_max_Cell]/detKinBeamRot_E_clus3x3;
+       E9=en_c[detKinBeamRot_n_max_Cell]/detKinBeamRot_E_clus3x3;
        
-       cout << detKinBeamRot_Ecell19 << " cella impatto elettrone " << detKinBeamRot_n_cell_e << " cella impatto fotone " << photon_n_cell_ph <<endl;
+       cout << detKinBeamRot_n_max_Cell << " cella impatto elettrone " << detKinBeamRot_n_cell_e << " cella impatto fotone " << photon_n_cell_ph <<endl;
        
     /*if (photon_coox!=-1 && photon_cooy!=-1)
     {  

@@ -84,7 +84,7 @@ TH1F* hist_E9=new TH1F("E9", "E9", 100,0,1);
         photon_coox=photon_coox*100; // cm
         photon_cooy=photon_cooy*100; // cm
        
-       E9=detKinBeamRot_n_max_Cell/detKinBeamRot_E_clus3x3;
+       E9=en_c[detKinBeamRot_n_max_Cell]/detKinBeamRot_E_clus3x3;
        
     /*if (photon_coox!=-1 && photon_cooy!=-1)
     {  

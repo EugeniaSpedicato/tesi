@@ -418,10 +418,9 @@ void EMShower::compute() {
               if (detailedShowerTail) {
                 //			   std::// cout << "About to call addHitDepth " << std::endl;
                 double depth; 
-                do { // cout << "SIAMO QUIIIII" << endl;
-                  depth = myGammaGenerator->shoot();
-                    // cout << "depth è " << depth << endl;
-                } while (depth > t);
+                do {depth = myGammaGenerator->shoot();} 
+                while (depth > t);
+                
                 theGrid->AddHitCooDepth(ri,phi,Xi,Yi,spote,depth,X0depth);
                 Etot[i] += spote;
                 Etot_step[iStep] += spote;

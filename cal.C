@@ -84,7 +84,10 @@ TH1F* hist_E9=new TH1F("E9", "E9", 1000,0.5,0.8);
         photon_coox=photon_coox*100; // cm
         photon_cooy=photon_cooy*100; // cm
        
+
        E9=en_c[detKinBeamRot_n_max_Cell]/detKinBeamRot_E_clus3x3;
+       
+       cout << detKinBeamRot_n_max_Cell << " c'è energia " << en_c[detKinBeamRot_n_max_Cell] << endl;
        
     /*if (photon_coox!=-1 && photon_cooy!=-1)
     {  

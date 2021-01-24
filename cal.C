@@ -58,7 +58,9 @@ Double_t different_cell=0.;
 //Double_t E_CAL;
 Double_t Rm = 2.190 ; //raggio di Moliere in centimetri    
 Double_t E9=0.;
-TH1F* hist_E9=new TH1F("E9", "E9", 500,0.5,1);
+TH1F* hist_E9_eph=new TH1F("E9eph", "E9 e+ph", 500,0.5,1);
+TH1F* hist_E9_e=new TH1F("E9e", "E9 e", 500,0.5,1);
+    
 
 
     
@@ -109,9 +111,11 @@ TGraph* E3x3 = new TGraphErrors(nentries);
         if (photon_n_cell_ph==detKinBeamRot_n_cell_e) same_cell+=wgt_full; //stessa cella
         else different_cell+=wgt_full;  // cella diversa
       
-      hist_E9->Fill(E9,wgt_full);
+      hist_E9_eph->Fill(E9,wgt_full);
 
   }
+if (photon_n_cell_ph==0 && detKinBeamRot_n_cell_e!=0)   
+{  hist_E9_e->Fill(E9,wgt_full);}
    
       if (detKinBeamRot_n_cell_e!=0) {E3x3->SetPoint(i,detKinBeamRot_Ee,detKinBeamRot_E_clus3x3); ++i;}
        
@@ -311,7 +315,9 @@ TCanvas * c1= new TCanvas("c1","c1",1000,100,2500,2000);
 c1->Divide(1,2);
 c1->cd(1);
 hist_E9->GetXaxis()->SetTitle("Ecentral/E3x3");
-hist_E9->Draw("HIST");   
+hist_E9->Draw("HIST"); 
+hist_E9_eph->SetLineColor(kRed)
+hist_E9_eph->Draw("HIST same"); 
 c1->cd(2);
 E3x3->GetXaxis()->SetTitle("Etrue");
 E3x3->Draw("AP");  

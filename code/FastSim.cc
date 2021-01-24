@@ -941,7 +941,7 @@ TMatrixD def_angle=Def_angle(p_mu_in,p_mu_out,p_e_out);
 kv.def_angle_mu = def_angle[0][0];
 kv.def_angle_e = def_angle[1][0]; 
 
-kv.n_cell_e = theGrid->GiveCentralCell(kv.cooXe,kv.cooYe);
+kv.n_cell_e = theGrid->GiveCentralCell(kv.cooXe*100,kv.cooYe*100);
     
     cout << "Coo x elettrone dopo "<< kv.cooXe*100 << endl;
     cout << "Coo y elettrone dopo"<< kv.cooYe*100 << endl;
@@ -998,7 +998,7 @@ PxPyPzEVector p_gamma_CoM = Lorentz_ToCoM(p_gamma_lab_div);
     cout << "Coo x fotone dopo "<< photon.coox*100 << endl;
     cout << "Coo y fotone dopo"<< photon.cooy*100 << endl;
       
-   photon.n_cell_ph = theGrid->GiveCentralCell(photon.coox,photon.cooy);
+   photon.n_cell_ph = theGrid->GiveCentralCell(photon.coox*100,photon.cooy*100); //in cm
       
     cout << "Numero cella fotone" << photon.n_cell_ph << endl;
    

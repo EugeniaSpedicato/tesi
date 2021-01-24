@@ -93,7 +93,7 @@ TGraph* E3x3 = new TGraphErrors(nentries);
        
        double Etotcal =0.;
        for(int i=1;i<26;++i){Etotcal+=en_c[i];}
-       double Eout_9=Etotcal-detKinBeamRot_E_clus3x3;
+       double Eout_9=(Etotcal-detKinBeamRot_E_clus3x3)/detKinBeamRot_E_clus3x3;
        E9=en_c[detKinBeamRot_n_max_Cell]/detKinBeamRot_E_clus3x3;
     
        /*cout << detKinBeamRot_n_max_Cell << " cella impatto elettrone " << detKinBeamRot_n_cell_e << "con energia " <<detKinBeamRot_Ee << " cella impatto fotone " << photon_n_cell_ph<< "con energia " <<photon_energy <<endl;*/
@@ -321,19 +321,18 @@ cout << "Frazione di eventi scartabili CON TAGLIO TAR 1: " << ratio_cut1 <<endl;
 TCanvas * c1= new TCanvas("c1","c1",1000,100,2500,2000);
 c1->Divide(1,2);
 c1->cd(1);
-hist_Eout_9_e->GetXaxis()->SetTitle("Ecentral/E3x3");
-hist_Eout_9_e->Draw("HIST"); 
-hist_E9_e->Draw("HIST same"); 
-
+hist_E9_e->GetXaxis()->SetTitle("Ecentral/E3x3");
+hist_E9_e->Draw("HIST"); 
 
 hist_E9_eph->SetLineColor(kRed);
 hist_E9_eph->Draw("HIST same"); 
-hist_Eout_9_eph->SetLineColor(kRed);
-hist_Eout_9_eph->Draw("HIST same"); 
+
         
 c1->cd(2);
-E3x3->GetXaxis()->SetTitle("Etrue");
-E3x3->Draw("AP");  
+hist_Eout_9_e->GetXaxis()->SetTitle("Eout");
+hist_Eout_9_e->Draw("HIST"); 
+hist_Eout_9_eph->SetLineColor(kRed);
+hist_Eout_9_eph->Draw("HIST same"); 
 c1->SaveAs("/home/LHCB-T3/espedicato/tesi/E9.png");
     
 }

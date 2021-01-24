@@ -302,6 +302,6 @@ cout << "Frazione di eventi scartabili CON TAGLIO TAR 1: " << ratio_cut1 <<endl;
 TCanvas * c1= new TCanvas("c1","c1",1000,100,2500,2000);
 hist_E9->GetXaxis()->SetTitle("Ecentral/E3x3");
 hist_E9->Draw("HIST");   
-c1->SaveAs("E9.png");
+c1->SaveAs("/home/LHCB-T3/espedicato/tesi/E9.png");
     
 }

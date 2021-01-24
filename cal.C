@@ -72,11 +72,11 @@ TH1F* hist_E9=new TH1F("E9", "E9", 1000,0.5,0.8);
       nb = fChain->GetEntry(jentry);   nbytes += nb;
        
        
-        en_c[1]=detKinBeamRot_Ecell1; en_c[2]=detKinBeamRot_Ecell2; en_c[3]=detKinBeamRot_Ecell3; en_c[4]=detKinBeamRot_Ecell4; en_c[5]=detKinBeamRot_Ecell5;
+        /*en_c[1]=detKinBeamRot_Ecell1; en_c[2]=detKinBeamRot_Ecell2; en_c[3]=detKinBeamRot_Ecell3; en_c[4]=detKinBeamRot_Ecell4; en_c[5]=detKinBeamRot_Ecell5;
         en_c[6]=detKinBeamRot_Ecell6; en_c[7]=detKinBeamRot_Ecell7; en_c[8]=detKinBeamRot_Ecell8; en_c[9]=detKinBeamRot_Ecell9; en_c[10]=detKinBeamRot_Ecell10;
         en_c[11]=detKinBeamRot_Ecell11; en_c[12]=detKinBeamRot_Ecell12; en_c[13]=detKinBeamRot_Ecell13; en_c[14]=detKinBeamRot_Ecell14; en_c[15]=detKinBeamRot_Ecell15;
         en_c[16]=detKinBeamRot_Ecell16; en_c[17]=detKinBeamRot_Ecell17; en_c[18]=detKinBeamRot_Ecell18; en_c[19]=detKinBeamRot_Ecell19; en_c[20]=detKinBeamRot_Ecell20;
-        en_c[21]=detKinBeamRot_Ecell21; en_c[22]=detKinBeamRot_Ecell22; en_c[23]=detKinBeamRot_Ecell23; en_c[24]=detKinBeamRot_Ecell24; en_c[25]=detKinBeamRot_Ecell25;
+        en_c[21]=detKinBeamRot_Ecell21; en_c[22]=detKinBeamRot_Ecell22; en_c[23]=detKinBeamRot_Ecell23; en_c[24]=detKinBeamRot_Ecell24; en_c[25]=detKinBeamRot_Ecell25;*/
        
 
         detKinBeamRot_cooXe=detKinBeamRot_cooXe*100; // cm
@@ -85,9 +85,9 @@ TH1F* hist_E9=new TH1F("E9", "E9", 1000,0.5,0.8);
         photon_cooy=photon_cooy*100; // cm
        
 
-       E9=en_c[detKinBeamRot_n_max_Cell]/detKinBeamRot_E_clus3x3;
+       //E9=en_c[detKinBeamRot_n_max_Cell]/detKinBeamRot_E_clus3x3;
        
-       cout << detKinBeamRot_n_max_Cell << " c'è energia " << en_c[detKinBeamRot_n_max_Cell] << endl;
+       cout << detKinBeamRot_n_max_Cell << " cella impatto elettrone " << detKinBeamRot_n_cell_e << " cella impatto fotone " << photon_n_cell_ph <<endl;
        
     /*if (photon_coox!=-1 && photon_cooy!=-1)
     {  

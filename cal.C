@@ -90,7 +90,7 @@ TGraph* E3x3 = new TGraphErrors(nentries);
         photon_cooy=photon_cooy*100; // cm
        
 
-       E9=detKinBeamRot_E_clus3x3/detKinBeamRot_Ee;
+       E9=en_c[detKinBeamRot_n_max_Cell]/detKinBeamRot_E_clus3x3;
     
        /*cout << detKinBeamRot_n_max_Cell << " cella impatto elettrone " << detKinBeamRot_n_cell_e << "con energia " <<detKinBeamRot_Ee << " cella impatto fotone " << photon_n_cell_ph<< "con energia " <<photon_energy <<endl;*/
        

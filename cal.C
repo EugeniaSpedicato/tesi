@@ -58,8 +58,10 @@ Double_t different_cell=0.;
 //Double_t E_CAL;
 Double_t Rm = 2.190 ; //raggio di Moliere in centimetri    
 Double_t E9=0.;
-TH1F* hist_E9_eph=new TH1F("E9eph", "E9 e+ph", 500,0.5,1);
-TH1F* hist_E9_e=new TH1F("E9e", "E9 e", 500,0.5,1);
+TH1F* hist_E9_eph=new TH1F("E9eph", "E9 e+ph", 1000,0,1);
+TH1F* hist_E9_e=new TH1F("E9e", "E9 e", 1000,0,1);
+TH1F* hist_Eout_9_eph=new TH1F("E9outeph", "Eout9 e+ph", 1000,0,1);
+TH1F* hist_Eout_9_e=new TH1F("E9oute", "Eout9 e", 1000,0,1);
     
 
 
@@ -89,7 +91,9 @@ TGraph* E3x3 = new TGraphErrors(nentries);
         photon_coox=photon_coox*100; // cm
         photon_cooy=photon_cooy*100; // cm
        
-
+       double Etotcal =0.;
+       for(int i=1;i<26;++i){Etotcal+=en_c[i];}
+       double Eout_9=Etotcal-detKinBeamRot_E_clus3x3;
        E9=en_c[detKinBeamRot_n_max_Cell]/detKinBeamRot_E_clus3x3;
     
        /*cout << detKinBeamRot_n_max_Cell << " cella impatto elettrone " << detKinBeamRot_n_cell_e << "con energia " <<detKinBeamRot_Ee << " cella impatto fotone " << photon_n_cell_ph<< "con energia " <<photon_energy <<endl;*/
@@ -112,10 +116,13 @@ TGraph* E3x3 = new TGraphErrors(nentries);
         else different_cell+=wgt_full;  // cella diversa
       
       hist_E9_eph->Fill(E9,wgt_full);
+      hist_Eout_9_eph->Fill(Eout_9,wgt_full);
 
   }
 if (photon_n_cell_ph==0 && detKinBeamRot_n_cell_e!=0)   
-{  hist_E9_e->Fill(E9,wgt_full);}
+{  hist_E9_e->Fill(E9,wgt_full);
+hist_Eout_9_e->Fill(Eout_9,wgt_full);
+}
    
       if (detKinBeamRot_n_cell_e!=0) {E3x3->SetPoint(i,detKinBeamRot_Ee,detKinBeamRot_E_clus3x3); ++i;}
        
@@ -316,8 +323,13 @@ c1->Divide(1,2);
 c1->cd(1);
 hist_E9_e->GetXaxis()->SetTitle("Ecentral/E3x3");
 hist_E9_e->Draw("HIST"); 
+hist_Eout_9_e->Draw("HIST same"); 
+
 hist_E9_eph->SetLineColor(kRed);
 hist_E9_eph->Draw("HIST same"); 
+hist_Eout_9_eph->SetLineColor(kRed);
+hist_Eout_9_eph->Draw("HIST same"); 
+        
 c1->cd(2);
 E3x3->GetXaxis()->SetTitle("Etrue");
 E3x3->Draw("AP");  

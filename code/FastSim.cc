@@ -126,7 +126,8 @@ myGrid->CreateGrid(5,-7.125,7.125,5,-7.125,7.125);
 
 LoadKineVars(p_mu_in_div, p_e_in_div, p_mu_out_div_smeared, p_e_out_div_smeared, coo, TheINT, detKinBeamRot,myGrid); 
 
-    
+  
+
 auto n_photons = event.photons.size();     
 if (n_photons>0){  
  PxPyPzEVector p_gamma_Lab = {
@@ -140,7 +141,7 @@ double en_ph_sm=p_gamma_Lab_div.E();
 TMatrixD cooPH=MCSphoton(p_gamma_Lab_div,xin,yin);
 double ECAL_E= energy_sm_el+en_ph_sm;   
     
-    if (ECAL_E>1 && en_ph_sm>0.2)
+    if (ECAL_E>1)
     {
     //for electrons
     nPart=1;
@@ -155,7 +156,8 @@ double ECAL_E= energy_sm_el+en_ph_sm;
     TheShowerEl.compute();    
     
     //for photons   
-    nPart=2; 
+    if (en_ph_sm>0.2)
+    {nPart=2; 
     X0depth=-log(gRandom->Uniform())*(9./7.);
     coo_ph.push_back(cooPH[0][0]*100);//cm
     coo_ph.push_back(cooPH[0][1]*100);//cm
@@ -165,8 +167,9 @@ double ECAL_E= energy_sm_el+en_ph_sm;
     energy_in_ph.push_back(en_ph_sm/2);
     myGrid->SetEnergy(en_ph_sm);
     EMShower TheShowerPh(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_ph,coo_ph);
-    TheShowerPh.compute();
-    vector<double> E_clus=myGrid->Draw_ECAL(i); }
+    TheShowerPh.compute();}
+    vector<double> E_clus=myGrid->Draw_ECAL(i); 
+    }
     LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1],myGrid);
  }
 else {    

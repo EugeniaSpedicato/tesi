@@ -170,12 +170,11 @@ double cellPH=myGrid->GiveCentralCell(cooPH[0][0]*100,cooPH[0][1]*100);
     myGrid->SetEnergy(en_ph_sm);
     EMShower TheShowerPh(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_ph,coo_ph);
     TheShowerPh.compute();}
+    LoadECAL(detKinBeamRot,myGrid,i);
     }
     LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1],myGrid);
  }
-else {    
-//for electrons
-if (energy_sm_el>1 && cellEL!=0)
+else if (energy_sm_el>1 && cellEL!=0)
 {nPart=1; 
 X0depth=0.;
 coo_el.push_back(coo[2][0]*100);//cm
@@ -184,12 +183,14 @@ energy_in_el.push_back(energy_sm_el);
 myGrid->SetEnergy(energy_sm_el);
 EMShower TheShower(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_el,coo_el);
 TheShower.compute();
+LoadECAL(detKinBeamRot,myGrid,i);
 } 
 PxPyPzEVector pNO(0,0,0,0);
 LoadPhoton(event, photon,pNO,0,0,myGrid);
-}
-
-LoadECAL(detKinBeamRot,myGrid,i);  
+} else 
+{LoadECAL(detKinBeamRot,myGrid,i);  
+ PxPyPzEVector pNO(0,0,0,0);
+LoadPhoton(event, photon,pNO,0,0,myGrid);}
 
 }
 

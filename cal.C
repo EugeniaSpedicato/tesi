@@ -1,5 +1,5 @@
 #define atree_cxx
-#include "next.h"
+#include "atree.h"
 #include <TH2.h>
 #include <TH1.h>
 #include <TGraph.h>
@@ -19,6 +19,7 @@ void atree::Loop()
     
 
 Double_t n_tot_eph=0.;
+int i;
     
    /* Double_t n_tot=0.;
     Double_t n_one=0.;
@@ -57,12 +58,14 @@ Double_t different_cell=0.;
 //Double_t E_CAL;
 Double_t Rm = 2.190 ; //raggio di Moliere in centimetri    
 Double_t E9=0.;
-TH1F* hist_E9=new TH1F("E9", "E9", 1000,0.5,0.8);
+TH1F* hist_E9=new TH1F("E9", "E9", 1000,0,1);
+
 
     
     if (fChain == 0) return;
 
    Long64_t nentries = fChain->GetEntriesFast();
+TGraph* E3x3 = new TGraphErrors(nentries);
 
 
     Long64_t nbytes = 0, nb = 0;
@@ -86,7 +89,7 @@ TH1F* hist_E9=new TH1F("E9", "E9", 1000,0.5,0.8);
        
 
        E9=en_c[detKinBeamRot_n_max_Cell]/detKinBeamRot_E_clus3x3;
-       
+    
        cout << detKinBeamRot_n_max_Cell << " cella impatto elettrone " << detKinBeamRot_n_cell_e << " cella impatto fotone " << photon_n_cell_ph <<endl;
        
     /*if (photon_coox!=-1 && photon_cooy!=-1)
@@ -107,8 +110,10 @@ TH1F* hist_E9=new TH1F("E9", "E9", 1000,0.5,0.8);
         else different_cell+=wgt_full;  // cella diversa
       
       hist_E9->Fill(E9,wgt_full);
+
   }
-       
+   
+      if (detKinBeamRot_n_cell_e!=0) {E3x3->SetPoint(i,detKinBeamRot_Ee,detKinBeamRot_E_clus3x3); ++i;}
        
 /*if (detKinBeamRot_n_cell_e!=0)
     {n_tot+=wgt_full;
@@ -303,8 +308,13 @@ cout << "Eventi in cui vedo solo un cluster CON TAGLIO TAR 1: " << n_one_cut1 <<
 cout << "Frazione di eventi scartabili CON TAGLIO TAR 1: " << ratio_cut1 <<endl;*/
     
 TCanvas * c1= new TCanvas("c1","c1",1000,100,2500,2000);
+c1->Divide(1,2);
+c1->cd(1);
 hist_E9->GetXaxis()->SetTitle("Ecentral/E3x3");
 hist_E9->Draw("HIST");   
+c1->cd(2)
+E3x3->GetXaxis()->SetTitle("Etrue");
+E3x3->Draw("AP");  
 c1->SaveAs("/home/LHCB-T3/espedicato/tesi/E9.png");
     
 }

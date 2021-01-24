@@ -141,7 +141,7 @@ double en_ph_sm=p_gamma_Lab_div.E();
 TMatrixD cooPH=MCSphoton(p_gamma_Lab_div,xin,yin);
 double ECAL_E= energy_sm_el+en_ph_sm;   
 double cellPH=myGrid->GiveCentralCell(cooPH[0][0]*100,cooPH[0][1]*100);
-
+LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1],myGrid);
     if (ECAL_E>1)
     {
     //for electrons
@@ -171,8 +171,6 @@ double cellPH=myGrid->GiveCentralCell(cooPH[0][0]*100,cooPH[0][1]*100);
     EMShower TheShowerPh(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_ph,coo_ph);
     TheShowerPh.compute();}
     LoadECAL(detKinBeamRot,myGrid,i);
-    }
-    LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1],myGrid);
  }
 else if (energy_sm_el>1 && cellEL!=0)
 {nPart=1; 
@@ -184,8 +182,7 @@ myGrid->SetEnergy(energy_sm_el);
 EMShower TheShower(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_el,coo_el);
 TheShower.compute();
 LoadECAL(detKinBeamRot,myGrid,i);
-} 
-PxPyPzEVector pNO(0,0,0,0);
+ PxPyPzEVector pNO(0,0,0,0);
 LoadPhoton(event, photon,pNO,0,0,myGrid);
 } else 
 {LoadECAL(detKinBeamRot,myGrid,i);  

@@ -90,7 +90,7 @@ int* ECAL::GiveArray3x3(int n)
     if (n==4) {Array9= new int[9]{3,4,8,9,10,0,0,0};}
     if (n==5) {Array9= new int[9]{4,5,9,10,0,0,0};}
     if (n==6) {Array9= new int[9]{1,2,6,7,12,11,0,0,0};}
-    if (n==7) {Array9= new int[9]{1,2,3,6,6,8,11,12,13};}
+    if (n==7) {Array9= new int[9]{1,2,3,6,7,8,11,12,13};}
     if (n==8) {Array9= new int[9]{2,3,4,7,8,9,12,13,14};}
     if (n==9) {Array9= new int[9]{3,4,5,8,9,10,13,14,15};}
     if (n==10) {Array9= new int[9]{4,5,9,10,14,15,0,0,0};}

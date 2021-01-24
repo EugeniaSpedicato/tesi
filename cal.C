@@ -14,6 +14,9 @@ void atree::Loop()
 {
     TH1::SetDefaultSumw2();
     
+    typedef map<int, double>  energy_cell; 
+    energy_cell en_c;    
+    
 Int_t n_cell; //numero di cella in cui cade l'ELETTRONE
 Int_t n_cell_ph; //numero di cella in cui cade il fotone
 Double_t n_tot_eph=0.;
@@ -67,6 +70,16 @@ Double_t Rm = 1.959 ; //raggio di Moliere in centimetri
       Long64_t ientry = LoadTree(jentry);
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
+       
+       
+        en_c[1]=detKinBeamRot_Ecell1; en_c[2]=37; en_c[3]=38; en_c[4]=39; en_c[5]=40;
+        en_c[6]=detKinBeamRot_Ecell6; en_c[7]=30; en_c[8]=31; en_c[9]=32; en_c[10]=33;
+        en_c[11]=22; en_c[12]=23; en_c[13]=24; en_c[14]=25; en_c[15]=26;
+        en_c[16]=15; en_c[17]=16; en_c[18]=17; en_c[19]=18; en_c[20]=19;
+        en_c[21]=8; en_c[22]=9; en_c[23]=10; en_c[24]=11; en_c[25]=12;
+       
+       
+       
        
         detKinBeamRot_cooXe=detKinBeamRot_cooXe*100;
         detKinBeamRot_cooYe=detKinBeamRot_cooYe*100;

@@ -90,7 +90,7 @@ TGraph* E3x3 = new TGraphErrors(nentries);
 
        E9=en_c[detKinBeamRot_n_max_Cell]/detKinBeamRot_E_clus3x3;
     
-       cout << detKinBeamRot_n_max_Cell << " cella impatto elettrone " << detKinBeamRot_n_cell_e << " cella impatto fotone " << photon_n_cell_ph <<endl;
+       cout << detKinBeamRot_n_max_Cell << " cella impatto elettrone " << detKinBeamRot_n_cell_e << "con energia " <<detKinBeamRot_Ee << " cella impatto fotone " << photon_n_cell_ph<< "con energia " <<photon_energy <<endl;
        
     /*if (photon_coox!=-1 && photon_cooy!=-1)
     {  

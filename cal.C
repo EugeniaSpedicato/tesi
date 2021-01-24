@@ -76,7 +76,7 @@ TH1F* hist_E9=new TH1F("E9", "E9", 100,0,1);
         en_c[6]=detKinBeamRot_Ecell6; en_c[7]=detKinBeamRot_Ecell7; en_c[8]=detKinBeamRot_Ecell8; en_c[9]=detKinBeamRot_Ecell9; en_c[10]=detKinBeamRot_Ecell10;
         en_c[11]=detKinBeamRot_Ecell11; en_c[12]=detKinBeamRot_Ecell12; en_c[13]=detKinBeamRot_Ecell13; en_c[14]=detKinBeamRot_Ecell14; en_c[15]=detKinBeamRot_Ecell15;
         en_c[16]=detKinBeamRot_Ecell16; en_c[17]=detKinBeamRot_Ecell17; en_c[18]=detKinBeamRot_Ecell18; en_c[19]=detKinBeamRot_Ecell19; en_c[20]=detKinBeamRot_Ecell20;
-        en_c[21]=detKinBeamRot_Ecell21; en_c[22]detKinBeamRot_Ecell22; en_c[23]=detKinBeamRot_Ecell23; en_c[24]=detKinBeamRot_Ecell24; en_c[25]=detKinBeamRot_Ecell25;
+        en_c[21]=detKinBeamRot_Ecell21; en_c[22]=detKinBeamRot_Ecell22; en_c[23]=detKinBeamRot_Ecell23; en_c[24]=detKinBeamRot_Ecell24; en_c[25]=detKinBeamRot_Ecell25;
        
 
         detKinBeamRot_cooXe=detKinBeamRot_cooXe*100; // cm
@@ -300,8 +300,8 @@ cout << "Eventi in cui vedo solo un cluster CON TAGLIO TAR 1: " << n_one_cut1 <<
 cout << "Frazione di eventi scartabili CON TAGLIO TAR 1: " << ratio_cut1 <<endl;*/
     
 TCanvas * c1= new TCanvas("c1","c1",1000,100,2500,2000);
-E9->GetXaxis()->SetTitle("Ecentral/E3x3");
-E9->Draw("HIST");   
+hist_E9->GetXaxis()->SetTitle("Ecentral/E3x3");
+hist_E9->Draw("HIST");   
 c1->SaveAs("E9.png");
     
 }

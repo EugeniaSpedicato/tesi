@@ -165,7 +165,8 @@ double ECAL_E= energy_sm_el+en_ph_sm;
     energy_in_ph.push_back(en_ph_sm/2);
     myGrid->SetEnergy(en_ph_sm);
     EMShower TheShowerPh(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_ph,coo_ph);
-    TheShowerPh.compute();}
+    TheShowerPh.compute();
+    vector<double> E_clus=myGrid->Draw_ECAL(i); }
     LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1],myGrid);
  }
 else {    
@@ -179,12 +180,13 @@ energy_in_el.push_back(energy_sm_el);
 myGrid->SetEnergy(energy_sm_el);
 EMShower TheShower(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_el,coo_el);
 TheShower.compute();
+vector<double> E_clus=myGrid->Draw_ECAL(i); 
 } 
 PxPyPzEVector pNO(0,0,0,0);
 LoadPhoton(event, photon,pNO,0,0,myGrid);
 }
   
-vector<double> E_clus=myGrid->Draw_ECAL(i); 
+/*vector<double> E_clus=myGrid->Draw_ECAL(i); 
 vector<double> Ecell=myGrid->EnergyContent(); 
 detKinBeamRot.n_max_Cell=E_clus[0];
 detKinBeamRot.E_clus3x3=E_clus[1];
@@ -213,7 +215,7 @@ detKinBeamRot.Ecell21=Ecell[20];
 detKinBeamRot.Ecell22=Ecell[21];    
 detKinBeamRot.Ecell23=Ecell[22];    
 detKinBeamRot.Ecell24=Ecell[23];    
-detKinBeamRot.Ecell25=Ecell[24];   
+detKinBeamRot.Ecell25=Ecell[24];   */
 }
 
 

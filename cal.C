@@ -321,9 +321,10 @@ cout << "Frazione di eventi scartabili CON TAGLIO TAR 1: " << ratio_cut1 <<endl;
 TCanvas * c1= new TCanvas("c1","c1",1000,100,2500,2000);
 c1->Divide(1,2);
 c1->cd(1);
-hist_E9_e->GetXaxis()->SetTitle("Ecentral/E3x3");
-hist_E9_e->Draw("HIST"); 
-hist_Eout_9_e->Draw("HIST same"); 
+hist_Eout_9_e->GetXaxis()->SetTitle("Ecentral/E3x3");
+hist_Eout_9_e->Draw("HIST"); 
+hist_E9_e->Draw("HIST same"); 
+
 
 hist_E9_eph->SetLineColor(kRed);
 hist_E9_eph->Draw("HIST same"); 

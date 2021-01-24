@@ -159,8 +159,8 @@ double ECAL_E= energy_sm_el+en_ph_sm;
     X0depth=-log(gRandom->Uniform())*(9./7.);
     coo_ph.push_back(cooPH[0][0]*100);//cm
     coo_ph.push_back(cooPH[0][1]*100);//cm
-    cout << "Coo x fotone in compute "<<coo_el[0] << endl;
-    cout << "Coo y fotone in compute "<<coo_el[0] << endl;
+    cout << "Coo x fotone in compute "<<coo_ph[0] << endl;
+    cout << "Coo y fotone in compute "<<coo_ph[1] << endl;
     energy_in_ph.push_back(en_ph_sm/2);
     energy_in_ph.push_back(en_ph_sm/2);
     myGrid->SetEnergy(en_ph_sm);

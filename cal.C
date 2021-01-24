@@ -312,7 +312,7 @@ c1->Divide(1,2);
 c1->cd(1);
 hist_E9->GetXaxis()->SetTitle("Ecentral/E3x3");
 hist_E9->Draw("HIST");   
-c1->cd(2)
+c1->cd(2);
 E3x3->GetXaxis()->SetTitle("Etrue");
 E3x3->Draw("AP");  
 c1->SaveAs("/home/LHCB-T3/espedicato/tesi/E9.png");

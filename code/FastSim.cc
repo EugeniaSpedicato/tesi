@@ -945,6 +945,7 @@ kv.def_angle_e = def_angle[1][0];
 
 kv.n_cell_e = theGrid->GiveCentralCell(kv.cooXe*100,kv.cooYe*100);
     
+    cout << "Energia elettrone "<< kv.Ee << endl;
     cout << "Coo x elettrone dopo "<< kv.cooXe*100 << endl;
     cout << "Coo y elettrone dopo"<< kv.cooYe*100 << endl;
     cout << "Numero cella elettrone" << kv.n_cell_e << endl;
@@ -997,6 +998,7 @@ PxPyPzEVector p_gamma_CoM = Lorentz_ToCoM(p_gamma_lab_div);
       
     photon.coox=x;
     photon.cooy=y;
+    cout << "Energia fotone "<< photon.energy << endl;
     cout << "Coo x fotone dopo "<< photon.coox*100 << endl;
     cout << "Coo y fotone dopo"<< photon.cooy*100 << endl;
       

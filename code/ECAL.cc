@@ -168,7 +168,7 @@ ECAL::GiveArray3x3(CentralCell);
 for (int i=0; i<9; ++i)
 {
     if (Array9[i]>0 && Array9[i]<25) energy3x3+=EcalGrid->GetBinContent(Rev_number[Array9[i]]);
-    cout << Rev_number[Array9[i]] << " and vera " << Array9[i]<< " c'è energia " << energy3x3 << endl;
+    cout << Rev_number[Array9[i]] << " and vera " << Array9[i]<< " c'è energia " << EcalGrid->GetBinContent(Rev_number[Array9[i]]) << endl;
 }
 //Energy_dist3x3->Fill(energy3x3/energy_IN);
 ECluster.push_back(energy3x3); 

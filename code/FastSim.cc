@@ -1002,8 +1002,8 @@ PxPyPzEVector p_gamma_CoM = Lorentz_ToCoM(p_gamma_lab_div);
 
  void FastSim::LoadECAL(KineVars & kv, ECAL* const & myGrid,int j)
  {
-vector<double> Ecell=myGrid->EnergyContent();
-vector<double> E_clus = myGrid->Draw_ECAL(j);
+double *Ecell=myGrid->EnergyContent();
+double *E_clus = myGrid->Draw_ECAL(j);
 kv.n_max_Cell=E_clus[0];
 kv.E_clus3x3=E_clus[1];
     

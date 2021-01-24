@@ -137,7 +137,7 @@ void ECAL::AddHitCooDepth(double r, double phi,double xi, double yi, double w, d
 };
 
 // metodo che disegna l'evento nel calorimetro e le celle che vengono colpite
-vector<double> ECAL::Draw_ECAL(int i){
+double* ECAL::Draw_ECAL(int i){
 
 /*TCanvas * Ecal_= new TCanvas("Ecal_","Ecal_",1500,100,3500,2000);
 Ecal_->Divide(2,1);
@@ -161,7 +161,7 @@ int binMax=EcalGrid->GetMaximumBin();
 int CentralCell=number[binMax];
 cout << "cella centrale rev " << Rev_number[CentralCell] <<" and vera " << CentralCell << endl;
 //Energy_dist1->Fill(EcalGrid->GetBinContent(binMax)/energy_IN);
-ECluster.push_back((double)CentralCell); 
+ECluster[0]=((double)CentralCell); 
 
 double energy3x3=0.;    
 ECAL::GiveArray3x3(CentralCell);
@@ -171,15 +171,15 @@ for (int i=0; i<9; ++i)
     cout << Rev_number[Array9[i]] << " and vera " << Array9[i]<< " c'è energia " << EcalGrid->GetBinContent(Rev_number[Array9[i]]) << endl;
 }
 //Energy_dist3x3->Fill(energy3x3/energy_IN);
-ECluster.push_back(energy3x3); 
+ECluster[1]=(energy3x3); 
 return ECluster;
 };
 
 
-vector<double> ECAL::EnergyContent()
+double* ECAL::EnergyContent()
 {
     for (int i=1; i<26 ; ++i)
-    {E_cell.push_back(EcalGrid->GetBinContent(Rev_number[i]));}
+    {E_cell[i-1]=(EcalGrid->GetBinContent(Rev_number[i]));}
     return E_cell;
 }
    

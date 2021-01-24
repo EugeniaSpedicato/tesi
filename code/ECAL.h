@@ -41,7 +41,7 @@ void SetEnergy(double energy);
 int* GiveArray3x3(int n);
 double AddHitCoo(double r,double phi,double xi,double yi,double w);
 void AddHitCooDepth(double r, double phi,double xi, double yi, double w, double depth, double deX0depthoffset_pth);
-void Draw_ECAL(int i);
+vector<double> Draw_ECAL(int i);
 vector<double> EnergyContent();
 void Print_();
 inline void setSpotEnergy(double e) { spotEnergy = e; }
@@ -59,6 +59,7 @@ typedef map<int, int>  n_cell;
 n_cell number;
 n_cell Rev_number;
 vector<double> E_cell;
+vector<double> ECluster;
 
 TH1F* Energy_dist;
 TH1F* Energy_dist1;

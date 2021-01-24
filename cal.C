@@ -83,7 +83,7 @@ Double_t Rm = 1.959 ; //raggio di Moliere in centimetri
        
     Double_t d_e_mu=sqrt( (detKinBeamRot_cooXe-detKinBeamRot_cooXmu)*(detKinBeamRot_cooXe-detKinBeamRot_cooXmu)+(detKinBeamRot_cooYe-detKinBeamRot_cooYmu)*(detKinBeamRot_cooYe-detKinBeamRot_cooYmu) ); 
        
-  if (photon_n_cell_ph!=0 && detKinBeamRot_n_cell_e!=0){ 
+  if (abs(photon_coox)<0.0715 && abs(photon_cooy)<0.0715 && abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125){ 
       
 if (d_e_ph>3*Rm)
 {   n_tot_eph+=wgt_full;

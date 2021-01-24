@@ -304,7 +304,7 @@ void EMShower::compute() {
     // The particles of the shower are processed in parallel
     for ( int i = 0; i < nPart; ++i) {
 
-          cout << "questa è l'energi della particella " << E[i] << " VS critical energy " << theECAL->criticalEnergy() << endl;
+         // cout << "questa è l'energi della particella " << E[i] << " VS critical energy " << theECAL->criticalEnergy() << endl;
         
       //  integration of the shower profile between t-dt and t
       double dE = depositedEnergy[iStep][i];
@@ -328,16 +328,12 @@ void EMShower::compute() {
         double z0 = gRandom->Gaus(0., 1.);
         dE *= 1. + z0 * theECAL->lightCollectionUniformity();
         
-        cout << "che dopo aver aggiunto le fluttuazioni diventa " << dE << endl;
 
-        cout << " bspot da parametro " << bSpot[i] * tt <<endl;
-        cout << " aspot da parametro " << aSpot[i] <<endl;
         
         // Expected spot number
         nS = (theNumberOfSpots[i] * gam(bSpot[i] * tt, aSpot[i]) * bSpot[i] * dt / tgamma(aSpot[i]));
         // +
         
-        cout << "il numero di spot in questo dt è " << nS << endl;
 
         
 
@@ -352,7 +348,7 @@ void EMShower::compute() {
       double eSpot = (nS > 0.) ? dE / nS : 0.;
       double SpotEnergy = eSpot * E[i];
         
-         cout << "La cui energia SpotEnergy " << SpotEnergy << endl;
+      //   cout << "La cui energia SpotEnergy " << SpotEnergy << endl;
         
 
       int nSpot = (int)(nS + 0.5);
@@ -372,8 +368,8 @@ void EMShower::compute() {
       unsigned nSpots_core = (unsigned)(dSpotsCore + 0.5);
       unsigned nSpots_tail = ((unsigned)nSpot > nSpots_core) ? nSpot - nSpots_core : 0;
         
-         cout << "il numero di spot nel core " << nSpots_core << endl;
-         cout << "il numero di spot nella tail " << nSpots_tail << endl;
+        // cout << "il numero di spot nel core " << nSpots_core << endl;
+        // cout << "il numero di spot nella tail " << nSpots_tail << endl;
         
 
       for (unsigned icomp = 0; icomp < 2; ++icomp) {
@@ -454,7 +450,7 @@ void EMShower::compute() {
     
 
       
-  cout << "-------> fine step numero " <<  iStep << " con Etotal_step = " << Etot_step[iStep] << " e con con Etot_step = " << Etot_step[iStep] << " con Etot 1 = " << Etot[0] << " e con Etot 2 = " << Etot[1] << endl;
+  //cout << "-------> fine step numero " <<  iStep << " con Etotal_step = " << Etot_step[iStep] << " e con con Etot_step = " << Etot_step[iStep] << " con Etot 1 = " << Etot[0] << " e con Etot 2 = " << Etot[1] << endl;
 
 
   }        

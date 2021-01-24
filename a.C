@@ -31,7 +31,8 @@ TH2F* ECAL=new TH2F("ECAL","ECAL",5,-7,125,7.125,-7.125,7.125);
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
        
-
+double energy3x3 
+detKinBeamRot_Ee
     
   
    }

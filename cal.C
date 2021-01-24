@@ -316,7 +316,7 @@ c1->Divide(1,2);
 c1->cd(1);
 hist_E9->GetXaxis()->SetTitle("Ecentral/E3x3");
 hist_E9->Draw("HIST"); 
-hist_E9_eph->SetLineColor(kRed)
+hist_E9_eph->SetLineColor(kRed);
 hist_E9_eph->Draw("HIST same"); 
 c1->cd(2);
 E3x3->GetXaxis()->SetTitle("Etrue");

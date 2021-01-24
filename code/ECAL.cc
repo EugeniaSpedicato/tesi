@@ -155,7 +155,7 @@ name1 <<"/home/LHCB-T3/espedicato/tesi/ECALpng/Ecal"<< i << ".png";
 TString name =name1.str();
 Ecal_->SaveAs(name);*/
 
-
+double *ECluster;
 // riempi celle    
 int binMax=EcalGrid->GetMaximumBin();  
 int CentralCell=number[binMax];
@@ -177,7 +177,7 @@ return ECluster;
 
 
 double* ECAL::EnergyContent()
-{
+{   double *E_cell;
     for (int i=1; i<26 ; ++i)
     {E_cell[i-1]=(EcalGrid->GetBinContent(Rev_number[i]));}
     return E_cell;

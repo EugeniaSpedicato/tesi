@@ -58,8 +58,6 @@ double energy_IN;
 typedef map<int, int>  n_cell;
 n_cell number;
 n_cell Rev_number;
-double *E_cell;
-double *ECluster;
 
 TH1F* Energy_dist;
 TH1F* Energy_dist1;

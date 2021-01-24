@@ -60,8 +60,8 @@ namespace MuE {
     TMatrixD Def_angle(const PxPyPzEVector & p_mu_in_div,const PxPyPzEVector & p_mu_out_div,const PxPyPzEVector & p_e_out_div) const;
     Int_t ECALe(const Double_t & x,const Double_t & y) const;
     Int_t ECALph(const Double_t & x,const Double_t & y) const;
-    void LoadKineVars(const PxPyPzEVector & p_mu_in,  const PxPyPzEVector & p_e_in, const PxPyPzEVector & p_mu_out, const PxPyPzEVector & p_e_out,  const TMatrixD & coo, const Double_t & TheINT, KineVars & kv,ECAL* const & myGrid);
-    void LoadPhoton(const Event & event, Photon & photon, const PxPyPzEVector & p_gamma_lab_div,const Double_t & x,const Double_t & y,ECAL* const & myGrid);
+    void LoadKineVars(const PxPyPzEVector & p_mu_in,  const PxPyPzEVector & p_e_in, const PxPyPzEVector & p_mu_out, const PxPyPzEVector & p_e_out,  const TMatrixD & coo, const Double_t & TheINT, KineVars & kv, ECAL* const & myGrid);
+    void LoadPhoton(const Event & event, Photon & photon, const PxPyPzEVector & p_gamma_lab_div,const Double_t & x,const Double_t & y, ECAL* const & myGrid);
 
     static const Double_t mm_PDG; // PDG muon mass 
     static const Double_t me_PDG; // PDG electron mass

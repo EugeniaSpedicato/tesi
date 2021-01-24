@@ -902,7 +902,7 @@ return def_angle;
 
 void FastSim::LoadKineVars(const PxPyPzEVector & p_mu_in,  const PxPyPzEVector & p_e_in, 
 			   const PxPyPzEVector & p_mu_out, const PxPyPzEVector & p_e_out, const TMatrixD & coo, const Double_t & TheINT,
-			   MuE::KineVars & kv) {
+			   MuE::KineVars & kv,ECAL* const & theGrid) {
   
   kv.Ee = p_e_out.E();
   kv.Emu = p_mu_out.E();
@@ -941,7 +941,7 @@ TMatrixD def_angle=Def_angle(p_mu_in,p_mu_out,p_e_out);
 kv.def_angle_mu = def_angle[0][0];
 kv.def_angle_e = def_angle[1][0]; 
 
-kv.n_cell_e = myGrid->GiveCentralCell(kv.cooXe,kv.cooYe);
+kv.n_cell_e = theGrid->GiveCentralCell(kv.cooXe,kv.cooYe);
     
     cout << "Coo x fotone dopo "<< kv.cooXe << endl;
     cout << "Coo y fotone dopo"<< kv.cooYe << endl;
@@ -979,7 +979,7 @@ kv.n_cell_e = myGrid->GiveCentralCell(kv.cooXe,kv.cooYe);
 
 
       
-void FastSim::LoadPhoton(const MuE::Event & event, MuE::Photon & photon,const PxPyPzEVector & p_gamma_lab_div,const Double_t & x,const Double_t & y) {
+void FastSim::LoadPhoton(const MuE::Event & event, MuE::Photon & photon,const PxPyPzEVector & p_gamma_lab_div,const Double_t & x,const Double_t & y,ECAL* const & theGrid) {
   // by now at most one photon
  auto n_photons = event.photons.size();
   
@@ -998,7 +998,7 @@ PxPyPzEVector p_gamma_CoM = Lorentz_ToCoM(p_gamma_lab_div);
     cout << "Coo x fotone dopo "<< photon.coox << endl;
     cout << "Coo y fotone dopo"<< photon.cooy << endl;
       
-   photon.n_cell_ph = myGrid->GiveCentralCell(photon.coox,photon.cooy);
+   photon.n_cell_ph = theGrid->GiveCentralCell(photon.coox,photon.cooy);
       
     cout << "Numero cella" << photon.n_cell_ph << endl;
    

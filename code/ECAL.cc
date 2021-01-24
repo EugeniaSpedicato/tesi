@@ -139,7 +139,7 @@ void ECAL::AddHitCooDepth(double r, double phi,double xi, double yi, double w, d
 // metodo che disegna l'evento nel calorimetro e le celle che vengono colpite
 vector<double> ECAL::Draw_ECAL(int i){
 
-TCanvas * Ecal_= new TCanvas("Ecal_","Ecal_",1500,100,3500,2000);
+/*TCanvas * Ecal_= new TCanvas("Ecal_","Ecal_",1500,100,3500,2000);
 Ecal_->Divide(2,1);
 Ecal_->cd(1);
 gStyle->SetPalette(kAquamarine);
@@ -153,7 +153,7 @@ EcalGrid->Draw("LEGO");
 std::ostringstream name1;
 name1 <<"/home/LHCB-T3/espedicato/tesi/ECALpng/Ecal"<< i << ".png";
 TString name =name1.str();
-Ecal_->SaveAs(name);
+Ecal_->SaveAs(name);*/
 
 
 // riempi celle    

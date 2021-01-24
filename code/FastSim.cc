@@ -124,7 +124,7 @@ double energy_sm_el=p_e_out_div_smeared.E();
 
 myGrid->CreateGrid(5,-7.125,7.125,5,-7.125,7.125);
 
-LoadKineVars(p_mu_in_div, p_e_in_div, p_mu_out_div_smeared, p_e_out_div_smeared, coo, TheINT, detKinBeamRot); 
+LoadKineVars(p_mu_in_div, p_e_in_div, p_mu_out_div_smeared, p_e_out_div_smeared, coo, TheINT, detKinBeamRot,myGrid); 
 
     
 auto n_photons = event.photons.size();     
@@ -166,7 +166,7 @@ double ECAL_E= energy_sm_el+en_ph_sm;
     myGrid->SetEnergy(en_ph_sm);
     EMShower TheShowerPh(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_ph,coo_ph);
     TheShowerPh.compute();}
-    LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1]);
+    LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1],myGrid);
  }
 else {    
 //for electrons
@@ -181,7 +181,7 @@ EMShower TheShower(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_el,
 TheShower.compute();
 } 
 PxPyPzEVector pNO(0,0,0,0);
-LoadPhoton(event, photon,pNO,0,0);
+LoadPhoton(event, photon,pNO,0,0,myGrid);
 }
   
 vector<double> E_clus=myGrid->Draw_ECAL(i); 
@@ -941,7 +941,7 @@ TMatrixD def_angle=Def_angle(p_mu_in,p_mu_out,p_e_out);
 kv.def_angle_mu = def_angle[0][0];
 kv.def_angle_e = def_angle[1][0]; 
 
-kv.n_cell_e = GiveCentralCell(kv.cooXe,kv.cooYe);
+kv.n_cell_e = myGrid->GiveCentralCell(kv.cooXe,kv.cooYe);
     
     cout << "Coo x fotone dopo "<< kv.cooXe << endl;
     cout << "Coo y fotone dopo"<< kv.cooYe << endl;
@@ -998,7 +998,7 @@ PxPyPzEVector p_gamma_CoM = Lorentz_ToCoM(p_gamma_lab_div);
     cout << "Coo x fotone dopo "<< photon.coox << endl;
     cout << "Coo y fotone dopo"<< photon.cooy << endl;
       
-   photon.n_cell_ph = GiveCentralCell(photon.coox,photon.cooy);
+   photon.n_cell_ph = myGrid->GiveCentralCell(photon.coox,photon.cooy);
       
     cout << "Numero cella" << photon.n_cell_ph << endl;
    

@@ -112,17 +112,21 @@ TGraph* E3x3 = new TGraphErrors(nentries);
   if (photon_n_cell_ph!=0 && detKinBeamRot_n_cell_e!=0)
   {   
       n_tot_eph+=wgt_full; // e+gamma sul calorimetro
-        if (photon_n_cell_ph==detKinBeamRot_n_cell_e) same_cell+=wgt_full; //stessa cella
-        else different_cell+=wgt_full;  // cella diversa
-      
+        if (photon_n_cell_ph==detKinBeamRot_n_cell_e)
+        {same_cell+=wgt_full;       
       hist_E9_eph->Fill(E9,wgt_full);
-      if (Eout_9!=0) hist_Eout_9_eph->Fill(Eout_9,wgt_full);
+      if (Eout_9!=0) hist_Eout_9_eph->Fill(Eout_9,wgt_full);}//stessa cella
+        else {different_cell+=wgt_full;
+             hist_E9_e->Fill(E9,wgt_full);
+              if (Eout_9!=0) hist_Eout_9_e->Fill(Eout_9,wgt_full);
+             }  // cella diversa
+      
 
   }
-if (photon_n_cell_ph==0 && detKinBeamRot_n_cell_e!=0)   
-{  hist_E9_e->Fill(E9,wgt_full);
+/*if (photon_n_cell_ph==0 && detKinBeamRot_n_cell_e!=0)   
+{ hist_E9_e->Fill(E9,wgt_full);
 if (Eout_9!=0) hist_Eout_9_e->Fill(Eout_9,wgt_full);
-}
+}*/
    
       if (detKinBeamRot_n_cell_e!=0) {E3x3->SetPoint(i,detKinBeamRot_Ee,detKinBeamRot_E_clus3x3); ++i;}
        

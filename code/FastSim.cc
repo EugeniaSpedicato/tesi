@@ -126,7 +126,7 @@ myGrid->CreateGrid(5,-7.125,7.125,5,-7.125,7.125);
 
 LoadKineVars(p_mu_in_div, p_e_in_div, p_mu_out_div_smeared, p_e_out_div_smeared, coo, TheINT, detKinBeamRot,myGrid); 
 
-double cellEL=theGrid->GiveCentralCell(coo[2][0]*100,coo[3][0]*100); 
+double cellEL=myGrid->GiveCentralCell(coo[2][0]*100,coo[3][0]*100); 
 
 auto n_photons = event.photons.size();     
 if (n_photons>0){  
@@ -140,7 +140,7 @@ PxPyPzEVector p_gamma_Lab_div = RotDiv(p_mu_in,p_gamma_Lab);
 double en_ph_sm=p_gamma_Lab_div.E();  
 TMatrixD cooPH=MCSphoton(p_gamma_Lab_div,xin,yin);
 double ECAL_E= energy_sm_el+en_ph_sm;   
-double cellPH=theGrid->GiveCentralCell(cooPH[0][0]*100,cooPH[0][1]*100);
+double cellPH=myGrid->GiveCentralCell(cooPH[0][0]*100,cooPH[0][1]*100);
 
     if (ECAL_E>1 && cellEL!=0)
     {

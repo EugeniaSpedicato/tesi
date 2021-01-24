@@ -148,7 +148,7 @@ double ECAL_E= energy_sm_el+en_ph_sm;
     coo_el.push_back(coo[2][0]*100);//cm
     coo_el.push_back(coo[3][0]*100);//cm
     cout << "Coo x elettron in compute "<<coo_el[0] << endl;
-    cout << "Coo y elettron in compute "<<coo_el[0] << endl;      
+    cout << "Coo y elettron in compute "<<coo_el[1] << endl;      
     energy_in_el.push_back(energy_sm_el);
     myGrid->SetEnergy(energy_sm_el);
     EMShower TheShowerEl(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_el,coo_el);
@@ -943,9 +943,9 @@ kv.def_angle_e = def_angle[1][0];
 
 kv.n_cell_e = theGrid->GiveCentralCell(kv.cooXe,kv.cooYe);
     
-    cout << "Coo x fotone dopo "<< kv.cooXe << endl;
-    cout << "Coo y fotone dopo"<< kv.cooYe << endl;
-    cout << "Numero cella" << kv.n_cell_e << endl;
+    cout << "Coo x elettrone dopo "<< kv.cooXe*100 << endl;
+    cout << "Coo y elettrone dopo"<< kv.cooYe*100 << endl;
+    cout << "Numero cella elettrone" << kv.n_cell_e << endl;
     
   // Note: here Ebeam is the average beam energy, so tt_e and xt_e are defined under this assumption
   MuE::ElasticState emu_state(Ebeam,mm,me, kv.the);
@@ -995,12 +995,12 @@ PxPyPzEVector p_gamma_CoM = Lorentz_ToCoM(p_gamma_lab_div);
       
     photon.coox=x;
     photon.cooy=y;
-    cout << "Coo x fotone dopo "<< photon.coox << endl;
-    cout << "Coo y fotone dopo"<< photon.cooy << endl;
+    cout << "Coo x fotone dopo "<< photon.coox*100 << endl;
+    cout << "Coo y fotone dopo"<< photon.cooy*100 << endl;
       
    photon.n_cell_ph = theGrid->GiveCentralCell(photon.coox,photon.cooy);
       
-    cout << "Numero cella" << photon.n_cell_ph << endl;
+    cout << "Numero cella fotone" << photon.n_cell_ph << endl;
    
     
   }

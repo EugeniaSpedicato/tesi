@@ -171,7 +171,7 @@ LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1],myGrid);
     EMShower TheShowerPh(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_ph,coo_ph);
     TheShowerPh.compute();}
     LoadECAL(detKinBeamRot,myGrid,i);
- }
+ }}
 else if (energy_sm_el>1 && cellEL!=0)
 {nPart=1; 
 X0depth=0.;
@@ -182,7 +182,7 @@ myGrid->SetEnergy(energy_sm_el);
 EMShower TheShower(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_el,coo_el);
 TheShower.compute();
 LoadECAL(detKinBeamRot,myGrid,i);
- PxPyPzEVector pNO(0,0,0,0);
+PxPyPzEVector pNO(0,0,0,0);
 LoadPhoton(event, photon,pNO,0,0,myGrid);
 } else 
 {LoadECAL(detKinBeamRot,myGrid,i);  

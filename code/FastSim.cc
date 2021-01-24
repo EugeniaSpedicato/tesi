@@ -127,18 +127,6 @@ myGrid->CreateGrid(5,-7.125,7.125,5,-7.125,7.125);
 LoadKineVars(p_mu_in_div, p_e_in_div, p_mu_out_div_smeared, p_e_out_div_smeared, coo, TheINT, detKinBeamRot,myGrid); 
 
 double cellEL=myGrid->GiveCentralCell(coo[2][0]*100,coo[3][0]*100); 
-    
-if (energy_sm_el>0.2 && cellEL!=0)
-{nPart=1; 
-X0depth=0.;
-coo_el.push_back(coo[2][0]*100);//cm
-coo_el.push_back(coo[3][0]*100);//cm
-energy_in_el.push_back(energy_sm_el);
-myGrid->SetEnergy(energy_sm_el);
-EMShower TheShower(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_el,coo_el);
-TheShower.compute();
-LoadECAL(detKinBeamRot,myGrid,i);
-} 
 
 auto n_photons = event.photons.size();     
 if (n_photons>0){  
@@ -151,11 +139,12 @@ if (n_photons>0){
 PxPyPzEVector p_gamma_Lab_div = RotDiv(p_mu_in,p_gamma_Lab);   
 double en_ph_sm=p_gamma_Lab_div.E();  
 TMatrixD cooPH=MCSphoton(p_gamma_Lab_div,xin,yin);
-//double ECAL_E= energy_sm_el+en_ph_sm;   
+double ECAL_E= energy_sm_el+en_ph_sm;   
 double cellPH=myGrid->GiveCentralCell(cooPH[0][0]*100,cooPH[0][1]*100);
-    
 
-    /*//for electrons
+    if (ECAL_E>1)
+    {
+    //for electrons
     if(energy_sm_el>0.2 && cellEL!=0)
     {nPart=1;
     X0depth=0.;
@@ -166,7 +155,7 @@ double cellPH=myGrid->GiveCentralCell(cooPH[0][0]*100,cooPH[0][1]*100);
     energy_in_el.push_back(energy_sm_el);
     myGrid->SetEnergy(energy_sm_el);
     EMShower TheShowerEl(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_el,coo_el);
-    TheShowerEl.compute();  }*/  
+    TheShowerEl.compute();  }  
     
     //for photons   
     if (en_ph_sm>0.2 && cellPH!=0)
@@ -181,12 +170,27 @@ double cellPH=myGrid->GiveCentralCell(cooPH[0][0]*100,cooPH[0][1]*100);
     myGrid->SetEnergy(en_ph_sm);
     EMShower TheShowerPh(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_ph,coo_ph);
     TheShowerPh.compute();}
+    LoadECAL(detKinBeamRot,myGrid,i);
+    }
     LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1],myGrid);
  }
-else   {PxPyPzEVector pNO(0,0,0,0);
-        LoadPhoton(event, photon,pNO,0,0,myGrid); }
-    
+else {    
+//for electrons
+if (energy_sm_el>1 && cellEL!=0)
+{nPart=1; 
+X0depth=0.;
+coo_el.push_back(coo[2][0]*100);//cm
+coo_el.push_back(coo[3][0]*100);//cm
+energy_in_el.push_back(energy_sm_el);
+myGrid->SetEnergy(energy_sm_el);
+EMShower TheShower(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_el,coo_el);
+TheShower.compute();
 LoadECAL(detKinBeamRot,myGrid,i);
+} 
+PxPyPzEVector pNO(0,0,0,0);
+LoadPhoton(event, photon,pNO,0,0,myGrid);
+}
+  
 
 }
 
@@ -998,7 +1002,8 @@ PxPyPzEVector p_gamma_CoM = Lorentz_ToCoM(p_gamma_lab_div);
 
  void FastSim::LoadECAL(KineVars & kv, ECAL* const & myGrid,int j)
  {
-double *Ecell=myGrid->EnergyContent();
+if (myGrid->GetEntries()!=0)     
+{double *Ecell=myGrid->EnergyContent();
 double *E_clus = myGrid->Draw_ECAL(j);
 kv.n_max_Cell=E_clus[0];
 kv.E_clus3x3=E_clus[1];
@@ -1027,7 +1032,41 @@ kv.Ecell21=Ecell[20];
 kv.Ecell22=Ecell[21];    
 kv.Ecell23=Ecell[22];    
 kv.Ecell24=Ecell[23];    
-kv.Ecell25=Ecell[24];}     
+kv.Ecell25=Ecell[24];}
+
+     else 
+     {
+kv.n_max_Cell=0;
+kv.E_clus3x3=0;
+    
+kv.Ecell1=0;
+kv.Ecell2=0;    
+kv.Ecell3=0;    
+kv.Ecell4=0;   
+kv.Ecell5=0;    
+kv.Ecell6=0;  
+kv.Ecell7=0;    
+kv.Ecell8=0;   
+kv.Ecell9=0;    
+kv.Ecell10=0; 
+kv.Ecell11=0; 
+kv.Ecell12=0; 
+kv.Ecell13=0;  
+kv.Ecell14=0;   
+kv.Ecell15=0;   
+kv.Ecell16=0;    
+kv.Ecell17=0;    
+kv.Ecell18=0;    
+kv.Ecell19=0;    
+kv.Ecell20=0;    
+kv.Ecell21=0;    
+kv.Ecell22=0;    
+kv.Ecell23=0;    
+kv.Ecell24=0;    
+kv.Ecell25=0; 
+     }
+     
+ }
  
 
 // synchronize the random number chain to account for events with negligible weight

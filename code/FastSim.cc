@@ -170,7 +170,6 @@ double cellPH=myGrid->GiveCentralCell(cooPH[0][0]*100,cooPH[0][1]*100);
     myGrid->SetEnergy(en_ph_sm);
     EMShower TheShowerPh(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_ph,coo_ph);
     TheShowerPh.compute();}
-    LoadECAL(detKinBeamRot,myGrid,i);
     }
     LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1],myGrid);
  }
@@ -185,12 +184,12 @@ energy_in_el.push_back(energy_sm_el);
 myGrid->SetEnergy(energy_sm_el);
 EMShower TheShower(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_el,coo_el);
 TheShower.compute();
-LoadECAL(detKinBeamRot,myGrid,i);
 } 
 PxPyPzEVector pNO(0,0,0,0);
 LoadPhoton(event, photon,pNO,0,0,myGrid);
 }
-  
+
+LoadECAL(detKinBeamRot,myGrid,i);  
 
 }
 

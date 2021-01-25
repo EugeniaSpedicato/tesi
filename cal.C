@@ -82,8 +82,8 @@ TH1F* hist_dist_diff=new TH1F("dist", "Dist e-gamma diff cel", 400,0,4);
 if (fChain == 0) return;
 
    Long64_t nentries = fChain->GetEntriesFast();
-TGraph* E3x3 = new TGraphErrors(nentries);
-TGraph* E3x3noph = new TGraphErrors(nentries);
+TGraph* E3x3 = new TGraph(nentries);
+TGraph* E3x3noph = new TGraph(nentries);
     
 
 
@@ -415,7 +415,7 @@ c3->SaveAs("/home/LHCB-T3/espedicato/tesi/out+3x3.png");
 
  
 TCanvas * c4= new TCanvas("c4","c4",1000,100,2500,2000);
-E3x3noph->SetMarkerColor(kOrange);
+E3x3noph->SetMarkerColor(kBlack);
 E3x3noph->Draw("AP");
 E3x3->SetMarkerColor(kRed);
 E3x3->Draw("AP same");

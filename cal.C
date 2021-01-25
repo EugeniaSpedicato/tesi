@@ -21,7 +21,7 @@ Double_t n_tot=0.;
 Double_t n_tot_e=0.;
 Double_t n_tot_eph=0.;
 Double_t n_tot_NOph=0.;
-int i;
+int i,j;
     
    /* Double_t n_tot=0.;
     Double_t n_one=0.;

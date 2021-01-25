@@ -333,13 +333,17 @@ TCanvas * c1= new TCanvas("c1","c1",1000,100,2500,2000);
 //c1->Divide(1,2);
 //c1->cd(1);
 hist_E9_e->GetXaxis()->SetTitle("Ecentral/E3x3");
+hist_E9_e->SetLineWidth(3);
 hist_E9_e->Draw("HIST"); 
 
 hist_E9_eph->SetLineColor(kRed);
+hist_E9_eph->SetLineWidth(3);
 hist_E9_eph->Draw("HIST same"); 
     
 hist_E9_NOph->SetLineColor(kOrange);
+hist_E9_NOph->SetLineWidth(3);
 hist_E9_NOph->Draw("HIST same");
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
         
 /*c1->cd(2);

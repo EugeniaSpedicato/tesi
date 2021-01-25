@@ -67,7 +67,7 @@ TH1F* hist_E9_NOph=new TH1F("E9noph", "E9 NO photons", 500,0,1);
 
     
     
-TH1F* hist_Eout_9_eph_same=new TH1F("E9outeph", "Eout9 e+ph same cell", 500,0.5,1);
+TH1F* hist_Eout_9_eph_same=new TH1F("E9outeph", "Eout e+ph same cell", 500,0.5,1);
 TH1F* hist_Eout_9_eph_diff=new TH1F("E9outeph", "Eout9 e+ph diff cell", 500,0.5,1);
 TH1F* hist_Eout_9_e=new TH1F("E9oute", "Eout9 e",500,0.5,1);
 TH1F* hist_Eout_9_NOph=new TH1F("E9outnoph", "Eout9 NO photons", 500,0.5,1);
@@ -133,16 +133,19 @@ if (detKinBeamRot_n_cell_e!=0)  {
   {   
       n_tot_eph+=wgt_full; // e+gamma sul calorimetro
 //      hist_E9_eph->Fill(E9,wgt_full);
-      hist_Eout_9_eph->Fill(Eout_9,wgt_full);
       hist_dist->Fill(d_e_ph,wgt_full);
     
         if (photon_n_cell_ph==detKinBeamRot_n_cell_e)
         {same_cell+=wgt_full;
          hist_E9_eph_same->Fill(E9,wgt_full);
-         hist_dist_same->Fill(d_e_ph,wgt_full);}//stessa cella
+         hist_dist_same->Fill(d_e_ph,wgt_full);
+      hist_Eout_9_eph_same->Fill(Eout_9,wgt_full);
+        }//stessa cella
         else {different_cell+=wgt_full;
               hist_E9_eph_diff->Fill(E9,wgt_full);
-              hist_dist_diff->Fill(d_e_ph,wgt_full);}  // cella diversa
+              hist_dist_diff->Fill(d_e_ph,wgt_full);
+                hist_Eout_9_eph_diff->Fill(Eout_9,wgt_full);
+             }  // cella diversa
   } else {
       n_tot_NOph+=wgt_full;   
       hist_E9_NOph->Fill(E9,wgt_full);

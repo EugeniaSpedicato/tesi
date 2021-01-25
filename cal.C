@@ -71,6 +71,9 @@ TH1F* hist_Eout_9_eph=new TH1F("E9outeph", "Eout9 e+ph", 300,0,0.3);
 TH1F* hist_Eout_9_e=new TH1F("E9oute", "Eout9 e",300,0,0.3);
 TH1F* hist_Eout_9_NOph=new TH1F("E9outnoph", "Eout9 NO photons", 300,0,0.3);
 
+TH1F* hist_dist=new TH1F("dist", "Dist e-gamma", 400,0,4);
+TH1F* hist_dist_same=new TH1F("dist", "Dist e-gamma same cell", 400,0,4);
+TH1F* hist_dist_diff=new TH1F("dist", "Dist e-gamma diff cel", 400,0,4);
     
 
 
@@ -114,9 +117,9 @@ TGraph* E3x3 = new TGraphErrors(nentries);
 
        
        
-   /* Double_t d_e_ph=sqrt( (detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detKinBeamRot_cooYe-photon_cooy)*(detKinBeamRot_cooYe-photon_cooy) ); 
+    Double_t d_e_ph=sqrt( (detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detKinBeamRot_cooYe-photon_cooy)*(detKinBeamRot_cooYe-photon_cooy) )/Rm; 
        
-    Double_t d_e_mu=sqrt( (detKinBeamRot_cooXe-detKinBeamRot_cooXmu)*(detKinBeamRot_cooXe-detKinBeamRot_cooXmu)+(detKinBeamRot_cooYe-detKinBeamRot_cooYmu)*(detKinBeamRot_cooYe-detKinBeamRot_cooYmu) ); */
+    /*Double_t d_e_mu=sqrt( (detKinBeamRot_cooXe-detKinBeamRot_cooXmu)*(detKinBeamRot_cooXe-detKinBeamRot_cooXmu)+(detKinBeamRot_cooYe-detKinBeamRot_cooYmu)*(detKinBeamRot_cooYe-detKinBeamRot_cooYmu) ); */
     n_tot+=wgt_full;
 if (detKinBeamRot_n_cell_e!=0)  {     
     
@@ -130,11 +133,15 @@ if (detKinBeamRot_n_cell_e!=0)  {
       n_tot_eph+=wgt_full; // e+gamma sul calorimetro
 //      hist_E9_eph->Fill(E9,wgt_full);
       hist_Eout_9_eph->Fill(Eout_9,wgt_full);
-      
-      
+      hist_dist->Fill(d_e_ph,wgt_full);
+    
         if (photon_n_cell_ph==detKinBeamRot_n_cell_e)
-        {same_cell+=wgt_full;      hist_E9_eph_same->Fill(E9,wgt_full);}//stessa cella
-        else {different_cell+=wgt_full; hist_E9_eph_diff->Fill(E9,wgt_full);}  // cella diversa
+        {same_cell+=wgt_full;
+         hist_E9_eph_same->Fill(E9,wgt_full);
+         hist_dist_same->Fill(d_e_ph,wgt_full);}//stessa cella
+        else {different_cell+=wgt_full;
+              hist_E9_eph_diff->Fill(E9,wgt_full);
+              hist_dist_diff->Fill(d_e_ph,wgt_full);}  // cella diversa
   } else {
       n_tot_NOph+=wgt_full;   
       hist_E9_NOph->Fill(E9,wgt_full);
@@ -364,19 +371,19 @@ c1->SaveAs("/home/LHCB-T3/espedicato/tesi/E9.png");
     
 TCanvas * c2= new TCanvas("c1","c1",1000,100,2500,2000);
 
-hist_Eout_9_e->GetXaxis()->SetTitle("Eout/E3x3");
-hist_Eout_9_e->SetLineWidth(3);
-hist_Eout_9_e->Draw("HIST"); 
+hist_dist->GetXaxis()->SetTitle("r[Rm]");
+hist_dist->SetLineWidth(3);
+hist_dist->Draw("HIST"); 
 
-hist_Eout_9_eph->SetLineColor(kRed);
-hist_Eout_9_eph->SetLineWidth(3);
-hist_Eout_9_eph->Draw("HIST same"); 
+hist_dist_same->SetLineColor(kRed);
+hist_dist_same->SetLineWidth(3);
+hist_dist_same->Draw("HIST same"); 
     
-hist_Eout_9_NOph->SetLineColor(kOrange);
-hist_Eout_9_NOph->SetLineWidth(3);
-hist_Eout_9_NOph->Draw("HIST same");
+hist_dist_diff->SetLineColor(kGreen);
+hist_dist_diff->SetLineWidth(3);
+hist_dist_diff->Draw("HIST same");
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
-c2->SaveAs("/home/LHCB-T3/espedicato/tesi/Eout.png");
+c2->SaveAs("/home/LHCB-T3/espedicato/tesi/dist.png");
     
 }

@@ -21,8 +21,8 @@ Double_t n_tot=0.;
 Double_t n_tot_e=0.;
 Double_t n_tot_eph=0.;
 Double_t n_tot_NOph=0.;
-int i,j;
-    
+int i=0;
+int j=0;    
    /* Double_t n_tot=0.;
     Double_t n_one=0.;
     Double_t n_two=0.;
@@ -417,7 +417,6 @@ c3->SaveAs("/home/LHCB-T3/espedicato/tesi/out+3x3.png");
 TCanvas * c4= new TCanvas("c4","c4",1000,100,2500,2000);
 E3x3noph->SetMarkerColor(kOrange);
 E3x3noph->Draw("AP");
-    
 E3x3->SetMarkerColor(kRed);
 E3x3->Draw("AP same");
 c4->SaveAs("/home/LHCB-T3/espedicato/tesi/thE.png");   

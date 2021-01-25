@@ -347,9 +347,13 @@ hist_E9_e->GetXaxis()->SetTitle("Ecentral/E3x3");
 hist_E9_e->SetLineWidth(3);
 hist_E9_e->Draw("HIST"); 
 
-hist_E9_eph->SetLineColor(kRed);
-hist_E9_eph->SetLineWidth(3);
-hist_E9_eph->Draw("HIST same"); 
+hist_E9_eph_same->SetLineColor(kRed);
+hist_E9_eph_same->SetLineWidth(3);
+hist_E9_eph_same->Draw("HIST same"); 
+    
+hist_E9_eph_diff->SetLineColor(kGreen);
+hist_E9_eph_diff->SetLineWidth(3);
+hist_E9_eph_diff->Draw("HIST same"); 
     
 hist_E9_NOph->SetLineColor(kOrange);
 hist_E9_NOph->SetLineWidth(3);
@@ -364,13 +368,9 @@ hist_Eout_9_e->GetXaxis()->SetTitle("Eout/E3x3");
 hist_Eout_9_e->SetLineWidth(3);
 hist_Eout_9_e->Draw("HIST"); 
 
-hist_Eout_9_eph_same->SetLineColor(kRed);
-hist_Eout_9_eph_same->SetLineWidth(3);
-hist_Eout_9_eph_same->Draw("HIST same"); 
-    
-hist_Eout_9_eph_diff->SetLineColor(kGreen);
-hist_Eout_9_eph_diff->SetLineWidth(3);
-hist_Eout_9_eph_diff->Draw("HIST same"); 
+hist_Eout_9_eph->SetLineColor(kRed);
+hist_Eout_9_eph->SetLineWidth(3);
+hist_Eout_9_eph->Draw("HIST same"); 
     
 hist_Eout_9_NOph->SetLineColor(kOrange);
 hist_Eout_9_NOph->SetLineWidth(3);

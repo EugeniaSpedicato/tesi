@@ -59,9 +59,9 @@ Double_t different_cell=0.;
 //Double_t E_CAL;
 Double_t Rm = 2.190 ; //raggio di Moliere in centimetri    
 Double_t E9=0.;
-TH1F* hist_E9_eph=new TH1F("E9eph", "E9 e+ph", 1000,0,1);
-TH1F* hist_E9_e=new TH1F("E9e", "E9 e tot", 1000,0,1);
-TH1F* hist_E9_NOph=new TH1F("E9noph", "E9 NO photons", 1000,0,1);
+TH1F* hist_E9_eph=new TH1F("E9eph", "E9 e+ph", 500,0,1);
+TH1F* hist_E9_e=new TH1F("E9e", "E9 e tot", 500,0,1);
+TH1F* hist_E9_NOph=new TH1F("E9noph", "E9 NO photons", 500,0,1);
 
     
     
@@ -346,7 +346,7 @@ hist_E9_NOph->Draw("HIST same");
 hist_Eout_9_e->GetXaxis()->SetTitle("Eout");
 hist_Eout_9_e->Draw("HIST"); 
 hist_Eout_9_eph->SetLineColor(kRed);
-hist_Eout_9_eph->Draw("HIST same"); 
-c1->SaveAs("/home/LHCB-T3/espedicato/tesi/E9.png");*/
+hist_Eout_9_eph->Draw("HIST same"); */
+c1->SaveAs("/home/LHCB-T3/espedicato/tesi/E9.png");
     
 }

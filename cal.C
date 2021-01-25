@@ -418,7 +418,7 @@ TCanvas * c4= new TCanvas("c4","c4",1000,100,2500,2000);
 E3x3noph->SetMarkerColor(kBlack);
 E3x3noph->Draw("AP");
 E3x3->SetMarkerColor(kRed);
-E3x3->Draw("AP same");
+E3x3->Draw("AP SAME");
 c4->SaveAs("/home/LHCB-T3/espedicato/tesi/thE.png");   
     
 }

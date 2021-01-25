@@ -57,7 +57,7 @@ int i;
 
 Double_t same_cell=0.;
 Double_t different_cell=0.;
-//Double_t E_CAL;
+Double_t E_CAL=0.;
 Double_t Rm = 2.190 ; //raggio di Moliere in centimetri    
 Double_t E9=0.;
 TH1F* hist_E9_eph=new TH1F("E9eph", "E9 e+ph", 500,0,1);

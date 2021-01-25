@@ -67,10 +67,10 @@ TH1F* hist_E9_NOph=new TH1F("E9noph", "E9 NO photons", 500,0,1);
 
     
     
-TH1F* hist_Eout_9_eph_same=new TH1F("E9outeph", "Eout e+ph same cell", 300,0.7,1);
-TH1F* hist_Eout_9_eph_diff=new TH1F("E9outeph", "Eout9 e+ph diff cell",300,0.7,1);
-TH1F* hist_Eout_9_e=new TH1F("E9oute", "Eout9 e",300,0.7,1);
-TH1F* hist_Eout_9_NOph=new TH1F("E9outnoph", "Eout9 NO photons",300,0.7,1);
+TH1F* hist_Eout_9_eph_same=new TH1F("E9outeph", "Eout e+ph same cell", 300,0.89,1);
+TH1F* hist_Eout_9_eph_diff=new TH1F("E9outeph", "Eout9 e+ph diff cell",300,0.89,1);
+TH1F* hist_Eout_9_e=new TH1F("E9oute", "Eout9 e",300,0.89,1);
+TH1F* hist_Eout_9_NOph=new TH1F("E9outnoph", "Eout9 NO photons",300,0.89,1);
 
 TH1F* hist_dist=new TH1F("dist", "Dist e-gamma", 400,0,4);
 TH1F* hist_dist_same=new TH1F("dist", "Dist e-gamma same cell", 400,0,4);

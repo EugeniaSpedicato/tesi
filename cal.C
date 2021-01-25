@@ -17,8 +17,9 @@ void atree::Loop()
     typedef map<int, double>  energy_cell; 
     energy_cell en_c;    
     
-
+Double_t n_tot_e=0.;
 Double_t n_tot_eph=0.;
+Double_t n_tot_NOph=0.;
 int i;
     
    /* Double_t n_tot=0.;
@@ -59,7 +60,11 @@ Double_t different_cell=0.;
 Double_t Rm = 2.190 ; //raggio di Moliere in centimetri    
 Double_t E9=0.;
 TH1F* hist_E9_eph=new TH1F("E9eph", "E9 e+ph", 1000,0,1);
-TH1F* hist_E9_e=new TH1F("E9e", "E9 e", 1000,0,1);
+TH1F* hist_E9_e=new TH1F("E9e", "E9 e tot", 1000,0,1);
+TH1F* hist_E9_NOph=new TH1F("E9noph", "E9 NO photons", 1000,0,1);
+
+    
+    
 TH1F* hist_Eout_9_eph=new TH1F("E9outeph", "Eout9 e+ph", 1000,0,1);
 TH1F* hist_Eout_9_e=new TH1F("E9oute", "Eout9 e", 1000,0,1);
     
@@ -108,19 +113,21 @@ TGraph* E3x3 = new TGraphErrors(nentries);
    /* Double_t d_e_ph=sqrt( (detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detKinBeamRot_cooYe-photon_cooy)*(detKinBeamRot_cooYe-photon_cooy) ); 
        
     Double_t d_e_mu=sqrt( (detKinBeamRot_cooXe-detKinBeamRot_cooXmu)*(detKinBeamRot_cooXe-detKinBeamRot_cooXmu)+(detKinBeamRot_cooYe-detKinBeamRot_cooYmu)*(detKinBeamRot_cooYe-detKinBeamRot_cooYmu) ); */
-       
-  if (photon_n_cell_ph!=0 && detKinBeamRot_n_cell_e!=0)
+   
+if (detKinBeamRot_n_cell_e!=0)  {     
+    
+    n_tot_e+=wgt_full;
+    hist_E9_e->Fill(E9,wgt_full);
+    
+  if (photon_n_cell_ph!=0)
   {   
       n_tot_eph+=wgt_full; // e+gamma sul calorimetro
-        if (photon_n_cell_ph==detKinBeamRot_n_cell_e)
-        {same_cell+=wgt_full;       
       hist_E9_eph->Fill(E9,wgt_full);
-      if (Eout_9!=0) hist_Eout_9_eph->Fill(Eout_9,wgt_full);}//stessa cella
-        else {different_cell+=wgt_full;
-             hist_E9_e->Fill(E9,wgt_full);
-              if (Eout_9!=0) hist_Eout_9_e->Fill(Eout_9,wgt_full);
-             }  // cella diversa
       
+        if (photon_n_cell_ph==detKinBeamRot_n_cell_e)
+        {same_cell+=wgt_full}//stessa cella
+        else {different_cell+=wgt_full;}  // cella diversa
+  } else {n_tot_NOph+=wgt_full;   hist_E9_NOph->Fill(E9,wgt_full);}
 
   }
 /*if (photon_n_cell_ph==0 && detKinBeamRot_n_cell_e!=0)   
@@ -281,13 +288,13 @@ ratio1=n_two1/n_tot1;
 ratio_cut1=n_two_cut1/n_tot_cut1;    */    
  
 }
-
-    
- cout << "Elettroni e fotoni nella stessa cella: " << same_cell << endl;
- cout << "Elettroni e fotoni in una diversa cella: " << different_cell << endl;   
-cout << "n tot e+fotoni sul calorimetro = " << n_tot_eph << endl;
+ cout << " Numero elettroni totali " <<< n_tot_e << endl;
+cout << "Numero el+fotoni sul calorimetro = " << n_tot_eph << " dove nella stessa cella ce ne sono: " << same_cell << " in una diversa cella: " << different_cell << endl;   
+cout << "Numero elettorni senza fotoni sul calorimetro = " << n_tot_NOph << endl;
 cout << "-------------------------------------------"<<endl;
 
+    
+    
 /*cout << "Elettroni totali nel calorimetro: " << n_tot << endl;
 cout << "Elettroni ad una distanza 2RM dal fotone: " << n_two << endl;
 cout << "Eventi in cui vedo solo un cluster: " << n_one << endl;
@@ -323,20 +330,23 @@ cout << "Eventi in cui vedo solo un cluster CON TAGLIO TAR 1: " << n_one_cut1 <<
 cout << "Frazione di eventi scartabili CON TAGLIO TAR 1: " << ratio_cut1 <<endl;*/
     
 TCanvas * c1= new TCanvas("c1","c1",1000,100,2500,2000);
-c1->Divide(1,2);
-c1->cd(1);
+//c1->Divide(1,2);
+//c1->cd(1);
 hist_E9_e->GetXaxis()->SetTitle("Ecentral/E3x3");
 hist_E9_e->Draw("HIST"); 
 
 hist_E9_eph->SetLineColor(kRed);
 hist_E9_eph->Draw("HIST same"); 
+    
+hist_E9_NOph->SetLineColor(kOrange);
+hist_E9_NOph->Draw("HIST same");
 
         
-c1->cd(2);
+/*c1->cd(2);
 hist_Eout_9_e->GetXaxis()->SetTitle("Eout");
 hist_Eout_9_e->Draw("HIST"); 
 hist_Eout_9_eph->SetLineColor(kRed);
 hist_Eout_9_eph->Draw("HIST same"); 
-c1->SaveAs("/home/LHCB-T3/espedicato/tesi/E9.png");
+c1->SaveAs("/home/LHCB-T3/espedicato/tesi/E9.png");*/
     
 }

@@ -60,10 +60,10 @@ Double_t different_cell=0.;
 Double_t E_CAL=0.;
 Double_t Rm = 2.190 ; //raggio di Moliere in centimetri    
 Double_t E9=0.;
-TH1F* hist_E9_eph_same=new TH1F("E9eph", "E9 e+ph same cell", 500,0,1);
-TH1F* hist_E9_eph_diff=new TH1F("E9eph", "E9 e+ph different cell", 500,0,1);
-TH1F* hist_E9_e=new TH1F("E9e", "E9 e tot", 500,0,1);
-TH1F* hist_E9_NOph=new TH1F("E9noph", "E9 NO photons", 500,0,1);
+TH1F* hist_E9_eph_same=new TH1F("E9eph", "E9 e+ph same cell", 300,0.7,1);
+TH1F* hist_E9_eph_diff=new TH1F("E9eph", "E9 e+ph different cell", 300,0.7,1);
+TH1F* hist_E9_e=new TH1F("E9e", "E9 e tot", 300,0.7,1);
+TH1F* hist_E9_NOph=new TH1F("E9noph", "E9 NO photons", 300,0.7,1);
 
     
     

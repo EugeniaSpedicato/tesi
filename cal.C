@@ -66,9 +66,9 @@ TH1F* hist_E9_NOph=new TH1F("E9noph", "E9 NO photons", 500,0,1);
 
     
     
-TH1F* hist_Eout_9_eph=new TH1F("E9outeph", "Eout9 e+ph", 500,0,0.5);
-TH1F* hist_Eout_9_e=new TH1F("E9oute", "Eout9 e", 500,0,0.5);
-TH1F* hist_Eout_9_NOph=new TH1F("E9outnoph", "Eout9 NO photons", 500,0,0.5);
+TH1F* hist_Eout_9_eph=new TH1F("E9outeph", "Eout9 e+ph", 300,0,0.3);
+TH1F* hist_Eout_9_e=new TH1F("E9oute", "Eout9 e",300,0,0.3);
+TH1F* hist_Eout_9_NOph=new TH1F("E9outnoph", "Eout9 NO photons", 300,0,0.3);
 
     
 
@@ -93,7 +93,12 @@ TGraph* E3x3 = new TGraphErrors(nentries);
         en_c[16]=detKinBeamRot_Ecell16; en_c[17]=detKinBeamRot_Ecell17; en_c[18]=detKinBeamRot_Ecell18; en_c[19]=detKinBeamRot_Ecell19; en_c[20]=detKinBeamRot_Ecell20;
         en_c[21]=detKinBeamRot_Ecell21; en_c[22]=detKinBeamRot_Ecell22; en_c[23]=detKinBeamRot_Ecell23; en_c[24]=detKinBeamRot_Ecell24; en_c[25]=detKinBeamRot_Ecell25;
        
-
+    if (photon_coox!=-1 && photon_cooy!=-1)
+    {  
+     E_CAL=detKinBeamRot_Ee+photon_energy;}
+    else 
+    {  E_CAL=detKinBeamRot_Ee;}
+       
         detKinBeamRot_cooXe=detKinBeamRot_cooXe*100; // cm
         detKinBeamRot_cooYe=detKinBeamRot_cooYe*100; // cm
         photon_coox=photon_coox*100; // cm
@@ -102,15 +107,11 @@ TGraph* E3x3 = new TGraphErrors(nentries);
        double Etotcal =0.;
        for(int i=1;i<26;++i){Etotcal+=en_c[i];}
        double Eout_9=(Etotcal-detKinBeamRot_E_clus3x3)/detKinBeamRot_E_clus3x3;
-       E9=en_c[detKinBeamRot_n_max_Cell]/detKinBeamRot_E_clus3x3;
-    
+       //E9=en_c[detKinBeamRot_n_max_Cell]/detKinBeamRot_E_clus3x3;
+        E9=detKinBeamRot_E_clus3x3/E_CAL;
        /*cout << detKinBeamRot_n_max_Cell << " cella impatto elettrone " << detKinBeamRot_n_cell_e << "con energia " <<detKinBeamRot_Ee << " cella impatto fotone " << photon_n_cell_ph<< "con energia " <<photon_energy <<endl;*/
        
-    /*if (photon_coox!=-1 && photon_cooy!=-1)
-    {  
-     E_CAL=detKinBeamRot_Ee+photon_energy;}
-    else 
-    {  E_CAL=detKinBeamRot_Ee;}*/
+
        
        
    /* Double_t d_e_ph=sqrt( (detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detKinBeamRot_cooYe-photon_cooy)*(detKinBeamRot_cooYe-photon_cooy) ); 
@@ -372,6 +373,6 @@ hist_Eout_9_NOph->SetLineWidth(3);
 hist_Eout_9_NOph->Draw("HIST same");
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
-c2->SaveAs("/home/LHCB-T3/espedicato/tesi/E9.png");
+c2->SaveAs("/home/LHCB-T3/espedicato/tesi/Eout.png");
     
 }

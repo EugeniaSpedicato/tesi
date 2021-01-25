@@ -420,6 +420,6 @@ E3x3noph->Draw("AP");
     
 E3x3->SetMarkerColor(kRed);
 E3x3->Draw("AP same");
-c3->SaveAs("/home/LHCB-T3/espedicato/tesi/thE.png");   
+c4->SaveAs("/home/LHCB-T3/espedicato/tesi/thE.png");   
     
 }

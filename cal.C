@@ -108,7 +108,7 @@ TGraph* E3x3 = new TGraphErrors(nentries);
        for(int i=1;i<26;++i){Etotcal+=en_c[i];}
        double Eout_9=(Etotcal-detKinBeamRot_E_clus3x3)/detKinBeamRot_E_clus3x3;
        //E9=en_c[detKinBeamRot_n_max_Cell]/detKinBeamRot_E_clus3x3;
-        E9=detKinBeamRot_E_clus3x3/E_CAL;
+        if (E_CAL!=0){E9=detKinBeamRot_E_clus3x3/E_CAL;} else E9=-1;
        /*cout << detKinBeamRot_n_max_Cell << " cella impatto elettrone " << detKinBeamRot_n_cell_e << "con energia " <<detKinBeamRot_Ee << " cella impatto fotone " << photon_n_cell_ph<< "con energia " <<photon_energy <<endl;*/
        
 

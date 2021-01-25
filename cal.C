@@ -67,9 +67,10 @@ TH1F* hist_E9_NOph=new TH1F("E9noph", "E9 NO photons", 500,0,1);
 
     
     
-TH1F* hist_Eout_9_eph=new TH1F("E9outeph", "Eout9 e+ph", 300,0,0.3);
-TH1F* hist_Eout_9_e=new TH1F("E9oute", "Eout9 e",300,0,0.3);
-TH1F* hist_Eout_9_NOph=new TH1F("E9outnoph", "Eout9 NO photons", 300,0,0.3);
+TH1F* hist_Eout_9_eph_same=new TH1F("E9outeph", "Eout9 e+ph same cell", 500,0.5,1);
+TH1F* hist_Eout_9_eph_diff=new TH1F("E9outeph", "Eout9 e+ph diff cell", 500,0.5,1);
+TH1F* hist_Eout_9_e=new TH1F("E9oute", "Eout9 e",500,0.5,1);
+TH1F* hist_Eout_9_NOph=new TH1F("E9outnoph", "Eout9 NO photons", 500,0.5,1);
 
 TH1F* hist_dist=new TH1F("dist", "Dist e-gamma", 400,0,4);
 TH1F* hist_dist_same=new TH1F("dist", "Dist e-gamma same cell", 400,0,4);
@@ -369,7 +370,7 @@ gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
 c1->SaveAs("/home/LHCB-T3/espedicato/tesi/E9.png");
     
-TCanvas * c2= new TCanvas("c1","c1",1000,100,2500,2000);
+TCanvas * c2= new TCanvas("c2","c2",1000,100,2500,2000);
 
 hist_dist->GetXaxis()->SetTitle("r[Rm]");
 hist_dist->SetLineWidth(3);
@@ -385,5 +386,26 @@ hist_dist_diff->Draw("HIST same");
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
 c2->SaveAs("/home/LHCB-T3/espedicato/tesi/dist.png");
+    
+TCanvas * c3= new TCanvas("c3","c3",1000,100,2500,2000);
+
+hist_Eout_9_e->GetXaxis()->SetTitle("Ecentral/E3x3");
+hist_Eout_9_e->SetLineWidth(3);
+hist_Eout_9_e->Draw("HIST"); 
+
+hist_Eout_9_eph_same->SetLineColor(kRed);
+hist_Eout_9_eph_same->SetLineWidth(3);
+hist_Eout_9_eph_same->Draw("HIST same"); 
+    
+hist_Eout_9_eph_diff->SetLineColor(kGreen);
+hist_Eout_9_eph_diff->SetLineWidth(3);
+hist_Eout_9_eph_diff->Draw("HIST same"); 
+    
+hist_Eout_9_NOph->SetLineColor(kOrange);
+hist_Eout_9_NOph->SetLineWidth(3);
+hist_Eout_9_NOph->Draw("HIST same");
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
+
+c3->SaveAs("/home/LHCB-T3/espedicato/tesi/out+3x3.png");
     
 }

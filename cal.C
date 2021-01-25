@@ -107,8 +107,7 @@ TGraph* E3x3 = new TGraphErrors(nentries);
        double Etotcal =0.;
        for(int i=1;i<26;++i){Etotcal+=en_c[i];}
        double Eout_9=(Etotcal-detKinBeamRot_E_clus3x3)/detKinBeamRot_E_clus3x3;
-       //E9=en_c[detKinBeamRot_n_max_Cell]/detKinBeamRot_E_clus3x3;
-        if (E_CAL!=0){E9=detKinBeamRot_E_clus3x3/E_CAL;} else E9=-1;
+       E9=en_c[detKinBeamRot_n_max_Cell]/detKinBeamRot_E_clus3x3;
        /*cout << detKinBeamRot_n_max_Cell << " cella impatto elettrone " << detKinBeamRot_n_cell_e << "con energia " <<detKinBeamRot_Ee << " cella impatto fotone " << photon_n_cell_ph<< "con energia " <<photon_energy <<endl;*/
        
 
@@ -128,12 +127,12 @@ if (detKinBeamRot_n_cell_e!=0)  {
   if (photon_n_cell_ph!=0)
   {   
       n_tot_eph+=wgt_full; // e+gamma sul calorimetro
-      hist_E9_eph->Fill(E9,wgt_full);
+//      hist_E9_eph->Fill(E9,wgt_full);
       hist_Eout_9_eph->Fill(Eout_9,wgt_full);
       
       
         if (photon_n_cell_ph==detKinBeamRot_n_cell_e)
-        {same_cell+=wgt_full;}//stessa cella
+        {same_cell+=wgt_full;      hist_E9_eph->Fill(E9,wgt_full);}//stessa cella
         else {different_cell+=wgt_full;}  // cella diversa
   } else {
       n_tot_NOph+=wgt_full;   

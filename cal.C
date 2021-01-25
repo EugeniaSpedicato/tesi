@@ -125,7 +125,7 @@ if (detKinBeamRot_n_cell_e!=0)  {
       hist_E9_eph->Fill(E9,wgt_full);
       
         if (photon_n_cell_ph==detKinBeamRot_n_cell_e)
-        {same_cell+=wgt_full}//stessa cella
+        {same_cell+=wgt_full;}//stessa cella
         else {different_cell+=wgt_full;}  // cella diversa
   } else {n_tot_NOph+=wgt_full;   hist_E9_NOph->Fill(E9,wgt_full);}
 
@@ -288,7 +288,7 @@ ratio1=n_two1/n_tot1;
 ratio_cut1=n_two_cut1/n_tot_cut1;    */    
  
 }
- cout << " Numero elettroni totali " <<< n_tot_e << endl;
+ cout << " Numero elettroni totali " << n_tot_e << endl;
 cout << "Numero el+fotoni sul calorimetro = " << n_tot_eph << " dove nella stessa cella ce ne sono: " << same_cell << " in una diversa cella: " << different_cell << endl;   
 cout << "Numero elettorni senza fotoni sul calorimetro = " << n_tot_NOph << endl;
 cout << "-------------------------------------------"<<endl;

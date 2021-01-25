@@ -17,6 +17,7 @@ void atree::Loop()
     typedef map<int, double>  energy_cell; 
     energy_cell en_c;    
     
+Double_t n_tot=0.;
 Double_t n_tot_e=0.;
 Double_t n_tot_eph=0.;
 Double_t n_tot_NOph=0.;
@@ -65,13 +66,15 @@ TH1F* hist_E9_NOph=new TH1F("E9noph", "E9 NO photons", 500,0,1);
 
     
     
-TH1F* hist_Eout_9_eph=new TH1F("E9outeph", "Eout9 e+ph", 1000,0,1);
-TH1F* hist_Eout_9_e=new TH1F("E9oute", "Eout9 e", 1000,0,1);
+TH1F* hist_Eout_9_eph=new TH1F("E9outeph", "Eout9 e+ph", 500,0,0.5);
+TH1F* hist_Eout_9_e=new TH1F("E9oute", "Eout9 e", 500,0,0.5);
+TH1F* hist_Eout_9_NOph=new TH1F("E9outnoph", "Eout9 NO photons", 500,0,0.5);
+
     
 
 
     
-    if (fChain == 0) return;
+if (fChain == 0) return;
 
    Long64_t nentries = fChain->GetEntriesFast();
 TGraph* E3x3 = new TGraphErrors(nentries);
@@ -98,7 +101,7 @@ TGraph* E3x3 = new TGraphErrors(nentries);
        
        double Etotcal =0.;
        for(int i=1;i<26;++i){Etotcal+=en_c[i];}
-       double Eout_9=(Etotcal-detKinBeamRot_E_clus3x3);
+       double Eout_9=(Etotcal-detKinBeamRot_E_clus3x3)/detKinBeamRot_E_clus3x3;
        E9=en_c[detKinBeamRot_n_max_Cell]/detKinBeamRot_E_clus3x3;
     
        /*cout << detKinBeamRot_n_max_Cell << " cella impatto elettrone " << detKinBeamRot_n_cell_e << "con energia " <<detKinBeamRot_Ee << " cella impatto fotone " << photon_n_cell_ph<< "con energia " <<photon_energy <<endl;*/
@@ -113,21 +116,29 @@ TGraph* E3x3 = new TGraphErrors(nentries);
    /* Double_t d_e_ph=sqrt( (detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detKinBeamRot_cooYe-photon_cooy)*(detKinBeamRot_cooYe-photon_cooy) ); 
        
     Double_t d_e_mu=sqrt( (detKinBeamRot_cooXe-detKinBeamRot_cooXmu)*(detKinBeamRot_cooXe-detKinBeamRot_cooXmu)+(detKinBeamRot_cooYe-detKinBeamRot_cooYmu)*(detKinBeamRot_cooYe-detKinBeamRot_cooYmu) ); */
-   
+    n_tot+=wgt_full;
 if (detKinBeamRot_n_cell_e!=0)  {     
     
     n_tot_e+=wgt_full;
     hist_E9_e->Fill(E9,wgt_full);
+    hist_Eout_9_e->Fill(Eout_9,wgt_full);
+    
     
   if (photon_n_cell_ph!=0)
   {   
       n_tot_eph+=wgt_full; // e+gamma sul calorimetro
       hist_E9_eph->Fill(E9,wgt_full);
+      hist_Eout_9_eph->Fill(Eout_9,wgt_full);
+      
       
         if (photon_n_cell_ph==detKinBeamRot_n_cell_e)
         {same_cell+=wgt_full;}//stessa cella
         else {different_cell+=wgt_full;}  // cella diversa
-  } else {n_tot_NOph+=wgt_full;   hist_E9_NOph->Fill(E9,wgt_full);}
+  } else {
+      n_tot_NOph+=wgt_full;   
+      hist_E9_NOph->Fill(E9,wgt_full);
+      hist_Eout_9_NOph->Fill(Eout_9,wgt_full);
+        }
 
   }
 /*if (photon_n_cell_ph==0 && detKinBeamRot_n_cell_e!=0)   
@@ -288,7 +299,7 @@ ratio1=n_two1/n_tot1;
 ratio_cut1=n_two_cut1/n_tot_cut1;    */    
  
 }
- cout << " Numero elettroni totali " << n_tot_e << endl;
+ cout << " Numero elettroni totali " << n_tot_e << " su un totale di " << n_tot << " eventi " << endl;
 cout << "Numero el+fotoni sul calorimetro = " << n_tot_eph << " dove nella stessa cella ce ne sono: " << same_cell << " in una diversa cella: " << different_cell << endl;   
 cout << "Numero elettorni senza fotoni sul calorimetro = " << n_tot_NOph << endl;
 cout << "-------------------------------------------"<<endl;
@@ -330,8 +341,7 @@ cout << "Eventi in cui vedo solo un cluster CON TAGLIO TAR 1: " << n_one_cut1 <<
 cout << "Frazione di eventi scartabili CON TAGLIO TAR 1: " << ratio_cut1 <<endl;*/
     
 TCanvas * c1= new TCanvas("c1","c1",1000,100,2500,2000);
-//c1->Divide(1,2);
-//c1->cd(1);
+
 hist_E9_e->GetXaxis()->SetTitle("Ecentral/E3x3");
 hist_E9_e->SetLineWidth(3);
 hist_E9_e->Draw("HIST"); 
@@ -345,12 +355,23 @@ hist_E9_NOph->SetLineWidth(3);
 hist_E9_NOph->Draw("HIST same");
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
-        
-/*c1->cd(2);
-hist_Eout_9_e->GetXaxis()->SetTitle("Eout");
-hist_Eout_9_e->Draw("HIST"); 
-hist_Eout_9_eph->SetLineColor(kRed);
-hist_Eout_9_eph->Draw("HIST same"); */
 c1->SaveAs("/home/LHCB-T3/espedicato/tesi/E9.png");
+    
+TCanvas * c2= new TCanvas("c1","c1",1000,100,2500,2000);
+
+hist_Eout_9_e->GetXaxis()->SetTitle("Eout/E3x3");
+hist_Eout_9_e->SetLineWidth(3);
+hist_Eout_9_e->Draw("HIST"); 
+
+hist_Eout_9_eph->SetLineColor(kRed);
+hist_Eout_9_eph->SetLineWidth(3);
+hist_Eout_9_eph->Draw("HIST same"); 
+    
+hist_Eout_9_NOph->SetLineColor(kOrange);
+hist_Eout_9_NOph->SetLineWidth(3);
+hist_Eout_9_NOph->Draw("HIST same");
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
+
+c2->SaveAs("/home/LHCB-T3/espedicato/tesi/E9.png");
     
 }

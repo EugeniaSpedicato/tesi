@@ -142,17 +142,17 @@ if (detKinBeamRot_n_cell_e!=0)  {
         {same_cell+=wgt_full;
          hist_E9_eph_same->Fill(E9,wgt_full);
          hist_dist_same->Fill(d_e_ph,wgt_full);
-      hist_Eout_9_eph_same->Fill(Eout_9,wgt_full);
+      hist_Eout_9_eph_same->Fill(Eout,wgt_full);
         }//stessa cella
         else {different_cell+=wgt_full;
               hist_E9_eph_diff->Fill(E9,wgt_full);
               hist_dist_diff->Fill(d_e_ph,wgt_full);
-                hist_Eout_9_eph_diff->Fill(Eout_9,wgt_full);
+                hist_Eout_9_eph_diff->Fill(Eout,wgt_full);
              }  // cella diversa
   } else {
       n_tot_NOph+=wgt_full;   
       hist_E9_NOph->Fill(E9,wgt_full);
-      hist_Eout_9_NOph->Fill(Eout_9,wgt_full);
+      hist_Eout_9_NOph->Fill(Eout,wgt_full);
       E3x3noph->SetPoint(i,detKinBeamRot_Ee,detKinBeamRot_E_clus3x3); ++i;
         }
 

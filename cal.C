@@ -132,7 +132,7 @@ if (detKinBeamRot_n_cell_e!=0 && abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBea
     hist_Eout_9_e->Fill(Eout_9,wgt_full);
     
     
-  if (photon_n_cell_ph!=0)
+  if (photon_n_cell_ph!=0 abs(photon_coox)<4.275 && abs(photon_cooy)<4.275)
   {   
       n_tot_eph+=wgt_full; // e+gamma sul calorimetro
 //      hist_E9_eph->Fill(E9,wgt_full);

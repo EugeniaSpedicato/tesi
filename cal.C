@@ -67,10 +67,10 @@ TH1F* hist_E9_NOph=new TH1F("E9noph", "E9 NO photons", 500,0,1);
 
     
     
-TH1F* hist_Eout_9_eph_same=new TH1F("E9outeph", "Eout e+ph same cell", 100,0,0.1);
-TH1F* hist_Eout_9_eph_diff=new TH1F("E9outeph", "Eout9 e+ph diff cell",100,0,0.1);
-TH1F* hist_Eout_9_e=new TH1F("E9oute", "Eout9 e",100,0,0.1);
-TH1F* hist_Eout_9_NOph=new TH1F("E9outnoph", "Eout9 NO photons",100,0,0.1);
+TH1F* hist_Eout_9_eph_same=new TH1F("E9outeph", "Eout e+ph same cell", 300,0.89,1);
+TH1F* hist_Eout_9_eph_diff=new TH1F("E9outeph", "Eout9 e+ph diff cell",300,0.89,1);
+TH1F* hist_Eout_9_e=new TH1F("E9oute", "Eout9 e",300,0.89,1);
+TH1F* hist_Eout_9_NOph=new TH1F("E9outnoph", "Eout9 NO photons",300,0.89,1);
 
 TH1F* hist_dist=new TH1F("dist", "Dist e-gamma", 400,0,4);
 TH1F* hist_dist_same=new TH1F("dist", "Dist e-gamma same cell", 400,0,4);
@@ -129,7 +129,7 @@ if (detKinBeamRot_n_cell_e!=0)  {
     
     n_tot_e+=wgt_full;
     hist_E9_e->Fill(E9,wgt_full);
-    hist_Eout_9_e->Fill(Eout,wgt_full);
+    hist_Eout_9_e->Fill(Eout_9,wgt_full);
     
     
   if (photon_n_cell_ph!=0)
@@ -142,17 +142,17 @@ if (detKinBeamRot_n_cell_e!=0)  {
         {same_cell+=wgt_full;
          hist_E9_eph_same->Fill(E9,wgt_full);
          hist_dist_same->Fill(d_e_ph,wgt_full);
-      hist_Eout_9_eph_same->Fill(Eout,wgt_full);
+      hist_Eout_9_eph_same->Fill(Eout_9,wgt_full);
         }//stessa cella
         else {different_cell+=wgt_full;
               hist_E9_eph_diff->Fill(E9,wgt_full);
               hist_dist_diff->Fill(d_e_ph,wgt_full);
-                hist_Eout_9_eph_diff->Fill(Eout,wgt_full);
+                hist_Eout_9_eph_diff->Fill(Eout_9,wgt_full);
              }  // cella diversa
   } else {
       n_tot_NOph+=wgt_full;   
       hist_E9_NOph->Fill(E9,wgt_full);
-      hist_Eout_9_NOph->Fill(Eout,wgt_full);
+      hist_Eout_9_NOph->Fill(Eout_9,wgt_full);
       E3x3noph->SetPoint(i,detKinBeamRot_Ee,detKinBeamRot_E_clus3x3); ++i;
         }
 

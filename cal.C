@@ -125,7 +125,7 @@ TGraph* E3x3noph = new TGraph(nentries);
        
     /*Double_t d_e_mu=sqrt( (detKinBeamRot_cooXe-detKinBeamRot_cooXmu)*(detKinBeamRot_cooXe-detKinBeamRot_cooXmu)+(detKinBeamRot_cooYe-detKinBeamRot_cooYmu)*(detKinBeamRot_cooYe-detKinBeamRot_cooYmu) ); */
     n_tot+=wgt_full;
-if (detKinBeamRot_n_cell_e!=0)  {     
+if (detKinBeamRot_n_cell_e!=0 && abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275 )  {     
     
     n_tot_e+=wgt_full;
     hist_E9_e->Fill(E9,wgt_full);
@@ -395,7 +395,7 @@ c2->SaveAs("/home/LHCB-T3/espedicato/tesi/dist.png");
     
 TCanvas * c3= new TCanvas("c3","c3",1000,100,2500,2000);
 
-hist_Eout_9_e->GetXaxis()->SetTitle("Ecentral/E3x3");
+hist_Eout_9_e->GetXaxis()->SetTitle("E3x3/E5x5");
 hist_Eout_9_e->SetLineWidth(3);
 hist_Eout_9_e->Draw("HIST"); 
 

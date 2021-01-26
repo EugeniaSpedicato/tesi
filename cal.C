@@ -67,10 +67,10 @@ TH1F* hist_E9_NOph=new TH1F("E9noph", "E9 NO photons", 500,0,1);
 
     
     
-TH1F* hist_Eout_9_eph_same=new TH1F("E9outeph", "Eout e+ph same cell", 300,0.89,1);
-TH1F* hist_Eout_9_eph_diff=new TH1F("E9outeph", "Eout9 e+ph diff cell",300,0.89,1);
-TH1F* hist_Eout_9_e=new TH1F("E9oute", "Eout9 e",300,0.89,1);
-TH1F* hist_Eout_9_NOph=new TH1F("E9outnoph", "Eout9 NO photons",300,0.89,1);
+TH1F* hist_Eout_9_eph_same=new TH1F("E9outeph", "E_3x3/Etotcal e+ph same cell", 300,0.89,1);
+TH1F* hist_Eout_9_eph_diff=new TH1F("E9outeph", "E_3x3/Etotcal e+ph diff cell",300,0.89,1);
+TH1F* hist_Eout_9_e=new TH1F("E9oute", "E_3x3/Etotcal e",300,0.89,1);
+TH1F* hist_Eout_9_NOph=new TH1F("E9outnoph", "E_3x3/Etotcal NO photons",300,0.89,1);
 
 TH1F* hist_dist=new TH1F("dist", "Dist e-gamma", 400,0,4);
 TH1F* hist_dist_same=new TH1F("dist", "Dist e-gamma same cell", 400,0,4);
@@ -81,7 +81,7 @@ TH1F* hist_dist_diff=new TH1F("dist", "Dist e-gamma diff cel", 400,0,4);
     
 if (fChain == 0) return;
 
-   Long64_t nentries = fChain->GetEntriesFast();
+Long64_t nentries = fChain->GetEntriesFast();
 TGraph* E3x3 = new TGraph(nentries);
 TGraph* E3x3noph = new TGraph(nentries);
     
@@ -125,7 +125,7 @@ TGraph* E3x3noph = new TGraph(nentries);
        
     /*Double_t d_e_mu=sqrt( (detKinBeamRot_cooXe-detKinBeamRot_cooXmu)*(detKinBeamRot_cooXe-detKinBeamRot_cooXmu)+(detKinBeamRot_cooYe-detKinBeamRot_cooYmu)*(detKinBeamRot_cooYe-detKinBeamRot_cooYmu) ); */
     n_tot+=wgt_full;
-if (detKinBeamRot_n_cell_e!=0)  {     
+if (detKinBeamRot_n_cell_e=13)  {     
     
     n_tot_e+=wgt_full;
     hist_E9_e->Fill(E9,wgt_full);

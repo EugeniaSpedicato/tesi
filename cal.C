@@ -60,21 +60,21 @@ Double_t different_cell=0.;
 Double_t E_CAL=0.;
 Double_t Rm = 2.190 ; //raggio di Moliere in centimetri    
 Double_t E9=0.;
-TH1F* hist_E9_eph_same=new TH1F("E9eph", "E9 e+ph same cell", 100,0,1);
-TH1F* hist_E9_eph_diff=new TH1F("E9eph", "E9 e+ph different cell", 100,0,1);
-TH1F* hist_E9_e=new TH1F("E9e", "E9 e tot", 100,0,1);
-TH1F* hist_E9_NOph=new TH1F("E9noph", "E9 NO photons", 100,0,1);
+TH1F* hist_E9_eph_same=new TH1F("E9eph", "E9 e+ph same cell", 500,0,1);
+TH1F* hist_E9_eph_diff=new TH1F("E9eph", "E9 e+ph different cell", 500,0,1);
+TH1F* hist_E9_e=new TH1F("E9e", "E9 e tot", 500,0,1);
+TH1F* hist_E9_NOph=new TH1F("E9noph", "E9 NO photons", 500,0,1);
 
     
     
-TH1F* hist_Eout_9_eph_same=new TH1F("E9outeph", "E_3x3/Etotcal e+ph same cell", 100,0.89,1);
-TH1F* hist_Eout_9_eph_diff=new TH1F("E9outeph", "E_3x3/Etotcal e+ph diff cell",100,0.89,1);
-TH1F* hist_Eout_9_e=new TH1F("E9oute", "E_3x3/Etotcal e",100,0.89,1);
-TH1F* hist_Eout_9_NOph=new TH1F("E9outnoph", "E_3x3/Etotcal NO photons",100,0.89,1);
+TH1F* hist_Eout_9_eph_same=new TH1F("E9outeph", "E_3x3/Etotcal e+ph same cell", 300,0.89,1);
+TH1F* hist_Eout_9_eph_diff=new TH1F("E9outeph", "E_3x3/Etotcal e+ph diff cell",300,0.89,1);
+TH1F* hist_Eout_9_e=new TH1F("E9oute", "E_3x3/Etotcal e",300,0.89,1);
+TH1F* hist_Eout_9_NOph=new TH1F("E9outnoph", "E_3x3/Etotcal NO photons",300,0.89,1);
 
-TH1F* hist_dist=new TH1F("dist", "Dist e-gamma", 100,0,4);
-TH1F* hist_dist_same=new TH1F("dist", "Dist e-gamma same cell", 100,0,4);
-TH1F* hist_dist_diff=new TH1F("dist", "Dist e-gamma diff cel", 100,0,4);
+TH1F* hist_dist=new TH1F("dist", "Dist e-gamma", 400,0,4);
+TH1F* hist_dist_same=new TH1F("dist", "Dist e-gamma same cell", 400,0,4);
+TH1F* hist_dist_diff=new TH1F("dist", "Dist e-gamma diff cel", 400,0,4);
     
 
 
@@ -125,7 +125,7 @@ TGraph* E3x3noph = new TGraph(nentries);
        
     /*Double_t d_e_mu=sqrt( (detKinBeamRot_cooXe-detKinBeamRot_cooXmu)*(detKinBeamRot_cooXe-detKinBeamRot_cooXmu)+(detKinBeamRot_cooYe-detKinBeamRot_cooYmu)*(detKinBeamRot_cooYe-detKinBeamRot_cooYmu) ); */
     n_tot+=wgt_full;
-if (detKinBeamRot_n_cell_e==13 && abs(detKinBeamRot_cooXe)<0.4 && abs(detKinBeamRot_cooYe)<0.4)  {     
+if (detKinBeamRot_n_cell_e!=0)  {     
     
     n_tot_e+=wgt_full;
     hist_E9_e->Fill(E9,wgt_full);
@@ -137,7 +137,7 @@ if (detKinBeamRot_n_cell_e==13 && abs(detKinBeamRot_cooXe)<0.4 && abs(detKinBeam
       n_tot_eph+=wgt_full; // e+gamma sul calorimetro
 //      hist_E9_eph->Fill(E9,wgt_full);
       hist_dist->Fill(d_e_ph,wgt_full);
-    E3x3->SetPoint(j,detKinBeamRot_Ee,detKinBeamRot_E_clus3x3); ++j;
+    E3x3->SetPoint(j,detKinBeamRot_ThEl_interaction,detKinBeamRot_E_clus3x3); ++j;
         if (photon_n_cell_ph==detKinBeamRot_n_cell_e)
         {same_cell+=wgt_full;
          hist_E9_eph_same->Fill(E9,wgt_full);
@@ -153,7 +153,7 @@ if (detKinBeamRot_n_cell_e==13 && abs(detKinBeamRot_cooXe)<0.4 && abs(detKinBeam
       n_tot_NOph+=wgt_full;   
       hist_E9_NOph->Fill(E9,wgt_full);
       hist_Eout_9_NOph->Fill(Eout_9,wgt_full);
-      E3x3noph->SetPoint(i,detKinBeamRot_Ee,detKinBeamRot_E_clus3x3); ++i;
+      E3x3noph->SetPoint(i,detKinBeamRot_ThEl_interaction,detKinBeamRot_E_clus3x3); ++i;
         }
 
   }

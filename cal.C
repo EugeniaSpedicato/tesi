@@ -125,7 +125,7 @@ TGraph* E3x3noph = new TGraph(nentries);
        
     /*Double_t d_e_mu=sqrt( (detKinBeamRot_cooXe-detKinBeamRot_cooXmu)*(detKinBeamRot_cooXe-detKinBeamRot_cooXmu)+(detKinBeamRot_cooYe-detKinBeamRot_cooYmu)*(detKinBeamRot_cooYe-detKinBeamRot_cooYmu) ); */
     n_tot+=wgt_full;
-if (detKinBeamRot_n_cell_e==13 && abs(detKinBeamRot_cooXe)<0.4 && abs(detKinBeamRot_cooYe)<0.4  {     
+if (detKinBeamRot_n_cell_e==13 && abs(detKinBeamRot_cooXe)<0.4 && abs(detKinBeamRot_cooYe)<0.4)  {     
     
     n_tot_e+=wgt_full;
     hist_E9_e->Fill(E9,wgt_full);

@@ -125,14 +125,14 @@ TGraph* E3x3noph = new TGraph(nentries);
        
     /*Double_t d_e_mu=sqrt( (detKinBeamRot_cooXe-detKinBeamRot_cooXmu)*(detKinBeamRot_cooXe-detKinBeamRot_cooXmu)+(detKinBeamRot_cooYe-detKinBeamRot_cooYmu)*(detKinBeamRot_cooYe-detKinBeamRot_cooYmu) ); */
     n_tot+=wgt_full;
-if (detKinBeamRot_n_cell_e!=0 && abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275 )  {     
+if (detKinBeamRot_n_cell_e!=0)  {     
     
     n_tot_e+=wgt_full;
     hist_E9_e->Fill(E9,wgt_full);
     hist_Eout_9_e->Fill(Eout_9,wgt_full);
     
     
-  if (photon_n_cell_ph!=0 && abs(photon_coox)<4.275 && abs(photon_cooy)<4.275)
+  if (photon_n_cell_ph!=0)
   {   
       n_tot_eph+=wgt_full; // e+gamma sul calorimetro
 //      hist_E9_eph->Fill(E9,wgt_full);

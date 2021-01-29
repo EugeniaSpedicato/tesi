@@ -77,11 +77,13 @@ TH1F* hist_dist_same=new TH1F("dist", "Dist e-gamma same cell", 400,0,4);
 TH1F* hist_dist_diff=new TH1F("dist", "Dist e-gamma diff cel", 400,0,4);
     
 TH1F* hist_ang=new TH1F("dist", "DTheta (Thel-Thph) e-gamma", 200,-20,20);
-TH1F* hist_ang_same=new TH1F("dist", "DTheta (Thel-Thph) e-gamma same cell", 200,-20,20);
-TH1F* hist_ang_diff=new TH1F("dist", "DTheta (Thel-Thph) e-gamma diff cel", 200,-20,20);
+TH1F* hist_ang_same=new TH1F("dist", "DTheta (Thel-Thph) e-gamma same cell", 200,-25,25);
+TH1F* hist_ang_diff=new TH1F("dist", "DTheta (Thel-Thph) e-gamma diff cel", 200,-25,25);
     
     
 TH1F* Ephout=new TH1F("EnergyPH", "Energy Ph out", 75,0.2,150); 
+TH1F* Thph=new TH1F("th", "th Ph out", 75,50,50); 
+    
 
     
 if (fChain == 0) return;
@@ -141,6 +143,7 @@ if (detKinBeamRot_n_cell_e!=0)  {
   if (photon_n_cell_ph!=0)
       
   {   Ephout->Fill(photon_energy,wgt_full);
+    Thph->Fill(photon_theta,wgt_full);
       n_tot_eph+=wgt_full; // e+gamma sul calorimetro
 //      hist_E9_eph->Fill(E9,wgt_full);
       hist_dist->Fill(d_e_ph,wgt_full);
@@ -453,11 +456,15 @@ E3x3noph->Draw("P SAME");
 c4->SaveAs("/home/LHCB-T3/espedicato/tesi/thE.png");   
 
 TCanvas * c5= new TCanvas("c5","c5",1000,100,2500,2000);
+c5->Divide(1,2);
+c5->cd(1);
 Ephout->GetXaxis()->SetTitle("E_ph[GeV]");
 Ephout->SetLineWidth(3);
 Ephout->SetMinimum(1);
 gPad->SetLogy();
 Ephout->Draw("HIST"); 
+c5->cd(2);
+photon_theta->Draw("HIST"); 
 c5->SaveAs("/home/LHCB-T3/espedicato/tesi/ph_energy.png");     
     
     

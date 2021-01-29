@@ -76,7 +76,7 @@ TH1F* hist_dist=new TH1F("dist", "Dist e-gamma", 400,0,4);
 TH1F* hist_dist_same=new TH1F("dist", "Dist e-gamma same cell", 400,0,4);
 TH1F* hist_dist_diff=new TH1F("dist", "Dist e-gamma diff cel", 400,0,4);
     
-TH1F* hist_ang=new TH1F("dist", "DTheta (Thel-Thph) e-gamma", 200,-20,20);
+TH1F* hist_ang=new TH1F("dist", "DTheta (Thel-Thph) e-gamma", 200,-25,25);
 TH1F* hist_ang_same=new TH1F("dist", "DTheta (Thel-Thph) e-gamma same cell", 200,-25,25);
 TH1F* hist_ang_diff=new TH1F("dist", "DTheta (Thel-Thph) e-gamma diff cel", 200,-25,25);
     

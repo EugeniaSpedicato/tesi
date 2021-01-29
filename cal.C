@@ -83,6 +83,8 @@ TH1F* hist_ang_diff=new TH1F("dist", "DTheta (Thel-Thph) e-gamma diff cel", 200,
     
 TH1F* Ephout=new TH1F("EnergyPH", "Energy Ph out", 75,0.2,150); 
 TH1F* Thph=new TH1F("th", "th Ph out", 75,50,50); 
+TH1F* ThEl=new TH1F("th", "th El out", 75,50,50); 
+    
     
 
     
@@ -144,6 +146,8 @@ if (detKinBeamRot_n_cell_e!=0)  {
       
   {   Ephout->Fill(photon_energy,wgt_full);
     Thph->Fill(photon_theta,wgt_full);
+    Thph->Fill(detKinBeamRot_the,wgt_full);
+   
       n_tot_eph+=wgt_full; // e+gamma sul calorimetro
 //      hist_E9_eph->Fill(E9,wgt_full);
       hist_dist->Fill(d_e_ph,wgt_full);
@@ -464,7 +468,10 @@ Ephout->SetMinimum(1);
 gPad->SetLogy();
 Ephout->Draw("HIST"); 
 c5->cd(2);
-photon_theta->Draw("HIST"); 
+Thph->Draw("HIST"); 
+The->SetMarkerColor(kRed);
+The->Draw("HIST same"); 
+    
 c5->SaveAs("/home/LHCB-T3/espedicato/tesi/ph_energy.png");     
     
     

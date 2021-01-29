@@ -417,7 +417,7 @@ c3->SaveAs("/home/LHCB-T3/espedicato/tesi/out+3x3.png");
 
  
 TCanvas * c4= new TCanvas("c4","c4",1000,100,2500,2000);
-E3x3->SetMarkerColor(36);
+E3x3->SetMarkerColor(12);
 E3x3->GetXaxis()->SetTitle("Ereco3x3");
 E3x3->GetYaxis()->SetTitle("Theta_el");
 E3x3->Draw("AP");

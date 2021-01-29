@@ -138,7 +138,7 @@ if (detKinBeamRot_n_cell_e!=0)  {
       n_tot_eph+=wgt_full; // e+gamma sul calorimetro
 //      hist_E9_eph->Fill(E9,wgt_full);
       hist_dist->Fill(d_e_ph,wgt_full);
-    E3x3->SetPoint(j,detKinBeamRot_E_clus3x3,detKinBeamRot_ThEl_interaction); ++j;
+    if (detKinBeamRot_E_clus3x3!=0) {E3x3->SetPoint(j,detKinBeamRot_E_clus3x3,detKinBeamRot_ThEl_interaction); ++j;}
         if (photon_n_cell_ph==detKinBeamRot_n_cell_e)
         {same_cell+=wgt_full;
          hist_E9_eph_same->Fill(E9,wgt_full);
@@ -154,7 +154,7 @@ if (detKinBeamRot_n_cell_e!=0)  {
       n_tot_NOph+=wgt_full;   
       hist_E9_NOph->Fill(E9,wgt_full);
       hist_Eout_9_NOph->Fill(Eout_9,wgt_full);
-      E3x3noph->SetPoint(i,detKinBeamRot_E_clus3x3,detKinBeamRot_ThEl_interaction); ++i;
+      if (detKinBeamRot_E_clus3x3!=0) {E3x3noph->SetPoint(i,detKinBeamRot_E_clus3x3,detKinBeamRot_ThEl_interaction); ++i;}
         }
 
   }
@@ -417,11 +417,11 @@ c3->SaveAs("/home/LHCB-T3/espedicato/tesi/out+3x3.png");
 
  
 TCanvas * c4= new TCanvas("c4","c4",1000,100,2500,2000);
-E3x3->SetMarkerColor(kBlack);
+E3x3->SetMarkerColor(36);
 E3x3->GetXaxis()->SetTitle("Ereco3x3");
 E3x3->GetYaxis()->SetTitle("Theta_el");
 E3x3->Draw("AP");
-E3x3noph->SetMarkerColor(kRed);
+E3x3noph->SetMarkerColor(46);
 E3x3noph->Draw("P SAME");
 c4->SaveAs("/home/LHCB-T3/espedicato/tesi/thE.png");   
     

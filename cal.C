@@ -455,6 +455,7 @@ c4->SaveAs("/home/LHCB-T3/espedicato/tesi/thE.png");
 TCanvas * c5= new TCanvas("c5","c5",1000,100,2500,2000);
 Ephout->GetXaxis()->SetTitle("E_ph[GeV]");
 Ephout->SetLineWidth(3);
+Ephout->SetMinimum(1);
 gPad->SetLogy();
 Ephout->Draw("HIST"); 
 c5->SaveAs("/home/LHCB-T3/espedicato/tesi/ph_energy.png");     

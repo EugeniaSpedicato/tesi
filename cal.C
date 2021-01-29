@@ -76,6 +76,11 @@ TH1F* hist_dist=new TH1F("dist", "Dist e-gamma", 400,0,4);
 TH1F* hist_dist_same=new TH1F("dist", "Dist e-gamma same cell", 400,0,4);
 TH1F* hist_dist_diff=new TH1F("dist", "Dist e-gamma diff cel", 400,0,4);
     
+TH1F* hist_ang=new TH1F("dist", "DTheta (Thel-Thph) e-gamma", 200,-10,10);
+TH1F* hist_ang_same=new TH1F("dist", "DTheta (Thel-Thph) e-gamma same cell", 200,-10,10);
+TH1F* hist_ang_diff=new TH1F("dist", "DTheta (Thel-Thph) e-gamma diff cel", 200,-10,10);
+    
+    
 TH1F* Ephout=new TH1F("EnergyPH", "Energy Ph out", 75,0.2,150); 
 
     
@@ -119,7 +124,7 @@ TGraph* E3x3noph = new TGraph(nentries);
        E9=en_c[detKinBeamRot_n_max_Cell]/detKinBeamRot_E_clus3x3;
        /*cout << detKinBeamRot_n_max_Cell << " cella impatto elettrone " << detKinBeamRot_n_cell_e << "con energia " <<detKinBeamRot_Ee << " cella impatto fotone " << photon_n_cell_ph<< "con energia " <<photon_energy <<endl;*/
        
-
+       double Dtheta=detKinBeamRot_ThEl_interaction-photon_theta;
        
        
     Double_t d_e_ph=sqrt( (detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detKinBeamRot_cooYe-photon_cooy)*(detKinBeamRot_cooYe-photon_cooy) )/Rm; 
@@ -139,17 +144,21 @@ if (detKinBeamRot_n_cell_e!=0)  {
       n_tot_eph+=wgt_full; // e+gamma sul calorimetro
 //      hist_E9_eph->Fill(E9,wgt_full);
       hist_dist->Fill(d_e_ph,wgt_full);
+    hist_ang->Fill(Dtheta,wgt_full);
     if (detKinBeamRot_E_clus3x3!=0) {E3x3->SetPoint(j,detKinBeamRot_ThEl_interaction,detKinBeamRot_E_clus3x3); ++j;}
         if (photon_n_cell_ph==detKinBeamRot_n_cell_e)
         {same_cell+=wgt_full;
          hist_E9_eph_same->Fill(E9,wgt_full);
          hist_dist_same->Fill(d_e_ph,wgt_full);
+        hist_ang_same->Fill(Dtheta,wgt_full);
+         
       hist_Eout_9_eph_same->Fill(Eout_9,wgt_full);
         }//stessa cella
         else {different_cell+=wgt_full;
               hist_E9_eph_diff->Fill(E9,wgt_full);
               hist_dist_diff->Fill(d_e_ph,wgt_full);
                 hist_Eout_9_eph_diff->Fill(Eout_9,wgt_full);
+              hist_ang_diff->Fill(Dtheta,wgt_full);
              }  // cella diversa
   } else {
       n_tot_NOph+=wgt_full;   
@@ -395,6 +404,23 @@ gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
 c2->SaveAs("/home/LHCB-T3/espedicato/tesi/dist.png");
     
+TCanvas * c2a= new TCanvas("c2a","c2a",1000,100,2500,2000);
+
+hist_ang->GetXaxis()->SetTitle("Dth [mrad]");
+hist_ang->SetLineWidth(3);
+hist_ang->Draw("HIST"); 
+
+hist_ang_same->SetLineColor(kRed);
+hist_ang_same->SetLineWidth(3);
+hist_ang_same->Draw("HIST same"); 
+    
+hist_ang_diff->SetLineColor(kGreen);
+hist_ang_diff->SetLineWidth(3);
+hist_ang_diff->Draw("HIST same");
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
+
+c2a->SaveAs("/home/LHCB-T3/espedicato/tesi/dist.png");
+    
 TCanvas * c3= new TCanvas("c3","c3",1000,100,2500,2000);
 
 hist_Eout_9_e->GetXaxis()->SetTitle("E3x3/E5x5");
@@ -429,6 +455,7 @@ c4->SaveAs("/home/LHCB-T3/espedicato/tesi/thE.png");
 TCanvas * c5= new TCanvas("c5","c5",1000,100,2500,2000);
 Ephout->GetXaxis()->SetTitle("E_ph[GeV]");
 Ephout->SetLineWidth(3);
+gPad->SetLogy();
 Ephout->Draw("HIST"); 
 c5->SaveAs("/home/LHCB-T3/espedicato/tesi/ph_energy.png");     
     

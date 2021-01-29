@@ -419,7 +419,7 @@ hist_ang_diff->SetLineWidth(3);
 hist_ang_diff->Draw("HIST same");
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
-c2a->SaveAs("/home/LHCB-T3/espedicato/tesi/dist.png");
+c2a->SaveAs("/home/LHCB-T3/espedicato/tesi/Dtheta.png");
     
 TCanvas * c3= new TCanvas("c3","c3",1000,100,2500,2000);
 

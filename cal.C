@@ -76,7 +76,7 @@ TH1F* hist_dist=new TH1F("dist", "Dist e-gamma", 400,0,4);
 TH1F* hist_dist_same=new TH1F("dist", "Dist e-gamma same cell", 400,0,4);
 TH1F* hist_dist_diff=new TH1F("dist", "Dist e-gamma diff cel", 400,0,4);
     
-
+TH1F* Ephout=new TH1F("EnergyPH", "Energy Ph out", 75,0.2,150); 
 
     
 if (fChain == 0) return;
@@ -134,7 +134,8 @@ if (detKinBeamRot_n_cell_e!=0)  {
     
     
   if (photon_n_cell_ph!=0)
-  {   
+      
+  {   Ephout->Fill(photon_energy,wgt_full);
       n_tot_eph+=wgt_full; // e+gamma sul calorimetro
 //      hist_E9_eph->Fill(E9,wgt_full);
       hist_dist->Fill(d_e_ph,wgt_full);
@@ -424,5 +425,17 @@ E3x3->Draw("AP");
 E3x3noph->SetMarkerColor(46);
 E3x3noph->Draw("P SAME");
 c4->SaveAs("/home/LHCB-T3/espedicato/tesi/thE.png");   
+
+TCanvas * c5= new TCanvas("c5","c5",1000,100,2500,2000);
+Ephout->GetXaxis()->SetTitle("E_ph[GeV]");
+Ephout->SetLineWidth(3);
+Ephout->Draw("HIST"); 
+c5->SaveAs("/home/LHCB-T3/espedicato/tesi/ph_energy.png");     
+    
+    
+    
+    
+    
+    
     
 }

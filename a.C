@@ -33,21 +33,21 @@ px_mu->Fill(detKinBeamRot_pXmu,wgt_full);
 py_mu->Fill(detKinBeamRot_pYmu,wgt_full);
 pz_mu->Fill(detKinBeamRot_pZmu,wgt_full);
 }
-  TCanvas * Pin= new TCanvas("Pin","Pin",2500,1000,3000,2000);
+  TCanvas * Pin= new TCanvas("Pin","Pin");
     Pin->Divide(3,1);
     Pin->cd(1);
     px_mu->SetLineWidth(3);
-    px_mu->SetLineColor(kRed);
+    //px_mu->SetLineColor(kRed);
     px_mu->Draw("HIST");
     px_mu->GetXaxis()->SetTitle("Px [GeV]");
     Pin->cd(2);
     py_mu->SetLineWidth(3);
-    py_mu->SetLineColor(kRed);
+    //py_mu->SetLineColor(kRed);
     py_mu->Draw("HIST");
     py_mu->GetXaxis()->SetTitle("Py [GeV]");
     Pin->cd(3);
     pz_mu->SetLineWidth(3);
-    pz_mu->SetLineColor(kRed);
+    //pz_mu->SetLineColor(kRed);
     pz_mu->Draw("HIST");
     pz_mu->GetXaxis()->SetTitle("Pz [GeV]");
     

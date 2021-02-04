@@ -415,7 +415,7 @@ Int_t nx5 = X_Y_p2->GetNbinsX();
 Int_t ny5 = X_Y_p2->GetNbinsY();
 for (Int_t i=1; i<nx5+1; i++) {
 for (Int_t j=1; j<ny5+1; j++) {
-if (X_Y_p2->GetBinContent(i,j)<1) X_Y_p2->SetBinContent(i,j,0);}}*/ 
+if (X_Y_p2->GetBinContent(i,j)<1) X_Y_p2->SetBinContent(i,j,0);}}
     
     
     TCanvas * duedmu= new TCanvas("duedmu","duedmu",1000,100,2500,2000);

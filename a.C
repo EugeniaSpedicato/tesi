@@ -51,7 +51,7 @@ pz_mu->Fill(detKinBeamRot_pZmu,wgt_full);
     pz_mu->Draw("HIST");
     pz_mu->GetXaxis()->SetTitle("Pz [GeV]");
     
-   Pin->SaveAs("/home/LHCB-T3/espedicato/tesi/p_inNODIV.png");    
+   Pin->SaveAs("/home/LHCB-T3/espedicato/tesi/p_in2.png");    
     
     
     

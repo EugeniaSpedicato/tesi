@@ -1,5 +1,5 @@
 #define atree_cxx
-#include "atree.h"
+#include "next.h"
 #include <TH2.h>
 #include <TH1.h>
 
@@ -9,34 +9,52 @@
 void atree::Loop()
 {
     TH1::SetDefaultSumw2();
+TH1F* px_mu=new TH1F("h1", "pX_in muon with divergence", 190,-0.2,0.2);
+TH1F* py_mu=new TH1F("h2", "pY_in muon with divergence", 190,-0.2,0.2);
+TH1F* pz_mu=new TH1F("h3", "pZ_in muon with divergence", 190,120,180);    
     
-    typedef map<int, int>  n_cell;
-    n_cell Rev_number;
-    
-        Rev_number[1]=36; Rev_number[2]=37; Rev_number[3]=38; Rev_number[4]=39; Rev_number[5]=40;
-        Rev_number[6]=29; Rev_number[7]=30; Rev_number[8]=31; Rev_number[9]=32; Rev_number[10]=33;
-        Rev_number[11]=22; Rev_number[12]=23; Rev_number[13]=24; Rev_number[14]=25; Rev_number[15]=26;
-        Rev_number[16]=15; Rev_number[17]=16; Rev_number[18]=17; Rev_number[19]=18; Rev_number[20]=19;
-        Rev_number[21]=8; Rev_number[22]=9; Rev_number[23]=10; Rev_number[24]=11; Rev_number[25]=12;
-    
-TH2F* ECAL=new TH2F("ECAL","ECAL",5,-7,125,7.125,-7.125,7.125);
-    
-     if (fChain == 0) return;
+if (fChain == 0) return;
 
-   Long64_t nentries = fChain->GetEntriesFast();
+Long64_t nentries = fChain->GetEntriesFast();
+TGraph* E3x3 = new TGraph(nentries);
+TGraph* E3x3noph = new TGraph(nentries);
+    
+    
 
-   Long64_t nbytes = 0, nb = 0;
+
+    Long64_t nbytes = 0, nb = 0;
    for (Long64_t jentry=0; jentry<nentries;jentry++) {
       Long64_t ientry = LoadTree(jentry);
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
        
-double energy3x3 
-detKinBeamRot_Ee
+       
+px_mu->Fill(detKinBeamRot_pXmu,wgt_full);
+py_mu->Fill(detKinBeamRot_pYmu,wgt_full);
+pz_mu->Fill(detKinBeamRot_pZmu,wgt_full);
+}
+  TCanvas * Pin= new TCanvas("Pin","Pin",1000,1000,2000,2000);
+    Pin->Divide(3,1);
+    Pin->cd(1);
+    px_mu->SetLineWidth(3);
+    px_mu->SetLineColor(kRed);
+    px_mu->Draw("HIST");
+    px_mu->GetXaxis()->SetTitle("Px [GeV]");
+    Pin->cd(2);
+    py_mu->SetLineWidth(3);
+    py_mu->SetLineColor(kRed);
+    py_mu->Draw("HIST");
+    py_mu->GetXaxis()->SetTitle("Py [GeV]");
+    Pin->cd(3);
+    pz_mu->SetLineWidth(3);
+    pz_mu->SetLineColor(kRed);
+    pz_mu->Draw("HIST");
+    pz_mu->GetXaxis()->SetTitle("Pz [GeV]");
     
-  
-   }
-   
+   Pin->SaveAs("/home/LHCB-T3/espedicato/tesi/p_inNODIV.png");    
+    
+    
+    
     
     
 }

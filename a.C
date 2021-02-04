@@ -37,21 +37,21 @@ pz_mu->Fill(detKinBeamRot_pZmu,wgt_full);
     Pin->Divide(3,1);
     Pin->cd(1);
     px_mu->SetLineWidth(3);
-    //px_mu->SetLineColor(kRed);
+    px_mu->SetLineColor(kRed);
     px_mu->Draw("HIST");
     px_mu->GetXaxis()->SetTitle("Px [GeV]");
     Pin->cd(2);
     py_mu->SetLineWidth(3);
-    //py_mu->SetLineColor(kRed);
+    py_mu->SetLineColor(kRed);
     py_mu->Draw("HIST");
     py_mu->GetXaxis()->SetTitle("Py [GeV]");
     Pin->cd(3);
     pz_mu->SetLineWidth(3);
-    //pz_mu->SetLineColor(kRed);
+    pz_mu->SetLineColor(kRed);
     pz_mu->Draw("HIST");
     pz_mu->GetXaxis()->SetTitle("Pz [GeV]");
     
-   Pin->SaveAs("/home/LHCB-T3/espedicato/tesi/p_in2.png");    
+   Pin->SaveAs("/home/LHCB-T3/espedicato/tesi/p_inNODIV.png");    
     
     
     

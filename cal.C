@@ -54,9 +54,9 @@ int j=0;
     Double_t n_one_cut1=0.; //casi rimanenti che formano 1 cluster
     Double_t ratio_cut1=0.;*/
 
-TH1F* px_mu=new TH1F("h1", "pX_in muon with divergence", 190,-0.3,0.3);
-TH1F* py_mu=new TH1F("h2", "pY_in muon with divergence", 190,-0.3,0.3);
-TH1F* pz_mu=new TH1F("h3", "pZ_in muon with divergence", 190,50,180);        
+TH1F* px_mu=new TH1F("h1", "pX_in muon with divergence", 190,-0.2,0.2);
+TH1F* py_mu=new TH1F("h2", "pY_in muon with divergence", 190,-0.2,0.2);
+TH1F* pz_mu=new TH1F("h3", "pZ_in muon with divergence", 190,120,180);        
 
     
 Double_t same_cell=0.;
@@ -488,7 +488,7 @@ c5->SaveAs("/home/LHCB-T3/espedicato/tesi/ph_energy.png");
     px_mu->SetLineWidth(3);
     px_mu->Draw("HIST");
     px_mu->GetXaxis()->SetTitle("Px [GeV]");
-    Pin->cd(3);
+    Pin->cd(2);
     py_mu->SetLineWidth(3);
     py_mu->Draw("HIST");
     py_mu->GetXaxis()->SetTitle("Py [GeV]");

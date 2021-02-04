@@ -9,9 +9,9 @@
 void atree::Loop()
 {
     TH1::SetDefaultSumw2();
-TH1F* px_mu=new TH1F("h1", "pX_in muon with divergence", 190,-0.2,0.2);
-TH1F* py_mu=new TH1F("h2", "pY_in muon with divergence", 190,-0.2,0.2);
-TH1F* pz_mu=new TH1F("h3", "pZ_in muon with divergence", 190,120,180);    
+TH1F* px_mu=new TH1F("h1", "pX_in muon without divergence", 190,-0.2,0.2);
+TH1F* py_mu=new TH1F("h2", "pY_in muon without divergence", 190,-0.2,0.2);
+TH1F* pz_mu=new TH1F("h3", "pZ_in muon without divergence", 190,120,180);    
     
 if (fChain == 0) return;
 

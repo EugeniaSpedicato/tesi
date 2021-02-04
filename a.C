@@ -33,7 +33,7 @@ px_mu->Fill(detKinBeamRot_pXmu,wgt_full);
 py_mu->Fill(detKinBeamRot_pYmu,wgt_full);
 pz_mu->Fill(detKinBeamRot_pZmu,wgt_full);
 }
-  TCanvas * Pin= new TCanvas("Pin","Pin",1500,1500,1000,500);
+  TCanvas * Pin= new TCanvas("Pin","Pin",2000,1500,1000,500);
     Pin->Divide(3,1);
     Pin->cd(1);
     px_mu->SetLineWidth(3);
@@ -51,7 +51,7 @@ pz_mu->Fill(detKinBeamRot_pZmu,wgt_full);
     pz_mu->Draw("HIST");
     pz_mu->GetXaxis()->SetTitle("Pz [GeV]");
     
-   Pin->SaveAs("/home/LHCB-T3/espedicato/tesi/p_inNODIV.png");    
+   Pin->SaveAs("/home/LHCB-T3/espedicato/tesi/p_inNODIV.pdf");    
     
     
     

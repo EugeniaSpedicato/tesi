@@ -482,8 +482,8 @@ The->Draw("HIST same");
     
 c5->SaveAs("/home/LHCB-T3/espedicato/tesi/ph_energy.png");     
     */
-    TCanvas * Pin= new TCanvas("Pin","Pin",1000,1000,2000,2000);
-    Pin->Divide(3,1);
+    TCanvas * Pin= new TCanvas("Pin","Pin",2000,1000,2500,2000);
+    Pin->Divide(1,3);
     Pin->cd(1);
     px_mu->SetLineWidth(3);
     px_mu->Draw("HIST");

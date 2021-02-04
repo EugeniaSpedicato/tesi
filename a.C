@@ -33,8 +33,8 @@ px_mu->Fill(detKinBeamRot_pXmu,wgt_full);
 py_mu->Fill(detKinBeamRot_pYmu,wgt_full);
 pz_mu->Fill(detKinBeamRot_pZmu,wgt_full);
 }
-  TCanvas * Pin= new TCanvas("Pin","Pin",1000,1000,2000,2000);
-    Pin->Divide(1,3);
+  TCanvas * Pin= new TCanvas("Pin","Pin",2500,1000,3000,2000);
+    Pin->Divide(3,1);
     Pin->cd(1);
     px_mu->SetLineWidth(3);
     px_mu->SetLineColor(kRed);

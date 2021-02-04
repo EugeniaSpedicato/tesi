@@ -174,8 +174,7 @@ LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1],myGrid);
  } else LoadECAL(detKinBeamRot,myGrid,i);
 
 }
-else if (energy_sm_el>1)
-{
+else if (energy_sm_el>1){
 if(cellEL!=0){
 nPart=1; 
 X0depth=0.;

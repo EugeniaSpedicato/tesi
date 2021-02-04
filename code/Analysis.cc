@@ -37,7 +37,6 @@ void Analysis::Analyze(const MuE::Event & event, const MuE::FastSim & fs)
     if (detKinBeamRot.the > paran.thetaMax) return;
     if (detKinBeamRot.tar==0 && detKinBeamRot.ThEl_interaction >35 ) return;
     if (detKinBeamRot.tar==1 && detKinBeamRot.ThEl_interaction >70 ) return;
-    //if (detKinBeamRot.cooXe > 0.07 || detKinBeamRot.cooYe > 0.07 || detKinBeamRot.cooXe < -0.07 || detKinBeamRot.cooYe < -0.07 || detKinBeamRot.cooXmu > 0.07 || detKinBeamRot.cooYmu > 0.07 || detKinBeamRot.cooXmu < -0.07 || detKinBeamRot.cooYmu < -0.07 || photon.coox > 0.07 || photon.cooy > 0.07 || photon.coox < -0.07 || photon.cooy < -0.07) return;
 
     
     

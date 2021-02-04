@@ -206,7 +206,7 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
    }
     
     
-    TCanvas * e= new TCanvas("e","e",1500,1000,3500,2000);
+  /*  TCanvas * e= new TCanvas("e","e",1500,1000,3500,2000);
     e->Divide(3,3);
     
     e->cd(1);
@@ -365,7 +365,7 @@ TCanvas * theC= new TCanvas("tar","tar",1500,1000,3500,2000);
     thYZe->GetXaxis()->SetTitle("Theta YZ [rad]");
     
 
-  theC->SaveAs("ThXZYZ.png");
+  theC->SaveAs("ThXZYZ.png");*/
 
 
 Int_t nx13_cut = X_Y_mu->GetNbinsX();

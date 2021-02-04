@@ -9,9 +9,9 @@
 void atree::Loop()
 {
     TH1::SetDefaultSumw2();
-TH1F* px_mu=new TH1F("h1", "pX_in muon without divergence", 190,-0.2,0.2);
-TH1F* py_mu=new TH1F("h2", "pY_in muon without divergence", 190,-0.2,0.2);
-TH1F* pz_mu=new TH1F("h3", "pZ_in muon without divergence", 190,120,180);    
+TH1F* px_mu=new TH1F("h1", "pX_in muon with divergence", 190,-0.2,0.2);
+TH1F* py_mu=new TH1F("h2", "pY_in muon with divergence", 190,-0.2,0.2);
+TH1F* pz_mu=new TH1F("h3", "pZ_in muon with divergence", 190,120,180);    
     
 if (fChain == 0) return;
 
@@ -37,21 +37,21 @@ pz_mu->Fill(detKinBeamRot_pZmu,wgt_full);
     Pin->Divide(3,1);
     Pin->cd(1);
     px_mu->SetLineWidth(1);
-    px_mu->SetLineColor(kRed);
+    //px_mu->SetLineColor(kRed);
     px_mu->Draw("HIST");
     px_mu->GetXaxis()->SetTitle("Px [GeV]");
     Pin->cd(2);
     py_mu->SetLineWidth(1);
-    py_mu->SetLineColor(kRed);
+    //py_mu->SetLineColor(kRed);
     py_mu->Draw("HIST");
     py_mu->GetXaxis()->SetTitle("Py [GeV]");
     Pin->cd(3);
     pz_mu->SetLineWidth(1);
-    pz_mu->SetLineColor(kRed);
+    //pz_mu->SetLineColor(kRed);
     pz_mu->Draw("HIST");
     pz_mu->GetXaxis()->SetTitle("Pz [GeV]");
     
-   Pin->SaveAs("/home/LHCB-T3/espedicato/tesi/p_inNODIV.pdf");    
+   Pin->SaveAs("/home/LHCB-T3/espedicato/tesi/p_in.pdf");    
     
     
     

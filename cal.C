@@ -115,7 +115,7 @@ TGraph* E3x3noph = new TGraph(nentries);
      E_CAL=detKinBeamRot_Ee+photon_energy;}
     else 
     {  E_CAL=detKinBeamRot_Ee;}
-       
+       if (detKinBeamRot_Ee==1){
         detKinBeamRot_cooXe=detKinBeamRot_cooXe*100; // cm
         detKinBeamRot_cooYe=detKinBeamRot_cooYe*100; // cm
         photon_coox=photon_coox*100; // cm
@@ -331,7 +331,7 @@ ratio_cut0=n_two_cut0/n_tot_cut0;
 ratio1=n_two1/n_tot1;
 ratio_cut1=n_two_cut1/n_tot_cut1;    */    
  
-}
+}}
  cout << " Numero elettroni totali " << n_tot_e << " su un totale di " << n_tot << " eventi " << endl;
 cout << "Numero el+fotoni sul calorimetro = " << n_tot_eph << " dove nella stessa cella ce ne sono: " << same_cell << " in una diversa cella: " << different_cell << endl;   
 cout << "Numero elettorni senza fotoni sul calorimetro = " << n_tot_NOph << endl;

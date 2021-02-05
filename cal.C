@@ -54,10 +54,6 @@ int j=0;
     Double_t n_one_cut1=0.; //casi rimanenti che formano 1 cluster
     Double_t ratio_cut1=0.;*/
 
-TH1F* px_mu=new TH1F("h1", "pX_in muon with divergence", 190,-0.2,0.2);
-TH1F* py_mu=new TH1F("h2", "pY_in muon with divergence", 190,-0.2,0.2);
-TH1F* pz_mu=new TH1F("h3", "pZ_in muon with divergence", 190,120,180);        
-
     
 Double_t same_cell=0.;
 Double_t different_cell=0.;
@@ -107,11 +103,7 @@ TGraph* E3x3noph = new TGraph(nentries);
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
        
-       
-px_mu->Fill(detKinBeamRot_pXmu,wgt_full);
-py_mu->Fill(detKinBeamRot_pYmu,wgt_full);
-pz_mu->Fill(detKinBeamRot_pZmu,wgt_full);
-       
+
         en_c[1]=detKinBeamRot_Ecell1; en_c[2]=detKinBeamRot_Ecell2; en_c[3]=detKinBeamRot_Ecell3; en_c[4]=detKinBeamRot_Ecell4; en_c[5]=detKinBeamRot_Ecell5;
         en_c[6]=detKinBeamRot_Ecell6; en_c[7]=detKinBeamRot_Ecell7; en_c[8]=detKinBeamRot_Ecell8; en_c[9]=detKinBeamRot_Ecell9; en_c[10]=detKinBeamRot_Ecell10;
         en_c[11]=detKinBeamRot_Ecell11; en_c[12]=detKinBeamRot_Ecell12; en_c[13]=detKinBeamRot_Ecell13; en_c[14]=detKinBeamRot_Ecell14; en_c[15]=detKinBeamRot_Ecell15;
@@ -381,7 +373,7 @@ cout << "Elettroni ad una distanza 2RM dal fotone CON TAGLIO TAR 1: " << n_two_c
 cout << "Eventi in cui vedo solo un cluster CON TAGLIO TAR 1: " << n_one_cut1 << endl;
 cout << "Frazione di eventi scartabili CON TAGLIO TAR 1: " << ratio_cut1 <<endl;*/
     
-/*TCanvas * c1= new TCanvas("c1","c1",1000,100,2500,2000);
+TCanvas * c1= new TCanvas("c1","c1",1000,100,2500,2000);
 
 hist_E9_e->GetXaxis()->SetTitle("Ecentral/E3x3");
 hist_E9_e->SetLineWidth(3);
@@ -481,23 +473,7 @@ The->SetMarkerColor(kRed);
 The->Draw("HIST same"); 
     
 c5->SaveAs("/home/LHCB-T3/espedicato/tesi/ph_energy.png");     
-    */
-    TCanvas * Pin= new TCanvas("Pin","Pin",2000,1000,2500,2000);
-    Pin->Divide(1,3);
-    Pin->cd(1);
-    px_mu->SetLineWidth(3);
-    px_mu->Draw("HIST");
-    px_mu->GetXaxis()->SetTitle("Px [GeV]");
-    Pin->cd(2);
-    py_mu->SetLineWidth(3);
-    py_mu->Draw("HIST");
-    py_mu->GetXaxis()->SetTitle("Py [GeV]");
-    Pin->cd(3);
-    pz_mu->SetLineWidth(3);
-    pz_mu->Draw("HIST");
-    pz_mu->GetXaxis()->SetTitle("Pz [GeV]");
-    
-   Pin->SaveAs("/home/LHCB-T3/espedicato/tesi/p_in.png");    
+  
     
     
     

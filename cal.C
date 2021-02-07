@@ -17,7 +17,7 @@ void atree::Loop()
     typedef map<int, double>  energy_cell; 
     energy_cell en_c;    
 
-    
+Double_t n=0.;
 Double_t n_tot=0.;
 Double_t n_tot_e=0.;
 Double_t n_tot_eph=0.;
@@ -103,6 +103,7 @@ TGraph* E3x3noph = new TGraph(nentries);
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
        
+       n_tot+=wgt_full;
 
         en_c[1]=detKinBeamRot_Ecell1; en_c[2]=detKinBeamRot_Ecell2; en_c[3]=detKinBeamRot_Ecell3; en_c[4]=detKinBeamRot_Ecell4; en_c[5]=detKinBeamRot_Ecell5;
         en_c[6]=detKinBeamRot_Ecell6; en_c[7]=detKinBeamRot_Ecell7; en_c[8]=detKinBeamRot_Ecell8; en_c[9]=detKinBeamRot_Ecell9; en_c[10]=detKinBeamRot_Ecell10;
@@ -115,7 +116,7 @@ TGraph* E3x3noph = new TGraph(nentries);
      E_CAL=detKinBeamRot_Ee+photon_energy;}
     else 
     {  E_CAL=detKinBeamRot_Ee;}
-       if (detKinBeamRot_ThEl_interaction<40){
+
         detKinBeamRot_cooXe=detKinBeamRot_cooXe*100; // cm
         detKinBeamRot_cooYe=detKinBeamRot_cooYe*100; // cm
         photon_coox=photon_coox*100; // cm
@@ -134,7 +135,7 @@ TGraph* E3x3noph = new TGraph(nentries);
     Double_t d_e_ph=sqrt( (detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detKinBeamRot_cooYe-photon_cooy)*(detKinBeamRot_cooYe-photon_cooy) )/Rm; 
        
     /*Double_t d_e_mu=sqrt( (detKinBeamRot_cooXe-detKinBeamRot_cooXmu)*(detKinBeamRot_cooXe-detKinBeamRot_cooXmu)+(detKinBeamRot_cooYe-detKinBeamRot_cooYmu)*(detKinBeamRot_cooYe-detKinBeamRot_cooYmu) ); */
-    n_tot+=wgt_full;
+
 if (detKinBeamRot_n_cell_e!=0)  {     
     
     n_tot_e+=wgt_full;
@@ -331,7 +332,7 @@ ratio_cut0=n_two_cut0/n_tot_cut0;
 ratio1=n_two1/n_tot1;
 ratio_cut1=n_two_cut1/n_tot_cut1;    */    
  
-}}
+}
  cout << " Numero elettroni totali " << n_tot_e << " su un totale di " << n_tot << " eventi " << endl;
 cout << "Numero el+fotoni sul calorimetro = " << n_tot_eph << " dove nella stessa cella ce ne sono: " << same_cell << " in una diversa cella: " << different_cell << endl;   
 cout << "Numero elettorni senza fotoni sul calorimetro = " << n_tot_NOph << endl;

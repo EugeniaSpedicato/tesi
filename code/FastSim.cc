@@ -142,7 +142,7 @@ TMatrixD cooPH=MCSphoton(p_gamma_Lab_div,xin,yin);
 double ECAL_E= energy_sm_el+en_ph_sm;   
 double cellPH=myGrid->GiveCentralCell(cooPH[0][0]*100,cooPH[0][1]*100);
 LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1],myGrid);
-    if (ECAL_E>0.2)
+    if (ECAL_E>0.5)
     {
     //for electrons
     if(energy_sm_el>0.2 && cellEL!=0)
@@ -174,7 +174,7 @@ LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1],myGrid);
  } else LoadECAL(detKinBeamRot,myGrid,i);
 
 }
-else if (energy_sm_el>0.2){
+else if (energy_sm_el>0.5){
 if(cellEL!=0){
 nPart=1; 
 X0depth=0.;
@@ -899,7 +899,7 @@ kv.cooYe = coo[3][0];
 kv.tar = tar;
  kv.ThEl_interaction = 1e3*TheINT; // angolo elettrone al momento della produzione, in mrad
 
-  kv.pXmu = p_mu_in.Px();
+  /*kv.pXmu = p_mu_in.Px();
   kv.pYmu = p_mu_in.Py();
   kv.pZmu = p_mu_in.Pz();
   kv.pXe = p_e_in.Px();
@@ -907,7 +907,7 @@ kv.tar = tar;
   kv.pZe = p_e_in.Pz();
   kv.pXmu_out = p_mu_out.Px();
   kv.pYmu_out = p_mu_out.Py();
-  kv.pZmu_out = p_mu_out.Pz();
+  kv.pZmu_out = p_mu_out.Pz();*/
   kv.pXe_out = p_e_out.Px();
   kv.pYe_out = p_e_out.Py();
   kv.pZe_out = p_e_out.Pz();
@@ -1004,7 +1004,7 @@ PxPyPzEVector p_gamma_CoM = Lorentz_ToCoM(p_gamma_lab_div);
  {
 TH2F* Ecal=myGrid->GiveEcalGrid();
 if (Ecal->GetEntries()!=0)     
-{double *Ecell=myGrid->EnergyContent();
+{//double *Ecell=myGrid->EnergyContent();
 double *E_clus = myGrid->Draw_ECAL(j);
 kv.n_max_Cell=E_clus[0];
 kv.E_clus3x3=E_clus[1];

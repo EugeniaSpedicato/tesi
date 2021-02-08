@@ -109,8 +109,16 @@ TH1F* TheBIG1=new TH1F("th", "th El out BIG TAR 1", 75,0,90);
 TH1F* The2=new TH1F("th", "th El out TAR 2", 75,0,90); 
 TH1F* TheBIG2=new TH1F("th", "th El out BIG TAR 2", 75,0,90); 
     
+TH1F* TheMCS=new TH1F("th", "th El out MCS", 75,0,100); 
+TH1F* TheBIGMCS=new TH1F("th", "th El out BIG MCS", 75,0,100); 
     
-TH2F  *E3x3  = new TH2F("ThEel" , " Theta el Vs. E_ECAL",1400,0,70,1400,0.2,140);
+TH1F* The1MCS=new TH1F("th", "th El out TAR 1 MCS", 75,0,100); 
+TH1F* TheBIG1MCS=new TH1F("th", "th El out BIG TAR 1 MCS", 75,0,100); 
+    
+TH1F* The2MCS=new TH1F("th", "th El out TAR 2", 75,0,100); 
+TH1F* TheBIG2MCS=new TH1F("th", "th El out BIG TAR 2 MCS", 75,0,100); 
+    
+TH2F  *E3x3  = new TH2F("ThEel" , " Theta el Vs. E_ECAL",700,0,70,700,0.2,140);
 //TH2F  *E3x3noph  = new TH2F("ThEel" , " Theta el Vs. E_ECAL no ph",100,0,70,70,0.2,140);
 
     
@@ -159,20 +167,23 @@ Long64_t nentries = fChain->GetEntriesFast();
 
 if (detKinBeamRot_n_cell_e!=0 && abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275)  {     
     
-    n_tot_e+=wgt_full;
+    n_tot_eBIG+=wgt_full;
     hist_E9_e->Fill(E9,wgt_full);
     hist_thxz_e->Fill(anglex_e,wgt_full);
     hist_thyz_e->Fill(angley_e,wgt_full);
     The->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
+    TheMCS->Fill(detKinBeamRot_the,wgt_full);
     
     if (detKinBeamRot_tar==0)
     {hist_thxz_e1->Fill(anglex_e,wgt_full);
     hist_thyz_e1->Fill(angley_e,wgt_full);
-    The1->Fill(detKinBeamRot_ThEl_interaction,wgt_full);}
+    The1->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
+    The1MCS->Fill(detKinBeamRot_the,wgt_full);}
     if (detKinBeamRot_tar==1)
     {hist_thxz_e2->Fill(anglex_e,wgt_full);
     hist_thyz_e2->Fill(angley_e,wgt_full);
-    The2->Fill(detKinBeamRot_ThEl_interaction,wgt_full);}
+    The2->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
+    The2MCS->Fill(detKinBeamRot_the,wgt_full);}
     
     //hist_Eout_9_e->Fill(Eout_9,wgt_full);
     
@@ -219,15 +230,18 @@ if (detKinBeamRot_n_cell_e!=0)  {
     hist_thxz_eBIG->Fill(anglex_e,wgt_full);
     hist_thyz_eBIG->Fill(angley_e,wgt_full);
     TheBIG->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
+    TheBIGMCS->Fill(detKinBeamRot_the,wgt_full);
     
     if (detKinBeamRot_tar==0)
     {hist_thxz_e1BIG->Fill(anglex_e,wgt_full);
     hist_thyz_e1BIG->Fill(angley_e,wgt_full);
-    TheBIG1->Fill(detKinBeamRot_ThEl_interaction,wgt_full);}
+    TheBIG1->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
+    TheBIG1MCS->Fill(detKinBeamRot_the,wgt_full);}
     if (detKinBeamRot_tar==1)
     {hist_thxz_e2BIG->Fill(anglex_e,wgt_full);
     hist_thyz_e2BIG->Fill(angley_e,wgt_full);
-    TheBIG2->Fill(detKinBeamRot_ThEl_interaction,wgt_full);}
+    TheBIG2->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
+    TheBIG2MCS->Fill(detKinBeamRot_the,wgt_full);}
     
     //hist_Eout_9_e->Fill(Eout_9,wgt_full);
     
@@ -424,7 +438,8 @@ ratio1=n_two1/n_tot1;
 ratio_cut1=n_two_cut1/n_tot_cut1;    */    
  
 }
- cout << " Numero elettroni totali " << n_tot_e << " su un totale di " << n_tot << " eventi " << endl;
+ cout << " Numero elettroni totali IN 3X3 " << n_tot_e << " su un totale di " << n_tot << " eventi " << endl;
+ cout << " Numero elettroni totali IN 5X5 " << n_tot_eBOG << " su un totale di " << n_tot << " eventi " << endl;
 cout << "Numero el+fotoni sul calorimetro = " << n_tot_eph << " dove nella stessa cella ce ne sono: " << same_cell << " in una diversa cella: " << different_cell << endl;   
 cout << "Numero elettorni senza fotoni sul calorimetro = " << n_tot_NOph << endl;
 cout << "-------------------------------------------"<<endl;
@@ -593,6 +608,23 @@ TheBIG2->Draw("HIST");
 The2->Draw("HIST same"); 
     
 c5->SaveAs("/home/LHCB-T3/espedicato/tesi/th_el.png"); 
+    
+TCanvas * c5MCS= new TCanvas("c5MCS","c5MCS",1000,100,2500,2000);
+c5MCS->Divide(1,3);
+c5MCS->cd(1);
+TheBIGMCS->SetLineColor(kBlack);
+TheBIGMCS->Draw("HIST"); 
+TheMCS->Draw("HIST same"); 
+c5MCS->cd(2);
+TheBIG1MCS->SetLineColor(kBlack);
+TheBIG1MCS->Draw("HIST"); 
+The1MCS->Draw("HIST same");     
+c5MCS->cd(3);
+TheBIG2MCS->SetLineColor(kBlack);
+TheBIG2MCS->Draw("HIST"); 
+The2MCS->Draw("HIST same"); 
+    
+c5MCS->SaveAs("/home/LHCB-T3/espedicato/tesi/th_elMCS.png"); 
   
     TCanvas * theC= new TCanvas("tar","tar",1500,1000,3500,2000);
     theC->Divide(2,2);

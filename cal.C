@@ -85,7 +85,7 @@ TH1F* Ephout=new TH1F("EnergyPH", "Energy Ph out", 75,0.2,150);
 TH1F* Thph=new TH1F("th", "th Ph out", 75,50,50); 
 TH1F* The=new TH1F("th", "th El out", 75,50,50); 
     
-TH2F  *E3x3  = new TH2F("ThEel" , " Theta el Vs. E_ECAL",140,0,70,140,0.2,140);
+TH2F  *E3x3  = new TH2F("ThEel" , " Theta el Vs. E_ECAL",1400,0,70,1400,0.2,140);
 //TH2F  *E3x3noph  = new TH2F("ThEel" , " Theta el Vs. E_ECAL no ph",100,0,70,70,0.2,140);
 
     

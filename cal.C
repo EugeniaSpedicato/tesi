@@ -118,7 +118,7 @@ TH1F* TheBIG1MCS=new TH1F("th", "th El out BIG TAR 1 MCS", 75,0,100);
 TH1F* The2MCS=new TH1F("th", "th El out TAR 2", 75,0,100); 
 TH1F* TheBIG2MCS=new TH1F("th", "th El out BIG TAR 2 MCS", 75,0,100); 
     
-TH2F  *E3x3  = new TH2F("ThEel" , " Theta el Vs. E_ECAL",700,0,70,700,0.2,140);
+TH2F  *E3x3  = new TH2F("ThEel" , " Theta el Vs. E_ECAL",280,0,70,280,0.2,140);
 //TH2F  *E3x3noph  = new TH2F("ThEel" , " Theta el Vs. E_ECAL no ph",100,0,70,70,0.2,140);
 
     
@@ -167,7 +167,7 @@ Long64_t nentries = fChain->GetEntriesFast();
 
 if (detKinBeamRot_n_cell_e!=0 && abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275)  {     
     
-    n_tot_eBIG+=wgt_full;
+    n_tot_e+=wgt_full;
     hist_E9_e->Fill(E9,wgt_full);
     hist_thxz_e->Fill(anglex_e,wgt_full);
     hist_thyz_e->Fill(angley_e,wgt_full);
@@ -439,7 +439,7 @@ ratio_cut1=n_two_cut1/n_tot_cut1;    */
  
 }
  cout << " Numero elettroni totali IN 3X3 " << n_tot_e << " su un totale di " << n_tot << " eventi " << endl;
- cout << " Numero elettroni totali IN 5X5 " << n_tot_eBOG << " su un totale di " << n_tot << " eventi " << endl;
+ cout << " Numero elettroni totali IN 5X5 " << n_tot_eBIG << " su un totale di " << n_tot << " eventi " << endl;
 cout << "Numero el+fotoni sul calorimetro = " << n_tot_eph << " dove nella stessa cella ce ne sono: " << same_cell << " in una diversa cella: " << different_cell << endl;   
 cout << "Numero elettorni senza fotoni sul calorimetro = " << n_tot_NOph << endl;
 cout << "-------------------------------------------"<<endl;

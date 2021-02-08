@@ -14,8 +14,8 @@ void atree::Loop()
 {
     TH1::SetDefaultSumw2();
     
-    typedef map<int, double>  energy_cell; 
-    energy_cell en_c;    
+   // typedef map<int, double>  energy_cell; 
+   // energy_cell en_c;    
 
 Double_t n=0.;
 Double_t n_tot=0.;
@@ -99,8 +99,10 @@ TH1F* hist_ang_diff=new TH1F("dist", "DTheta (Thel-Thph) e-gamma diff cel", 200,
     
     
 TH1F* Ephout=new TH1F("EnergyPH", "Energy Ph out", 75,0.2,150); 
-TH1F* Thph=new TH1F("th", "th Ph out", 75,50,50); 
-TH1F* The=new TH1F("th", "th El out", 75,50,50); */
+TH1F* Thph=new TH1F("th", "th Ph out", 75,50,50); */
+TH1F* The=new TH1F("th", "th El out", 75,0,90); 
+TH1F* TheBIG=new TH1F("th", "th El out BIG", 75,0,90); 
+    
     
 TH2F  *E3x3  = new TH2F("ThEel" , " Theta el Vs. E_ECAL",1400,0,70,1400,0.2,140);
 //TH2F  *E3x3noph  = new TH2F("ThEel" , " Theta el Vs. E_ECAL no ph",100,0,70,70,0.2,140);
@@ -139,8 +141,6 @@ Long64_t nentries = fChain->GetEntriesFast();
         photon_coox=photon_coox*100; // cm
         photon_cooy=photon_cooy*100; // cm
        
-       double Etotcal =0.;
-       for(int i=1;i<26;++i){Etotcal+=en_c[i];}
        //double Eout=(Etotcal-detKinBeamRot_E_clus3x3)/detKinBeamRot_E_clus3x3;
        //double Eout_9=detKinBeamRot_E_clus3x3/Etotcal;
        E9=detKinBeamRot_E_1/detKinBeamRot_E_clus3x3;
@@ -157,6 +157,7 @@ if (detKinBeamRot_n_cell_e!=0 && abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBea
     hist_E9_e->Fill(E9,wgt_full);
     hist_thxz_e->Fill(anglex_e,wgt_full);
     hist_thyz_e->Fill(angley_e,wgt_full);
+    The->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
     
     if (detKinBeamRot_tar==0)
     {hist_thxz_e1->Fill(anglex_e,wgt_full);
@@ -203,12 +204,13 @@ if (detKinBeamRot_n_cell_e!=0 && abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBea
         }*/
 
   }
-if (detKinBeamRot_n_cell_e!=0 && abs(detKinBeamRot_cooXe)<7.125 && abs(detKinBeamRot_cooYe)<7.125)  {     
+if (detKinBeamRot_n_cell_e!=0)  {     
     
     n_tot_eBIG+=wgt_full;
     hist_E9_eBIG->Fill(E9,wgt_full);
     hist_thxz_eBIG->Fill(anglex_e,wgt_full);
     hist_thyz_eBIG->Fill(angley_e,wgt_full);
+    TheBIG->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
     
     if (detKinBeamRot_tar==0)
     {hist_thxz_e1BIG->Fill(anglex_e,wgt_full);
@@ -455,15 +457,15 @@ cout << "Frazione di eventi scartabili CON TAGLIO TAR 1: " << ratio_cut1 <<endl;
     
 TCanvas * c1= new TCanvas("c1","c1",1000,100,2500,2000);
 
-hist_E9_e->GetXaxis()->SetTitle("Ecentral/E3x3");
-hist_E9_e->SetLineWidth(3);
-hist_E9_e->Draw("HIST"); 
-
 hist_E9_eBIG->GetXaxis()->SetTitle("Ecentral/E3x3");
 hist_E9_eBIG->SetLineWidth(3);
 hist_E9_eBIG->SetLineColor(kRed);
     
-hist_E9_eBIG->Draw("HIST same"); 
+hist_E9_eBIG->Draw("HIST");     
+    
+hist_E9_e->GetXaxis()->SetTitle("Ecentral/E3x3");
+hist_E9_e->SetLineWidth(3);
+hist_E9_e->Draw("HIST same"); 
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 /*hist_E9_eph_same->SetLineColor(kRed);
 hist_E9_eph_same->SetLineWidth(3);
@@ -564,6 +566,13 @@ The->Draw("HIST");
 Thph->Draw("HIST same"); 
     
 c5->SaveAs("/home/LHCB-T3/espedicato/tesi/ph_energy.png");     */
+    
+TCanvas * c5= new TCanvas("c5","c5",1000,100,2500,2000);
+TheBIG->SetLineColor(kRed);
+TheBIG->Draw("HIST"); 
+The->Draw("HIST same"); 
+    
+c5->SaveAs("/home/LHCB-T3/espedicato/tesi/th_el.png"); 
   
     TCanvas * theC= new TCanvas("tar","tar",1500,1000,3500,2000);
     theC->Divide(2,2);

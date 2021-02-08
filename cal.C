@@ -141,7 +141,7 @@ Long64_t nentries = fChain->GetEntriesFast();
        
     /*Double_t d_e_mu=sqrt( (detKinBeamRot_cooXe-detKinBeamRot_cooXmu)*(detKinBeamRot_cooXe-detKinBeamRot_cooXmu)+(detKinBeamRot_cooYe-detKinBeamRot_cooYmu)*(detKinBeamRot_cooYe-detKinBeamRot_cooYmu) ); detKinBeamRot_n_cell_e!=1 && detKinBeamRot_n_cell_e!=2 && detKinBeamRot_n_cell_e!=3 && detKinBeamRot_n_cell_e!=4 && detKinBeamRot_n_cell_e!=5 && detKinBeamRot_n_cell_e!=10 && detKinBeamRot_n_cell_e!=15 && detKinBeamRot_n_cell_e!=20 && detKinBeamRot_n_cell_e!=25 && detKinBeamRot_n_cell_e!=24 && detKinBeamRot_n_cell_e!=23 && detKinBeamRot_n_cell_e!=22 && detKinBeamRot_n_cell_e!=21 && detKinBeamRot_n_cell_e!=16 && detKinBeamRot_n_cell_e!=11 && detKinBeamRot_n_cell_e!=6*/
 
-if (detKinBeamRot_cooXe<abs(4.275) && detKinBeamRot_cooYe<abs(4.275))  {     
+if (detKinBeamRot_n_cell_e!=0 && abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275)  {     
     
     n_tot_e+=wgt_full;
     hist_E9_e->Fill(E9,wgt_full);

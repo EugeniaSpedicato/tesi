@@ -470,7 +470,7 @@ gPad->SetLogy();
 Ephout->Draw("HIST"); 
 c5->cd(2);
 Thph->Draw("HIST"); 
-The->SetMarkerColor(kRed);
+The->SetLineColor(kRed);
 The->Draw("HIST same"); 
     
 c5->SaveAs("/home/LHCB-T3/espedicato/tesi/ph_energy.png");     

@@ -129,7 +129,7 @@ TGraph* E3x3noph = new TGraph(nentries);
        E9=en_c[detKinBeamRot_n_max_Cell]/detKinBeamRot_E_clus3x3;
        /*cout << detKinBeamRot_n_max_Cell << " cella impatto elettrone " << detKinBeamRot_n_cell_e << "con energia " <<detKinBeamRot_Ee << " cella impatto fotone " << photon_n_cell_ph<< "con energia " <<photon_energy <<endl;*/
        
-       double Dtheta=detKinBeamRot_the-photon_theta;
+
        
        
     Double_t d_e_ph=sqrt( (detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detKinBeamRot_cooYe-photon_cooy)*(detKinBeamRot_cooYe-photon_cooy) )/Rm; 
@@ -148,7 +148,7 @@ if (detKinBeamRot_n_cell_e!=0)  {
   { Ephout->Fill(photon_energy,wgt_full);
     Thph->Fill(photon_theta,wgt_full);
     The->Fill(detKinBeamRot_the,wgt_full);
-   
+          double Dtheta=detKinBeamRot_the-photon_theta;
       n_tot_eph+=wgt_full; // e+gamma sul calorimetro
 //      hist_E9_eph->Fill(E9,wgt_full);
       hist_dist->Fill(d_e_ph,wgt_full);

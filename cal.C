@@ -124,7 +124,7 @@ TGraph* E3x3noph = new TGraph(nentries);
        
        double Etotcal =0.;
        for(int i=1;i<26;++i){Etotcal+=en_c[i];}
-       double Eout=(Etotcal-detKinBeamRot_E_clus3x3)/detKinBeamRot_E_clus3x3;
+       //double Eout=(Etotcal-detKinBeamRot_E_clus3x3)/detKinBeamRot_E_clus3x3;
        double Eout_9=detKinBeamRot_E_clus3x3/Etotcal;
        E9=en_c[detKinBeamRot_n_max_Cell]/detKinBeamRot_E_clus3x3;
        /*cout << detKinBeamRot_n_max_Cell << " cella impatto elettrone " << detKinBeamRot_n_cell_e << "con energia " <<detKinBeamRot_Ee << " cella impatto fotone " << photon_n_cell_ph<< "con energia " <<photon_energy <<endl;*/
@@ -450,14 +450,19 @@ gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
 c3->SaveAs("/home/LHCB-T3/espedicato/tesi/out+3x3.png");
 
- 
+Int_t nx = E3x3->GetNbinsX();
+Int_t ny = E3x3->GetNbinsY();
+for (Int_t i=1; i<nx+1; i++) {
+for (Int_t j=1; j<ny+1; j++) {
+if (E3x3->GetBinContent(i,j)<1) E3x3->SetBinContent(i,j,0);}}
 TCanvas * c4= new TCanvas("c4","c4",1000,100,2500,2000);
-E3x3->SetMarkerColor(12);
+gStyle->SetPalette(kLake);
+TColor::InvertPalette(); 
 E3x3->GetXaxis()->SetTitle("Theta_el");
 E3x3->GetYaxis()->SetTitle("Ereco3x3");
-E3x3->Draw("AP");
+E3x3->Draw("COLZ");
 E3x3noph->SetMarkerColor(46);
-E3x3noph->Draw("P SAME");
+E3x3noph->Draw("COLZ same");
 c4->SaveAs("/home/LHCB-T3/espedicato/tesi/thE.png");   
 
 TCanvas * c5= new TCanvas("c5","c5",1000,100,2500,2000);

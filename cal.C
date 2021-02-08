@@ -131,9 +131,6 @@ TGraph* E3x3noph = new TGraph(nentries);
        
 
        
-       
-    Double_t d_e_ph=sqrt( (detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detKinBeamRot_cooYe-photon_cooy)*(detKinBeamRot_cooYe-photon_cooy) )/Rm; 
-       
     /*Double_t d_e_mu=sqrt( (detKinBeamRot_cooXe-detKinBeamRot_cooXmu)*(detKinBeamRot_cooXe-detKinBeamRot_cooXmu)+(detKinBeamRot_cooYe-detKinBeamRot_cooYmu)*(detKinBeamRot_cooYe-detKinBeamRot_cooYmu) ); */
 
 if (detKinBeamRot_n_cell_e!=0)  {     
@@ -148,7 +145,10 @@ if (detKinBeamRot_n_cell_e!=0)  {
   { Ephout->Fill(photon_energy,wgt_full);
     Thph->Fill(photon_theta,wgt_full);
     The->Fill(detKinBeamRot_the,wgt_full);
-          double Dtheta=detKinBeamRot_the-photon_theta;
+    
+   Double_t d_e_ph=sqrt( (detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detKinBeamRot_cooYe-photon_cooy)*(detKinBeamRot_cooYe-photon_cooy) )/Rm; 
+    double Dtheta=detKinBeamRot_the-photon_theta;
+
       n_tot_eph+=wgt_full; // e+gamma sul calorimetro
 //      hist_E9_eph->Fill(E9,wgt_full);
       hist_dist->Fill(d_e_ph,wgt_full);

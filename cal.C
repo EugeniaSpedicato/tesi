@@ -145,7 +145,7 @@ if (detKinBeamRot_n_cell_e!=0)  {
     
   if (photon_n_cell_ph!=0)
       
-  {  Ephout->Fill(photon_energy,wgt_full);
+  { Ephout->Fill(photon_energy,wgt_full);
     Thph->Fill(photon_theta,wgt_full);
     The->Fill(detKinBeamRot_the,wgt_full);
    
@@ -469,9 +469,9 @@ Ephout->SetMinimum(1);
 gPad->SetLogy();
 Ephout->Draw("HIST"); 
 c5->cd(2);
-Thph->Draw("HIST"); 
 The->SetLineColor(kRed);
-The->Draw("HIST same"); 
+The->Draw("HIST"); 
+Thph->Draw("HIST same"); 
     
 c5->SaveAs("/home/LHCB-T3/espedicato/tesi/ph_energy.png");     
   

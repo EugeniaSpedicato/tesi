@@ -119,6 +119,8 @@ TH1F* The2MCS=new TH1F("th", "th El out TAR 2", 75,0,100);
 TH1F* TheBIG2MCS=new TH1F("th", "th El out BIG TAR 2 MCS", 75,0,100); 
     
 TH2F  *E3x3  = new TH2F("ThEel" , " Theta el Vs. E_ECAL",280,0,70,280,0.2,140);
+TH2F  *E3x3BIG  = new TH2F("ThEel" , " Theta el Vs. E_ECAL BIG",280,0,70,280,0.2,140);
+    
 //TH2F  *E3x3noph  = new TH2F("ThEel" , " Theta el Vs. E_ECAL no ph",100,0,70,70,0.2,140);
 
     
@@ -245,7 +247,7 @@ if (detKinBeamRot_n_cell_e!=0)  {
     
     //hist_Eout_9_e->Fill(Eout_9,wgt_full);
     
-//if (detKinBeamRot_E_clus3x3!=0) {E3x3BIG->Fill(detKinBeamRot_ThEl_interaction,detKinBeamRot_E_clus3x3,wgt_full);}
+if (detKinBeamRot_E_clus3x3!=0) {E3x3BIG->Fill(detKinBeamRot_ThEl_interaction,detKinBeamRot_E_clus3x3,wgt_full);}
     
   /*if (photon_n_cell_ph!=0 && photon_n_cell_ph!=1 && photon_n_cell_ph!=2 && photon_n_cell_ph!=3 && photon_n_cell_ph!=4 && photon_n_cell_ph!=5 && photon_n_cell_ph!=10 && photon_n_cell_ph!=15 && photon_n_cell_ph!=20 && photon_n_cell_ph!=25 && photon_n_cell_ph!=24 && photon_n_cell_ph!=23 && photon_n_cell_ph!=22 && photon_n_cell_ph!=21 && photon_n_cell_ph!=16 && photon_n_cell_ph!=11 && photon_n_cell_ph!=6)
   { Ephout->Fill(photon_energy,wgt_full);
@@ -567,13 +569,25 @@ Int_t ny = E3x3->GetNbinsY();
 for (Int_t i=1; i<nx+1; i++) {
 for (Int_t j=1; j<ny+1; j++) {
 if (E3x3->GetBinContent(i,j)<1) E3x3->SetBinContent(i,j,0);}}
+
+Int_t nxBIG = E3x3BIG->GetNbinsX();
+Int_t nyBIG = E3x3BIG->GetNbinsY();
+for (Int_t i=1; i<nxBIG+1; i++) {
+for (Int_t j=1; j<nyBIG+1; j++) {
+if (E3x3BIG->GetBinContent(i,j)<1) E3x3BIG->SetBinContent(i,j,0);}}
     
 TCanvas * c4= new TCanvas("c4","c4",1000,100,2500,2000);
+c4->Divide(1,2);
+c4->cd(1);
 gStyle->SetPalette(kLake);
 TColor::InvertPalette(); 
 E3x3->GetXaxis()->SetTitle("Theta_el");
 E3x3->GetYaxis()->SetTitle("Ereco3x3");
 E3x3->Draw("COLZ");
+c4->cd(2);   
+E3x3BIG->GetXaxis()->SetTitle("Theta_el");
+E3x3BIG->GetYaxis()->SetTitle("Ereco3x3");
+E3x3BIG->Draw("COLZ");
 
 c4->SaveAs("/home/LHCB-T3/espedicato/tesi/thE.png");   
 

@@ -62,12 +62,12 @@ Double_t Rm = 2.190 ; //raggio di Moliere in centimetri
 Double_t E9=0.;
 
 TH1F* hist_E9_e=new TH1F("E9e", "E9 e tot", 500,0,1);
-TH1F* hist_thxz_e=new TH1F("thetaXZ", "theta XZ plane e", 1500,-100,100);
-TH1F* hist_thyz_e=new TH1F("thetaYZ", "theta YZ plane e", 1500,-100,100);
-TH1F* hist_thxz_e1=new TH1F("thetaXZ", "theta XZ plane e", 1500,-100,100);
-TH1F* hist_thyz_e1=new TH1F("thetaYZ", "theta YZ plane e", 1500,-100,100);
-TH1F* hist_thxz_e2=new TH1F("thetaXZ", "theta XZ plane e", 1500,-100,100);
-TH1F* hist_thyz_e2=new TH1F("thetaYZ", "theta YZ plane e", 1500,-100,100);
+TH1F* hist_thxz_e=new TH1F("thetaXZ", "theta XZ plane e", 150,-0.1,0.1);
+TH1F* hist_thyz_e=new TH1F("thetaYZ", "theta YZ plane e", 150,-0.1,0.1);
+TH1F* hist_thxz_e1=new TH1F("thetaXZ", "theta XZ plane e", 150,-0.1,0.1);
+TH1F* hist_thyz_e1=new TH1F("thetaYZ", "theta YZ plane e", 150,-0.1,0.1);
+TH1F* hist_thxz_e2=new TH1F("thetaXZ", "theta XZ plane e", 150,-0.1,0.1);
+TH1F* hist_thyz_e2=new TH1F("thetaYZ", "theta YZ plane e", 150,-0.1,0.1);
 
 /*TH1F* hist_E9_NOph=new TH1F("E9noph", "E9 NO photons", 500,0,1);
 TH1F* hist_E9_eph_same=new TH1F("E9eph", "E9 e+ph same cell", 500,0,1);

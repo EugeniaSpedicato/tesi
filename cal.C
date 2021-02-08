@@ -60,11 +60,18 @@ Double_t different_cell=0.;
 Double_t E_CAL=0.;
 Double_t Rm = 2.190 ; //raggio di Moliere in centimetri    
 Double_t E9=0.;
+
+TH1F* hist_E9_e=new TH1F("E9e", "E9 e tot", 500,0,1);
+TH1F* hist_thxz_e=new TH1F("thetaXZ", "theta XZ plane e", 1500,-100,100);
+TH1F* hist_thyz_e=new TH1F("thetaYZ", "theta YZ plane e", 1500,-100,100);
+TH1F* hist_thxz_e1=new TH1F("thetaXZ", "theta XZ plane e", 1500,-100,100);
+TH1F* hist_thyz_e1=new TH1F("thetaYZ", "theta YZ plane e", 1500,-100,100);
+TH1F* hist_thxz_e2=new TH1F("thetaXZ", "theta XZ plane e", 1500,-100,100);
+TH1F* hist_thyz_e2=new TH1F("thetaYZ", "theta YZ plane e", 1500,-100,100);
+
+/*TH1F* hist_E9_NOph=new TH1F("E9noph", "E9 NO photons", 500,0,1);
 TH1F* hist_E9_eph_same=new TH1F("E9eph", "E9 e+ph same cell", 500,0,1);
 TH1F* hist_E9_eph_diff=new TH1F("E9eph", "E9 e+ph different cell", 500,0,1);
-TH1F* hist_E9_e=new TH1F("E9e", "E9 e tot", 500,0,1);
-TH1F* hist_E9_NOph=new TH1F("E9noph", "E9 NO photons", 500,0,1);
-
     
     
 TH1F* hist_Eout_9_eph_same=new TH1F("E9outeph", "E_3x3/Etotcal e+ph same cell", 300,0.89,1);
@@ -83,7 +90,7 @@ TH1F* hist_ang_diff=new TH1F("dist", "DTheta (Thel-Thph) e-gamma diff cel", 200,
     
 TH1F* Ephout=new TH1F("EnergyPH", "Energy Ph out", 75,0.2,150); 
 TH1F* Thph=new TH1F("th", "th Ph out", 75,50,50); 
-TH1F* The=new TH1F("th", "th El out", 75,50,50); 
+TH1F* The=new TH1F("th", "th El out", 75,50,50); */
     
 TH2F  *E3x3  = new TH2F("ThEel" , " Theta el Vs. E_ECAL",1400,0,70,1400,0.2,140);
 //TH2F  *E3x3noph  = new TH2F("ThEel" , " Theta el Vs. E_ECAL no ph",100,0,70,70,0.2,140);
@@ -125,23 +132,34 @@ Long64_t nentries = fChain->GetEntriesFast();
        double Etotcal =0.;
        for(int i=1;i<26;++i){Etotcal+=en_c[i];}
        //double Eout=(Etotcal-detKinBeamRot_E_clus3x3)/detKinBeamRot_E_clus3x3;
-       double Eout_9=detKinBeamRot_E_clus3x3/Etotcal;
+       //double Eout_9=detKinBeamRot_E_clus3x3/Etotcal;
        E9=en_c[detKinBeamRot_n_max_Cell]/detKinBeamRot_E_clus3x3;
        /*cout << detKinBeamRot_n_max_Cell << " cella impatto elettrone " << detKinBeamRot_n_cell_e << "con energia " <<detKinBeamRot_Ee << " cella impatto fotone " << photon_n_cell_ph<< "con energia " <<photon_energy <<endl;*/
-       
+        Double_t anglex_e = atan2(detKinBeamRot_pXe_out, detKinBeamRot_pZe_out);
+        Double_t angley_e = atan2(detKinBeamRot_pYe_out, detKinBeamRot_pZe_out);
 
        
-    /*Double_t d_e_mu=sqrt( (detKinBeamRot_cooXe-detKinBeamRot_cooXmu)*(detKinBeamRot_cooXe-detKinBeamRot_cooXmu)+(detKinBeamRot_cooYe-detKinBeamRot_cooYmu)*(detKinBeamRot_cooYe-detKinBeamRot_cooYmu) ); */
+    /*Double_t d_e_mu=sqrt( (detKinBeamRot_cooXe-detKinBeamRot_cooXmu)*(detKinBeamRot_cooXe-detKinBeamRot_cooXmu)+(detKinBeamRot_cooYe-detKinBeamRot_cooYmu)*(detKinBeamRot_cooYe-detKinBeamRot_cooYmu) ); detKinBeamRot_n_cell_e!=1 && detKinBeamRot_n_cell_e!=2 && detKinBeamRot_n_cell_e!=3 && detKinBeamRot_n_cell_e!=4 && detKinBeamRot_n_cell_e!=5 && detKinBeamRot_n_cell_e!=10 && detKinBeamRot_n_cell_e!=15 && detKinBeamRot_n_cell_e!=20 && detKinBeamRot_n_cell_e!=25 && detKinBeamRot_n_cell_e!=24 && detKinBeamRot_n_cell_e!=23 && detKinBeamRot_n_cell_e!=22 && detKinBeamRot_n_cell_e!=21 && detKinBeamRot_n_cell_e!=16 && detKinBeamRot_n_cell_e!=11 && detKinBeamRot_n_cell_e!=6*/
 
-if (detKinBeamRot_n_cell_e!=0 && detKinBeamRot_n_cell_e!=1 && detKinBeamRot_n_cell_e!=2 && detKinBeamRot_n_cell_e!=3 && detKinBeamRot_n_cell_e!=4 && detKinBeamRot_n_cell_e!=5 && detKinBeamRot_n_cell_e!=10 && detKinBeamRot_n_cell_e!=15 && detKinBeamRot_n_cell_e!=20 && detKinBeamRot_n_cell_e!=25 && detKinBeamRot_n_cell_e!=24 && detKinBeamRot_n_cell_e!=23 && detKinBeamRot_n_cell_e!=22 && detKinBeamRot_n_cell_e!=21 && detKinBeamRot_n_cell_e!=16 && detKinBeamRot_n_cell_e!=11 && detKinBeamRot_n_cell_e!=6)  {     
+if (detKinBeamRot_n_cell_e!=0 && detKinBeamRot_cooXe<abs(4.275) && detKinBeamRot_cooYe<abs(4.275))  {     
     
     n_tot_e+=wgt_full;
     hist_E9_e->Fill(E9,wgt_full);
-    hist_Eout_9_e->Fill(Eout_9,wgt_full);
+    hist_thxz_e->Fill(anglex_e*1000,wgt_full);
+    hist_thyz_e->Fill(angley_e*1000,wgt_full);
+    
+    if (detKinBeamRot_tar==0)
+    {hist_thxz_e1->Fill(anglex_e*1000,wgt_full);
+    hist_thyz_e1->Fill(angley_e*1000,wgt_full);}
+    if (detKinBeamRot_tar==1)
+    {hist_thxz_e2->Fill(anglex_e*1000,wgt_full);
+    hist_thyz_e2->Fill(angley_e*1000,wgt_full);}
+    
+    //hist_Eout_9_e->Fill(Eout_9,wgt_full);
     
     if (detKinBeamRot_E_clus3x3!=0) {E3x3->Fill(detKinBeamRot_ThEl_interaction,detKinBeamRot_E_clus3x3,wgt_full);}
     
-  if (photon_n_cell_ph!=0 && photon_n_cell_ph!=1 && photon_n_cell_ph!=2 && photon_n_cell_ph!=3 && photon_n_cell_ph!=4 && photon_n_cell_ph!=5 && photon_n_cell_ph!=10 && photon_n_cell_ph!=15 && photon_n_cell_ph!=20 && photon_n_cell_ph!=25 && photon_n_cell_ph!=24 && photon_n_cell_ph!=23 && photon_n_cell_ph!=22 && photon_n_cell_ph!=21 && photon_n_cell_ph!=16 && photon_n_cell_ph!=11 && photon_n_cell_ph!=6)
+  /*if (photon_n_cell_ph!=0 && photon_n_cell_ph!=1 && photon_n_cell_ph!=2 && photon_n_cell_ph!=3 && photon_n_cell_ph!=4 && photon_n_cell_ph!=5 && photon_n_cell_ph!=10 && photon_n_cell_ph!=15 && photon_n_cell_ph!=20 && photon_n_cell_ph!=25 && photon_n_cell_ph!=24 && photon_n_cell_ph!=23 && photon_n_cell_ph!=22 && photon_n_cell_ph!=21 && photon_n_cell_ph!=16 && photon_n_cell_ph!=11 && photon_n_cell_ph!=6)
   { Ephout->Fill(photon_energy,wgt_full);
     Thph->Fill(photon_theta,wgt_full);
     The->Fill(detKinBeamRot_the,wgt_full);
@@ -172,7 +190,7 @@ if (detKinBeamRot_n_cell_e!=0 && detKinBeamRot_n_cell_e!=1 && detKinBeamRot_n_ce
       hist_E9_NOph->Fill(E9,wgt_full);
       hist_Eout_9_NOph->Fill(Eout_9,wgt_full);
       //if (detKinBeamRot_E_clus3x3!=0) {E3x3noph->Fill(detKinBeamRot_ThEl_interaction,detKinBeamRot_E_clus3x3);}
-        }
+        }*/
 
   }
 /*if (photon_n_cell_ph==0 && detKinBeamRot_n_cell_e!=0)   
@@ -379,7 +397,7 @@ hist_E9_e->GetXaxis()->SetTitle("Ecentral/E3x3");
 hist_E9_e->SetLineWidth(3);
 hist_E9_e->Draw("HIST"); 
 
-hist_E9_eph_same->SetLineColor(kRed);
+/*hist_E9_eph_same->SetLineColor(kRed);
 hist_E9_eph_same->SetLineWidth(3);
 hist_E9_eph_same->Draw("HIST same"); 
     
@@ -390,11 +408,11 @@ hist_E9_eph_diff->Draw("HIST same");
 hist_E9_NOph->SetLineColor(kOrange);
 hist_E9_NOph->SetLineWidth(3);
 hist_E9_NOph->Draw("HIST same");
-gPad->BuildLegend(0.25,0.15,0.25,0.15);
+gPad->BuildLegend(0.25,0.15,0.25,0.15);*/
 
 c1->SaveAs("/home/LHCB-T3/espedicato/tesi/E9.png");
     
-TCanvas * c2= new TCanvas("c2","c2",1000,100,2500,2000);
+/*TCanvas * c2= new TCanvas("c2","c2",1000,100,2500,2000);
 
 hist_dist->GetXaxis()->SetTitle("r[Rm]");
 hist_dist->SetLineWidth(3);
@@ -426,9 +444,9 @@ hist_ang_diff->SetLineWidth(3);
 hist_ang_diff->Draw("HIST same");
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
-c2a->SaveAs("/home/LHCB-T3/espedicato/tesi/Dtheta.png");
+c2a->SaveAs("/home/LHCB-T3/espedicato/tesi/Dtheta.png");*/
     
-TCanvas * c3= new TCanvas("c3","c3",1000,100,2500,2000);
+/*TCanvas * c3= new TCanvas("c3","c3",1000,100,2500,2000);
 
 hist_Eout_9_e->GetXaxis()->SetTitle("E3x3/E5x5");
 hist_Eout_9_e->SetLineWidth(3);
@@ -447,13 +465,14 @@ hist_Eout_9_NOph->SetLineWidth(3);
 hist_Eout_9_NOph->Draw("HIST same");
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
-c3->SaveAs("/home/LHCB-T3/espedicato/tesi/out+3x3.png");
+c3->SaveAs("/home/LHCB-T3/espedicato/tesi/out+3x3.png");*/
 
 Int_t nx = E3x3->GetNbinsX();
 Int_t ny = E3x3->GetNbinsY();
 for (Int_t i=1; i<nx+1; i++) {
 for (Int_t j=1; j<ny+1; j++) {
 if (E3x3->GetBinContent(i,j)<1) E3x3->SetBinContent(i,j,0);}}
+    
 TCanvas * c4= new TCanvas("c4","c4",1000,100,2500,2000);
 gStyle->SetPalette(kLake);
 TColor::InvertPalette(); 
@@ -463,7 +482,7 @@ E3x3->Draw("COLZ");
 
 c4->SaveAs("/home/LHCB-T3/espedicato/tesi/thE.png");   
 
-TCanvas * c5= new TCanvas("c5","c5",1000,100,2500,2000);
+/*TCanvas * c5= new TCanvas("c5","c5",1000,100,2500,2000);
 c5->Divide(1,2);
 c5->cd(1);
 Ephout->GetXaxis()->SetTitle("E_ph[GeV]");
@@ -476,11 +495,34 @@ The->SetLineColor(kRed);
 The->Draw("HIST"); 
 Thph->Draw("HIST same"); 
     
-c5->SaveAs("/home/LHCB-T3/espedicato/tesi/ph_energy.png");     
+c5->SaveAs("/home/LHCB-T3/espedicato/tesi/ph_energy.png");     */
   
+    TCanvas * theC= new TCanvas("tar","tar",1500,1000,3500,2000);
+    theC->Divide(1,2);
+    theC->cd(1);
+    hist_thxz_e->SetLineColor(46);
+    hist_thxz_e->SetLineWidth(3);
+    hist_thxz_e->Draw("HIST");
+    hist_thxz_e1->SetLineColor(8);
+    hist_thxz_e1->SetLineWidth(3);
+    hist_thxz_e1->Draw("HIST SAME");
+    hist_thxz_e2->SetLineColor(kBlack);
+    hist_thxz_e2->SetLineWidth(3);
+    hist_thxz_e2->Draw("HIST SAME");
+    hist_thxz_e->GetXaxis()->SetTitle("Theta XZ [rad]");
+    theC->cd(2);
+    hist_thyz_e->SetLineColor(46);
+    hist_thyz_e->SetLineWidth(3);
+    hist_thyz_e->Draw("HIST");
+    hist_thyz_e1->SetLineColor(8);
+    hist_thyz_e1->SetLineWidth(3);
+    hist_thyz_e1->Draw("HIST SAME");
+    hist_thyz_e2->SetLineColor(kBlack);
+    hist_thyz_e2->SetLineWidth(3);
+    hist_thyz_e2->Draw("HIST SAME");
+    hist_thyz_e->GetXaxis()->SetTitle("Theta YZ [rad]");
     
-    
-    
+    theC->SaveAs("/home/LHCB-T3/espedicato/tesi/Th_el_XZYZ.png");     
     
     
 }

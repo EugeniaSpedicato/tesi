@@ -145,15 +145,15 @@ if (detKinBeamRot_cooXe<abs(4.275) && detKinBeamRot_cooYe<abs(4.275))  {
     
     n_tot_e+=wgt_full;
     hist_E9_e->Fill(E9,wgt_full);
-    hist_thxz_e->Fill(anglex_e*1000,wgt_full);
-    hist_thyz_e->Fill(angley_e*1000,wgt_full);
+    hist_thxz_e->Fill(anglex_e,wgt_full);
+    hist_thyz_e->Fill(angley_e,wgt_full);
     
     if (detKinBeamRot_tar==0)
-    {hist_thxz_e1->Fill(anglex_e*1000,wgt_full);
-    hist_thyz_e1->Fill(angley_e*1000,wgt_full);}
+    {hist_thxz_e1->Fill(anglex_e,wgt_full);
+    hist_thyz_e1->Fill(angley_e,wgt_full);}
     if (detKinBeamRot_tar==1)
-    {hist_thxz_e2->Fill(anglex_e*1000,wgt_full);
-    hist_thyz_e2->Fill(angley_e*1000,wgt_full);}
+    {hist_thxz_e2->Fill(anglex_e,wgt_full);
+    hist_thyz_e2->Fill(angley_e,wgt_full);}
     
     //hist_Eout_9_e->Fill(Eout_9,wgt_full);
     

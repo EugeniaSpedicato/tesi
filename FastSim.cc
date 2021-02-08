@@ -122,9 +122,6 @@ Double_t TheINT=b[18][2]; // angolo che ha nel momento dell'interazione, senza e
   LoadPhoton(event, photon, p_mu_in_div,xin,yin);
   
 /*auto n_photons = event.photons.size();
-
-NB CONVERTI COO DI FAST SIM (m) IN cm PERCHE ECAL E' IN cm, poi puoi usare la percentuale perchè così è indipendente dal valore iniziale dell'energia
-
 bool bFixedLength=true;
 int nPart;
 double X0depth;

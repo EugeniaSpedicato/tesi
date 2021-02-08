@@ -1040,6 +1040,8 @@ else
 {
 kv.n_max_Cell=0;
 kv.E_clus3x3=0;
+kv.E_1=0.;
+
     
 /*kv.Ecell1=0;
 kv.Ecell2=0;    

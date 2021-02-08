@@ -103,6 +103,12 @@ TH1F* Thph=new TH1F("th", "th Ph out", 75,50,50); */
 TH1F* The=new TH1F("th", "th El out", 75,0,90); 
 TH1F* TheBIG=new TH1F("th", "th El out BIG", 75,0,90); 
     
+TH1F* The1=new TH1F("th", "th El out TAR 1", 75,0,90); 
+TH1F* TheBIG1=new TH1F("th", "th El out BIG TAR 1", 75,0,90); 
+    
+TH1F* The2=new TH1F("th", "th El out TAR 2", 75,0,90); 
+TH1F* TheBIG2=new TH1F("th", "th El out BIG TAR 2", 75,0,90); 
+    
     
 TH2F  *E3x3  = new TH2F("ThEel" , " Theta el Vs. E_ECAL",1400,0,70,1400,0.2,140);
 //TH2F  *E3x3noph  = new TH2F("ThEel" , " Theta el Vs. E_ECAL no ph",100,0,70,70,0.2,140);
@@ -161,10 +167,12 @@ if (detKinBeamRot_n_cell_e!=0 && abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBea
     
     if (detKinBeamRot_tar==0)
     {hist_thxz_e1->Fill(anglex_e,wgt_full);
-    hist_thyz_e1->Fill(angley_e,wgt_full);}
+    hist_thyz_e1->Fill(angley_e,wgt_full);
+    The1->Fill(detKinBeamRot_ThEl_interaction,wgt_full);}
     if (detKinBeamRot_tar==1)
     {hist_thxz_e2->Fill(anglex_e,wgt_full);
-    hist_thyz_e2->Fill(angley_e,wgt_full);}
+    hist_thyz_e2->Fill(angley_e,wgt_full);
+    The2->Fill(detKinBeamRot_ThEl_interaction,wgt_full);}
     
     //hist_Eout_9_e->Fill(Eout_9,wgt_full);
     
@@ -214,10 +222,12 @@ if (detKinBeamRot_n_cell_e!=0)  {
     
     if (detKinBeamRot_tar==0)
     {hist_thxz_e1BIG->Fill(anglex_e,wgt_full);
-    hist_thyz_e1BIG->Fill(angley_e,wgt_full);}
+    hist_thyz_e1BIG->Fill(angley_e,wgt_full);
+    TheBIG1->Fill(detKinBeamRot_ThEl_interaction,wgt_full);}
     if (detKinBeamRot_tar==1)
     {hist_thxz_e2BIG->Fill(anglex_e,wgt_full);
-    hist_thyz_e2BIG->Fill(angley_e,wgt_full);}
+    hist_thyz_e2BIG->Fill(angley_e,wgt_full);
+    TheBIG2->Fill(detKinBeamRot_ThEl_interaction,wgt_full);}
     
     //hist_Eout_9_e->Fill(Eout_9,wgt_full);
     
@@ -568,9 +578,19 @@ Thph->Draw("HIST same");
 c5->SaveAs("/home/LHCB-T3/espedicato/tesi/ph_energy.png");     */
     
 TCanvas * c5= new TCanvas("c5","c5",1000,100,2500,2000);
+c5->Divide(1,3);
+c5->cd(1);
 TheBIG->SetLineColor(kRed);
 TheBIG->Draw("HIST"); 
 The->Draw("HIST same"); 
+c5->cd(2);
+TheBIG1->SetLineColor(kRed);
+TheBIG1->Draw("HIST"); 
+The1->Draw("HIST same");     
+c5->cd(3);
+TheBIG2->SetLineColor(kRed);
+TheBIG2->Draw("HIST"); 
+The2->Draw("HIST same"); 
     
 c5->SaveAs("/home/LHCB-T3/espedicato/tesi/th_el.png"); 
   

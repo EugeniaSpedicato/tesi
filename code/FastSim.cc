@@ -1008,8 +1008,10 @@ if (Ecal->GetEntries()!=0)
 double *E_clus = myGrid->Draw_ECAL(j);
 kv.n_max_Cell=E_clus[0];
 kv.E_clus3x3=E_clus[1];
+kv.E_1=E_clus[2];
+ 
     
-kv.Ecell1=Ecell[0];
+/*kv.Ecell1=Ecell[0];
 kv.Ecell2=Ecell[1];    
 kv.Ecell3=Ecell[2];    
 kv.Ecell4=Ecell[3];    
@@ -1033,13 +1035,13 @@ kv.Ecell21=Ecell[20];
 kv.Ecell22=Ecell[21];    
 kv.Ecell23=Ecell[22];    
 kv.Ecell24=Ecell[23];    
-kv.Ecell25=Ecell[24];}
+kv.Ecell25=Ecell[24];*/}
 else 
 {
 kv.n_max_Cell=0;
 kv.E_clus3x3=0;
     
-kv.Ecell1=0;
+/*kv.Ecell1=0;
 kv.Ecell2=0;    
 kv.Ecell3=0;    
 kv.Ecell4=0;   
@@ -1063,7 +1065,7 @@ kv.Ecell21=0;
 kv.Ecell22=0;    
 kv.Ecell23=0;    
 kv.Ecell24=0;    
-kv.Ecell25=0; 
+kv.Ecell25=0; */
      }
      
  }

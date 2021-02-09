@@ -163,7 +163,6 @@ Long64_t nentries = fChain->GetEntriesFast();
       nb = fChain->GetEntry(jentry);   nbytes += nb;
        
        n_tot+=wgt_full;
-       cout <<"wgt full " << wgt_full << endl;
 
         /*en_c[1]=detKinBeamRot_Ecell1; en_c[2]=detKinBeamRot_Ecell2; en_c[3]=detKinBeamRot_Ecell3; en_c[4]=detKinBeamRot_Ecell4; en_c[5]=detKinBeamRot_Ecell5;
         en_c[6]=detKinBeamRot_Ecell6; en_c[7]=detKinBeamRot_Ecell7; en_c[8]=detKinBeamRot_Ecell8; en_c[9]=detKinBeamRot_Ecell9; en_c[10]=detKinBeamRot_Ecell10;
@@ -194,7 +193,7 @@ Long64_t nentries = fChain->GetEntriesFast();
 
 //if (detKinBeamRot_n_cell_e!=0 && abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275)  
 
-if (detKinBeamRot_n_cell_e!=0 && E_CAL>0)
+if (detKinBeamRot_n_cell_e!=0 && photon_n_cell_ph==0 && E_CAL>0)
 {
         
     n_tot_eBIG+=wgt_full;

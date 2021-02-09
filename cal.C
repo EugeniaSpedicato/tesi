@@ -432,19 +432,19 @@ Int_t nx = E3x3->GetNbinsX();
 Int_t ny = E3x3->GetNbinsY();
 for (Int_t i=1; i<nx+1; i++) {
 for (Int_t j=1; j<ny+1; j++) {
-if (E3x3->GetBinContent(i,j)<1) E3x3->SetBinContent(i,j,0);}}
+if (E3x3->GetBinContent(i,j)<10) E3x3->SetBinContent(i,j,0);}}
 
 Int_t nxBIG = E3x3BIG->GetNbinsX();
 Int_t nyBIG = E3x3BIG->GetNbinsY();
 for (Int_t i=1; i<nxBIG+1; i++) {
 for (Int_t j=1; j<nyBIG+1; j++) {
-if (E3x3BIG->GetBinContent(i,j)<1) E3x3BIG->SetBinContent(i,j,0);}}
+if (E3x3BIG->GetBinContent(i,j)<10) E3x3BIG->SetBinContent(i,j,0);}}
     
 Int_t nx2P = E3x32P->GetNbinsX();
 Int_t ny2P = E3x32P->GetNbinsY();
 for (Int_t i=1; i<nx2P+1; i++) {
 for (Int_t j=1; j<ny2P+1; j++) {
-if (E3x32P->GetBinContent(i,j)<1) E3x32P->SetBinContent(i,j,0);}}
+if (E3x32P->GetBinContent(i,j)<10) E3x32P->SetBinContent(i,j,0);}}
     
 TCanvas * c4= new TCanvas("c4","c4",1000,100,2500,2000);
 c4->Divide(1,3);

@@ -193,7 +193,7 @@ Long64_t nentries = fChain->GetEntriesFast();
 
 //if (detKinBeamRot_n_cell_e!=0 && abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275)  
 
-if (detKinBeamRot_n_cell_e!=0)
+if (detKinBeamRot_n_cell_e!=0 && E_CAL>1)
 {
         
     n_tot_eBIG+=wgt_full;

@@ -637,8 +637,8 @@ for (Int_t p=1; p<7; p++)  {
                  if(p==1 || p==3 || p==5){
                  thetaX[0][p]=0;
                  thetaY[0][p]=0;
-                 thetaXe[0][p]= 0;
-                 thetaYe[0][p]= 0;
+                 thetaXe[0][p]=0;
+                 thetaYe[0][p]=0;
 
                 x[0][p]=0;
                 y[0][p]=0;

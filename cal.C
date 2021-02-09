@@ -118,8 +118,8 @@ TH1F* TheBIG1MCS=new TH1F("th", "th El out BIG TAR 1 MCS", 75,0,100);
 TH1F* The2MCS=new TH1F("th", "th El out TAR 2", 75,0,100); 
 TH1F* TheBIG2MCS=new TH1F("th", "th El out BIG TAR 2 MCS", 75,0,100); 
     
-TH2F  *E3x3  = new TH2F("ThEel" , " Theta el Vs. E_ECAL",140,0,70,140,0.2,140);
-TH2F  *E3x3BIG  = new TH2F("ThEel" , " Theta el Vs. E_ECAL BIG",140,0,70,140,0.2,140);
+TH2F  *E3x3  = new TH2F("ThEel" , " Theta el Vs. E_ECAL",350,0,70,350,0.2,140);
+TH2F  *E3x3BIG  = new TH2F("ThEel" , " Theta el Vs. E_ECAL BIG",350,0,70,350,0.2,140);
     
 //TH2F  *E3x3noph  = new TH2F("ThEel" , " Theta el Vs. E_ECAL no ph",100,0,70,70,0.2,140);
 
@@ -191,7 +191,7 @@ if (detKinBeamRot_n_cell_e!=0 && detKinBeamRot_n_max_Cell!=0 && detKinBeamRot_n_
     
     //hist_Eout_9_e->Fill(Eout_9,wgt_full);
     
-    if (detKinBeamRot_E_clus3x3!=0) {E3x3->Fill(detKinBeamRot_ThEl_interaction,detKinBeamRot_E_clus3x3,wgt_full);}
+    if (detKinBeamRot_E_clus3x3!=0 && E9<0.95 && E9>0.5) {E3x3->Fill(detKinBeamRot_ThEl_interaction,detKinBeamRot_E_clus3x3,wgt_full);}
     
   /*if (photon_n_cell_ph!=0 && photon_n_cell_ph!=1 && photon_n_cell_ph!=2 && photon_n_cell_ph!=3 && photon_n_cell_ph!=4 && photon_n_cell_ph!=5 && photon_n_cell_ph!=10 && photon_n_cell_ph!=15 && photon_n_cell_ph!=20 && photon_n_cell_ph!=25 && photon_n_cell_ph!=24 && photon_n_cell_ph!=23 && photon_n_cell_ph!=22 && photon_n_cell_ph!=21 && photon_n_cell_ph!=16 && photon_n_cell_ph!=11 && photon_n_cell_ph!=6)
   { Ephout->Fill(photon_energy,wgt_full);

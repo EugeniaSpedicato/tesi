@@ -110,19 +110,19 @@ TH1F* hist_ang_diff=new TH1F("dist", "DTheta (Thel-Thph) e-gamma diff cel", 200,
     
 TH1F* Ephout=new TH1F("EnergyPH", "Energy Ph out", 75,0.2,150); 
 TH1F* Thph=new TH1F("th", "th Ph out", 75,50,50); */
-TH1F* The=new TH1F("th", "th El out", 75,0,90); 
-TH1F* TheBIG=new TH1F("th", "th El out BIG", 75,0,90); 
-TH1F* The2P=new TH1F("th", "th El out crown", 75,0,90); 
+TH1F* The=new TH1F("th", "th El out", 75,0,100); 
+TH1F* TheBIG=new TH1F("th", "th El out BIG", 75,0,100); 
+TH1F* The2P=new TH1F("th", "th El out crown", 75,0,100); 
 
     
-TH1F* The1=new TH1F("th", "th El out TAR 1", 75,0,90); 
-TH1F* TheBIG1=new TH1F("th", "th El out BIG TAR 1", 75,0,90); 
-TH1F* The2P1=new TH1F("th", "th El out crown TAR 1", 75,0,90); 
+TH1F* The1=new TH1F("th", "th El out TAR 1", 75,0,100); 
+TH1F* TheBIG1=new TH1F("th", "th El out BIG TAR 1", 75,0,100); 
+TH1F* The2P1=new TH1F("th", "th El out crown TAR 1", 75,0,100); 
 
     
-TH1F* The2=new TH1F("th", "th El out TAR 2", 75,0,90); 
-TH1F* TheBIG2=new TH1F("th", "th El out BIG TAR 2", 75,0,90); 
-TH1F* The2P2=new TH1F("th", "th El out crown TAR 2", 75,0,90); 
+TH1F* The2=new TH1F("th", "th El out TAR 2", 75,0,100); 
+TH1F* TheBIG2=new TH1F("th", "th El out BIG TAR 2", 75,0,100); 
+TH1F* The2P2=new TH1F("th", "th El out crown TAR 2", 75,0,100); 
     
     
 TH1F* TheMCS=new TH1F("th", "th El out MCS", 75,0,100); 
@@ -618,5 +618,29 @@ c5MCS->SaveAs("/home/LHCB-T3/espedicato/tesi/th_elMCS.png");
     
     theC->SaveAs("/home/LHCB-T3/espedicato/tesi/Th_el_XZYZ.png");     
     
+    TCanvas * the2= new TCanvas("tar2","tar2",1500,1000,3500,2000);
+    the2->Divide(1,2);
+    the2->cd(1);
+    hist_thxz_eBIG->SetLineColor(kRed);
+    hist_thxz_eBIG->SetLineWidth(3);
+    hist_thxz_eBIG->Draw("HIST");
+    hist_thxz_e->SetLineColor(kBlue);
+    hist_thxz_e->SetLineWidth(3);
+    hist_thxz_e->Draw("HIST same");
+    hist_thxz_e2P->SetLineColor(kViolet);
+    hist_thxz_e2P->SetLineWidth(3);
+    hist_thxz_e2P->Draw("HIST same");
+    the2->cd(2);
+    hist_thyz_eBIG->SetLineColor(kRed);
+    hist_thyz_eBIG->SetLineWidth(3);
+    hist_thyz_eBIG->Draw("HIST");
+    hist_thyz_e->SetLineColor(kBlue);
+    hist_thyz_e->SetLineWidth(3);
+    hist_thyz_e->Draw("HIST same");
+    hist_thyz_e2P->SetLineColor(kViolet);
+    hist_thyz_e2P->SetLineWidth(3);
+    hist_thyz_e2P->Draw("HIST same");
     
+        
+    the2->SaveAs("/home/LHCB-T3/espedicato/tesi/thxzyz.png");    
 }

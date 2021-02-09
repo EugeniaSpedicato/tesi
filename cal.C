@@ -172,7 +172,7 @@ Long64_t nentries = fChain->GetEntriesFast();
 if (detKinBeamRot_n_cell_e!=0 && detKinBeamRot_n_max_Cell!=0 && detKinBeamRot_n_max_Cell!=1 && detKinBeamRot_n_max_Cell!=2 && detKinBeamRot_n_max_Cell!=3 && detKinBeamRot_n_max_Cell!=4 &&detKinBeamRot_n_max_Cell!=5 && detKinBeamRot_n_max_Cell!=10 && detKinBeamRot_n_max_Cell!=15 && detKinBeamRot_n_max_Cell!=20 && detKinBeamRot_n_max_Cell!=25 && detKinBeamRot_n_max_Cell!=24 && detKinBeamRot_n_max_Cell!=23 && detKinBeamRot_n_max_Cell!=22 && detKinBeamRot_n_max_Cell!=21 && detKinBeamRot_n_max_Cell!=16 && detKinBeamRot_n_max_Cell!=11 && detKinBeamRot_n_max_Cell!=6) {
     
     n_tot_e+=wgt_full;
-    hist_E9_e->Fill(E9,wgt_full);
+    if (E9<0.95 && E9>0.5) hist_E9_e->Fill(E9,wgt_full);
     hist_thxz_e->Fill(anglex_e,wgt_full);
     hist_thyz_e->Fill(angley_e,wgt_full);
     The->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
@@ -230,7 +230,7 @@ if (detKinBeamRot_n_cell_e!=0 && detKinBeamRot_n_max_Cell!=0 && detKinBeamRot_n_
 if (detKinBeamRot_n_cell_e!=0)  {     
     
     n_tot_eBIG+=wgt_full;
-    hist_E9_eBIG->Fill(E9,wgt_full);
+    if (E9<0.95 && E9>0.5) hist_E9_eBIG->Fill(E9,wgt_full);
     hist_thxz_eBIG->Fill(anglex_e,wgt_full);
     hist_thyz_eBIG->Fill(angley_e,wgt_full);
     TheBIG->Fill(detKinBeamRot_ThEl_interaction,wgt_full);

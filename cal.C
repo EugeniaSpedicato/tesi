@@ -65,29 +65,29 @@ Double_t E_CAL=0.;
 Double_t Rm = 2.190 ; //raggio di Moliere in centimetri    
 Double_t E9=0.;
 
-TH1F* hist_E9_e=new TH1F("E9e", "E9 e tot", 500,0,1);
-TH1F* hist_thxz_e=new TH1F("thetaXZ", "theta XZ plane e", 150,-0.1,0.1);
-TH1F* hist_thyz_e=new TH1F("thetaYZ", "theta YZ plane e", 150,-0.1,0.1);
-TH1F* hist_thxz_e1=new TH1F("thetaXZ", "theta XZ plane e", 150,-0.1,0.1);
-TH1F* hist_thyz_e1=new TH1F("thetaYZ", "theta YZ plane e", 150,-0.1,0.1);
-TH1F* hist_thxz_e2=new TH1F("thetaXZ", "theta XZ plane e", 150,-0.1,0.1);
-TH1F* hist_thyz_e2=new TH1F("thetaYZ", "theta YZ plane e", 150,-0.1,0.1);
+TH1F* hist_E9_e=new TH1F("E9e", "E9 e- tot", 500,0,1);
+TH1F* hist_thxz_e=new TH1F("thXZ", "th XZ e- 3x3", 150,-0.1,0.1);
+TH1F* hist_thyz_e=new TH1F("thYZ", "th YZ e- 3x3", 150,-0.1,0.1);
+TH1F* hist_thxz_e1=new TH1F("thXZ", "th XZ TAR 1 e- 3x3", 150,-0.1,0.1);
+TH1F* hist_thyz_e1=new TH1F("thYZ", "th YZ e- TAR 1 3x3", 150,-0.1,0.1);
+TH1F* hist_thxz_e2=new TH1F("thXZ", "th XZ e- TAR 2 3x3", 150,-0.1,0.1);
+TH1F* hist_thyz_e2=new TH1F("thYZ", "th YZ e- TAR 2 3x3", 150,-0.1,0.1);
     
-TH1F* hist_E9_eBIG=new TH1F("E9e5X5", "E9 e tot 5X5", 500,0,1);
-TH1F* hist_thxz_eBIG=new TH1F("thetaXZ5X5", "theta XZ plane e 5X5", 150,-0.1,0.1);
-TH1F* hist_thyz_eBIG=new TH1F("thetaYZ5X5", "theta YZ plane e 5X5", 150,-0.1,0.1);
-TH1F* hist_thxz_e1BIG=new TH1F("thetaXZ5X5", "theta XZ plane e 5X5", 150,-0.1,0.1);
-TH1F* hist_thyz_e1BIG=new TH1F("thetaYZ5X5", "theta YZ plane e 5X5", 150,-0.1,0.1);
-TH1F* hist_thxz_e2BIG=new TH1F("thetaXZ5X5", "theta XZ plane e 5X5", 150,-0.1,0.1);
-TH1F* hist_thyz_e2BIG=new TH1F("thetaYZ5X5", "theta YZ plane e 5X5", 150,-0.1,0.1);
+TH1F* hist_E9_eBIG=new TH1F("E9e5X5", "E9 e- tot 5X5", 500,0,1);
+TH1F* hist_thxz_eBIG=new TH1F("thXZ5X5", "th XZ e- 5X5", 150,-0.1,0.1);
+TH1F* hist_thyz_eBIG=new TH1F("thYZ5X5", "th YZ e- 5X5", 150,-0.1,0.1);
+TH1F* hist_thxz_e1BIG=new TH1F("thXZ5X5", "th XZ e- TAR 1 5X5", 150,-0.1,0.1);
+TH1F* hist_thyz_e1BIG=new TH1F("thYZ5X5", "th YZ e- TAR 1 5X5", 150,-0.1,0.1);
+TH1F* hist_thxz_e2BIG=new TH1F("thXZ5X5", "th XZ e- TAR 2 5X5", 150,-0.1,0.1);
+TH1F* hist_thyz_e2BIG=new TH1F("thYZ5X5", "th YZ e- TAR 2 5X5", 150,-0.1,0.1);
 
-TH1F* hist_E9_e2P=new TH1F("E9ecrown", "E9 e tot crown", 500,0,1);
-TH1F* hist_thxz_e2P=new TH1F("thetaXZcrown", "theta XZ plane e crown", 150,-0.1,0.1);
-TH1F* hist_thyz_e2P=new TH1F("thetaYZcrown", "theta YZ plane e crown", 150,-0.1,0.1);
-TH1F* hist_thxz_e12P=new TH1F("thetaXZcrown", "theta XZ plane e crown", 150,-0.1,0.1);
-TH1F* hist_thyz_e12P=new TH1F("thetaYZcrown", "theta YZ plane e crown", 150,-0.1,0.1);
-TH1F* hist_thxz_e22P=new TH1F("thetaXZcrown", "theta XZ plane e crown", 150,-0.1,0.1);
-TH1F* hist_thyz_e22P=new TH1F("thetaYZcrown", "theta YZ plane e crown", 150,-0.1,0.1);
+TH1F* hist_E9_e2P=new TH1F("E9ecrown", "E9 e- tot crown", 500,0,1);
+TH1F* hist_thxz_e2P=new TH1F("thXZcrown", "th XZ e- crown", 150,-0.1,0.1);
+TH1F* hist_thyz_e2P=new TH1F("thYZcrown", "th YZ e- crown", 150,-0.1,0.1);
+TH1F* hist_thxz_e12P=new TH1F("thXZcrown", "th XZ e- TAR 1 crown", 150,-0.1,0.1);
+TH1F* hist_thyz_e12P=new TH1F("thYZcrown", "th YZ e- TAR 1 crown", 150,-0.1,0.1);
+TH1F* hist_thxz_e22P=new TH1F("thXZcrown", "th XZ e- TAR 2 crown", 150,-0.1,0.1);
+TH1F* hist_thyz_e22P=new TH1F("thYZcrown", "th YZ e- TAR 2 crown", 150,-0.1,0.1);
 
 /*TH1F* hist_E9_NOph=new TH1F("E9noph", "E9 NO photons", 500,0,1);
 TH1F* hist_E9_eph_same=new TH1F("E9eph", "E9 e+ph same cell", 500,0,1);
@@ -110,38 +110,38 @@ TH1F* hist_ang_diff=new TH1F("dist", "DTheta (Thel-Thph) e-gamma diff cel", 200,
     
 TH1F* Ephout=new TH1F("EnergyPH", "Energy Ph out", 75,0.2,150); 
 TH1F* Thph=new TH1F("th", "th Ph out", 75,50,50); */
-TH1F* The=new TH1F("th", "th El out", 75,0,100); 
-TH1F* TheBIG=new TH1F("th", "th El out BIG", 75,0,100); 
+TH1F* The=new TH1F("th", "th El out 3x3", 75,0,100); 
+TH1F* TheBIG=new TH1F("th", "th El out 5X5", 75,0,100); 
 TH1F* The2P=new TH1F("th", "th El out crown", 75,0,100); 
 
     
-TH1F* The1=new TH1F("th", "th El out TAR 1", 75,0,100); 
-TH1F* TheBIG1=new TH1F("th", "th El out BIG TAR 1", 75,0,100); 
+TH1F* The1=new TH1F("th", "th El out TAR 1 3x3", 75,0,100); 
+TH1F* TheBIG1=new TH1F("th", "th El out 5X5 TAR 1", 75,0,100); 
 TH1F* The2P1=new TH1F("th", "th El out crown TAR 1", 75,0,100); 
 
     
-TH1F* The2=new TH1F("th", "th El out TAR 2", 75,0,100); 
-TH1F* TheBIG2=new TH1F("th", "th El out BIG TAR 2", 75,0,100); 
+TH1F* The2=new TH1F("th", "th El out TAR 2 3x3", 75,0,100); 
+TH1F* TheBIG2=new TH1F("th", "th El out 5X5 TAR 2", 75,0,100); 
 TH1F* The2P2=new TH1F("th", "th El out crown TAR 2", 75,0,100); 
     
     
-TH1F* TheMCS=new TH1F("th", "th El out MCS", 75,0,100); 
-TH1F* TheBIGMCS=new TH1F("th", "th El out BIG MCS", 75,0,100); 
+TH1F* TheMCS=new TH1F("th", "th El out MCS 3x3", 75,0,100); 
+TH1F* TheBIGMCS=new TH1F("th", "th El out 5X5 MCS", 75,0,100); 
 TH1F* The2PMCS=new TH1F("th", "th El out crown MCS", 75,0,100); 
     
     
-TH1F* The1MCS=new TH1F("th", "th El out TAR 1 MCS", 75,0,100); 
-TH1F* TheBIG1MCS=new TH1F("th", "th El out BIG TAR 1 MCS", 75,0,100); 
+TH1F* The1MCS=new TH1F("th", "th El out TAR 1 MCS 3x3", 75,0,100); 
+TH1F* TheBIG1MCS=new TH1F("th", "th El out 5X5 TAR 1 MCS", 75,0,100); 
 TH1F* The2P1MCS=new TH1F("th", "th El out crown TAR 1 MCS", 75,0,100); 
     
     
-TH1F* The2MCS=new TH1F("th", "th El out TAR 2", 75,0,100); 
-TH1F* TheBIG2MCS=new TH1F("th", "th El out BIG TAR 2 MCS", 75,0,100);
+TH1F* The2MCS=new TH1F("th", "th El out TAR 2 3x3", 75,0,100); 
+TH1F* TheBIG2MCS=new TH1F("th", "th El out 5X5 TAR 2 MCS", 75,0,100);
 TH1F* The2P2MCS=new TH1F("th", "th El out crown TAR 2 MCS", 75,0,100); 
     
     
-TH2F  *E3x3  = new TH2F("ThEel" , " Theta el Vs. E_ECAL",1400,0,70,700,0.2,140);
-TH2F  *E3x3BIG  = new TH2F("ThEelbig" , " Theta el Vs. E_ECAL BIG",1400,0,70,700,0.2,140);
+TH2F  *E3x3  = new TH2F("ThEel" , " Theta el Vs. E_ECAL 3x3",1400,0,70,700,0.2,140);
+TH2F  *E3x3BIG  = new TH2F("ThEelbig" , " Theta el Vs. E_ECAL 5x5",1400,0,70,700,0.2,140);
 TH2F  *E3x32P  = new TH2F("ThEel2p" , " Theta el Vs. E_ECAL crown",1400,0,70,700,0.2,140);
     
     

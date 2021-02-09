@@ -79,6 +79,14 @@ TH1F* hist_thyz_e1BIG=new TH1F("thetaYZ5X5", "theta YZ plane e 5X5", 150,-0.1,0.
 TH1F* hist_thxz_e2BIG=new TH1F("thetaXZ5X5", "theta XZ plane e 5X5", 150,-0.1,0.1);
 TH1F* hist_thyz_e2BIG=new TH1F("thetaYZ5X5", "theta YZ plane e 5X5", 150,-0.1,0.1);
 
+TH1F* hist_E9_e2P=new TH1F("E9ecrown", "E9 e tot crown", 500,0,1);
+TH1F* hist_thxz_e2P=new TH1F("thetaXZcrown", "theta XZ plane e crown", 150,-0.1,0.1);
+TH1F* hist_thyz_e2P=new TH1F("thetaYZcrown", "theta YZ plane e crown", 150,-0.1,0.1);
+TH1F* hist_thxz_e12P=new TH1F("thetaXZcrown", "theta XZ plane e crown", 150,-0.1,0.1);
+TH1F* hist_thyz_e12P=new TH1F("thetaYZcrown", "theta YZ plane e crown", 150,-0.1,0.1);
+TH1F* hist_thxz_e22P=new TH1F("thetaXZcrown", "theta XZ plane e crown", 150,-0.1,0.1);
+TH1F* hist_thyz_e22P=new TH1F("thetaYZcrown", "theta YZ plane e crown", 150,-0.1,0.1);
+
 /*TH1F* hist_E9_NOph=new TH1F("E9noph", "E9 NO photons", 500,0,1);
 TH1F* hist_E9_eph_same=new TH1F("E9eph", "E9 e+ph same cell", 500,0,1);
 TH1F* hist_E9_eph_diff=new TH1F("E9eph", "E9 e+ph different cell", 500,0,1);
@@ -102,24 +110,38 @@ TH1F* Ephout=new TH1F("EnergyPH", "Energy Ph out", 75,0.2,150);
 TH1F* Thph=new TH1F("th", "th Ph out", 75,50,50); */
 TH1F* The=new TH1F("th", "th El out", 75,0,90); 
 TH1F* TheBIG=new TH1F("th", "th El out BIG", 75,0,90); 
+TH1F* The2P=new TH1F("th", "th El out crown", 75,0,90); 
+
     
 TH1F* The1=new TH1F("th", "th El out TAR 1", 75,0,90); 
 TH1F* TheBIG1=new TH1F("th", "th El out BIG TAR 1", 75,0,90); 
+TH1F* The2P1=new TH1F("th", "th El out crown TAR 1", 75,0,90); 
+
     
 TH1F* The2=new TH1F("th", "th El out TAR 2", 75,0,90); 
 TH1F* TheBIG2=new TH1F("th", "th El out BIG TAR 2", 75,0,90); 
+TH1F* The2P2=new TH1F("th", "th El out crown TAR 2", 75,0,90); 
+    
     
 TH1F* TheMCS=new TH1F("th", "th El out MCS", 75,0,100); 
 TH1F* TheBIGMCS=new TH1F("th", "th El out BIG MCS", 75,0,100); 
+TH1F* The2PMCS=new TH1F("th", "th El out crown MCS", 75,0,100); 
+    
     
 TH1F* The1MCS=new TH1F("th", "th El out TAR 1 MCS", 75,0,100); 
 TH1F* TheBIG1MCS=new TH1F("th", "th El out BIG TAR 1 MCS", 75,0,100); 
+TH1F* The2P1MCS=new TH1F("th", "th El out crown TAR 1 MCS", 75,0,100); 
+    
     
 TH1F* The2MCS=new TH1F("th", "th El out TAR 2", 75,0,100); 
-TH1F* TheBIG2MCS=new TH1F("th", "th El out BIG TAR 2 MCS", 75,0,100); 
+TH1F* TheBIG2MCS=new TH1F("th", "th El out BIG TAR 2 MCS", 75,0,100);
+TH1F* The2P2MCS=new TH1F("th", "th El out crown TAR 2 MCS", 75,0,100); 
+    
     
 TH2F  *E3x3  = new TH2F("ThEel" , " Theta el Vs. E_ECAL",3500,0,70,3500,0.2,140);
 TH2F  *E3x3BIG  = new TH2F("ThEel" , " Theta el Vs. E_ECAL BIG",3500,0,70,3500,0.2,140);
+TH2F  *E3x32P  = new TH2F("ThEel" , " Theta el Vs. E_ECAL crown",3500,0,70,3500,0.2,140);
+    
     
 //TH2F  *E3x3noph  = new TH2F("ThEel" , " Theta el Vs. E_ECAL no ph",100,0,70,70,0.2,140);
 
@@ -227,7 +249,7 @@ if (detKinBeamRot_n_cell_e!=0 && abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBea
         }*/
 
   }
-if (detKinBeamRot_n_cell_e!=0 && abs(detKinBeamRot_cooXe)>4.275 && abs(detKinBeamRot_cooYe)>4.275)  {     
+if (detKinBeamRot_n_cell_e!=0)  {     
     
     n_tot_eBIG+=wgt_full;
     hist_E9_eBIG->Fill(E9,wgt_full);
@@ -252,11 +274,36 @@ if (detKinBeamRot_n_cell_e!=0 && abs(detKinBeamRot_cooXe)>4.275 && abs(detKinBea
 if (detKinBeamRot_E_clus3x3!=0 ) {E3x3BIG->Fill(detKinBeamRot_ThEl_interaction,detKinBeamRot_E_clus3x3,wgt_full);}
 }
     
+if (detKinBeamRot_n_cell_e!=0 && abs(detKinBeamRot_cooXe)>4.275 && abs(detKinBeamRot_cooYe)>4.275)
+{
+        n_tot_e2P+=wgt_full;
+    hist_E9_e2P->Fill(E9,wgt_full);
+    hist_thxz_e2P->Fill(anglex_e,wgt_full);
+    hist_thyz_e2P->Fill(angley_e,wgt_full);
+    The2P->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
+    The2PMCS->Fill(detKinBeamRot_the,wgt_full);
+    
+    if (detKinBeamRot_tar==0)
+    {hist_thxz_e12P->Fill(anglex_e,wgt_full);
+    hist_thyz_e12P->Fill(angley_e,wgt_full);
+    The2P1->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
+    The2P1MCS->Fill(detKinBeamRot_the,wgt_full);}
+    if (detKinBeamRot_tar==1)
+    {hist_thxz_e22P->Fill(anglex_e,wgt_full);
+    hist_thyz_e22P->Fill(angley_e,wgt_full);
+    The2P2->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
+    The2P2MCS->Fill(detKinBeamRot_the,wgt_full);}
+    
+    //hist_Eout_9_e->Fill(Eout_9,wgt_full);
+    
+if (detKinBeamRot_E_clus3x3!=0 ) {E3x32P->Fill(detKinBeamRot_ThEl_interaction,detKinBeamRot_E_clus3x3,wgt_full);}
+}
     
  
 }
- cout << " Numero elettroni totali IN 3X3 " << n_tot_e << " su un totale di " << n_tot << " eventi " << endl;
  cout << " Numero elettroni totali IN 5X5 " << n_tot_eBIG << " su un totale di " << n_tot << " eventi " << endl;
+ cout << " Numero elettroni totali IN 3X3 " << n_tot_e << " su un totale di " << n_tot << " eventi " << endl;
+ cout << " Numero elettroni totali su CORONA " << n_tot_e2P << " su un totale di " << n_tot << " eventi " << endl;
 cout << "Numero el+fotoni sul calorimetro = " << n_tot_eph << " dove nella stessa cella ce ne sono: " << same_cell << " in una diversa cella: " << different_cell << endl;   
 cout << "Numero elettorni senza fotoni sul calorimetro = " << n_tot_NOph << endl;
 cout << "-------------------------------------------"<<endl;
@@ -308,6 +355,11 @@ hist_E9_eBIG->Draw("HIST");
 hist_E9_e->GetXaxis()->SetTitle("Ecentral/E3x3");
 hist_E9_e->SetLineWidth(3);
 hist_E9_e->Draw("HIST same"); 
+    
+hist_E9_e2P->GetXaxis()->SetTitle("Ecentral/E3x3");
+hist_E9_e2P->SetLineWidth(3);
+hist_E9_e2P->SetLineColor(kViolet);
+hist_E9_e2P->Draw("HIST same"); 
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 /*hist_E9_eph_same->SetLineColor(kRed);
 hist_E9_eph_same->SetLineWidth(3);
@@ -391,8 +443,14 @@ for (Int_t i=1; i<nxBIG+1; i++) {
 for (Int_t j=1; j<nyBIG+1; j++) {
 if (E3x3BIG->GetBinContent(i,j)<1) E3x3BIG->SetBinContent(i,j,0);}}
     
+Int_t nx2P = E3x32P->GetNbinsX();
+Int_t ny2P = E3x32P->GetNbinsY();
+for (Int_t i=1; i<nx2P+1; i++) {
+for (Int_t j=1; j<ny2P+1; j++) {
+if (E3x32P->GetBinContent(i,j)<1) E3x32P->SetBinContent(i,j,0);}}
+    
 TCanvas * c4= new TCanvas("c4","c4",1000,100,2500,2000);
-c4->Divide(1,2);
+c4->Divide(1,3);
 c4->cd(1);
 gStyle->SetPalette(kLake);
 TColor::InvertPalette(); 
@@ -403,6 +461,10 @@ c4->cd(2);
 E3x3BIG->GetXaxis()->SetTitle("Theta_el");
 E3x3BIG->GetYaxis()->SetTitle("Ereco3x3");
 E3x3BIG->Draw("COLZ");
+c4->cd(2);   
+E3x32P->GetXaxis()->SetTitle("Theta_el");
+E3x32P->GetYaxis()->SetTitle("Ereco3x3");
+E3x32P->Draw("COLZ");
 
 c4->SaveAs("/home/LHCB-T3/espedicato/tesi/thE.png");   
 
@@ -426,39 +488,51 @@ c5->Divide(1,3);
 c5->cd(1);
 TheBIG->SetLineColor(kRed);
 TheBIG->Draw("HIST"); 
-The->Draw("HIST same"); 
+The->Draw("HIST same");
+The2P->SetLineColor(kViolet);
+The2P->Draw("HIST same"); 
 c5->cd(2);
 TheBIG1->SetLineColor(kRed);
 TheBIG1->Draw("HIST"); 
-The1->Draw("HIST same");     
+The1->Draw("HIST same");  
+The2P1->SetLineColor(kViolet);
+The2P1->Draw("HIST same"); 
 c5->cd(3);
 TheBIG2->SetLineColor(kRed);
 TheBIG2->Draw("HIST"); 
 The2->Draw("HIST same"); 
+The2P2->SetLineColor(kViolet);
+The2P2->Draw("HIST same"); 
     
 c5->SaveAs("/home/LHCB-T3/espedicato/tesi/th_el.png"); 
     
 TCanvas * c5MCS= new TCanvas("c5MCS","c5MCS",1000,100,2500,2000);
 c5MCS->Divide(1,3);
 c5MCS->cd(1);
-TheBIGMCS->SetLineColor(kBlack);
+TheBIGMCS->SetLineColor(kRed);
 TheBIGMCS->Draw("HIST"); 
 TheMCS->Draw("HIST same"); 
+The2PMCS->SetLineColor(kViolet);
+The2PMCS->Draw("HIST same"); 
 c5MCS->cd(2);
-TheBIG1MCS->SetLineColor(kBlack);
+TheBIG1MCS->SetLineColor(kRed);
 TheBIG1MCS->Draw("HIST"); 
-The1MCS->Draw("HIST same");     
+The1MCS->Draw("HIST same");  
+The2P1MCS->SetLineColor(kViolet);
+The2P1MCS->Draw("HIST same");
 c5MCS->cd(3);
-TheBIG2MCS->SetLineColor(kBlack);
+TheBIG2MCS->SetLineColor(kRed);
 TheBIG2MCS->Draw("HIST"); 
 The2MCS->Draw("HIST same"); 
+The2P2MCS->SetLineColor(kViolet);
+The2P2MCS->Draw("HIST same");
     
 c5MCS->SaveAs("/home/LHCB-T3/espedicato/tesi/th_elMCS.png"); 
   
     TCanvas * theC= new TCanvas("tar","tar",1500,1000,3500,2000);
-    theC->Divide(2,2);
+    theC->Divide(2,3);
     theC->cd(1);
-    hist_thxz_e->SetLineColor(46);
+    hist_thxz_e->SetLineColor(kBlue);
     hist_thxz_e->SetLineWidth(3);
     hist_thxz_e->Draw("HIST");
     hist_thxz_e1->SetLineColor(8);
@@ -469,7 +543,7 @@ c5MCS->SaveAs("/home/LHCB-T3/espedicato/tesi/th_elMCS.png");
     hist_thxz_e2->Draw("HIST SAME");
     hist_thxz_e->GetXaxis()->SetTitle("Theta XZ [rad]");
     theC->cd(2);
-    hist_thyz_e->SetLineColor(46);
+    hist_thyz_e->SetLineColor(kBlue);
     hist_thyz_e->SetLineWidth(3);
     hist_thyz_e->Draw("HIST");
     hist_thyz_e1->SetLineColor(8);
@@ -482,7 +556,7 @@ c5MCS->SaveAs("/home/LHCB-T3/espedicato/tesi/th_elMCS.png");
     
 
     theC->cd(3);
-    hist_thxz_eBIG->SetLineColor(46);
+    hist_thxz_eBIG->SetLineColor(kRed);
     hist_thxz_eBIG->SetLineWidth(3);
     hist_thxz_eBIG->Draw("HIST");
     hist_thxz_e1BIG->SetLineColor(8);
@@ -493,7 +567,7 @@ c5MCS->SaveAs("/home/LHCB-T3/espedicato/tesi/th_elMCS.png");
     hist_thxz_e2BIG->Draw("HIST SAME");
     hist_thxz_eBIG->GetXaxis()->SetTitle("Theta XZ [rad]");
     theC->cd(4);
-    hist_thyz_eBIG->SetLineColor(46);
+    hist_thyz_eBIG->SetLineColor(kRed);
     hist_thyz_eBIG->SetLineWidth(3);
     hist_thyz_eBIG->Draw("HIST");
     hist_thyz_e1BIG->SetLineColor(8);
@@ -503,6 +577,29 @@ c5MCS->SaveAs("/home/LHCB-T3/espedicato/tesi/th_elMCS.png");
     hist_thyz_e2BIG->SetLineWidth(3);
     hist_thyz_e2BIG->Draw("HIST SAME");
     hist_thyz_eBIG->GetXaxis()->SetTitle("Theta YZ [rad]");
+    
+    theC->cd(5);
+    hist_thxz_e2P->SetLineColor(kViolet);
+    hist_thxz_e2P->SetLineWidth(3);
+    hist_thxz_e2P->Draw("HIST");
+    hist_thxz_e12P->SetLineColor(8);
+    hist_thxz_e12P->SetLineWidth(3);
+    hist_thxz_e12P->Draw("HIST SAME");
+    hist_thxz_e22P->SetLineColor(kBlack);
+    hist_thxz_e22P->SetLineWidth(3);
+    hist_thxz_e22P->Draw("HIST SAME");
+    hist_thxz_e2P->GetXaxis()->SetTitle("Theta XZ [rad]");
+    theC->cd(6);
+    hist_thyz_e2P->SetLineColor(kViolet);
+    hist_thyz_e2P->SetLineWidth(3);
+    hist_thyz_e2P->Draw("HIST");
+    hist_thyz_e12P->SetLineColor(8);
+    hist_thyz_e12P->SetLineWidth(3);
+    hist_thyz_e12P->Draw("HIST SAME");
+    hist_thyz_e22P->SetLineColor(kBlack);
+    hist_thyz_e22P->SetLineWidth(3);
+    hist_thyz_e22P->Draw("HIST SAME");
+    hist_thyz_e2P->GetXaxis()->SetTitle("Theta YZ [rad]");
     
     theC->SaveAs("/home/LHCB-T3/espedicato/tesi/Th_el_XZYZ.png");     
     

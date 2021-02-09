@@ -276,7 +276,7 @@ if (detKinBeamRot_n_cell_e!=0)  {
 if (detKinBeamRot_E_clus3x3!=0 ) {E3x3BIG->Fill(detKinBeamRot_ThEl_interaction,detKinBeamRot_E_clus3x3,wgt_full);}
 }
     
-if (detKinBeamRot_n_cell_e!=0 && abs(detKinBeamRot_cooXe)>4.275 && abs(detKinBeamRot_cooYe)>4.275)
+if (detKinBeamRot_n_cell_e!=0 && detKinBeamRot_n_cell_e!=0 && abs(detKinBeamRot_cooXe)>4.275 && abs(detKinBeamRot_cooYe)>4.275)
 {
         n_tot_e2P+=wgt_full;
     hist_E9_e2P->Fill(E9,wgt_full);
@@ -489,6 +489,7 @@ c5->cd(1);
 TheBIG->SetLineColor(kRed);
 TheBIG->SetLineWidth(3);
 TheBIG->Draw("HIST"); 
+The->SetLineWidth(3);
 The->Draw("HIST same");
 The2P->SetLineColor(kViolet);
 The2P->SetLineWidth(3);
@@ -496,7 +497,8 @@ The2P->Draw("HIST same");
 c5->cd(2);
 TheBIG1->SetLineColor(kRed);
 TheBIG1->SetLineWidth(3);
-TheBIG1->Draw("HIST"); 
+TheBIG1->Draw("HIST");
+The1->SetLineWidth(3);
 The1->Draw("HIST same");  
 The2P1->SetLineColor(kViolet);
 The2P1->SetLineWidth(3);
@@ -505,6 +507,7 @@ c5->cd(3);
 TheBIG2->SetLineColor(kRed);
 TheBIG2->SetLineWidth(3);
 TheBIG2->Draw("HIST"); 
+The2->SetLineWidth(3);
 The2->Draw("HIST same"); 
 The2P2->SetLineColor(kViolet);
 The2P2->SetLineWidth(3);
@@ -518,6 +521,7 @@ c5MCS->cd(1);
 TheBIGMCS->SetLineColor(kRed);
 TheBIGMCS->SetLineWidth(3);
 TheBIGMCS->Draw("HIST"); 
+TheMCS->SetLineWidth(3);
 TheMCS->Draw("HIST same"); 
 The2PMCS->SetLineColor(kViolet);
 The2PMCS->SetLineWidth(3);
@@ -525,7 +529,8 @@ The2PMCS->Draw("HIST same");
 c5MCS->cd(2);
 TheBIG1MCS->SetLineColor(kRed);
 TheBIG1MCS->SetLineWidth(3);
-TheBIG1MCS->Draw("HIST"); 
+TheBIG1MCS->Draw("HIST");
+The1MCS->SetLineWidth(3);
 The1MCS->Draw("HIST same");  
 The2P1MCS->SetLineColor(kViolet);
 The2P1MCS->SetLineWidth(3);
@@ -534,6 +539,7 @@ c5MCS->cd(3);
 TheBIG2MCS->SetLineColor(kRed);
 TheBIG2MCS->SetLineWidth(3);
 TheBIG2MCS->Draw("HIST"); 
+The2MCS->SetLineWidth(3);
 The2MCS->Draw("HIST same"); 
 The2P2MCS->SetLineColor(kViolet);
 The2P2MCS->SetLineWidth(3);

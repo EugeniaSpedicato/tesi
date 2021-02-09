@@ -150,7 +150,7 @@ Long64_t nentries = fChain->GetEntriesFast();
     {  
      E_CAL=detKinBeamRot_Ee+photon_energy;}
     else 
-    {  E_CAL=detKinBeamRot_Ee;}
+    {E_CAL=detKinBeamRot_Ee;}
 
         detKinBeamRot_cooXe=detKinBeamRot_cooXe*100; // cm
         detKinBeamRot_cooYe=detKinBeamRot_cooYe*100; // cm
@@ -168,7 +168,7 @@ Long64_t nentries = fChain->GetEntriesFast();
     /*Double_t d_e_mu=sqrt( (detKinBeamRot_cooXe-detKinBeamRot_cooXmu)*(detKinBeamRot_cooXe-detKinBeamRot_cooXmu)+(detKinBeamRot_cooYe-detKinBeamRot_cooYmu)*(detKinBeamRot_cooYe-detKinBeamRot_cooYmu) ); detKinBeamRot_n_cell_e!=1 && detKinBeamRot_n_cell_e!=2 && detKinBeamRot_n_cell_e!=3 && detKinBeamRot_n_cell_e!=4 && detKinBeamRot_n_cell_e!=5 && detKinBeamRot_n_cell_e!=10 && detKinBeamRot_n_cell_e!=15 && detKinBeamRot_n_cell_e!=20 && detKinBeamRot_n_cell_e!=25 && detKinBeamRot_n_cell_e!=24 && detKinBeamRot_n_cell_e!=23 && detKinBeamRot_n_cell_e!=22 && detKinBeamRot_n_cell_e!=21 && detKinBeamRot_n_cell_e!=16 && detKinBeamRot_n_cell_e!=11 && detKinBeamRot_n_cell_e!=6*/
 
 //if (detKinBeamRot_n_cell_e!=0 && abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275)  
-if (E_CAL>1){
+
 if (detKinBeamRot_n_cell_e!=0 && abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275) {
     
     n_tot_e+=wgt_full;
@@ -227,7 +227,7 @@ if (detKinBeamRot_n_cell_e!=0 && abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBea
         }*/
 
   }
-if (detKinBeamRot_n_cell_e!=0)  {     
+if (detKinBeamRot_n_cell_e!=0 && abs(detKinBeamRot_cooXe)>4.275 && abs(detKinBeamRot_cooYe)>4.275)  {     
     
     n_tot_eBIG+=wgt_full;
     hist_E9_eBIG->Fill(E9,wgt_full);
@@ -254,7 +254,7 @@ if (detKinBeamRot_E_clus3x3!=0 ) {E3x3BIG->Fill(detKinBeamRot_ThEl_interaction,d
     
     
  
-}}
+}
  cout << " Numero elettroni totali IN 3X3 " << n_tot_e << " su un totale di " << n_tot << " eventi " << endl;
  cout << " Numero elettroni totali IN 5X5 " << n_tot_eBIG << " su un totale di " << n_tot << " eventi " << endl;
 cout << "Numero el+fotoni sul calorimetro = " << n_tot_eph << " dove nella stessa cella ce ne sono: " << same_cell << " in una diversa cella: " << different_cell << endl;   

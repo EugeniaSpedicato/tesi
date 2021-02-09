@@ -21,6 +21,8 @@ Double_t n=0.;
 Double_t n_tot=0.;
 Double_t n_tot_e=0.;
 Double_t n_tot_eBIG=0.;
+Double_t n_tot_e2P=0.;
+    
     
 Double_t n_tot_eph=0.;
 Double_t n_tot_NOph=0.;

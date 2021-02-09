@@ -13,6 +13,7 @@ using namespace std;
 void atree::Loop()
 {
     TH1::SetDefaultSumw2();
+     TH2::SetDefaultSumw2();
     
    // typedef map<int, double>  energy_cell; 
    // energy_cell en_c;    

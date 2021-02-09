@@ -191,7 +191,7 @@ if (detKinBeamRot_n_cell_e!=0 && detKinBeamRot_n_max_Cell!=0 && detKinBeamRot_n_
     
     //hist_Eout_9_e->Fill(Eout_9,wgt_full);
     
-    if (detKinBeamRot_E_clus3x3!=0 && E9<0.95 && E9>0.5) {E3x3->Fill(detKinBeamRot_ThEl_interaction,detKinBeamRot_E_clus3x3,wgt_full);}
+    if (detKinBeamRot_E_clus3x3!=0) {E3x3->Fill(detKinBeamRot_ThEl_interaction,detKinBeamRot_E_clus3x3,wgt_full);} //(detKinBeamRot_E_clus3x3!=0 && E9<0.95 && E9>0.5) 
     
   /*if (photon_n_cell_ph!=0 && photon_n_cell_ph!=1 && photon_n_cell_ph!=2 && photon_n_cell_ph!=3 && photon_n_cell_ph!=4 && photon_n_cell_ph!=5 && photon_n_cell_ph!=10 && photon_n_cell_ph!=15 && photon_n_cell_ph!=20 && photon_n_cell_ph!=25 && photon_n_cell_ph!=24 && photon_n_cell_ph!=23 && photon_n_cell_ph!=22 && photon_n_cell_ph!=21 && photon_n_cell_ph!=16 && photon_n_cell_ph!=11 && photon_n_cell_ph!=6)
   { Ephout->Fill(photon_energy,wgt_full);

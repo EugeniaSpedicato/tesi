@@ -168,11 +168,11 @@ Long64_t nentries = fChain->GetEntriesFast();
     /*Double_t d_e_mu=sqrt( (detKinBeamRot_cooXe-detKinBeamRot_cooXmu)*(detKinBeamRot_cooXe-detKinBeamRot_cooXmu)+(detKinBeamRot_cooYe-detKinBeamRot_cooYmu)*(detKinBeamRot_cooYe-detKinBeamRot_cooYmu) ); detKinBeamRot_n_cell_e!=1 && detKinBeamRot_n_cell_e!=2 && detKinBeamRot_n_cell_e!=3 && detKinBeamRot_n_cell_e!=4 && detKinBeamRot_n_cell_e!=5 && detKinBeamRot_n_cell_e!=10 && detKinBeamRot_n_cell_e!=15 && detKinBeamRot_n_cell_e!=20 && detKinBeamRot_n_cell_e!=25 && detKinBeamRot_n_cell_e!=24 && detKinBeamRot_n_cell_e!=23 && detKinBeamRot_n_cell_e!=22 && detKinBeamRot_n_cell_e!=21 && detKinBeamRot_n_cell_e!=16 && detKinBeamRot_n_cell_e!=11 && detKinBeamRot_n_cell_e!=6*/
 
 //if (detKinBeamRot_n_cell_e!=0 && abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275)  
-
+if (E_CAL>1){
 if (detKinBeamRot_n_cell_e!=0 && abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275) {
     
     n_tot_e+=wgt_full;
-    if (E9<0.95 && E9>0.5) hist_E9_e->Fill(E9,wgt_full);
+    hist_E9_e->Fill(E9,wgt_full);
     hist_thxz_e->Fill(anglex_e,wgt_full);
     hist_thyz_e->Fill(angley_e,wgt_full);
     The->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
@@ -230,7 +230,7 @@ if (detKinBeamRot_n_cell_e!=0 && abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBea
 if (detKinBeamRot_n_cell_e!=0)  {     
     
     n_tot_eBIG+=wgt_full;
-    if (E9<0.95 && E9>0.5) hist_E9_eBIG->Fill(E9,wgt_full);
+    hist_E9_eBIG->Fill(E9,wgt_full);
     hist_thxz_eBIG->Fill(anglex_e,wgt_full);
     hist_thyz_eBIG->Fill(angley_e,wgt_full);
     TheBIG->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
@@ -250,198 +250,11 @@ if (detKinBeamRot_n_cell_e!=0)  {
     //hist_Eout_9_e->Fill(Eout_9,wgt_full);
     
 if (detKinBeamRot_E_clus3x3!=0 ) {E3x3BIG->Fill(detKinBeamRot_ThEl_interaction,detKinBeamRot_E_clus3x3,wgt_full);}
+}
     
-  /*if (photon_n_cell_ph!=0 && photon_n_cell_ph!=1 && photon_n_cell_ph!=2 && photon_n_cell_ph!=3 && photon_n_cell_ph!=4 && photon_n_cell_ph!=5 && photon_n_cell_ph!=10 && photon_n_cell_ph!=15 && photon_n_cell_ph!=20 && photon_n_cell_ph!=25 && photon_n_cell_ph!=24 && photon_n_cell_ph!=23 && photon_n_cell_ph!=22 && photon_n_cell_ph!=21 && photon_n_cell_ph!=16 && photon_n_cell_ph!=11 && photon_n_cell_ph!=6)
-  { Ephout->Fill(photon_energy,wgt_full);
-    Thph->Fill(photon_theta,wgt_full);
-    The->Fill(detKinBeamRot_the,wgt_full);
     
-   Double_t d_e_ph=sqrt( (detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detKinBeamRot_cooYe-photon_cooy)*(detKinBeamRot_cooYe-photon_cooy) )/Rm; 
-    double Dtheta=detKinBeamRot_the-photon_theta;
-
-      n_tot_eph+=wgt_full; // e+gamma sul calorimetro
-//      hist_E9_eph->Fill(E9,wgt_full);
-      hist_dist->Fill(d_e_ph,wgt_full);
-    hist_ang->Fill(Dtheta,wgt_full);
-        if (photon_n_cell_ph==detKinBeamRot_n_cell_e)
-        {same_cell+=wgt_full;
-         hist_E9_eph_same->Fill(E9,wgt_full);
-         hist_dist_same->Fill(d_e_ph,wgt_full);
-        hist_ang_same->Fill(Dtheta,wgt_full);
-         
-      hist_Eout_9_eph_same->Fill(Eout_9,wgt_full);
-        }//stessa cella
-        else {different_cell+=wgt_full;
-              hist_E9_eph_diff->Fill(E9,wgt_full);
-              hist_dist_diff->Fill(d_e_ph,wgt_full);
-                hist_Eout_9_eph_diff->Fill(Eout_9,wgt_full);
-              hist_ang_diff->Fill(Dtheta,wgt_full);
-             }  // cella diversa
-  } else {
-      n_tot_NOph+=wgt_full;   
-      hist_E9_NOph->Fill(E9,wgt_full);
-      hist_Eout_9_NOph->Fill(Eout_9,wgt_full);
-      //if (detKinBeamRot_E_clus3x3!=0) {E3x3noph->Fill(detKinBeamRot_ThEl_interaction,detKinBeamRot_E_clus3x3);}
-        }*/
-
-  }       
-/*if (photon_n_cell_ph==0 && detKinBeamRot_n_cell_e!=0)   
-{ hist_E9_e->Fill(E9,wgt_full);
-if (Eout_9!=0) hist_Eout_9_e->Fill(Eout_9,wgt_full);
-}*/
-   
-       
-/*if (detKinBeamRot_n_cell_e!=0)
-    {n_tot+=wgt_full;
-
-// SE IL FOTONE E' PRODOTTO DENTRO AL CALORIMETRO
-           if (photon_n_cell_ph!=0)    
-           {
-// SE IL FOTONE E' NEL CALORIMETRO AD UNA d=N*RM DALL'ELETTRONE             
-                if (d_e_ph>3*Rm)
-                {
-                    //if (photon_energy>0.2) {
-                    n_two+=wgt_full;
-                }
-// SE E' NEL CALORIMETRO MA AD UNA d<2RM
-            else { 
-                //if (photon_energy>0.2) {
-                n_one+=wgt_full;
-                 }
-           } 
-// SE E' NON E' PRODOTTO O NON E' NEL CALORIMETRO        
-        else {n_one+=wgt_full;}
-    } 
-       
-if (E_CAL>1)
-{
-    if (detKinBeamRot_n_cell_e!=0)
-    {n_tot_cut+=wgt_full;
-
-// SE IL FOTONE E' PRODOTTO DENTRO AL CALORIMETRO
-           if (photon_n_cell_ph!=0)    
-           {
-// SE IL FOTONE E' NEL CALORIMETRO AD UNA d=N*RM DALL'ELETTRONE             
-                if (d_e_ph>3*Rm)
-                {
-                    n_two_cut+=wgt_full;
-                }
-// SE E' NEL CALORIMETRO MA AD UNA d<2RM
-            else { 
-                n_one_cut+=wgt_full;
-                 }
-           } 
-// SE E' NON E' PRODOTTO O NON E' NEL CALORIMETRO        
-        else {n_one_cut+=wgt_full;}
-    } 
-}
-       
-       
-//-------->TARGET ZERO
-if (detKinBeamRot_tar==0)
-{
-    if (detKinBeamRot_n_cell_e!=0)
-    {n_tot0+=wgt_full;
-
-// SE IL FOTONE E' PRODOTTO DENTRO AL CALORIMETRO
-           if (photon_n_cell_ph!=0)    
-           {
-// SE IL FOTONE E' NEL CALORIMETRO AD UNA d=N*RM DALL'ELETTRONE             
-                if (d_e_ph>3*Rm)
-                {
-                    //if (photon_energy>0.2) {
-                    n_two0+=wgt_full;
-                }
-// SE E' NEL CALORIMETRO MA AD UNA d<2RM
-            else { 
-                //if (photon_energy>0.2) {
-                n_one0+=wgt_full;
-                 }
-           } 
-// SE E' NON E' PRODOTTO O NON E' NEL CALORIMETRO        
-        else {n_one0+=wgt_full;}
-    } 
-       
-if (E_CAL>1)
-{
-    if (detKinBeamRot_n_cell_e!=0)
-    {n_tot_cut0+=wgt_full;
-
-// SE IL FOTONE E' PRODOTTO DENTRO AL CALORIMETRO
-           if (photon_n_cell_ph!=0)    
-           {
-// SE IL FOTONE E' NEL CALORIMETRO AD UNA d=N*RM DALL'ELETTRONE             
-                if (d_e_ph>3*Rm)
-                {
-                    n_two_cut0+=wgt_full;
-                }
-// SE E' NEL CALORIMETRO MA AD UNA d<2RM
-            else { 
-                n_one_cut0+=wgt_full;
-                 }
-           } 
-// SE E' NON E' PRODOTTO O NON E' NEL CALORIMETRO        
-        else {n_one_cut0+=wgt_full;}
-    } 
-}
-}
-
-//-------->TARGET UNO
-if(detKinBeamRot_tar==1)
-{
-    if (detKinBeamRot_n_cell_e!=0)
-    {n_tot1+=wgt_full;
-
-// SE IL FOTONE E' PRODOTTO DENTRO AL CALORIMETRO
-           if (photon_n_cell_ph!=0)    
-           {
-// SE IL FOTONE E' NEL CALORIMETRO AD UNA d=N*RM DALL'ELETTRONE             
-                if (d_e_ph>3*Rm)
-                {
-                    //if (photon_energy>0.2) {
-                    n_two1+=wgt_full;
-                }
-// SE E' NEL CALORIMETRO MA AD UNA d<2RM
-            else { 
-                //if (photon_energy>0.2) {
-                n_one1+=wgt_full;
-                 }
-           } 
-// SE E' NON E' PRODOTTO O NON E' NEL CALORIMETRO        
-        else {n_one1+=wgt_full;}
-    } 
-       
-if (E_CAL>1)
-{
-    if (detKinBeamRot_n_cell_e!=0)
-    {n_tot_cut1+=wgt_full;
-
-// SE IL FOTONE E' PRODOTTO DENTRO AL CALORIMETRO
-           if (photon_n_cell_ph!=0)    
-           {
-// SE IL FOTONE E' NEL CALORIMETRO AD UNA d=N*RM DALL'ELETTRONE             
-                if (d_e_ph>3*Rm)
-                {
-                    n_two_cut1+=wgt_full;
-                }
-// SE E' NEL CALORIMETRO MA AD UNA d<2RM
-            else { 
-                n_one_cut1+=wgt_full;
-                 }
-           } 
-// SE E' NON E' PRODOTTO O NON E' NEL CALORIMETRO        
-        else {n_one_cut1+=wgt_full;}
-    } 
-}
-}
- ratio=n_two/n_tot;
-ratio_cut=n_two_cut/n_tot_cut;   
-ratio0=n_two0/n_tot0;
-ratio_cut0=n_two_cut0/n_tot_cut0; 
-ratio1=n_two1/n_tot1;
-ratio_cut1=n_two_cut1/n_tot_cut1;    */    
  
-}
+}}
  cout << " Numero elettroni totali IN 3X3 " << n_tot_e << " su un totale di " << n_tot << " eventi " << endl;
  cout << " Numero elettroni totali IN 5X5 " << n_tot_eBIG << " su un totale di " << n_tot << " eventi " << endl;
 cout << "Numero el+fotoni sul calorimetro = " << n_tot_eph << " dove nella stessa cella ce ne sono: " << same_cell << " in una diversa cella: " << different_cell << endl;   

@@ -193,7 +193,7 @@ Long64_t nentries = fChain->GetEntriesFast();
 
 //if (detKinBeamRot_n_cell_e!=0 && abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275)  
 
-if (detKinBeamRot_n_cell_e!=0 && E_CAL>1)
+if (detKinBeamRot_n_cell_e!=0 && E_CAL>0)
 {
         
     n_tot_eBIG+=wgt_full;
@@ -219,7 +219,6 @@ if (detKinBeamRot_n_cell_e!=0 && E_CAL>1)
 if (detKinBeamRot_E_clus3x3!=0 ) {E3x3BIG->Fill(detKinBeamRot_ThEl_interaction,detKinBeamRot_E_clus3x3,wgt_full);}
     
 if(abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275) {
-    cout << "n cella 3x3 " << detKinBeamRot_n_cell_e <<endl;
     n_tot_e+=wgt_full;
     hist_E9_e->Fill(E9,wgt_full);
     hist_thxz_e->Fill(anglex_e,wgt_full);
@@ -242,7 +241,6 @@ if(abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275) {
     
     if (detKinBeamRot_E_clus3x3!=0) {E3x3->Fill(detKinBeamRot_ThEl_interaction,detKinBeamRot_E_clus3x3,wgt_full);} //(detKinBeamRot_E_clus3x3!=0 && E9<0.95 && E9>0.5) 
 } else { 
-        cout << "n cella 5x5 " << detKinBeamRot_n_cell_e <<endl;
     n_tot_e2P+=wgt_full;
     hist_E9_e2P->Fill(E9,wgt_full);
     hist_thxz_e2P->Fill(anglex_e,wgt_full);

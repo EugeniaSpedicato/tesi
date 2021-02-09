@@ -140,9 +140,9 @@ TH1F* TheBIG2MCS=new TH1F("th", "th El out BIG TAR 2 MCS", 75,0,100);
 TH1F* The2P2MCS=new TH1F("th", "th El out crown TAR 2 MCS", 75,0,100); 
     
     
-TH2F  *E3x3  = new TH2F("ThEel" , " Theta el Vs. E_ECAL",3500,0,70,3500,0.2,140);
-TH2F  *E3x3BIG  = new TH2F("ThEel" , " Theta el Vs. E_ECAL BIG",3500,0,70,3500,0.2,140);
-TH2F  *E3x32P  = new TH2F("ThEel" , " Theta el Vs. E_ECAL crown",3500,0,70,3500,0.2,140);
+TH2F  *E3x3  = new TH2F("ThEel" , " Theta el Vs. E_ECAL",350,0,70,350,0.2,140);
+TH2F  *E3x3BIG  = new TH2F("ThEelbig" , " Theta el Vs. E_ECAL BIG",350,0,70,350,0.2,140);
+TH2F  *E3x32P  = new TH2F("ThEel2p" , " Theta el Vs. E_ECAL crown",350,0,70,350,0.2,140);
     
     
 //TH2F  *E3x3noph  = new TH2F("ThEel" , " Theta el Vs. E_ECAL no ph",100,0,70,70,0.2,140);
@@ -298,7 +298,7 @@ if (detKinBeamRot_n_cell_e!=0 && abs(detKinBeamRot_cooXe)>4.275 && abs(detKinBea
     
     //hist_Eout_9_e->Fill(Eout_9,wgt_full);
     
-if (detKinBeamRot_E_clus3x3!=0 ) {E3x32P->Fill(detKinBeamRot_ThEl_interaction,detKinBeamRot_E_clus3x3,wgt_full);}
+if (detKinBeamRot_E_clus3x3!=0) {E3x32P->Fill(detKinBeamRot_ThEl_interaction,detKinBeamRot_E_clus3x3,wgt_full);}
 }
     
  
@@ -306,9 +306,7 @@ if (detKinBeamRot_E_clus3x3!=0 ) {E3x32P->Fill(detKinBeamRot_ThEl_interaction,de
  cout << " Numero elettroni totali IN 5X5 " << n_tot_eBIG << " su un totale di " << n_tot << " eventi " << endl;
  cout << " Numero elettroni totali IN 3X3 " << n_tot_e << " su un totale di " << n_tot << " eventi " << endl;
  cout << " Numero elettroni totali su CORONA " << n_tot_e2P << " su un totale di " << n_tot << " eventi " << endl;
-cout << "Numero el+fotoni sul calorimetro = " << n_tot_eph << " dove nella stessa cella ce ne sono: " << same_cell << " in una diversa cella: " << different_cell << endl;   
-cout << "Numero elettorni senza fotoni sul calorimetro = " << n_tot_NOph << endl;
-cout << "-------------------------------------------"<<endl;
+
 
     
     
@@ -463,7 +461,7 @@ c4->cd(2);
 E3x3BIG->GetXaxis()->SetTitle("Theta_el");
 E3x3BIG->GetYaxis()->SetTitle("Ereco3x3");
 E3x3BIG->Draw("COLZ");
-c4->cd(2);   
+c4->cd(3);   
 E3x32P->GetXaxis()->SetTitle("Theta_el");
 E3x32P->GetYaxis()->SetTitle("Ereco3x3");
 E3x32P->Draw("COLZ");
@@ -489,21 +487,27 @@ TCanvas * c5= new TCanvas("c5","c5",1000,100,2500,2000);
 c5->Divide(1,3);
 c5->cd(1);
 TheBIG->SetLineColor(kRed);
+TheBIG->SetLineWidth(3);
 TheBIG->Draw("HIST"); 
 The->Draw("HIST same");
 The2P->SetLineColor(kViolet);
+The2P->SetLineWidth(3);
 The2P->Draw("HIST same"); 
 c5->cd(2);
 TheBIG1->SetLineColor(kRed);
+TheBIG1->SetLineWidth(3);
 TheBIG1->Draw("HIST"); 
 The1->Draw("HIST same");  
 The2P1->SetLineColor(kViolet);
+The2P1->SetLineWidth(3);
 The2P1->Draw("HIST same"); 
 c5->cd(3);
 TheBIG2->SetLineColor(kRed);
+TheBIG2->SetLineWidth(3);
 TheBIG2->Draw("HIST"); 
 The2->Draw("HIST same"); 
 The2P2->SetLineColor(kViolet);
+The2P2->SetLineWidth(3);
 The2P2->Draw("HIST same"); 
     
 c5->SaveAs("/home/LHCB-T3/espedicato/tesi/th_el.png"); 
@@ -512,21 +516,27 @@ TCanvas * c5MCS= new TCanvas("c5MCS","c5MCS",1000,100,2500,2000);
 c5MCS->Divide(1,3);
 c5MCS->cd(1);
 TheBIGMCS->SetLineColor(kRed);
+TheBIGMCS->SetLineWidth(3);
 TheBIGMCS->Draw("HIST"); 
 TheMCS->Draw("HIST same"); 
 The2PMCS->SetLineColor(kViolet);
+The2PMCS->SetLineWidth(3);
 The2PMCS->Draw("HIST same"); 
 c5MCS->cd(2);
 TheBIG1MCS->SetLineColor(kRed);
+TheBIG1MCS->SetLineWidth(3);
 TheBIG1MCS->Draw("HIST"); 
 The1MCS->Draw("HIST same");  
 The2P1MCS->SetLineColor(kViolet);
+The2P1MCS->SetLineWidth(3);
 The2P1MCS->Draw("HIST same");
 c5MCS->cd(3);
 TheBIG2MCS->SetLineColor(kRed);
+TheBIG2MCS->SetLineWidth(3);
 TheBIG2MCS->Draw("HIST"); 
 The2MCS->Draw("HIST same"); 
 The2P2MCS->SetLineColor(kViolet);
+The2P2MCS->SetLineWidth(3);
 The2P2MCS->Draw("HIST same");
     
 c5MCS->SaveAs("/home/LHCB-T3/espedicato/tesi/th_elMCS.png"); 

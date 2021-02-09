@@ -118,8 +118,8 @@ TH1F* TheBIG1MCS=new TH1F("th", "th El out BIG TAR 1 MCS", 75,0,100);
 TH1F* The2MCS=new TH1F("th", "th El out TAR 2", 75,0,100); 
 TH1F* TheBIG2MCS=new TH1F("th", "th El out BIG TAR 2 MCS", 75,0,100); 
     
-TH2F  *E3x3  = new TH2F("ThEel" , " Theta el Vs. E_ECAL",350,0,70,350,0.2,140);
-TH2F  *E3x3BIG  = new TH2F("ThEel" , " Theta el Vs. E_ECAL BIG",350,0,70,350,0.2,140);
+TH2F  *E3x3  = new TH2F("ThEel" , " Theta el Vs. E_ECAL",3500,0,70,3500,0.2,140);
+TH2F  *E3x3BIG  = new TH2F("ThEel" , " Theta el Vs. E_ECAL BIG",3500,0,70,3500,0.2,140);
     
 //TH2F  *E3x3noph  = new TH2F("ThEel" , " Theta el Vs. E_ECAL no ph",100,0,70,70,0.2,140);
 

@@ -163,6 +163,7 @@ Long64_t nentries = fChain->GetEntriesFast();
       nb = fChain->GetEntry(jentry);   nbytes += nb;
        
        n_tot+=wgt_full;
+       cout <<"wgt full " << wgt_full << endl;
 
         /*en_c[1]=detKinBeamRot_Ecell1; en_c[2]=detKinBeamRot_Ecell2; en_c[3]=detKinBeamRot_Ecell3; en_c[4]=detKinBeamRot_Ecell4; en_c[5]=detKinBeamRot_Ecell5;
         en_c[6]=detKinBeamRot_Ecell6; en_c[7]=detKinBeamRot_Ecell7; en_c[8]=detKinBeamRot_Ecell8; en_c[9]=detKinBeamRot_Ecell9; en_c[10]=detKinBeamRot_Ecell10;
@@ -432,19 +433,19 @@ Int_t nx = E3x3->GetNbinsX();
 Int_t ny = E3x3->GetNbinsY();
 for (Int_t i=1; i<nx+1; i++) {
 for (Int_t j=1; j<ny+1; j++) {
-if (E3x3->GetBinContent(i,j)<10) E3x3->SetBinContent(i,j,0);}}
+if (E3x3->GetBinContent(i,j)<1) E3x3->SetBinContent(i,j,0);}}
 
 Int_t nxBIG = E3x3BIG->GetNbinsX();
 Int_t nyBIG = E3x3BIG->GetNbinsY();
 for (Int_t i=1; i<nxBIG+1; i++) {
 for (Int_t j=1; j<nyBIG+1; j++) {
-if (E3x3BIG->GetBinContent(i,j)<10) E3x3BIG->SetBinContent(i,j,0);}}
+if (E3x3BIG->GetBinContent(i,j)<1) E3x3BIG->SetBinContent(i,j,0);}}
     
 Int_t nx2P = E3x32P->GetNbinsX();
 Int_t ny2P = E3x32P->GetNbinsY();
 for (Int_t i=1; i<nx2P+1; i++) {
 for (Int_t j=1; j<ny2P+1; j++) {
-if (E3x32P->GetBinContent(i,j)<10) E3x32P->SetBinContent(i,j,0);}}
+if (E3x32P->GetBinContent(i,j)<1) E3x32P->SetBinContent(i,j,0);}}
     
 TCanvas * c4= new TCanvas("c4","c4",1000,100,2500,2000);
 c4->Divide(1,3);

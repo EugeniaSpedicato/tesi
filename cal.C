@@ -193,7 +193,32 @@ Long64_t nentries = fChain->GetEntriesFast();
 
 //if (detKinBeamRot_n_cell_e!=0 && abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275)  
 
-if (detKinBeamRot_n_cell_e!=0 && abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275) {
+if (detKinBeamRot_n_cell_e!=0)
+{
+        
+    n_tot_eBIG+=wgt_full;
+    hist_E9_eBIG->Fill(E9,wgt_full);
+    hist_thxz_eBIG->Fill(anglex_e,wgt_full);
+    hist_thyz_eBIG->Fill(angley_e,wgt_full);
+    TheBIG->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
+    TheBIGMCS->Fill(detKinBeamRot_the,wgt_full);
+    
+    if (detKinBeamRot_tar==0)
+    {hist_thxz_e1BIG->Fill(anglex_e,wgt_full);
+    hist_thyz_e1BIG->Fill(angley_e,wgt_full);
+    TheBIG1->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
+    TheBIG1MCS->Fill(detKinBeamRot_the,wgt_full);}
+    if (detKinBeamRot_tar==1)
+    {hist_thxz_e2BIG->Fill(anglex_e,wgt_full);
+    hist_thyz_e2BIG->Fill(angley_e,wgt_full);
+    TheBIG2->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
+    TheBIG2MCS->Fill(detKinBeamRot_the,wgt_full);}
+    
+    //hist_Eout_9_e->Fill(Eout_9,wgt_full);
+    
+if (detKinBeamRot_E_clus3x3!=0 ) {E3x3BIG->Fill(detKinBeamRot_ThEl_interaction,detKinBeamRot_E_clus3x3,wgt_full);}
+    
+if(abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275) {
     
     n_tot_e+=wgt_full;
     hist_E9_e->Fill(E9,wgt_full);
@@ -216,6 +241,29 @@ if (detKinBeamRot_n_cell_e!=0 && abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBea
     //hist_Eout_9_e->Fill(Eout_9,wgt_full);
     
     if (detKinBeamRot_E_clus3x3!=0) {E3x3->Fill(detKinBeamRot_ThEl_interaction,detKinBeamRot_E_clus3x3,wgt_full);} //(detKinBeamRot_E_clus3x3!=0 && E9<0.95 && E9>0.5) 
+} else {  n_tot_e2P+=wgt_full;
+    hist_E9_e2P->Fill(E9,wgt_full);
+    hist_thxz_e2P->Fill(anglex_e,wgt_full);
+    hist_thyz_e2P->Fill(angley_e,wgt_full);
+    The2P->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
+    The2PMCS->Fill(detKinBeamRot_the,wgt_full);
+    
+    if (detKinBeamRot_tar==0)
+    {hist_thxz_e12P->Fill(anglex_e,wgt_full);
+    hist_thyz_e12P->Fill(angley_e,wgt_full);
+    The2P1->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
+    The2P1MCS->Fill(detKinBeamRot_the,wgt_full);}
+    if (detKinBeamRot_tar==1)
+    {hist_thxz_e22P->Fill(anglex_e,wgt_full);
+    hist_thyz_e22P->Fill(angley_e,wgt_full);
+    The2P2->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
+    The2P2MCS->Fill(detKinBeamRot_the,wgt_full);}
+    
+    //hist_Eout_9_e->Fill(Eout_9,wgt_full);
+    
+if (detKinBeamRot_E_clus3x3!=0) {E3x32P->Fill(detKinBeamRot_ThEl_interaction,detKinBeamRot_E_clus3x3,wgt_full);}}}
+    
+    
     
   /*if (photon_n_cell_ph!=0 && photon_n_cell_ph!=1 && photon_n_cell_ph!=2 && photon_n_cell_ph!=3 && photon_n_cell_ph!=4 && photon_n_cell_ph!=5 && photon_n_cell_ph!=10 && photon_n_cell_ph!=15 && photon_n_cell_ph!=20 && photon_n_cell_ph!=25 && photon_n_cell_ph!=24 && photon_n_cell_ph!=23 && photon_n_cell_ph!=22 && photon_n_cell_ph!=21 && photon_n_cell_ph!=16 && photon_n_cell_ph!=11 && photon_n_cell_ph!=6)
   { Ephout->Fill(photon_energy,wgt_full);
@@ -249,57 +297,6 @@ if (detKinBeamRot_n_cell_e!=0 && abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBea
       hist_Eout_9_NOph->Fill(Eout_9,wgt_full);
       //if (detKinBeamRot_E_clus3x3!=0) {E3x3noph->Fill(detKinBeamRot_ThEl_interaction,detKinBeamRot_E_clus3x3);}
         }*/
-
-  }
-if (detKinBeamRot_n_cell_e!=0)  {     
-    
-    n_tot_eBIG+=wgt_full;
-    hist_E9_eBIG->Fill(E9,wgt_full);
-    hist_thxz_eBIG->Fill(anglex_e,wgt_full);
-    hist_thyz_eBIG->Fill(angley_e,wgt_full);
-    TheBIG->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
-    TheBIGMCS->Fill(detKinBeamRot_the,wgt_full);
-    
-    if (detKinBeamRot_tar==0)
-    {hist_thxz_e1BIG->Fill(anglex_e,wgt_full);
-    hist_thyz_e1BIG->Fill(angley_e,wgt_full);
-    TheBIG1->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
-    TheBIG1MCS->Fill(detKinBeamRot_the,wgt_full);}
-    if (detKinBeamRot_tar==1)
-    {hist_thxz_e2BIG->Fill(anglex_e,wgt_full);
-    hist_thyz_e2BIG->Fill(angley_e,wgt_full);
-    TheBIG2->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
-    TheBIG2MCS->Fill(detKinBeamRot_the,wgt_full);}
-    
-    //hist_Eout_9_e->Fill(Eout_9,wgt_full);
-    
-if (detKinBeamRot_E_clus3x3!=0 ) {E3x3BIG->Fill(detKinBeamRot_ThEl_interaction,detKinBeamRot_E_clus3x3,wgt_full);}
-}
-    
-if (detKinBeamRot_n_cell_e!=0 && abs(detKinBeamRot_cooXe)>4.275 && abs(detKinBeamRot_cooYe)>4.275)
-{
-        n_tot_e2P+=wgt_full;
-    hist_E9_e2P->Fill(E9,wgt_full);
-    hist_thxz_e2P->Fill(anglex_e,wgt_full);
-    hist_thyz_e2P->Fill(angley_e,wgt_full);
-    The2P->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
-    The2PMCS->Fill(detKinBeamRot_the,wgt_full);
-    
-    if (detKinBeamRot_tar==0)
-    {hist_thxz_e12P->Fill(anglex_e,wgt_full);
-    hist_thyz_e12P->Fill(angley_e,wgt_full);
-    The2P1->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
-    The2P1MCS->Fill(detKinBeamRot_the,wgt_full);}
-    if (detKinBeamRot_tar==1)
-    {hist_thxz_e22P->Fill(anglex_e,wgt_full);
-    hist_thyz_e22P->Fill(angley_e,wgt_full);
-    The2P2->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
-    The2P2MCS->Fill(detKinBeamRot_the,wgt_full);}
-    
-    //hist_Eout_9_e->Fill(Eout_9,wgt_full);
-    
-if (detKinBeamRot_E_clus3x3!=0) {E3x32P->Fill(detKinBeamRot_ThEl_interaction,detKinBeamRot_E_clus3x3,wgt_full);}
-}
     
  
 }

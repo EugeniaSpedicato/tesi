@@ -515,7 +515,7 @@ TCanvas * cp= new TCanvas("c4p","c4p",100,100,2500,2000);
 
 pxtrue->GetXaxis()->SetTitle("Theta_el[mrad]");
 pxtrue->GetYaxis()->SetTitle("E[GeV]");
-pxtrue->SetLineColor(kPink);
+pxtrue->SetLineColor(kBlack);
 pxtrue->SetLineWidth(3);
 pxtrue->Draw();
  

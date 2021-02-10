@@ -107,37 +107,39 @@ TH1F* hist_ang_diff=new TH1F("dist", "DTheta (Thel-Thph) e-gamma diff cel", 200,
     
 TH1F* Ephout=new TH1F("EnergyPH", "Energy Ph out", 75,0.2,150); 
 TH1F* Thph=new TH1F("th", "th Ph out", 75,50,50); */
-TH1F* The=new TH1F("th", "th El out 3x3", 75,0,100); 
+TH1F* The_true=new TH1F("th", "th El out true", 75,0,100); 
+TH1F* The=new TH1F("th", "th El out core", 75,0,100); 
 TH1F* TheBIG=new TH1F("th", "th El out 5X5", 75,0,100); 
 TH1F* The2P=new TH1F("th", "th El out crown", 75,0,100); 
 
-    
-TH1F* The1=new TH1F("th", "th El out TAR 1 3x3", 75,0,100); 
+TH1F* The1_true=new TH1F("th", "th El out TAR 1 true", 75,0,100);    
+TH1F* The1=new TH1F("th", "th El out TAR 1 core", 75,0,100); 
 TH1F* TheBIG1=new TH1F("th", "th El out 5X5 TAR 1", 75,0,100); 
 TH1F* The2P1=new TH1F("th", "th El out crown TAR 1", 75,0,100); 
 
     
-TH1F* The2=new TH1F("th", "th El out TAR 2 3x3", 75,0,100); 
+TH1F* The2_true=new TH1F("th", "th El out TAR 2 true", 75,0,100);     
+TH1F* The2=new TH1F("th", "th El out TAR 2 core", 75,0,100); 
 TH1F* TheBIG2=new TH1F("th", "th El out 5X5 TAR 2", 75,0,100); 
 TH1F* The2P2=new TH1F("th", "th El out crown TAR 2", 75,0,100); 
     
     
-TH1F* TheMCS=new TH1F("th", "th El out MCS 3x3", 75,0,100); 
+TH1F* TheMCS=new TH1F("th", "th El out MCS core", 75,0,100); 
 TH1F* TheBIGMCS=new TH1F("th", "th El out 5X5 MCS", 75,0,100); 
 TH1F* The2PMCS=new TH1F("th", "th El out crown MCS", 75,0,100); 
     
     
-TH1F* The1MCS=new TH1F("th", "th El out TAR 1 MCS 3x3", 75,0,100); 
+TH1F* The1MCS=new TH1F("th", "th El out TAR 1 MCS core", 75,0,100); 
 TH1F* TheBIG1MCS=new TH1F("th", "th El out 5X5 TAR 1 MCS", 75,0,100); 
 TH1F* The2P1MCS=new TH1F("th", "th El out crown TAR 1 MCS", 75,0,100); 
     
     
-TH1F* The2MCS=new TH1F("th", "th El out TAR 2 3x3", 75,0,100); 
+TH1F* The2MCS=new TH1F("th", "th El out TAR 2 core", 75,0,100); 
 TH1F* TheBIG2MCS=new TH1F("th", "th El out 5X5 TAR 2 MCS", 75,0,100);
 TH1F* The2P2MCS=new TH1F("th", "th El out crown TAR 2 MCS", 75,0,100); 
     
     
-TH2F  *E3x3  = new TH2F("ThEel" , " Theta el Vs. E_ECAL 3x3",100,0,50,280,0,140);
+TH2F  *E3x3  = new TH2F("ThEel" , " Theta el Vs. E_ECAL core",100,0,50,280,0,140);
 TH2F  *E3x3BIG  = new TH2F("ThEelbig" , " Theta el Vs. E_ECAL 5x5",100,0,50,280,0,140);
 TH2F  *E3x32P  = new TH2F("ThEel2p" , " Theta el Vs. E_ECAL crown",100,0,50,280,0,140);
     
@@ -191,6 +193,10 @@ Long64_t nentries = fChain->GetEntriesFast();
 
 //if (detKinBeamRot_n_cell_e!=0 && abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275)  
 
+The_true->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
+
+       
+       
 if (detKinBeamRot_n_cell_e!=0 && E_CAL>0)
 {
         
@@ -511,9 +517,12 @@ c5->SaveAs("/home/LHCB-T3/espedicato/tesi/ph_energy.png");     */
 TCanvas * c5= new TCanvas("c5","c5",1000,100,2500,2000);
 c5->Divide(1,3);
 c5->cd(1);
+The_true->SetLineColor(kBlack);
+The_true->SetLineWidth(3);
+The_true->Draw("HIST"); 
 TheBIG->SetLineColor(kRed);
 TheBIG->SetLineWidth(3);
-TheBIG->Draw("HIST"); 
+TheBIG->Draw("HIST same"); 
 The->SetLineWidth(3);
 The->Draw("HIST same");
 The2P->SetLineColor(kViolet);
@@ -521,9 +530,12 @@ The2P->SetLineWidth(3);
 The2P->Draw("HIST same"); 
 gPad->BuildLegend(0.3,0.21,0.3,0.21);
 c5->cd(2);
+The_true->SetLineColor(kBlack);
+The_true->SetLineWidth(3);
+The_true->Draw("HIST");
 TheBIG1->SetLineColor(kRed);
 TheBIG1->SetLineWidth(3);
-TheBIG1->Draw("HIST");
+TheBIG1->Draw("HIST same");
 The1->SetLineWidth(3);
 The1->Draw("HIST same");  
 The2P1->SetLineColor(kViolet);
@@ -531,9 +543,12 @@ The2P1->SetLineWidth(3);
 The2P1->Draw("HIST same");
 gPad->BuildLegend(0.3,0.21,0.3,0.21);
 c5->cd(3);
+The_true->SetLineColor(kBlack);
+The_true->SetLineWidth(3);
+The_true->Draw("HIST");     
 TheBIG2->SetLineColor(kRed);
 TheBIG2->SetLineWidth(3);
-TheBIG2->Draw("HIST"); 
+TheBIG2->Draw("HIST same"); 
 The2->SetLineWidth(3);
 The2->Draw("HIST same"); 
 The2P2->SetLineColor(kViolet);

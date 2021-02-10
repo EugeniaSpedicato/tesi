@@ -137,9 +137,9 @@ TH1F* TheBIG2MCS=new TH1F("th", "th El out 5X5 TAR 2 MCS", 75,0,100);
 TH1F* The2P2MCS=new TH1F("th", "th El out crown TAR 2 MCS", 75,0,100); 
     
     
-TH2F  *E3x3  = new TH2F("ThEel" , " Theta el Vs. E_ECAL 3x3",140,0,70,280,0,140);
-TH2F  *E3x3BIG  = new TH2F("ThEelbig" , " Theta el Vs. E_ECAL 5x5",140,0,70,280,0,140);
-TH2F  *E3x32P  = new TH2F("ThEel2p" , " Theta el Vs. E_ECAL crown",140,0,70,280,0,140);
+TH2F  *E3x3  = new TH2F("ThEel" , " Theta el Vs. E_ECAL 3x3",100,0,50,280,0,140);
+TH2F  *E3x3BIG  = new TH2F("ThEelbig" , " Theta el Vs. E_ECAL 5x5",100,0,50,280,0,140);
+TH2F  *E3x32P  = new TH2F("ThEel2p" , " Theta el Vs. E_ECAL crown",100,0,50,280,0,140);
     
 
     
@@ -445,8 +445,11 @@ for (Int_t j=1; j<ny2P+1; j++) {
 if (E3x32P->GetBinContent(i,j)<1) E3x32P->SetBinContent(i,j,0);}}
     
 TProfile *px = E3x3BIG->ProfileX("px");
-TProfile *px1 = E3x3->ProfileX("px1");    
-TProfile *px2 = E3x32P->ProfileX("px2");    
+    px->SetErrorOption("S");
+TProfile *px1 = E3x3->ProfileX("px1");  
+    px1->SetErrorOption("S");
+TProfile *px2 = E3x32P->ProfileX("px2");   
+    px2->SetErrorOption("S");
     
     
 TCanvas * c4= new TCanvas("c4","c4",100,100,2500,2000);
@@ -459,6 +462,7 @@ px->Draw();
  
 px1->GetXaxis()->SetTitle("Theta_el");
 px1->GetYaxis()->SetTitle("Ereco3x3");
+px1->SetLineWidth(3);
 px1->Draw("same");
   
 px2->GetXaxis()->SetTitle("Theta_el");

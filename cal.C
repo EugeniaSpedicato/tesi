@@ -445,11 +445,11 @@ for (Int_t j=1; j<ny2P+1; j++) {
 if (E3x32P->GetBinContent(i,j)<1) E3x32P->SetBinContent(i,j,0);}}
     
 TProfile *px = E3x3BIG->ProfileX("px");
-    px->SetErrorOption("S");
+   // px->SetErrorOption("S");
 TProfile *px1 = E3x3->ProfileX("px1");  
-    px1->SetErrorOption("S");
+   // px1->SetErrorOption("S");
 TProfile *px2 = E3x32P->ProfileX("px2");   
-    px2->SetErrorOption("S");
+   // px2->SetErrorOption("S");
     
     
 TCanvas * c4= new TCanvas("c4","c4",100,100,2500,2000);

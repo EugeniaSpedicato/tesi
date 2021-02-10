@@ -260,7 +260,8 @@ if(abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275) {
     
     if (detKinBeamRot_E_clus3x3!=0) {
         E3x3->Fill(detKinBeamRot_ThEl_interaction,detKinBeamRot_E_clus3x3,wgt_full);
-        //E3x3true->Fill(detKinBeamRot_ThEl_interaction,detKinBeamRot_Ee,wgt_full);} //(detKinBeamRot_E_clus3x3!=0 && E9<0.95 && E9>0.5) 
+        //E3x3true->Fill(detKinBeamRot_ThEl_interaction,detKinBeamRot_Ee,wgt_full);
+    } //(detKinBeamRot_E_clus3x3!=0 && E9<0.95 && E9>0.5) 
 } else { 
     n_tot_e2P+=wgt_full;
     hist_E9_e2P->Fill(E9,wgt_full);

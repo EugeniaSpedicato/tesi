@@ -466,6 +466,12 @@ for (Int_t i=1; i<nx2P+1; i++) {
 for (Int_t j=1; j<ny2P+1; j++) {
 if (E3x32P->GetBinContent(i,j)<1) E3x32P->SetBinContent(i,j,0);}}
     
+Int_t nxtrue = E3x3true->GetNbinsX();
+Int_t nytrue = E3x3true->GetNbinsY();
+for (Int_t i=1; i<nxtrue+1; i++) {
+for (Int_t j=1; j<nytrue+1; j++) {
+if (E3x3true->GetBinContent(i,j)<1) E3x3true->SetBinContent(i,j,0);}}
+    
 TProfile *px = E3x3BIG->ProfileX("px");
    // px->SetErrorOption("S");
 TProfile *px1 = E3x3->ProfileX("px1");  
@@ -523,7 +529,7 @@ E3x3->GetYaxis()->SetTitle("Ereco3x3");
 E3x3->Draw("COLZ");
 cc->cd(2);
 E3x3true->GetXaxis()->SetTitle("Theta_el");
-E3x3true->GetYaxis()->SetTitle("Ereco3x3");
+E3x3true->GetYaxis()->SetTitle("Etrue");
 E3x3true->Draw("COLZ");
 cc->SaveAs("/home/LHCB-T3/espedicato/tesi/thEcore.png");
 

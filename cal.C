@@ -500,7 +500,14 @@ E3x32P->GetXaxis()->SetTitle("Theta_el");
 E3x32P->GetYaxis()->SetTitle("Ereco3x3");
 E3x32P->Draw("COLZ");
 
-c4a->SaveAs("/home/LHCB-T3/espedicato/tesi/thE.png");   
+c4a->SaveAs("/home/LHCB-T3/espedicato/tesi/thE.png");
+    
+TCanvas * cc= new TCanvas("c4","c4",100,100,2500,2000);    
+E3x3->GetXaxis()->SetTitle("Theta_el");
+E3x3->GetYaxis()->SetTitle("Ereco3x3");
+E3x3->Draw("COLZ");
+cc->SaveAs("/home/LHCB-T3/espedicato/tesi/thEcore.png");
+
 
 /*TCanvas * c5= new TCanvas("c5","c5",1000,100,2500,2000);
 c5->Divide(1,2);

@@ -145,8 +145,8 @@ TH1F* TheBIG2MCS=new TH1F("th", "th El out 5X5 TAR 2 MCS", 300,0,30);
 TH1F* The2P2MCS=new TH1F("th", "th El out crown TAR 2 MCS", 300,0,30); 
     
     
-TH2F  *E3x3  = new TH2F("ThEel" , " Theta el Vs. E_ECAL core",1000,0,50,2800,0,140);
-TH2F  *E3x3true  = new TH2F("ThEel" , " Theta el Vs. E_ECAL true",1000,0,50,2800,0,140);
+TH2F  *E3x3  = new TH2F("ThEel" , " Theta el Vs. E_ECAL core",100,0,50,280,0,140);
+TH2F  *E3x3true  = new TH2F("ThEel" , " Theta el Vs. E_ECAL true",100,0,50,280,0,140);
 
 TH2F  *E3x3BIG  = new TH2F("ThEelbig" , " Theta el Vs. E_ECAL 5x5",100,0,50,280,0,140);
 TH2F  *E3x32P  = new TH2F("ThEel2p" , " Theta el Vs. E_ECAL crown",100,0,50,280,0,140);
@@ -478,7 +478,8 @@ TProfile *px1 = E3x3->ProfileX("px1");
    // px1->SetErrorOption("S");
 TProfile *px2 = E3x32P->ProfileX("px2");   
    // px2->SetErrorOption("S");
-    
+TProfile *pxtrue = E3x3true->ProfileX("px2");   
+
     
 TCanvas * c4= new TCanvas("c4","c4",100,100,2500,2000);
 
@@ -501,6 +502,21 @@ px2->SetLineWidth(3);
 px2->Draw("same");
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 c4->SaveAs("/home/LHCB-T3/espedicato/tesi/thEPROFILE.png");   
+    
+TCanvas * cp= new TCanvas("c4p","c4p",100,100,2500,2000);
+
+pxtrue->GetXaxis()->SetTitle("Theta_el");
+pxtrue->GetYaxis()->SetTitle("E[GeV]");
+pxtrue->SetLineColor(kPink);
+pxtrue->SetLineWidth(3);
+pxtrue->Draw();
+ 
+px1->GetXaxis()->SetTitle("Theta_el");
+px1->GetYaxis()->SetTitle("Ereco3x3[GeV]");
+px1->SetLineWidth(3);
+px1->Draw("same");
+ gPad->BuildLegend(0.25,0.15,0.25,0.15);
+c4p->SaveAs("/home/LHCB-T3/espedicato/tesi/thEprofTRUE.png");        
     
 TCanvas * c4a= new TCanvas("c4","c4",100,100,2500,2000);
 c4a->Divide(3,1);

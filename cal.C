@@ -444,26 +444,47 @@ for (Int_t i=1; i<nx2P+1; i++) {
 for (Int_t j=1; j<ny2P+1; j++) {
 if (E3x32P->GetBinContent(i,j)<1) E3x32P->SetBinContent(i,j,0);}}
     
-Tprofile *px = E3x3->ProfileX("px");    
+TH1F *px = E3x3BIG->ProjectionX("px");
+TH1F *px1 = E3x3->ProjectionX("px1");    
+TH1F *px2 = E3x32P->ProjectionX("px2");    
+    
     
 TCanvas * c4= new TCanvas("c4","c4",100,100,2500,2000);
-c4->Divide(3,1);
-c4->cd(1);
-gStyle->SetPalette(kLake);
-TColor::InvertPalette(); 
+
 px->GetXaxis()->SetTitle("Theta_el");
 px->GetYaxis()->SetTitle("Ereco3x3");
+px->SetMarkerColor(kRed);
 px->Draw();
-c4->cd(2);   
+ 
+px1->GetXaxis()->SetTitle("Theta_el");
+px1->GetYaxis()->SetTitle("Ereco3x3");
+px1->Draw("same");
+  
+px2->GetXaxis()->SetTitle("Theta_el");
+px2->GetYaxis()->SetTitle("Ereco3x3");
+px->SetMarkerColor(kViolet);
+px2->Draw("same");
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
+c4->SaveAs("/home/LHCB-T3/espedicato/tesi/thEPROFILE.png");   
+    
+TCanvas * c4a= new TCanvas("c4","c4",100,100,2500,2000);
+c4a->Divide(3,1);
+c4a->cd(1);
+gStyle->SetPalette(kLake);
+TColor::InvertPalette(); 
 E3x3BIG->GetXaxis()->SetTitle("Theta_el");
 E3x3BIG->GetYaxis()->SetTitle("Ereco3x3");
 E3x3BIG->Draw("COLZ");
-c4->cd(3);   
+c4a->cd(2);   
+E3x3->GetXaxis()->SetTitle("Theta_el");
+E3x3->GetYaxis()->SetTitle("Ereco3x3");
+E3x3->Draw("COLZ");
+c4a->cd(3);   
 E3x32P->GetXaxis()->SetTitle("Theta_el");
 E3x32P->GetYaxis()->SetTitle("Ereco3x3");
 E3x32P->Draw("COLZ");
 
-c4->SaveAs("/home/LHCB-T3/espedicato/tesi/thE.png");   
+c4a->SaveAs("/home/LHCB-T3/espedicato/tesi/thE.png");   
 
 /*TCanvas * c5= new TCanvas("c5","c5",1000,100,2500,2000);
 c5->Divide(1,2);

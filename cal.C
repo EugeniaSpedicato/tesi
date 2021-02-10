@@ -2,6 +2,8 @@
 #include "atree.h"
 #include <TH2.h>
 #include <TH1.h>
+#include <TProfile.h>
+
 #include <TGraph.h>
 #include <TTree.h>
 #include <cmath>

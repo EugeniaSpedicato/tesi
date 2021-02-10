@@ -107,39 +107,39 @@ TH1F* hist_ang_diff=new TH1F("dist", "DTheta (Thel-Thph) e-gamma diff cel", 200,
     
 TH1F* Ephout=new TH1F("EnergyPH", "Energy Ph out", 75,0.2,150); 
 TH1F* Thph=new TH1F("th", "th Ph out", 75,50,50); */
-TH1F* The_true=new TH1F("th", "th El out true", 75,0,100);
-TH1F* The_trueCUT=new TH1F("th", "th El out true", 75,0,30);
+TH1F* The_true=new TH1F("th", "th El out true", 1000,0,100);
+TH1F* The_trueCUT=new TH1F("th", "th El out true", 300,0,30);
     
     
-TH1F* The=new TH1F("th", "th El out core", 75,0,100); 
-TH1F* TheBIG=new TH1F("th", "th El out 5X5", 75,0,100); 
-TH1F* The2P=new TH1F("th", "th El out crown", 75,0,100); 
+TH1F* The=new TH1F("th", "th El out core", 1000,0,100); 
+TH1F* TheBIG=new TH1F("th", "th El out 5X5", 1000,0,100); 
+TH1F* The2P=new TH1F("th", "th El out crown", 1000,0,100); 
 
-TH1F* The1_true=new TH1F("th", "th El out true TAR 1", 75,0,100);    
-TH1F* The1=new TH1F("th", "th El out core TAR 1", 75,0,100); 
-TH1F* TheBIG1=new TH1F("th", "th El out 5X5 TAR 1", 75,0,100); 
-TH1F* The2P1=new TH1F("th", "th El out crown TAR 1", 75,0,100); 
+TH1F* The1_true=new TH1F("th", "th El out true TAR 1", 1000,0,100);    
+TH1F* The1=new TH1F("th", "th El out core TAR 1", 1000,0,100); 
+TH1F* TheBIG1=new TH1F("th", "th El out 5X5 TAR 1", 1000,0,100); 
+TH1F* The2P1=new TH1F("th", "th El out crown TAR 1", 1000,0,100); 
 
     
-TH1F* The2_true=new TH1F("th", "th El out true TAR 2", 75,0,100);     
-TH1F* The2=new TH1F("th", "th El out core TAR 2", 75,0,100); 
-TH1F* TheBIG2=new TH1F("th", "th El out 5X5 TAR 2", 75,0,100); 
-TH1F* The2P2=new TH1F("th", "th El out crown TAR 2", 75,0,100); 
+TH1F* The2_true=new TH1F("th", "th El out true TAR 2", 1000,0,100);     
+TH1F* The2=new TH1F("th", "th El out core TAR 2", 1000,0,100); 
+TH1F* TheBIG2=new TH1F("th", "th El out 5X5 TAR 2", 1000,0,100); 
+TH1F* The2P2=new TH1F("th", "th El out crown TAR 2", 1000,0,100); 
     
     
-TH1F* TheMCS=new TH1F("th", "th El out core MCS", 75,0,30); 
-TH1F* TheBIGMCS=new TH1F("th", "th El out 5X5 MCS", 75,0,30); 
-TH1F* The2PMCS=new TH1F("th", "th El out crown MCS", 75,0,30); 
+TH1F* TheMCS=new TH1F("th", "th El out core MCS", 300,0,30); 
+TH1F* TheBIGMCS=new TH1F("th", "th El out 5X5 MCS", 300,0,30); 
+TH1F* The2PMCS=new TH1F("th", "th El out crown MCS", 300,0,30); 
     
     
-TH1F* The1MCS=new TH1F("th", "th El out TAR 1 core MCS", 75,0,30); 
-TH1F* TheBIG1MCS=new TH1F("th", "th El out 5X5 TAR 1 MCS", 75,0,30); 
-TH1F* The2P1MCS=new TH1F("th", "th El out crown TAR 1 MCS", 75,0,30); 
+TH1F* The1MCS=new TH1F("th", "th El out TAR 1 core MCS", 300,0,30); 
+TH1F* TheBIG1MCS=new TH1F("th", "th El out 5X5 TAR 1 MCS", 300,0,30); 
+TH1F* The2P1MCS=new TH1F("th", "th El out crown TAR 1 MCS", 300,0,30); 
     
     
-TH1F* The2MCS=new TH1F("th", "th El out core TAR 2 MCS", 75,0,30); 
-TH1F* TheBIG2MCS=new TH1F("th", "th El out 5X5 TAR 2 MCS", 75,0,30);
-TH1F* The2P2MCS=new TH1F("th", "th El out crown TAR 2 MCS", 75,0,30); 
+TH1F* The2MCS=new TH1F("th", "th El out core TAR 2 MCS", 300,0,30); 
+TH1F* TheBIG2MCS=new TH1F("th", "th El out 5X5 TAR 2 MCS", 300,0,30);
+TH1F* The2P2MCS=new TH1F("th", "th El out crown TAR 2 MCS", 300,0,30); 
     
     
 TH2F  *E3x3  = new TH2F("ThEel" , " Theta el Vs. E_ECAL core",100,0,50,280,0,140);
@@ -208,18 +208,18 @@ if (detKinBeamRot_n_cell_e!=0 && E_CAL>0)
     hist_thxz_eBIG->Fill(anglex_e,wgt_full);
     hist_thyz_eBIG->Fill(angley_e,wgt_full);
     TheBIG->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
-    TheBIGMCS->Fill(detKinBeamRot_the,wgt_full);
+    TheBIGMCS->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
     
     if (detKinBeamRot_tar==0)
     {hist_thxz_e1BIG->Fill(anglex_e,wgt_full);
     hist_thyz_e1BIG->Fill(angley_e,wgt_full);
     TheBIG1->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
-    TheBIG1MCS->Fill(detKinBeamRot_the,wgt_full);}
+    TheBIG1MCS->Fill(detKinBeamRot_ThEl_interaction,wgt_full);}
     if (detKinBeamRot_tar==1)
     {hist_thxz_e2BIG->Fill(anglex_e,wgt_full);
     hist_thyz_e2BIG->Fill(angley_e,wgt_full);
     TheBIG2->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
-    TheBIG2MCS->Fill(detKinBeamRot_the,wgt_full);}
+    TheBIG2MCS->Fill(detKinBeamRot_ThEl_interaction,wgt_full);}
     
     //hist_Eout_9_e->Fill(Eout_9,wgt_full);
     
@@ -231,18 +231,18 @@ if(abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275) {
     hist_thxz_e->Fill(anglex_e,wgt_full);
     hist_thyz_e->Fill(angley_e,wgt_full);
     The->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
-    TheMCS->Fill(detKinBeamRot_the,wgt_full);
+    TheMCS->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
     
     if (detKinBeamRot_tar==0)
     {hist_thxz_e1->Fill(anglex_e,wgt_full);
     hist_thyz_e1->Fill(angley_e,wgt_full);
     The1->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
-    The1MCS->Fill(detKinBeamRot_the,wgt_full);}
+    The1MCS->Fill(detKinBeamRot_ThEl_interaction,wgt_full);}
     if (detKinBeamRot_tar==1)
     {hist_thxz_e2->Fill(anglex_e,wgt_full);
     hist_thyz_e2->Fill(angley_e,wgt_full);
     The2->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
-    The2MCS->Fill(detKinBeamRot_the,wgt_full);}
+    The2MCS->Fill(detKinBeamRot_ThEl_interaction,wgt_full);}
     
     //hist_Eout_9_e->Fill(Eout_9,wgt_full);
     
@@ -253,18 +253,18 @@ if(abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275) {
     hist_thxz_e2P->Fill(anglex_e,wgt_full);
     hist_thyz_e2P->Fill(angley_e,wgt_full);
     The2P->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
-    The2PMCS->Fill(detKinBeamRot_the,wgt_full);
+    The2PMCS->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
     
     if (detKinBeamRot_tar==0)
     {hist_thxz_e12P->Fill(anglex_e,wgt_full);
     hist_thyz_e12P->Fill(angley_e,wgt_full);
     The2P1->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
-    The2P1MCS->Fill(detKinBeamRot_the,wgt_full);}
+    The2P1MCS->Fill(detKinBeamRot_ThEl_interaction,wgt_full);}
     if (detKinBeamRot_tar==1)
     {hist_thxz_e22P->Fill(anglex_e,wgt_full);
     hist_thyz_e22P->Fill(angley_e,wgt_full);
     The2P2->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
-    The2P2MCS->Fill(detKinBeamRot_the,wgt_full);}
+    The2P2MCS->Fill(detKinBeamRot_ThEl_interaction,wgt_full);}
     
     //hist_Eout_9_e->Fill(Eout_9,wgt_full);
     

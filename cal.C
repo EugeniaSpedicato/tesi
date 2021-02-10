@@ -516,7 +516,7 @@ px1->GetYaxis()->SetTitle("Ereco3x3[GeV]");
 px1->SetLineWidth(3);
 px1->Draw("same");
  gPad->BuildLegend(0.25,0.15,0.25,0.15);
-c4p->SaveAs("/home/LHCB-T3/espedicato/tesi/thEprofTRUE.png");        
+cp->SaveAs("/home/LHCB-T3/espedicato/tesi/thEprofTRUE.png");        
     
 TCanvas * c4a= new TCanvas("c4","c4",100,100,2500,2000);
 c4a->Divide(3,1);

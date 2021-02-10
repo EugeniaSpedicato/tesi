@@ -506,7 +506,7 @@ pxtrue->GetXaxis()->SetTitle("Theta_el[mrad]");
 pxtrue->GetYaxis()->SetTitle("E[GeV]");
 pxtrue->SetLineColor(kBlack);
 pxtrue->SetLineWidth(3);
-pxtrue->Draw();    
+pxtrue->Draw("same");    
     
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 c4->SaveAs("/home/LHCB-T3/espedicato/tesi/thEPROFILE.png");   
@@ -523,6 +523,11 @@ px->GetXaxis()->SetTitle("Theta_el[mrad]");
 px->GetYaxis()->SetTitle("Ereco3x3[GeV]");
 px->SetLineWidth(3);
 px->Draw("same");
+    
+px1->GetXaxis()->SetTitle("Theta_el[mrad]");
+px1->GetYaxis()->SetTitle("Ereco3x3[GeV]");
+px1->SetLineWidth(3);
+px1->Draw("same");
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 cp->SaveAs("/home/LHCB-T3/espedicato/tesi/thEprofTRUE.png");        
     

@@ -118,13 +118,13 @@ TH1F* The=new TH1F("th", "th El out core", 1000,0,100);
 TH1F* TheBIG=new TH1F("th", "th El out 5X5", 1000,0,100); 
 TH1F* The2P=new TH1F("th", "th El out crown", 1000,0,100); 
 
-TH1F* The1_true=new TH1F("th", "th El out true TAR 1", 1000,0,100);    
+TH1F* The_true1=new TH1F("th", "th El out true TAR 1", 1000,0,100);    
 TH1F* The1=new TH1F("th", "th El out core TAR 1", 1000,0,100); 
 TH1F* TheBIG1=new TH1F("th", "th El out 5X5 TAR 1", 1000,0,100); 
 TH1F* The2P1=new TH1F("th", "th El out crown TAR 1", 1000,0,100); 
 
     
-TH1F* The2_true=new TH1F("th", "th El out true TAR 2", 1000,0,100);     
+TH1F* The_true2=new TH1F("th", "th El out true TAR 2", 1000,0,100);     
 TH1F* The2=new TH1F("th", "th El out core TAR 2", 1000,0,100); 
 TH1F* TheBIG2=new TH1F("th", "th El out 5X5 TAR 2", 1000,0,100); 
 TH1F* The2P2=new TH1F("th", "th El out crown TAR 2", 1000,0,100); 

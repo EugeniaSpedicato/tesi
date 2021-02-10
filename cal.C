@@ -500,8 +500,14 @@ px2->GetXaxis()->SetTitle("Theta_el[mrad]");
 px2->GetYaxis()->SetTitle("Ereco3x3[GeV]");
 px2->SetLineColor(kViolet);
 px2->SetLineWidth(3);
-    
 px2->Draw("same");
+    
+pxtrue->GetXaxis()->SetTitle("Theta_el[mrad]");
+pxtrue->GetYaxis()->SetTitle("E[GeV]");
+pxtrue->SetLineColor(kBlack);
+pxtrue->SetLineWidth(3);
+pxtrue->Draw();    
+    
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 c4->SaveAs("/home/LHCB-T3/espedicato/tesi/thEPROFILE.png");   
     

@@ -146,6 +146,8 @@ TH1F* The2P2MCS=new TH1F("th", "th El out crown TAR 2 MCS", 300,0,30);
     
     
 TH2F  *E3x3  = new TH2F("ThEel" , " Theta el Vs. E_ECAL core",100,0,50,280,0,140);
+TH2F  *E3x3true  = new TH2F("ThEel" , " Theta el Vs. E_ECAL true",100,0,50,280,0,140);
+
 TH2F  *E3x3BIG  = new TH2F("ThEelbig" , " Theta el Vs. E_ECAL 5x5",100,0,50,280,0,140);
 TH2F  *E3x32P  = new TH2F("ThEel2p" , " Theta el Vs. E_ECAL crown",100,0,50,280,0,140);
     
@@ -210,6 +212,7 @@ The_trueCUT->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
        
 if (detKinBeamRot_n_cell_e!=0 && E_CAL>0)
 {
+   
         
     n_tot_eBIG+=wgt_full;
     hist_E9_eBIG->Fill(E9,wgt_full);
@@ -254,7 +257,9 @@ if(abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275) {
     
     //hist_Eout_9_e->Fill(Eout_9,wgt_full);
     
-    if (detKinBeamRot_E_clus3x3!=0) {E3x3->Fill(detKinBeamRot_ThEl_interaction,detKinBeamRot_E_clus3x3,wgt_full);} //(detKinBeamRot_E_clus3x3!=0 && E9<0.95 && E9>0.5) 
+    if (detKinBeamRot_E_clus3x3!=0) {
+        E3x3->Fill(detKinBeamRot_ThEl_interaction,detKinBeamRot_E_clus3x3,wgt_full);
+        E3x3true->Fill(detKinBeamRot_ThEl_interaction,detKinBeamRot_Ee,wgt_full);} //(detKinBeamRot_E_clus3x3!=0 && E9<0.95 && E9>0.5) 
 } else { 
     n_tot_e2P+=wgt_full;
     hist_E9_e2P->Fill(E9,wgt_full);
@@ -510,10 +515,16 @@ E3x32P->Draw("COLZ");
 
 c4a->SaveAs("/home/LHCB-T3/espedicato/tesi/thE.png");
     
-TCanvas * cc= new TCanvas("c4","c4",100,100,2500,2000);    
+TCanvas * cc= new TCanvas("c4","c4",100,100,2500,2000); 
+cc->Divide(1,2);
+cc->cd(1);
 E3x3->GetXaxis()->SetTitle("Theta_el");
 E3x3->GetYaxis()->SetTitle("Ereco3x3");
 E3x3->Draw("COLZ");
+cc->cd(2);
+E3x3true->GetXaxis()->SetTitle("Theta_el");
+E3x3true->GetYaxis()->SetTitle("Ereco3x3");
+E3x3true->Draw("COLZ");
 cc->SaveAs("/home/LHCB-T3/espedicato/tesi/thEcore.png");
 
 

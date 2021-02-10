@@ -145,8 +145,8 @@ TH1F* TheBIG2MCS=new TH1F("th", "th El out 5X5 TAR 2 MCS", 300,0,30);
 TH1F* The2P2MCS=new TH1F("th", "th El out crown TAR 2 MCS", 300,0,30); 
     
     
-TH2F  *E3x3  = new TH2F("ThEel" , " Theta el Vs. E_ECAL core",100,0,50,280,0,140);
-TH2F  *E3x3true  = new TH2F("ThEel" , " Theta el Vs. E_ECAL true",100,0,50,280,0,140);
+TH2F  *E3x3  = new TH2F("ThEel" , " Theta el Vs. E_ECAL core",1000,0,50,2800,0,140);
+TH2F  *E3x3true  = new TH2F("ThEel" , " Theta el Vs. E_ECAL true",1000,0,50,2800,0,140);
 
 TH2F  *E3x3BIG  = new TH2F("ThEelbig" , " Theta el Vs. E_ECAL 5x5",100,0,50,280,0,140);
 TH2F  *E3x32P  = new TH2F("ThEel2p" , " Theta el Vs. E_ECAL crown",100,0,50,280,0,140);

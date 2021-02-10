@@ -495,7 +495,7 @@ px1->SetLineWidth(3);
 px1->Draw("same");
   
 px2->GetXaxis()->SetTitle("Theta_el[mrad]");
-px2->GetYaxis()->SetTitle("Ereco3x3[GeV]"");
+px2->GetYaxis()->SetTitle("Ereco3x3[GeV]");
 px2->SetLineColor(kViolet);
 px2->SetLineWidth(3);
     
@@ -512,7 +512,7 @@ pxtrue->SetLineWidth(3);
 pxtrue->Draw();
  
 px1->GetXaxis()->SetTitle("Theta_el[mrad]");
-px1->GetYaxis()->SetTitle("Ereco3x3[GeV]"");
+px1->GetYaxis()->SetTitle("Ereco3x3[GeV]");
 px1->SetLineWidth(3);
 px1->Draw("same");
 gPad->BuildLegend(0.25,0.15,0.25,0.15);

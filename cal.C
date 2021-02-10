@@ -234,7 +234,8 @@ if (detKinBeamRot_n_cell_e!=0 && E_CAL>0)
     
     //hist_Eout_9_e->Fill(Eout_9,wgt_full);
     
-if (detKinBeamRot_E_clus3x3!=0 ) {E3x3BIG->Fill(detKinBeamRot_ThEl_interaction,detKinBeamRot_E_clus3x3,wgt_full);}
+if (detKinBeamRot_E_clus3x3!=0 ) {E3x3BIG->Fill(detKinBeamRot_ThEl_interaction,detKinBeamRot_E_clus3x3,wgt_full);
+                                 E3x3true->Fill(detKinBeamRot_ThEl_interaction,detKinBeamRot_Ee,wgt_full);}
     
 if(abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275) {
     n_tot_e+=wgt_full;
@@ -259,7 +260,7 @@ if(abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275) {
     
     if (detKinBeamRot_E_clus3x3!=0) {
         E3x3->Fill(detKinBeamRot_ThEl_interaction,detKinBeamRot_E_clus3x3,wgt_full);
-        E3x3true->Fill(detKinBeamRot_ThEl_interaction,detKinBeamRot_Ee,wgt_full);} //(detKinBeamRot_E_clus3x3!=0 && E9<0.95 && E9>0.5) 
+        //E3x3true->Fill(detKinBeamRot_ThEl_interaction,detKinBeamRot_Ee,wgt_full);} //(detKinBeamRot_E_clus3x3!=0 && E9<0.95 && E9>0.5) 
 } else { 
     n_tot_e2P+=wgt_full;
     hist_E9_e2P->Fill(E9,wgt_full);
@@ -511,10 +512,10 @@ pxtrue->SetLineColor(kPink);
 pxtrue->SetLineWidth(3);
 pxtrue->Draw();
  
-px1->GetXaxis()->SetTitle("Theta_el[mrad]");
-px1->GetYaxis()->SetTitle("Ereco3x3[GeV]");
-px1->SetLineWidth(3);
-px1->Draw("same");
+px->GetXaxis()->SetTitle("Theta_el[mrad]");
+px->GetYaxis()->SetTitle("Ereco3x3[GeV]");
+px->SetLineWidth(3);
+px->Draw("same");
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 cp->SaveAs("/home/LHCB-T3/espedicato/tesi/thEprofTRUE.png");        
     

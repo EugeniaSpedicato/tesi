@@ -109,6 +109,9 @@ TH1F* Ephout=new TH1F("EnergyPH", "Energy Ph out", 75,0.2,150);
 TH1F* Thph=new TH1F("th", "th Ph out", 75,50,50); */
 TH1F* The_true=new TH1F("th", "th El out true", 1000,0,100);
 TH1F* The_trueCUT=new TH1F("th", "th El out true", 300,0,30);
+TH1F* The_trueCUT1=new TH1F("th", "th El out true TAR 1", 300,0,30);
+TH1F* The_trueCUT2=new TH1F("th", "th El out true TAR 2", 300,0,30);
+
     
     
 TH1F* The=new TH1F("th", "th El out core", 1000,0,100); 
@@ -197,6 +200,11 @@ Long64_t nentries = fChain->GetEntriesFast();
 //if (detKinBeamRot_n_cell_e!=0 && abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275)  
 
 The_true->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
+    if (detKinBeamRot_tar==0){The_true1->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
+                              The_trueCUT1->Fill(detKinBeamRot_ThEl_interaction,wgt_full);}
+    if (detKinBeamRot_tar==1){The_true2->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
+                              The_trueCUT2->Fill(detKinBeamRot_ThEl_interaction,wgt_full);}
+       
 The_trueCUT->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
        
        
@@ -540,9 +548,9 @@ The2P->SetLineWidth(3);
 The2P->Draw("HIST same"); 
 gPad->BuildLegend(0.3,0.21,0.3,0.21);
 c5->cd(2);
-The_true->SetLineColor(kBlack);
-The_true->SetLineWidth(3);
-The_true->Draw("HIST");
+The_true1->SetLineColor(kBlack);
+The_true1->SetLineWidth(3);
+The_true1->Draw("HIST");
 TheBIG1->SetLineColor(kRed);
 TheBIG1->SetLineWidth(3);
 TheBIG1->Draw("HIST same");
@@ -553,9 +561,9 @@ The2P1->SetLineWidth(3);
 The2P1->Draw("HIST same");
 gPad->BuildLegend(0.3,0.21,0.3,0.21);
 c5->cd(3);
-The_true->SetLineColor(kBlack);
-The_true->SetLineWidth(3);
-The_true->Draw("HIST");     
+The_true2->SetLineColor(kBlack);
+The_true2->SetLineWidth(3);
+The_true2->Draw("HIST");     
 TheBIG2->SetLineColor(kRed);
 TheBIG2->SetLineWidth(3);
 TheBIG2->Draw("HIST same"); 
@@ -584,9 +592,9 @@ The2P->SetLineWidth(3);
 The2P->Draw("HIST same"); 
 gPad->BuildLegend(0.3,0.21,0.3,0.21);
 c5MCS->cd(2);
-The_trueCUT->SetLineColor(kBlack);
-The_trueCUT->SetLineWidth(3);
-The_trueCUT->Draw("HIST");
+The_trueCUT1->SetLineColor(kBlack);
+The_trueCUT1->SetLineWidth(3);
+The_trueCUT1->Draw("HIST");
 TheBIG1->SetLineColor(kRed);
 TheBIG1->SetLineWidth(3);
 TheBIG1->Draw("HIST same");
@@ -597,9 +605,9 @@ The2P1->SetLineWidth(3);
 The2P1->Draw("HIST same");
 gPad->BuildLegend(0.3,0.21,0.3,0.21);
 c5MCS->cd(3);
-The_trueCUT->SetLineColor(kBlack);
-The_trueCUT->SetLineWidth(3);
-The_trueCUT->Draw("HIST");     
+The_trueCUT2->SetLineColor(kBlack);
+The_trueCUT2->SetLineWidth(3);
+The_trueCUT2->Draw("HIST");     
 TheBIG2->SetLineColor(kRed);
 TheBIG2->SetLineWidth(3);
 TheBIG2->Draw("HIST same"); 

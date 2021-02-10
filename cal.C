@@ -137,9 +137,9 @@ TH1F* TheBIG2MCS=new TH1F("th", "th El out 5X5 TAR 2 MCS", 75,0,100);
 TH1F* The2P2MCS=new TH1F("th", "th El out crown TAR 2 MCS", 75,0,100); 
     
     
-TH2F  *E3x3  = new TH2F("ThEel" , " Theta el Vs. E_ECAL 3x3",280,0,70,460,0,140);
-TH2F  *E3x3BIG  = new TH2F("ThEelbig" , " Theta el Vs. E_ECAL 5x5",280,0,70,460,0,140);
-TH2F  *E3x32P  = new TH2F("ThEel2p" , " Theta el Vs. E_ECAL crown",280,0,70,460,0,140);
+TH2F  *E3x3  = new TH2F("ThEel" , " Theta el Vs. E_ECAL 3x3",140,0,70,280,0,140);
+TH2F  *E3x3BIG  = new TH2F("ThEelbig" , " Theta el Vs. E_ECAL 5x5",140,0,70,280,0,140);
+TH2F  *E3x32P  = new TH2F("ThEel2p" , " Theta el Vs. E_ECAL crown",140,0,70,280,0,140);
     
 
     
@@ -454,6 +454,7 @@ TCanvas * c4= new TCanvas("c4","c4",100,100,2500,2000);
 px->GetXaxis()->SetTitle("Theta_el");
 px->GetYaxis()->SetTitle("Ereco3x3");
 px->SetLineColor(kRed);
+px->SetLineWidth(3);
 px->Draw();
  
 px1->GetXaxis()->SetTitle("Theta_el");
@@ -462,7 +463,9 @@ px1->Draw("same");
   
 px2->GetXaxis()->SetTitle("Theta_el");
 px2->GetYaxis()->SetTitle("Ereco3x3");
-px->SetLineColor(kViolet);
+px2->SetLineColor(kViolet);
+px2->SetLineWidth(3);
+    
 px2->Draw("same");
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 c4->SaveAs("/home/LHCB-T3/espedicato/tesi/thEPROFILE.png");   

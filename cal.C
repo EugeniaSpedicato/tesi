@@ -107,7 +107,10 @@ TH1F* hist_ang_diff=new TH1F("dist", "DTheta (Thel-Thph) e-gamma diff cel", 200,
     
 TH1F* Ephout=new TH1F("EnergyPH", "Energy Ph out", 75,0.2,150); 
 TH1F* Thph=new TH1F("th", "th Ph out", 75,50,50); */
-TH1F* The_true=new TH1F("th", "th El out true", 75,0,100); 
+TH1F* The_true=new TH1F("th", "th El out true", 75,0,100);
+TH1F* The_trueCUT=new TH1F("th", "th El out true", 75,0,30);
+    
+    
 TH1F* The=new TH1F("th", "th El out core", 75,0,100); 
 TH1F* TheBIG=new TH1F("th", "th El out 5X5", 75,0,100); 
 TH1F* The2P=new TH1F("th", "th El out crown", 75,0,100); 
@@ -194,7 +197,7 @@ Long64_t nentries = fChain->GetEntriesFast();
 //if (detKinBeamRot_n_cell_e!=0 && abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275)  
 
 The_true->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
-
+The_trueCUT->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
        
        
 if (detKinBeamRot_n_cell_e!=0 && E_CAL>0)
@@ -561,35 +564,45 @@ c5->SaveAs("/home/LHCB-T3/espedicato/tesi/th_el.png");
 TCanvas * c5MCS= new TCanvas("c5MCS","c5MCS",1000,100,2500,2000);
 c5MCS->Divide(1,3);
 c5MCS->cd(1);
-TheBIGMCS->SetLineColor(kRed);
-TheBIGMCS->SetLineWidth(3);
-TheBIGMCS->Draw("HIST"); 
-TheMCS->SetLineWidth(3);
-TheMCS->Draw("HIST same"); 
-The2PMCS->SetLineColor(kViolet);
-The2PMCS->SetLineWidth(3);
-The2PMCS->Draw("HIST same"); 
+The_trueCUT->SetLineColor(kBlack);
+The_trueCUT->SetLineWidth(3);
+The_trueCUT->Draw("HIST"); 
+TheBIG->SetLineColor(kRed);
+TheBIG->SetLineWidth(3);
+TheBIG->Draw("HIST same"); 
+The->SetLineWidth(3);
+The->Draw("HIST same");
+The2P->SetLineColor(kViolet);
+The2P->SetLineWidth(3);
+The2P->Draw("HIST same"); 
 gPad->BuildLegend(0.3,0.21,0.3,0.21);
 c5MCS->cd(2);
-TheBIG1MCS->SetLineColor(kRed);
-TheBIG1MCS->SetLineWidth(3);
-TheBIG1MCS->Draw("HIST");
-The1MCS->SetLineWidth(3);
-The1MCS->Draw("HIST same");  
-The2P1MCS->SetLineColor(kViolet);
-The2P1MCS->SetLineWidth(3);
-The2P1MCS->Draw("HIST same");
+The_trueCUT->SetLineColor(kBlack);
+The_trueCUT->SetLineWidth(3);
+The_trueCUT->Draw("HIST");
+TheBIG1->SetLineColor(kRed);
+TheBIG1->SetLineWidth(3);
+TheBIG1->Draw("HIST same");
+The1->SetLineWidth(3);
+The1->Draw("HIST same");  
+The2P1->SetLineColor(kViolet);
+The2P1->SetLineWidth(3);
+The2P1->Draw("HIST same");
 gPad->BuildLegend(0.3,0.21,0.3,0.21);
 c5MCS->cd(3);
-TheBIG2MCS->SetLineColor(kRed);
-TheBIG2MCS->SetLineWidth(3);
-TheBIG2MCS->Draw("HIST"); 
-The2MCS->SetLineWidth(3);
-The2MCS->Draw("HIST same"); 
-The2P2MCS->SetLineColor(kViolet);
-The2P2MCS->SetLineWidth(3);
-The2P2MCS->Draw("HIST same");
+The_trueCUT->SetLineColor(kBlack);
+The_trueCUT->SetLineWidth(3);
+The_trueCUT->Draw("HIST");     
+TheBIG2->SetLineColor(kRed);
+TheBIG2->SetLineWidth(3);
+TheBIG2->Draw("HIST same"); 
+The2->SetLineWidth(3);
+The2->Draw("HIST same"); 
+The2P2->SetLineColor(kViolet);
+The2P2->SetLineWidth(3);
+The2P2->Draw("HIST same"); 
 gPad->BuildLegend(0.3,0.21,0.3,0.21);
+    
     
 c5MCS->SaveAs("/home/LHCB-T3/espedicato/tesi/th_elMCS.png"); 
   

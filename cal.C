@@ -63,12 +63,12 @@ Double_t Rm = 2.190 ; //raggio di Moliere in centimetri
 Double_t E9=0.;
 
 TH1F* hist_E9_e=new TH1F("E9e", "E9 e- tot", 500,0,1);
-TH1F* hist_thxz_e=new TH1F("thXZ", "th XZ e- 3x3", 150,-0.1,0.1);
-TH1F* hist_thyz_e=new TH1F("thYZ", "th YZ e- 3x3", 150,-0.1,0.1);
-TH1F* hist_thxz_e1=new TH1F("thXZ", "th XZ TAR 1 e- 3x3", 150,-0.1,0.1);
-TH1F* hist_thyz_e1=new TH1F("thYZ", "th YZ e- TAR 1 3x3", 150,-0.1,0.1);
-TH1F* hist_thxz_e2=new TH1F("thXZ", "th XZ e- TAR 2 3x3", 150,-0.1,0.1);
-TH1F* hist_thyz_e2=new TH1F("thYZ", "th YZ e- TAR 2 3x3", 150,-0.1,0.1);
+TH1F* hist_thxz_e=new TH1F("thXZ", "th XZ e- CORE", 150,-0.1,0.1);
+TH1F* hist_thyz_e=new TH1F("thYZ", "th YZ e- CORE", 150,-0.1,0.1);
+TH1F* hist_thxz_e1=new TH1F("thXZ", "th XZ TAR 1 e- CORE", 150,-0.1,0.1);
+TH1F* hist_thyz_e1=new TH1F("thYZ", "th YZ e- TAR 1 CORE", 150,-0.1,0.1);
+TH1F* hist_thxz_e2=new TH1F("thXZ", "th XZ e- TAR 2 CORE", 150,-0.1,0.1);
+TH1F* hist_thyz_e2=new TH1F("thYZ", "th YZ e- TAR 2 CORE", 150,-0.1,0.1);
     
 TH1F* hist_E9_eBIG=new TH1F("E9e5X5", "E9 e- tot 5X5", 500,0,1);
 TH1F* hist_thxz_eBIG=new TH1F("thXZ5X5", "th XZ e- 5X5", 150,-0.1,0.1);
@@ -115,31 +115,31 @@ TH1F* The=new TH1F("th", "th El out core", 75,0,100);
 TH1F* TheBIG=new TH1F("th", "th El out 5X5", 75,0,100); 
 TH1F* The2P=new TH1F("th", "th El out crown", 75,0,100); 
 
-TH1F* The1_true=new TH1F("th", "th El out TAR 1 true", 75,0,100);    
-TH1F* The1=new TH1F("th", "th El out TAR 1 core", 75,0,100); 
+TH1F* The1_true=new TH1F("th", "th El out true TAR 1", 75,0,100);    
+TH1F* The1=new TH1F("th", "th El out core TAR 1", 75,0,100); 
 TH1F* TheBIG1=new TH1F("th", "th El out 5X5 TAR 1", 75,0,100); 
 TH1F* The2P1=new TH1F("th", "th El out crown TAR 1", 75,0,100); 
 
     
-TH1F* The2_true=new TH1F("th", "th El out TAR 2 true", 75,0,100);     
-TH1F* The2=new TH1F("th", "th El out TAR 2 core", 75,0,100); 
+TH1F* The2_true=new TH1F("th", "th El out true TAR 2", 75,0,100);     
+TH1F* The2=new TH1F("th", "th El out core TAR 2", 75,0,100); 
 TH1F* TheBIG2=new TH1F("th", "th El out 5X5 TAR 2", 75,0,100); 
 TH1F* The2P2=new TH1F("th", "th El out crown TAR 2", 75,0,100); 
     
     
-TH1F* TheMCS=new TH1F("th", "th El out MCS core", 75,0,100); 
-TH1F* TheBIGMCS=new TH1F("th", "th El out 5X5 MCS", 75,0,100); 
-TH1F* The2PMCS=new TH1F("th", "th El out crown MCS", 75,0,100); 
+TH1F* TheMCS=new TH1F("th", "th El out core MCS", 75,0,30); 
+TH1F* TheBIGMCS=new TH1F("th", "th El out 5X5 MCS", 75,0,30); 
+TH1F* The2PMCS=new TH1F("th", "th El out crown MCS", 75,0,30); 
     
     
-TH1F* The1MCS=new TH1F("th", "th El out TAR 1 MCS core", 75,0,100); 
-TH1F* TheBIG1MCS=new TH1F("th", "th El out 5X5 TAR 1 MCS", 75,0,100); 
-TH1F* The2P1MCS=new TH1F("th", "th El out crown TAR 1 MCS", 75,0,100); 
+TH1F* The1MCS=new TH1F("th", "th El out TAR 1 core MCS", 75,0,30); 
+TH1F* TheBIG1MCS=new TH1F("th", "th El out 5X5 TAR 1 MCS", 75,0,30); 
+TH1F* The2P1MCS=new TH1F("th", "th El out crown TAR 1 MCS", 75,0,30); 
     
     
-TH1F* The2MCS=new TH1F("th", "th El out TAR 2 core", 75,0,100); 
-TH1F* TheBIG2MCS=new TH1F("th", "th El out 5X5 TAR 2 MCS", 75,0,100);
-TH1F* The2P2MCS=new TH1F("th", "th El out crown TAR 2 MCS", 75,0,100); 
+TH1F* The2MCS=new TH1F("th", "th El out core TAR 2 MCS", 75,0,30); 
+TH1F* TheBIG2MCS=new TH1F("th", "th El out 5X5 TAR 2 MCS", 75,0,30);
+TH1F* The2P2MCS=new TH1F("th", "th El out crown TAR 2 MCS", 75,0,30); 
     
     
 TH2F  *E3x3  = new TH2F("ThEel" , " Theta el Vs. E_ECAL core",100,0,50,280,0,140);
@@ -308,7 +308,7 @@ if (detKinBeamRot_E_clus3x3!=0) {E3x32P->Fill(detKinBeamRot_ThEl_interaction,det
  
 }
  cout << " Numero elettroni totali IN 5X5 " << n_tot_eBIG << " su un totale di " << n_tot << " eventi " << endl;
- cout << " Numero elettroni totali IN 3X3 " << n_tot_e << " su un totale di " << n_tot << " eventi " << endl;
+ cout << " Numero elettroni totali IN CORE " << n_tot_e << " su un totale di " << n_tot << " eventi " << endl;
  cout << " Numero elettroni totali su CORONA " << n_tot_e2P << " su un totale di " << n_tot << " eventi " << endl;
 
 

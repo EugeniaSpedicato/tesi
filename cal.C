@@ -139,6 +139,7 @@ TH2F  *E3x3  = new TH2F("ThEel" , " Theta el Vs. E_ECAL 3x3",460,0,70,1260,0,140
 TH2F  *E3x3BIG  = new TH2F("ThEelbig" , " Theta el Vs. E_ECAL 5x5",460,0,70,1260,0,140);
 TH2F  *E3x32P  = new TH2F("ThEel2p" , " Theta el Vs. E_ECAL crown",460,0,70,1260,0,140);
     
+
     
 //TH2F  *E3x3noph  = new TH2F("ThEel" , " Theta el Vs. E_ECAL no ph",100,0,70,70,0.2,140);
 
@@ -441,14 +442,16 @@ for (Int_t i=1; i<nx2P+1; i++) {
 for (Int_t j=1; j<ny2P+1; j++) {
 if (E3x32P->GetBinContent(i,j)<1) E3x32P->SetBinContent(i,j,0);}}
     
+Tprofile *px = E3x3->ProfileX("px");    
+    
 TCanvas * c4= new TCanvas("c4","c4",100,100,2500,2000);
 c4->Divide(3,1);
 c4->cd(1);
 gStyle->SetPalette(kLake);
 TColor::InvertPalette(); 
-E3x3->GetXaxis()->SetTitle("Theta_el");
-E3x3->GetYaxis()->SetTitle("Ereco3x3");
-E3x3->Draw("COLZ");
+px->GetXaxis()->SetTitle("Theta_el");
+px->GetYaxis()->SetTitle("Ereco3x3");
+px->Draw();
 c4->cd(2);   
 E3x3BIG->GetXaxis()->SetTitle("Theta_el");
 E3x3BIG->GetYaxis()->SetTitle("Ereco3x3");

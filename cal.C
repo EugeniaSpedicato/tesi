@@ -444,9 +444,9 @@ for (Int_t i=1; i<nx2P+1; i++) {
 for (Int_t j=1; j<ny2P+1; j++) {
 if (E3x32P->GetBinContent(i,j)<1) E3x32P->SetBinContent(i,j,0);}}
     
-TH1F *px = E3x3BIG->ProjectionX("px");
-TH1F *px1 = E3x3->ProjectionX("px1");    
-TH1F *px2 = E3x32P->ProjectionX("px2");    
+TH1D *px = E3x3BIG->ProjectionX("px");
+TH1D *px1 = E3x3->ProjectionX("px1");    
+TH1D *px2 = E3x32P->ProjectionX("px2");    
     
     
 TCanvas * c4= new TCanvas("c4","c4",100,100,2500,2000);

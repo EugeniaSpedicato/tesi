@@ -442,7 +442,7 @@ for (Int_t j=1; j<ny2P+1; j++) {
 if (E3x32P->GetBinContent(i,j)<1) E3x32P->SetBinContent(i,j,0);}}
     
 TCanvas * c4= new TCanvas("c4","c4",1000,100,2500,2000);
-c4->Divide(1,3);
+c4->Divide(3,1);
 c4->cd(1);
 gStyle->SetPalette(kLake);
 TColor::InvertPalette(); 

@@ -484,18 +484,18 @@ TProfile *pxtrue = E3x3true->ProfileX("pxtrue");
 TCanvas * c4= new TCanvas("c4","c4",100,100,2500,2000);
 
 px->GetXaxis()->SetTitle("Theta_el[mrad]");
-px->GetYaxis()->SetTitle("Ereco3x3[GeV]);
+px->GetYaxis()->SetTitle("Ereco3x3[GeV]");
 px->SetLineColor(kRed);
 px->SetLineWidth(3);
 px->Draw();
  
 px1->GetXaxis()->SetTitle("Theta_el[mrad]");
-px1->GetYaxis()->SetTitle("Ereco3x3[GeV]);
+px1->GetYaxis()->SetTitle("Ereco3x3[GeV]");
 px1->SetLineWidth(3);
 px1->Draw("same");
   
 px2->GetXaxis()->SetTitle("Theta_el[mrad]");
-px2->GetYaxis()->SetTitle("Ereco3x3[GeV]");
+px2->GetYaxis()->SetTitle("Ereco3x3[GeV]"");
 px2->SetLineColor(kViolet);
 px2->SetLineWidth(3);
     
@@ -512,7 +512,7 @@ pxtrue->SetLineWidth(3);
 pxtrue->Draw();
  
 px1->GetXaxis()->SetTitle("Theta_el[mrad]");
-px1->GetYaxis()->SetTitle("Ereco3x3[GeV]");
+px1->GetYaxis()->SetTitle("Ereco3x3[GeV]"");
 px1->SetLineWidth(3);
 px1->Draw("same");
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
@@ -524,15 +524,15 @@ c4a->cd(1);
 gStyle->SetPalette(kLake);
 TColor::InvertPalette(); 
 E3x3BIG->GetXaxis()->SetTitle("Theta_el[mrad]");
-E3x3BIG->GetYaxis()->SetTitle("Ereco3x3[GeV]);
+E3x3BIG->GetYaxis()->SetTitle("Ereco3x3[GeV]");
 E3x3BIG->Draw("COLZ");
 c4a->cd(2);   
 E3x3->GetXaxis()->SetTitle("Theta_el[mrad]");
-E3x3->GetYaxis()->SetTitle("Ereco3x3[GeV]);
+E3x3->GetYaxis()->SetTitle("Ereco3x3[GeV]");
 E3x3->Draw("COLZ");
 c4a->cd(3);   
 E3x32P->GetXaxis()->SetTitle("Theta_el[mrad]");
-E3x32P->GetYaxis()->SetTitle("Ereco3x3[GeV]);
+E3x32P->GetYaxis()->SetTitle("Ereco3x3[GeV]");
 E3x32P->Draw("COLZ");
 
 c4a->SaveAs("/home/LHCB-T3/espedicato/tesi/thE.png");
@@ -541,7 +541,7 @@ TCanvas * cc= new TCanvas("c4","c4",100,100,2500,2000);
 cc->Divide(1,2);
 cc->cd(1);
 E3x3->GetXaxis()->SetTitle("Theta_el[mrad]");
-E3x3->GetYaxis()->SetTitle("Ereco3x3[GeV]);
+E3x3->GetYaxis()->SetTitle("Ereco3x3[GeV]");
 E3x3->Draw("COLZ");
 cc->cd(2);
 E3x3true->GetXaxis()->SetTitle("Theta_el[mrad]");

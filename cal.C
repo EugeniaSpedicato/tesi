@@ -612,7 +612,7 @@ c5MCS->SaveAs("/home/LHCB-T3/espedicato/tesi/th_elMCS.png");
     hist_thyz_e2BIG->SetLineWidth(3);
     hist_thyz_e2BIG->Draw("HIST SAME");
     hist_thyz_eBIG->GetXaxis()->SetTitle("Theta YZ [rad]");
-    gPad->BuildLegend(0.3,0.21,0.3,0.21);*/
+    gPad->BuildLegend(0.3,0.21,0.3,0.21);
     
     theC->cd(5);
     hist_thxz_e2P->SetLineColor(kViolet);

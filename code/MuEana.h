@@ -51,7 +51,7 @@ Double_t Pmu_out;
 Double_t Pe_out;
 Double_t tar;
 Double_t ThEl_interaction;
-Double_t ThMu_interaction
+Double_t ThMu_interaction;
 Double_t def_angle_mu;
 Double_t def_angle_e; 
 Double_t n_max_Cell;

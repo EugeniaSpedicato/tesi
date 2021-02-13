@@ -69,7 +69,8 @@ Long64_t nentries = fChain->GetEntriesFast();
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
        
-
+The_true->Fill(ThEl_interaction,wgt_full);
+The_trueCUT->Fill(def_angle_e,wgt_full);
 
     if (photon_coox!=-1 && photon_cooy!=-1)
     {  
@@ -81,6 +82,8 @@ Long64_t nentries = fChain->GetEntriesFast();
         detKinBeamRot_cooYe=detKinBeamRot_cooYe*100; // cm
         photon_coox=photon_coox*100; // cm
         photon_cooy=photon_cooy*100; // cm
+     
+    if(detKinBeamRot_n_cell_e)   
        
     if (detKinBeamRot_tar==0){The_true1->Fill(detKinBeamRot_ThEl_interaction,wgt_full);}
     if (detKinBeamRot_tar==1){The_true2->Fill(detKinBeamRot_ThEl_interaction,wgt_full);}
@@ -154,7 +157,13 @@ Eff2->Draw();
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
 ef->SaveAs("/home/LHCB-T3/espedicato/tesi/Eff.png");
-    
-
  
+TCanvas * t= new TCanvas("ef","ef",1000,100,2500,2000);
+The_true->Draw();
+The_true->SetLineColor(kRed);
+The_trueCUT->Draw("same")
+
+t->SaveAs("/home/LHCB-T3/espedicato/tesi/t.png");
+
+
 }

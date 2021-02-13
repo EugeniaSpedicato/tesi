@@ -107,27 +107,27 @@ TH1F* hist_ang_diff=new TH1F("dist", "DTheta (Thel-Thph) e-gamma diff cel", 200,
     
 TH1F* Ephout=new TH1F("EnergyPH", "Energy Ph out", 75,0.2,150); 
 TH1F* Thph=new TH1F("th", "th Ph out", 75,50,50); */
-TH1F* The_true=new TH1F("th", "th El out true", 500,0,50);
+TH1F* The_true=new TH1F("th", "th El out true", 1000,0,100);
 TH1F* The_trueCUT=new TH1F("th", "th El out true", 300,0,30);
 TH1F* The_trueCUT1=new TH1F("th", "th El out true TAR 1", 300,0,30);
 TH1F* The_trueCUT2=new TH1F("th", "th El out true TAR 2", 300,0,30);
 
     
     
-TH1F* The=new TH1F("th", "th El out core", 250,0,50); 
-TH1F* TheBIG=new TH1F("th", "th El out 5X5", 250,0,50); 
-TH1F* The2P=new TH1F("th", "th El out crown", 250,0,50); 
+TH1F* The=new TH1F("th", "th El out core", 1000,0,100); 
+TH1F* TheBIG=new TH1F("th", "th El out 5X5", 1000,0,100); 
+TH1F* The2P=new TH1F("th", "th El out crown", 1000,0,100); 
 
-TH1F* The_true1=new TH1F("th", "th El out true TAR 1", 250,0,50);    
-TH1F* The1=new TH1F("th", "th El out core TAR 1", 250,0,50); 
-TH1F* TheBIG1=new TH1F("th", "th El out 5X5 TAR 1", 250,0,50); 
-TH1F* The2P1=new TH1F("th", "th El out crown TAR 1", 250,0,50); 
+TH1F* The_true1=new TH1F("th", "th El out true TAR 1", 1000,0,100);    
+TH1F* The1=new TH1F("th", "th El out core TAR 1", 1000,0,100); 
+TH1F* TheBIG1=new TH1F("th", "th El out 5X5 TAR 1", 1000,0,100); 
+TH1F* The2P1=new TH1F("th", "th El out crown TAR 1", 1000,0,100); 
 
     
-TH1F* The_true2=new TH1F("th", "th El out true TAR 2", 250,0,50);     
-TH1F* The2=new TH1F("th", "th El out core TAR 2", 250,0,50); 
-TH1F* TheBIG2=new TH1F("th", "th El out 5X5 TAR 2", 250,0,50); 
-TH1F* The2P2=new TH1F("th", "th El out crown TAR 2", 250,0,50); 
+TH1F* The_true2=new TH1F("th", "th El out true TAR 2", 1000,0,100);     
+TH1F* The2=new TH1F("th", "th El out core TAR 2", 1000,0,100); 
+TH1F* TheBIG2=new TH1F("th", "th El out 5X5 TAR 2", 1000,0,100); 
+TH1F* The2P2=new TH1F("th", "th El out crown TAR 2", 1000,0,100); 
     
     
 TH1F* TheMCS=new TH1F("th", "th El out core MCS", 300,0,30); 
@@ -289,7 +289,10 @@ if(abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275) {
     //hist_Eout_9_e->Fill(Eout_9,wgt_full);
     
 if (detKinBeamRot_E_clus3x3!=0) {E3x32P->Fill(detKinBeamRot_ThEl_interaction,detKinBeamRot_E_clus3x3,wgt_full);}}}
-     
+    
+
+    
+ 
 }
  cout << " Numero elettroni totali IN 5X5 " << n_tot_eBIG << " su un totale di " << n_tot << " eventi " << endl;
  cout << " Numero elettroni totali IN CORE " << n_tot_e << " su un totale di " << n_tot << " eventi " << endl;
@@ -299,28 +302,7 @@ if (detKinBeamRot_E_clus3x3!=0) {E3x32P->Fill(detKinBeamRot_ThEl_interaction,det
  cout << " Numero elettroni totali IN CORE true " << n_tot_e_true << " su un totale di " << n_tot_true << " eventi " << endl;
  cout << " Numero elettroni totali su CORONA true " << n_tot_e2P_true << " su un totale di " << n_tot_true << " eventi " << endl;
 
-TH1F *Eff1 = new TH1F("ef1", "Efficency Tar1", 250,0,50);
-TH1F *Eff2 = new TH1F("ef2", "Efficency Tar1", 250,0,50);
-Eff1->Divide(The1,The_true1,1,1,"B");
-Eff2->Divide(The2,The_true2,1,1,"B");
- 
-TCanvas * ef= new TCanvas("ef","ef",1000,100,2500,2000);
-ef->Divide(1,2);
-ef->cd(1);
-Eff1->GetXaxis()->SetTitle("Theta el[mrad]");
-Eff1->GetYaxis()->SetTitle("Efficency");
-Eff1->SetLineWidth(3);
-Eff1->SetLineColor(kBlack);
-Eff1->Draw("HIST");     
-ef->cd(2);
-Eff2->GetXaxis()->SetTitle("Theta el[mrad]");
-Eff2->GetYaxis()->SetTitle("Efficency");
-Eff2->SetLineWidth(3);
-Eff2->SetLineColor(kRed);
-Eff2->Draw("HIST");   
-gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
-ef->SaveAs("/home/LHCB-T3/espedicato/tesi/Eff.png");
     
 /*TCanvas * c1= new TCanvas("c1","c1",1000,100,2500,2000);
 

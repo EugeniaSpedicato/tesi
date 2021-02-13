@@ -69,7 +69,7 @@ Long64_t nentries = fChain->GetEntriesFast();
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
        
-The_true->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
+The_true->Fill(detKinBeamRot_def_angle_e,wgt_full);
 The_trueCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
 
     if (photon_coox!=-1 && photon_cooy!=-1)
@@ -85,47 +85,47 @@ The_trueCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
      
     if(detKinBeamRot_n_cell_e)   
        
-    if (detKinBeamRot_tar==0){The_true1->Fill(detKinBeamRot_ThEl_interaction,wgt_full);}
-    if (detKinBeamRot_tar==1){The_true2->Fill(detKinBeamRot_ThEl_interaction,wgt_full);}
+    if (detKinBeamRot_tar==0){The_true1->Fill(detKinBeamRot_def_angle_e,wgt_full);}
+    if (detKinBeamRot_tar==1){The_true2->Fill(detKinBeamRot_def_angle_e,wgt_full);}
        
        
 if (detKinBeamRot_n_cell_e!=0 && E_CAL>0)
 {  
 
-    TheBIG->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
-    TheBIGMCS->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
+    TheBIG->Fill(detKinBeamRot_def_angle_e,wgt_full);
+    TheBIGMCS->Fill(detKinBeamRot_def_angle_e,wgt_full);
     
     if (detKinBeamRot_tar==0)
-    {TheBIG1->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
-    TheBIG1MCS->Fill(detKinBeamRot_ThEl_interaction,wgt_full);}
+    {TheBIG1->Fill(detKinBeamRot_def_angle_e,wgt_full);
+    TheBIG1MCS->Fill(detKinBeamRot_def_angle_e,wgt_full);}
     if (detKinBeamRot_tar==1)
-    {TheBIG2->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
-    TheBIG2MCS->Fill(detKinBeamRot_ThEl_interaction,wgt_full);}
+    {TheBIG2->Fill(detKinBeamRot_def_angle_e,wgt_full);
+    TheBIG2MCS->Fill(detKinBeamRot_def_angle_e,wgt_full);}
 
     
 if(abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275) {
 
-    The->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
-    TheMCS->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
+    The->Fill(detKinBeamRot_def_angle_e,wgt_full);
+    TheMCS->Fill(detKinBeamRot_def_angle_e,wgt_full);
     
     if (detKinBeamRot_tar==0)
-    {The1->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
-    The1MCS->Fill(detKinBeamRot_ThEl_interaction,wgt_full);}
+    {The1->Fill(detKinBeamRot_def_angle_e,wgt_full);
+    The1MCS->Fill(detKinBeamRot_def_angle_e,wgt_full);}
     if (detKinBeamRot_tar==1)
-    {The2->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
-    The2MCS->Fill(detKinBeamRot_ThEl_interaction,wgt_full);}
+    {The2->Fill(detKinBeamRot_def_angle_e,wgt_full);
+    The2MCS->Fill(detKinBeamRot_def_angle_e,wgt_full);}
 
 } else { 
 
-    The2P->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
-    The2PMCS->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
+    The2P->Fill(detKinBeamRot_def_angle_e,wgt_full);
+    The2PMCS->Fill(detKinBeamRot_def_angle_e,wgt_full);
     
     if (detKinBeamRot_tar==0)
-    {The2P1->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
-    The2P1MCS->Fill(detKinBeamRot_ThEl_interaction,wgt_full);}
+    {The2P1->Fill(detKinBeamRot_def_angle_e,wgt_full);
+    The2P1MCS->Fill(detKinBeamRot_def_angle_e,wgt_full);}
     if (detKinBeamRot_tar==1)
-    {The2P2->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
-    The2P2MCS->Fill(detKinBeamRot_ThEl_interaction,wgt_full);}
+    {The2P2->Fill(detKinBeamRot_def_angle_e,wgt_full);
+    The2P2MCS->Fill(detKinBeamRot_def_angle_e,wgt_full);}
 }}
      
 }

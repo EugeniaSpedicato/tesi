@@ -55,7 +55,6 @@ TH1F* TheBIG2MCS=new TH1F("th", "th El out 5X5 TAR 2 MCS", 300,0,30);
 TH1F* The2P2MCS=new TH1F("th", "th El out crown TAR 2 MCS", 300,0,30); 
 
     
-//TH2F  *E3x3noph  = new TH2F("ThEel" , " Theta el Vs. E_ECAL no ph",100,0,70,70,0.2,140);
 
     
 if (fChain == 0) return;
@@ -82,6 +81,9 @@ Long64_t nentries = fChain->GetEntriesFast();
         detKinBeamRot_cooYe=detKinBeamRot_cooYe*100; // cm
         photon_coox=photon_coox*100; // cm
         photon_cooy=photon_cooy*100; // cm
+       
+    if (detKinBeamRot_tar==0){The_true1->Fill(detKinBeamRot_ThEl_interaction,wgt_full);}
+    if (detKinBeamRot_tar==1){The_true2->Fill(detKinBeamRot_ThEl_interaction,wgt_full);}
        
        
 if (detKinBeamRot_n_cell_e!=0 && E_CAL>0)
@@ -137,7 +139,8 @@ Eff1->GetXaxis()->SetTitle("Theta el[mrad]");
 Eff1->GetYaxis()->SetTitle("Efficency");
 Eff1->SetLineWidth(3);
 Eff1->SetLineColor(kBlack);
-
+Eff1->SetMaximum(1);
+Eff1->SetMinimum(0);
 Eff1->Draw();  
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 ef->cd(2);
@@ -145,7 +148,8 @@ Eff2->GetXaxis()->SetTitle("Theta el[mrad]");
 Eff2->GetYaxis()->SetTitle("Efficency");
 Eff2->SetLineWidth(3);
 Eff2->SetLineColor(kRed);
-
+Eff2->SetMaximum(1);
+Eff2->SetMinimum(0);
 Eff2->Draw();   
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 

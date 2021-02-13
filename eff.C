@@ -161,7 +161,7 @@ ef->SaveAs("/home/LHCB-T3/espedicato/tesi/Eff.png");
 TCanvas * t= new TCanvas("ef","ef",1000,100,2500,2000);
 The_true->Draw();
 The_true->SetLineColor(kRed);
-The_trueCUT->Draw("same")
+The_trueCUT->Draw("same");
 
 t->SaveAs("/home/LHCB-T3/espedicato/tesi/t.png");
 

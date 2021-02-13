@@ -883,7 +883,7 @@ return def_angle;
 }
 
 void FastSim::LoadKineVars(const PxPyPzEVector & p_mu_in,  const PxPyPzEVector & p_e_in, 
-			   const PxPyPzEVector & p_mu_out, const PxPyPzEVector & p_e_out, const TMatrixD & coo, const Double_t & TheINT,
+			   const PxPyPzEVector & p_mu_out, const PxPyPzEVector & p_e_out, const TMatrixD & coo, const Double_t & TheINT, const Double_t & ThMuINT,
 			   MuE::KineVars & kv,ECAL* const & theGrid) {
   
   kv.Ee = p_e_out.E();

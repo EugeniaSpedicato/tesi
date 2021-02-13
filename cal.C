@@ -359,7 +359,7 @@ gPad->BuildLegend(0.25,0.15,0.25,0.15);
 c2a->SaveAs("/home/LHCB-T3/espedicato/tesi/Dtheta.png");*/
 
 
-/*Int_t nx = E3x3->GetNbinsX();
+Int_t nx = E3x3->GetNbinsX();
 Int_t ny = E3x3->GetNbinsY();
 for (Int_t i=1; i<nx+1; i++) {
 for (Int_t j=1; j<ny+1; j++) {
@@ -561,7 +561,7 @@ gPad->BuildLegend(0.3,0.21,0.3,0.21);
     
 c5MCS->SaveAs("/home/LHCB-T3/espedicato/tesi/th_elMCS.png"); 
   
-    TCanvas * theC= new TCanvas("tar","tar",1500,1000,3500,2000);
+  /*  TCanvas * theC= new TCanvas("tar","tar",1500,1000,3500,2000);
     theC->Divide(2,3);
     theC->cd(1);
     hist_thxz_e->SetLineColor(kBlue);
@@ -612,7 +612,7 @@ c5MCS->SaveAs("/home/LHCB-T3/espedicato/tesi/th_elMCS.png");
     hist_thyz_e2BIG->SetLineWidth(3);
     hist_thyz_e2BIG->Draw("HIST SAME");
     hist_thyz_eBIG->GetXaxis()->SetTitle("Theta YZ [rad]");
-    gPad->BuildLegend(0.3,0.21,0.3,0.21);
+    gPad->BuildLegend(0.3,0.21,0.3,0.21);*/
     
     theC->cd(5);
     hist_thxz_e2P->SetLineColor(kViolet);
@@ -712,5 +712,5 @@ c5MCS->SaveAs("/home/LHCB-T3/espedicato/tesi/th_elMCS.png");
     hist_thyz_e22P->Draw("HIST same");
     gPad->BuildLegend(0.3,0.21,0.3,0.21);
         
-    the2->SaveAs("/home/LHCB-T3/espedicato/tesi/thxzyz.png");   */
+    the2->SaveAs("/home/LHCB-T3/espedicato/tesi/thxzyz.png");   
 }

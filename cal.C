@@ -242,6 +242,7 @@ if (detKinBeamRot_E_clus3x3!=0 ) {E3x3BIG->Fill(detKinBeamRot_ThEl_interaction,d
     
 if(abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275) {
     n_tot_e+=wgt_full;
+    n_tot_true+=wgt_full;
     hist_E9_e->Fill(E9,wgt_full);
     hist_thxz_e->Fill(anglex_e,wgt_full);
     hist_thyz_e->Fill(angley_e,wgt_full);
@@ -332,7 +333,6 @@ if (detKinBeamRot_E_clus3x3!=0) {E3x32P->Fill(detKinBeamRot_ThEl_interaction,det
 
  cout << " Numero elettroni totali IN 5X5 true" << n_tot_eBIG_true << " su un totale di " << n_tot_true << " eventi " << endl;
  cout << " Numero elettroni totali IN CORE true" << n_tot_e_true << " su un totale di " << n_tot_true << " eventi " << endl;
- cout << " Numero elettroni totali su CORONA true" << n_tot_e2P_true << " su un totale di " << n_tot_true << " eventi " << endl;
  cout << " Numero elettroni totali su CORONA true" << n_tot_e2P_true << " su un totale di " << n_tot_true << " eventi " << endl;
 
 

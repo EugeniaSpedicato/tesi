@@ -107,27 +107,27 @@ TH1F* hist_ang_diff=new TH1F("dist", "DTheta (Thel-Thph) e-gamma diff cel", 200,
     
 TH1F* Ephout=new TH1F("EnergyPH", "Energy Ph out", 75,0.2,150); 
 TH1F* Thph=new TH1F("th", "th Ph out", 75,50,50); */
-TH1F* The_true=new TH1F("th", "th El out true", 1000,0,100);
+TH1F* The_true=new TH1F("th", "th El out true", 500,0,50);
 TH1F* The_trueCUT=new TH1F("th", "th El out true", 300,0,30);
 TH1F* The_trueCUT1=new TH1F("th", "th El out true TAR 1", 300,0,30);
 TH1F* The_trueCUT2=new TH1F("th", "th El out true TAR 2", 300,0,30);
 
     
     
-TH1F* The=new TH1F("th", "th El out core", 1000,0,100); 
-TH1F* TheBIG=new TH1F("th", "th El out 5X5", 1000,0,100); 
-TH1F* The2P=new TH1F("th", "th El out crown", 1000,0,100); 
+TH1F* The=new TH1F("th", "th El out core", 500,0,50); 
+TH1F* TheBIG=new TH1F("th", "th El out 5X5", 500,0,50); 
+TH1F* The2P=new TH1F("th", "th El out crown", 500,0,50); 
 
-TH1F* The_true1=new TH1F("th", "th El out true TAR 1", 1000,0,100);    
-TH1F* The1=new TH1F("th", "th El out core TAR 1", 1000,0,100); 
-TH1F* TheBIG1=new TH1F("th", "th El out 5X5 TAR 1", 1000,0,100); 
-TH1F* The2P1=new TH1F("th", "th El out crown TAR 1", 1000,0,100); 
+TH1F* The_true1=new TH1F("th", "th El out true TAR 1", 500,0,50);    
+TH1F* The1=new TH1F("th", "th El out core TAR 1", 500,0,50); 
+TH1F* TheBIG1=new TH1F("th", "th El out 5X5 TAR 1", 500,0,50); 
+TH1F* The2P1=new TH1F("th", "th El out crown TAR 1", 500,0,50); 
 
     
-TH1F* The_true2=new TH1F("th", "th El out true TAR 2", 1000,0,100);     
-TH1F* The2=new TH1F("th", "th El out core TAR 2", 1000,0,100); 
-TH1F* TheBIG2=new TH1F("th", "th El out 5X5 TAR 2", 1000,0,100); 
-TH1F* The2P2=new TH1F("th", "th El out crown TAR 2", 1000,0,100); 
+TH1F* The_true2=new TH1F("th", "th El out true TAR 2", 500,0,50);     
+TH1F* The2=new TH1F("th", "th El out core TAR 2", 500,0,50); 
+TH1F* TheBIG2=new TH1F("th", "th El out 5X5 TAR 2", 500,0,50); 
+TH1F* The2P2=new TH1F("th", "th El out crown TAR 2", 500,0,50); 
     
     
 TH1F* TheMCS=new TH1F("th", "th El out core MCS", 300,0,30); 
@@ -289,43 +289,7 @@ if(abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275) {
     //hist_Eout_9_e->Fill(Eout_9,wgt_full);
     
 if (detKinBeamRot_E_clus3x3!=0) {E3x32P->Fill(detKinBeamRot_ThEl_interaction,detKinBeamRot_E_clus3x3,wgt_full);}}}
-    
-    
-    
-  /*if (photon_n_cell_ph!=0 && photon_n_cell_ph!=1 && photon_n_cell_ph!=2 && photon_n_cell_ph!=3 && photon_n_cell_ph!=4 && photon_n_cell_ph!=5 && photon_n_cell_ph!=10 && photon_n_cell_ph!=15 && photon_n_cell_ph!=20 && photon_n_cell_ph!=25 && photon_n_cell_ph!=24 && photon_n_cell_ph!=23 && photon_n_cell_ph!=22 && photon_n_cell_ph!=21 && photon_n_cell_ph!=16 && photon_n_cell_ph!=11 && photon_n_cell_ph!=6)
-  { Ephout->Fill(photon_energy,wgt_full);
-    Thph->Fill(photon_theta,wgt_full);
-    The->Fill(detKinBeamRot_the,wgt_full);
-    
-   Double_t d_e_ph=sqrt( (detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detKinBeamRot_cooYe-photon_cooy)*(detKinBeamRot_cooYe-photon_cooy) )/Rm; 
-    double Dtheta=detKinBeamRot_the-photon_theta;
-
-      n_tot_eph+=wgt_full; // e+gamma sul calorimetro
-//      hist_E9_eph->Fill(E9,wgt_full);
-      hist_dist->Fill(d_e_ph,wgt_full);
-    hist_ang->Fill(Dtheta,wgt_full);
-        if (photon_n_cell_ph==detKinBeamRot_n_cell_e)
-        {same_cell+=wgt_full;
-         hist_E9_eph_same->Fill(E9,wgt_full);
-         hist_dist_same->Fill(d_e_ph,wgt_full);
-        hist_ang_same->Fill(Dtheta,wgt_full);
-         
-      hist_Eout_9_eph_same->Fill(Eout_9,wgt_full);
-        }//stessa cella
-        else {different_cell+=wgt_full;
-              hist_E9_eph_diff->Fill(E9,wgt_full);
-              hist_dist_diff->Fill(d_e_ph,wgt_full);
-                hist_Eout_9_eph_diff->Fill(Eout_9,wgt_full);
-              hist_ang_diff->Fill(Dtheta,wgt_full);
-             }  // cella diversa
-  } else {
-      n_tot_NOph+=wgt_full;   
-      hist_E9_NOph->Fill(E9,wgt_full);
-      hist_Eout_9_NOph->Fill(Eout_9,wgt_full);
-      //if (detKinBeamRot_E_clus3x3!=0) {E3x3noph->Fill(detKinBeamRot_ThEl_interaction,detKinBeamRot_E_clus3x3);}
-        }*/
-    
- 
+     
 }
  cout << " Numero elettroni totali IN 5X5 " << n_tot_eBIG << " su un totale di " << n_tot << " eventi " << endl;
  cout << " Numero elettroni totali IN CORE " << n_tot_e << " su un totale di " << n_tot << " eventi " << endl;
@@ -335,44 +299,30 @@ if (detKinBeamRot_E_clus3x3!=0) {E3x32P->Fill(detKinBeamRot_ThEl_interaction,det
  cout << " Numero elettroni totali IN CORE true " << n_tot_e_true << " su un totale di " << n_tot_true << " eventi " << endl;
  cout << " Numero elettroni totali su CORONA true " << n_tot_e2P_true << " su un totale di " << n_tot_true << " eventi " << endl;
 
+TH1F *Eff1 = new TH1F("ef1", "Efficency Tar1", 500,0,50);
+TH1F *Eff2 = new TH1F("ef2", "Efficency Tar1", 500,0,50);
+Eff1->Divide(The1,The_true1,1,1,"B");
+Eff2->Divide(The2,The_true2,1,1,"B");
+ 
+TCanvas * ef= new TCanvas("ef","ef",1000,100,2500,2000);
+ef->Divide(1,2);
+ef->cd(1);
+Eff1->GetXaxis()->SetTitle("Theta el[mrad]");
+Eff1->GetYaxis()->SetTitle("Efficency");
+Eff1->SetLineWidth(3);
+Eff1->SetLineColor(kBlack);
+Eff1->Draw("HIST");     
+ef->cd(2);
+Eff2->GetXaxis()->SetTitle("Theta el[mrad]");
+Eff2->GetYaxis()->SetTitle("Efficency");
+Eff2->SetLineWidth(3);
+Eff2->SetLineColor(kRed);
+Eff2->Draw("HIST");   
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
+ef->SaveAs("/home/LHCB-T3/espedicato/tesi/E9.png");
     
-    
-/*cout << "Elettroni totali nel calorimetro: " << n_tot << endl;
-cout << "Elettroni ad una distanza 2RM dal fotone: " << n_two << endl;
-cout << "Eventi in cui vedo solo un cluster: " << n_one << endl;
-cout << "Frazione di eventi scartabili: " << ratio <<endl;
-cout << "-------------------------------------------"<<endl;
-cout << "Elettroni totali nel calorimetro CON TAGLIO: " << n_tot_cut << endl;
-cout << "Elettroni ad una distanza 2RM dal fotone CON TAGLIO: " << n_two_cut << endl;
-cout << "Eventi in cui vedo solo un cluster CON TAGLIO: " << n_one_cut << endl;
-cout << "Frazione di eventi scartabili CON TAGLIO: " << ratio_cut <<endl;
-    
-cout << endl;
-    
-cout << "Elettroni totali nel calorimetro TAR 0: " << n_tot0 << endl;
-cout << "Elettroni ad una distanza 2RM dal fotone TAR 0: " << n_two0 << endl;
-cout << "Eventi in cui vedo solo un cluster TAR 0: " << n_one0 << endl;
-cout << "Frazione di eventi scartabili TAR 0: " << ratio0 <<endl;
-cout << "-------------------------------------------"<<endl;
-cout << "Elettroni totali nel calorimetro CON TAGLIO TAR 0: " << n_tot_cut0 << endl;
-cout << "Elettroni ad una distanza 2RM dal fotone CON TAGLIO TAR 0: " << n_two_cut0 << endl;
-cout << "Eventi in cui vedo solo un cluster CON TAGLIO TAR 0: " << n_one_cut0 << endl;
-cout << "Frazione di eventi scartabili CON TAGLIO TAR0: " << ratio_cut0 <<endl;
-    
-cout << endl;
-    
-cout << "Elettroni totali nel calorimetro TAR 1: " << n_tot1 << endl;
-cout << "Elettroni ad una distanza 2RM dal fotone TAR 1: " << n_two1 << endl;
-cout << "Eventi in cui vedo solo un cluster TAR 1: " << n_one1 << endl;
-cout << "Frazione di eventi scartabili TAR 1: " << ratio1 <<endl;
-cout << "-------------------------------------------"<<endl;
-cout << "Elettroni totali nel calorimetro CON TAGLIO TAR 1: " << n_tot_cut1 << endl;
-cout << "Elettroni ad una distanza 2RM dal fotone CON TAGLIO TAR 1: " << n_two_cut1 << endl;
-cout << "Eventi in cui vedo solo un cluster CON TAGLIO TAR 1: " << n_one_cut1 << endl;
-cout << "Frazione di eventi scartabili CON TAGLIO TAR 1: " << ratio_cut1 <<endl;*/
-    
-TCanvas * c1= new TCanvas("c1","c1",1000,100,2500,2000);
+/*TCanvas * c1= new TCanvas("c1","c1",1000,100,2500,2000);
 
 hist_E9_eBIG->GetXaxis()->SetTitle("Ecentral/E3x3");
 hist_E9_eBIG->SetLineWidth(3);
@@ -390,7 +340,7 @@ hist_E9_e2P->SetLineColor(kViolet);
 hist_E9_e2P->Draw("HIST same"); 
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
-c1->SaveAs("/home/LHCB-T3/espedicato/tesi/E9.png");
+c1->SaveAs("/home/LHCB-T3/espedicato/tesi/E9.png");*/
     
 /*TCanvas * c2= new TCanvas("c2","c2",1000,100,2500,2000);
 
@@ -425,29 +375,9 @@ hist_ang_diff->Draw("HIST same");
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
 c2a->SaveAs("/home/LHCB-T3/espedicato/tesi/Dtheta.png");*/
-    
-/*TCanvas * c3= new TCanvas("c3","c3",1000,100,2500,2000);
 
-hist_Eout_9_e->GetXaxis()->SetTitle("E3x3/E5x5");
-hist_Eout_9_e->SetLineWidth(3);
-hist_Eout_9_e->Draw("HIST"); 
 
-hist_Eout_9_eph_same->SetLineColor(kRed);
-hist_Eout_9_eph_same->SetLineWidth(3);
-hist_Eout_9_eph_same->Draw("HIST same"); 
-    
-hist_Eout_9_eph_diff->SetLineColor(kGreen);
-hist_Eout_9_eph_diff->SetLineWidth(3);
-hist_Eout_9_eph_diff->Draw("HIST same"); 
-    
-hist_Eout_9_NOph->SetLineColor(kBlack);
-hist_Eout_9_NOph->SetLineWidth(3);
-hist_Eout_9_NOph->Draw("HIST same");
-gPad->BuildLegend(0.25,0.15,0.25,0.15);
-
-c3->SaveAs("/home/LHCB-T3/espedicato/tesi/out+3x3.png");*/
-
-Int_t nx = E3x3->GetNbinsX();
+/*Int_t nx = E3x3->GetNbinsX();
 Int_t ny = E3x3->GetNbinsY();
 for (Int_t i=1; i<nx+1; i++) {
 for (Int_t j=1; j<ny+1; j++) {
@@ -800,5 +730,5 @@ c5MCS->SaveAs("/home/LHCB-T3/espedicato/tesi/th_elMCS.png");
     hist_thyz_e22P->Draw("HIST same");
     gPad->BuildLegend(0.3,0.21,0.3,0.21);
         
-    the2->SaveAs("/home/LHCB-T3/espedicato/tesi/thxzyz.png");   
+    the2->SaveAs("/home/LHCB-T3/espedicato/tesi/thxzyz.png");   */
 }

@@ -639,7 +639,7 @@ c5MCS->SaveAs("/home/LHCB-T3/espedicato/tesi/th_elMCS.png");
     hist_thyz_e2P->GetXaxis()->SetTitle("Theta YZ [rad]");
     gPad->BuildLegend(0.3,0.21,0.3,0.21);
     
-    theC->SaveAs("/home/LHCB-T3/espedicato/tesi/Th_el_XZYZ.png");     
+    theC->SaveAs("/home/LHCB-T3/espedicato/tesi/Th_el_XZYZ.png");     */
     
     TCanvas * the2= new TCanvas("tar2","tar2",1500,1000,3500,2000);
     the2->Divide(2,3);

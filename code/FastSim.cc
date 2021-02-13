@@ -103,6 +103,8 @@ TMatrixD cooIN(5,1);
 Double_t xin=b[18][0];
 Double_t yin=b[18][1];
 Double_t TheINT=b[18][2]; // angolo che ha nel momento dell'interazione, senza effetto di MCS 
+Double_t ThMuINT=b[18][3]; // angolo che ha nel momento dell'interazione, senza effetto di MCS 
+
     
   
 //LoadKineVars(p_mu_in_div, p_e_in_div, p_mu_out_div_smeared, p_e_out_div_smeared, coo, TheINT, detKinBeamRot);
@@ -124,7 +126,7 @@ double energy_sm_el=p_e_out_div_smeared.E();
 
 myGrid->CreateGrid(5,-7.125,7.125,5,-7.125,7.125);
 
-LoadKineVars(p_mu_in_div, p_e_in_div, p_mu_out_div_smeared, p_e_out_div_smeared, coo, TheINT, detKinBeamRot,myGrid); 
+LoadKineVars(p_mu_in_div, p_e_in_div, p_mu_out_div_smeared, p_e_out_div_smeared, coo, TheINT,ThMuINT, detKinBeamRot,myGrid); 
 
 double cellEL=myGrid->GiveCentralCell(coo[2][0]*100,coo[3][0]*100); 
 
@@ -409,6 +411,7 @@ Double_t sigBEe=(13.6/(ke.E()*1000))*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad
     Double_t anglexe = atan2(ke.Px(), ke.Pz());
     Double_t angleye = atan2(ke.Py(), ke.Pz()); 
     Double_t The = ke.Theta(); // angolo in rad che ha nel momento dell'interazione, senza effetto di MCS 
+    Double_t Thmu = k.Theta(); // angolo in rad che ha nel momento dell'interazione, senza effetto di MCS 
     
     
     /*Double_t thetaEL = ke.Theta()*1000;//mrad
@@ -608,6 +611,7 @@ Double_t pe=sqrt(ke.Px()*ke.Px()+ke.Py()*ke.Py()+ke.Pz()*ke.Pz());
         coo_ang_fin[18][0]=x2; 
         coo_ang_fin[18][1]=y2; 
         coo_ang_fin[18][2]=The; // angolo che ha nel momento dell'interazione, senza effetto di MCS 
+        coo_ang_fin[18][3]=Thmu; // angolo che ha nel momento dell'interazione, senza effetto di MCS 
 
         
         
@@ -898,6 +902,7 @@ kv.cooYe = coo[3][0];
 
 kv.tar = tar;
  kv.ThEl_interaction = 1e3*TheINT; // angolo elettrone al momento della produzione, in mrad
+ kv.ThMu_interaction = 1e3*ThMuINT; // angolo elettrone al momento della produzione, in mrad
 
   /*kv.pXmu = p_mu_in.Px();
   kv.pYmu = p_mu_in.Py();

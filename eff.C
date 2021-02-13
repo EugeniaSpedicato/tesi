@@ -69,8 +69,8 @@ Long64_t nentries = fChain->GetEntriesFast();
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
        
-The_true->Fill(ThEl_interaction,wgt_full);
-The_trueCUT->Fill(def_angle_e,wgt_full);
+The_true->Fill(detKinBeamRot_ThEl_interaction,wgt_full);
+The_trueCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
 
     if (photon_coox!=-1 && photon_cooy!=-1)
     {  

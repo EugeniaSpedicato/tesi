@@ -138,7 +138,7 @@ Eff1->GetYaxis()->SetTitle("Efficency");
 Eff1->SetLineWidth(3);
 Eff1->SetLineColor(kBlack);
 
-Eff1->Draw("HIST");  
+Eff1->Draw();  
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 ef->cd(2);
 Eff2->GetXaxis()->SetTitle("Theta el[mrad]");
@@ -146,7 +146,7 @@ Eff2->GetYaxis()->SetTitle("Efficency");
 Eff2->SetLineWidth(3);
 Eff2->SetLineColor(kRed);
 
-Eff2->Draw("HIST");   
+Eff2->Draw();   
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
 ef->SaveAs("/home/LHCB-T3/espedicato/tesi/Eff.png");

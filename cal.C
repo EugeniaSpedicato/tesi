@@ -217,7 +217,7 @@ if (detKinBeamRot_n_cell_e!=0 && E_CAL>0)
    
         
     n_tot_eBIG+=wgt_full;
-    n_tot_eBIG_true+=1;
+    ++n_tot_eBIG_true;
     hist_E9_eBIG->Fill(E9,wgt_full);
     hist_thxz_eBIG->Fill(anglex_e,wgt_full);
     hist_thyz_eBIG->Fill(angley_e,wgt_full);
@@ -242,7 +242,7 @@ if (detKinBeamRot_E_clus3x3!=0 ) {E3x3BIG->Fill(detKinBeamRot_ThEl_interaction,d
     
 if(abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275) {
     n_tot_e+=wgt_full;
-    n_tot_true+=wgt_full;
+    ++n_tot_true;
     hist_E9_e->Fill(E9,wgt_full);
     hist_thxz_e->Fill(anglex_e,wgt_full);
     hist_thyz_e->Fill(angley_e,wgt_full);
@@ -268,7 +268,7 @@ if(abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275) {
     } //(detKinBeamRot_E_clus3x3!=0 && E9<0.95 && E9>0.5) 
 } else { 
     n_tot_e2P+=wgt_full;
-    n_tot_e2P_true+=1;
+    ++n_tot_e2P_true;
     hist_E9_e2P->Fill(E9,wgt_full);
     hist_thxz_e2P->Fill(anglex_e,wgt_full);
     hist_thyz_e2P->Fill(angley_e,wgt_full);

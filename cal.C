@@ -372,7 +372,7 @@ cout << "Elettroni ad una distanza 2RM dal fotone CON TAGLIO TAR 1: " << n_two_c
 cout << "Eventi in cui vedo solo un cluster CON TAGLIO TAR 1: " << n_one_cut1 << endl;
 cout << "Frazione di eventi scartabili CON TAGLIO TAR 1: " << ratio_cut1 <<endl;*/
     
-/*TCanvas * c1= new TCanvas("c1","c1",1000,100,2500,2000);
+TCanvas * c1= new TCanvas("c1","c1",1000,100,2500,2000);
 
 hist_E9_eBIG->GetXaxis()->SetTitle("Ecentral/E3x3");
 hist_E9_eBIG->SetLineWidth(3);
@@ -390,7 +390,7 @@ hist_E9_e2P->SetLineColor(kViolet);
 hist_E9_e2P->Draw("HIST same"); 
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
-c1->SaveAs("/home/LHCB-T3/espedicato/tesi/E9.png");*/
+c1->SaveAs("/home/LHCB-T3/espedicato/tesi/E9.png");
     
 /*TCanvas * c2= new TCanvas("c2","c2",1000,100,2500,2000);
 
@@ -447,7 +447,7 @@ gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
 c3->SaveAs("/home/LHCB-T3/espedicato/tesi/out+3x3.png");*/
 
-/*Int_t nx = E3x3->GetNbinsX();
+Int_t nx = E3x3->GetNbinsX();
 Int_t ny = E3x3->GetNbinsY();
 for (Int_t i=1; i<nx+1; i++) {
 for (Int_t j=1; j<ny+1; j++) {
@@ -557,10 +557,10 @@ cc->cd(2);
 E3x3true->GetXaxis()->SetTitle("Theta_el[mrad]");
 E3x3true->GetYaxis()->SetTitle("Etrue");
 E3x3true->Draw("COLZ");
-cc->SaveAs("/home/LHCB-T3/espedicato/tesi/thEcore.png");*/
+cc->SaveAs("/home/LHCB-T3/espedicato/tesi/thEcore.png");
 
     
-/*TCanvas * c5= new TCanvas("c5","c5",1000,100,2500,2000);
+TCanvas * c5= new TCanvas("c5","c5",1000,100,2500,2000);
 c5->Divide(1,3);
 c5->cd(1);
 The_true->SetLineColor(kBlack);
@@ -800,5 +800,5 @@ c5MCS->SaveAs("/home/LHCB-T3/espedicato/tesi/th_elMCS.png");
     hist_thyz_e22P->Draw("HIST same");
     gPad->BuildLegend(0.3,0.21,0.3,0.21);
         
-    the2->SaveAs("/home/LHCB-T3/espedicato/tesi/thxzyz.png");   */ 
+    the2->SaveAs("/home/LHCB-T3/espedicato/tesi/thxzyz.png");   
 }

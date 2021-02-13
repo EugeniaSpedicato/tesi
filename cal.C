@@ -114,20 +114,20 @@ TH1F* The_trueCUT2=new TH1F("th", "th El out true TAR 2", 300,0,30);
 
     
     
-TH1F* The=new TH1F("th", "th El out core", 500,0,50); 
-TH1F* TheBIG=new TH1F("th", "th El out 5X5", 500,0,50); 
-TH1F* The2P=new TH1F("th", "th El out crown", 500,0,50); 
+TH1F* The=new TH1F("th", "th El out core", 250,0,50); 
+TH1F* TheBIG=new TH1F("th", "th El out 5X5", 250,0,50); 
+TH1F* The2P=new TH1F("th", "th El out crown", 250,0,50); 
 
-TH1F* The_true1=new TH1F("th", "th El out true TAR 1", 500,0,50);    
-TH1F* The1=new TH1F("th", "th El out core TAR 1", 500,0,50); 
-TH1F* TheBIG1=new TH1F("th", "th El out 5X5 TAR 1", 500,0,50); 
-TH1F* The2P1=new TH1F("th", "th El out crown TAR 1", 500,0,50); 
+TH1F* The_true1=new TH1F("th", "th El out true TAR 1", 250,0,50);    
+TH1F* The1=new TH1F("th", "th El out core TAR 1", 250,0,50); 
+TH1F* TheBIG1=new TH1F("th", "th El out 5X5 TAR 1", 250,0,50); 
+TH1F* The2P1=new TH1F("th", "th El out crown TAR 1", 250,0,50); 
 
     
-TH1F* The_true2=new TH1F("th", "th El out true TAR 2", 500,0,50);     
-TH1F* The2=new TH1F("th", "th El out core TAR 2", 500,0,50); 
-TH1F* TheBIG2=new TH1F("th", "th El out 5X5 TAR 2", 500,0,50); 
-TH1F* The2P2=new TH1F("th", "th El out crown TAR 2", 500,0,50); 
+TH1F* The_true2=new TH1F("th", "th El out true TAR 2", 250,0,50);     
+TH1F* The2=new TH1F("th", "th El out core TAR 2", 250,0,50); 
+TH1F* TheBIG2=new TH1F("th", "th El out 5X5 TAR 2", 250,0,50); 
+TH1F* The2P2=new TH1F("th", "th El out crown TAR 2", 250,0,50); 
     
     
 TH1F* TheMCS=new TH1F("th", "th El out core MCS", 300,0,30); 
@@ -299,8 +299,8 @@ if (detKinBeamRot_E_clus3x3!=0) {E3x32P->Fill(detKinBeamRot_ThEl_interaction,det
  cout << " Numero elettroni totali IN CORE true " << n_tot_e_true << " su un totale di " << n_tot_true << " eventi " << endl;
  cout << " Numero elettroni totali su CORONA true " << n_tot_e2P_true << " su un totale di " << n_tot_true << " eventi " << endl;
 
-TH1F *Eff1 = new TH1F("ef1", "Efficency Tar1", 500,0,50);
-TH1F *Eff2 = new TH1F("ef2", "Efficency Tar1", 500,0,50);
+TH1F *Eff1 = new TH1F("ef1", "Efficency Tar1", 250,0,50);
+TH1F *Eff2 = new TH1F("ef2", "Efficency Tar1", 250,0,50);
 Eff1->Divide(The1,The_true1,1,1,"B");
 Eff2->Divide(The2,The_true2,1,1,"B");
  
@@ -320,7 +320,7 @@ Eff2->SetLineColor(kRed);
 Eff2->Draw("HIST");   
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
-ef->SaveAs("/home/LHCB-T3/espedicato/tesi/E9.png");
+ef->SaveAs("/home/LHCB-T3/espedicato/tesi/Eff.png");
     
 /*TCanvas * c1= new TCanvas("c1","c1",1000,100,2500,2000);
 

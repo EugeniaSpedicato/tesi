@@ -332,8 +332,8 @@ if (detKinBeamRot_E_clus3x3!=0) {E3x32P->Fill(detKinBeamRot_ThEl_interaction,det
 
  cout << " Numero elettroni totali IN 5X5 true" << n_tot_eBIG_true << " su un totale di " << n_tot_true << " eventi " << endl;
  cout << " Numero elettroni totali IN CORE true" << n_tot_e_true << " su un totale di " << n_tot_true << " eventi " << endl;
- cout << " Numero elettroni totali su CORONA true" << n_tot_e2P_true << " su un totale di " << n_tot_ << " eventi " << endl;
- cout << " Numero elettroni totali su CORONA true" << n_tot_e2P_true << " su un totale di " << n_tot_ << " eventi " << endl;
+ cout << " Numero elettroni totali su CORONA true" << n_tot_e2P_true << " su un totale di " << n_tot_true << " eventi " << endl;
+ cout << " Numero elettroni totali su CORONA true" << n_tot_e2P_true << " su un totale di " << n_tot_true << " eventi " << endl;
 
 
     

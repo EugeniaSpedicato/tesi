@@ -137,8 +137,7 @@ Eff1->GetXaxis()->SetTitle("Theta el[mrad]");
 Eff1->GetYaxis()->SetTitle("Efficency");
 Eff1->SetLineWidth(3);
 Eff1->SetLineColor(kBlack);
-Eff1->SetMaximum(1);
-Eff1->SetMinimum(0);
+
 Eff1->Draw("HIST");  
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 ef->cd(2);
@@ -146,8 +145,7 @@ Eff2->GetXaxis()->SetTitle("Theta el[mrad]");
 Eff2->GetYaxis()->SetTitle("Efficency");
 Eff2->SetLineWidth(3);
 Eff2->SetLineColor(kRed);
-Eff2->SetMaximum(1);
-Eff2->SetMinimum(0);
+
 Eff2->Draw("HIST");   
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 

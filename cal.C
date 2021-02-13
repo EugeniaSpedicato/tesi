@@ -171,7 +171,7 @@ Long64_t nentries = fChain->GetEntriesFast();
       nb = fChain->GetEntry(jentry);   nbytes += nb;
        
        n_tot+=wgt_full;
-       n_tot_true+=1;
+       ++n_tot_true;
        
 
         /*en_c[1]=detKinBeamRot_Ecell1; en_c[2]=detKinBeamRot_Ecell2; en_c[3]=detKinBeamRot_Ecell3; en_c[4]=detKinBeamRot_Ecell4; en_c[5]=detKinBeamRot_Ecell5;
@@ -242,7 +242,7 @@ if (detKinBeamRot_E_clus3x3!=0 ) {E3x3BIG->Fill(detKinBeamRot_ThEl_interaction,d
     
 if(abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275) {
     n_tot_e+=wgt_full;
-    ++n_tot_true;
+    ++n_tot_e_true;
     hist_E9_e->Fill(E9,wgt_full);
     hist_thxz_e->Fill(anglex_e,wgt_full);
     hist_thyz_e->Fill(angley_e,wgt_full);

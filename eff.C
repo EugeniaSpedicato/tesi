@@ -85,7 +85,7 @@ if(detKinBeamRot_def_angle_mu>0.2) The_trueCUT->Fill(detKinBeamRot_def_angle_e,w
      
     if (detKinBeamRot_tar==0)
     {The_true1->Fill(detKinBeamRot_def_angle_e,wgt_full);
-    if() The_trueCUT1->Fill(detKinBeamRot_def_angle_e,wgt_full);
+    if(detKinBeamRot_def_angle_mu>0.2) The_trueCUT1->Fill(detKinBeamRot_def_angle_e,wgt_full);
     }
     if (detKinBeamRot_tar==1)
     {The_true2->Fill(detKinBeamRot_def_angle_e,wgt_full);

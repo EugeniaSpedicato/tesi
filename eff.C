@@ -90,15 +90,15 @@ Long64_t nentries = fChain->GetEntriesFast();
 
        
 The_true->Fill(detKinBeamRot_def_angle_e,wgt_full);
-if(r_mu<2.7) The_trueCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<5) The_trueCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
 
     if (detKinBeamRot_tar==0)
     {The_true1->Fill(detKinBeamRot_def_angle_e,wgt_full);
-    if(r_mu<2.7) The_trueCUT1->Fill(detKinBeamRot_def_angle_e,wgt_full);
+    if(r_mu<5) The_trueCUT1->Fill(detKinBeamRot_def_angle_e,wgt_full);
     }
     if (detKinBeamRot_tar==1)
     {The_true2->Fill(detKinBeamRot_def_angle_e,wgt_full);
-    if(r_mu<2.7) The_trueCUT2->Fill(detKinBeamRot_def_angle_e,wgt_full);
+    if(r_mu<5) The_trueCUT2->Fill(detKinBeamRot_def_angle_e,wgt_full);
     }
        
 if (detKinBeamRot_n_cell_e!=0 && E_CAL>0)
@@ -118,14 +118,14 @@ if (detKinBeamRot_n_cell_e!=0 && E_CAL>0)
 if(abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275) {
 
     The->Fill(detKinBeamRot_def_angle_e,wgt_full);
-    if(r_mu<2.7) TheCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
+    if(r_mu<5) TheCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
     
     if (detKinBeamRot_tar==0)
     {The1->Fill(detKinBeamRot_def_angle_e,wgt_full);
-    if(r_mu<2.7) The1CUT->Fill(detKinBeamRot_def_angle_e,wgt_full);}
+    if(r_mu<5) The1CUT->Fill(detKinBeamRot_def_angle_e,wgt_full);}
     if (detKinBeamRot_tar==1)
     {The2->Fill(detKinBeamRot_def_angle_e,wgt_full);
-    if(r_mu<2.7) The2CUT->Fill(detKinBeamRot_def_angle_e,wgt_full);}
+    if(r_mu<5) The2CUT->Fill(detKinBeamRot_def_angle_e,wgt_full);}
 
 } /*else { 
 
@@ -158,7 +158,7 @@ Eff1->GetXaxis()->SetTitle("Theta el[mrad]");
 Eff1->GetYaxis()->SetTitle("Efficency");
 Eff1->SetLineWidth(3);
 Eff1->SetLineColor(kBlue);
-Eff1->SetMaximum(1);
+Eff1->SetMaximum(1.5);
 Eff1->SetMinimum(0);
 Eff1->Draw();  
 Eff1CUT->GetXaxis()->SetTitle("Theta el[mrad]");
@@ -174,7 +174,7 @@ Eff2->GetXaxis()->SetTitle("Theta el[mrad]");
 Eff2->GetYaxis()->SetTitle("Efficency");
 Eff2->SetLineWidth(3);
 Eff2->SetLineColor(kBlue);
-Eff2->SetMaximum(1);
+Eff2->SetMaximum(1.5);
 Eff2->SetMinimum(0);
 Eff2->Draw();
 Eff2CUT->GetXaxis()->SetTitle("Theta el[mrad]");

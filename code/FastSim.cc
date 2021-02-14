@@ -105,7 +105,9 @@ Double_t yin=b[18][1];
 Double_t TheINT=b[18][2]; // angolo che ha nel momento dell'interazione, senza effetto di MCS 
 Double_t ThMuINT=b[18][3]; // angolo che ha nel momento dell'interazione, senza effetto di MCS 
 
-    
+detKinBeamRot.x_in=xin;
+detKinBeamRot.y_in=yin;
+
   
 //LoadKineVars(p_mu_in_div, p_e_in_div, p_mu_out_div_smeared, p_e_out_div_smeared, coo, TheINT, detKinBeamRot);
 

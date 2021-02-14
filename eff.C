@@ -77,16 +77,18 @@ Long64_t nentries = fChain->GetEntriesFast();
     else 
     {E_CAL=detKinBeamRot_Ee;}
 
-
         detKinBeamRot_cooXe=detKinBeamRot_cooXe*100; // cm
         detKinBeamRot_cooYe=detKinBeamRot_cooYe*100; // cm
         detKinBeamRot_x_in=detKinBeamRot_x_in*100; // cm coo muone entrante
         detKinBeamRot_y_in=detKinBeamRot_y_in*100; // cm coo muone entrante
         photon_coox=photon_coox*100; // cm
         photon_cooy=photon_cooy*100; // cm
-        
+               
        double r_mu=sqrt((detKinBeamRot_x_in*detKinBeamRot_x_in)+(detKinBeamRot_y_in*detKinBeamRot_y_in));
               
+       cout << "r " << r_mu << " con x"<< detKinBeamRot_x_in<<"e y"<<detKinBeamRot_y_in<<endl;
+
+       
 The_true->Fill(detKinBeamRot_def_angle_e,wgt_full);
 if(r_mu<2.7) The_trueCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
 

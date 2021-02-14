@@ -130,44 +130,14 @@ if(abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275) {
     if (detKinBeamRot_tar==1)
     {The2P2->Fill(detKinBeamRot_def_angle_e,wgt_full);
     The2P2MCS->Fill(detKinBeamRot_def_angle_e,wgt_full);}
-}}*/
+}*/
      
-}
-
-TH1F *Eff1CUT = new TH1F("ef1", "Efficency Tar1 CUT", 250,0,50);
-TH1F *Eff2CUT = new TH1F("ef2", "Efficency Tar2 CUT", 250,0,50);
-Eff1CUT->Divide(The1MCS,The_trueCUT1,1,1,"B");
-Eff2CUT->Divide(The2MCS,The_trueCUT2,1,1,"B");
- 
-TCanvas * efCUT= new TCanvas("ef","ef",1000,100,2500,2000);
-efCUT->Divide(1,2);
-efCUT->cd(1);
-Eff1CUT->GetXaxis()->SetTitle("Theta el[mrad]");
-Eff1CUT->GetYaxis()->SetTitle("Efficency");
-Eff1CUT->SetLineWidth(3);
-Eff1CUT->SetLineColor(kBlack);
-Eff1CUT->SetMaximum(1);
-Eff1CUT->SetMinimum(0);
-Eff1CUT->Draw();  
-gPad->BuildLegend(0.25,0.15,0.25,0.15);
-ef->cd(2);
-Eff2CUT->GetXaxis()->SetTitle("Theta el[mrad]");
-Eff2CUT->GetYaxis()->SetTitle("Efficency");
-Eff2CUT->SetLineWidth(3);
-Eff2CUT->SetLineColor(kRed);
-Eff2CUT->SetMaximum(1);
-Eff2CUT->SetMinimum(0);
-Eff2CUT->Draw();   
-gPad->BuildLegend(0.25,0.15,0.25,0.15);
-
-efCUT->SaveAs("/home/LHCB-T3/espedicato/tesi/EffCUT.png");
-    
-    
-TH1F *Eff1CUT = new TH1F("ef1", "Efficency Tar1", 250,0,50);
-TH1F *Eff2 = new TH1F("ef2", "Efficency Tar2", 250,0,50);
+}}
+TH1F *Eff1 = new TH1F("ef1", "Eff Tar1", 250,0,50);
+TH1F *Eff2 = new TH1F("ef2", "Eff Tar2", 250,0,50);
 Eff1->Divide(The1,The_true1,1,1,"B");
 Eff2->Divide(The2,The_true2,1,1,"B");
- 
+
 TCanvas * ef= new TCanvas("ef","ef",1000,100,2500,2000);
 ef->Divide(1,2);
 ef->cd(1);
@@ -190,6 +160,34 @@ Eff2->Draw();
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
 ef->SaveAs("/home/LHCB-T3/espedicato/tesi/Eff.png");    
+    
+TH1F *Eff1CUT = new TH1F("ef1cut", "Eff Tar1 cut th_mu>0.2 mrad", 250,0,50);
+TH1F *Eff2CUT = new TH1F("ef2cut", "Eff Tar2 cut th_mu>0.2 mrad", 250,0,50);
+Eff1CUT->Divide(The1MCS,The_trueCUT1,1,1,"B");
+Eff2CUT->Divide(The2MCS,The_trueCUT2,1,1,"B");
+
+    
+TCanvas * efCUT= new TCanvas("ef","ef",1000,100,2500,2000);
+efCUT->Divide(1,2);
+efCUT->cd(1);
+Eff1CUT->GetXaxis()->SetTitle("Theta el[mrad]");
+Eff1CUT->GetYaxis()->SetTitle("Efficency");
+Eff1CUT->SetLineWidth(3);
+Eff1CUT->SetLineColor(kBlack);
+Eff1CUT->SetMaximum(1);
+Eff1CUT->SetMinimum(0);
+Eff1CUT->Draw();  
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
+ef->cd(2);
+Eff2CUT->GetXaxis()->SetTitle("Theta el[mrad]");
+Eff2CUT->GetYaxis()->SetTitle("Efficency");
+Eff2CUT->SetLineWidth(3);
+Eff2CUT->SetLineColor(kRed);
+Eff2CUT->SetMaximum(1);
+Eff2CUT->SetMinimum(0);
+Eff2CUT->Draw();   
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
+efCUT->SaveAs("/home/LHCB-T3/espedicato/tesi/EffCUT.png");
  
 TCanvas * t= new TCanvas("ef","ef",1000,100,2500,2000);
 The_true->Draw();

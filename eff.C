@@ -68,25 +68,28 @@ Long64_t nentries = fChain->GetEntriesFast();
       Long64_t ientry = LoadTree(jentry);
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
+   
        
-The_true->Fill(detKinBeamRot_def_angle_e,wgt_full);
-if(r_mu<3) The_trueCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
-
+              
     if (photon_coox!=-1 && photon_cooy!=-1)
     {  
      E_CAL=detKinBeamRot_Ee+photon_energy;}
     else 
     {E_CAL=detKinBeamRot_Ee;}
 
+
         detKinBeamRot_cooXe=detKinBeamRot_cooXe*100; // cm
         detKinBeamRot_cooYe=detKinBeamRot_cooYe*100; // cm
-        detKinBeamRot_cooXmu=detKinBeamRot_cooXmu*100; // cm
-        detKinBeamRot_cooYmu=detKinBeamRot_cooYmu*100; // cm
+        detKinBeamRot_x_in=detKinBeamRot_x_in*100; // cm coo muone entrante
+        detKinBeamRot_y_in=detKinBeamRot_y_in*100; // cm coo muone entrante
         photon_coox=photon_coox*100; // cm
         photon_cooy=photon_cooy*100; // cm
         
-       double r_mu=sqrt((detKinBeamRot_cooXmu*detKinBeamRot_cooXmu)+(detKinBeamRot_cooYmu*detKinBeamRot_cooYmu));
-       
+       double r_mu=sqrt((detKinBeamRot_x_in*detKinBeamRot_x_in)+(detKinBeamRot_y_in*detKinBeamRot_y_in));
+              
+The_true->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<3) The_trueCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
+
     if (detKinBeamRot_tar==0)
     {The_true1->Fill(detKinBeamRot_def_angle_e,wgt_full);
     if(r_mu<3) The_trueCUT1->Fill(detKinBeamRot_def_angle_e,wgt_full);

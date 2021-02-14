@@ -85,11 +85,11 @@ The_trueCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
      
     if (detKinBeamRot_tar==0)
     {The_true1->Fill(detKinBeamRot_def_angle_e,wgt_full);
-    if(detKinBeamRot_def_angle_mu>0.2) The_trueCUT1->Fill(detKinBeamRot_def_angle_e,wgt_full);
+    if(detKinBeamRot_def_angle_mu>0.2 && E_CAL>0.5) The_trueCUT1->Fill(detKinBeamRot_def_angle_e,wgt_full);
     }
     if (detKinBeamRot_tar==1)
     {The_true2->Fill(detKinBeamRot_def_angle_e,wgt_full);
-    if(detKinBeamRot_def_angle_mu>0.2) The_trueCUT2->Fill(detKinBeamRot_def_angle_e,wgt_full);
+    if(detKinBeamRot_def_angle_mu>0.2 && E_CAL>0.5) The_trueCUT2->Fill(detKinBeamRot_def_angle_e,wgt_full);
     }
        
        
@@ -110,14 +110,14 @@ if (detKinBeamRot_n_cell_e!=0 && E_CAL>0)
 if(abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275) {
 
     The->Fill(detKinBeamRot_def_angle_e,wgt_full);
-    if(detKinBeamRot_def_angle_mu>0.2) TheMCS->Fill(detKinBeamRot_def_angle_e,wgt_full);
+    if(detKinBeamRot_def_angle_mu>0.2 && E_CAL>0.5) TheMCS->Fill(detKinBeamRot_def_angle_e,wgt_full);
     
     if (detKinBeamRot_tar==0)
     {The1->Fill(detKinBeamRot_def_angle_e,wgt_full);
-    if(detKinBeamRot_def_angle_mu>0.2) The1MCS->Fill(detKinBeamRot_def_angle_e,wgt_full);}
+    if(detKinBeamRot_def_angle_mu>0.2 && E_CAL>0.5) The1MCS->Fill(detKinBeamRot_def_angle_e,wgt_full);}
     if (detKinBeamRot_tar==1)
     {The2->Fill(detKinBeamRot_def_angle_e,wgt_full);
-    if(detKinBeamRot_def_angle_mu>0.2) The2MCS->Fill(detKinBeamRot_def_angle_e,wgt_full);}
+    if(detKinBeamRot_def_angle_mu>0.2 && E_CAL>0.5) The2MCS->Fill(detKinBeamRot_def_angle_e,wgt_full);}
 
 } /*else { 
 
@@ -178,7 +178,7 @@ Eff1CUT->SetMaximum(1);
 Eff1CUT->SetMinimum(0);
 Eff1CUT->Draw();  
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
-ef->cd(2);
+efCUT->cd(2);
 Eff2CUT->GetXaxis()->SetTitle("Theta el[mrad]");
 Eff2CUT->GetYaxis()->SetTitle("Efficency");
 Eff2CUT->SetLineWidth(3);

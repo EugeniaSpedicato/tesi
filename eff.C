@@ -90,15 +90,15 @@ Long64_t nentries = fChain->GetEntriesFast();
 
        
 The_true->Fill(detKinBeamRot_def_angle_e,wgt_full);
-if(r_mu<4.5 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_Ee>1) The_trueCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<4.5 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_Ee>0.5) The_trueCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
 
     if (detKinBeamRot_tar==0)
     {The_true1->Fill(detKinBeamRot_def_angle_e,wgt_full);
-    if(r_mu<4.5 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_Ee>1) The_trueCUT1->Fill(detKinBeamRot_def_angle_e,wgt_full);
+    if(r_mu<4.5 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_Ee>0.5) The_trueCUT1->Fill(detKinBeamRot_def_angle_e,wgt_full);
     }
     if (detKinBeamRot_tar==1)
     {The_true2->Fill(detKinBeamRot_def_angle_e,wgt_full);
-    if(r_mu<4.5 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_Ee>1) The_trueCUT2->Fill(detKinBeamRot_def_angle_e,wgt_full);
+    if(r_mu<4.5 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_Ee>0.5) The_trueCUT2->Fill(detKinBeamRot_def_angle_e,wgt_full);
     }
        
        rmu->Fill(r_mu,wgt_full);
@@ -120,14 +120,14 @@ if (detKinBeamRot_n_cell_e!=0 && E_CAL>0)
 if(abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275) {
 
     The->Fill(detKinBeamRot_def_angle_e,wgt_full);
-    if(r_mu<4.5 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_Ee>1) TheCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
+    if(r_mu<4.5 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_Ee>0.5) TheCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
     
     if (detKinBeamRot_tar==0)
     {The1->Fill(detKinBeamRot_def_angle_e,wgt_full);
-    if(r_mu<4.5 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_Ee>1) The1CUT->Fill(detKinBeamRot_def_angle_e,wgt_full);}
+    if(r_mu<4.5 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_Ee>0.5) The1CUT->Fill(detKinBeamRot_def_angle_e,wgt_full);}
     if (detKinBeamRot_tar==1)
     {The2->Fill(detKinBeamRot_def_angle_e,wgt_full);
-    if(r_mu<4.5 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_Ee>1) The2CUT->Fill(detKinBeamRot_def_angle_e,wgt_full);}
+    if(r_mu<4.5 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_Ee>0.5) The2CUT->Fill(detKinBeamRot_def_angle_e,wgt_full);}
 
 } /*else { 
 

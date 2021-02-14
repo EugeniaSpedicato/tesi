@@ -90,15 +90,15 @@ Long64_t nentries = fChain->GetEntriesFast();
 
        
 The_true->Fill(detKinBeamRot_def_angle_e,wgt_full);
-if(r_mu<4.5) The_trueCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<4.5 && detKinBeamRot_def_angle_mu>0.2) The_trueCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
 
     if (detKinBeamRot_tar==0)
     {The_true1->Fill(detKinBeamRot_def_angle_e,wgt_full);
-    if(r_mu<4.5) The_trueCUT1->Fill(detKinBeamRot_def_angle_e,wgt_full);
+    if(r_mu<4.5 && detKinBeamRot_def_angle_mu>0.2) The_trueCUT1->Fill(detKinBeamRot_def_angle_e,wgt_full);
     }
     if (detKinBeamRot_tar==1)
     {The_true2->Fill(detKinBeamRot_def_angle_e,wgt_full);
-    if(r_mu<4.5) The_trueCUT2->Fill(detKinBeamRot_def_angle_e,wgt_full);
+    if(r_mu<4.5 && detKinBeamRot_def_angle_mu>0.2) The_trueCUT2->Fill(detKinBeamRot_def_angle_e,wgt_full);
     }
        
        rmu->Fill(r_mu,wgt_full);
@@ -120,14 +120,14 @@ if (detKinBeamRot_n_cell_e!=0 && E_CAL>0)
 if(abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275) {
 
     The->Fill(detKinBeamRot_def_angle_e,wgt_full);
-    if(r_mu<4.5) TheCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
+    if(r_mu<4.5 && detKinBeamRot_def_angle_mu>0.2) TheCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
     
     if (detKinBeamRot_tar==0)
     {The1->Fill(detKinBeamRot_def_angle_e,wgt_full);
-    if(r_mu<4.5) The1CUT->Fill(detKinBeamRot_def_angle_e,wgt_full);}
+    if(r_mu<4.5 && detKinBeamRot_def_angle_mu>0.2) The1CUT->Fill(detKinBeamRot_def_angle_e,wgt_full);}
     if (detKinBeamRot_tar==1)
     {The2->Fill(detKinBeamRot_def_angle_e,wgt_full);
-    if(r_mu<4.5) The2CUT->Fill(detKinBeamRot_def_angle_e,wgt_full);}
+    if(r_mu<4.5 && detKinBeamRot_def_angle_mu>0.2) The2CUT->Fill(detKinBeamRot_def_angle_e,wgt_full);}
 
 } /*else { 
 
@@ -148,8 +148,8 @@ TH1F *Eff2 = new TH1F("ef2", "Eff Tar2", 120,0,30);
 Eff1->Divide(The1,The_true1,1,1,"B");
 Eff2->Divide(The2,The_true2,1,1,"B");
     
-TH1F *Eff1CUT = new TH1F("ef1cut", "Eff Tar1 cut th_mu>0.2 mrad", 120,0,30);
-TH1F *Eff2CUT = new TH1F("ef2cut", "Eff Tar2 cut th_mu>0.2 mrad", 120,0,30);
+TH1F *Eff1CUT = new TH1F("ef1cut", "Eff Tar1 cut", 120,0,30);
+TH1F *Eff2CUT = new TH1F("ef2cut", "Eff Tar2 cut", 120,0,30);
 Eff1CUT->Divide(The1CUT,The_trueCUT1,1,1,"B");
 Eff2CUT->Divide(The2CUT,The_trueCUT2,1,1,"B");
 

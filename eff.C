@@ -136,6 +136,11 @@ TH1F *Eff1 = new TH1F("ef1", "Eff Tar1", 120,0,30);
 TH1F *Eff2 = new TH1F("ef2", "Eff Tar2", 120,0,30);
 Eff1->Divide(The1,The_true1,1,1,"B");
 Eff2->Divide(The2,The_true2,1,1,"B");
+    
+TH1F *Eff1CUT = new TH1F("ef1cut", "Eff Tar1 cut th_mu>0.2 mrad", 120,0,30);
+TH1F *Eff2CUT = new TH1F("ef2cut", "Eff Tar2 cut th_mu>0.2 mrad", 120,0,30);
+Eff1CUT->Divide(The1CUT,The_trueCUT1,1,1,"B");
+Eff2CUT->Divide(The2CUT,The_trueCUT2,1,1,"B");
 
 TCanvas * ef= new TCanvas("ef","ef",1000,100,2500,2000);
 ef->Divide(1,2);
@@ -173,11 +178,7 @@ Eff2CUT->Draw("same");
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
 ef->SaveAs("/home/LHCB-T3/espedicato/tesi/Eff.png");    
-    
-TH1F *Eff1CUT = new TH1F("ef1cut", "Eff Tar1 cut th_mu>0.2 mrad", 120,0,30);
-TH1F *Eff2CUT = new TH1F("ef2cut", "Eff Tar2 cut th_mu>0.2 mrad", 120,0,30);
-Eff1CUT->Divide(The1CUT,The_trueCUT1,1,1,"B");
-Eff2CUT->Divide(The2CUT,The_trueCUT2,1,1,"B");
+
 
     
 /*TCanvas * efCUT= new TCanvas("efcut","efcut",1000,100,2500,2000);

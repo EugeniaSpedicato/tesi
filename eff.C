@@ -69,8 +69,8 @@ Long64_t nentries = fChain->GetEntriesFast();
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
        
-The_true->Fill(detKinBeamRot_def_angle_e,wgt_LO);
-The_trueCUT->Fill(detKinBeamRot_def_angle_e,wgt_LO);
+The_true->Fill(detKinBeamRot_def_angle_e,wgt_full);
+The_trueCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
 
     if (photon_coox!=-1 && photon_cooy!=-1)
     {  
@@ -84,52 +84,52 @@ The_trueCUT->Fill(detKinBeamRot_def_angle_e,wgt_LO);
         photon_cooy=photon_cooy*100; // cm
      
     if (detKinBeamRot_tar==0)
-    {The_true1->Fill(detKinBeamRot_def_angle_e,wgt_LO);
-    if(detKinBeamRot_def_angle_mu>0.2 && E_CAL>0.5) The_trueCUT1->Fill(detKinBeamRot_def_angle_e,wgt_LO);
+    {The_true1->Fill(detKinBeamRot_def_angle_e,wgt_full);
+    if(detKinBeamRot_def_angle_mu>0.2 && E_CAL>0.5) The_trueCUT1->Fill(detKinBeamRot_def_angle_e,wgt_full);
     }
     if (detKinBeamRot_tar==1)
-    {The_true2->Fill(detKinBeamRot_def_angle_e,wgt_LO);
-    if(detKinBeamRot_def_angle_mu>0.2 && E_CAL>0.5) The_trueCUT2->Fill(detKinBeamRot_def_angle_e,wgt_LO);
+    {The_true2->Fill(detKinBeamRot_def_angle_e,wgt_full);
+    if(detKinBeamRot_def_angle_mu>0.2 && E_CAL>0.5) The_trueCUT2->Fill(detKinBeamRot_def_angle_e,wgt_full);
     }
-       
+        cout << "rad o mrad " << detKinBeamRot_def_angle_mu<<endl;
        
 if (detKinBeamRot_n_cell_e!=0 && E_CAL>0)
 {  
 
-    /*TheBIG->Fill(detKinBeamRot_def_angle_e,wgt_LO);
-    TheBIGMCS->Fill(detKinBeamRot_def_angle_e,wgt_LO);
+    /*TheBIG->Fill(detKinBeamRot_def_angle_e,wgt_full);
+    TheBIGMCS->Fill(detKinBeamRot_def_angle_e,wgt_full);
     
     if (detKinBeamRot_tar==0)
-    {TheBIG1->Fill(detKinBeamRot_def_angle_e,wgt_LO);
-    TheBIG1MCS->Fill(detKinBeamRot_def_angle_e,wgt_LO);}
+    {TheBIG1->Fill(detKinBeamRot_def_angle_e,wgt_full);
+    TheBIG1MCS->Fill(detKinBeamRot_def_angle_e,wgt_full);}
     if (detKinBeamRot_tar==1)
-    {TheBIG2->Fill(detKinBeamRot_def_angle_e,wgt_LO);
-    TheBIG2MCS->Fill(detKinBeamRot_def_angle_e,wgt_LO);}*/
+    {TheBIG2->Fill(detKinBeamRot_def_angle_e,wgt_full);
+    TheBIG2MCS->Fill(detKinBeamRot_def_angle_e,wgt_full);}*/
 
     
 if(abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275) {
 
-    The->Fill(detKinBeamRot_def_angle_e,wgt_LO);
-    if(detKinBeamRot_def_angle_mu>0.2 && E_CAL>0.5) TheMCS->Fill(detKinBeamRot_def_angle_e,wgt_LO);
+    The->Fill(detKinBeamRot_def_angle_e,wgt_full);
+    if(detKinBeamRot_def_angle_mu>0.2 && E_CAL>0.5) TheMCS->Fill(detKinBeamRot_def_angle_e,wgt_full);
     
     if (detKinBeamRot_tar==0)
-    {The1->Fill(detKinBeamRot_def_angle_e,wgt_LO);
-    if(detKinBeamRot_def_angle_mu>0.2 && E_CAL>0.5) The1MCS->Fill(detKinBeamRot_def_angle_e,wgt_LO);}
+    {The1->Fill(detKinBeamRot_def_angle_e,wgt_full);
+    if(detKinBeamRot_def_angle_mu>0.2 && E_CAL>0.5) The1MCS->Fill(detKinBeamRot_def_angle_e,wgt_full);}
     if (detKinBeamRot_tar==1)
-    {The2->Fill(detKinBeamRot_def_angle_e,wgt_LO);
-    if(detKinBeamRot_def_angle_mu>0.2 && E_CAL>0.5) The2MCS->Fill(detKinBeamRot_def_angle_e,wgt_LO);}
+    {The2->Fill(detKinBeamRot_def_angle_e,wgt_full);
+    if(detKinBeamRot_def_angle_mu>0.2 && E_CAL>0.5) The2MCS->Fill(detKinBeamRot_def_angle_e,wgt_full);}
 
 } /*else { 
 
-    The2P->Fill(detKinBeamRot_def_angle_e,wgt_LO);
-    The2PMCS->Fill(detKinBeamRot_def_angle_e,wgt_LO);
+    The2P->Fill(detKinBeamRot_def_angle_e,wgt_full);
+    The2PMCS->Fill(detKinBeamRot_def_angle_e,wgt_full);
     
     if (detKinBeamRot_tar==0)
-    {The2P1->Fill(detKinBeamRot_def_angle_e,wgt_LO);
-    The2P1MCS->Fill(detKinBeamRot_def_angle_e,wgt_LO);}
+    {The2P1->Fill(detKinBeamRot_def_angle_e,wgt_full);
+    The2P1MCS->Fill(detKinBeamRot_def_angle_e,wgt_full);}
     if (detKinBeamRot_tar==1)
-    {The2P2->Fill(detKinBeamRot_def_angle_e,wgt_LO);
-    The2P2MCS->Fill(detKinBeamRot_def_angle_e,wgt_LO);}
+    {The2P2->Fill(detKinBeamRot_def_angle_e,wgt_full);
+    The2P2MCS->Fill(detKinBeamRot_def_angle_e,wgt_full);}
 }*/
      
 }}

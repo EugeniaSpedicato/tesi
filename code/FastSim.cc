@@ -901,8 +901,8 @@ kv.cooXe = coo[2][0];
 kv.cooYe = coo[3][0];
 
 kv.tar = tar;
- kv.ThEl_interaction = 1e3*TheINT; // angolo elettrone al momento della produzione, in mrad
- kv.ThMu_interaction = 1e3*ThMuINT; // angolo elettrone al momento della produzione, in mrad
+ kv.ThEl_interaction = 1e3*TheINT; // angolo elettrone al momento della produzione, in mrad MA CON EFFETTO SPOT E DIV
+ kv.ThMu_interaction = 1e3*ThMuINT; // angolo elettrone al momento della produzione, in mrad MA CON EFFETTO SPOT E DIV (cioè rispetto asse z). Se vuoi quello puro non siamo noi, ma def_angle_i
 
   /*kv.pXmu = p_mu_in.Px();
   kv.pYmu = p_mu_in.Py();

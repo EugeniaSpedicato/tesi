@@ -90,7 +90,7 @@ Long64_t nentries = fChain->GetEntriesFast();
 
        
 The_true->Fill(detKinBeamRot_def_angle_e,wgt_full);
-if(r_mu<4.5 && detKinBeamRot_def_angle_mu>0.2) The_trueCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<4.5 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_Ee>1&) The_trueCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
 
     if (detKinBeamRot_tar==0)
     {The_true1->Fill(detKinBeamRot_def_angle_e,wgt_full);

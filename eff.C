@@ -27,9 +27,9 @@ TH1F* The_trueCUTmu=new TH1F("th", "th El  true CUT th_mu>0.2mrad", 120,0,30);
 TH1F* The_trueCUT1mu=new TH1F("th", "th El true TAR 1 CUT th_mu>0.2mrad", 120,0,30);
 TH1F* The_trueCUT2mu=new TH1F("th", "th El true TAR 2 CUT th_mu>0.2mrad", 120,0,30);
     
-TH1F* The_trueCUTen=new TH1F("th", "th El true CUT on E_e", 120,0,30);
-TH1F* The_trueCUT1en=new TH1F("th", "th El true TAR 1 CUT on E_e", 120,0,30);
-TH1F* The_trueCUT2en=new TH1F("th", "th El true TAR 2 CUT on E_e", 120,0,30);
+TH1F* The_trueCUTEe=new TH1F("th", "th El true CUT on E_e", 120,0,30);
+TH1F* The_trueCUT1Ee=new TH1F("th", "th El true TAR 1 CUT on E_e", 120,0,30);
+TH1F* The_trueCUT2Ee=new TH1F("th", "th El true TAR 2 CUT on E_e", 120,0,30);
     
 TH1F* The_trueCUTtot=new TH1F("th", "th El true CUT th_mu+Ee", 120,0,30);
 TH1F* The_trueCUT1tot=new TH1F("th", "th El true TAR 1 CUT th_mu+Ee", 120,0,30);

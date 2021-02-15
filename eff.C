@@ -114,7 +114,7 @@ Long64_t nentries = fChain->GetEntriesFast();
 
        
 The_true->Fill(detKinBeamRot_def_angle_e,wgt_full);
-if(r_mu<5) The_trueCUTmu->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<5) The_trueCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
 if(r_mu<5 && detKinBeamRot_def_angle_mu>0.2) The_trueCUTmu->Fill(detKinBeamRot_def_angle_e,wgt_full);
 if(r_mu<5 && detKinBeamRot_Ee>1) The_trueCUTEe->Fill(detKinBeamRot_def_angle_e,wgt_full);
 if(r_mu<5 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_Ee>1) The_trueCUTtot->Fill(detKinBeamRot_def_angle_e,wgt_full);
@@ -353,25 +353,17 @@ gPad->BuildLegend(0.3,0.21,0.3,0.21);
 c5->SaveAs("/home/LHCB-T3/espedicato/tesi/eff/th_el.png"); 
     
 TCanvas * c5MCS= new TCanvas("c5MCS","c5MCS",1000,100,2500,2000);
-c5MCS->Divide(1,3);
+c5MCS->Divide(2,4);
 c5MCS->cd(1);
-The_trueCUT->SetLineColor(kBlack);
-The_trueCUT->SetLineWidth(3);
-The_trueCUT->Draw("HIST"); 
-TheCUT->SetLineWidth(3);
-TheCUT->Draw("HIST same");
-
-gPad->BuildLegend(0.3,0.21,0.3,0.21);
-c5MCS->cd(2);
-The_trueCUT1->SetLineColor(kBlack);
+The_trueCUT1->SetLineColor(kRed);
 The_trueCUT1->SetLineWidth(3);
 The_trueCUT1->Draw("HIST");
 The1CUT->SetLineWidth(3);
 The1CUT->Draw("HIST same");  
 
 gPad->BuildLegend(0.3,0.21,0.3,0.21);
-c5MCS->cd(3);
-The_trueCUT2->SetLineColor(kBlack);
+c5MCS->cd(2);
+The_trueCUT2->SetLineColor(kGray);
 The_trueCUT2->SetLineWidth(3);
 The_trueCUT2->Draw("HIST");     
 
@@ -380,6 +372,62 @@ The2CUT->Draw("HIST same");
 
 gPad->BuildLegend(0.3,0.21,0.3,0.21);
     
+    
+c5MCS->cd(3);
+The_trueCUT1mu->SetLineColor(kOrange);
+The_trueCUT1mu->SetLineWidth(3);
+The_trueCUT1mu->Draw("HIST");
+The1CUTmu->SetLineWidth(3);
+The1CUTmu->Draw("HIST same");  
+
+gPad->BuildLegend(0.3,0.21,0.3,0.21);
+c5MCS->cd(4);
+The_trueCUT2mu->SetLineColor(kGray);
+The_trueCUT2mu->SetLineWidth(3);
+The_trueCUT2mu->Draw("HIST");     
+
+The2CUTmu->SetLineWidth(3);
+The2CUTmu->Draw("HIST same"); 
+
+gPad->BuildLegend(0.3,0.21,0.3,0.21);
+    
+    
+c5MCS->cd(5);
+The_trueCUT1Ee->SetLineColor(kGreen);
+The_trueCUT1Ee->SetLineWidth(3);
+The_trueCUT1Ee->Draw("HIST");
+The1CUTEe->SetLineWidth(3);
+The1CUTEe->Draw("HIST same");  
+
+gPad->BuildLegend(0.3,0.21,0.3,0.21);
+c5MCS->cd(6);
+The_trueCUT2Ee->SetLineColor(kGray);
+The_trueCUT2Ee->SetLineWidth(3);
+The_trueCUT2Ee->Draw("HIST");     
+
+The2CUTEe->SetLineWidth(3);
+The2CUTEe->Draw("HIST same"); 
+
+gPad->BuildLegend(0.3,0.21,0.3,0.21);
+    
+c5MCS->cd(5);
+The_trueCUT1tot->SetLineColor(kBlack);
+The_trueCUT1tot->SetLineWidth(3);
+The_trueCUT1tot->Draw("HIST");
+The1CUTtot->SetLineWidth(3);
+The1CUTtot->Draw("HIST same");  
+
+gPad->BuildLegend(0.3,0.21,0.3,0.21);
+c5MCS->cd(6);
+The_trueCUT2tot->SetLineColor(kGray);
+The_trueCUT2tot->SetLineWidth(3);
+The_trueCUT2tot->Draw("HIST");     
+
+The2CUTtot->SetLineWidth(3);
+The2CUTtot->Draw("HIST same"); 
+
+gPad->BuildLegend(0.3,0.21,0.3,0.21);
+        
     
 c5MCS->SaveAs("/home/LHCB-T3/espedicato/tesi/eff/th_elCUT.png"); 
   

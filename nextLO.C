@@ -100,7 +100,7 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
        //prende solo eventi che hanno elettroni nel calorimetro
        
        
-      if (E_ECAL>1 && abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125){
+      if (E_ECAL>0.2 && abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125){
 
         if (abs(detKinBeamRot_cooXmu) < 0.07125 && abs(detKinBeamRot_cooYmu) < 0.07125){
   // per muone          
@@ -111,12 +111,12 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
     //Emuout_E->Fill(detKinBeamRot_Emu,wgt_full);   
             
     thmu->Fill(detKinBeamRot_thmu*0.001,wgt_full);
-    //Double_t anglex_mu = atan2(detKinBeamRot_pXmu_out, detKinBeamRot_pZmu_out);
-    //Double_t angley_mu = atan2(detKinBeamRot_pYmu_out, detKinBeamRot_pZmu_out);
+    Double_t anglex_mu = atan2(detKinBeamRot_pXmu_out, detKinBeamRot_pZmu_out);
+    Double_t angley_mu = atan2(detKinBeamRot_pYmu_out, detKinBeamRot_pZmu_out);
             
            
-    //thXZmu->Fill(anglex_mu,wgt_full);
-    //thYZmu->Fill(angley_mu,wgt_full);
+    thXZmu->Fill(anglex_mu,wgt_full);
+    thYZmu->Fill(angley_mu,wgt_full);
             
                if (detKinBeamRot_tar==0)
        
@@ -125,8 +125,8 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
         Emuout_E1->Fill(detKinBeamRot_Emu,wgt_full); 
         tarONEthmu->Fill(detKinBeamRot_thmu*0.001,wgt_full);
         X_Y_mu1->Fill(detKinBeamRot_cooXmu, detKinBeamRot_cooYmu,wgt_full);
-      //  thXZmu1->Fill(anglex_mu,wgt_full);
-      //  thYZmu1->Fill(angley_mu,wgt_full);
+        thXZmu1->Fill(anglex_mu,wgt_full);
+        thYZmu1->Fill(angley_mu,wgt_full);
               }
             
                 if (detKinBeamRot_tar==1)
@@ -136,8 +136,8 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
         Emuout_E2->Fill(detKinBeamRot_Emu,wgt_full); 
         tarTWOthmu->Fill(detKinBeamRot_thmu*0.001,wgt_full);
         X_Y_mu2->Fill(detKinBeamRot_cooXmu, detKinBeamRot_cooYmu,wgt_full); 
-       // thXZmu2->Fill(anglex_mu,wgt_full);
-       // thYZmu2->Fill(angley_mu,wgt_full);
+        thXZmu2->Fill(anglex_mu,wgt_full);
+        thYZmu2->Fill(angley_mu,wgt_full);
                }
     X_Y_mu ->Fill(detKinBeamRot_cooXmu, detKinBeamRot_cooYmu,wgt_full);}
         
@@ -157,7 +157,7 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
         thXZe->Fill(anglex_e,wgt_full);
         thYZe->Fill(angley_e,wgt_full);            
          
-        Th_E_el->Fill(detKinBeamRot_the*0.001,E_ECAL,wgt_full);
+        Th_E_el->Fill(detKinBeamRot_def_angle_e,E_ECAL,wgt_full);
            
            if (detKinBeamRot_tar==0)
               {
@@ -167,7 +167,7 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
         X_Y_e1->Fill(detKinBeamRot_cooXe, detKinBeamRot_cooYe,wgt_full);
         thXZe1->Fill(anglex_e,wgt_full);
         thYZe1->Fill(angley_e,wgt_full);
-        Th_E_el1->Fill(detKinBeamRot_the*0.001,E_ECAL,wgt_full);
+        Th_E_el1->Fill(detKinBeamRot_def_angle_e,E_ECAL,wgt_full);
               }
             
             if (detKinBeamRot_tar==1)
@@ -178,7 +178,7 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
         X_Y_e2->Fill(detKinBeamRot_cooXe, detKinBeamRot_cooYe,wgt_full);  
         thXZe2->Fill(anglex_e,wgt_full);
         thYZe2->Fill(angley_e,wgt_full);
-        Th_E_el2->Fill(detKinBeamRot_the*0.001,E_ECAL,wgt_full);    
+        Th_E_el2->Fill(detKinBeamRot_def_angle_e,E_ECAL,wgt_full);    
              } 
            
             X_Y_e ->Fill(detKinBeamRot_cooXe, detKinBeamRot_cooYe,wgt_full);
@@ -320,8 +320,8 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
 
 
 TCanvas * theC= new TCanvas("tar","tar",1500,1000,3500,2000);
-    theC->Divide(1,2);
-   /* theC->cd(1);
+    theC->Divide(2,2);
+    theC->cd(1);
     thXZmu->SetLineColor(46);
     thXZmu->SetLineWidth(3);
     thXZmu->Draw("HIST");
@@ -332,7 +332,7 @@ TCanvas * theC= new TCanvas("tar","tar",1500,1000,3500,2000);
     thXZmu2->SetLineWidth(3);
     thXZmu2->Draw("HIST SAME");
     thXZmu->GetXaxis()->SetTitle("Theta XZ [rad]");*/
-    theC->cd(1);
+    theC->cd(2);
     thXZe->SetLineWidth(3);
     thXZe->Draw("HIST");
     thXZe1->SetLineColor(8);
@@ -342,7 +342,7 @@ TCanvas * theC= new TCanvas("tar","tar",1500,1000,3500,2000);
     thXZe2->SetLineWidth(3);
     thXZe2->Draw("HIST SAME");
     thXZe->GetXaxis()->SetTitle("Theta XZ [rad]");
-    /*theC->cd(3);
+    theC->cd(3);
     thYZmu->SetLineColor(46);
     thYZmu->SetLineWidth(3);
     thYZmu->Draw("HIST");
@@ -352,8 +352,8 @@ TCanvas * theC= new TCanvas("tar","tar",1500,1000,3500,2000);
     thYZmu2->SetLineColor(kBlack);
     thYZmu2->SetLineWidth(3);
     thYZmu2->Draw("HIST SAME");
-    thYZmu->GetXaxis()->SetTitle("Theta YZ [rad]");*/
-    theC->cd(2);
+    thYZmu->GetXaxis()->SetTitle("Theta YZ [rad]");
+    theC->cd(4);
     thYZe->SetLineWidth(3);
     thYZe->Draw("HIST");
     thYZe1->SetLineColor(8);
@@ -464,7 +464,7 @@ if (X_Y_p2->GetBinContent(i,j)<1) X_Y_p2->SetBinContent(i,j,0);}}
   duedmu->SaveAs("/home/LHCB-T3/espedicato/tesi/nextLO/dued.png");  
     
     
-/*Int_t nx7 = Th_E_el->GetNbinsX();
+Int_t nx7 = Th_E_el->GetNbinsX();
 Int_t ny7 = Th_E_el->GetNbinsY();
 for (Int_t i=1; i<nx7+1; i++) {
 for (Int_t j=1; j<ny7+1; j++) {
@@ -492,7 +492,7 @@ for (Int_t j=1; j<ny11+1; j++) {
     
 TCanvas * th_en2= new TCanvas("th_en0","th_en0",1000,100,2500,2000);   
 Th_E_el2->Draw("COLZ");  
-th_en2->SaveAs("/home/LHCB-T3/espedicato/tesi/nextLO/theta-energy-electron2.png"); */
+th_en2->SaveAs("/home/LHCB-T3/espedicato/tesi/nextLO/theta-energy-electron2.png"); 
 
     
       }

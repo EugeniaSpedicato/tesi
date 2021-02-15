@@ -324,16 +324,16 @@ efCUT->SaveAs("/home/LHCB-T3/espedicato/tesi/eff/EffCUT.png");*/
     
     
 TCanvas * c5= new TCanvas("c5","c5",1000,100,2500,2000);
-c5->Divide(1,3);
-c5->cd(1);
+c5->Divide(2,1);
+/*c5->cd(1);
 The_true->SetLineColor(kBlack);
 The_true->SetLineWidth(3);
 The_true->Draw("HIST"); 
 The->SetLineWidth(3);
-The->Draw("HIST same");
+The->Draw("HIST same");*/
 
 gPad->BuildLegend(0.3,0.21,0.3,0.21);
-c5->cd(2);
+c5->cd(1);
 The_true1->SetLineColor(kBlack);
 The_true1->SetLineWidth(3);
 The_true1->Draw("HIST");
@@ -341,7 +341,7 @@ The1->SetLineWidth(3);
 The1->Draw("HIST same");  
 
 gPad->BuildLegend(0.3,0.21,0.3,0.21);
-c5->cd(3);
+c5->cd(2);
 The_true2->SetLineColor(kBlack);
 The_true2->SetLineWidth(3);
 The_true2->Draw("HIST");   

@@ -23,12 +23,12 @@ TH1F* Emuout_E1 =new TH1F("EnergyMU_E1", "Energy Mu out Tar 1", 75,0.2,150);
 TH1F* Emuout2=new TH1F("EnergyMU2", "Energy Mu out Tar 2", 75,0.2,150); 
 TH1F* Emuout_E2 =new TH1F("EnergyMU_E2", "Energy Mu out Tar 2", 75,0.2,150); 
     
-TH1F* Eelout=new TH1F("EnergyEL", "Energy El out", 280,0.2,140); 
-TH1F* Eelout_E =new TH1F("EnergyEL_E", "Energy El out", 280,0.2,140);
-TH1F* Eelout1=new TH1F("EnergyEL1", "Energy El out Tar 1", 280,0.2,140); 
-TH1F* Eelout_E1 =new TH1F("EnergyEL_E1", "Energy El out Tar 1", 280,0.2,140);
-TH1F* Eelout2=new TH1F("EnergyEL1", "Energy El out Tar 1", 280,0.2,140); 
-TH1F* Eelout_E2 =new TH1F("EnergyEL_E1", "Energy El out Tar 1", 280,0.2,140);
+TH1F* Eelout=new TH1F("EnergyEL", "Energy El out", 70,0.2,140); 
+TH1F* Eelout_E =new TH1F("EnergyEL_E", "Energy El out", 70,0.2,140);
+TH1F* Eelout1=new TH1F("EnergyEL1", "Energy El out Tar 1", 70,0.2,140); 
+TH1F* Eelout_E1 =new TH1F("EnergyEL_E1", "Energy El out Tar 1", 70,0.2,140);
+TH1F* Eelout2=new TH1F("EnergyEL1", "Energy El out Tar 1", 70,0.2,140); 
+TH1F* Eelout_E2 =new TH1F("EnergyEL_E1", "Energy El out Tar 1", 70,0.2,140);
 
 TH1F* Ephout=new TH1F("EnergyPH", "Energy Ph out", 75,0.2,150); 
 
@@ -59,8 +59,8 @@ TH1F* thYZmu2=new TH1F("thetaYZ2", "theta YZ plane mu2", 150,-0.002,0.002);
 TH1F* thXZe2=new TH1F("thetaXZ2", "theta XZ plane e2", 150,-0.1,0.1);
 TH1F* thYZe2=new TH1F("thetaYZ2", "theta YZ plane e2", 150,-0.1,0.1);
     
-TH1F* tarONEthe=new TH1F("thetaEL1", "Electron Polar Angle Tar 1", 120,0,60);
-TH1F* tarTWOthe=new TH1F("thetaEL2", "Electron Polar Angle Tar 2", 120,0,60);
+TH1F* tarONEthe=new TH1F("thetaEL1", "Electron Polar Angle Tar 1", 100,0,0.1);
+TH1F* tarTWOthe=new TH1F("thetaEL2", "Electron Polar Angle Tar 2", 100,0,0.1);
 TH1F* tarONEthmu=new TH1F("thetaMU1", "Muon Polar Angle Tar 1", 180,0,0.005);
 TH1F* tarTWOthmu=new TH1F("thetaMU2", "Muon Polar Angle Tar 2", 180,0,0.005);
     

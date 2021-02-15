@@ -100,9 +100,9 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
        //prende solo eventi che hanno elettroni nel calorimetro
        
        
-      if (E_ECAL>0.2 && abs(detKinBeamRot_cooXe) < 0.04275 && abs(detKinBeamRot_cooYe) < 0.04275){
+      if (E_ECAL>0.2 && abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125){
 
-        if (abs(detKinBeamRot_cooXmu) < 0.04275 && abs(detKinBeamRot_cooYmu) < 0.04275){
+        if (abs(detKinBeamRot_cooXmu) < 0.07125 && abs(detKinBeamRot_cooYmu) < 0.07125){
   // per muone          
     Double_t Pmu=sqrt(detKinBeamRot_pXmu_out*detKinBeamRot_pXmu_out+detKinBeamRot_pYmu_out*detKinBeamRot_pYmu_out+detKinBeamRot_pZmu_out*detKinBeamRot_pZmu_out);
             
@@ -187,7 +187,7 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
         
        
        
-       if(abs(photon_coox) < 0.04275 && abs(photon_cooy) < 0.04275 && photon_energy>0.2)
+       if(abs(photon_coox) < 0.07125 && abs(photon_cooy) < 0.07125 && photon_energy>0.2)
        {
         Ephout->Fill(photon_energy,wgt_full);            
             

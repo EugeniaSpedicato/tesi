@@ -322,7 +322,7 @@ hist_E9_e2P->SetLineColor(kViolet);
 hist_E9_e2P->Draw("HIST same"); 
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
-c1->SaveAs("/home/LHCB-T3/espedicato/tesi/cal/E9.png");*/
+c1->SaveAs("/home/LHCB-T3/espedicato/tesi/E9.png");*/
     
 /*TCanvas * c2= new TCanvas("c2","c2",1000,100,2500,2000);
 
@@ -339,7 +339,7 @@ hist_dist_diff->SetLineWidth(3);
 hist_dist_diff->Draw("HIST same");
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
-c2->SaveAs("/home/LHCB-T3/espedicato/tesi/cal/dist.png");
+c2->SaveAs("/home/LHCB-T3/espedicato/tesi/dist.png");
     
 TCanvas * c2a= new TCanvas("c2a","c2a",1000,100,2500,2000);
 
@@ -356,7 +356,7 @@ hist_ang_diff->SetLineWidth(3);
 hist_ang_diff->Draw("HIST same");
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
-c2a->SaveAs("/home/LHCB-T3/espedicato/tesi/cal/Dtheta.png");*/
+c2a->SaveAs("/home/LHCB-T3/espedicato/tesi/Dtheta.png");*/
 
 
 Int_t nx = E3x3->GetNbinsX();
@@ -418,7 +418,7 @@ pxtrue->SetLineWidth(3);
 pxtrue->Draw("same");    
     
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
-c4->SaveAs("/home/LHCB-T3/espedicato/tesi/cal/thEPROFILE.png");   
+c4->SaveAs("/home/LHCB-T3/espedicato/tesi/thEPROFILE.png");   
     
 TCanvas * cp= new TCanvas("c4p","c4p",100,100,2500,2000);
 
@@ -438,7 +438,7 @@ px1->GetYaxis()->SetTitle("Ereco3x3[GeV]");
 px1->SetLineWidth(3);
 px1->Draw("same");
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
-cp->SaveAs("/home/LHCB-T3/espedicato/tesi/cal/thEprofTRUE.png");        
+cp->SaveAs("/home/LHCB-T3/espedicato/tesi/thEprofTRUE.png");        
     
 TCanvas * c4a= new TCanvas("c4","c4",100,100,2500,2000);
 c4a->Divide(3,1);
@@ -457,7 +457,7 @@ E3x32P->GetXaxis()->SetTitle("Theta_el[mrad]");
 E3x32P->GetYaxis()->SetTitle("Ereco3x3[GeV]");
 E3x32P->Draw("COLZ");
 
-c4a->SaveAs("/home/LHCB-T3/espedicato/tesi/cal/thE.png");
+c4a->SaveAs("/home/LHCB-T3/espedicato/tesi/thE.png");
     
 TCanvas * cc= new TCanvas("c4","c4",100,100,2500,2000); 
 cc->Divide(1,2);
@@ -469,7 +469,7 @@ cc->cd(2);
 E3x3true->GetXaxis()->SetTitle("Theta_el[mrad]");
 E3x3true->GetYaxis()->SetTitle("Etrue");
 E3x3true->Draw("COLZ");
-cc->SaveAs("/home/LHCB-T3/espedicato/tesi/cal/thEcore.png");
+cc->SaveAs("/home/LHCB-T3/espedicato/tesi/thEcore.png");
 
     
 TCanvas * c5= new TCanvas("c5","c5",1000,100,2500,2000);
@@ -514,7 +514,7 @@ The2P2->SetLineWidth(3);
 The2P2->Draw("HIST same"); 
 gPad->BuildLegend(0.3,0.21,0.3,0.21);
     
-c5->SaveAs("/home/LHCB-T3/espedicato/tesi/cal/th_el.png"); 
+c5->SaveAs("/home/LHCB-T3/espedicato/tesi/th_el.png"); 
     
 TCanvas * c5MCS= new TCanvas("c5MCS","c5MCS",1000,100,2500,2000);
 c5MCS->Divide(1,3);
@@ -559,7 +559,7 @@ The2P2->Draw("HIST same");
 gPad->BuildLegend(0.3,0.21,0.3,0.21);
     
     
-c5MCS->SaveAs("/home/LHCB-T3/espedicato/tesi/cal/th_elMCS.png"); 
+c5MCS->SaveAs("/home/LHCB-T3/espedicato/tesi/th_elMCS.png"); 
   
   /*  TCanvas * theC= new TCanvas("tar","tar",1500,1000,3500,2000);
     theC->Divide(2,3);
@@ -639,7 +639,7 @@ c5MCS->SaveAs("/home/LHCB-T3/espedicato/tesi/cal/th_elMCS.png");
     hist_thyz_e2P->GetXaxis()->SetTitle("Theta YZ [rad]");
     gPad->BuildLegend(0.3,0.21,0.3,0.21);
     
-    theC->SaveAs("/home/LHCB-T3/espedicato/tesi/cal/Th_el_XZYZ.png");     */
+    theC->SaveAs("/home/LHCB-T3/espedicato/tesi/Th_el_XZYZ.png");     */
     
     TCanvas * the2= new TCanvas("tar2","tar2",1500,1000,3500,2000);
     the2->Divide(2,3);
@@ -712,5 +712,5 @@ c5MCS->SaveAs("/home/LHCB-T3/espedicato/tesi/cal/th_elMCS.png");
     hist_thyz_e22P->Draw("HIST same");
     gPad->BuildLegend(0.3,0.21,0.3,0.21);
         
-    the2->SaveAs("/home/LHCB-T3/espedicato/tesi/cal/thxzyz.png");   
+    the2->SaveAs("/home/LHCB-T3/espedicato/tesi/thxzyz.png");   
 }

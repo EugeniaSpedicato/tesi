@@ -53,35 +53,31 @@ TH1F* The2P2=new TH1F("th", "th El crown TAR 2", 120,0,30);*/
     
     
 TH1F* TheCUT=new TH1F("th", "th El core CUT", 120,0,30); 
-TH1F* TheCUT=new TH1F("th", "th El core CUT", 120,0,30); 
-TH1F* TheCUT=new TH1F("th", "th El core CUT", 120,0,30); 
-TH1F* TheCUT=new TH1F("th", "th El core CUT", 120,0,30); 
+TH1F* The1CUT=new TH1F("th", "th El TAR 1 core CUT", 120,0,30); 
+TH1F* The2CUT=new TH1F("th", "th El TAR 2 core CUT", 120,0,30); 
 
 /*TH1F* TheBIGCUT=new TH1F("th", "th El 5X5 CUT", 120,0,30); 
 TH1F* The2PCUT=new TH1F("th", "th El crown CUT", 120,0,30);*/ 
     
     
+TH1F* TheCUTmu=new TH1F("th", "th El core CUT th_mu>0.2mrad", 120,0,30); 
 TH1F* The1CUTmu=new TH1F("th", "th El TAR 1 core CUT th_mu>0.2mrad", 120,0,30); 
-TH1F* The1CUTmu=new TH1F("th", "th El TAR 1 core CUT th_mu>0.2mrad", 120,0,30); 
-TH1F* The1CUTmu=new TH1F("th", "th El TAR 1 core CUT th_mu>0.2mrad", 120,0,30); 
-TH1F* The1CUTmu=new TH1F("th", "th El TAR 1 core CUT th_mu>0.2mrad", 120,0,30); 
+TH1F* The2CUTmu=new TH1F("th", "th El TAR 2 core CUT th_mu>0.2mrad", 120,0,30); 
 
 /*TH1F* TheBIG1CUT=new TH1F("th", "th El 5X5 TAR 1 CUT", 120,0,30); 
 TH1F* The2P1CUT=new TH1F("th", "th El crown TAR 1 CUT", 120,0,30); */
     
     
-TH1F* The2CUTEe=new TH1F("th", "th El core TAR 2 CUT on E_e", 120,0,30); 
-TH1F* The2CUTEe=new TH1F("th", "th El core TAR 2 CUT on E_e", 120,0,30); 
-TH1F* The2CUTEe=new TH1F("th", "th El core TAR 2 CUT on E_e", 120,0,30); 
+TH1F* TheCUTEe=new TH1F("th", "th El core CUT on E_e", 120,0,30); 
+TH1F* The1CUTEe=new TH1F("th", "th El core TAR 1 CUT on E_e", 120,0,30); 
 TH1F* The2CUTEe=new TH1F("th", "th El core TAR 2 CUT on E_e", 120,0,30); 
     
 /*TH1F* TheBIG2CUT=new TH1F("th", "th El 5X5 TAR 2 CUT", 120,0,30);
 TH1F* The2P2CUT=new TH1F("th", "th El crown TAR 2 CUT", 120,0,30); */
 
 TH1F* TheCUTtot=new TH1F("th", "th El core CUT th_mu+Ee", 120,0,30); 
-TH1F* TheCUT=new TH1F("th", "th El core CUT th_mu+Ee", 120,0,30); 
-TH1F* TheCUT=new TH1F("th", "th El core CUT th_mu+Ee", 120,0,30); 
-TH1F* TheCUT=new TH1F("th", "th El core CUT th_mu+Ee", 120,0,30); 
+TH1F* The1CUTtot=new TH1F("th", "th El core TAR 1 CUT th_mu+Ee", 120,0,30); 
+TH1F* The2CUTtot=new TH1F("th", "th El core TAR 2 CUT th_mu+Ee", 120,0,30); 
     
 TH1F* rmu=new TH1F("rmu", "impact point", 100,0,10); 
 

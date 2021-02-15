@@ -39,7 +39,7 @@ TH1F* Ephout2=new TH1F("EnergyPH2", "Energy Ph out Tar 2", 75,0.2,150);
 
     
 TH1F* thmu=new TH1F("thetaMU", "Muon Polar Angle", 180,0,0.005);  
-TH1F* the=new TH1F("thetaEL", "Electron Polar Angle", 120,0,60);
+TH1F* the=new TH1F("thetaEL", "Electron Polar Angle", 100,0,0.1);
 
 TH1F* thXZmu=new TH1F("thetaXZ", "theta XZ plane mu", 150,-0.002,0.002);
 TH1F* thYZmu=new TH1F("thetaYZ", "theta YZ plane mu", 150,-0.002,0.002);

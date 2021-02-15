@@ -104,40 +104,40 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
 
         if (abs(detKinBeamRot_cooXmu) < 0.07125 && abs(detKinBeamRot_cooYmu) < 0.07125){
   // per muone          
-    Double_t Pmu=sqrt(detKinBeamRot_pXmu_out*detKinBeamRot_pXmu_out+detKinBeamRot_pYmu_out*detKinBeamRot_pYmu_out+detKinBeamRot_pZmu_out*detKinBeamRot_pZmu_out);
+    //Double_t Pmu=sqrt(detKinBeamRot_pXmu_out*detKinBeamRot_pXmu_out+detKinBeamRot_pYmu_out*detKinBeamRot_pYmu_out+detKinBeamRot_pZmu_out*detKinBeamRot_pZmu_out);
             
-    Double_t Emu_out=sqrt(Pmu*Pmu+mmu*mmu);
-    Emuout->Fill(Emu_out,wgt_full);  
-    Emuout_E->Fill(detKinBeamRot_Emu,wgt_full);   
+    //Double_t detKinBeamRot_Emu=sqrt(Pmu*Pmu+mmu*mmu);
+    Emuout->Fill(detKinBeamRot_Emu,wgt_full);  
+    //Emuout_E->Fill(detKinBeamRot_Emu,wgt_full);   
             
     thmu->Fill(detKinBeamRot_thmu*0.001,wgt_full);
-    Double_t anglex_mu = atan2(detKinBeamRot_pXmu_out, detKinBeamRot_pZmu_out);
-    Double_t angley_mu = atan2(detKinBeamRot_pYmu_out, detKinBeamRot_pZmu_out);
+    //Double_t anglex_mu = atan2(detKinBeamRot_pXmu_out, detKinBeamRot_pZmu_out);
+    //Double_t angley_mu = atan2(detKinBeamRot_pYmu_out, detKinBeamRot_pZmu_out);
             
            
-    thXZmu->Fill(anglex_mu,wgt_full);
-    thYZmu->Fill(angley_mu,wgt_full);
+    //thXZmu->Fill(anglex_mu,wgt_full);
+    //thYZmu->Fill(angley_mu,wgt_full);
             
                if (detKinBeamRot_tar==0)
        
               {
-        Emuout1->Fill(Emu_out,wgt_full); 
+        Emuout1->Fill(detKinBeamRot_Emu,wgt_full); 
         Emuout_E1->Fill(detKinBeamRot_Emu,wgt_full); 
         tarONEthmu->Fill(detKinBeamRot_thmu*0.001,wgt_full);
         X_Y_mu1->Fill(detKinBeamRot_cooXmu, detKinBeamRot_cooYmu,wgt_full);
-        thXZmu1->Fill(anglex_mu,wgt_full);
-        thYZmu1->Fill(angley_mu,wgt_full);
+      //  thXZmu1->Fill(anglex_mu,wgt_full);
+      //  thYZmu1->Fill(angley_mu,wgt_full);
               }
             
                 if (detKinBeamRot_tar==1)
        
                {
-        Emuout2->Fill(Emu_out,wgt_full); 
+        Emuout2->Fill(detKinBeamRot_Emu,wgt_full); 
         Emuout_E2->Fill(detKinBeamRot_Emu,wgt_full); 
         tarTWOthmu->Fill(detKinBeamRot_thmu*0.001,wgt_full);
         X_Y_mu2->Fill(detKinBeamRot_cooXmu, detKinBeamRot_cooYmu,wgt_full); 
-        thXZmu2->Fill(anglex_mu,wgt_full);
-        thYZmu2->Fill(angley_mu,wgt_full);
+       // thXZmu2->Fill(anglex_mu,wgt_full);
+       // thYZmu2->Fill(angley_mu,wgt_full);
                }
     X_Y_mu ->Fill(detKinBeamRot_cooXmu, detKinBeamRot_cooYmu,wgt_full);}
         
@@ -320,8 +320,8 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",180,0,0.1,70
 
 
 TCanvas * theC= new TCanvas("tar","tar",1500,1000,3500,2000);
-    theC->Divide(2,2);
-    theC->cd(1);
+    theC->Divide(1,2);
+   /* theC->cd(1);
     thXZmu->SetLineColor(46);
     thXZmu->SetLineWidth(3);
     thXZmu->Draw("HIST");
@@ -331,8 +331,8 @@ TCanvas * theC= new TCanvas("tar","tar",1500,1000,3500,2000);
     thXZmu2->SetLineColor(kBlack);
     thXZmu2->SetLineWidth(3);
     thXZmu2->Draw("HIST SAME");
-    thXZmu->GetXaxis()->SetTitle("Theta XZ [rad]");
-    theC->cd(2);
+    thXZmu->GetXaxis()->SetTitle("Theta XZ [rad]");*/
+    theC->cd(1);
     thXZe->SetLineWidth(3);
     thXZe->Draw("HIST");
     thXZe1->SetLineColor(8);
@@ -342,7 +342,7 @@ TCanvas * theC= new TCanvas("tar","tar",1500,1000,3500,2000);
     thXZe2->SetLineWidth(3);
     thXZe2->Draw("HIST SAME");
     thXZe->GetXaxis()->SetTitle("Theta XZ [rad]");
-    theC->cd(3);
+    /*theC->cd(3);
     thYZmu->SetLineColor(46);
     thYZmu->SetLineWidth(3);
     thYZmu->Draw("HIST");
@@ -352,8 +352,8 @@ TCanvas * theC= new TCanvas("tar","tar",1500,1000,3500,2000);
     thYZmu2->SetLineColor(kBlack);
     thYZmu2->SetLineWidth(3);
     thYZmu2->Draw("HIST SAME");
-    thYZmu->GetXaxis()->SetTitle("Theta YZ [rad]");
-    theC->cd(4);
+    thYZmu->GetXaxis()->SetTitle("Theta YZ [rad]");*/
+    theC->cd(2);
     thYZe->SetLineWidth(3);
     thYZe->Draw("HIST");
     thYZe1->SetLineColor(8);

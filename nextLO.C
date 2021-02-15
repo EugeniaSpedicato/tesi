@@ -331,7 +331,7 @@ TCanvas * theC= new TCanvas("tar","tar",1500,1000,3500,2000);
     thXZmu2->SetLineColor(kBlack);
     thXZmu2->SetLineWidth(3);
     thXZmu2->Draw("HIST SAME");
-    thXZmu->GetXaxis()->SetTitle("Theta XZ [rad]");*/
+    thXZmu->GetXaxis()->SetTitle("Theta XZ [rad]");
     theC->cd(2);
     thXZe->SetLineWidth(3);
     thXZe->Draw("HIST");

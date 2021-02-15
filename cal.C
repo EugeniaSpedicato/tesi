@@ -237,7 +237,7 @@ if (detKinBeamRot_n_cell_e!=0 && E_CAL>0)
     
     //hist_Eout_9_e->Fill(Eout_9,wgt_full);
     
-if (detKinBeamRot_E_clus3x3!=0 ) {E3x3BIG->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_full);
+if (detKinBeamRot_E_clus3x3!=0) {E3x3BIG->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_full);
                                  E3x3true->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_Ee,wgt_full);}
     
 if(abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275) {

@@ -81,6 +81,23 @@ TH1F* The2CUTtot=new TH1F("th", "th El core TAR 2 CUT th_mu+Ee", 120,0,30);
     
 TH1F* rmu=new TH1F("rmu", "impact point", 100,0,10); 
 
+TH2F  *E3x31  = new TH2F("ThEel1" , " Th_el Vs. E_E3x3 core TAR1",100,0,50,280,0,140);
+TH2F  *E3x32  = new TH2F("ThEel2" , " Th_el Vs. E_E3x3 core TAR2",100,0,50,280,0,140);
+    
+
+TH2F  *E3x31CUT  = new TH2F("ThEel1" , " Th_el Vs. E_E3x3 core TAR1 CUT",100,0,50,280,0,140);
+TH2F  *E3x32CUT  = new TH2F("ThEel2" , " Th_el Vs. E_E3x3 core TAR2 CUT",100,0,50,280,0,140);
+    
+TH2F  *E3x31CUTmu  = new TH2F("ThEel1" , " Th_el Vs. E_E3x3 core TAR1 CUT th_mu>0.2mrad",100,0,50,280,0,140);
+TH2F  *E3x32CUTmu  = new TH2F("ThEel2" , " Th_el Vs. E_E3x3 core TAR2 CUT th_mu>0.2mrad",100,0,50,280,0,140);
+    
+TH2F  *E3x31CUTEe  = new TH2F("ThEel1" , " Th_el Vs. E_E3x3 core TAR1 CUT on E_e",100,0,50,280,0,140);
+TH2F  *E3x32CUTEe  = new TH2F("ThEel2" , " Th_el Vs. E_E3x3 core TAR2 CUT on E_e",100,0,50,280,0,140);
+    
+TH2F  *E3x31CUTtot  = new TH2F("ThEel1" , " Th_el Vs. E_E3x3 core TAR1 CUT th_mu+Ee",100,0,50,280,0,140);
+TH2F  *E3x32CUTtot  = new TH2F("ThEel2" , " Th_el Vs. E_E3x3 core TAR2 CUT th_mu+Ee",100,0,50,280,0,140);
+
+    
     
 if (fChain == 0) return;
 
@@ -98,9 +115,9 @@ Long64_t nentries = fChain->GetEntriesFast();
               
     if (photon_coox!=-1 && photon_cooy!=-1)
     {  
-     E_CAL=detKinBeamRot_Ee+photon_energy;}
+     E_CAL=detKinBeamRot_E_clus3x3+photon_energy;}
     else 
-    {E_CAL=detKinBeamRot_Ee;}
+    {E_CAL=detKinBeamRot_E_clus3x3;}
 
         detKinBeamRot_cooXe=detKinBeamRot_cooXe*100; // cm
         detKinBeamRot_cooYe=detKinBeamRot_cooYe*100; // cm
@@ -152,7 +169,7 @@ if (detKinBeamRot_n_cell_e!=0 && E_CAL>0)
     
 if(abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275) {
 
-    The->Fill(detKinBeamRot_def_angle_e,wgt_full);
+The->Fill(detKinBeamRot_def_angle_e,wgt_full);
     
 if(r_mu<3) TheCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
 if(r_mu<3 && detKinBeamRot_def_angle_mu>0.2) TheCUTmu->Fill(detKinBeamRot_def_angle_e,wgt_full);
@@ -165,14 +182,33 @@ if(r_mu<3 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_E_clus3x3>1)TheCUTt
 if(r_mu<3) The1CUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
 if(r_mu<3 && detKinBeamRot_def_angle_mu>0.2) The1CUTmu->Fill(detKinBeamRot_def_angle_e,wgt_full);
 if(r_mu<3 && detKinBeamRot_E_clus3x3>1) The1CUTEe->Fill(detKinBeamRot_def_angle_e,wgt_full);
-if(r_mu<3 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_E_clus3x3>1)The1CUTtot->Fill(detKinBeamRot_def_angle_e,wgt_full);}
+if(r_mu<3 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_E_clus3x3>1)The1CUTtot->Fill(detKinBeamRot_def_angle_e,wgt_full);
+
+     if (detKinBeamRot_E_clus3x3!=0) 
+     {
+E3x31->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_full);
+if(r_mu<3) E3x31CUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_full);
+if(r_mu<3 && detKinBeamRot_def_angle_mu>0.2) E3x31CUTmu->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_full);
+if(r_mu<3 && detKinBeamRot_E_clus3x3>1) E3x31CUTEe->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_full);
+if(r_mu<3 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_E_clus3x3>1) E3x31CUTtot->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_full);
+} }
     if (detKinBeamRot_tar==1)
     {The2->Fill(detKinBeamRot_def_angle_e,wgt_full);
      
 if(r_mu<3) The2CUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
 if(r_mu<3 && detKinBeamRot_def_angle_mu>0.2) The2CUTmu->Fill(detKinBeamRot_def_angle_e,wgt_full);
 if(r_mu<3 && detKinBeamRot_E_clus3x3>1) The2CUTEe->Fill(detKinBeamRot_def_angle_e,wgt_full);
-if(r_mu<3 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_E_clus3x3>1)The2CUTtot->Fill(detKinBeamRot_def_angle_e,wgt_full);} /*else { 
+if(r_mu<3 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_E_clus3x3>1)The2CUTtot->Fill(detKinBeamRot_def_angle_e,wgt_full);
+     if (detKinBeamRot_E_clus3x3!=0) 
+     {
+E3x32->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_full);
+if(r_mu<3) E3x32CUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_full);
+if(r_mu<3 && detKinBeamRot_def_angle_mu>0.2) E3x32CUTmu->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_full);
+if(r_mu<3 && detKinBeamRot_E_clus3x3>1) E3x32CUTEe->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_full);
+if(r_mu<3 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_E_clus3x3>1) E3x32CUTtot->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_full);
+} 
+    
+    } /*else { 
 
     The2P->Fill(detKinBeamRot_def_angle_e,wgt_full);
     The2PCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
@@ -433,6 +469,105 @@ c5MCS->SaveAs("/home/LHCB-T3/espedicato/tesi/eff/th_elCUT.png");
 TCanvas * c= new TCanvas("c5MCS","c5MCS",1000,100,2500,2000);
 rmu->Draw();
 c->SaveAs("/home/LHCB-T3/espedicato/tesi/eff/rmu.png"); 
+    
+
+Int_t nx1 = E3x31->GetNbinsX();
+Int_t ny1 = E3x31->GetNbinsY();
+for (Int_t i=1; i<nx1+1; i++) {
+for (Int_t j=1; j<ny1+1; j++) {
+if (E3x31->GetBinContent(i,j)<1) E3x31->SetBinContent(i,j,0);}}
+    
+Int_t nx2 = E3x32->GetNbinsX();
+Int_t ny2 = E3x32->GetNbinsY();
+for (Int_t i=1; i<nx2+1; i++) {
+for (Int_t j=1; j<ny2+1; j++) {
+if (E3x32->GetBinContent(i,j)<1) E3x32->SetBinContent(i,j,0);}}
+
+
+    
+Int_t nx1CUT = E3x31CUT->GetNbinsX();
+Int_t ny1CUT = E3x31CUT->GetNbinsY();
+for (Int_t i=1; i<nx1CUT+1; i++) {
+for (Int_t j=1; j<ny1CUT+1; j++) {
+if (E3x31CUT->GetBinContent(i,j)<1) E3x31CUT->SetBinContent(i,j,0);}}
+    
+Int_t nx2CUT = E3x32CUT->GetNbinsX();
+Int_t ny2CUT = E3x32CUT->GetNbinsY();
+for (Int_t i=1; i<nx2CUT+1; i++) {
+for (Int_t j=1; j<ny2CUT+1; j++) {
+if (E3x32CUT->GetBinContent(i,j)<1) E3x32CUT->SetBinContent(i,j,0);}}
+    
+    
+    
+Int_t nx1CUTmu = E3x31CUTmu->GetNbinsX();
+Int_t ny1CUTmu = E3x31CUTmu->GetNbinsY();
+for (Int_t i=1; i<nx1CUTmu+1; i++) {
+for (Int_t j=1; j<ny1CUTmu+1; j++) {
+if (E3x31CUTmu->GetBinContent(i,j)<1) E3x31CUTmu->SetBinContent(i,j,0);}}
+    
+Int_t nx2CUTmu = E3x32CUTmu->GetNbinsX();
+Int_t ny2CUTmu = E3x32CUTmu->GetNbinsY();
+for (Int_t i=1; i<nx2CUTmu+1; i++) {
+for (Int_t j=1; j<ny2CUTmu+1; j++) {
+if (E3x32CUTmu->GetBinContent(i,j)<1) E3x32CUTmu->SetBinContent(i,j,0);}} 
+  
+
+Int_t nx1CUTEe = E3x31CUTEe->GetNbinsX();
+Int_t ny1CUTEe = E3x31CUTEe->GetNbinsY();
+for (Int_t i=1; i<nx1CUTEe+1; i++) {
+for (Int_t j=1; j<ny1CUTEe+1; j++) {
+if (E3x31CUTEe->GetBinContent(i,j)<1) E3x31CUTEe->SetBinContent(i,j,0);}}
+    
+Int_t nx2CUTEe = E3x32CUTEe->GetNbinsX();
+Int_t ny2CUTEe = E3x32CUTEe->GetNbinsY();
+for (Int_t i=1; i<nx2CUTEe+1; i++) {
+for (Int_t j=1; j<ny2CUTEe+1; j++) {
+if (E3x32CUTEe->GetBinContent(i,j)<1) E3x32CUTEe->SetBinContent(i,j,0);}}
+    
+    
+Int_t nx1CUTtot = E3x31CUTtot->GetNbinsX();
+Int_t ny1CUTtot = E3x31CUTtot->GetNbinsY();
+for (Int_t i=1; i<nx1CUT+1; i++) {
+for (Int_t j=1; j<ny1CUT+1; j++) {
+if (E3x31CUTtot->GetBinContent(i,j)<1) E3x31CUTtot->SetBinContent(i,j,0);}}
+    
+Int_t nx2CUTtot = E3x32CUTtot->GetNbinsX();
+Int_t ny2CUTtot = E3x32CUTtot->GetNbinsY();
+for (Int_t i=1; i<nx2CUTtot+1; i++) {
+for (Int_t j=1; j<ny2CUTtot+1; j++) {
+if (E3x32CUTtot->GetBinContent(i,j)<1) E3x32CUTtot->SetBinContent(i,j,0);}}
+    
+TCanvas * c4a= new TCanvas("c4a","c4a",100,100,2500,2000);
+c4a->Divide(2,3);
+c4a->cd(1);
+gStyle->SetPalette(kLake);
+TColor::InvertPalette(); 
+E3x31->GetXaxis()->SetTitle("Theta_el[mrad]");
+E3x31->GetYaxis()->SetTitle("Ereco3x3[GeV]");
+E3x31->Draw("COLZ");
+c4a->cd(2);   
+E3x32->GetXaxis()->SetTitle("Theta_el[mrad]");
+E3x32->GetYaxis()->SetTitle("Ereco3x3[GeV]");
+E3x32->Draw("COLZ");
+c4a->cd(3);   
+E3x3CUT->GetXaxis()->SetTitle("Theta_el[mrad]");
+E3x3CUT->GetYaxis()->SetTitle("Ereco3x3[GeV]");
+E3x3CUT->Draw("COLZ");
+c4a->cd(4);   
+E3x3CUTmu->GetXaxis()->SetTitle("Theta_el[mrad]");
+E3x3CUTmu->GetYaxis()->SetTitle("Ereco3x3[GeV]");
+E3x3CUTmu->Draw("COLZ");
+c4a->cd(5);   
+E3x3CUTEe->GetXaxis()->SetTitle("Theta_el[mrad]");
+E3x3CUTEe->GetYaxis()->SetTitle("Ereco3x3[GeV]");
+E3x3CUTEe->Draw("COLZ");
+c4a->cd(5);   
+E3x3CUTtot->GetXaxis()->SetTitle("Theta_el[mrad]");
+E3x3CUTtot->GetYaxis()->SetTitle("Ereco3x3[GeV]");
+E3x3CUTtot->Draw("COLZ");
+
+
+c4a->SaveAs("/home/LHCB-T3/espedicato/tesi/thE_cut.png");    
     
 
 }

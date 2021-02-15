@@ -363,7 +363,7 @@ The1CUT->Draw("HIST same");
 
 gPad->BuildLegend(0.3,0.21,0.3,0.21);
 c5MCS->cd(2);
-The_trueCUT2->SetLineColor(kGray);
+The_trueCUT2->SetLineColor(kRed);
 The_trueCUT2->SetLineWidth(3);
 The_trueCUT2->Draw("HIST");     
 
@@ -382,7 +382,7 @@ The1CUTmu->Draw("HIST same");
 
 gPad->BuildLegend(0.3,0.21,0.3,0.21);
 c5MCS->cd(4);
-The_trueCUT2mu->SetLineColor(kGray);
+The_trueCUT2mu->SetLineColor(kOrange);
 The_trueCUT2mu->SetLineWidth(3);
 The_trueCUT2mu->Draw("HIST");     
 
@@ -401,7 +401,7 @@ The1CUTEe->Draw("HIST same");
 
 gPad->BuildLegend(0.3,0.21,0.3,0.21);
 c5MCS->cd(6);
-The_trueCUT2Ee->SetLineColor(kGray);
+The_trueCUT2Ee->SetLineColor(kGreen);
 The_trueCUT2Ee->SetLineWidth(3);
 The_trueCUT2Ee->Draw("HIST");     
 
@@ -410,7 +410,7 @@ The2CUTEe->Draw("HIST same");
 
 gPad->BuildLegend(0.3,0.21,0.3,0.21);
     
-c5MCS->cd(5);
+c5MCS->cd(7);
 The_trueCUT1tot->SetLineColor(kBlack);
 The_trueCUT1tot->SetLineWidth(3);
 The_trueCUT1tot->Draw("HIST");
@@ -418,8 +418,8 @@ The1CUTtot->SetLineWidth(3);
 The1CUTtot->Draw("HIST same");  
 
 gPad->BuildLegend(0.3,0.21,0.3,0.21);
-c5MCS->cd(6);
-The_trueCUT2tot->SetLineColor(kGray);
+c5MCS->cd(8);
+The_trueCUT2tot->SetLineColor(kBlack);
 The_trueCUT2tot->SetLineWidth(3);
 The_trueCUT2tot->Draw("HIST");     
 

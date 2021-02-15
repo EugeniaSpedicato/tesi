@@ -188,7 +188,7 @@ Eff2CUT->SetMinimum(0);
 Eff2CUT->Draw("same");   
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
-ef->SaveAs("/home/LHCB-T3/espedicato/tesi/eff/Eff.png");    
+ef->SaveAs("/home/LHCB-T3/espedicato/tesi/Eff.png");    
 
 
     
@@ -212,7 +212,7 @@ Eff2CUT->SetMaximum(1);
 Eff2CUT->SetMinimum(0);
 Eff2CUT->Draw();   
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
-efCUT->SaveAs("/home/LHCB-T3/espedicato/tesi/eff/EffCUT.png");*/
+efCUT->SaveAs("/home/LHCB-T3/espedicato/tesi/EffCUT.png");*/
     
     
     TCanvas * c5= new TCanvas("c5","c5",1000,100,2500,2000);
@@ -242,7 +242,7 @@ The2->Draw("HIST same");
 
 gPad->BuildLegend(0.3,0.21,0.3,0.21);
     
-c5->SaveAs("/home/LHCB-T3/espedicato/tesi/eff/th_el.png"); 
+c5->SaveAs("/home/LHCB-T3/espedicato/tesi/th_el.png"); 
     
 TCanvas * c5MCS= new TCanvas("c5MCS","c5MCS",1000,100,2500,2000);
 c5MCS->Divide(1,3);
@@ -273,11 +273,11 @@ The2CUT->Draw("HIST same");
 gPad->BuildLegend(0.3,0.21,0.3,0.21);
     
     
-c5MCS->SaveAs("/home/LHCB-T3/espedicato/tesi/eff/th_elCUT.png"); 
+c5MCS->SaveAs("/home/LHCB-T3/espedicato/tesi/th_elCUT.png"); 
   
 TCanvas * c= new TCanvas("c5MCS","c5MCS",1000,100,2500,2000);
 rmu->Draw();
-c->SaveAs("/home/LHCB-T3/espedicato/tesi/eff/rmu.png"); 
+c->SaveAs("/home/LHCB-T3/espedicato/tesi/rmu.png"); 
     
 
 }

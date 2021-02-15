@@ -34,9 +34,9 @@ void Analysis::Analyze(const MuE::Event & event, const MuE::FastSim & fs)
 
   // apply preselection if both the gen-level and det-level electron angle are above the cut (default 30mrad)&&
   //if (genKin.the > paran.thetaMax && detKin.the > paran.thetaMax ) return;
-    if (detKinBeamRot.ThEl_interaction > paran.thetaMax) return;
-    //if (detKinBeamRot.tar==0 && detKinBeamRot.ThEl_interaction >35 ) return;
-    //if (detKinBeamRot.tar==1 && detKinBeamRot.ThEl_interaction >70 ) return;
+    if (detKinBeamRot.def_angle_e > paran.thetaMax) return;
+    //if (detKinBeamRot.tar==0 && detKinBeamRot.def_angle_e >35 ) return;
+    //if (detKinBeamRot.tar==1 && detKinBeamRot.def_angle_e >70 ) return;
 
     
     

@@ -19,41 +19,69 @@ void atree::Loop()
 
 Double_t E_CAL=0.;
 
-TH1F* The_trueCUT=new TH1F("th", "th El out true CUT", 120,0,30);
-TH1F* The_trueCUT1=new TH1F("th", "th El out true TAR 1 CUT", 120,0,30);
-TH1F* The_trueCUT2=new TH1F("th", "th El out true TAR 2 CUT", 120,0,30);
+TH1F* The_trueCUT=new TH1F("th", "th El true CUT", 120,0,30);
+TH1F* The_trueCUT1=new TH1F("th", "th El true TAR 1 CUT", 120,0,30);
+TH1F* The_trueCUT2=new TH1F("th", "th El true TAR 2 CUT", 120,0,30);
 
-TH1F* The_true=new TH1F("th", "th El out true", 120,0,30);    
-TH1F* The=new TH1F("th", "th El out core", 120,0,30); 
-/*TH1F* TheBIG=new TH1F("th", "th El out 5X5", 120,0,30); 
-TH1F* The2P=new TH1F("th", "th El out crown", 120,0,30); */
+TH1F* The_trueCUTmu=new TH1F("th", "th El  true CUT th_mu>0.2mrad", 120,0,30);
+TH1F* The_trueCUT1mu=new TH1F("th", "th El true TAR 1 CUT th_mu>0.2mrad", 120,0,30);
+TH1F* The_trueCUT2mu=new TH1F("th", "th El true TAR 2 CUT th_mu>0.2mrad", 120,0,30);
+    
+TH1F* The_trueCUTen=new TH1F("th", "th El true CUT on E_e", 120,0,30);
+TH1F* The_trueCUT1en=new TH1F("th", "th El true TAR 1 CUT on E_e", 120,0,30);
+TH1F* The_trueCUT2en=new TH1F("th", "th El true TAR 2 CUT on E_e", 120,0,30);
+    
+TH1F* The_trueCUTtot=new TH1F("th", "th El true CUT th_mu+Ee", 120,0,30);
+TH1F* The_trueCUT1tot=new TH1F("th", "th El true TAR 1 CUT th_mu+Ee", 120,0,30);
+TH1F* The_trueCUT2tot=new TH1F("th", "th El true TAR 2 CUT th_mu+Ee", 120,0,30);
 
-TH1F* The_true1=new TH1F("th", "th El out true TAR 1", 120,0,30);    
-TH1F* The1=new TH1F("th", "th El out core TAR 1", 120,0,30); 
-/*TH1F* TheBIG1=new TH1F("th", "th El out 5X5 TAR 1", 120,0,30); 
-TH1F* The2P1=new TH1F("th", "th El out crown TAR 1", 120,0,30); */
+TH1F* The_true=new TH1F("th", "th El true", 120,0,30);    
+TH1F* The=new TH1F("th", "th El core", 120,0,30); 
+/*TH1F* TheBIG=new TH1F("th", "th El 5X5", 120,0,30); 
+TH1F* The2P=new TH1F("th", "th El crown", 120,0,30); */
+
+TH1F* The_true1=new TH1F("th", "th El true TAR 1", 120,0,30);    
+TH1F* The1=new TH1F("th", "th El core TAR 1", 120,0,30); 
+/*TH1F* TheBIG1=new TH1F("th", "th El 5X5 TAR 1", 120,0,30); 
+TH1F* The2P1=new TH1F("th", "th El crown TAR 1", 120,0,30); */
 
     
-TH1F* The_true2=new TH1F("th", "th El out true TAR 2", 120,0,30);     
-TH1F* The2=new TH1F("th", "th El out core TAR 2", 120,0,30); 
-/*TH1F* TheBIG2=new TH1F("th", "th El out 5X5 TAR 2", 120,0,30); 
-TH1F* The2P2=new TH1F("th", "th El out crown TAR 2", 120,0,30);*/ 
+TH1F* The_true2=new TH1F("th", "th El true TAR 2", 120,0,30);     
+TH1F* The2=new TH1F("th", "th El core TAR 2", 120,0,30); 
+/*TH1F* TheBIG2=new TH1F("th", "th El 5X5 TAR 2", 120,0,30); 
+TH1F* The2P2=new TH1F("th", "th El crown TAR 2", 120,0,30);*/ 
     
     
-TH1F* TheCUT=new TH1F("th", "th El out core CUT", 120,0,30); 
-/*TH1F* TheBIGCUT=new TH1F("th", "th El out 5X5 CUT", 120,0,30); 
-TH1F* The2PCUT=new TH1F("th", "th El out crown CUT", 120,0,30);*/ 
-    
-    
-TH1F* The1CUT=new TH1F("th", "th El out TAR 1 core CUT", 120,0,30); 
-/*TH1F* TheBIG1CUT=new TH1F("th", "th El out 5X5 TAR 1 CUT", 120,0,30); 
-TH1F* The2P1CUT=new TH1F("th", "th El out crown TAR 1 CUT", 120,0,30); */
-    
-    
-TH1F* The2CUT=new TH1F("th", "th El out core TAR 2 CUT", 120,0,30); 
-/*TH1F* TheBIG2CUT=new TH1F("th", "th El out 5X5 TAR 2 CUT", 120,0,30);
-TH1F* The2P2CUT=new TH1F("th", "th El out crown TAR 2 CUT", 120,0,30); */
+TH1F* TheCUT=new TH1F("th", "th El core CUT", 120,0,30); 
+TH1F* TheCUT=new TH1F("th", "th El core CUT", 120,0,30); 
+TH1F* TheCUT=new TH1F("th", "th El core CUT", 120,0,30); 
+TH1F* TheCUT=new TH1F("th", "th El core CUT", 120,0,30); 
 
+/*TH1F* TheBIGCUT=new TH1F("th", "th El 5X5 CUT", 120,0,30); 
+TH1F* The2PCUT=new TH1F("th", "th El crown CUT", 120,0,30);*/ 
+    
+    
+TH1F* The1CUTmu=new TH1F("th", "th El TAR 1 core CUT th_mu>0.2mrad", 120,0,30); 
+TH1F* The1CUTmu=new TH1F("th", "th El TAR 1 core CUT th_mu>0.2mrad", 120,0,30); 
+TH1F* The1CUTmu=new TH1F("th", "th El TAR 1 core CUT th_mu>0.2mrad", 120,0,30); 
+TH1F* The1CUTmu=new TH1F("th", "th El TAR 1 core CUT th_mu>0.2mrad", 120,0,30); 
+
+/*TH1F* TheBIG1CUT=new TH1F("th", "th El 5X5 TAR 1 CUT", 120,0,30); 
+TH1F* The2P1CUT=new TH1F("th", "th El crown TAR 1 CUT", 120,0,30); */
+    
+    
+TH1F* The2CUTEe=new TH1F("th", "th El core TAR 2 CUT on E_e", 120,0,30); 
+TH1F* The2CUTEe=new TH1F("th", "th El core TAR 2 CUT on E_e", 120,0,30); 
+TH1F* The2CUTEe=new TH1F("th", "th El core TAR 2 CUT on E_e", 120,0,30); 
+TH1F* The2CUTEe=new TH1F("th", "th El core TAR 2 CUT on E_e", 120,0,30); 
+    
+/*TH1F* TheBIG2CUT=new TH1F("th", "th El 5X5 TAR 2 CUT", 120,0,30);
+TH1F* The2P2CUT=new TH1F("th", "th El crown TAR 2 CUT", 120,0,30); */
+
+TH1F* TheCUTtot=new TH1F("th", "th El core CUT th_mu+Ee", 120,0,30); 
+TH1F* TheCUT=new TH1F("th", "th El core CUT th_mu+Ee", 120,0,30); 
+TH1F* TheCUT=new TH1F("th", "th El core CUT th_mu+Ee", 120,0,30); 
+TH1F* TheCUT=new TH1F("th", "th El core CUT th_mu+Ee", 120,0,30); 
     
 TH1F* rmu=new TH1F("rmu", "impact point", 100,0,10); 
 
@@ -90,16 +118,25 @@ Long64_t nentries = fChain->GetEntriesFast();
 
        
 The_true->Fill(detKinBeamRot_def_angle_e,wgt_full);
-if(r_mu<5 && detKinBeamRot_def_angle_mu>0.2) The_trueCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<5) The_trueCUTmu->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<5 && detKinBeamRot_def_angle_mu>0.2) The_trueCUTmu->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<5 && detKinBeamRot_Ee>1) The_trueCUTEe->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<5 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_Ee>1) The_trueCUTtot->Fill(detKinBeamRot_def_angle_e,wgt_full);
+    
 
     if (detKinBeamRot_tar==0)
     {The_true1->Fill(detKinBeamRot_def_angle_e,wgt_full);
-    if(r_mu<5 && detKinBeamRot_def_angle_mu>0.2) The_trueCUT1->Fill(detKinBeamRot_def_angle_e,wgt_full);
-    }
+if(r_mu<5) The_trueCUT1->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<5 && detKinBeamRot_def_angle_mu>0.2) The_trueCUT1mu->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<5 && detKinBeamRot_Ee>1) The_trueCUT1Ee->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<5 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_Ee>1) The_trueCUT1tot->Fill(detKinBeamRot_def_angle_e,wgt_full);}
     if (detKinBeamRot_tar==1)
     {The_true2->Fill(detKinBeamRot_def_angle_e,wgt_full);
-    if(r_mu<5 && detKinBeamRot_def_angle_mu>0.2) The_trueCUT2->Fill(detKinBeamRot_def_angle_e,wgt_full);
-    }
+     
+if(r_mu<5) The_trueCUT2->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<5 && detKinBeamRot_def_angle_mu>0.2) The_trueCUT2mu->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<5 && detKinBeamRot_Ee>1) The_trueCUT2Ee->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<5 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_Ee>1) The_trueCUT2tot->Fill(detKinBeamRot_def_angle_e,wgt_full);}
        
        rmu->Fill(r_mu,wgt_full);
        
@@ -120,16 +157,26 @@ if (detKinBeamRot_n_cell_e!=0 && E_CAL>0)
 if(abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275) {
 
     The->Fill(detKinBeamRot_def_angle_e,wgt_full);
-    if(r_mu<5 && detKinBeamRot_def_angle_mu>0.2) TheCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
+    
+if(r_mu<5) TheCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<5 && detKinBeamRot_def_angle_mu>0.2) TheCUTmu->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<5 && detKinBeamRot_Ee>1) TheCUTEe->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<5 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_Ee>1)TheCUTtot->Fill(detKinBeamRot_def_angle_e,wgt_full);
     
     if (detKinBeamRot_tar==0)
     {The1->Fill(detKinBeamRot_def_angle_e,wgt_full);
-    if(r_mu<5 && detKinBeamRot_def_angle_mu>0.2) The1CUT->Fill(detKinBeamRot_def_angle_e,wgt_full);}
+     
+if(r_mu<5) The1CUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<5 && detKinBeamRot_def_angle_mu>0.2) The1CUTmu->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<5 && detKinBeamRot_Ee>1) The1CUTEe->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<5 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_Ee>1)The1CUTtot->Fill(detKinBeamRot_def_angle_e,wgt_full);}
     if (detKinBeamRot_tar==1)
     {The2->Fill(detKinBeamRot_def_angle_e,wgt_full);
-    if(r_mu<5 && detKinBeamRot_def_angle_mu>0.2) The2CUT->Fill(detKinBeamRot_def_angle_e,wgt_full);}
-
-} /*else { 
+     
+if(r_mu<5) The2CUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<5 && detKinBeamRot_def_angle_mu>0.2) The2CUTmu->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<5 && detKinBeamRot_Ee>1) The2CUTEe->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<5 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_Ee>1)The2CUTtot->Fill(detKinBeamRot_def_angle_e,wgt_full);} /*else { 
 
     The2P->Fill(detKinBeamRot_def_angle_e,wgt_full);
     The2PCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
@@ -153,6 +200,23 @@ TH1F *Eff2CUT = new TH1F("ef2cut", "Eff Tar2 cut", 120,0,30);
 Eff1CUT->Divide(The1CUT,The_trueCUT1,1,1,"B");
 Eff2CUT->Divide(The2CUT,The_trueCUT2,1,1,"B");
 
+TH1F *Eff1CUTmu = new TH1F("ef1cutmu", "Eff Tar1 cut th_mu>0.2mrad", 120,0,30);
+TH1F *Eff2CUTmu = new TH1F("ef2cutmu", "Eff Tar2 cut th_mu>0.2mrad", 120,0,30);
+Eff1CUTmu->Divide(The1CUTmu,The_trueCUT1mu,1,1,"B");
+Eff2CUTmu->Divide(The2CUTmu,The_trueCUT2mu,1,1,"B");
+    
+TH1F *Eff1CUTEe = new TH1F("ef1cutEe", "Eff Tar1 cut E_e", 120,0,30);
+TH1F *Eff2CUTEe = new TH1F("ef2cutEe", "Eff Tar2 cut E_e", 120,0,30);
+Eff1CUTEe->Divide(The1CUTEe,The_trueCUT1Ee,1,1,"B");
+Eff2CUTEe->Divide(The2CUTEe,The_trueCUT2Ee,1,1,"B");
+
+TH1F *Eff1CUTtot = new TH1F("ef1cuttot", "Eff Tar1 cut th_mu+Ee", 120,0,30);
+TH1F *Eff2CUTtot = new TH1F("ef2cuttot", "Eff Tar2 cut th_mu+Ee", 120,0,30);
+Eff1CUTtot->Divide(The1CUTtot,The_trueCUT1tot,1,1,"B");
+Eff2CUTtot->Divide(The2CUTtot,The_trueCUT2tot,1,1,"B");
+
+       
+
 TCanvas * ef= new TCanvas("ef","ef",1000,100,2500,2000);
 ef->Divide(1,2);
 ef->cd(1);
@@ -170,6 +234,30 @@ Eff1CUT->SetLineColor(kRed);
 Eff1CUT->SetMaximum(1.5);
 Eff1CUT->SetMinimum(0);
 Eff1CUT->Draw("same"); 
+
+Eff1CUTmu->GetXaxis()->SetTitle("Theta el[mrad]");
+Eff1CUTmu->GetYaxis()->SetTitle("Efficency");
+Eff1CUTmu->SetLineWidth(3);
+Eff1CUTmu->SetLineColor(kOrange);
+Eff1CUTmu->SetMaximum(1.5);
+Eff1CUTmu->SetMinimum(0);
+Eff1CUTmu->Draw("same"); 
+       
+Eff1CUTEe->GetXaxis()->SetTitle("Theta el[mrad]");
+Eff1CUTEe->GetYaxis()->SetTitle("Efficency");
+Eff1CUTEe->SetLineWidth(3);
+Eff1CUTEe->SetLineColor(kGreen);
+Eff1CUTEe->SetMaximum(1.5);
+Eff1CUTEe->SetMinimum(0);
+Eff1CUTEe->Draw("same"); 
+
+Eff1CUTtot->GetXaxis()->SetTitle("Theta el[mrad]");
+Eff1CUTtot->GetYaxis()->SetTitle("Efficency");
+Eff1CUTtot->SetLineWidth(3);
+Eff1CUTtot->SetLineColor(kBlack);
+Eff1CUTtot->SetMaximum(1.5);
+Eff1CUTtot->SetMinimum(0);
+Eff1CUTtot->Draw("same"); 
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 ef->cd(2);
 Eff2->GetXaxis()->SetTitle("Theta el[mrad]");
@@ -186,6 +274,30 @@ Eff2CUT->SetLineColor(kRed);
 Eff2CUT->SetMaximum(1.5);
 Eff2CUT->SetMinimum(0);
 Eff2CUT->Draw("same");   
+       
+Eff2CUTmu->GetXaxis()->SetTitle("Theta el[mrad]");
+Eff2CUTmu->GetYaxis()->SetTitle("Efficency");
+Eff2CUTmu->SetLineWidth(3);
+Eff2CUTmu->SetLineColor(kOrange);
+Eff2CUTmu->SetMaximum(1.5);
+Eff2CUTmu->SetMinimum(0);
+Eff2CUTmu->Draw("same"); 
+       
+Eff2CUTEe->GetXaxis()->SetTitle("Theta el[mrad]");
+Eff2CUTEe->GetYaxis()->SetTitle("Efficency");
+Eff2CUTEe->SetLineWidth(3);
+Eff2CUTEe->SetLineColor(kGreen);
+Eff2CUTEe->SetMaximum(1.5);
+Eff2CUTEe->SetMinimum(0);
+Eff2CUTEe->Draw("same"); 
+
+Eff2CUTtot->GetXaxis()->SetTitle("Theta el[mrad]");
+Eff2CUTtot->GetYaxis()->SetTitle("Efficency");
+Eff2CUTtot->SetLineWidth(3);
+Eff2CUTtot->SetLineColor(kBlack);
+Eff2CUTtot->SetMaximum(1.5);
+Eff2CUTtot->SetMinimum(0);
+Eff2CUTtot->Draw("same"); 
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
 ef->SaveAs("/home/LHCB-T3/espedicato/tesi/eff/Eff.png");    
@@ -215,7 +327,7 @@ gPad->BuildLegend(0.25,0.15,0.25,0.15);
 efCUT->SaveAs("/home/LHCB-T3/espedicato/tesi/eff/EffCUT.png");*/
     
     
-    TCanvas * c5= new TCanvas("c5","c5",1000,100,2500,2000);
+TCanvas * c5= new TCanvas("c5","c5",1000,100,2500,2000);
 c5->Divide(1,3);
 c5->cd(1);
 The_true->SetLineColor(kBlack);

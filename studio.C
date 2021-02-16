@@ -56,6 +56,9 @@ Long64_t nentries = fChain->GetEntriesFast();
                
        double r_mu=sqrt((detKinBeamRot_x_in*detKinBeamRot_x_in)+(detKinBeamRot_y_in*detKinBeamRot_y_in));
               
+        double r=sqrt((detKinBeamRot_cooXe*detKinBeamRot_cooXe)+(detKinBeamRot_cooYe*detKinBeamRot_cooYe));
+              
+       
         E9=detKinBeamRot_E_1/detKinBeamRot_E_clus3x3;
        
 if (detKinBeamRot_n_cell_e!=0 && detKinBeamRot_E_clus3x3>0.2)

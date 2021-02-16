@@ -83,17 +83,17 @@ TH1F* The2CUTtot=new TH1F("th", "th El core TAR 2 CUT th_mu+Ee", 120,0,30);
 TH1F* rmu=new TH1F("rmu", "impact point", 100,0,10); 
 
 
-TH2F  *E3x31CUT  = new TH2F("ThEel1" , " Th_el Vs. E_E3x3 core TAR1 CUT",90,0,30,280,0,140);
-TH2F  *E3x32CUT  = new TH2F("ThEel2" , " Th_el Vs. E_E3x3 core TAR2 CUT",90,0,30,280,0,140);
+TH2F  *E3x31CUT  = new TH2F("ThEel1" , " Th_el Vs. E_E3x3 core TAR1 CUT",40,0,4,280,0,140);
+TH2F  *E3x32CUT  = new TH2F("ThEel2" , " Th_el Vs. E_E3x3 core TAR2 CUT",40,0,4,280,0,140);
     
-TH2F  *E3x31CUTmu  = new TH2F("ThEel1" , " Th_el Vs. E_E3x3 core TAR1 CUT th_mu>0.2mrad",90,0,30,280,0,140);
-TH2F  *E3x32CUTmu  = new TH2F("ThEel2" , " Th_el Vs. E_E3x3 core TAR2 CUT th_mu>0.2mrad",90,0,30,280,0,140);
+TH2F  *E3x31CUTmu  = new TH2F("ThEel1" , " Th_el Vs. E_E3x3 core TAR1 CUT th_mu>0.2mrad",40,0,4,280,0,140);
+TH2F  *E3x32CUTmu  = new TH2F("ThEel2" , " Th_el Vs. E_E3x3 core TAR2 CUT th_mu>0.2mrad",40,0,4,280,0,140);
     
-TH2F  *E3x31CUTEe  = new TH2F("ThEel1" , " Th_el Vs. E_E3x3 core TAR1 CUT on E_e",90,0,30,280,0,140);
-TH2F  *E3x32CUTEe  = new TH2F("ThEel2" , " Th_el Vs. E_E3x3 core TAR2 CUT on E_e",90,0,30,280,0,140);
+TH2F  *E3x31CUTEe  = new TH2F("ThEel1" , " Th_el Vs. E_E3x3 core TAR1 CUT on E_e",40,0,4,280,0,140);
+TH2F  *E3x32CUTEe  = new TH2F("ThEel2" , " Th_el Vs. E_E3x3 core TAR2 CUT on E_e",40,0,4,280,0,140);
     
-TH2F  *E3x31CUTtot  = new TH2F("ThEel1" , " Th_el Vs. E_E3x3 core TAR1 CUT th_mu+Ee",90,0,30,280,0,140);
-TH2F  *E3x32CUTtot  = new TH2F("ThEel2" , " Th_el Vs. E_E3x3 core TAR2 CUT th_mu+Ee",90,0,30,280,0,140);
+TH2F  *E3x31CUTtot  = new TH2F("ThEel1" , " Th_el Vs. E_E3x3 core TAR1 CUT th_mu+Ee",40,0,4,280,0,140);
+TH2F  *E3x32CUTtot  = new TH2F("ThEel2" , " Th_el Vs. E_E3x3 core TAR2 CUT th_mu+Ee",40,0,4,280,0,140);
 
 TH1F* hist_E9_e=new TH1F("E9e", "E9 e- tot", 500,0,1);
 TH1F* hist_E9_eLO=new TH1F("E9eLO", "E9 e- tot LO", 500,0,1);

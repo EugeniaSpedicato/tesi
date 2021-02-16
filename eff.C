@@ -81,21 +81,21 @@ TH1F* The2CUTtot=new TH1F("th", "th El core TAR 2 CUT th_mu+Ee", 120,0,30);
     
 TH1F* rmu=new TH1F("rmu", "impact point", 100,0,10); 
 
-TH2F  *E3x31  = new TH2F("ThEel1" , " Th_el Vs. E_E3x3 core TAR1",100,0,50,280,0,140);
-TH2F  *E3x32  = new TH2F("ThEel2" , " Th_el Vs. E_E3x3 core TAR2",100,0,50,280,0,140);
+TH2F  *E3x31  = new TH2F("ThEel1" , " Th_el Vs. E_E3x3 core TAR1",90,0,30,280,0,140);
+TH2F  *E3x32  = new TH2F("ThEel2" , " Th_el Vs. E_E3x3 core TAR2",90,0,30,280,0,140);
     
 
-TH2F  *E3x31CUT  = new TH2F("ThEel1" , " Th_el Vs. E_E3x3 core TAR1 CUT",100,0,50,280,0,140);
-TH2F  *E3x32CUT  = new TH2F("ThEel2" , " Th_el Vs. E_E3x3 core TAR2 CUT",100,0,50,280,0,140);
+TH2F  *E3x31CUT  = new TH2F("ThEel1" , " Th_el Vs. E_E3x3 core TAR1 CUT",90,0,30,280,0,140);
+TH2F  *E3x32CUT  = new TH2F("ThEel2" , " Th_el Vs. E_E3x3 core TAR2 CUT",90,0,30,280,0,140);
     
-TH2F  *E3x31CUTmu  = new TH2F("ThEel1" , " Th_el Vs. E_E3x3 core TAR1 CUT th_mu>0.2mrad",100,0,50,280,0,140);
-TH2F  *E3x32CUTmu  = new TH2F("ThEel2" , " Th_el Vs. E_E3x3 core TAR2 CUT th_mu>0.2mrad",100,0,50,280,0,140);
+TH2F  *E3x31CUTmu  = new TH2F("ThEel1" , " Th_el Vs. E_E3x3 core TAR1 CUT th_mu>0.2mrad",90,0,30,280,0,140);
+TH2F  *E3x32CUTmu  = new TH2F("ThEel2" , " Th_el Vs. E_E3x3 core TAR2 CUT th_mu>0.2mrad",90,0,30,280,0,140);
     
-TH2F  *E3x31CUTEe  = new TH2F("ThEel1" , " Th_el Vs. E_E3x3 core TAR1 CUT on E_e",100,0,50,280,0,140);
-TH2F  *E3x32CUTEe  = new TH2F("ThEel2" , " Th_el Vs. E_E3x3 core TAR2 CUT on E_e",100,0,50,280,0,140);
+TH2F  *E3x31CUTEe  = new TH2F("ThEel1" , " Th_el Vs. E_E3x3 core TAR1 CUT on E_e",90,0,30,280,0,140);
+TH2F  *E3x32CUTEe  = new TH2F("ThEel2" , " Th_el Vs. E_E3x3 core TAR2 CUT on E_e",90,0,30,280,0,140);
     
-TH2F  *E3x31CUTtot  = new TH2F("ThEel1" , " Th_el Vs. E_E3x3 core TAR1 CUT th_mu+Ee",100,0,50,280,0,140);
-TH2F  *E3x32CUTtot  = new TH2F("ThEel2" , " Th_el Vs. E_E3x3 core TAR2 CUT th_mu+Ee",100,0,50,280,0,140);
+TH2F  *E3x31CUTtot  = new TH2F("ThEel1" , " Th_el Vs. E_E3x3 core TAR1 CUT th_mu+Ee",90,0,30,280,0,140);
+TH2F  *E3x32CUTtot  = new TH2F("ThEel2" , " Th_el Vs. E_E3x3 core TAR2 CUT th_mu+Ee",90,0,30,280,0,140);
 
     
     
@@ -222,10 +222,6 @@ if(r_mu<5 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_E_clus3x3>0.5) E3x3
 }*/
      
 }}}
-TH1F *Eff1 = new TH1F("ef1", "Eff Tar1", 120,0,30);
-TH1F *Eff2 = new TH1F("ef2", "Eff Tar2", 120,0,30);
-Eff1->Divide(The1,The_true1,1,1,"B");
-Eff2->Divide(The2,The_true2,1,1,"B");
     
 TH1F *Eff1CUT = new TH1F("ef1cut", "Eff Tar1 cut", 120,0,30);
 TH1F *Eff2CUT = new TH1F("ef2cut", "Eff Tar2 cut", 120,0,30);
@@ -251,21 +247,14 @@ Eff2CUTtot->Divide(The2CUTtot,The_trueCUT2tot,1,1,"B");
 
 TCanvas * ef= new TCanvas("ef","ef",1000,100,2500,2000);
 ef->Divide(1,2);
-ef->cd(1);
-Eff1->GetXaxis()->SetTitle("Theta el[mrad]");
-Eff1->GetYaxis()->SetTitle("Efficency");
-Eff1->SetLineWidth(3);
-Eff1->SetLineColor(kBlue);
-Eff1->SetMaximum(1.2);
-//Eff1->SetMinimum(0);
-Eff1->Draw();  
+ef->cd(1); 
 Eff1CUT->GetXaxis()->SetTitle("Theta el[mrad]");
 Eff1CUT->GetYaxis()->SetTitle("Efficency");
 Eff1CUT->SetLineWidth(3);
 Eff1CUT->SetLineColor(kRed);
 Eff1CUT->SetMaximum(1.2);
 //Eff1CUT->SetMinimum(0);
-Eff1CUT->Draw("same"); 
+Eff1CUT->Draw(); 
 
 Eff1CUTmu->GetXaxis()->SetTitle("Theta el[mrad]");
 Eff1CUTmu->GetYaxis()->SetTitle("Efficency");
@@ -292,20 +281,13 @@ Eff1CUTtot->SetMaximum(1.2);
 Eff1CUTtot->Draw("same"); 
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 ef->cd(2);
-Eff2->GetXaxis()->SetTitle("Theta el[mrad]");
-Eff2->GetYaxis()->SetTitle("Efficency");
-Eff2->SetLineWidth(3);
-Eff2->SetLineColor(kBlue);
-Eff2->SetMaximum(1.2);
-//Eff2->SetMinimum(0);
-Eff2->Draw();
 Eff2CUT->GetXaxis()->SetTitle("Theta el[mrad]");
 Eff2CUT->GetYaxis()->SetTitle("Efficency");
 Eff2CUT->SetLineWidth(3);
 Eff2CUT->SetLineColor(kRed);
 Eff2CUT->SetMaximum(1.2);
 //Eff2CUT->SetMinimum(0);
-Eff2CUT->Draw("same");   
+Eff2CUT->Draw();   
        
 Eff2CUTmu->GetXaxis()->SetTitle("Theta el[mrad]");
 Eff2CUTmu->GetYaxis()->SetTitle("Efficency");
@@ -369,19 +351,19 @@ The->SetLineWidth(3);
 The->Draw("HIST same");
 gPad->BuildLegend(0.3,0.21,0.3,0.21);*/
 c5->cd(1);
-The_true1->SetLineColor(kBlack);
-The_true1->SetLineWidth(3);
-The_true1->Draw("HIST");
-The1->SetLineWidth(3);
-The1->Draw("HIST same");  
+The_trueCUT1->SetLineColor(kBlack);
+The_trueCUT1->SetLineWidth(3);
+The_trueCUT1->Draw("HIST");
+The1CUT->SetLineWidth(3);
+The1CUT->Draw("HIST same");  
 
 gPad->BuildLegend(0.3,0.21,0.3,0.21);
 c5->cd(2);
-The_true2->SetLineColor(kBlack);
-The_true2->SetLineWidth(3);
-The_true2->Draw("HIST");   
-The2->SetLineWidth(3);
-The2->Draw("HIST same"); 
+The_trueCUT2->SetLineColor(kBlack);
+The_trueCUT2->SetLineWidth(3);
+The_trueCUT2->Draw("HIST");   
+The2CUT->SetLineWidth(3);
+The2CUT->Draw("HIST same"); 
 
 gPad->BuildLegend(0.3,0.21,0.3,0.21);
     
@@ -538,46 +520,39 @@ for (Int_t j=1; j<ny2CUTtot+1; j++) {
 if (E3x32CUTtot->GetBinContent(i,j)<1) E3x32CUTtot->SetBinContent(i,j,0);}}
     
 TCanvas * c4a= new TCanvas("c4a","c4a",100,100,2500,2000);
-c4a->Divide(2,5);
+c4a->Divide(2,4);
 c4a->cd(1);
 gStyle->SetPalette(kLake);
 TColor::InvertPalette(); 
-E3x31->GetXaxis()->SetTitle("Theta_el[mrad]");
-E3x31->GetYaxis()->SetTitle("Ereco3x3[GeV]");
-E3x31->Draw("COLZ");
-c4a->cd(2);   
-E3x32->GetXaxis()->SetTitle("Theta_el[mrad]");
-E3x32->GetYaxis()->SetTitle("Ereco3x3[GeV]");
-E3x32->Draw("COLZ");
-c4a->cd(3);   
+c4a->cd(1);   
 E3x31CUT->GetXaxis()->SetTitle("Theta_el[mrad]");
 E3x31CUT->GetYaxis()->SetTitle("Ereco3x3[GeV]");
 E3x31CUT->Draw("COLZ");
-c4a->cd(4);   
+c4a->cd(2);   
 E3x32CUT->GetXaxis()->SetTitle("Theta_el[mrad]");
 E3x32CUT->GetYaxis()->SetTitle("Ereco3x3[GeV]");
 E3x32CUT->Draw("COLZ");
-c4a->cd(5);   
+c4a->cd(3);   
 E3x31CUTmu->GetXaxis()->SetTitle("Theta_el[mrad]");
 E3x31CUTmu->GetYaxis()->SetTitle("Ereco3x3[GeV]");
 E3x31CUTmu->Draw("COLZ");
-c4a->cd(6);   
+c4a->cd(4);   
 E3x32CUTmu->GetXaxis()->SetTitle("Theta_el[mrad]");
 E3x32CUTmu->GetYaxis()->SetTitle("Ereco3x3[GeV]");
 E3x32CUTmu->Draw("COLZ");
-c4a->cd(7);   
+c4a->cd(5);   
 E3x31CUTEe->GetXaxis()->SetTitle("Theta_el[mrad]");
 E3x31CUTEe->GetYaxis()->SetTitle("Ereco3x3[GeV]");
 E3x31CUTEe->Draw("COLZ");
-c4a->cd(8);   
+c4a->cd(6);   
 E3x32CUTEe->GetXaxis()->SetTitle("Theta_el[mrad]");
 E3x32CUTEe->GetYaxis()->SetTitle("Ereco3x3[GeV]");
 E3x32CUTEe->Draw("COLZ");
-c4a->cd(9);   
+c4a->cd(7);   
 E3x31CUTtot->GetXaxis()->SetTitle("Theta_el[mrad]");
 E3x31CUTtot->GetYaxis()->SetTitle("Ereco3x3[GeV]");
 E3x31CUTtot->Draw("COLZ");
-c4a->cd(10);   
+c4a->cd(8);   
 E3x32CUTtot->GetXaxis()->SetTitle("Theta_el[mrad]");
 E3x32CUTtot->GetYaxis()->SetTitle("Ereco3x3[GeV]");
 E3x32CUTtot->Draw("COLZ");

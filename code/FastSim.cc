@@ -679,7 +679,7 @@ for (Int_t p=1; p<7; p++)  {
                 xi[1][0]=(2-2*sSin-sB)*tan(anglexin)+x3;
                 yi[1][0]=(2-2*sSin-sB)*tan(angleyin)+y3;
         
-                //coo dopo metà berillio, poi avviene interazione
+                //coo dopo tot berillio, poi avviene interazione
                 Double_t x4 = gRandom->Gaus(xi[1][0],(1/sqrt(3))*(sB*vertex)*sigBE2in);
                 Double_t y4 = gRandom->Gaus(yi[1][0],(1/sqrt(3))*(sB*vertex)*sigBE2in);
         

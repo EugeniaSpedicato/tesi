@@ -179,7 +179,6 @@ if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_E_clus3x3>1)
 {TheCUTtot->Fill(detKinBeamRot_def_angle_e,wgt_full);
      hist_E9_e->Fill(E9,wgt_full);
      hist_E9_eLO->Fill(E9,wgt_LO);}
-}
     
     if (detKinBeamRot_tar==0)
     {The1->Fill(detKinBeamRot_def_angle_e,wgt_full);

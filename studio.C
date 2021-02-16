@@ -32,7 +32,7 @@ TH2F  *E3x32CUT  = new TH2F("ThEel2" , " Th_el Vs. E_E3x3 core TAR2 CUT",90,0,30
 TH1F* hist_E9_e=new TH1F("E9e", "E9 e- tot", 500,0,1);
 TH1F* hist_E9_eLO=new TH1F("E9eLO", "E9 e- tot LO", 500,0,1);
     
-TProfile* En_r1x1 = new TProfile("Enr1x1", "Position impact point VS energy1x1", 100,0, 4.275,100,0,1);
+TProfile* En_r1x1 = new TProfile("Enr1x1", 100,0, 4.275,100,0,1);
 En_r1x1->SetErrorOption("S"); 
     
 if (fChain == 0) return;

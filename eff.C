@@ -115,9 +115,9 @@ Long64_t nentries = fChain->GetEntriesFast();
               
     if (photon_coox!=-1 && photon_cooy!=-1)
     {  
-     E_CAL=detKinBeamRot_E_clus3x3+photon_energy;}
+     E_CAL=detKinBeamRot_Ee+photon_energy;}
     else 
-    {E_CAL=detKinBeamRot_E_clus3x3;}
+    {E_CAL=detKinBeamRot_Ee;}
 
         detKinBeamRot_cooXe=detKinBeamRot_cooXe*100; // cm
         detKinBeamRot_cooYe=detKinBeamRot_cooYe*100; // cm
@@ -131,27 +131,27 @@ Long64_t nentries = fChain->GetEntriesFast();
 
        
 The_true->Fill(detKinBeamRot_def_angle_e,wgt_full);
-if(r_mu<2.5) The_trueCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
-if(r_mu<2.5 && detKinBeamRot_def_angle_mu>0.2) The_trueCUTmu->Fill(detKinBeamRot_def_angle_e,wgt_full);
-if(r_mu<2.5 && detKinBeamRot_E_clus3x3>1) The_trueCUTEe->Fill(detKinBeamRot_def_angle_e,wgt_full);
-if(r_mu<2.5 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_E_clus3x3>1) The_trueCUTtot->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<3) The_trueCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<3 && detKinBeamRot_def_angle_mu>0.2) The_trueCUTmu->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<3 && detKinBeamRot_E_clus3x3>1) The_trueCUTEe->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<3 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_E_clus3x3>1) The_trueCUTtot->Fill(detKinBeamRot_def_angle_e,wgt_full);
     
 
     if (detKinBeamRot_tar==0)
     {The_true1->Fill(detKinBeamRot_def_angle_e,wgt_full);
-if(r_mu<2.5) The_trueCUT1->Fill(detKinBeamRot_def_angle_e,wgt_full);
-if(r_mu<2.5 && detKinBeamRot_def_angle_mu>0.2) The_trueCUT1mu->Fill(detKinBeamRot_def_angle_e,wgt_full);
-if(r_mu<2.5 && detKinBeamRot_E_clus3x3>1) The_trueCUT1Ee->Fill(detKinBeamRot_def_angle_e,wgt_full);
-if(r_mu<2.5 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_E_clus3x3>1) The_trueCUT1tot->Fill(detKinBeamRot_def_angle_e,wgt_full);}
+if(r_mu<3) The_trueCUT1->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<3 && detKinBeamRot_def_angle_mu>0.2) The_trueCUT1mu->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<3 && detKinBeamRot_E_clus3x3>1) The_trueCUT1Ee->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<3 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_E_clus3x3>1) The_trueCUT1tot->Fill(detKinBeamRot_def_angle_e,wgt_full);}
     if (detKinBeamRot_tar==1)
     {The_true2->Fill(detKinBeamRot_def_angle_e,wgt_full);
      
-if(r_mu<2.5) The_trueCUT2->Fill(detKinBeamRot_def_angle_e,wgt_full);
-if(r_mu<2.5 && detKinBeamRot_def_angle_mu>0.2) The_trueCUT2mu->Fill(detKinBeamRot_def_angle_e,wgt_full);
-if(r_mu<2.5 && detKinBeamRot_E_clus3x3>1) The_trueCUT2Ee->Fill(detKinBeamRot_def_angle_e,wgt_full);
-if(r_mu<2.5 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_E_clus3x3>1) The_trueCUT2tot->Fill(detKinBeamRot_def_angle_e,wgt_full);}
+if(r_mu<3) The_trueCUT2->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<3 && detKinBeamRot_def_angle_mu>0.2) The_trueCUT2mu->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<3 && detKinBeamRot_E_clus3x3>1) The_trueCUT2Ee->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<3 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_E_clus3x3>1) The_trueCUT2tot->Fill(detKinBeamRot_def_angle_e,wgt_full);}
        
-    if (detKinBeamRot_tar==1) rmu->Fill(r_mu,wgt_full);
+    if (detKinBeamRot_tar==0) rmu->Fill(r_mu,wgt_full);
        
 if (detKinBeamRot_n_cell_e!=0 && E_CAL>0)
 {  
@@ -171,41 +171,41 @@ if(abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275) {
 
 The->Fill(detKinBeamRot_def_angle_e,wgt_full);
     
-if(r_mu<2.5) TheCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
-if(r_mu<2.5 && detKinBeamRot_def_angle_mu>0.2) TheCUTmu->Fill(detKinBeamRot_def_angle_e,wgt_full);
-if(r_mu<2.5 && detKinBeamRot_E_clus3x3>1) TheCUTEe->Fill(detKinBeamRot_def_angle_e,wgt_full);
-if(r_mu<2.5 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_E_clus3x3>1)TheCUTtot->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<3) TheCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<3 && detKinBeamRot_def_angle_mu>0.2) TheCUTmu->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<3 && detKinBeamRot_E_clus3x3>1) TheCUTEe->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<3 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_E_clus3x3>1)TheCUTtot->Fill(detKinBeamRot_def_angle_e,wgt_full);
     
     if (detKinBeamRot_tar==0)
     {The1->Fill(detKinBeamRot_def_angle_e,wgt_full);
      
-if(r_mu<2.5) The1CUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
-if(r_mu<2.5 && detKinBeamRot_def_angle_mu>0.2) The1CUTmu->Fill(detKinBeamRot_def_angle_e,wgt_full);
-if(r_mu<2.5 && detKinBeamRot_E_clus3x3>1) The1CUTEe->Fill(detKinBeamRot_def_angle_e,wgt_full);
-if(r_mu<2.5 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_E_clus3x3>1)The1CUTtot->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<3) The1CUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<3 && detKinBeamRot_def_angle_mu>0.2) The1CUTmu->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<3 && detKinBeamRot_E_clus3x3>1) The1CUTEe->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<3 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_E_clus3x3>1)The1CUTtot->Fill(detKinBeamRot_def_angle_e,wgt_full);
 
      if (detKinBeamRot_E_clus3x3!=0) 
      {
 E3x31->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_full);
-if(r_mu<2.5) E3x31CUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_full);
-if(r_mu<2.5 && detKinBeamRot_def_angle_mu>0.2) E3x31CUTmu->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_full);
-if(r_mu<2.5 && detKinBeamRot_E_clus3x3>1) E3x31CUTEe->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_full);
-if(r_mu<2.5 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_E_clus3x3>1) E3x31CUTtot->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_full);
+if(r_mu<3) E3x31CUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_full);
+if(r_mu<3 && detKinBeamRot_def_angle_mu>0.2) E3x31CUTmu->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_full);
+if(r_mu<3 && detKinBeamRot_E_clus3x3>1) E3x31CUTEe->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_full);
+if(r_mu<3 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_E_clus3x3>1) E3x31CUTtot->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_full);
 } }
     if (detKinBeamRot_tar==1)
     {The2->Fill(detKinBeamRot_def_angle_e,wgt_full);
      
-if(r_mu<2.5) The2CUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
-if(r_mu<2.5 && detKinBeamRot_def_angle_mu>0.2) The2CUTmu->Fill(detKinBeamRot_def_angle_e,wgt_full);
-if(r_mu<2.5 && detKinBeamRot_E_clus3x3>1) The2CUTEe->Fill(detKinBeamRot_def_angle_e,wgt_full);
-if(r_mu<2.5 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_E_clus3x3>1)The2CUTtot->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<3) The2CUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<3 && detKinBeamRot_def_angle_mu>0.2) The2CUTmu->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<3 && detKinBeamRot_E_clus3x3>1) The2CUTEe->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<3 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_E_clus3x3>1)The2CUTtot->Fill(detKinBeamRot_def_angle_e,wgt_full);
      if (detKinBeamRot_E_clus3x3!=0) 
      {
 E3x32->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_full);
-if(r_mu<2.5) E3x32CUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_full);
-if(r_mu<2.5 && detKinBeamRot_def_angle_mu>0.2) E3x32CUTmu->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_full);
-if(r_mu<2.5 && detKinBeamRot_E_clus3x3>1) E3x32CUTEe->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_full);
-if(r_mu<2.5 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_E_clus3x3>1) E3x32CUTtot->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_full);
+if(r_mu<3) E3x32CUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_full);
+if(r_mu<3 && detKinBeamRot_def_angle_mu>0.2) E3x32CUTmu->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_full);
+if(r_mu<3 && detKinBeamRot_E_clus3x3>1) E3x32CUTEe->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_full);
+if(r_mu<3 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_E_clus3x3>1) E3x32CUTtot->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_full);
 } 
     
     } /*else { 
@@ -256,39 +256,39 @@ Eff1->GetXaxis()->SetTitle("Theta el[mrad]");
 Eff1->GetYaxis()->SetTitle("Efficency");
 Eff1->SetLineWidth(3);
 Eff1->SetLineColor(kBlue);
-Eff1->SetMaximum(1.5);
-Eff1->SetMinimum(0);
+//Eff1->SetMaximum(1.5);
+//Eff1->SetMinimum(0);
 Eff1->Draw();  
 Eff1CUT->GetXaxis()->SetTitle("Theta el[mrad]");
 Eff1CUT->GetYaxis()->SetTitle("Efficency");
 Eff1CUT->SetLineWidth(3);
 Eff1CUT->SetLineColor(kRed);
-Eff1CUT->SetMaximum(1.5);
-Eff1CUT->SetMinimum(0);
+//Eff1CUT->SetMaximum(1.5);
+//Eff1CUT->SetMinimum(0);
 Eff1CUT->Draw("same"); 
 
 Eff1CUTmu->GetXaxis()->SetTitle("Theta el[mrad]");
 Eff1CUTmu->GetYaxis()->SetTitle("Efficency");
 Eff1CUTmu->SetLineWidth(3);
 Eff1CUTmu->SetLineColor(kOrange);
-Eff1CUTmu->SetMaximum(1.5);
-Eff1CUTmu->SetMinimum(0);
+//Eff1CUTmu->SetMaximum(1.5);
+//Eff1CUTmu->SetMinimum(0);
 Eff1CUTmu->Draw("same"); 
        
 Eff1CUTEe->GetXaxis()->SetTitle("Theta el[mrad]");
 Eff1CUTEe->GetYaxis()->SetTitle("Efficency");
 Eff1CUTEe->SetLineWidth(3);
 Eff1CUTEe->SetLineColor(kGreen);
-Eff1CUTEe->SetMaximum(1.5);
-Eff1CUTEe->SetMinimum(0);
+//Eff1CUTEe->SetMaximum(1.5);
+//Eff1CUTEe->SetMinimum(0);
 Eff1CUTEe->Draw("same"); 
 
 Eff1CUTtot->GetXaxis()->SetTitle("Theta el[mrad]");
 Eff1CUTtot->GetYaxis()->SetTitle("Efficency");
 Eff1CUTtot->SetLineWidth(3);
 Eff1CUTtot->SetLineColor(kBlack);
-Eff1CUTtot->SetMaximum(1.5);
-Eff1CUTtot->SetMinimum(0);
+//Eff1CUTtot->SetMaximum(1.5);
+//Eff1CUTtot->SetMinimum(0);
 Eff1CUTtot->Draw("same"); 
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 ef->cd(2);
@@ -296,39 +296,39 @@ Eff2->GetXaxis()->SetTitle("Theta el[mrad]");
 Eff2->GetYaxis()->SetTitle("Efficency");
 Eff2->SetLineWidth(3);
 Eff2->SetLineColor(kBlue);
-Eff2->SetMaximum(1.5);
-Eff2->SetMinimum(0);
+//Eff2->SetMaximum(1.5);
+//Eff2->SetMinimum(0);
 Eff2->Draw();
 Eff2CUT->GetXaxis()->SetTitle("Theta el[mrad]");
 Eff2CUT->GetYaxis()->SetTitle("Efficency");
 Eff2CUT->SetLineWidth(3);
 Eff2CUT->SetLineColor(kRed);
-Eff2CUT->SetMaximum(1.5);
-Eff2CUT->SetMinimum(0);
+//Eff2CUT->SetMaximum(1.5);
+//Eff2CUT->SetMinimum(0);
 Eff2CUT->Draw("same");   
        
 Eff2CUTmu->GetXaxis()->SetTitle("Theta el[mrad]");
 Eff2CUTmu->GetYaxis()->SetTitle("Efficency");
 Eff2CUTmu->SetLineWidth(3);
 Eff2CUTmu->SetLineColor(kOrange);
-Eff2CUTmu->SetMaximum(1.5);
-Eff2CUTmu->SetMinimum(0);
+//Eff2CUTmu->SetMaximum(1.5);
+//Eff2CUTmu->SetMinimum(0);
 Eff2CUTmu->Draw("same"); 
        
 Eff2CUTEe->GetXaxis()->SetTitle("Theta el[mrad]");
 Eff2CUTEe->GetYaxis()->SetTitle("Efficency");
 Eff2CUTEe->SetLineWidth(3);
 Eff2CUTEe->SetLineColor(kGreen);
-Eff2CUTEe->SetMaximum(1.5);
-Eff2CUTEe->SetMinimum(0);
+//Eff2CUTEe->SetMaximum(1.5);
+//Eff2CUTEe->SetMinimum(0);
 Eff2CUTEe->Draw("same"); 
 
 Eff2CUTtot->GetXaxis()->SetTitle("Theta el[mrad]");
 Eff2CUTtot->GetYaxis()->SetTitle("Efficency");
 Eff2CUTtot->SetLineWidth(3);
 Eff2CUTtot->SetLineColor(kBlack);
-Eff2CUTtot->SetMaximum(1.5);
-Eff2CUTtot->SetMinimum(0);
+//Eff2CUTtot->SetMaximum(1.5);
+//Eff2CUTtot->SetMinimum(0);
 Eff2CUTtot->Draw("same"); 
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 

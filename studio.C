@@ -32,7 +32,7 @@ TH2F  *E3x32CUT  = new TH2F("ThEel2" , " Th_el Vs. E_E3x3 core TAR2 CUT",90,0,30
 TH1F* hist_E9_e=new TH1F("E9e", "E9 e- tot", 500,0,1);
 TH1F* hist_E9_eLO=new TH1F("E9eLO", "E9 e- tot LO", 500,0,1);
     
-TProfile* En_r1x1 = new TProfile("Enr1x1", "Position impact point VS energy1x1", 100,0, 4.275,0,1);
+TProfile* En_r1x1 = new TProfile("Enr1x1", "Position impact point VS energy1x1", 200,0, 4.275,0,1);
 En_r1x1->SetErrorOption("S"); 
     
 if (fChain == 0) return;
@@ -71,20 +71,28 @@ if (detKinBeamRot_n_cell_e!=0 && detKinBeamRot_E_clus3x3>0.2)
          hist_E9_eLO->Fill(E9,wgt_LO);
          En_r1x1->Fill(r,E9,wgt_full);}
     
+            if (detKinBeamRot_E_clus3x3!=0) 
+            {if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_E_clus3x3>1) E3x31CUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_full);
+            } 
+        
+            if (detKinBeamRot_E_clus3x3!=0) 
+            {if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_E_clus3x3>1) E3x32CUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_LO);
+            } 
+        
         if (detKinBeamRot_tar==0)
         {if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_E_clus3x3>1) The1CUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
 
-            if (detKinBeamRot_E_clus3x3!=0) 
+          /*  if (detKinBeamRot_E_clus3x3!=0) 
             {if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_E_clus3x3>1) E3x31CUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_full);
-            }
+            }*/
         }   
     
         if (detKinBeamRot_tar==1)
         {if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_E_clus3x3>1) The2CUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
 
-            if (detKinBeamRot_E_clus3x3!=0) 
+    /*        if (detKinBeamRot_E_clus3x3!=0) 
             {if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_E_clus3x3>1) E3x32CUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_full);
-            } 
+            } */
         } 
     }
 }
@@ -117,7 +125,7 @@ E3x32CUT->GetYaxis()->SetTitle("Ereco3x3[GeV]");
 E3x32CUT->Draw("COLZ");
 
 
-c4a->SaveAs("/home/LHCB-T3/espedicato/tesi/thE_cut.png");    
+c4a->SaveAs("/home/LHCB-T3/espedicato/tesi/studio/thE_cut.png");    
     
 TCanvas * c9= new TCanvas("c9","c9",1000,100,2500,2000);
 hist_E9_e->GetXaxis()->SetTitle("Ecentral/E3x3");
@@ -130,7 +138,7 @@ hist_E9_eLO->SetLineColor(kRed);
 hist_E9_eLO->Draw("HIST same"); 
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
-c9->SaveAs("/home/LHCB-T3/espedicato/tesi/E9.png");
+c9->SaveAs("/home/LHCB-T3/espedicato/studio/tesi/E9.png");
     
 TCanvas* graph= new TCanvas("gr","gr",400,10,1100,800);
 
@@ -143,7 +151,7 @@ TCanvas* graph= new TCanvas("gr","gr",400,10,1100,800);
     En_r1x1->SetMinimum(0.45);
     En_r1x1->Draw();    
 
-graph->SaveAs("/home/LHCB-T3/espedicato/tesi/En_r1x1.png");
+graph->SaveAs("/home/LHCB-T3/espedicato/tesi/studio/En_r1x1.png");
 
 
 

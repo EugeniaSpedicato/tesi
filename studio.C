@@ -117,7 +117,7 @@ E3x32CUT->GetYaxis()->SetTitle("Ereco3x3[GeV]");
 E3x32CUT->Draw("COLZ");
 
 
-c4a->SaveAs("/home/LHCB-T3/espedicato/tesi/studio/thE_cut.png");    
+c4a->SaveAs("/home/LHCB-T3/espedicato/tesi/thE_cut.png");    
     
 TCanvas * c9= new TCanvas("c9","c9",1000,100,2500,2000);
 hist_E9_e->GetXaxis()->SetTitle("Ecentral/E3x3");
@@ -130,7 +130,7 @@ hist_E9_eLO->SetLineColor(kRed);
 hist_E9_eLO->Draw("HIST same"); 
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
-c9->SaveAs("/home/LHCB-T3/espedicato/tesi/studio/E9.png");
+c9->SaveAs("/home/LHCB-T3/espedicato/tesi/E9.png");
     
 TCanvas* graph= new TCanvas("gr","gr",400,10,1100,800);
 
@@ -142,6 +142,9 @@ TCanvas* graph= new TCanvas("gr","gr",400,10,1100,800);
     En_r1x1->SetMaximum(0.9);
     En_r1x1->SetMinimum(0.45);
     En_r1x1->Draw();    
+
+graph->SaveAs("/home/LHCB-T3/espedicato/tesi/En_r1x1.png");
+
 
 
 }

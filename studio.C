@@ -133,7 +133,8 @@ for(int i=0; i<9; ++i)
 {
     if (Array9[i]>0 && Array9[i]<26) E_clus3x3+=myGrid->GetBinContent(Rev_number[Array9[i]]);
 
-}   
+}  
+           cout << "E 3x3 " << E_clus3x3 << endl;
 
     double r=sqrt((detKinBeamRot_cooXe*detKinBeamRot_cooXe)+(detKinBeamRot_cooYe*detKinBeamRot_cooYe));
     E9=E_1/E_clus3x3;
@@ -214,7 +215,7 @@ hist_E9_eLO->SetLineColor(kRed);
 hist_E9_eLO->Draw("HIST same"); 
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
-c9->SaveAs("/home/LHCB-T3/espedicato/studio/tesi/E9.png");
+c9->SaveAs("/home/LHCB-T3/espedicato/tesi/studio/E9.png");
 
 
 

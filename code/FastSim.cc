@@ -153,9 +153,7 @@ LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1],myGrid);
     {nPart=1;
     X0depth=0.;
     coo_el.push_back(coo[2][0]*100);//cm
-    coo_el.push_back(coo[3][0]*100);//cm
-    cout << "Coo x elettron in compute "<<coo_el[0] << endl;
-    cout << "Coo y elettron in compute "<<coo_el[1] << endl;      
+    coo_el.push_back(coo[3][0]*100);//cm   
     energy_in_el.push_back(energy_sm_el);
     myGrid->SetEnergy(energy_sm_el);
     EMShower TheShowerEl(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_el,coo_el);
@@ -167,8 +165,6 @@ LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1],myGrid);
     X0depth=-log(gRandom->Uniform())*(9./7.);
     coo_ph.push_back(cooPH[0][0]*100);//cm
     coo_ph.push_back(cooPH[0][1]*100);//cm
-    cout << "Coo x fotone in compute "<<coo_ph[0] << endl;
-    cout << "Coo y fotone in compute "<<coo_ph[1] << endl;
     energy_in_ph.push_back(en_ph_sm/2);
     energy_in_ph.push_back(en_ph_sm/2);
     myGrid->SetEnergy(en_ph_sm);
@@ -903,8 +899,8 @@ kv.cooXe = coo[2][0];
 kv.cooYe = coo[3][0];
 
 kv.tar = tar;
- kv.ThEl_interaction = 1e3*TheINT; // angolo elettrone al momento della produzione, in mrad MA CON EFFETTO SPOT E DIV
- kv.ThMu_interaction = 1e3*ThMuINT; // angolo elettrone al momento della produzione, in mrad MA CON EFFETTO SPOT E DIV (cioè rispetto asse z). Se vuoi quello puro non siamo noi, ma def_angle_i
+// kv.ThEl_interaction = 1e3*TheINT; // angolo elettrone al momento della produzione, in mrad MA CON EFFETTO SPOT E DIV
+// kv.ThMu_interaction = 1e3*ThMuINT; // angolo elettrone al momento della produzione, in mrad MA CON EFFETTO SPOT E DIV (cioè rispetto asse z). Se vuoi quello puro non siamo noi, ma def_angle_i
 
   /*kv.pXmu = p_mu_in.Px();
   kv.pYmu = p_mu_in.Py();
@@ -927,11 +923,7 @@ kv.def_angle_mu = def_angle[0][0];
 kv.def_angle_e = def_angle[1][0]; 
 
 kv.n_cell_e = theGrid->GiveCentralCell(kv.cooXe*100,kv.cooYe*100);
-    
-    cout << "Energia elettrone "<< kv.Ee << endl;
-    cout << "Coo x elettrone dopo "<< kv.cooXe*100 << endl;
-    cout << "Coo y elettrone dopo"<< kv.cooYe*100 << endl;
-    cout << "Numero cella elettrone" << kv.n_cell_e << endl;
+
     
   // Note: here Ebeam is the average beam energy, so tt_e and xt_e are defined under this assumption
   MuE::ElasticState emu_state(Ebeam,mm,me, kv.the);
@@ -981,15 +973,7 @@ PxPyPzEVector p_gamma_CoM = Lorentz_ToCoM(p_gamma_lab_div);
       
     photon.coox=x;
     photon.cooy=y;
-    cout << "Energia fotone "<< photon.energy << endl;
-    cout << "Coo x fotone dopo "<< photon.coox*100 << endl;
-    cout << "Coo y fotone dopo"<< photon.cooy*100 << endl;
-      
    photon.n_cell_ph = theGrid->GiveCentralCell(photon.coox*100,photon.cooy*100); //in cm
-      
-    cout << "Numero cella fotone" << photon.n_cell_ph << endl;
-   
-    
   }
 
   else {
@@ -1011,14 +995,15 @@ PxPyPzEVector p_gamma_CoM = Lorentz_ToCoM(p_gamma_lab_div);
  {
 TH2F* Ecal=myGrid->GiveEcalGrid();
 if (Ecal->GetEntries()!=0)     
-{//double *Ecell=myGrid->EnergyContent();
-double *E_clus = myGrid->Draw_ECAL(j);
+{
+double *Ecell=myGrid->EnergyContent();
+/*double *E_clus = myGrid->Draw_ECAL(j);
 kv.n_max_Cell=E_clus[0];
 kv.E_clus3x3=E_clus[1];
-kv.E_1=E_clus[2];
+kv.E_1=E_clus[2];*/
  
     
-/*kv.Ecell1=Ecell[0];
+kv.Ecell1=Ecell[0];
 kv.Ecell2=Ecell[1];    
 kv.Ecell3=Ecell[2];    
 kv.Ecell4=Ecell[3];    
@@ -1042,15 +1027,15 @@ kv.Ecell21=Ecell[20];
 kv.Ecell22=Ecell[21];    
 kv.Ecell23=Ecell[22];    
 kv.Ecell24=Ecell[23];    
-kv.Ecell25=Ecell[24];*/}
+kv.Ecell25=Ecell[24];}
 else 
 {
-kv.n_max_Cell=0;
+/*kv.n_max_Cell=0;
 kv.E_clus3x3=0;
-kv.E_1=0.;
+kv.E_1=0.;*/
 
     
-/*kv.Ecell1=0;
+kv.Ecell1=0;
 kv.Ecell2=0;    
 kv.Ecell3=0;    
 kv.Ecell4=0;   
@@ -1074,7 +1059,7 @@ kv.Ecell21=0;
 kv.Ecell22=0;    
 kv.Ecell23=0;    
 kv.Ecell24=0;    
-kv.Ecell25=0; */
+kv.Ecell25=0;
      }
      
  }

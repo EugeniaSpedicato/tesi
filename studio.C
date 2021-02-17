@@ -31,9 +31,7 @@ TH2F  *E3x32CUT  = new TH2F("ThEel2" , " Th_el Vs. E_E3x3 core LO CUT",90,0,30,2
 
 TH1F* hist_E9_e=new TH1F("E9e", "E9 e- tot", 500,0,1);
 TH1F* hist_E9_eLO=new TH1F("E9eLO", "E9 e- tot LO", 500,0,1);
-    
-TProfile* En_r1x1 = new TProfile("Enr1x1", "Position impact point VS energy1x1", 200,0, 4.275,0,1);
-En_r1x1->SetErrorOption("S"); 
+
     
 if (fChain == 0) return;
 
@@ -68,8 +66,7 @@ if (detKinBeamRot_n_cell_e!=0 && detKinBeamRot_E_clus3x3>0.2)
         if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_E_clus3x3>1)
         {TheCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
          hist_E9_e->Fill(E9,wgt_full);
-         hist_E9_eLO->Fill(E9,wgt_LO);
-         En_r1x1->Fill(r,E9,wgt_full);}
+         hist_E9_eLO->Fill(E9,wgt_LO);}
     
             if (detKinBeamRot_E_clus3x3!=0) 
             {if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_E_clus3x3>1) E3x31CUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_full);
@@ -139,19 +136,7 @@ hist_E9_eLO->Draw("HIST same");
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
 c9->SaveAs("/home/LHCB-T3/espedicato/studio/tesi/E9.png");
-    
-TCanvas* graph= new TCanvas("gr","gr",400,10,1100,800);
 
-    En_r1x1->SetTitle("Coordinate impact point-energy 1 cell");
-    En_r1x1->GetYaxis()->SetTitle("Erec/Etrue");
-    En_r1x1->GetXaxis()->SetTitle("r[cm]");
-    En_r1x1->SetLineWidth(2);
-    En_r1x1->SetLineColor(kRed);
-    En_r1x1->SetMaximum(0.9);
-    En_r1x1->SetMinimum(0.45);
-    En_r1x1->Draw();    
-
-graph->SaveAs("/home/LHCB-T3/espedicato/tesi/studio/En_r1x1.png");
 
 
 

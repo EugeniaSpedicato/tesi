@@ -40,9 +40,9 @@ ECAL::ECAL(double nbinsx,
         Rev_number[21]=8; Rev_number[22]=9; Rev_number[23]=10; Rev_number[24]=11; Rev_number[25]=12;
       
 
-    Energy_dist =new TH1F("Energy", "Energy",100,90,100);
-    Energy_dist1 =new TH1F("Energy", "Energy 1 cell",200,0.20,1);
-    Energy_dist3x3 =new TH1F("Energy", "Energy 3x3 cells",200,0.70,1);
+  //  Energy_dist =new TH1F("Energy", "Energy",100,90,100);
+  // Energy_dist1 =new TH1F("Energy", "Energy 1 cell",200,0.20,1);
+  // Energy_dist3x3 =new TH1F("Energy", "Energy 3x3 cells",200,0.70,1);
 
     
     Array9=0;
@@ -82,7 +82,7 @@ double ECAL::GiveCentralCell(double coox,double cooy)
     return number[nbin];
 };
 
-int* ECAL::GiveArray3x3(int n)
+/*int* ECAL::GiveArray3x3(int n)
 {
     if (n==1) {Array9= new int[9]{1,6,7,2,0,0,0,0,0};}
     if (n==2) {Array9= new int[9]{1,2,6,7,8,3,0,0,0};}
@@ -111,7 +111,7 @@ int* ECAL::GiveArray3x3(int n)
     if (n==25) {Array9= new int[9]{19,20,24,25,0,0,0,0,0};}
     
     return 0;
-}
+}*/
 
 // metodo che aggiunge il punto di coo(x,y) all'istogramma, quindi al calorimetro e dà numero cella
 
@@ -137,7 +137,7 @@ void ECAL::AddHitCooDepth(double r, double phi,double xi, double yi, double w, d
 };
 
 // metodo che disegna l'evento nel calorimetro e le celle che vengono colpite
-double* ECAL::Draw_ECAL(int i){
+
 
 /*TCanvas * Ecal_= new TCanvas("Ecal_","Ecal_",1500,100,3500,2000);
 Ecal_->Divide(2,1);
@@ -155,6 +155,7 @@ name1 <<"/home/LHCB-T3/espedicato/tesi/ECALpng/Ecal"<< i << ".png";
 TString name =name1.str();
 Ecal_->SaveAs(name);*/
 
+/*double* ECAL::Draw_ECAL(int i){
 double* ECluster = new double[3];
 // riempi celle    
 int binMax=EcalGrid->GetMaximumBin();  
@@ -175,7 +176,7 @@ ECluster[1]=(energy3x3);
 ECluster[2]=(EcalGrid->GetBinContent(binMax)); 
 
 return ECluster;
-};
+};*/
 
 
 double* ECAL::EnergyContent()

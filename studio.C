@@ -166,7 +166,7 @@ int SeconCentralCell_in9=0;
  for(int i=0; i<9; ++i)
 {          
 if (SeconCentralCell==Array9[i] && SeconCentralCell!=0)
-    {++sec_9;
+    {//++sec_9;
     SeconCentralCell_in9=SeconCentralCell;
     SeconCentralCell=0;
     break;} 

@@ -181,8 +181,8 @@ else continue;
 
     if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 && E_clus3x3>1.5)//r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 &&
 
-    {
-if(SeconCentralCell!=0){++tot; if(n_cell_ph!=0){++sec_9;}
+    {if(n_cell_ph!=0)++tot; 
+if(SeconCentralCell!=0){if(n_cell_ph!=0){++sec_9;}
                          else{++sec_NO_9;TCanvas * Ecal_= new TCanvas("Ecal_","Ecal_",1500,100,3500,2000);
 Ecal_->Divide(2,1);
 Ecal_->cd(1);

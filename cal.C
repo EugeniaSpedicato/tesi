@@ -12,6 +12,7 @@ using namespace std;
 #include <TStyle.h>
 #include <TCanvas.h>
 
+
 void atree::Loop()
 {
     TH1::SetDefaultSumw2();
@@ -150,8 +151,6 @@ TH2F  *E3x3true  = new TH2F("ThEel" , " Theta el Vs. E_ECAL true",100,0,50,280,0
 
 TH2F  *E3x3BIG  = new TH2F("ThEelbig" , " Theta el Vs. E_ECAL 5x5",100,0,50,280,0,140);
 TH2F  *E3x32P  = new TH2F("ThEel2p" , " Theta el Vs. E_ECAL crown",100,0,50,280,0,140);
-    
-
     
 //TH2F  *E3x3noph  = new TH2F("ThEel" , " Theta el Vs. E_ECAL no ph",100,0,70,70,0.2,140);
 

@@ -148,14 +148,14 @@ for(int i=0; i<9; ++i)
     for(int i=1;i<26;++i)
     {Etotcal+=en_c[i];}
            
-    double Eout=(Etotcal-E_clus3x3)/E_clus3x3;
+    double Eout=E_clus3x3/Etotcal;
 
 if(CentralCell==7 || CentralCell==8 || CentralCell==9 || CentralCell==12 || CentralCell==13 || CentralCell==14 || CentralCell==17 || CentralCell==18 || CentralCell==19)
 { if(E_clus3x3>1)//r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 &&
         {TheCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
 
-if(photon_coox!=-100 && n_cell_ph!=0)hist_E9_e->Fill(E9,wgt_full);
-if(photon_cooy==-100)hist_E9_eLO->Fill(E9,wgt_full);
+if(photon_coox!=-100 && n_cell_ph!=0)hist_E9_e->Fill(Eout,wgt_full);
+if(photon_cooy==-100)hist_E9_eLO->Fill(Eout,wgt_full);
     
         if (E_clus3x3!=0){E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);} 
         

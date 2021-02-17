@@ -112,7 +112,7 @@ int Maxcell=0.;
 
 for(int i=1;i<26;++i)
 {
-    if(cell_en[i]>en_Maxcell && i!=CentralCell){Maxcell=cell_en[i];Maxcell=i;}
+    if(en_c[i]>en_Maxcell && i!=CentralCell){Maxcell=en_c[i];Maxcell=i;}
     else continue;
 }
 int SeconCentralCell=Maxcell;
@@ -151,7 +151,7 @@ E_1=myGrid->GetBinContent(binMax);
 for(int i=0; i<9; ++i)
 {
     if (Array9[i]>0 && Array9[i]<26) E_clus3x3+=myGrid->GetBinContent(Rev_number[Array9[i]]);
-    cout << Rev_number[Array9[i]] << " and vera " << Array9[i]<< " c'è energia " << EcalGrid->GetBinContent(Rev_number[Array9[i]]) << endl;
+    cout << Rev_number[Array9[i]] << " and vera " << Array9[i]<< " c'è energia " << myGrid->GetBinContent(Rev_number[Array9[i]]) << endl;
 }  
 
     double r=sqrt((detKinBeamRot_cooXe*detKinBeamRot_cooXe)+(detKinBeamRot_cooYe*detKinBeamRot_cooYe));

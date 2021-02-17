@@ -182,7 +182,7 @@ else continue;
     if(E_clus3x3>1)//r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 &&
 
     {
-if(SeconCentralCell!=0){++tot; if(n_cell_ph!=0){++sec_9;};
+if(SeconCentralCell!=0){++tot; if(n_cell_ph!=0){++sec_9;}
                          else{++sec_9;}}
         
 TheCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);

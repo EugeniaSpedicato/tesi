@@ -26,6 +26,8 @@ int n_cell_e;
 int n_cell_ph;
 Double_t E_CAL=0.;
 Double_t E9=0.;
+double sec_9=0;
+double sec_NO_9=0;
  
 TH1F* TheCUT=new TH1F("th", "th El core CUT", 120,0,30); 
 TH1F* The1CUT=new TH1F("th", "th El TAR 1 core CUT", 120,0,30); 
@@ -151,7 +153,6 @@ E_1=myGrid->GetBinContent(binMax);
 for(int i=0; i<9; ++i)
 {
     if (Array9[i]>0 && Array9[i]<26) E_clus3x3+=myGrid->GetBinContent(Rev_number[Array9[i]]);
-    cout << Rev_number[Array9[i]] << " and vera " << Array9[i]<< " c'è energia " << myGrid->GetBinContent(Rev_number[Array9[i]]) << endl;
 }  
 
     double r=sqrt((detKinBeamRot_cooXe*detKinBeamRot_cooXe)+(detKinBeamRot_cooYe*detKinBeamRot_cooYe));
@@ -162,6 +163,14 @@ for(int i=0; i<9; ++i)
     {Etotcal+=en_c[i];}
            
     double Eout=E_clus3x3/Etotcal;
+           
+double sec_9=0;
+double sec_NO_9=0;
+
+ for(int i=0; i<9; ++i)
+{          
+if (SeconCentralCell==Array9[i]){++sec_9;cout << "c'è dentro"<<endl;} else {++sec_NO_9;cout << "NON c'è dentro"<<endl;}
+}
 
 if(CentralCell==7 || CentralCell==8 || CentralCell==9 || CentralCell==12 || CentralCell==13 || CentralCell==14 || CentralCell==17 || CentralCell==18 || CentralCell==19)
 { if(E_clus3x3>1)//r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 &&
@@ -201,6 +210,8 @@ Ecal_->SaveAs(name);   */
 delete myGrid; 
 }}
       
+ cout << "la seconda cella più en. sta " << sec_9 << " volte dentro il 3x3 array e " << sec_NO_9 << " fuori " << endl;
+
     
 Int_t nx1CUT = E3x31CUT->GetNbinsX();
 Int_t ny1CUT = E3x31CUT->GetNbinsY();

@@ -180,7 +180,7 @@ myGrid->Draw("TEXT SAME");
 Ecal_->cd(2);
 myGrid->Draw("LEGO");
 std::ostringstream name1;
-name1 <<"/Users/eugenia/desktop/tesi/studio/Ecal"<< jentry << ".png";
+name1 <<"/home/LHCB-T3/espedicato/tesi/studio/Ecal"<< jentry << ".png";
 TString name =name1.str();
 Ecal_->SaveAs(name);           
  

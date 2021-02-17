@@ -213,16 +213,16 @@ E3x32CUT->Draw("COLZ");
 c4a->SaveAs("/home/LHCB-T3/espedicato/tesi/studio/thE_cut.png");    
     
 TCanvas * c9= new TCanvas("c9","c9",1000,100,2500,2000);
+    
+hist_E9_e->GetXaxis()->SetTitle("Ecentral/E3x3");
+hist_E9_e->SetLineWidth(3);
+hist_E9_e->Draw("HIST"); 
 
 hist_E9_eLO->GetXaxis()->SetTitle("Ecentral/E3x3");
 hist_E9_eLO->SetLineWidth(3);
 hist_E9_eLO->SetLineColor(kRed);
-hist_E9_eLO->Draw("HIST"); 
+hist_E9_eLO->Draw("HIST same");     
     
-hist_E9_e->GetXaxis()->SetTitle("Ecentral/E3x3");
-hist_E9_e->SetLineWidth(3);
-hist_E9_e->Draw("HIST same"); 
-
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
 c9->SaveAs("/home/LHCB-T3/espedicato/tesi/studio/E9.png");

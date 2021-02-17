@@ -79,7 +79,7 @@ Double_t Etotcal=0.;
     
        double r_mu=sqrt((detKinBeamRot_x_in*detKinBeamRot_x_in)+(detKinBeamRot_y_in*detKinBeamRot_y_in));
        
-       if (r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 && abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275){
+       if (r_mu<5){
     TH2F* myGrid= new TH2F("myGrid" , "EM Calorimeter with E in GeV",5,-7.125,7.125,5,-7.125,7.125);
        en_c[1]=detKinBeamRot_Ecell1; en_c[2]=detKinBeamRot_Ecell2; en_c[3]=detKinBeamRot_Ecell3; en_c[4]=detKinBeamRot_Ecell4; en_c[5]=detKinBeamRot_Ecell5;
         en_c[6]=detKinBeamRot_Ecell6; en_c[7]=detKinBeamRot_Ecell7; en_c[8]=detKinBeamRot_Ecell8; en_c[9]=detKinBeamRot_Ecell9; en_c[10]=detKinBeamRot_Ecell10;
@@ -146,7 +146,10 @@ for(int i=0; i<9; ++i)
            
     double Eout=(Etotcal-E_clus3x3)/E_clus3x3;
 
-        if(E_clus3x3>1)
+if (CentralCell==7 || CentralCell==8 || CentralCell==9 ||
+    CentralCell==12 || CentralCell==13 || CentralCell==14
+   CentralCell==17 || CentralCell==18 || CentralCell==19)
+{ if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 && E_clus3x3>1)
         {TheCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
          if(photon_energy>1 && n_cell_ph!=0)hist_E9_e->Fill(Eout,wgt_full);
          if(photon_energy==-1)hist_E9_eLO->Fill(Eout,wgt_full);
@@ -160,7 +163,7 @@ for(int i=0; i<9; ++i)
     
         if (detKinBeamRot_tar==1)
         {The2CUT->Fill(detKinBeamRot_def_angle_e,wgt_full);} 
-    }
+    }}
            
            
 /*TCanvas * Ecal_= new TCanvas("Ecal_","Ecal_",1500,100,3500,2000);

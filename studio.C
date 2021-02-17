@@ -144,7 +144,7 @@ for(int i=0; i<9; ++i)
     for(int i=1;i<26;++i)
     {Etotcal+=en_c[i];}
            
-    double Eout=(Etotcal-E_clus3x3);
+    double Eout=(Etotcal-E_clus3x3)/E_clus3x3;
 
         if(E_clus3x3>1)
         {TheCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);

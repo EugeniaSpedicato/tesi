@@ -164,8 +164,6 @@ for(int i=0; i<9; ++i)
            
     double Eout=E_clus3x3/Etotcal;
            
-double sec_9=0;
-double sec_NO_9=0;
 
  for(int i=0; i<9; ++i)
 {          

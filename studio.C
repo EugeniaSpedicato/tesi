@@ -67,7 +67,6 @@ Long64_t nentries = fChain->GetEntriesFast();
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
     
-TH2F* myGrid= new TH2F("myGrid" , "EM Calorimeter with E in GeV",5,-7.125,7.125,5,-7.125,7.125);
               
         detKinBeamRot_cooXe=detKinBeamRot_cooXe*100; // cm
         detKinBeamRot_cooYe=detKinBeamRot_cooYe*100; // cm
@@ -76,15 +75,11 @@ TH2F* myGrid= new TH2F("myGrid" , "EM Calorimeter with E in GeV",5,-7.125,7.125,
         photon_coox=photon_coox*100; // cm
         photon_cooy=photon_cooy*100; // cm
   
-       cout << "coo x el " << detKinBeamRot_cooXe << "; coo y el " << detKinBeamRot_cooYe << endl;
-       cout << "coo x ph " << photon_coox << "; coo y ph " << photon_cooy << endl;
-       
-         
-       cout << "Ee " << detKinBeamRot_Ee << "; Eph " << photon_energy << endl;
     
        double r_mu=sqrt((detKinBeamRot_x_in*detKinBeamRot_x_in)+(detKinBeamRot_y_in*detKinBeamRot_y_in));
        
-       if (r_mu<5 && abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275){
+       if (r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 && abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275){
+    TH2F* myGrid= new TH2F("myGrid" , "EM Calorimeter with E in GeV",5,-7.125,7.125,5,-7.125,7.125);
        en_c[1]=detKinBeamRot_Ecell1; en_c[2]=detKinBeamRot_Ecell2; en_c[3]=detKinBeamRot_Ecell3; en_c[4]=detKinBeamRot_Ecell4; en_c[5]=detKinBeamRot_Ecell5;
         en_c[6]=detKinBeamRot_Ecell6; en_c[7]=detKinBeamRot_Ecell7; en_c[8]=detKinBeamRot_Ecell8; en_c[9]=detKinBeamRot_Ecell9; en_c[10]=detKinBeamRot_Ecell10;
         en_c[11]=detKinBeamRot_Ecell11; en_c[12]=detKinBeamRot_Ecell12; en_c[13]=detKinBeamRot_Ecell13; en_c[14]=detKinBeamRot_Ecell14; en_c[15]=detKinBeamRot_Ecell15;
@@ -139,39 +134,28 @@ for(int i=0; i<9; ++i)
     if (Array9[i]>0 && Array9[i]<26) E_clus3x3+=myGrid->GetBinContent(Rev_number[Array9[i]]);
     cout << Rev_number[Array9[i]] << " and vera " << Array9[i]<< " c'è energia " << myGrid->GetBinContent(Rev_number[Array9[i]]) << endl;
 }   
-       
-    
-              
-        double r=sqrt((detKinBeamRot_cooXe*detKinBeamRot_cooXe)+(detKinBeamRot_cooYe*detKinBeamRot_cooYe));
-              
-       
-        E9=E_1/E_clus3x3;
-       
-/*
- 
-    if(abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275) 
-    {
-        if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_E_clus3x3>1)
+
+    double r=sqrt((detKinBeamRot_cooXe*detKinBeamRot_cooXe)+(detKinBeamRot_cooYe*detKinBeamRot_cooYe));
+    E9=E_1/E_clus3x3;
+
+        if(detKinBeamRot_E_clus3x3>1)
         {TheCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
          hist_E9_e->Fill(E9,wgt_full);
-         hist_E9_eLO->Fill(E9,wgt_LO);}
+         hist_E9_eLO->Fill(E9,wgt_LO);
     
-            if (detKinBeamRot_E_clus3x3!=0) 
-            {if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_E_clus3x3>1) E3x31CUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_full);} 
+        if (detKinBeamRot_E_clus3x3!=0){E3x31CUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_full);} 
         
-            if (detKinBeamRot_E_clus3x3!=0) 
-            {if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_E_clus3x3>1) E3x32CUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_LO);} 
+        if (detKinBeamRot_E_clus3x3!=0){E3x32CUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_LO);} 
         
         if (detKinBeamRot_tar==0)
-        {if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_E_clus3x3>1) The1CUT->Fill(detKinBeamRot_def_angle_e,wgt_full);}   
+        {The1CUT->Fill(detKinBeamRot_def_angle_e,wgt_full);}   
     
         if (detKinBeamRot_tar==1)
-        {if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_E_clus3x3>1) The2CUT->Fill(detKinBeamRot_def_angle_e,wgt_full);} 
+        {The2CUT->Fill(detKinBeamRot_def_angle_e,wgt_full);} 
     }
-*/
            
            
-TCanvas * Ecal_= new TCanvas("Ecal_","Ecal_",1500,100,3500,2000);
+/*TCanvas * Ecal_= new TCanvas("Ecal_","Ecal_",1500,100,3500,2000);
 Ecal_->Divide(2,1);
 Ecal_->cd(1);
 gStyle->SetPalette(kAquamarine);
@@ -185,13 +169,13 @@ myGrid->Draw("LEGO");
 std::ostringstream name1;
 name1 <<"/home/LHCB-T3/espedicato/tesi/studio/Ecal"<< jentry << ".png";
 TString name =name1.str();
-Ecal_->SaveAs(name);           
+Ecal_->SaveAs(name);   */        
  
 delete myGrid; 
 }}
       
     
-/*Int_t nx1CUT = E3x31CUT->GetNbinsX();
+Int_t nx1CUT = E3x31CUT->GetNbinsX();
 Int_t ny1CUT = E3x31CUT->GetNbinsY();
 for (Int_t i=1; i<nx1CUT+1; i++) {
 for (Int_t j=1; j<ny1CUT+1; j++) {
@@ -230,8 +214,7 @@ hist_E9_eLO->SetLineColor(kRed);
 hist_E9_eLO->Draw("HIST same"); 
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
-c9->SaveAs("/home/LHCB-T3/espedicato/studio/tesi/E9.png");*/
-
+c9->SaveAs("/home/LHCB-T3/espedicato/studio/tesi/E9.png");
 
 
 

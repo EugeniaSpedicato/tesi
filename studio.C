@@ -180,7 +180,7 @@ else continue;
 }
 
 if(SeconCentralCell!=0){++tot; if(n_cell_ph==SeconCentralCell){++sec_9;};
-                         if(n_cell_e==SeconCentralCell){++sec_NO_9;}}
+                         if(n_cell_e==SeconCentralCell){++sec_9;}}
 
     
     if(E_clus3x3>1)//r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 &&

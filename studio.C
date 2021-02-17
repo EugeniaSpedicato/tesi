@@ -142,7 +142,7 @@ for(int i=0; i<9; ++i)
         double r=sqrt((detKinBeamRot_cooXe*detKinBeamRot_cooXe)+(detKinBeamRot_cooYe*detKinBeamRot_cooYe));
               
        
-        E9=detKinBeamRot_E_1/detKinBeamRot_E_clus3x3;
+        E9=E_1/E_clus3x3;
        
 /*
  

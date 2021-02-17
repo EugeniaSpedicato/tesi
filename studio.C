@@ -106,6 +106,19 @@ Double_t Etotcal=0.;
 
 int binMax=myGrid->GetMaximumBin();  
 int CentralCell=number[binMax];
+       
+double en_Maxcell=0.;
+int Maxcell=0.;
+
+for(int i=1;i<26;++i)
+{
+    if(cell_en[i]>en_Maxcell && i!=CentralCell){Maxcell=cell_en[i];Maxcell=i;}
+    else continue;
+}
+int SeconCentralCell=Maxcell;
+
+           cout << "seconda max cell " << SeconCentralCell << endl;
+
 
 E_1=myGrid->GetBinContent(binMax);
 
@@ -138,7 +151,7 @@ E_1=myGrid->GetBinContent(binMax);
 for(int i=0; i<9; ++i)
 {
     if (Array9[i]>0 && Array9[i]<26) E_clus3x3+=myGrid->GetBinContent(Rev_number[Array9[i]]);
-
+    cout << Rev_number[Array9[i]] << " and vera " << Array9[i]<< " c'è energia " << EcalGrid->GetBinContent(Rev_number[Array9[i]]) << endl;
 }  
 
     double r=sqrt((detKinBeamRot_cooXe*detKinBeamRot_cooXe)+(detKinBeamRot_cooYe*detKinBeamRot_cooYe));
@@ -154,7 +167,7 @@ if(CentralCell==7 || CentralCell==8 || CentralCell==9 || CentralCell==12 || Cent
 { if(E_clus3x3>1)//r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 &&
         {TheCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
 
-if(photon_coox!=-100 && n_cell_ph!=n_cell_e && n_cell_ph!=0)hist_E9_e->Fill(Eout,wgt_full);
+if(photon_coox!=-100 && n_cell_ph!=0)hist_E9_e->Fill(Eout,wgt_full);
 if(photon_cooy==-100)hist_E9_eLO->Fill(Eout,wgt_full);
     
         if (E_clus3x3!=0){E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);} 

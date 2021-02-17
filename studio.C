@@ -179,23 +179,8 @@ if (SeconCentralCell==Array9[i] && SeconCentralCell!=0)
 else continue;
 }
 
-if(SeconCentralCell!=0){++tot; if(n_cell_ph==SeconCentralCell){++sec_9;}
-                        else if(n_cell_e==SeconCentralCell){++sec_NO_9;}
-                       else {TCanvas * Ecal_= new TCanvas("Ecal_","Ecal_",1500,100,3500,2000);
-Ecal_->Divide(2,1);
-Ecal_->cd(1);
-gStyle->SetPalette(kAquamarine);
-//TColor::InvertPalette();
-myGrid->SetXTitle("x (cm)");
-myGrid->SetYTitle("y (cm)");
-myGrid->Draw("COL");
-myGrid->Draw("TEXT SAME");
-Ecal_->cd(2);
-myGrid->Draw("LEGO");
-std::ostringstream name1;
-name1 <<"/home/LHCB-T3/espedicato/tesi/studio/Ecal"<< jentry << ".png";
-TString name =name1.str();
-Ecal_->SaveAs(name);  }}
+if(SeconCentralCell!=0){++tot; if(n_cell_ph==SeconCentralCell){++sec_9;};
+                         if(n_cell_e==SeconCentralCell){++sec_NO_9;}}
 
     
     if(E_clus3x3>1)//r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 &&

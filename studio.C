@@ -24,8 +24,6 @@ energy_cell Rev_number;
 energy_cell en_c; 
 Double_t E_CAL=0.;
 Double_t E9=0.;
-Double_t E_1=0.;
-Double_t E_clus3x3=0.;
  
 TH1F* TheCUT=new TH1F("th", "th El core CUT", 120,0,30); 
 TH1F* The1CUT=new TH1F("th", "th El TAR 1 core CUT", 120,0,30); 
@@ -66,7 +64,9 @@ Long64_t nentries = fChain->GetEntriesFast();
       Long64_t ientry = LoadTree(jentry);
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
-    
+       
+Double_t E_1=0.;
+Double_t E_clus3x3=0.;
               
         detKinBeamRot_cooXe=detKinBeamRot_cooXe*100; // cm
         detKinBeamRot_cooYe=detKinBeamRot_cooYe*100; // cm

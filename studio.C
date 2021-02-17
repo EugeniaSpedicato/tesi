@@ -166,13 +166,15 @@ int SeconCentralCell_in9=0;
  for(int i=0; i<9; ++i)
 {          
 if (SeconCentralCell==Array9[i] && SeconCentralCell!=0)
-    {++sec_9;cout << "c'è dentro"<<endl;
+    {++sec_9;
     SeconCentralCell_in9=SeconCentralCell;
     SeconCentralCell=0;
     break;} 
 else continue;
 }
-cout << "SeconCentralCell_in9 " << SeconCentralCell_in9 << " , SeconCentralCell " << SeconCentralCell << endl;
+
+if(SeconCentralCell!=0){ if(n_cell_ph!=0){++sec_9;} else ++sec_NO_9;}
+
            
 if(CentralCell==7 || CentralCell==8 || CentralCell==9 || CentralCell==12 || CentralCell==13 || CentralCell==14 || CentralCell==17 || CentralCell==18 || CentralCell==19)
 { if(E_clus3x3>1)//r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 &&
@@ -212,7 +214,7 @@ Ecal_->SaveAs(name);   */
 delete myGrid; 
 }}
       
- cout << "la seconda cella più en. sta " << sec_9 << " volte dentro il 3x3 array su un totale di " << sec_NO_9 << endl;
+ cout << "Ha il fotone " << sec_9 << " non ha il fotone " << sec_NO_9 << endl;
 
     
 Int_t nx1CUT = E3x31CUT->GetNbinsX();

@@ -88,8 +88,7 @@ TH2F* myGrid= new TH2F("myGrid" , "EM Calorimeter with E in GeV",5,-7.125,7.125,
         en_c[16]=detKinBeamRot_Ecell16; en_c[17]=detKinBeamRot_Ecell17; en_c[18]=detKinBeamRot_Ecell18; en_c[19]=detKinBeamRot_Ecell19; en_c[20]=detKinBeamRot_Ecell20;
         en_c[21]=detKinBeamRot_Ecell21; en_c[22]=detKinBeamRot_Ecell22; en_c[23]=detKinBeamRot_Ecell23; en_c[24]=detKinBeamRot_Ecell24; en_c[25]=detKinBeamRot_Ecell25;*
        
-       for(int i=1;i<26;++i)
-       {myGrid->SetBinContent(Rev_number[i],en_c[i]);}
+       for(int i=1;i<26;++i){myGrid->SetBinContent(Rev_number[i],en_c[i]);}
     
        
     int binx_e = myGrid->GetXaxis()->FindBin(detKinBeamRot_cooXe);
@@ -98,7 +97,7 @@ TH2F* myGrid= new TH2F("myGrid" , "EM Calorimeter with E in GeV",5,-7.125,7.125,
     int n_cell_e=number[nbin_e];
     int binx_ph = myGrid->GetXaxis()->FindBin(photon_coox);
     int biny_ph = myGrid->GetYaxis()->FindBin(photon_cooy);
-    int nbin_ph = myGrid->GetBin(_ph_ph,biny_ph);
+    int nbin_ph = myGrid->GetBin(binx_ph,biny_ph);
     int n_cell_ph=number[nbin_ph];
        
        
@@ -132,7 +131,7 @@ E_1=myGrid->GetBinContent(binMax);
     if (CentralCell==24) {Array9= new int[9]{18,19,20,23,24,25,0,0,0};}
     if (CentralCell==25) {Array9= new int[9]{19,20,24,25,0,0,0,0,0};}  
 
-for (int i=0; i<9; ++i)
+for(int i=0; i<9; ++i)
 {
     if (Array9[i]>0 && Array9[i]<26) E_clus3x3+=myGrid->GetBinContent(Rev_number[Array9[i]]);
     cout << Rev_number[Array9[i]] << " and vera " << Array9[i]<< " c'è energia " << myGrid->GetBinContent(Rev_number[Array9[i]]) << endl;

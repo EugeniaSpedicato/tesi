@@ -147,7 +147,7 @@ for(int i=0; i<9; ++i)
     double Eout=(Etotcal-E_clus3x3)/E_clus3x3;
 
 if(CentralCell==7 || CentralCell==8 || CentralCell==9 || CentralCell==12 || CentralCell==13 || CentralCell==14 || CentralCell==17 || CentralCell==18 || CentralCell==19)
-{ if(E_clus3x3>1)
+{ if(E_clus3x3>1)//r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 &&
         {TheCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
 hist_E9_e->Fill(Eout,wgt_full);
 hist_E9_eLO->Fill(Eout,wgt_LO);
@@ -214,15 +214,17 @@ c4a->SaveAs("/home/LHCB-T3/espedicato/tesi/studio/thE_cut.png");
     
 TCanvas * c9= new TCanvas("c9","c9",1000,100,2500,2000);
 
-hist_E9_eLO->GetXaxis()->SetTitle("Ecentral/E3x3");
-hist_E9_eLO->SetLineWidth(3);
-hist_E9_eLO->SetLineColor(kRed);
-hist_E9_eLO->Draw("HIST"); 
     
 hist_E9_e->GetXaxis()->SetTitle("Ecentral/E3x3");
 hist_E9_e->SetLineWidth(3);
-hist_E9_e->Draw("HIST same"); 
+hist_E9_e->Draw("HIST"); 
 
+
+hist_E9_eLO->GetXaxis()->SetTitle("Ecentral/E3x3");
+hist_E9_eLO->SetLineWidth(3);
+hist_E9_eLO->SetLineColor(kRed);
+hist_E9_eLO->Draw("HIST same");     
+    
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
 c9->SaveAs("/home/LHCB-T3/espedicato/tesi/studio/E9.png");

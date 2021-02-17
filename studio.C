@@ -67,6 +67,7 @@ Long64_t nentries = fChain->GetEntriesFast();
        
 Double_t E_1=0.;
 Double_t E_clus3x3=0.;
+Double_t Etotcal=0.;
               
         detKinBeamRot_cooXe=detKinBeamRot_cooXe*100; // cm
         detKinBeamRot_cooYe=detKinBeamRot_cooYe*100; // cm
@@ -134,15 +135,20 @@ for(int i=0; i<9; ++i)
     if (Array9[i]>0 && Array9[i]<26) E_clus3x3+=myGrid->GetBinContent(Rev_number[Array9[i]]);
 
 }  
-           cout << "E 3x3 " << E_clus3x3 << endl;
 
     double r=sqrt((detKinBeamRot_cooXe*detKinBeamRot_cooXe)+(detKinBeamRot_cooYe*detKinBeamRot_cooYe));
+    
     E9=E_1/E_clus3x3;
+    
+    for(int i=1;i<26;++i)
+    {Etotcal+=en_c[i];}
+           
+    double Eout=(Etotcal-E_clus3x3)/E_clus3x3;
 
         if(E_clus3x3>1)
         {TheCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
-         hist_E9_e->Fill(E9,wgt_full);
-         hist_E9_eLO->Fill(E9,wgt_LO);
+         hist_E9_e->Fill(Eout,wgt_full);
+         hist_E9_eLO->Fill(Eout,wgt_LO);
     
         if (E_clus3x3!=0){E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);} 
         

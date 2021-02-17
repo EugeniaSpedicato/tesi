@@ -151,7 +151,7 @@ if(CentralCell==7 || CentralCell==8 || CentralCell==9 || CentralCell==12 || Cent
         {TheCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
 
 if(photon_coox!=-1 && n_cell_ph!=0)hist_E9_e->Fill(Eout,wgt_full);
-if(photon_coox==-1)hist_E9_eLO->Fill(Eout,wgt_full);
+if(photon_cooy==-1)hist_E9_eLO->Fill(Eout,wgt_full);
     
         if (E_clus3x3!=0){E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);} 
         

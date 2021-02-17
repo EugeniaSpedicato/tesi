@@ -119,8 +119,6 @@ for(int i=1;i<26;++i)
 }
 int SeconCentralCell=Maxcell;
 
-           cout << "seconda max cell " << SeconCentralCell << endl;
-
 
 E_1=myGrid->GetBinContent(binMax);
 
@@ -164,12 +162,17 @@ for(int i=0; i<9; ++i)
            
     double Eout=E_clus3x3/Etotcal;
            
-
+int SeconCentralCell_in9=0;
  for(int i=0; i<9; ++i)
 {          
-if (SeconCentralCell==Array9[i] && SeconCentralCell!=0){++sec_9;cout << "c'è dentro"<<endl;} else continue;
+if (SeconCentralCell==Array9[i] && SeconCentralCell!=0)
+    {++sec_9;cout << "c'è dentro"<<endl;
+    SeconCentralCell=0;
+    SeconCentralCell_in9=SeconCentralCell;
+    break;} 
+else continue;
 }
-++sec_NO_9;
+cout << "SeconCentralCell_in9 " << SeconCentralCell_in9 << " , SeconCentralCell " << SeconCentralCell << endl;
            
 if(CentralCell==7 || CentralCell==8 || CentralCell==9 || CentralCell==12 || CentralCell==13 || CentralCell==14 || CentralCell==17 || CentralCell==18 || CentralCell==19)
 { if(E_clus3x3>1)//r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 &&

@@ -148,8 +148,8 @@ for(int i=0; i<9; ++i)
 
         if(E_clus3x3>1)
         {TheCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
-         if(n_cell_ph!=0)hist_E9_e->Fill(E_clus3x3/Etotcal,wgt_full);
-         if(n_cell_ph==0)hist_E9_eLO->Fill(E_clus3x3/Etotcal,wgt_full);
+         if(n_cell_ph!=0)hist_E9_e->Fill(E_clus3x3/detKinBeamRot_Ee,wgt_full);
+         if(n_cell_ph==0)hist_E9_eLO->Fill(E_clus3x3/detKinBeamRot_Ee,wgt_full);
     
         if (E_clus3x3!=0){E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);} 
         

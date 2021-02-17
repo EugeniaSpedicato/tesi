@@ -149,8 +149,8 @@ for(int i=0; i<9; ++i)
 if(CentralCell==7 || CentralCell==8 || CentralCell==9 || CentralCell==12 || CentralCell==13 || CentralCell==14 || CentralCell==17 || CentralCell==18 || CentralCell==19)
 { if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 && E_clus3x3>1)
         {TheCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
-         if(photon_energy>1 && n_cell_ph!=0)hist_E9_e->Fill(Eout,wgt_full);
-         if(photon_energy==-1)hist_E9_eLO->Fill(Eout,wgt_full);
+         if(n_cell_ph!=0)hist_E9_e->Fill(Eout,wgt_full);
+         if(n_cell_ph==0))hist_E9_eLO->Fill(Eout,wgt_full);
     
         if (E_clus3x3!=0){E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);} 
         

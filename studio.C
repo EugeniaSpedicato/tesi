@@ -169,7 +169,7 @@ double sec_NO_9=0;
 
  for(int i=0; i<9; ++i)
 {          
-if (SeconCentralCell==Array9[i]){++sec_9;cout << "c'è dentro"<<endl;} else continue;
+if (SeconCentralCell==Array9[i] && SeconCentralCell!=0){++sec_9;cout << "c'è dentro"<<endl;} else continue;
 }
 ++sec_NO_9;
            

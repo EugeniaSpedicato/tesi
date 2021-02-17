@@ -922,7 +922,7 @@ TMatrixD def_angle=Def_angle(p_mu_in,p_mu_out,p_e_out);
 kv.def_angle_mu = def_angle[0][0];
 kv.def_angle_e = def_angle[1][0]; 
 
-kv.n_cell_e = theGrid->GiveCentralCell(kv.cooXe*100,kv.cooYe*100);
+//kv.n_cell_e = theGrid->GiveCentralCell(kv.cooXe*100,kv.cooYe*100);
 
     
   // Note: here Ebeam is the average beam energy, so tt_e and xt_e are defined under this assumption
@@ -973,7 +973,7 @@ PxPyPzEVector p_gamma_CoM = Lorentz_ToCoM(p_gamma_lab_div);
       
     photon.coox=x;
     photon.cooy=y;
-   photon.n_cell_ph = theGrid->GiveCentralCell(photon.coox*100,photon.cooy*100); //in cm
+ //  photon.n_cell_ph = theGrid->GiveCentralCell(photon.coox*100,photon.cooy*100); //in cm
   }
 
   else {
@@ -983,7 +983,7 @@ PxPyPzEVector p_gamma_CoM = Lorentz_ToCoM(p_gamma_lab_div);
     photon.phi       =  0;
     photon.coox     = -1;
     photon.cooy     = -1;
-   photon.n_cell_ph = 0;
+  // photon.n_cell_ph = 0;
     
     
   }

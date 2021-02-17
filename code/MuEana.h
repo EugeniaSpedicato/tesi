@@ -108,11 +108,11 @@ Double_t Ecell25;
     Double_t energyCoM; // photon energy in the Centre-of-Mass frame
    Double_t coox;
    Double_t cooy;
-    Double_t n_cell_ph;
+    //Double_t n_cell_ph;
 
     
   Photon():
-    energy(-1),theta(-1),phi(0),energyCoM(-1),coox(-1),cooy(-1),n_cell_ph(0)
+    energy(-1),theta(-1),phi(0),energyCoM(-1),coox(-1),cooy(-1)//,n_cell_ph(0)
       {};
 virtual ~Photon(){};
 

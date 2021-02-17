@@ -173,7 +173,7 @@ if (SeconCentralCell==Array9[i] && SeconCentralCell!=0)
 else continue;
 }
 
-if(SeconCentralCell!=0){ if(n_cell_ph!=0){++sec_9;} else ++sec_NO_9;}
+if(SeconCentralCell!=0){ if(n_cell_ph==SeconCentralCell){++sec_9;}else ++sec_NO_9;}
 
            
 if(CentralCell==7 || CentralCell==8 || CentralCell==9 || CentralCell==12 || CentralCell==13 || CentralCell==14 || CentralCell==17 || CentralCell==18 || CentralCell==19)

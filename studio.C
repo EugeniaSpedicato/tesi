@@ -112,7 +112,7 @@ int Maxcell=0.;
 
 for(int i=1;i<26;++i)
 {
-    if(en_c[i]>en_Maxcell && i!=CentralCell){Maxcell=en_c[i];Maxcell=i;}
+    if(en_c[i]>en_Maxcell && i!=CentralCell){en_Maxcell=en_c[i]; Maxcell=i;}
     else continue;
 }
 int SeconCentralCell=Maxcell;

@@ -111,16 +111,6 @@ Double_t Etotcal=0.;
 int binMax=myGrid->GetMaximumBin();  
 int CentralCell=number[binMax];
        
-double en_Maxcell=0.;
-int Maxcell=0.;
-
-for(int i=1;i<26;++i)
-{
-    if(en_c[i]>en_Maxcell && i!=CentralCell){en_Maxcell=en_c[i]; Maxcell=i;}
-    else continue;
-}
-int SeconCentralCell=Maxcell;
-
 
 E_1=myGrid->GetBinContent(binMax);
 
@@ -163,7 +153,21 @@ for(int i=0; i<9; ++i)
     {Etotcal+=en_c[i];}
            
     double Eout=E_clus3x3/Etotcal;
+
            
+if(CentralCell==7 || CentralCell==8 || CentralCell==9 || CentralCell==12 || CentralCell==13 || CentralCell==14 || CentralCell==17 || CentralCell==18 || CentralCell==19)
+{ 
+    
+double en_Maxcell=0.;
+int Maxcell=0.;
+
+for(int i=1;i<26;++i)
+{
+    if(en_c[i]>en_Maxcell && i!=CentralCell){en_Maxcell=en_c[i]; Maxcell=i;}
+    else continue;
+}
+int SeconCentralCell=Maxcell;
+
 int SeconCentralCell_in9=0;
  for(int i=0; i<9; ++i)
 {          
@@ -193,9 +197,8 @@ name1 <<"/home/LHCB-T3/espedicato/tesi/studio/Ecal"<< jentry << ".png";
 TString name =name1.str();
 Ecal_->SaveAs(name);  }}
 
-           
-if(CentralCell==7 || CentralCell==8 || CentralCell==9 || CentralCell==12 || CentralCell==13 || CentralCell==14 || CentralCell==17 || CentralCell==18 || CentralCell==19)
-{ if(E_clus3x3>1)//r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 &&
+    
+    if(E_clus3x3>1)//r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 &&
         {TheCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
 
 if(photon_coox!=-100 && n_cell_ph!=0)hist_E9_e->Fill(Eout,wgt_full);

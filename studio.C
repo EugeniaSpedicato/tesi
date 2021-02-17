@@ -34,8 +34,8 @@ TH2F  *E3x31CUT  = new TH2F("ThEel1" , " Th_el Vs. E_E3x3 core NLO CUT",90,0,30,
 TH2F  *E3x32CUT  = new TH2F("ThEel2" , " Th_el Vs. E_E3x3 core LO CUT",90,0,30,280,0,140);
 
 
-TH1F* hist_E9_e=new TH1F("E9e", "E9 e- tot", 100,0.7,1);
-TH1F* hist_E9_eLO=new TH1F("E9eLO", "E9 e- tot LO", 100,0.7,1);
+TH1F* hist_E9_e=new TH1F("E9e", "E9 e- tot", 100,1,0.3);
+TH1F* hist_E9_eLO=new TH1F("E9eLO", "E9 e- tot LO", 100,1,0.3);
 
     
 
@@ -148,8 +148,8 @@ for(int i=0; i<9; ++i)
 
         if(E_clus3x3>1)
         {TheCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
-         if(n_cell_ph!=0)hist_E9_e->Fill(E_clus3x3/detKinBeamRot_Ee,wgt_full);
-         if(n_cell_ph==0)hist_E9_eLO->Fill(E_clus3x3/detKinBeamRot_Ee,wgt_full);
+         if(photon_energy!=-1)hist_E9_e->Fill(Eout,wgt_full);
+         if(photon_energy==-1)hist_E9_eLO->Fill(Eout,wgt_full);
     
         if (E_clus3x3!=0){E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);} 
         

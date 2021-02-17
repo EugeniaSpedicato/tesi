@@ -36,8 +36,8 @@ TH2F  *E3x31CUT  = new TH2F("ThEel1" , " Th_el Vs. E_E3x3 core NLO CUT",90,0,30,
 TH2F  *E3x32CUT  = new TH2F("ThEel2" , " Th_el Vs. E_E3x3 core LO CUT",90,0,30,280,0,140);
 
 
-TH1F* hist_E9_e=new TH1F("E9e", "E9 e- tot", 100,0,0.1);
-TH1F* hist_E9_eLO=new TH1F("E9eLO", "E9 e- tot LO", 100,0,0.1);
+TH1F* hist_E9_e=new TH1F("E9e", "E9 e- tot", 100,0.6,1);
+TH1F* hist_E9_eLO=new TH1F("E9eLO", "E9 e- tot LO", 100,0.6,1);
 
     
 
@@ -96,16 +96,14 @@ Double_t Etotcal=0.;
     int biny_e = myGrid->GetYaxis()->FindBin(detKinBeamRot_cooYe);
     int nbin_e = myGrid->GetBin(binx_e,biny_e);
      n_cell_e=number[nbin_e];
-    if(photon_coox!=-1)
+    if(photon_coox!=-100)
     {int binx_ph = myGrid->GetXaxis()->FindBin(photon_coox);
     int biny_ph = myGrid->GetYaxis()->FindBin(photon_cooy);
     int nbin_ph = myGrid->GetBin(binx_ph,biny_ph);
      n_cell_ph=number[nbin_ph];}
     else n_cell_ph=0;
        
-    cout << "photon coo x " << photon_coox << endl;
-    cout << "photon cell " << n_cell_ph << endl;
-           
+
 int binMax=myGrid->GetMaximumBin();  
 int CentralCell=number[binMax];
 
@@ -156,8 +154,8 @@ if(CentralCell==7 || CentralCell==8 || CentralCell==9 || CentralCell==12 || Cent
 { if(E_clus3x3>1)//r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 &&
         {TheCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
 
-if(photon_coox!=-100 && n_cell_ph!=0)hist_E9_e->Fill(Eout,wgt_full);
-if(photon_cooy==-100)hist_E9_eLO->Fill(Eout,wgt_full);
+if(photon_coox!=-100 && n_cell_ph!=0)hist_E9_e->Fill(E9,wgt_full);
+if(photon_cooy==-100)hist_E9_eLO->Fill(E9,wgt_full);
     
         if (E_clus3x3!=0){E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);} 
         

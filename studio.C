@@ -94,12 +94,16 @@ Double_t Etotcal=0.;
     int biny_e = myGrid->GetYaxis()->FindBin(detKinBeamRot_cooYe);
     int nbin_e = myGrid->GetBin(binx_e,biny_e);
     int n_cell_e=number[nbin_e];
-    int binx_ph = myGrid->GetXaxis()->FindBin(photon_coox);
+    if(photon_coox!=-1)
+    {int binx_ph = myGrid->GetXaxis()->FindBin(photon_coox);
     int biny_ph = myGrid->GetYaxis()->FindBin(photon_cooy);
     int nbin_ph = myGrid->GetBin(binx_ph,biny_ph);
-    int n_cell_ph=number[nbin_ph];
+    int n_cell_ph=number[nbin_ph];}
+    else int n_cell_ph=0;
        
-       
+    cout << "photon coo x " << photon_coox << endl;
+    cout << "photon cell " << n_cell_ph << endl;
+           
 int binMax=myGrid->GetMaximumBin();  
 int CentralCell=number[binMax];
 

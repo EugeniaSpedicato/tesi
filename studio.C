@@ -167,8 +167,8 @@ int SeconCentralCell_in9=0;
 {          
 if (SeconCentralCell==Array9[i] && SeconCentralCell!=0)
     {++sec_9;cout << "c'è dentro"<<endl;
-    SeconCentralCell=0;
     SeconCentralCell_in9=SeconCentralCell;
+    SeconCentralCell=0;
     break;} 
 else continue;
 }

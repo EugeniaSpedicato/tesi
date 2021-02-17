@@ -138,14 +138,14 @@ for(int i=0; i<9; ++i)
     double r=sqrt((detKinBeamRot_cooXe*detKinBeamRot_cooXe)+(detKinBeamRot_cooYe*detKinBeamRot_cooYe));
     E9=E_1/E_clus3x3;
 
-        if(detKinBeamRot_E_clus3x3>1)
+        if(E_clus3x3>1)
         {TheCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
          hist_E9_e->Fill(E9,wgt_full);
          hist_E9_eLO->Fill(E9,wgt_LO);
     
-        if (detKinBeamRot_E_clus3x3!=0){E3x31CUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_full);} 
+        if (E_clus3x3!=0){E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);} 
         
-        if (detKinBeamRot_E_clus3x3!=0){E3x32CUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_LO);} 
+        if (E_clus3x3!=0){E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_LO);} 
         
         if (detKinBeamRot_tar==0)
         {The1CUT->Fill(detKinBeamRot_def_angle_e,wgt_full);}   

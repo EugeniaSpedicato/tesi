@@ -179,7 +179,7 @@ if (SeconCentralCell==Array9[i] && SeconCentralCell!=0)
 else continue;
 }
 
-    if(E_clus3x3>1)//r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 &&
+    if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 && E_clus3x3>1)//r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 &&
 
     {
 if(SeconCentralCell!=0){++tot; if(n_cell_ph!=0){++sec_9;}

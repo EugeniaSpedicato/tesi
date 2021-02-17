@@ -169,9 +169,10 @@ double sec_NO_9=0;
 
  for(int i=0; i<9; ++i)
 {          
-if (SeconCentralCell==Array9[i]){++sec_9;cout << "c'è dentro"<<endl;} else {++sec_NO_9;cout << "NON c'è dentro"<<endl;}
+if (SeconCentralCell==Array9[i]){++sec_9;cout << "c'è dentro"<<endl;} else continue;
 }
-
+++sec_NO_9;
+           
 if(CentralCell==7 || CentralCell==8 || CentralCell==9 || CentralCell==12 || CentralCell==13 || CentralCell==14 || CentralCell==17 || CentralCell==18 || CentralCell==19)
 { if(E_clus3x3>1)//r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 &&
         {TheCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
@@ -210,7 +211,7 @@ Ecal_->SaveAs(name);   */
 delete myGrid; 
 }}
       
- cout << "la seconda cella più en. sta " << sec_9 << " volte dentro il 3x3 array e " << sec_NO_9 << " fuori " << endl;
+ cout << "la seconda cella più en. sta " << sec_9 << " volte dentro il 3x3 array su un totale di " << sec_NO_9 << endl;
 
     
 Int_t nx1CUT = E3x31CUT->GetNbinsX();

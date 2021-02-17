@@ -34,8 +34,8 @@ TH2F  *E3x31CUT  = new TH2F("ThEel1" , " Th_el Vs. E_E3x3 core NLO CUT",90,0,30,
 TH2F  *E3x32CUT  = new TH2F("ThEel2" , " Th_el Vs. E_E3x3 core LO CUT",90,0,30,280,0,140);
 
 
-TH1F* hist_E9_e=new TH1F("E9e", "E9 e- tot", 100,1,0.3);
-TH1F* hist_E9_eLO=new TH1F("E9eLO", "E9 e- tot LO", 100,1,0.3);
+TH1F* hist_E9_e=new TH1F("E9e", "E9 e- tot", 100,0,0.1);
+TH1F* hist_E9_eLO=new TH1F("E9eLO", "E9 e- tot LO", 100,0,0.1);
 
     
 

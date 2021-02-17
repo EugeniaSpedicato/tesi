@@ -28,6 +28,8 @@ Double_t E_CAL=0.;
 Double_t E9=0.;
 double sec_9=0;
 double sec_NO_9=0;
+double tot=0;
+    
  
 TH1F* TheCUT=new TH1F("th", "th El core CUT", 120,0,30); 
 TH1F* The1CUT=new TH1F("th", "th El TAR 1 core CUT", 120,0,30); 
@@ -173,7 +175,7 @@ if (SeconCentralCell==Array9[i] && SeconCentralCell!=0)
 else continue;
 }
 
-if(SeconCentralCell!=0){ if(n_cell_ph==SeconCentralCell){++sec_9;}
+if(SeconCentralCell!=0){++tot; if(n_cell_ph==SeconCentralCell){++sec_9;}
                         if(n_cell_e==SeconCentralCell){++sec_NO_9;}}
 
            
@@ -215,7 +217,7 @@ Ecal_->SaveAs(name);   */
 delete myGrid; 
 }}
       
- cout << "Ha il fotone " << sec_9 << " non ha il fotone " << sec_NO_9 << endl;
+ cout << "Ha il fotone " << sec_9 << " non ha il fotone " << sec_NO_9<< " su un totale di "<< tot << endl;
 
     
 Int_t nx1CUT = E3x31CUT->GetNbinsX();

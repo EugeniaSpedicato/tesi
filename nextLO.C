@@ -285,7 +285,7 @@ double r_mu=sqrt((detKinBeamRot_x_in*detKinBeamRot_x_in)+(detKinBeamRot_y_in*det
     Ephout2->Draw("HIST");
     gPad->SetLogy();    
     
-    e->SaveAs("/home/LHCB-T3/espedicato/tesi/nextLO/energytot.png");
+    e->SaveAs("/home/LHCB-T3/espedicato/tesi/nextLO/noBRmu=e/energytot.png");
 
 
     
@@ -319,7 +319,7 @@ double r_mu=sqrt((detKinBeamRot_x_in*detKinBeamRot_x_in)+(detKinBeamRot_y_in*det
     tarTWOthe->Draw("HIST SAME");
     the->GetXaxis()->SetTitle("Polar Angle [rad]");
 
-    t->SaveAs("/home/LHCB-T3/espedicato/tesi/nextLO/THpolar.png");    
+    t->SaveAs("/home/LHCB-T3/espedicato/tesi/nextLO/noBRmu=e/THpolar.png");    
 
 
 TCanvas * theC= new TCanvas("tar","tar",1500,1000,3500,2000);
@@ -368,7 +368,7 @@ TCanvas * theC= new TCanvas("tar","tar",1500,1000,3500,2000);
     thYZe->GetXaxis()->SetTitle("Theta YZ [rad]");
     
 
-  theC->SaveAs("/home/LHCB-T3/espedicato/tesi/nextLO/ThXZYZ.png");
+  theC->SaveAs("/home/LHCB-T3/espedicato/tesi/nextLO/noBRmu=e/ThXZYZ.png");
 
 
 Int_t nx13_cut = X_Y_mu->GetNbinsX();
@@ -464,7 +464,7 @@ if (X_Y_p2->GetBinContent(i,j)<10) X_Y_p2->SetBinContent(i,j,0);}}
     X_Y_p2->GetXaxis()->SetTitle("x [m]");
     X_Y_p2->GetYaxis()->SetTitle("y [m]");
     
-  duedmu->SaveAs("/home/LHCB-T3/espedicato/tesi/nextLO/dued.png");  
+  duedmu->SaveAs("/home/LHCB-T3/espedicato/tesi/nextLO/noBRmu=e/dued.png");  
     
     
 Int_t nx7 = Th_E_el->GetNbinsX();
@@ -475,7 +475,7 @@ for (Int_t j=1; j<ny7+1; j++) {
     
 TCanvas * th_en= new TCanvas("th_en","th_en",1000,100,2500,2000);      
 Th_E_el->Draw("COLZ");  
-th_en->SaveAs("/home/LHCB-T3/espedicato/tesi/nextLO/theta-energy-electron.png");
+th_en->SaveAs("/home/LHCB-T3/espedicato/tesi/nextLO/noBRmu=e/theta-energy-electron.png");
     
 Int_t nx9 = Th_E_el1->GetNbinsX();
 Int_t ny9 = Th_E_el1->GetNbinsY();
@@ -485,7 +485,7 @@ for (Int_t j=1; j<ny9+1; j++) {
 
 TCanvas * th_en1= new TCanvas("th_en1","th_en1",1000,100,2500,2000);    
 Th_E_el1->Draw("COLZ");  
-th_en1->SaveAs("/home/LHCB-T3/espedicato/tesi/nextLO/theta-energy-electron1.png"); 
+th_en1->SaveAs("/home/LHCB-T3/espedicato/tesi/nextLO/noBRmu=e/theta-energy-electron1.png"); 
     
 Int_t nx11 = Th_E_el2->GetNbinsX();
 Int_t ny11 = Th_E_el2->GetNbinsY();
@@ -495,7 +495,7 @@ for (Int_t j=1; j<ny11+1; j++) {
     
 TCanvas * th_en2= new TCanvas("th_en0","th_en0",1000,100,2500,2000);   
 Th_E_el2->Draw("COLZ");  
-th_en2->SaveAs("/home/LHCB-T3/espedicato/tesi/nextLO/theta-energy-electron2.png"); 
+th_en2->SaveAs("/home/LHCB-T3/espedicato/tesi/nextLO/noBRmu=e/theta-energy-electron2.png"); 
 
     
       }

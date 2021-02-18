@@ -103,7 +103,7 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",120,0,60,280
        //prende solo eventi che hanno elettroni nel calorimetro
 double r_mu=sqrt((detKinBeamRot_x_in*detKinBeamRot_x_in)+(detKinBeamRot_y_in*detKinBeamRot_y_in));   
        
-      if (r_mu<5 && E_ECAL>1){
+      if (r_mu<5 && E_ECAL>0.2){
 
         if (abs(detKinBeamRot_cooXmu) < 0.07125 && abs(detKinBeamRot_cooYmu) < 0.07125){
   // per muone          

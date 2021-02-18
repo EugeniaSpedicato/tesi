@@ -38,7 +38,7 @@ TH1F* Ephout2=new TH1F("EnergyPH2", "Energy Ph out Tar 2", 75,0.2,150);
 
 
     
-TH1F* thmu=new TH1F("thetaMU", "Muon Polar Angle", 100,0,5);  
+TH1F* thmu=new TH1F("thetaMU", "Muon Polar Angle", 150,0,5);  
 TH1F* the=new TH1F("thetaEL", "Electron Polar Angle", 120,0,60);
 
 TH1F* thXZmu=new TH1F("thetaXZ", "theta XZ plane mu", 100,-1.5,1.5);
@@ -61,8 +61,8 @@ TH1F* thYZe2=new TH1F("thetaYZ2", "theta YZ plane e2", 120,-60,60);
     
 TH1F* tarONEthe=new TH1F("thetaEL1", "Electron Polar Angle Tar 1", 120,0,60);
 TH1F* tarTWOthe=new TH1F("thetaEL2", "Electron Polar Angle Tar 2", 120,0,60);
-TH1F* tarONEthmu=new TH1F("thetaMU1", "Muon Polar Angle Tar 1", 100,0,5);
-TH1F* tarTWOthmu=new TH1F("thetaMU2", "Muon Polar Angle Tar 2", 100,0,5);
+TH1F* tarONEthmu=new TH1F("thetaMU1", "Muon Polar Angle Tar 1", 150,0,5);
+TH1F* tarTWOthmu=new TH1F("thetaMU2", "Muon Polar Angle Tar 2", 150,0,5);
     
 TH2F  *X_Y_mu  = new TH2F("CooMU" , " X  Vs. Y of the muon",100,-0.1,0.1,100,-0.1,0.1);
 TH2F  *X_Y_e  = new TH2F("CooEL" , " X  Vs. Y of the electron",100,-0.1,0.1,100,-0.1,0.1);
@@ -103,7 +103,7 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",120,0,60,280
        //prende solo eventi che hanno elettroni nel calorimetro
 double r_mu=sqrt((detKinBeamRot_x_in*detKinBeamRot_x_in)+(detKinBeamRot_y_in*detKinBeamRot_y_in));   
        
-      if (r_mu<5 && E_ECAL>0.2){
+      if (r_mu<5 && E_ECAL>1){
 
         if (abs(detKinBeamRot_cooXmu) < 0.07125 && abs(detKinBeamRot_cooYmu) < 0.07125){
   // per muone          

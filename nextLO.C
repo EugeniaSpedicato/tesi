@@ -44,20 +44,20 @@ TH1F* the=new TH1F("thetaEL", "Electron Polar Angle", 120,0,60);
 TH1F* thXZmu=new TH1F("thetaXZ", "theta XZ plane mu", 100,-1.5,1.5);
 TH1F* thYZmu=new TH1F("thetaYZ", "theta YZ plane mu", 100,-1.5,1.5);
     
-TH1F* thXZe=new TH1F("thetaXZ", "theta XZ plane e", 240,-60,60);
-TH1F* thYZe=new TH1F("thetaYZ", "theta YZ plane e", 240,-60,60);
+TH1F* thXZe=new TH1F("thetaXZ", "theta XZ plane e", 120,-60,60);
+TH1F* thYZe=new TH1F("thetaYZ", "theta YZ plane e", 120,-60,60);
     
 TH1F* thXZmu1=new TH1F("thetaXZ1", "theta XZ plane mu1", 100,-1.5,1.5);
 TH1F* thYZmu1=new TH1F("thetaYZ1", "theta YZ plane mu1", 100,-1.5,1.5);
     
-TH1F* thXZe1=new TH1F("thetaXZ1", "theta XZ plane e1", 240,-60,60);
-TH1F* thYZe1=new TH1F("thetaYZ1", "theta YZ plane e1", 240,-60,60);
+TH1F* thXZe1=new TH1F("thetaXZ1", "theta XZ plane e1", 120,-60,60);
+TH1F* thYZe1=new TH1F("thetaYZ1", "theta YZ plane e1", 120,-60,60);
     
 TH1F* thXZmu2=new TH1F("thetaXZ2", "theta XZ plane mu2", 100,-1.5,1.5);
 TH1F* thYZmu2=new TH1F("thetaYZ2", "theta YZ plane mu2", 100,-1.5,1.5);
     
-TH1F* thXZe2=new TH1F("thetaXZ2", "theta XZ plane e2", 240,-60,60);
-TH1F* thYZe2=new TH1F("thetaYZ2", "theta YZ plane e2", 240,-60,60);
+TH1F* thXZe2=new TH1F("thetaXZ2", "theta XZ plane e2", 120,-60,60);
+TH1F* thYZe2=new TH1F("thetaYZ2", "theta YZ plane e2", 120,-60,60);
     
 TH1F* tarONEthe=new TH1F("thetaEL1", "Electron Polar Angle Tar 1", 120,0,60);
 TH1F* tarTWOthe=new TH1F("thetaEL2", "Electron Polar Angle Tar 2", 120,0,60);

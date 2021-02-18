@@ -38,31 +38,31 @@ TH1F* Ephout2=new TH1F("EnergyPH2", "Energy Ph out Tar 2", 75,0.2,150);
 
 
     
-TH1F* thmu=new TH1F("thetaMU", "Muon Polar Angle", 180,0,0.005);  
-TH1F* the=new TH1F("thetaEL", "Electron Polar Angle", 100,0,0.1);
+TH1F* thmu=new TH1F("thetaMU", "Muon Polar Angle", 50,0,5);  
+TH1F* the=new TH1F("thetaEL", "Electron Polar Angle", 600,0,60);
 
-TH1F* thXZmu=new TH1F("thetaXZ", "theta XZ plane mu", 150,-0.002,0.002);
-TH1F* thYZmu=new TH1F("thetaYZ", "theta YZ plane mu", 150,-0.002,0.002);
+TH1F* thXZmu=new TH1F("thetaXZ", "theta XZ plane mu", 100,-1.5,1.5);
+TH1F* thYZmu=new TH1F("thetaYZ", "theta YZ plane mu", 100,-1.5,1.5);
     
-TH1F* thXZe=new TH1F("thetaXZ", "theta XZ plane e", 150,-0.1,0.1);
-TH1F* thYZe=new TH1F("thetaYZ", "theta YZ plane e", 150,-0.1,0.1);
+TH1F* thXZe=new TH1F("thetaXZ", "theta XZ plane e", 1200,-60,60);
+TH1F* thYZe=new TH1F("thetaYZ", "theta YZ plane e", 1200,-60,60);
     
-TH1F* thXZmu1=new TH1F("thetaXZ1", "theta XZ plane mu1", 150,-0.002,0.002);
-TH1F* thYZmu1=new TH1F("thetaYZ1", "theta YZ plane mu1", 150,-0.002,0.002);
+TH1F* thXZmu1=new TH1F("thetaXZ1", "theta XZ plane mu1", 100,-1.5,1.5);
+TH1F* thYZmu1=new TH1F("thetaYZ1", "theta YZ plane mu1", 100,-1.5,1.5);
     
-TH1F* thXZe1=new TH1F("thetaXZ1", "theta XZ plane e1", 150,-0.1,0.1);
-TH1F* thYZe1=new TH1F("thetaYZ1", "theta YZ plane e1", 150,-0.1,0.1);
+TH1F* thXZe1=new TH1F("thetaXZ1", "theta XZ plane e1", 1200,-60,60);
+TH1F* thYZe1=new TH1F("thetaYZ1", "theta YZ plane e1", 1200,-60,60);
     
-TH1F* thXZmu2=new TH1F("thetaXZ2", "theta XZ plane mu2", 150,-0.002,0.002);
-TH1F* thYZmu2=new TH1F("thetaYZ2", "theta YZ plane mu2", 150,-0.002,0.002);
+TH1F* thXZmu2=new TH1F("thetaXZ2", "theta XZ plane mu2", 100,-1.5,1.5);
+TH1F* thYZmu2=new TH1F("thetaYZ2", "theta YZ plane mu2", 100,-1.5,1.5);
     
-TH1F* thXZe2=new TH1F("thetaXZ2", "theta XZ plane e2", 150,-0.1,0.1);
-TH1F* thYZe2=new TH1F("thetaYZ2", "theta YZ plane e2", 150,-0.1,0.1);
+TH1F* thXZe2=new TH1F("thetaXZ2", "theta XZ plane e2", 1200,-60,60);
+TH1F* thYZe2=new TH1F("thetaYZ2", "theta YZ plane e2", 1200,-60,60);
     
-TH1F* tarONEthe=new TH1F("thetaEL1", "Electron Polar Angle Tar 1", 100,0,0.1);
-TH1F* tarTWOthe=new TH1F("thetaEL2", "Electron Polar Angle Tar 2", 100,0,0.1);
-TH1F* tarONEthmu=new TH1F("thetaMU1", "Muon Polar Angle Tar 1", 180,0,0.005);
-TH1F* tarTWOthmu=new TH1F("thetaMU2", "Muon Polar Angle Tar 2", 180,0,0.005);
+TH1F* tarONEthe=new TH1F("thetaEL1", "Electron Polar Angle Tar 1", 600,0,60);
+TH1F* tarTWOthe=new TH1F("thetaEL2", "Electron Polar Angle Tar 2", 600,0,60);
+TH1F* tarONEthmu=new TH1F("thetaMU1", "Muon Polar Angle Tar 1", 50,0,5);
+TH1F* tarTWOthmu=new TH1F("thetaMU2", "Muon Polar Angle Tar 2", 50,0,5);
     
 TH2F  *X_Y_mu  = new TH2F("CooMU" , " X  Vs. Y of the muon",100,-0.1,0.1,100,-0.1,0.1);
 TH2F  *X_Y_e  = new TH2F("CooEL" , " X  Vs. Y of the electron",100,-0.1,0.1,100,-0.1,0.1);
@@ -96,11 +96,14 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",120,0,60,280
     {  E_ECAL=detKinBeamRot_Ee+photon_energy;}
     else 
     {  E_ECAL=detKinBeamRot_Ee;}
-
+        
+       detKinBeamRot_x_in=detKinBeamRot_x_in*100; // cm coo muone entrante
+       detKinBeamRot_y_in=detKinBeamRot_y_in*100; // cm coo muone entrante
+       
        //prende solo eventi che hanno elettroni nel calorimetro
+double r_mu=sqrt((detKinBeamRot_x_in*detKinBeamRot_x_in)+(detKinBeamRot_y_in*detKinBeamRot_y_in));   
        
-       
-      if (E_ECAL>0.2 && abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125){
+      if (r_mu<5 && E_ECAL>0.2 && abs(detKinBeamRot_cooXe) < 0.07125 && abs(detKinBeamRot_cooYe) < 0.07125){
 
         if (abs(detKinBeamRot_cooXmu) < 0.07125 && abs(detKinBeamRot_cooYmu) < 0.07125){
   // per muone          
@@ -110,9 +113,9 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",120,0,60,280
     Emuout->Fill(detKinBeamRot_Emu,wgt_full);  
     //Emuout_E->Fill(detKinBeamRot_Emu,wgt_full);   
             
-    thmu->Fill(detKinBeamRot_thmu*0.001,wgt_full);
-    Double_t anglex_mu = atan2(detKinBeamRot_pXmu_out, detKinBeamRot_pZmu_out);
-    Double_t angley_mu = atan2(detKinBeamRot_pYmu_out, detKinBeamRot_pZmu_out);
+    thmu->Fill(detKinBeamRot_thmu,wgt_full);
+    Double_t anglex_mu = atan2(detKinBeamRot_pXmu_out, detKinBeamRot_pZmu_out)* 1e3;
+    Double_t angley_mu = atan2(detKinBeamRot_pYmu_out, detKinBeamRot_pZmu_out)* 1e3;
             
            
     thXZmu->Fill(anglex_mu,wgt_full);
@@ -123,7 +126,7 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",120,0,60,280
               {
         Emuout1->Fill(detKinBeamRot_Emu,wgt_full); 
         Emuout_E1->Fill(detKinBeamRot_Emu,wgt_full); 
-        tarONEthmu->Fill(detKinBeamRot_thmu*0.001,wgt_full);
+        tarONEthmu->Fill(detKinBeamRot_thmu,wgt_full);
         X_Y_mu1->Fill(detKinBeamRot_cooXmu, detKinBeamRot_cooYmu,wgt_full);
         thXZmu1->Fill(anglex_mu,wgt_full);
         thYZmu1->Fill(angley_mu,wgt_full);
@@ -134,7 +137,7 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",120,0,60,280
                {
         Emuout2->Fill(detKinBeamRot_Emu,wgt_full); 
         Emuout_E2->Fill(detKinBeamRot_Emu,wgt_full); 
-        tarTWOthmu->Fill(detKinBeamRot_thmu*0.001,wgt_full);
+        tarTWOthmu->Fill(detKinBeamRot_thmu,wgt_full);
         X_Y_mu2->Fill(detKinBeamRot_cooXmu, detKinBeamRot_cooYmu,wgt_full); 
         thXZmu2->Fill(anglex_mu,wgt_full);
         thYZmu2->Fill(angley_mu,wgt_full);
@@ -151,7 +154,7 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",120,0,60,280
        Eelout->Fill(Ee_out,wgt_full);
         Eelout_E->Fill(detKinBeamRot_Ee,wgt_full);
         
-       the->Fill(detKinBeamRot_the*0.001,wgt_full);  
+       the->Fill(detKinBeamRot_the,wgt_full);  
         Double_t anglex_e = atan2(detKinBeamRot_pXe_out, detKinBeamRot_pZe_out);
         Double_t angley_e = atan2(detKinBeamRot_pYe_out, detKinBeamRot_pZe_out);
         thXZe->Fill(anglex_e,wgt_full);
@@ -163,7 +166,7 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",120,0,60,280
               {
         Eelout1->Fill(Ee_out,wgt_full); 
         Eelout_E1->Fill(detKinBeamRot_Ee,wgt_full); 
-        tarONEthe->Fill(detKinBeamRot_the*0.001,wgt_full);
+        tarONEthe->Fill(detKinBeamRot_the,wgt_full);
         X_Y_e1->Fill(detKinBeamRot_cooXe, detKinBeamRot_cooYe,wgt_full);
         thXZe1->Fill(anglex_e,wgt_full);
         thYZe1->Fill(angley_e,wgt_full);
@@ -174,7 +177,7 @@ TH2F  *Th_E_el2  = new TH2F("ThEel2" , " Theta el Vs. E_ECAL TAR 2",120,0,60,280
             {
         Eelout2->Fill(Ee_out,wgt_full); 
         Eelout_E2->Fill(detKinBeamRot_Ee,wgt_full); 
-        tarTWOthe->Fill(detKinBeamRot_the*0.001,wgt_full);
+        tarTWOthe->Fill(detKinBeamRot_the,wgt_full);
         X_Y_e2->Fill(detKinBeamRot_cooXe, detKinBeamRot_cooYe,wgt_full);  
         thXZe2->Fill(anglex_e,wgt_full);
         thYZe2->Fill(angley_e,wgt_full);

@@ -38,31 +38,31 @@ TH1F* Ephout2=new TH1F("EnergyPH2", "Energy Ph out Tar 2", 75,0.2,150);
 
 
     
-TH1F* thmu=new TH1F("thetaMU", "Muon Polar Angle", 50,0,5);  
-TH1F* the=new TH1F("thetaEL", "Electron Polar Angle", 600,0,60);
+TH1F* thmu=new TH1F("thetaMU", "Muon Polar Angle", 100,0,5);  
+TH1F* the=new TH1F("thetaEL", "Electron Polar Angle", 120,0,60);
 
 TH1F* thXZmu=new TH1F("thetaXZ", "theta XZ plane mu", 100,-1.5,1.5);
 TH1F* thYZmu=new TH1F("thetaYZ", "theta YZ plane mu", 100,-1.5,1.5);
     
-TH1F* thXZe=new TH1F("thetaXZ", "theta XZ plane e", 1200,-60,60);
-TH1F* thYZe=new TH1F("thetaYZ", "theta YZ plane e", 1200,-60,60);
+TH1F* thXZe=new TH1F("thetaXZ", "theta XZ plane e", 240,-60,60);
+TH1F* thYZe=new TH1F("thetaYZ", "theta YZ plane e", 240,-60,60);
     
 TH1F* thXZmu1=new TH1F("thetaXZ1", "theta XZ plane mu1", 100,-1.5,1.5);
 TH1F* thYZmu1=new TH1F("thetaYZ1", "theta YZ plane mu1", 100,-1.5,1.5);
     
-TH1F* thXZe1=new TH1F("thetaXZ1", "theta XZ plane e1", 1200,-60,60);
-TH1F* thYZe1=new TH1F("thetaYZ1", "theta YZ plane e1", 1200,-60,60);
+TH1F* thXZe1=new TH1F("thetaXZ1", "theta XZ plane e1", 240,-60,60);
+TH1F* thYZe1=new TH1F("thetaYZ1", "theta YZ plane e1", 240,-60,60);
     
 TH1F* thXZmu2=new TH1F("thetaXZ2", "theta XZ plane mu2", 100,-1.5,1.5);
 TH1F* thYZmu2=new TH1F("thetaYZ2", "theta YZ plane mu2", 100,-1.5,1.5);
     
-TH1F* thXZe2=new TH1F("thetaXZ2", "theta XZ plane e2", 1200,-60,60);
-TH1F* thYZe2=new TH1F("thetaYZ2", "theta YZ plane e2", 1200,-60,60);
+TH1F* thXZe2=new TH1F("thetaXZ2", "theta XZ plane e2", 240,-60,60);
+TH1F* thYZe2=new TH1F("thetaYZ2", "theta YZ plane e2", 240,-60,60);
     
-TH1F* tarONEthe=new TH1F("thetaEL1", "Electron Polar Angle Tar 1", 600,0,60);
-TH1F* tarTWOthe=new TH1F("thetaEL2", "Electron Polar Angle Tar 2", 600,0,60);
-TH1F* tarONEthmu=new TH1F("thetaMU1", "Muon Polar Angle Tar 1", 50,0,5);
-TH1F* tarTWOthmu=new TH1F("thetaMU2", "Muon Polar Angle Tar 2", 50,0,5);
+TH1F* tarONEthe=new TH1F("thetaEL1", "Electron Polar Angle Tar 1", 120,0,60);
+TH1F* tarTWOthe=new TH1F("thetaEL2", "Electron Polar Angle Tar 2", 120,0,60);
+TH1F* tarONEthmu=new TH1F("thetaMU1", "Muon Polar Angle Tar 1", 100,0,5);
+TH1F* tarTWOthmu=new TH1F("thetaMU2", "Muon Polar Angle Tar 2", 100,0,5);
     
 TH2F  *X_Y_mu  = new TH2F("CooMU" , " X  Vs. Y of the muon",100,-0.1,0.1,100,-0.1,0.1);
 TH2F  *X_Y_e  = new TH2F("CooEL" , " X  Vs. Y of the electron",100,-0.1,0.1,100,-0.1,0.1);
@@ -155,8 +155,8 @@ double r_mu=sqrt((detKinBeamRot_x_in*detKinBeamRot_x_in)+(detKinBeamRot_y_in*det
         Eelout_E->Fill(detKinBeamRot_Ee,wgt_full);
         
        the->Fill(detKinBeamRot_the,wgt_full);  
-        Double_t anglex_e = atan2(detKinBeamRot_pXe_out, detKinBeamRot_pZe_out);
-        Double_t angley_e = atan2(detKinBeamRot_pYe_out, detKinBeamRot_pZe_out);
+        Double_t anglex_e = atan2(detKinBeamRot_pXe_out, detKinBeamRot_pZe_out)*1e3;
+        Double_t angley_e = atan2(detKinBeamRot_pYe_out, detKinBeamRot_pZe_out)*1e3;
         thXZe->Fill(anglex_e,wgt_full);
         thYZe->Fill(angley_e,wgt_full);            
          
@@ -375,50 +375,50 @@ Int_t nx13_cut = X_Y_mu->GetNbinsX();
 Int_t ny13_cut = X_Y_mu->GetNbinsY();
 for (Int_t i=1; i<nx13_cut+1; i++) {
 for (Int_t j=1; j<ny13_cut+1; j++) {
-    if (X_Y_mu->GetBinContent(i,j)<1) X_Y_mu->SetBinContent(i,j,0);}} 
+    if (X_Y_mu->GetBinContent(i,j)<10) X_Y_mu->SetBinContent(i,j,0);}} 
 Int_t nx14_cut = X_Y_e->GetNbinsX();
 Int_t ny14_cut = X_Y_e->GetNbinsY();
 for (Int_t i=1; i<nx14_cut+1; i++) {
 for (Int_t j=1; j<ny14_cut+1; j++) {
-    if (X_Y_e->GetBinContent(i,j)<1) X_Y_e->SetBinContent(i,j,0);}} 
+    if (X_Y_e->GetBinContent(i,j)<10) X_Y_e->SetBinContent(i,j,0);}} 
 Int_t nx15_cut = X_Y_p->GetNbinsX();
 Int_t ny15_cut = X_Y_p->GetNbinsY();
 for (Int_t i=1; i<nx15_cut+1; i++) {
 for (Int_t j=1; j<ny15_cut+1; j++) {
-if (X_Y_p->GetBinContent(i,j)<1) X_Y_p->SetBinContent(i,j,0);}} 
+if (X_Y_p->GetBinContent(i,j)<10) X_Y_p->SetBinContent(i,j,0);}} 
 
 Int_t nx13 = X_Y_mu1->GetNbinsX();
 Int_t ny13 = X_Y_mu1->GetNbinsY();
 for (Int_t i=1; i<nx13+1; i++) {
 for (Int_t j=1; j<ny13+1; j++) {
-    if (X_Y_mu1->GetBinContent(i,j)<1) X_Y_mu1->SetBinContent(i,j,0);}} 
+    if (X_Y_mu1->GetBinContent(i,j)<10) X_Y_mu1->SetBinContent(i,j,0);}} 
 Int_t nx14 = X_Y_e1->GetNbinsX();
 Int_t ny14 = X_Y_e1->GetNbinsY();
 for (Int_t i=1; i<nx14+1; i++) {
 for (Int_t j=1; j<ny14+1; j++) {
-    if (X_Y_e1->GetBinContent(i,j)<1) X_Y_e1->SetBinContent(i,j,0);}} 
+    if (X_Y_e1->GetBinContent(i,j)<10) X_Y_e1->SetBinContent(i,j,0);}} 
 Int_t nx15 = X_Y_p1->GetNbinsX();
 Int_t ny15 = X_Y_p1->GetNbinsY();
 for (Int_t i=1; i<nx15+1; i++) {
 for (Int_t j=1; j<ny15+1; j++) {
-if (X_Y_p1->GetBinContent(i,j)<1) X_Y_p1->SetBinContent(i,j,0);}} 
+if (X_Y_p1->GetBinContent(i,j)<10) X_Y_p1->SetBinContent(i,j,0);}} 
 
 
 Int_t nx1 = X_Y_mu2->GetNbinsX();
 Int_t ny1 = X_Y_mu2->GetNbinsY();
 for (Int_t i=1; i<nx1+1; i++) {
 for (Int_t j=1; j<ny1+1; j++) {
-    if (X_Y_mu2->GetBinContent(i,j)<1) X_Y_mu2->SetBinContent(i,j,0);}} 
+    if (X_Y_mu2->GetBinContent(i,j)<10) X_Y_mu2->SetBinContent(i,j,0);}} 
 Int_t nx4 = X_Y_e2->GetNbinsX();
 Int_t ny4 = X_Y_e2->GetNbinsY();
 for (Int_t i=1; i<nx4+1; i++) {
 for (Int_t j=1; j<ny4+1; j++) {
-    if (X_Y_e2->GetBinContent(i,j)<1) X_Y_e2->SetBinContent(i,j,0);}} 
+    if (X_Y_e2->GetBinContent(i,j)<10) X_Y_e2->SetBinContent(i,j,0);}} 
 Int_t nx5 = X_Y_p2->GetNbinsX();
 Int_t ny5 = X_Y_p2->GetNbinsY();
 for (Int_t i=1; i<nx5+1; i++) {
 for (Int_t j=1; j<ny5+1; j++) {
-if (X_Y_p2->GetBinContent(i,j)<1) X_Y_p2->SetBinContent(i,j,0);}}
+if (X_Y_p2->GetBinContent(i,j)<10) X_Y_p2->SetBinContent(i,j,0);}}
     
     
     TCanvas * duedmu= new TCanvas("duedmu","duedmu",1000,100,2500,2000);
@@ -471,7 +471,7 @@ Int_t nx7 = Th_E_el->GetNbinsX();
 Int_t ny7 = Th_E_el->GetNbinsY();
 for (Int_t i=1; i<nx7+1; i++) {
 for (Int_t j=1; j<ny7+1; j++) {
-    if (Th_E_el->GetBinContent(i,j)<1) Th_E_el->SetBinContent(i,j,0);}}     
+    if (Th_E_el->GetBinContent(i,j)<10) Th_E_el->SetBinContent(i,j,0);}}     
     
 TCanvas * th_en= new TCanvas("th_en","th_en",1000,100,2500,2000);      
 Th_E_el->Draw("COLZ");  
@@ -481,7 +481,7 @@ Int_t nx9 = Th_E_el1->GetNbinsX();
 Int_t ny9 = Th_E_el1->GetNbinsY();
 for (Int_t i=1; i<nx9+1; i++) {
 for (Int_t j=1; j<ny9+1; j++) {
-    if (Th_E_el1->GetBinContent(i,j)<1) Th_E_el1->SetBinContent(i,j,0);}}  
+    if (Th_E_el1->GetBinContent(i,j)<10) Th_E_el1->SetBinContent(i,j,0);}}  
 
 TCanvas * th_en1= new TCanvas("th_en1","th_en1",1000,100,2500,2000);    
 Th_E_el1->Draw("COLZ");  
@@ -491,7 +491,7 @@ Int_t nx11 = Th_E_el2->GetNbinsX();
 Int_t ny11 = Th_E_el2->GetNbinsY();
 for (Int_t i=1; i<nx11+1; i++) {
 for (Int_t j=1; j<ny11+1; j++) {
-    if (Th_E_el2->GetBinContent(i,j)<1) Th_E_el2->SetBinContent(i,j,0);}} 
+    if (Th_E_el2->GetBinContent(i,j)<10) Th_E_el2->SetBinContent(i,j,0);}} 
     
 TCanvas * th_en2= new TCanvas("th_en0","th_en0",1000,100,2500,2000);   
 Th_E_el2->Draw("COLZ");  

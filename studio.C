@@ -194,10 +194,10 @@ if(SeconCentralCell_in9!=0){if(n_cell_ph!=0){++sec_NO_9;hist_E9_eLO->Fill(Eout,w
     else{sec_NO_9+=wgt_full;hist_E9_eLO->Fill(Eout,wgt_full);energy->Fill(E_clus3x3,wgt_full);} 
 }*/
 if(SeconCentralCell!=0)
-{sec_NO_9+=wgt_full;
-hist_E9_e->Fill(Eout,wgt_full);
-hist_E9_eLO->Fill(Eout,wgt_LO); 
-} else if (SeconCentralCell_in9!=0){sec_9+=wgt_full;energy->Fill(Eout,wgt_full);}
+{sec_NO_9+=wgt_full;} else if (SeconCentralCell_in9!=0)
+                            {sec_9+=wgt_full;
+                            hist_E9_e->Fill(Eout,wgt_full);
+                            hist_E9_eLO->Fill(Eout,wgt_LO); }
  
      
 TheCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);

@@ -64,11 +64,11 @@ TH1F* hist_Eout_eLO=new TH1F("en", "Eout", 100,0.,0.5);
 TH1F* hist_Eout_eOUT=new TH1F("en", "Eout NLO OUT", 100,0.,0.5);
 TH1F* hist_Eout_eLOOUT=new TH1F("en", "Eout OUT", 100,0.,0.5);
     
-TH1F* hist_E92_e=new TH1F("E9e", "E92", 100,0.3,1);
-TH1F* hist_E92_eLO=new TH1F("E9eLO", "E92 LO", 100,0.3,1);
+TH1F* hist_E92_e=new TH1F("E9e", "E92", 100,0.,0.5);
+TH1F* hist_E92_eLO=new TH1F("E9eLO", "E92 LO", 100,0.,0.5);
 
-TH1F* hist_E92_eOUT=new TH1F("E9e", "E92 OUT", 100,0.3,1);
-TH1F* hist_E92_eLOOUT=new TH1F("E9eLO", "E92 LO OUT", 100,0.3,1);     
+TH1F* hist_E92_eOUT=new TH1F("E9e", "E92 OUT", 100,0.,0.5);
+TH1F* hist_E92_eLOOUT=new TH1F("E9eLO", "E92 LO OUT", 100,0.,0.5);     
 
 number[36]=1; number[37]=2; number[38]=3; number[39]=4; number[40]=5;
 number[29]=6; number[30]=7; number[31]=8; number[32]=9; number[33]=10;

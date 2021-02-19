@@ -108,8 +108,8 @@ Double_t ThMuINT=b[18][3]; // angolo che ha nel momento dell'interazione, senza 
 detKinBeamRot.x_in=xin;
 detKinBeamRot.y_in=yin;
     
-Double_t xin_cm=x_in*100;
-Double_t yin_cm=y_in*100;
+Double_t xin_cm=xin*100;
+Double_t yin_cm=yin*100;
     
 
 Double_t r_mu=sqrt((xin_cm*xin_cm)+(y_in*y_in));  

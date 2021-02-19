@@ -49,10 +49,18 @@ TH2F  *E3x31CUT  = new TH2F("ThEel1" , " Th_el Vs. E_E3x3 core NLO CUT",90,0,30,
 TH2F  *E3x32CUT  = new TH2F("ThEel2" , " Th_el Vs. E_E3x3 core LO CUT",90,0,30,280,0,140);
 
 
-TH1F* hist_E9_e=new TH1F("E9e", "E9 e- tot", 100,0.5,1);
-TH1F* hist_E9_eLO=new TH1F("E9eLO", "E9 e- tot LO", 100,0.5,1);
+TH1F* hist_E9_e=new TH1F("E9e", "E9", 100,0.3,1);
+TH1F* hist_E9_eLO=new TH1F("E9eLO", "E9 LO", 100,0.3,1);
 
-TH1F* energy=new TH1F("en", "energy snd cell out", 100,0.,0.5);
+TH1F* hist_Eout_e=new TH1F("en", "Eout NLO", 100,0.,0.5);
+TH1F* hist_Eout_eLO=new TH1F("en", "Eout", 100,0.,0.5);
+    
+TH1F* hist_E9_eOUT=new TH1F("E9e", "E9 OUT", 100,0.3,1);
+TH1F* hist_E9_eLOOUT=new TH1F("E9eLO", "E9 LO OUT", 100,0.3,1);
+
+TH1F* hist_Eout_eOUT=new TH1F("en", "Eout NLO OUT", 100,0.,0.5);
+TH1F* hist_Eout_eLOOUT=new TH1F("en", "Eout OUT", 100,0.,0.5);
+    
     
 
 number[36]=1; number[37]=2; number[38]=3; number[39]=4; number[40]=5;
@@ -202,7 +210,13 @@ if(n_cell_ph!=0){n_cut_ph+=wgt_full;} else n_cut_noph+=wgt_full;
 
 if(SeconCentralCell_in9!=0)
 {hist_E9_e->Fill(E9,wgt_full);
-hist_E9_eLO->Fill(E9,wgt_LO); } 
+hist_E9_eLO->Fill(E9,wgt_LO); 
+hist_Eout_e->Fill(Eout,wgt_full);
+hist_Eout_eLO->Fill(Eout,wgt_LO); } else if(SeconCentralCell!=0)
+{hist_E9_eOUT->Fill(E9,wgt_full);
+hist_E9_eLOOUT->Fill(E9,wgt_LO); 
+hist_Eout_eOUT->Fill(Eout,wgt_full);
+hist_Eout_eLOOUT->Fill(Eout,wgt_LO); } 
 //else if (SeconCentralCell_in9!=0){sec_9+=wgt_full;energy->Fill(Eout,wgt_full);}
 
     
@@ -267,21 +281,49 @@ E3x32CUT->Draw("COLZ");
 c4a->SaveAs("/home/LHCB-T3/espedicato/tesi/studio/thE_cut.png");    
     
 TCanvas * c9= new TCanvas("c9","c9",1000,100,2500,2000);
-    c9->Divide(1,2);
+    c9->Divide(2,2);
     c9->cd(1);
-
+hist_E9_e->GetXaxis()->SetTitle("Ecentral/E3x3");
+hist_E9_e->SetLineWidth(3);
+hist_E9_e->Draw("HIST"); 
+    
 hist_E9_eLO->GetXaxis()->SetTitle("Ecentral/E3x3");
 hist_E9_eLO->SetLineWidth(3);
 hist_E9_eLO->SetLineColor(kRed);
-hist_E9_eLO->Draw("HIST");     
-    
-hist_E9_e->GetXaxis()->SetTitle("Ecentral/E3x3");
-hist_E9_e->SetLineWidth(3);
-hist_E9_e->Draw("HIST same"); 
-    
+hist_E9_eLO->Draw("HIST same");     
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
-    c9->cd(2);
-energy->Draw("HIST");   
+    
+c9->cd(2);  
+hist_Eout_e->GetXaxis()->SetTitle("Eres/E3x3");
+hist_Eout_e->SetLineWidth(3);
+hist_Eout_e->Draw("HIST");  
+    
+hist_Eout_eLO->GetXaxis()->SetTitle("Eres/E3x3");
+hist_Eout_eLO->SetLineWidth(3);
+hist_Eout_eLO->SetLineColor(kRed);
+hist_Eout_eLO->Draw("HIST same");  
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
+    c9->cd(3);
+hist_E9_eOUT->GetXaxis()->SetTitle("Ecentral/E3x3");
+hist_E9_eOUT->SetLineWidth(3);
+hist_E9_eOUT->Draw("HIST"); 
+    
+hist_E9_eLOOUT->GetXaxis()->SetTitle("Ecentral/E3x3");
+hist_E9_eLOOUT->SetLineWidth(3);
+hist_E9_eLOOUT->SetLineColor(kRed);
+hist_E9_eLOOUT->Draw("HIST same");     
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
+    
+c9->cd(4);  
+hist_Eout_eOUT->GetXaxis()->SetTitle("Eres/E3x3");
+hist_Eout_eOUT->SetLineWidth(3);
+hist_Eout_eOUT->Draw("HIST");  
+    
+hist_Eout_eLOOUT->GetXaxis()->SetTitle("Eres/E3x3");
+hist_Eout_eLOOUT->SetLineWidth(3);
+hist_Eout_eLOOUT->SetLineColor(kRed);
+hist_Eout_eLOOUT->Draw("HIST same");  
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
 c9->SaveAs("/home/LHCB-T3/espedicato/tesi/studio/E9.png");
 
 

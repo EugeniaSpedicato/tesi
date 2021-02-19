@@ -183,7 +183,7 @@ if (SeconCentralCell==Array9[i] && SeconCentralCell!=0)
 else continue;
 }
 
-if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 && E_clus3x3>1 && Eout>0.07)
+if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 && E_clus3x3>1 && Eout<0.07)
 {n+=wgt_full;
         if(n_cell_ph!=0){tot_ph+=wgt_full;}else tot+=wgt_full;
      

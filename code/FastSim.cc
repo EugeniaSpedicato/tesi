@@ -112,7 +112,7 @@ Double_t xin_cm=xin*100;
 Double_t yin_cm=yin*100;
     
 
-Double_t r_mu=sqrt((xin_cm*xin_cm)+(y_in*y_in));  
+Double_t r_mu=sqrt((xin_cm*xin_cm)+(yin_cm*yin_cm));  
 //LoadKineVars(p_mu_in_div, p_e_in_div, p_mu_out_div_smeared, p_e_out_div_smeared, coo, TheINT, detKinBeamRot);
 
 //prepare for EMShower

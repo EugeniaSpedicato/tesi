@@ -218,8 +218,8 @@ n_cut+=wgt_full;
     
 if(SeconCentralCell_in9!=0)
 {   
-double x = myGrid->GetXaxis()->GetBinCenter(Rev_number[SeconCentralCell_in9]);
-double y = myGrid->GetYaxis()->GetBinCenter(Rev_number[SeconCentralCell_in9]);
+double x = myGrid->GetXaxis()->GetBinCenter(1);
+double y = myGrid->GetYaxis()->GetBinCenter(1);
 double distance=sqrt((x-detKinBeamRot_cooXe)*(x-detKinBeamRot_cooXe)+(y-detKinBeamRot_cooYe)*(y-detKinBeamRot_cooYe)); 
 
     

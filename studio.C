@@ -183,7 +183,7 @@ if (SeconCentralCell==Array9[i] && SeconCentralCell!=0)
 else continue;
 }
 
-if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 && E_clus3x3>1)
+if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 && E_clus3x3>1 && Eout<0.09)
 {n+=wgt_full;
 
 /*if(SeconCentralCell!=0){if(n_cell_ph!=0){++sec_9;hist_E9_e->Fill(Eout,wgt_full);}} 

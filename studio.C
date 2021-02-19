@@ -193,7 +193,7 @@ for(int i=1;i<26;++i)
     else continue;
 }
 int SeconCentralCell=Maxcell;
-E2=myGrid->GetBinContent(Rev_number[SeconCentralCell]);
+E2=en_Maxcell;
     
 int SeconCentralCell_in9=0;
  for(int i=0; i<9; ++i)

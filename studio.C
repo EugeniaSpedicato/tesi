@@ -193,7 +193,7 @@ for(int i=1;i<26;++i)
     else continue;
 }
 int SeconCentralCell=Maxcell;
-E2=en_Maxcell;
+E2=en_Maxcell ;
     
 int SeconCentralCell_in9=0;
  for(int i=0; i<9; ++i)
@@ -205,11 +205,9 @@ if (SeconCentralCell==Array9[i] && SeconCentralCell!=0)
     break;} 
 else continue;
 }
-//r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2  && Eout<0.09
-    
-            if (E_clus3x3!=0){E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);} 
+        /*if (E_clus3x3!=0){E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);} 
         
-        if (E_clus3x3!=0){E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_LO);} 
+        if (E_clus3x3!=0){E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_LO);} */
     
     E2nd=E2/E_1;
     
@@ -217,14 +215,20 @@ if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2  && E_clus3x3>1)
 {
 n_cut+=wgt_full;
 
+    
 if(SeconCentralCell_in9!=0)
-{    hist_E92_e->Fill(E2nd,wgt_full);
-    hist_E92_eLO->Fill(E2nd,wgt_LO);
- 
+{   
+double x = myGrid->GetXaxis()->GetBinCenter(SeconCentralCell_in9);
+double y = myGrid->GetYaxis()->GetBinCenter(SeconCentralCell_in9);
+double distance=sqrt((x-detKinBeamRot_cooXe)*(x-detKinBeamRot_cooXe)+(y-detKinBeamRot_cooYe)*(y-detKinBeamRot_cooYe)); 
+
+    
+    cout << "second bin "<< SeconCentralCell_in9<< " x e y " << x<<" , " << y endl;
+    
     if(SeconCentralCell_in9==n_cell_ph)
-    {n_cut_ph+=wgt_full;} 
+    {n_cut_ph+=wgt_full;hist_E92_e->Fill(E2nd,wgt_full);} 
     else if(SeconCentralCell_in9==n_cell_e)
-    {n_cut_noph+=wgt_full;}
+    {n_cut_noph+=wgt_full; hist_E92_eLO->Fill(E2nd,wgt_full);}
     
     
 hist_E9_e->Fill(E9,wgt_full);

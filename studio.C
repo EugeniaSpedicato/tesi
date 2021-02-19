@@ -345,6 +345,18 @@ hist_Eout_eLOOUT->Draw("HIST same");
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 c9->SaveAs("/home/LHCB-T3/espedicato/tesi/studio/E9.png");
 
+    
+TCanvas * cc= new TCanvas("cc","cc",1000,100,2500,2000);
 
+hist_E92_e->GetXaxis()->SetTitle("E2nd/E3x3");
+hist_E92_e->SetLineWidth(3);
+hist_E92_e->Draw("HIST"); 
+    
+hist_E92_eLO->GetXaxis()->SetTitle("E2nd/E3x3");
+hist_E92_eLO->SetLineWidth(3);
+hist_E92_eLO->SetLineColor(kRed);
+hist_E92_eLO->Draw("HIST same");     
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
+cc->SaveAs("/home/LHCB-T3/espedicato/tesi/studio/E92nd.png");
 
 }

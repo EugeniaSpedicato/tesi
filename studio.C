@@ -208,7 +208,7 @@ n_cut+=wgt_full;
 
 
 if(SeconCentralCell_in9!=0)
-{ if(SeconCentralCell_in9==n_cell_ph){n_cut_ph+=wgt_full; cout <<"cella ph "<< n_cell_ph<<endl;} else if(SeconCentralCell_in9==n_cell_e){n_cut_noph+=wgt_full; cout <<"cella e "<< n_cell_e<<endl;}
+{ if(SeconCentralCell_in9==n_cell_ph){n_cut_ph+=wgt_full;} else if(SeconCentralCell_in9==n_cell_e){n_cut_noph+=wgt_full;}
 hist_E9_e->Fill(E9,wgt_full);
 hist_E9_eLO->Fill(E9,wgt_LO); 
 hist_Eout_e->Fill(Eout,wgt_full);

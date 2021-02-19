@@ -44,9 +44,10 @@ TH2F  *E3x31CUT  = new TH2F("ThEel1" , " Th_el Vs. E_E3x3 core NLO CUT",90,0,30,
 TH2F  *E3x32CUT  = new TH2F("ThEel2" , " Th_el Vs. E_E3x3 core LO CUT",90,0,30,280,0,140);
 
 
-TH1F* hist_E9_e=new TH1F("E9e", "E9 e- tot", 20,0.,0.2);
-TH1F* hist_E9_eLO=new TH1F("E9eLO", "E9 e- tot LO", 20,0.,0.2);
+TH1F* hist_E9_e=new TH1F("E9e", "E9 e- tot", 100,0.,0.5);
+TH1F* hist_E9_eLO=new TH1F("E9eLO", "E9 e- tot LO", 100,0.,0.5);
 
+TH1F* energy=new TH1F("en", "energy snd cell out",300,0,100);
     
 
 number[36]=1; number[37]=2; number[38]=3; number[39]=4; number[40]=5;
@@ -191,7 +192,7 @@ if(SeconCentralCell_in9!=0){if(n_cell_ph!=0){++sec_NO_9;hist_E9_eLO->Fill(Eout,w
  
 if(SeconCentralCell!=0)
 {   if(n_cell_ph!=0){++sec_9;hist_E9_e->Fill(Eout,wgt_full);}
-    else{++sec_NO_9;hist_E9_eLO->Fill(Eout,wgt_full);} 
+    else{++sec_NO_9;hist_E9_eLO->Fill(Eout,wgt_full);energy->Fill(E_clus3x3,wgt_full);} 
 }
      
 TheCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
@@ -266,7 +267,8 @@ E3x32CUT->Draw("COLZ");
 c4a->SaveAs("/home/LHCB-T3/espedicato/tesi/studio/thE_cut.png");    
     
 TCanvas * c9= new TCanvas("c9","c9",1000,100,2500,2000);
-    
+    c9->Divide(1,2);
+    c9->cd(1);
 
 hist_E9_eLO->GetXaxis()->SetTitle("Ecentral/E3x3");
 hist_E9_eLO->SetLineWidth(3);
@@ -278,7 +280,8 @@ hist_E9_e->SetLineWidth(3);
 hist_E9_e->Draw("HIST same"); 
     
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
-
+    c9->cd(1);
+energy->Draw("HIST");   
 c9->SaveAs("/home/LHCB-T3/espedicato/tesi/studio/E9.png");
 
 

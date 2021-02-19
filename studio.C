@@ -202,7 +202,7 @@ else continue;
         
         if (E_clus3x3!=0){E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_LO);} 
     
-if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2  && E_clus3x3>1 && E9>0.87)
+if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2  && E_clus3x3>1 && Eout<0.07)
 {
 n_cut+=wgt_full;
 

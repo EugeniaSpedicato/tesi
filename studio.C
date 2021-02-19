@@ -208,13 +208,14 @@ n_cut+=wgt_full;
 
 
 if(SeconCentralCell_in9!=0)
-{
-if(n_cell_ph!=0){n_cut_ph+=wgt_full;} else n_cut_noph+=wgt_full;    
+{ 
 hist_E9_e->Fill(E9,wgt_full);
 hist_E9_eLO->Fill(E9,wgt_LO); 
 hist_Eout_e->Fill(Eout,wgt_full);
 hist_Eout_eLO->Fill(Eout,wgt_LO); } else if(SeconCentralCell!=0)
-{hist_E9_eOUT->Fill(E9,wgt_full);
+{
+if(n_cell_ph!=0){n_cut_ph+=wgt_full;} else n_cut_noph+=wgt_full;       
+hist_E9_eOUT->Fill(E9,wgt_full);
 hist_E9_eLOOUT->Fill(E9,wgt_LO); 
 hist_Eout_eOUT->Fill(Eout,wgt_full);
 hist_Eout_eLOOUT->Fill(Eout,wgt_LO);} 

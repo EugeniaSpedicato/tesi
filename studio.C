@@ -86,7 +86,8 @@ Double_t Etotcal=0.;
         photon_coox=photon_coox*100; // cm
         photon_cooy=photon_cooy*100; // cm
   
-    
+cout << "xin " << detKinBeamRot_x_in << " yin " << detKinBeamRot_y_in<<endl;
+       
        double r_mu=sqrt((detKinBeamRot_x_in*detKinBeamRot_x_in)+(detKinBeamRot_y_in*detKinBeamRot_y_in));
        
        if (r_mu<5){

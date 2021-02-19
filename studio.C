@@ -189,6 +189,11 @@ if (SeconCentralCell==Array9[i] && SeconCentralCell!=0)
 else continue;
 }
 //r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2  && Eout<0.09
+    
+            if (E_clus3x3!=0){E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);} 
+        
+        if (E_clus3x3!=0){E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_LO);} 
+    
 if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2  && E_clus3x3>1)
 {
 n_cut+=wgt_full;
@@ -201,9 +206,6 @@ hist_E9_eLO->Fill(Eout,wgt_LO); } else if (SeconCentralCell_in9!=0)
                             {sec_9+=wgt_full;energy->Fill(Eout,wgt_full);}
  */
     
-        if (E_clus3x3!=0){E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);} 
-        
-        if (E_clus3x3!=0){E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_LO);} 
         
     }}
            

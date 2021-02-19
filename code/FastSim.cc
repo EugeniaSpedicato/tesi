@@ -1027,7 +1027,10 @@ kv.Ecell21=Ecell[20];
 kv.Ecell22=Ecell[21];    
 kv.Ecell23=Ecell[22];    
 kv.Ecell24=Ecell[23];    
-kv.Ecell25=Ecell[24];}
+kv.Ecell25=Ecell[24];
+
+delete Ecal;  
+}
 else 
 {
 /*kv.n_max_Cell=0;
@@ -1060,6 +1063,8 @@ kv.Ecell22=0;
 kv.Ecell23=0;    
 kv.Ecell24=0;    
 kv.Ecell25=0;
+    
+delete Ecal;  
      }
      
  }

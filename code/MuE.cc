@@ -271,7 +271,7 @@ ECAL *TheEcal= new ECAL(5,-7.125,7.125,5,-7.125,7.125);
     if (std::abs(evwgt) > 1e-17) {
 
       //%%%%%%%%%%%%%%%%%%%%%%%%%%%
-      fs.Process(*event,gamma,myparam,TheEcal);
+      fs.Process(*event,*gamma,*myparam,*TheEcal);
       //%%%%%%%%%%%%%%%%%%%%%%%%%%%
       analyzer.Analyze(*event, fs);
       //%%%%%%%%%%%%%%%%%%%%%%%%%%%

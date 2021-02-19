@@ -164,7 +164,7 @@ LoadPhoton(event,photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1],myGrid);
     TheShowerEl.compute();}  
     
     //for photons   
-    if (r_mu<5 && en_ph_sm>0.2 && cellPH!=0)
+    if (en_ph_sm>0.2 && cellPH!=0)
     {nPart=2; 
     X0depth=-log(gRandom->Uniform())*(9./7.);
     coo_ph.push_back(cooPH[0][0]*100);//cm

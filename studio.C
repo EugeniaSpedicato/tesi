@@ -26,7 +26,10 @@ int n_cell_e;
 int n_cell_ph;
 Double_t E_CAL=0.;
 Double_t E9=0.;
+Double_t E2nd=0.;
 
+    
+    
 double n5=0;
 double n_small=0;
 double n_cut=0;
@@ -52,16 +55,20 @@ TH2F  *E3x32CUT  = new TH2F("ThEel2" , " Th_el Vs. E_E3x3 core LO CUT",90,0,30,2
 TH1F* hist_E9_e=new TH1F("E9e", "E9", 100,0.3,1);
 TH1F* hist_E9_eLO=new TH1F("E9eLO", "E9 LO", 100,0.3,1);
 
+TH1F* hist_E9_eOUT=new TH1F("E9e", "E9 OUT", 100,0.3,1);
+TH1F* hist_E9_eLOOUT=new TH1F("E9eLO", "E9 LO OUT", 100,0.3,1);    
+    
 TH1F* hist_Eout_e=new TH1F("en", "Eout NLO", 100,0.,0.5);
 TH1F* hist_Eout_eLO=new TH1F("en", "Eout", 100,0.,0.5);
     
-TH1F* hist_E9_eOUT=new TH1F("E9e", "E9 OUT", 100,0.3,1);
-TH1F* hist_E9_eLOOUT=new TH1F("E9eLO", "E9 LO OUT", 100,0.3,1);
-
 TH1F* hist_Eout_eOUT=new TH1F("en", "Eout NLO OUT", 100,0.,0.5);
 TH1F* hist_Eout_eLOOUT=new TH1F("en", "Eout OUT", 100,0.,0.5);
     
-    
+TH1F* hist_E92_e=new TH1F("E9e", "E92", 100,0.3,1);
+TH1F* hist_E92_eLO=new TH1F("E9eLO", "E92 LO", 100,0.3,1);
+
+TH1F* hist_E92_eOUT=new TH1F("E9e", "E92 OUT", 100,0.3,1);
+TH1F* hist_E92_eLOOUT=new TH1F("E9eLO", "E92 LO OUT", 100,0.3,1);     
 
 number[36]=1; number[37]=2; number[38]=3; number[39]=4; number[40]=5;
 number[29]=6; number[30]=7; number[31]=8; number[32]=9; number[33]=10;
@@ -90,6 +97,7 @@ Long64_t nentries = fChain->GetEntriesFast();
       nb = fChain->GetEntry(jentry);   nbytes += nb;
        
 Double_t E_1=0.;
+Double_t E2=0.;
 Double_t E_clus3x3=0.;
 Double_t Etotcal=0.;
               
@@ -185,7 +193,8 @@ for(int i=1;i<26;++i)
     else continue;
 }
 int SeconCentralCell=Maxcell;
-
+E2=myGrid->GetBinContent(Rev_number[SeconCentralCell]);
+    
 int SeconCentralCell_in9=0;
  for(int i=0; i<9; ++i)
 {          
@@ -202,13 +211,22 @@ else continue;
         
         if (E_clus3x3!=0){E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_LO);} 
     
+    E2nd=E2/E_clus3x3;
+    
 if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2  && E_clus3x3>1)
 {
 n_cut+=wgt_full;
-
+    hist_E92_e->Fill(E2nd,wgt_full);
+    hist_E92_eLO->Fill(E2nd,wgt_LO);
 
 if(SeconCentralCell_in9!=0)
-{ if(SeconCentralCell_in9==n_cell_ph){n_cut_ph+=wgt_full;} else if(SeconCentralCell_in9==n_cell_e){n_cut_noph+=wgt_full;}
+{
+    if(SeconCentralCell_in9==n_cell_ph)
+    {n_cut_ph+=wgt_full;} 
+    else if(SeconCentralCell_in9==n_cell_e)
+    {n_cut_noph+=wgt_full;}
+    
+    
 hist_E9_e->Fill(E9,wgt_full);
 hist_E9_eLO->Fill(E9,wgt_LO); 
 hist_Eout_e->Fill(Eout,wgt_full);

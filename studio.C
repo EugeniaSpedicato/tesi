@@ -74,7 +74,7 @@ Long64_t nentries = fChain->GetEntriesFast();
       Long64_t ientry = LoadTree(jentry);
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
-       
+       ++n;
 Double_t E_1=0.;
 Double_t E_clus3x3=0.;
 Double_t Etotcal=0.;
@@ -184,7 +184,7 @@ else continue;
 }
 
     if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 && E_clus3x3>1)//r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 &&
-{++n;
+{//++n;
         if(n_cell_ph!=0){++tot_ph;}else ++tot;
      
 /*if(SeconCentralCell!=0){if(n_cell_ph!=0){++sec_9;hist_E9_e->Fill(Eout,wgt_full);}} 

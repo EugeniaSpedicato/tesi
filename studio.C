@@ -182,8 +182,8 @@ if (SeconCentralCell==Array9[i] && SeconCentralCell!=0)
     break;} 
 else continue;
 }
-
-    if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 && E_clus3x3>1)//r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 &&
+//r_mu<1.7 && 
+    if(detKinBeamRot_def_angle_mu>0.2 && E_clus3x3>1)//r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 &&
 {++n;
         if(n_cell_ph!=0){++tot_ph;}else ++tot;
      

@@ -216,11 +216,11 @@ else continue;
 if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2  && E_clus3x3>1)
 {
 n_cut+=wgt_full;
-    hist_E92_e->Fill(E2nd,wgt_full);
-    hist_E92_eLO->Fill(E2nd,wgt_LO);
 
 if(SeconCentralCell_in9!=0)
-{
+{    hist_E92_e->Fill(E2nd,wgt_full);
+    hist_E92_eLO->Fill(E2nd,wgt_LO);
+ 
     if(SeconCentralCell_in9==n_cell_ph)
     {n_cut_ph+=wgt_full;} 
     else if(SeconCentralCell_in9==n_cell_e)

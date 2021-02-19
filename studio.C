@@ -30,6 +30,8 @@ double sec_9=0;
 double sec_NO_9=0;
 double tot_ph=0;
 double tot=0;
+double n=0;
+
     
     
  
@@ -42,8 +44,8 @@ TH2F  *E3x31CUT  = new TH2F("ThEel1" , " Th_el Vs. E_E3x3 core NLO CUT",90,0,30,
 TH2F  *E3x32CUT  = new TH2F("ThEel2" , " Th_el Vs. E_E3x3 core LO CUT",90,0,30,280,0,140);
 
 
-TH1F* hist_E9_e=new TH1F("E9e", "E9 e- tot", 200,0.,0.2);
-TH1F* hist_E9_eLO=new TH1F("E9eLO", "E9 e- tot LO", 200,0.,0.2);
+TH1F* hist_E9_e=new TH1F("E9e", "E9 e- tot", 20,0.,0.2);
+TH1F* hist_E9_eLO=new TH1F("E9eLO", "E9 e- tot LO", 20,0.,0.2);
 
     
 
@@ -182,8 +184,8 @@ else continue;
 }
 
     if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 && E_clus3x3>1)//r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 &&
-
-    {if(n_cell_ph!=0){++tot_ph;}else ++tot;
+{++n;
+        if(n_cell_ph!=0){++tot_ph;}else ++tot;
      
 /*if(SeconCentralCell!=0){if(n_cell_ph!=0){++sec_9;hist_E9_e->Fill(Eout,wgt_full);}} 
 if(SeconCentralCell_in9!=0){if(n_cell_ph!=0){++sec_NO_9;hist_E9_eLO->Fill(Eout,wgt_full);}} */
@@ -228,9 +230,11 @@ Ecal_->SaveAs(name);   */
  
 delete myGrid; 
 }}
- cout << "Non ha il fotone ma è fuori dai 3x3" << sec_NO_9<< "su un totale di eventi con fotoni "<< tot << endl;
+    
+ cout << "TOT eventi nel taglio fiduciale " << n << endl;
+ cout << "Eventi senza fotoni su ECAL "<< tot << " di cui seconda cell più En è fuori dai 3x3 " << sec_NO_9<<  endl;
 
- cout << "Ha il fotone ed è fuori dai 3x3" << sec_9 << "su un totale di eventi con fotoni "<< tot_ph << endl;
+ cout << "Eventi con fotoni su ECAL "<< tot_ph << " di cui seconda cell più En è fuori dai 3x3 " << sec_9<<  endl;
     
 
     

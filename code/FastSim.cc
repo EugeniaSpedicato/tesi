@@ -146,7 +146,7 @@ double en_ph_sm=p_gamma_Lab_div.E();
 TMatrixD cooPH=MCSphoton(p_gamma_Lab_div,xin,yin);
 double ECAL_E= energy_sm_el+en_ph_sm;   
 double cellPH=myGrid->GiveCentralCell(cooPH[0][0]*100,cooPH[0][1]*100);
-LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1],myGrid);
+LoadPhoton(event,photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1],myGrid);
     if (ECAL_E>0.2)
     {
     //for electrons

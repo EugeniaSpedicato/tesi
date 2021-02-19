@@ -147,7 +147,7 @@ TMatrixD cooPH=MCSphoton(p_gamma_Lab_div,xin,yin);
 double ECAL_E= energy_sm_el+en_ph_sm;   
 double cellPH=myGrid->GiveCentralCell(cooPH[0][0]*100,cooPH[0][1]*100);
 LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1],myGrid);
-    if (r_mu<1.7 && ECAL_E>0.2)
+    if (r_mu<5 && ECAL_E>0.2)
     {
     //for electrons
     if(energy_sm_el>0.2 && cellEL!=0)
@@ -175,7 +175,7 @@ LoadPhoton(event, photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1],myGrid);
  } else LoadECAL(detKinBeamRot,myGrid,i);
 
 }
-else if (r_mu<1.7 && energy_sm_el>0.2){
+else if (r_mu<5 && energy_sm_el>0.2){
 if(cellEL!=0){
 nPart=1; 
 X0depth=0.;

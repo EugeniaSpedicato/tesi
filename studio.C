@@ -218,12 +218,13 @@ n_cut+=wgt_full;
     
 if(SeconCentralCell_in9!=0)
 {   
-double x = myGrid->GetXaxis()->GetBinCenter(SeconCentralCell_in9);
-double y = myGrid->GetYaxis()->GetBinCenter(SeconCentralCell_in9);
+double x = myGrid->GetXaxis()->GetBinCenter(Rev_number[SeconCentralCell_in9]);
+double y = myGrid->GetYaxis()->GetBinCenter(Rev_number[SeconCentralCell_in9]);
 double distance=sqrt((x-detKinBeamRot_cooXe)*(x-detKinBeamRot_cooXe)+(y-detKinBeamRot_cooYe)*(y-detKinBeamRot_cooYe)); 
 
     
     cout << "second bin "<< SeconCentralCell_in9<< " x e y " << x<<" , " << y <<endl;
+    cout << "coo elettrone "<< n_cell_e<< " x e y " << detKinBeamRot_cooXe<<" , " << detKinBeamRot_cooYe <<endl;
     
     if(SeconCentralCell_in9==n_cell_ph)
     {n_cut_ph+=wgt_full;hist_E92_e->Fill(E2nd,wgt_full);} 

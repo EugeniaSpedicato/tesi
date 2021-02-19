@@ -108,11 +108,11 @@ Double_t ThMuINT=b[18][3]; // angolo che ha nel momento dell'interazione, senza 
 detKinBeamRot.x_in=xin;
 detKinBeamRot.y_in=yin;
     
-detKinBeamRot.x_in=detKinBeamRot.x_in*100;
-detKinBeamRot.y_in=detKinBeamRot.y_in*100;
+Double_t xin_cm=x_in*100;
+Double_t yin_cm=y_in*100;
     
 
-Double_t r_mu=sqrt((detKinBeamRot.x_in*detKinBeamRot.x_in)+(detKinBeamRot.y_in*detKinBeamRot.y_in));  
+Double_t r_mu=sqrt((xin_cm*xin_cm)+(y_in*y_in));  
 //LoadKineVars(p_mu_in_div, p_e_in_div, p_mu_out_div_smeared, p_e_out_div_smeared, coo, TheINT, detKinBeamRot);
 
 //prepare for EMShower
@@ -150,7 +150,7 @@ TMatrixD cooPH=MCSphoton(p_gamma_Lab_div,xin,yin);
 double ECAL_E= energy_sm_el+en_ph_sm;   
 double cellPH=myGrid->GiveCentralCell(cooPH[0][0]*100,cooPH[0][1]*100);
 LoadPhoton(event,photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1],myGrid);
-    if (ECAL_E>0.2)
+    if (r_mu<5 && ECAL_E>0.2)
     {
     //for electrons
     if(energy_sm_el>0.2 && cellEL!=0)
@@ -164,7 +164,7 @@ LoadPhoton(event,photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1],myGrid);
     TheShowerEl.compute();}  
     
     //for photons   
-    if (en_ph_sm>0.2 && cellPH!=0)
+    if (r_mu<5 && en_ph_sm>0.2 && cellPH!=0)
     {nPart=2; 
     X0depth=-log(gRandom->Uniform())*(9./7.);
     coo_ph.push_back(cooPH[0][0]*100);//cm

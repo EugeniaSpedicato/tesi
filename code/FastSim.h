@@ -29,7 +29,7 @@ namespace MuE {
    FastSim(const MCpara & pargen, const FS_Input & fsi, bool _debug_=false);
     virtual ~FastSim(){};
 
-    void Process(const Event & event,GammaFunctionGenerator* & gamma,EMECALShowerParametrization* const & myParam, ECAL* const & myGrid);
+    void Process(const Event & event,GammaFunctionGenerator & gamma,EMECALShowerParametrization const & myParam, ECAL const & myGrid);
 
    // const KineVars & GetGenKin() const {return genKin;}
     // const KineVars & GetDetKin() const {return detKin;}

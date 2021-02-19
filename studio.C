@@ -223,7 +223,7 @@ double y = myGrid->GetYaxis()->GetBinCenter(SeconCentralCell_in9);
 double distance=sqrt((x-detKinBeamRot_cooXe)*(x-detKinBeamRot_cooXe)+(y-detKinBeamRot_cooYe)*(y-detKinBeamRot_cooYe)); 
 
     
-    cout << "second bin "<< SeconCentralCell_in9<< " x e y " << x<<" , " << y endl;
+    cout << "second bin "<< SeconCentralCell_in9<< " x e y " << x<<" , " << y <<endl;
     
     if(SeconCentralCell_in9==n_cell_ph)
     {n_cut_ph+=wgt_full;hist_E92_e->Fill(E2nd,wgt_full);} 

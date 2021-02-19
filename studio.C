@@ -228,8 +228,10 @@ Ecal_->SaveAs(name);   */
  
 delete myGrid; 
 }}
-      
- cout << "Ha il fotone " << sec_9 << " non ha il fotone " << sec_NO_9<< " su un totale di "<< tot << endl;
+ cout << "Non ha il fotone ma è fuori dai 3x3" << sec_NO_9<< "su un totale di eventi con fotoni "<< tot << endl;
+
+ cout << "Ha il fotone ed è fuori dai 3x3" << sec_9 << "su un totale di eventi con fotoni "<< tot_ph << endl;
+    
 
     
 Int_t nx1CUT = E3x31CUT->GetNbinsX();

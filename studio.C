@@ -47,7 +47,7 @@ TH2F  *E3x32CUT  = new TH2F("ThEel2" , " Th_el Vs. E_E3x3 core LO CUT",90,0,30,2
 TH1F* hist_E9_e=new TH1F("E9e", "E9 e- tot", 100,0.,0.5);
 TH1F* hist_E9_eLO=new TH1F("E9eLO", "E9 e- tot LO", 100,0.,0.5);
 
-TH1F* energy=new TH1F("en", "energy snd cell out",100,0,10);
+TH1F* energy=new TH1F("en", "energy snd cell out", 100,0.,0.5);
     
 
 number[36]=1; number[37]=2; number[38]=3; number[39]=4; number[40]=5;
@@ -183,17 +183,23 @@ if (SeconCentralCell==Array9[i] && SeconCentralCell!=0)
 else continue;
 }
 
-if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 && E_clus3x3>1 && Eout<0.07)
+if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 && E_clus3x3>1)
 {n+=wgt_full;
         if(n_cell_ph!=0){tot_ph+=wgt_full;}else tot+=wgt_full;
      
 /*if(SeconCentralCell!=0){if(n_cell_ph!=0){++sec_9;hist_E9_e->Fill(Eout,wgt_full);}} 
 if(SeconCentralCell_in9!=0){if(n_cell_ph!=0){++sec_NO_9;hist_E9_eLO->Fill(Eout,wgt_full);}} */
  
-if(SeconCentralCell!=0)
+/*if(SeconCentralCell!=0)
 {   if(n_cell_ph!=0){sec_9+=wgt_full;hist_E9_e->Fill(Eout,wgt_full);}
     else{sec_NO_9+=wgt_full;hist_E9_eLO->Fill(Eout,wgt_full);energy->Fill(E_clus3x3,wgt_full);} 
-}
+}*/
+if(SeconCentralCell!=0)
+{ sec_9+=wgt_full;
+ hist_E9_e->Fill(Eout,wgt_full);
+hist_E9_eLO->Fill(Eout,wgt_LO); 
+} else if (SeconCentralCell_in9!=0){sec_NO_9+=wgt_full;energy->Fill(Eout,wgt_LO)}
+ 
      
 TheCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
 

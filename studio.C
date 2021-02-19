@@ -226,7 +226,7 @@ else continue;
         
         if (E_clus3x3!=0){E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_LO);} */
     
-    E2nd=(E2+E_1)/E_clus3x3;
+    E2nd=(E_1)/E_clus3x3;
     
 if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2  && E_clus3x3>1)
 {

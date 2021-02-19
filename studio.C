@@ -185,8 +185,7 @@ else continue;
 
 if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 && E_clus3x3>1)
 {n+=wgt_full;
-        if(n_cell_ph!=0){tot_ph+=wgt_full;}else tot+=wgt_full;
-     
+
 /*if(SeconCentralCell!=0){if(n_cell_ph!=0){++sec_9;hist_E9_e->Fill(Eout,wgt_full);}} 
 if(SeconCentralCell_in9!=0){if(n_cell_ph!=0){++sec_NO_9;hist_E9_eLO->Fill(Eout,wgt_full);}} */
  
@@ -195,10 +194,10 @@ if(SeconCentralCell_in9!=0){if(n_cell_ph!=0){++sec_NO_9;hist_E9_eLO->Fill(Eout,w
     else{sec_NO_9+=wgt_full;hist_E9_eLO->Fill(Eout,wgt_full);energy->Fill(E_clus3x3,wgt_full);} 
 }*/
 if(SeconCentralCell!=0)
-{ sec_9+=wgt_full;
- hist_E9_e->Fill(Eout,wgt_full);
+{sec_NO_9+=wgt_full;
+hist_E9_e->Fill(Eout,wgt_full);
 hist_E9_eLO->Fill(Eout,wgt_LO); 
-} else if (SeconCentralCell_in9!=0){sec_NO_9+=wgt_full;energy->Fill(Eout,wgt_LO)}
+} else if (SeconCentralCell_in9!=0){sec_9+=wgt_full;energy->Fill(Eout,wgt_full);}
  
      
 TheCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
@@ -238,9 +237,9 @@ delete myGrid;
 }}
     
  cout << "TOT eventi nel taglio fiduciale " << n << endl;
- cout << "Eventi senza fotoni su ECAL "<< tot << " di cui seconda cell più En è fuori dai 3x3 " << sec_NO_9<<  endl;
+ cout << "Eventi di cui seconda cell più En è fuori 3x3 " << sec_NO_9<<  endl;
 
- cout << "Eventi con fotoni su ECAL "<< tot_ph << " di cui seconda cell più En è fuori dai 3x3 " << sec_9<<  endl;
+ cout << "Eventi di cui seconda cell più En è dentro 3x3 " << sec_9<<  endl;
     
 
     

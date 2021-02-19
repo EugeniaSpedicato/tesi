@@ -26,11 +26,16 @@ int n_cell_e;
 int n_cell_ph;
 Double_t E_CAL=0.;
 Double_t E9=0.;
-double sec_9=0;
-double sec_NO_9=0;
-double tot_ph=0;
-double tot=0;
-double n=0;
+
+double n5=0;
+double n_small=0;
+double n_cut=0;
+double n_cut_ph=0;
+double n_cut_noph=0;
+    
+
+    
+
 
     
     
@@ -90,7 +95,7 @@ Double_t Etotcal=0.;
        double r_mu=sqrt((detKinBeamRot_x_in*detKinBeamRot_x_in)+(detKinBeamRot_y_in*detKinBeamRot_y_in));
        
        if (r_mu<5){
-           n+=wgt_full;
+           n5+=wgt_full;
     TH2F* myGrid= new TH2F("myGrid" , "EM Calorimeter with E in GeV",5,-7.125,7.125,5,-7.125,7.125);
        en_c[1]=detKinBeamRot_Ecell1; en_c[2]=detKinBeamRot_Ecell2; en_c[3]=detKinBeamRot_Ecell3; en_c[4]=detKinBeamRot_Ecell4; en_c[5]=detKinBeamRot_Ecell5;
         en_c[6]=detKinBeamRot_Ecell6; en_c[7]=detKinBeamRot_Ecell7; en_c[8]=detKinBeamRot_Ecell8; en_c[9]=detKinBeamRot_Ecell9; en_c[10]=detKinBeamRot_Ecell10;
@@ -162,7 +167,7 @@ for(int i=0; i<9; ++i)
            
 if(CentralCell==7 || CentralCell==8 || CentralCell==9 || CentralCell==12 || CentralCell==13 || CentralCell==14 || CentralCell==17 || CentralCell==18 || CentralCell==19)
 { 
-    
+n_small+=wgt_full;
 double en_Maxcell=0.;
 int Maxcell=0.;
 
@@ -184,37 +189,22 @@ if (SeconCentralCell==Array9[i] && SeconCentralCell!=0)
 else continue;
 }
 //r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2  && Eout<0.09
-if(E_clus3x3>0.5)
+if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2  && E_clus3x3>1)
 {
+n_cut+=wgt_full;
 
-/*if(SeconCentralCell!=0){if(n_cell_ph!=0){++sec_9;hist_E9_e->Fill(Eout,wgt_full);}} 
-if(SeconCentralCell_in9!=0){if(n_cell_ph!=0){++sec_NO_9;hist_E9_eLO->Fill(Eout,wgt_full);}} */
- 
+if(n_cell_ph!=0){n_cut_ph+=wgt_full;} else n_cut_noph+=wgt_full;
 /*if(SeconCentralCell!=0)
-{   if(n_cell_ph!=0){sec_9+=wgt_full;hist_E9_e->Fill(Eout,wgt_full);}
-    else{sec_NO_9+=wgt_full;hist_E9_eLO->Fill(Eout,wgt_full);energy->Fill(E_clus3x3,wgt_full);} 
-}*/
-if(SeconCentralCell!=0)
 {sec_NO_9+=wgt_full;
 hist_E9_e->Fill(Eout,wgt_full);
 hist_E9_eLO->Fill(Eout,wgt_LO); } else if (SeconCentralCell_in9!=0)
                             {sec_9+=wgt_full;energy->Fill(Eout,wgt_full);}
- 
-     
-TheCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
-
-/*if(photon_coox!=-100 && n_cell_ph!=0)hist_E9_e->Fill(Eout,wgt_full);
-if(photon_cooy==-100)hist_E9_eLO->Fill(Eout,wgt_full);*/
+ */
     
         if (E_clus3x3!=0){E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);} 
         
         if (E_clus3x3!=0){E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_LO);} 
         
-        if (detKinBeamRot_tar==0)
-        {The1CUT->Fill(detKinBeamRot_def_angle_e,wgt_full);}   
-    
-        if (detKinBeamRot_tar==1)
-        {The2CUT->Fill(detKinBeamRot_def_angle_e,wgt_full);} 
     }}
            
            
@@ -237,10 +227,12 @@ Ecal_->SaveAs(name);   */
 delete myGrid; 
 }}
     
- cout << "TOT eventi nel taglio fiduciale " << n << endl;
- cout << "Eventi di cui seconda cell più En è fuori 3x3 " << sec_NO_9<<  endl;
+ cout << "TOT eventi nel r<5 " << n5 << endl;
+ cout << "Eventi in small ECAL " << n_small <<  endl;
+ cout << "Eventi in taglio fiduciale " << n_cut <<  endl;
+ cout << "Eventi in taglio fiduciale con ph " << n_cut_ph <<  endl;
+ cout << "Eventi in taglio fiduciale senza ph  " << n_cut_noph <<  endl;
 
- cout << "Eventi di cui seconda cell più En è dentro 3x3 " << sec_9<<  endl;
     
 
     

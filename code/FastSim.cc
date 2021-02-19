@@ -107,9 +107,12 @@ Double_t ThMuINT=b[18][3]; // angolo che ha nel momento dell'interazione, senza 
 
 detKinBeamRot.x_in=xin;
 detKinBeamRot.y_in=yin;
-xin=xin*100;
-yin=yin*100;
-Double_t r_mu=sqrt((xin*xin)+(yin*yin));  
+    
+detKinBeamRot.x_in=detKinBeamRot.x_in*100;
+detKinBeamRot.y_in=detKinBeamRot.y_in*100;
+    
+
+Double_t r_mu=sqrt((detKinBeamRot.x_in*detKinBeamRot.x_in)+(detKinBeamRot.y_in*detKinBeamRot.y_in));  
 //LoadKineVars(p_mu_in_div, p_e_in_div, p_mu_out_div_smeared, p_e_out_div_smeared, coo, TheINT, detKinBeamRot);
 
 //prepare for EMShower

@@ -145,7 +145,8 @@ int CentralCell=number[binMax];
        
 
 E_1=myGrid->GetBinContent(binMax);
-      
+
+// con if E_1!=0 è gia imposto r<1.7 perchè gia in fastsim         
 if(E_1!=0){           
     n5+=wgt_full;
     int binx_e = myGrid->GetXaxis()->FindBin(detKinBeamRot_cooXe);
@@ -200,7 +201,7 @@ for(int i=0; i<9; ++i)
     double Eout=(Etotcal-E_clus3x3)/E_clus3x3;
 
            
-if(CentralCell!=0)//==7 || CentralCell==8 || CentralCell==9 || CentralCell==12 || CentralCell==13 || CentralCell==14 || CentralCell==17 || CentralCell==18 || CentralCell==19
+if(CentralCell==7 || CentralCell==8 || CentralCell==9 || CentralCell==12 || CentralCell==13 || CentralCell==14 || CentralCell==17 || CentralCell==18 || CentralCell==19)
 { 
 n_small+=wgt_full;
 double en_Maxcell=0.;
@@ -230,7 +231,7 @@ else continue;
     
     E2nd=E2/E_1;
     
-if(r_mu<1.7 )//&& detKinBeamRot_def_angle_mu>0.2  && E_clus3x3>1
+if(detKinBeamRot_def_angle_mu>0.2  && E_clus3x3>1)//&& detKinBeamRot_def_angle_mu>0.2  && E_clus3x3>1
 {
 n_cut+=wgt_full;
 if(n_cell_ph!=0){n_cut_ph+=wgt_full;}else n_cut_noph+=wgt_full;  

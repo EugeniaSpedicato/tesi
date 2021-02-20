@@ -55,8 +55,8 @@ TH2F  *E3x31CUT  = new TH2F("ThEel1" , " Th_el Vs. E_E3x3 core NLO CUT",90,0,30,
 TH2F  *E3x32CUT  = new TH2F("ThEel2" , " Th_el Vs. E_E3x3 core LO CUT",90,0,30,280,0,140);
     
     
-TH2F  *Th  = new TH2F("ThEel1" , " Th_el Vs. Th_mu  core NLO CUT",280,0,140,50,0,5);
-TH2F  *ThCUT  = new TH2F("ThEel2" , " Th_el Vs. Th_mu   core NLO cut CUT",280,0,140,50,0,5);    
+TH2F  *Th  = new TH2F("ThEel1" , " Th_el Vs. Th_mu  core NLO CUT",90,0,30,50,0,5);
+TH2F  *ThCUT  = new TH2F("ThEel2" , " Th_el Vs. Th_mu   core NLO cut CUT",90,0,30,50,0,5);    
 
 
 TH1F* hist_E9_e=new TH1F("E9e", "E9", 100,0.3,1);
@@ -358,7 +358,23 @@ E3x32CUT->GetYaxis()->SetTitle("Ereco3x3[GeV]");
 E3x32CUT->Draw("COLZ");
 
 
-c4a->SaveAs("/home/LHCB-T3/espedicato/tesi/studio/thE_cut.png");    
+c4a->SaveAs("/home/LHCB-T3/espedicato/tesi/studio/thE_cut.png");
+    
+TCanvas * thu= new TCanvas("c4a","c4a",100,100,2500,2000);
+thu->Divide(1,2);
+gStyle->SetPalette(kLake);
+TColor::InvertPalette(); 
+thu->cd(1);   
+Th->GetXaxis()->SetTitle("Theta_el[mrad]");
+Th->GetYaxis()->SetTitle("Theta_mu[GeV]");
+Th->Draw("COLZ");
+thu->cd(2);   
+ThCUT->GetXaxis()->SetTitle("Theta_el[mrad]");
+ThCUT->GetYaxis()->SetTitle("Theta_mu[GeV]");
+ThCUT->Draw("COLZ");
+
+
+thu->SaveAs("/home/LHCB-T3/espedicato/tesi/studio/thu.png");  
     
 TCanvas * c9= new TCanvas("c9","c9",1000,100,2500,2000);
     c9->Divide(2,2);

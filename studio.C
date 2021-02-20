@@ -56,7 +56,7 @@ TH2F  *E3x32CUT  = new TH2F("ThEel2" , " Th_el Vs. E_E3x3 core LO CUT",150,0,30,
     
     
 TH2F  *Th  = new TH2F("ThEel1" , " Th_el Vs. Th_mu  core NLO CUT",90,0,30,50,0,5);
-TH2F  *ThCUT  = new TH2F("ThEel2" , " Th_el Vs. Th_mu   core NLO cut CUT",90,0,30,50,0,5);    
+TH2F  *ThCUT  = new TH2F("ThEel2" , " Th_el Vs. Th_mu   core NLO cut CUT",150,0,30,50,0,5);    
 
 
 TH1F* hist_E9_e=new TH1F("E9e", "E9", 100,0.3,1);
@@ -253,7 +253,16 @@ hist_E9_e->Fill(E9,wgt_full);
 hist_E9_eLO->Fill(E9,wgt_LO); 
 hist_Eout_e->Fill(Eout,wgt_full);
 hist_Eout_eLO->Fill(Eout,wgt_LO);*/   
-    
+
+    if(detKinBeamRot_def_angle_e>5,detKinBeamRot_def_angle_e<10)
+    {
+hist_E9_eOUT->Fill(E9,wgt_full);
+hist_E9_eLOOUT->Fill(E9,wgt_LO); 
+hist_Eout_eOUT->Fill(Eout,wgt_full);
+hist_Eout_eLOOUT->Fill(Eout,wgt_LO);
+hist_E92_eOUT->Fill(E2nd,wgt_full);
+hist_E92_eLOOUT->Fill(E2nd,wgt_LO); 
+    }
     
 n_cut+=wgt_full;
 if(SeconCentralCell_in9!=0)

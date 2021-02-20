@@ -232,7 +232,6 @@ else continue;
 if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2  && E_clus3x3>1)
 {
 n_cut+=wgt_full;
-if(n_cell_ph!=0){n_cut_ph+=wgt_full;}else n_cut_noph+=wgt_full;
     
 if(SeconCentralCell_in9!=0)
 {   
@@ -252,8 +251,9 @@ if (dist<4){
 hist_E9_e->Fill(E9,wgt_full);
 hist_E9_eLO->Fill(E9,wgt_LO); 
 hist_Eout_e->Fill(Eout,wgt_full);
-hist_Eout_eLO->Fill(Eout,wgt_LO); } else if(SeconCentralCell!=0)
+hist_Eout_eLO->Fill(Eout,wgt_LO); } else if(SeconCentralCell!=0 && E2nd<0.08)
 {
+if(n_cell_ph!=0){n_cut_ph+=wgt_full;}else n_cut_noph+=wgt_full;
 hist_E9_eOUT->Fill(E9,wgt_full);
 hist_E9_eLOOUT->Fill(E9,wgt_LO); 
 hist_Eout_eOUT->Fill(Eout,wgt_full);

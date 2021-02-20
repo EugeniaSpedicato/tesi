@@ -243,22 +243,18 @@ if (dist>1.425 && dist<4 ){
     hist_E92_e->Fill(E2nd,wgt_full);
     hist_E92_eLO->Fill(E2nd,wgt_LO);
     
-    /*if(SeconCentralCell_in9==n_cell_ph)
-    {n_cut_ph+=wgt_full;} 
-    else if(SeconCentralCell_in9==n_cell_e)
-    {n_cut_noph+=wgt_full; }*/
-hist_E9_e->Fill(E9,wgt_full);
+/*hist_E9_e->Fill(E9,wgt_full);
 hist_E9_eLO->Fill(E9,wgt_LO); 
 hist_Eout_e->Fill(Eout,wgt_full);
-hist_Eout_eLO->Fill(Eout,wgt_LO); }} 
+hist_Eout_eLO->Fill(Eout,wgt_LO);*/ }} 
 else if(SeconCentralCell!=0)
 {
-hist_E9_eOUT->Fill(E9,wgt_full);
+/*hist_E9_eOUT->Fill(E9,wgt_full);
 hist_E9_eLOOUT->Fill(E9,wgt_LO); 
 hist_Eout_eOUT->Fill(Eout,wgt_full);
 hist_Eout_eLOOUT->Fill(Eout,wgt_LO);
 hist_E92_eOUT->Fill(E2nd,wgt_full);
-hist_E92_eLOOUT->Fill(E2nd,wgt_LO);}
+hist_E92_eLOOUT->Fill(E2nd,wgt_LO);*/}
     
 //else if (SeconCentralCell_in9!=0){sec_9+=wgt_full;energy->Fill(Eout,wgt_full);}
 
@@ -295,7 +291,7 @@ delete myGrid;
     
 
     
-Int_t nx1CUT = E3x31CUT->GetNbinsX();
+/*Int_t nx1CUT = E3x31CUT->GetNbinsX();
 Int_t ny1CUT = E3x31CUT->GetNbinsY();
 for (Int_t i=1; i<nx1CUT+1; i++) {
 for (Int_t j=1; j<ny1CUT+1; j++) {
@@ -393,6 +389,6 @@ hist_E92_eLOOUT->SetLineWidth(3);
 hist_E92_eLOOUT->SetLineColor(kRed);
 hist_E92_eLOOUT->Draw("HIST same");     
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
-cc->SaveAs("/home/LHCB-T3/espedicato/tesi/studio/E92nd.png");
+cc->SaveAs("/home/LHCB-T3/espedicato/tesi/studio/E92nd.png");*/
 
 }

@@ -149,11 +149,11 @@ E_1=myGrid->GetBinContent(binMax);
 // con if E_1!=0 è gia imposto r<1.7 perchè gia in fastsim         
 if(E_1!=0){           
     n5+=wgt_full;
-    int binx_e = myGrid->GetXaxis()->FindBin(detKinBeamRot_cooXe);
+    if (detKinBeamRot_Ee>0.2){int binx_e = myGrid->GetXaxis()->FindBin(detKinBeamRot_cooXe);
     int biny_e = myGrid->GetYaxis()->FindBin(detKinBeamRot_cooYe);
     int nbin_e = myGrid->GetBin(binx_e,biny_e);
-     n_cell_e=number[nbin_e];
-    if(photon_coox!=-100)
+     n_cell_e=number[nbin_e];} else n_cell_e=0;
+    if(photon_coox!=-100 && photon_energy>0.2)
     {int binx_ph = myGrid->GetXaxis()->FindBin(photon_coox);
     int biny_ph = myGrid->GetYaxis()->FindBin(photon_cooy);
     int nbin_ph = myGrid->GetBin(binx_ph,biny_ph);
@@ -234,7 +234,7 @@ else continue;
 if(detKinBeamRot_def_angle_mu>0.2  && E_clus3x3>1)//&& detKinBeamRot_def_angle_mu>0.2  && E_clus3x3>1
 {
 n_cut+=wgt_full;
-if(n_cell_ph!=0){n_cut_ph+=wgt_full;}else n_cut_noph+=wgt_full;  
+if(n_cell_ph!=0){n_cut_ph+=wgt_full;}else if(n_cell_e!=0 && n_cell_ph==0) n_cut_noph+=wgt_full;  
 if(SeconCentralCell_in9!=0)
 {   
 double x = myGrid->GetXaxis()->GetBinCenter(Rev_numberX[SeconCentralCell_in9]);

@@ -234,13 +234,14 @@ else continue;
 if(detKinBeamRot_def_angle_mu>0.2  && E_clus3x3>1)//&& detKinBeamRot_def_angle_mu>0.2  && E_clus3x3>1
 {
 n_cut+=wgt_full;
-if(n_cell_ph!=0){n_cut_ph+=wgt_full;}else if(n_cell_e!=0 && n_cell_ph==0) n_cut_noph+=wgt_full;  
 if(SeconCentralCell_in9!=0)
 {   
 double x = myGrid->GetXaxis()->GetBinCenter(Rev_numberX[SeconCentralCell_in9]);
 double y = myGrid->GetYaxis()->GetBinCenter(Rev_numberY[SeconCentralCell_in9]);
 double dist=sqrt((x-detKinBeamRot_cooXe)*(x-detKinBeamRot_cooXe)+(y-detKinBeamRot_cooYe)*(y-detKinBeamRot_cooYe)); 
 
+if(n_cell_ph!=0){n_cut_ph+=wgt_full;}else if(n_cell_e!=0 && n_cell_ph==0) n_cut_noph+=wgt_full;      
+    
 if (dist>1.425 && dist<4 ){
     hist_E92_e->Fill(E2nd,wgt_full);
     hist_E92_eLO->Fill(E2nd,wgt_LO);

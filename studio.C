@@ -323,25 +323,25 @@ Int_t nx1CUT = E3x31CUT->GetNbinsX();
 Int_t ny1CUT = E3x31CUT->GetNbinsY();
 for (Int_t i=1; i<nx1CUT+1; i++) {
 for (Int_t j=1; j<ny1CUT+1; j++) {
-if (E3x31CUT->GetBinContent(i,j)<10) E3x31CUT->SetBinContent(i,j,0);}}
+if (E3x31CUT->GetBinContent(i,j)<5) E3x31CUT->SetBinContent(i,j,0);}}
     
 Int_t nx2CUT = E3x32CUT->GetNbinsX();
 Int_t ny2CUT = E3x32CUT->GetNbinsY();
 for (Int_t i=1; i<nx2CUT+1; i++) {
 for (Int_t j=1; j<ny2CUT+1; j++) {
-if (E3x32CUT->GetBinContent(i,j)<10) E3x32CUT->SetBinContent(i,j,0);}}
+if (E3x32CUT->GetBinContent(i,j)<5) E3x32CUT->SetBinContent(i,j,0);}}
     
 Int_t nxTh = Th->GetNbinsX();
 Int_t nyTh = Th->GetNbinsY();
 for (Int_t i=1; i<nxTh+1; i++) {
 for (Int_t j=1; j<nyTh+1; j++) {
-if (Th->GetBinContent(i,j)<10) Th->SetBinContent(i,j,0);}}
+if (Th->GetBinContent(i,j)<5) Th->SetBinContent(i,j,0);}}
     
 Int_t nx2thcut = ThCUT->GetNbinsX();
 Int_t ny2thcut = ThCUT->GetNbinsY();
 for (Int_t i=1; i<nx2thcut+1; i++) {
 for (Int_t j=1; j<ny2thcut+1; j++) {
-if (ThCUT->GetBinContent(i,j)<10) ThCUT->SetBinContent(i,j,0);}}
+if (ThCUT->GetBinContent(i,j)<5) ThCUT->SetBinContent(i,j,0);}}
         
     
 TCanvas * c4a= new TCanvas("c4a","c4a",100,100,2500,2000);

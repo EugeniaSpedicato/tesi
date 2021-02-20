@@ -53,6 +53,10 @@ TH1F* The2CUT=new TH1F("th", "th El TAR 2 core CUT", 120,0,30);
 
 TH2F  *E3x31CUT  = new TH2F("ThEel1" , " Th_el Vs. E_E3x3 core NLO CUT",90,0,30,280,0,140);
 TH2F  *E3x32CUT  = new TH2F("ThEel2" , " Th_el Vs. E_E3x3 core LO CUT",90,0,30,280,0,140);
+    
+    
+TH2F  *Th  = new TH2F("ThEel1" , " Th_el Vs. Th_mu  core NLO CUT",280,0,140,50,0,5);
+TH2F  *ThCUT  = new TH2F("ThEel2" , " Th_el Vs. Th_mu   core NLO cut CUT",280,0,140,50,0,5);    
 
 
 TH1F* hist_E9_e=new TH1F("E9e", "E9", 100,0.3,1);
@@ -235,6 +239,7 @@ if(detKinBeamRot_def_angle_mu>0.2  && E_clus3x3>1)//&& detKinBeamRot_def_angle_m
 {
 if (E_clus3x3!=0){E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);} 
 
+Th->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
     
 /*hist_E9_eOUT->Fill(E9,wgt_full);
 hist_E9_eLOOUT->Fill(E9,wgt_LO); 
@@ -260,15 +265,16 @@ double dist=sqrt((x-detKinBeamRot_cooXe)*(x-detKinBeamRot_cooXe)+(y-detKinBeamRo
     
 
 if (dist<1.425 && E9>0.4 && E9<0.6 && Eout<0.05 && E2nd<0.6)
-{ if (E_clus3x3!=0){E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);}  }
+{ if (E_clus3x3!=0){E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);} 
+ThCUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}
 
 if (dist>1.425 && dist<4)
 {  if (E_clus3x3!=0){E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);} 
-}
+ThCUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}
 
 if (dist>4 && E9>0.8 && Eout<0.04 && E2nd<0.1)
 { if (E_clus3x3!=0){E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);}
-}
+ThCUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}
     
 } 
 
@@ -276,7 +282,7 @@ else if(SeconCentralCell!=0 && E9>0.87 && Eout<0.07)// && E9>0.87 && Eout>0.07
 {
 //if(n_cell_ph!=0){n_cut_ph+=wgt_full;}else if(n_cell_e!=0 && n_cell_ph==0) n_cut_noph+=wgt_full; 
  if (E_clus3x3!=0){E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);}   
-}
+ThCUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}
     
 //else if (SeconCentralCell_in9!=0){sec_9+=wgt_full;energy->Fill(Eout,wgt_full);}
 
@@ -324,6 +330,19 @@ Int_t ny2CUT = E3x32CUT->GetNbinsY();
 for (Int_t i=1; i<nx2CUT+1; i++) {
 for (Int_t j=1; j<ny2CUT+1; j++) {
 if (E3x32CUT->GetBinContent(i,j)<10) E3x32CUT->SetBinContent(i,j,0);}}
+    
+Int_t nxTh = Th->GetNbinsX();
+Int_t nyTh = Th->GetNbinsY();
+for (Int_t i=1; i<nxTh+1; i++) {
+for (Int_t j=1; j<nyTh+1; j++) {
+if (Th->GetBinContent(i,j)<10) Th->SetBinContent(i,j,0);}}
+    
+Int_t nx2thcut = ThCUT->GetNbinsX();
+Int_t ny2thcut = ThCUT->GetNbinsY();
+for (Int_t i=1; i<nx2thcut+1; i++) {
+for (Int_t j=1; j<ny2thcut+1; j++) {
+if (ThCUT->GetBinContent(i,j)<10) ThCUT->SetBinContent(i,j,0);}}
+        
     
 TCanvas * c4a= new TCanvas("c4a","c4a",100,100,2500,2000);
 c4a->Divide(1,2);

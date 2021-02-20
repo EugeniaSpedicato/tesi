@@ -229,10 +229,10 @@ else continue;
     
     E2nd=E2/E_1;
     
-if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2  && E_clus3x3>1 && photon_energy>1 )
+if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2  && E_clus3x3>1)
 {
 n_cut+=wgt_full;
-
+if(n_cell_ph!=0){n_cut_ph+=wgt_full;}else n_cut_noph+=wgt_full;
     
 if(SeconCentralCell_in9!=0)
 {   
@@ -242,24 +242,25 @@ double dist=sqrt((x-detKinBeamRot_cooXe)*(x-detKinBeamRot_cooXe)+(y-detKinBeamRo
 
 if (dist<4){
     hist_E92_e->Fill(E2nd,wgt_full);
-    hist_E92_eLO->Fill(E2nd,wgt_LO);
-if(n_cell_ph!=0) {n_cut_ph+=wgt_full;}else n_cut_noph+=wgt_full;}
+    hist_E92_eLO->Fill(E2nd,wgt_LO);}
     
     /*if(SeconCentralCell_in9==n_cell_ph)
     {n_cut_ph+=wgt_full;} 
     else if(SeconCentralCell_in9==n_cell_e)
     {n_cut_noph+=wgt_full; }*/
-    
-    
+     
 hist_E9_e->Fill(E9,wgt_full);
 hist_E9_eLO->Fill(E9,wgt_LO); 
 hist_Eout_e->Fill(Eout,wgt_full);
 hist_Eout_eLO->Fill(Eout,wgt_LO); } else if(SeconCentralCell!=0)
 {
-hist_E9_eOUT->Fill(E2nd,wgt_full);
-hist_E9_eLOOUT->Fill(E2nd,wgt_LO); 
-hist_Eout_eOUT->Fill(E2nd,wgt_full);
-hist_Eout_eLOOUT->Fill(E2nd,wgt_LO);} 
+hist_E9_eOUT->Fill(E9,wgt_full);
+hist_E9_eLOOUT->Fill(E9,wgt_LO); 
+hist_Eout_eOUT->Fill(Eout,wgt_full);
+hist_Eout_eLOOUT->Fill(Eout,wgt_LO);
+hist_E92_eOUT->Fill(E2nd,wgt_full);
+hist_E92_eLOOUT->Fill(E2nd,wgt_LO);}
+    
 //else if (SeconCentralCell_in9!=0){sec_9+=wgt_full;energy->Fill(Eout,wgt_full);}
 
     
@@ -371,15 +372,27 @@ c9->SaveAs("/home/LHCB-T3/espedicato/tesi/studio/E9.png");
 
     
 TCanvas * cc= new TCanvas("cc","cc",1000,100,2500,2000);
-
-hist_E92_e->GetXaxis()->SetTitle("E2nd/E3x3");
+cc->Divide(1,2);
+cc->cd(1);
+hist_E92_e->GetXaxis()->SetTitle("E2nd/E1");
 hist_E92_e->SetLineWidth(3);
 hist_E92_e->Draw("HIST"); 
     
-hist_E92_eLO->GetXaxis()->SetTitle("E2nd/E3x3");
+hist_E92_eLO->GetXaxis()->SetTitle("E2nd/E1");
 hist_E92_eLO->SetLineWidth(3);
 hist_E92_eLO->SetLineColor(kRed);
 hist_E92_eLO->Draw("HIST same");     
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
+    
+cc->cd(2);
+hist_E92_eOUT->GetXaxis()->SetTitle("E2nd/E1");
+hist_E92_eOUT->SetLineWidth(3);
+hist_E92_eOUT->Draw("HIST"); 
+    
+hist_E92_eLOOUT->GetXaxis()->SetTitle("E2nd/E1");
+hist_E92_eLOOUT->SetLineWidth(3);
+hist_E92_eLOOUT->SetLineColor(kRed);
+hist_E92_eLOOUT->Draw("HIST same");     
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 cc->SaveAs("/home/LHCB-T3/espedicato/tesi/studio/E92nd.png");
 

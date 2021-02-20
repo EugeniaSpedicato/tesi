@@ -234,8 +234,16 @@ else continue;
 if(detKinBeamRot_def_angle_mu>0.2  && E_clus3x3>1)//&& detKinBeamRot_def_angle_mu>0.2  && E_clus3x3>1
 {
 if (E_clus3x3!=0){E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);} 
-        
-        if (E_clus3x3!=0){E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_LO);} 
+if (E_clus3x3!=0){E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_LO);} 
+    
+hist_E9_eOUT->Fill(E9,wgt_full);
+hist_E9_eLOOUT->Fill(E9,wgt_LO); 
+hist_Eout_eOUT->Fill(Eout,wgt_full);
+hist_Eout_eLOOUT->Fill(Eout,wgt_LO);
+hist_E92_eOUT->Fill(E2nd,wgt_full);
+hist_E92_eLOOUT->Fill(E2nd,wgt_LO);    
+    
+    
 n_cut+=wgt_full;
 if(SeconCentralCell_in9!=0)
 {   
@@ -245,14 +253,27 @@ double dist=sqrt((x-detKinBeamRot_cooXe)*(x-detKinBeamRot_cooXe)+(y-detKinBeamRo
      
     
 
-    //if (dist<1.425){ }
+if (dist<1.425 && E9>0.4 && E9<0.6 && Eout<0.05 && E2nd<0.6)
+{     hist_E92_e->Fill(E2nd,wgt_full);
+    hist_E92_eLO->Fill(E2nd,wgt_LO);
+hist_E9_e->Fill(E9,wgt_full);
+hist_E9_eLO->Fill(E9,wgt_LO); 
+hist_Eout_e->Fill(Eout,wgt_full);
+hist_Eout_eLO->Fill(Eout,wgt_LO);}
 
-   // if (dist>1.425 && dist<4){}
+if (dist>1.425 && dist<4)
+{    hist_E92_e->Fill(E2nd,wgt_full);
+    hist_E92_eLO->Fill(E2nd,wgt_LO);
+hist_E9_e->Fill(E9,wgt_full);
+hist_E9_eLO->Fill(E9,wgt_LO); 
+hist_Eout_e->Fill(Eout,wgt_full);
+hist_Eout_eLO->Fill(Eout,wgt_LO);
+}
 
-if (dist>4){
+if (dist>4 && E9>0.8 && Eout<0.04 && E2nd<0.1)
+{
     hist_E92_e->Fill(E2nd,wgt_full);
     hist_E92_eLO->Fill(E2nd,wgt_LO);
-    
 hist_E9_e->Fill(E9,wgt_full);
 hist_E9_eLO->Fill(E9,wgt_LO); 
 hist_Eout_e->Fill(Eout,wgt_full);
@@ -261,13 +282,16 @@ hist_Eout_eLO->Fill(Eout,wgt_LO);}
 } 
 
 else if(SeconCentralCell!=0 && E9>0.87 && Eout<0.07)// && E9>0.87 && Eout>0.07
-{if(n_cell_ph!=0){n_cut_ph+=wgt_full;}else if(n_cell_e!=0 && n_cell_ph==0) n_cut_noph+=wgt_full; 
-hist_E9_eOUT->Fill(E9,wgt_full);
-hist_E9_eLOOUT->Fill(E9,wgt_LO); 
-hist_Eout_eOUT->Fill(Eout,wgt_full);
-hist_Eout_eLOOUT->Fill(Eout,wgt_LO);
-hist_E92_eOUT->Fill(E2nd,wgt_full);
-hist_E92_eLOOUT->Fill(E2nd,wgt_LO);}
+{
+//if(n_cell_ph!=0){n_cut_ph+=wgt_full;}else if(n_cell_e!=0 && n_cell_ph==0) n_cut_noph+=wgt_full; 
+    
+hist_E92_e->Fill(E2nd,wgt_full);
+hist_E92_eLO->Fill(E2nd,wgt_LO);
+hist_E9_e->Fill(E9,wgt_full);
+hist_E9_eLO->Fill(E9,wgt_LO); 
+hist_Eout_e->Fill(Eout,wgt_full);
+hist_Eout_eLO->Fill(Eout,wgt_LO);    
+}
     
 //else if (SeconCentralCell_in9!=0){sec_9+=wgt_full;energy->Fill(Eout,wgt_full);}
 

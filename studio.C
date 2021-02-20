@@ -279,9 +279,9 @@ std::ostringstream name1;
 name1 <<"/home/LHCB-T3/espedicato/tesi/studio/Ecal"<< jentry << ".png";
 TString name =name1.str();
 Ecal_->SaveAs(name);   */        
- 
+}
 delete myGrid; 
-}}}
+}}
     
  cout << "TOT eventi nel r<5 " << n5 << endl;
  cout << "Eventi in small ECAL " << n_small <<  endl;

@@ -244,14 +244,20 @@ double y = myGrid->GetYaxis()->GetBinCenter(Rev_numberY[SeconCentralCell_in9]);
 double dist=sqrt((x-detKinBeamRot_cooXe)*(x-detKinBeamRot_cooXe)+(y-detKinBeamRot_cooYe)*(y-detKinBeamRot_cooYe)); 
      
     
-if (dist<1.425){
+
+    //if (dist<1.425){ }
+
+    if (dist>1.425 && dist<4){
     hist_E92_e->Fill(E2nd,wgt_full);
     hist_E92_eLO->Fill(E2nd,wgt_LO);
     
 hist_E9_e->Fill(E9,wgt_full);
 hist_E9_eLO->Fill(E9,wgt_LO); 
 hist_Eout_e->Fill(Eout,wgt_full);
-hist_Eout_eLO->Fill(Eout,wgt_LO); }
+hist_Eout_eLO->Fill(Eout,wgt_LO);}
+
+    //if (dist>4){}
+    
 } 
 
 else if(SeconCentralCell!=0 && E9>0.87 && Eout<0.07)// && E9>0.87 && Eout>0.07

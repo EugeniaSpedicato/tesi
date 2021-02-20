@@ -129,7 +129,7 @@ Double_t Etotcal=0.;
        
        double d_e_ph=sqrt( (detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detKinBeamRot_cooYe-photon_cooy)*(detKinBeamRot_cooYe-photon_cooy) ); 
        if (r_mu<5){
-           n5+=wgt_full;
+           
     TH2F* myGrid= new TH2F("myGrid" , "EM Calorimeter with E in GeV",5,-7.125,7.125,5,-7.125,7.125);
        en_c[1]=detKinBeamRot_Ecell1; en_c[2]=detKinBeamRot_Ecell2; en_c[3]=detKinBeamRot_Ecell3; en_c[4]=detKinBeamRot_Ecell4; en_c[5]=detKinBeamRot_Ecell5;
         en_c[6]=detKinBeamRot_Ecell6; en_c[7]=detKinBeamRot_Ecell7; en_c[8]=detKinBeamRot_Ecell8; en_c[9]=detKinBeamRot_Ecell9; en_c[10]=detKinBeamRot_Ecell10;
@@ -137,19 +137,7 @@ Double_t Etotcal=0.;
         en_c[16]=detKinBeamRot_Ecell16; en_c[17]=detKinBeamRot_Ecell17; en_c[18]=detKinBeamRot_Ecell18; en_c[19]=detKinBeamRot_Ecell19; en_c[20]=detKinBeamRot_Ecell20;
         en_c[21]=detKinBeamRot_Ecell21; en_c[22]=detKinBeamRot_Ecell22; en_c[23]=detKinBeamRot_Ecell23; en_c[24]=detKinBeamRot_Ecell24; en_c[25]=detKinBeamRot_Ecell25;
        
-    for(int i=1;i<26;++i){myGrid->SetBinContent(Rev_number[i],en_c[i]);}
-    
-       
-    int binx_e = myGrid->GetXaxis()->FindBin(detKinBeamRot_cooXe);
-    int biny_e = myGrid->GetYaxis()->FindBin(detKinBeamRot_cooYe);
-    int nbin_e = myGrid->GetBin(binx_e,biny_e);
-     n_cell_e=number[nbin_e];
-    if(photon_coox!=-100 && photon_energy>0.2)
-    {int binx_ph = myGrid->GetXaxis()->FindBin(photon_coox);
-    int biny_ph = myGrid->GetYaxis()->FindBin(photon_cooy);
-    int nbin_ph = myGrid->GetBin(binx_ph,biny_ph);
-     n_cell_ph=number[nbin_ph];}
-    else n_cell_ph=0;
+    for(int i=1;i<26;++i){myGrid->SetBinContent(Rev_number[i],en_c[i]);}    
        
 
 int binMax=myGrid->GetMaximumBin();  
@@ -157,6 +145,19 @@ int CentralCell=number[binMax];
        
 
 E_1=myGrid->GetBinContent(binMax);
+      
+if(E_1!=0){           
+    n5+=wgt_full;
+    int binx_e = myGrid->GetXaxis()->FindBin(detKinBeamRot_cooXe);
+    int biny_e = myGrid->GetYaxis()->FindBin(detKinBeamRot_cooYe);
+    int nbin_e = myGrid->GetBin(binx_e,biny_e);
+     n_cell_e=number[nbin_e];
+    if(photon_coox!=-100)
+    {int binx_ph = myGrid->GetXaxis()->FindBin(photon_coox);
+    int biny_ph = myGrid->GetYaxis()->FindBin(photon_cooy);
+    int nbin_ph = myGrid->GetBin(binx_ph,biny_ph);
+     n_cell_ph=number[nbin_ph];}
+    else n_cell_ph=0;           
 
     if (CentralCell==1) {Array9= new int[9]{1,6,7,2,0,0,0,0,0};}
     if (CentralCell==2) {Array9= new int[9]{1,2,6,7,8,3,0,0,0};}
@@ -199,7 +200,7 @@ for(int i=0; i<9; ++i)
     double Eout=(Etotcal-E_clus3x3)/E_clus3x3;
 
            
-if(CentralCell==7 || CentralCell==8 || CentralCell==9 || CentralCell==12 || CentralCell==13 || CentralCell==14 || CentralCell==17 || CentralCell==18 || CentralCell==19)
+if(CentralCell!=0)//==7 || CentralCell==8 || CentralCell==9 || CentralCell==12 || CentralCell==13 || CentralCell==14 || CentralCell==17 || CentralCell==18 || CentralCell==19
 { 
 n_small+=wgt_full;
 double en_Maxcell=0.;
@@ -229,7 +230,7 @@ else continue;
     
     E2nd=E2/E_1;
     
-if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2  && E_clus3x3>1)
+if(r_mu<1.7 )//&& detKinBeamRot_def_angle_mu>0.2  && E_clus3x3>1
 {
 n_cut+=wgt_full;
 if(n_cell_ph!=0){n_cut_ph+=wgt_full;}else n_cut_noph+=wgt_full;  
@@ -280,7 +281,7 @@ TString name =name1.str();
 Ecal_->SaveAs(name);   */        
  
 delete myGrid; 
-}}
+}}}
     
  cout << "TOT eventi nel r<5 " << n5 << endl;
  cout << "Eventi in small ECAL " << n_small <<  endl;

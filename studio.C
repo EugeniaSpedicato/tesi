@@ -295,7 +295,7 @@ delete myGrid;
     
 
     
-/*Int_t nx1CUT = E3x31CUT->GetNbinsX();
+Int_t nx1CUT = E3x31CUT->GetNbinsX();
 Int_t ny1CUT = E3x31CUT->GetNbinsY();
 for (Int_t i=1; i<nx1CUT+1; i++) {
 for (Int_t j=1; j<ny1CUT+1; j++) {
@@ -393,6 +393,6 @@ hist_E92_eLOOUT->SetLineWidth(3);
 hist_E92_eLOOUT->SetLineColor(kRed);
 hist_E92_eLOOUT->Draw("HIST same");     
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
-cc->SaveAs("/home/LHCB-T3/espedicato/tesi/studio/E92nd.png");*/
+cc->SaveAs("/home/LHCB-T3/espedicato/tesi/studio/E92nd.png");
 
 }

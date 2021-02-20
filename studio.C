@@ -127,6 +127,7 @@ Double_t Etotcal=0.;
          
        double r_mu=sqrt((detKinBeamRot_x_in*detKinBeamRot_x_in)+(detKinBeamRot_y_in*detKinBeamRot_y_in));
        
+       double d_e_ph=sqrt( (detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detKinBeamRot_cooYe-photon_cooy)*(detKinBeamRot_cooYe-photon_cooy) ); 
        if (r_mu<5){
            n5+=wgt_full;
     TH2F* myGrid= new TH2F("myGrid" , "EM Calorimeter with E in GeV",5,-7.125,7.125,5,-7.125,7.125);
@@ -255,10 +256,10 @@ hist_E9_eLO->Fill(E9,wgt_LO);
 hist_Eout_e->Fill(Eout,wgt_full);
 hist_Eout_eLO->Fill(Eout,wgt_LO); } else if(SeconCentralCell!=0)
 {
-hist_E9_eOUT->Fill(E9,wgt_full);
-hist_E9_eLOOUT->Fill(E9,wgt_LO); 
-hist_Eout_eOUT->Fill(Eout,wgt_full);
-hist_Eout_eLOOUT->Fill(Eout,wgt_LO);} 
+hist_E9_eOUT->Fill(E2nd,wgt_full);
+hist_E9_eLOOUT->Fill(E2nd,wgt_LO); 
+hist_Eout_eOUT->Fill(E2nd,wgt_full);
+hist_Eout_eLOOUT->Fill(E2nd,wgt_LO);} 
 //else if (SeconCentralCell_in9!=0){sec_9+=wgt_full;energy->Fill(Eout,wgt_full);}
 
     

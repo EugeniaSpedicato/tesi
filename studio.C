@@ -251,7 +251,7 @@ hist_Eout_e->Fill(Eout,wgt_full);
 hist_Eout_eLO->Fill(Eout,wgt_LO); //}
 } 
 
-else if(SeconCentralCell!=0 && E9>0.87 && Eout>0.07)// && E9>0.87 && Eout>0.07
+else if(SeconCentralCell!=0 && E9>0.87 && Eout<0.07)// && E9>0.87 && Eout>0.07
 {if(n_cell_ph!=0){n_cut_ph+=wgt_full;}else if(n_cell_e!=0 && n_cell_ph==0) n_cut_noph+=wgt_full; 
 hist_E9_eOUT->Fill(E9,wgt_full);
 hist_E9_eLOOUT->Fill(E9,wgt_LO); 

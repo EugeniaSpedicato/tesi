@@ -267,7 +267,7 @@ double dist=sqrt((x-detKinBeamRot_cooXe)*(x-detKinBeamRot_cooXe)+(y-detKinBeamRo
 if (dist<1.425 && E9>0.4 && E9<0.6 && Eout<0.05 && E2nd<0.6)
 { if (E_clus3x3!=0){E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);} 
 ThCUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
-    if(detKinBeamRot_def_angle_e>5,detKinBeamRot_def_angle_e<10)
+ if(detKinBeamRot_def_angle_e>5,detKinBeamRot_def_angle_e<10)
     {
 hist_E9_eOUT->Fill(E9,wgt_full);
 hist_E9_eLOOUT->Fill(E9,wgt_LO); 

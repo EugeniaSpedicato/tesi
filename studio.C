@@ -51,8 +51,8 @@ TH1F* The1CUT=new TH1F("th", "th El TAR 1 core CUT", 120,0,30);
 TH1F* The2CUT=new TH1F("th", "th El TAR 2 core CUT", 120,0,30);
 
 
-TH2F  *E3x31CUT  = new TH2F("ThEel1" , " Th_el Vs. E_E3x3 core NLO CUT",300,0,30,840,0,140);
-TH2F  *E3x32CUT  = new TH2F("ThEel2" , " Th_el Vs. E_E3x3 core LO CUT",300,0,30,840,0,140);
+TH2F  *E3x31CUT  = new TH2F("ThEel1" , " Th_el Vs. E_E3x3 core NLO CUT",180,0,30,360,0,140);
+TH2F  *E3x32CUT  = new TH2F("ThEel2" , " Th_el Vs. E_E3x3 core LO CUT",180,0,30,360,0,140);
     
     
 TH2F  *Th  = new TH2F("ThEel1" , " Th_el Vs. Th_mu  core NLO CUT",300,0,30,150,0,5);

@@ -244,7 +244,7 @@ double y = myGrid->GetYaxis()->GetBinCenter(Rev_numberY[SeconCentralCell_in9]);
 double dist=sqrt((x-detKinBeamRot_cooXe)*(x-detKinBeamRot_cooXe)+(y-detKinBeamRot_cooYe)*(y-detKinBeamRot_cooYe)); 
      
     
-if (dist>1.425){
+if (dist<1.425){
     hist_E92_e->Fill(E2nd,wgt_full);
     hist_E92_eLO->Fill(E2nd,wgt_LO);
     

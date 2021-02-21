@@ -65,11 +65,11 @@ TH1F* hist_E9_eLO=new TH1F("E9eLO", "E9 LO", 100,0.3,1);
 TH1F* hist_E9_eOUT=new TH1F("E9e", "E9 OUT", 100,0.3,1);
 TH1F* hist_E9_eLOOUT=new TH1F("E9eLO", "E9 LO OUT", 100,0.3,1);    
     
-TH1F* hist_Eout_e=new TH1F("en", "Eout NLO", 100,0.,0.5);
-TH1F* hist_Eout_eLO=new TH1F("en", "Eout", 100,0.,0.5);
+TH1F* hist_Eout_e=new TH1F("en", "Eout NLO", 100,0.,0.05);
+TH1F* hist_Eout_eLO=new TH1F("en", "Eout", 100,0.,0.05);
     
-TH1F* hist_Eout_eOUT=new TH1F("en", "Eout NLO OUT", 100,0.,0.5);
-TH1F* hist_Eout_eLOOUT=new TH1F("en", "Eout OUT", 100,0.,0.5);
+TH1F* hist_Eout_eOUT=new TH1F("en", "Eout NLO OUT", 100,0.,0.05);
+TH1F* hist_Eout_eLOOUT=new TH1F("en", "Eout OUT", 100,0.,0.05);
     
 TH1F* hist_E92_e=new TH1F("E9e", "E92", 100,0.,1);
 TH1F* hist_E92_eLO=new TH1F("E9eLO", "E92 LO", 100,0.,1);

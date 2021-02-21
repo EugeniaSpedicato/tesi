@@ -51,7 +51,9 @@ TH1F* The1CUT=new TH1F("th", "th El TAR 1 core CUT", 120,0,30);
 TH1F* The2CUT=new TH1F("th", "th El TAR 2 core CUT", 120,0,30);
     
     
-TH1F* hist_dist=new TH1F("dist", "Dist e-gamma", 400,0,8);
+TH1F* hist_dist=new TH1F("dist", "Dist e-centroide", 400,0,8);
+TH1F* hist_distLO=new TH1F("dist", "Dist e-centroide", 400,0,8);
+
 
 TH2F  *E3x31CUT  = new TH2F("ThEel1" , " Th_el Vs. E_E3x3 core NLO CUT",120,0,30,360,0,140);
 TH2F  *E3x32CUT  = new TH2F("ThEel2" , " Th_el Vs. E_E3x3 core LO CUT",120,0,30,360,0,140);
@@ -290,11 +292,13 @@ if (E_clus3x3!=0){E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);}
 
 Th->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
     
-if (photon_energy==-1) {cout  << "centroide (" << centroidX << ", " << centroidY << ")" << "coo elettrone "<< detKinBeamRot_cooXe << ", " << detKinBeamRot_cooYe<<endl;
+
 double ddd=sqrt((centroidX-detKinBeamRot_cooXe)*(centroidX-detKinBeamRot_cooXe)+(centroidY-detKinBeamRot_cooYe)*(centroidY-detKinBeamRot_cooYe));   
                         
 hist_dist->Fill(ddd,wgt_full);
-                       }    
+hist_distLO->Fill(ddd,wgt_LO);
+
+                         
     
 /*hist_E9_eOUT->Fill(E9,wgt_full);
 hist_E9_eLOOUT->Fill(E9,wgt_LO); 
@@ -512,6 +516,10 @@ TCanvas * dd= new TCanvas("dd","dd",1000,100,2500,2000);
 hist_dist->GetXaxis()->SetTitle("d [cm]");
 hist_dist->SetLineWidth(3);
 hist_dist->Draw("HIST"); 
+hist_distLO->GetXaxis()->SetTitle("d [cm]");
+hist_distLO->SetLineColor(kRed);
+hist_distLO->SetLineWidth(3);
+hist_distLO->Draw("HIST same"); 
         
 dd->SaveAs("/home/LHCB-T3/espedicato/tesi/studio/dist.png");
 

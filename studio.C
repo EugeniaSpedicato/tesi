@@ -260,7 +260,21 @@ for(int i=0; i<9; ++i)
 int FourthCentralCell=Maxcell2;
 E4=en_Maxcell2 ;
 
+Double Ex=0.;
+Double Ey=0.;
+
+for(int i=0; i<9; ++i)
+{
+double x = myGrid->GetXaxis()->GetBinCenter(Rev_numberX[i]);
+double y = myGrid->GetYaxis()->GetBinCenter(Rev_numberY[i]);
     
+Ex+=en_c[i]*x;
+Ey+=en_c[i]*y;
+}
+double centroidX=(Ex)/E_clus3x3;
+double centroidY=(Ey)/E_clus3x3;    
+    
+if (photon_energy==-1) cout  << "centroide (" << centroidX << ", " << centroidY << ")" << "coo elettrone "<< detKinBeamRot_cooXe << ", " << detKinBeamRot_cooYe<<endl;
  
 Eres_in=((E_1+E2)/2)/E_1;
     
@@ -305,16 +319,9 @@ if (dist<1.425 && E9>0.4 && E9<0.6 && Eout<0.05 && E2nd<0.6)// && E9>0.4 && E9<0
 ThCUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
 }
 
-if (dist>1.425 && dist<4 && detKinBeamRot_def_angle_e<10 && detKinBeamRot_def_angle_e>5)
+if (dist>1.425 && dist<4 )
 {
-if(photon_energy==-1 || photon_energy>2 ){hist_E9_eOUT->Fill(E9,wgt_full);
-hist_E9_eLOOUT->Fill(E9,wgt_LO); 
-hist_Eout_eOUT->Fill(Eout,wgt_full);
-hist_Eout_eLOOUT->Fill(Eout,wgt_LO);
-hist_E92_eOUT->Fill(E2nd,wgt_full);
-hist_E92_eLOOUT->Fill(E2nd,wgt_LO); 
-    
-hist_dist->Fill(d_e_ph,wgt_full);}
+hist_dist->Fill(d_e_ph,wgt_full);
 }
 
 if (dist>4 && E9>0.8 && Eout<0.04 && E2nd<0.1)//&& E9>0.8 && Eout<0.04 && E2nd<0.1

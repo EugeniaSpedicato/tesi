@@ -326,7 +326,7 @@ if(r_mu<2 && E_clus3x3>2) E3x32CUTtot->Fill(detKinBeamRot_def_angle_e,E_clus3x3,
     The2P2CUT->Fill(detKinBeamRot_def_angle_e,wgt_full);}
 }*/
      
-}}delete myGrid;}}
+}}delete myGrid;}
     
 TH1F *Eff1CUT = new TH1F("ef1cut", "Eff Tar1 cut", 120,0,30);
 TH1F *Eff2CUT = new TH1F("ef2cut", "Eff Tar2 cut", 120,0,30);

@@ -119,6 +119,9 @@ Long64_t nentries = fChain->GetEntriesFast();
        
 Double_t E_1=0.;
 Double_t E2=0.;
+Double_t E3=0.;
+Double_t E4=0.;
+       
 Double_t E_clus3x3=0.;
 Double_t Etotcal=0.;
               

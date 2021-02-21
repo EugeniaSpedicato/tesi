@@ -235,10 +235,10 @@ for(int i=0; i<9; ++i)
 
        
 The_true->Fill(detKinBeamRot_def_angle_e,wgt_full);
-if(r_mu<1.7 && E_clus3x3>1) The_trueCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<1.7 && E_clus3x3>2) The_trueCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
 //if(r_mu<2 && detKinBeamRot_def_angle_mu>0.2) The_trueCUTmu->Fill(detKinBeamRot_def_angle_e,wgt_full);
 //if(r_mu<2 && E_clus3x3>2) The_trueCUTEe->Fill(detKinBeamRot_def_angle_e,wgt_full);
-if(r_mu<2 && E_clus3x3>2) The_trueCUTtot->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<1.8 && E_clus3x3>2) The_trueCUTtot->Fill(detKinBeamRot_def_angle_e,wgt_full);
     
 
     if (detKinBeamRot_tar==0)

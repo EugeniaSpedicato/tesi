@@ -65,11 +65,11 @@ TH1F* hist_E9_eLO=new TH1F("E9eLO", "E9 LO", 100,0.3,1);
 TH1F* hist_E9_eOUT=new TH1F("E9e", "E9 OUT", 100,0.3,1);
 TH1F* hist_E9_eLOOUT=new TH1F("E9eLO", "E9 LO OUT", 100,0.3,1);    
     
-TH1F* hist_Eout_e=new TH1F("en", "Eout NLO", 100,0.,0.05);
-TH1F* hist_Eout_eLO=new TH1F("en", "Eout", 100,0.,0.05);
+TH1F* hist_Eout_e=new TH1F("en", "Eout NLO", 100,0.,0.5);
+TH1F* hist_Eout_eLO=new TH1F("en", "Eout", 100,0.,0.5);
     
-TH1F* hist_Eout_eOUT=new TH1F("en", "Eout NLO OUT", 100,0.,0.05);
-TH1F* hist_Eout_eLOOUT=new TH1F("en", "Eout OUT", 100,0.,0.05);
+TH1F* hist_Eout_eOUT=new TH1F("en", "Eout NLO OUT", 100,0.,0.5);
+TH1F* hist_Eout_eLOOUT=new TH1F("en", "Eout OUT", 100,0.,0.5);
     
 TH1F* hist_E92_e=new TH1F("E9e", "E92", 100,0.,1);
 TH1F* hist_E92_eLO=new TH1F("E9eLO", "E92 LO", 100,0.,1);
@@ -260,7 +260,7 @@ E4=en_Maxcell2 ;
 
     
  
-Eres_in=((E_clus3x3-E_1-E2-E3-E4)/5)/E_clus3x3;
+Eres_in=(E_1+E2+E3+E4)/E_clus3x3;
     
     
     /*if (E_clus3x3!=0){E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);} 
@@ -306,8 +306,8 @@ ThCUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
 if (dist>1.425 && dist<4)
 {  if (E_clus3x3!=0){E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);} 
 ThCUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
-hist_Eout_e->Fill(Eres_in,wgt_full);
-hist_Eout_eLO->Fill(Eres_in,wgt_LO); 
+hist_E9_e->Fill(Eres_in,wgt_full);
+hist_E9_eLO->Fill(Eres_in,wgt_LO); 
 }
 
 if (dist>4 && E9>0.8 && Eout<0.04 && E2nd<0.1 && detKinBeamRot_def_angle_e<5 && detKinBeamRot_def_angle_e>10)

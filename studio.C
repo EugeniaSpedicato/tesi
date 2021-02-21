@@ -260,7 +260,7 @@ E4=en_Maxcell2 ;
 
     
  
-Eres_in=(E_1+E2+E3+E4)/E_clus3x3;
+Eres_in=((E_1+E2+E3+E4)/4)/E_clus3x3;
     
     
     /*if (E_clus3x3!=0){E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);} 

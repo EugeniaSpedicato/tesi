@@ -269,7 +269,7 @@ Eres_in=((E_1+E2)/2)/E_1;
     
     E2nd=E2/E_1;
     
-if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 && E_clus3x3>1 && photon_energy==-1)//&& detKinBeamRot_def_angle_mu>0.2  && E_clus3x3>1
+if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 && E_clus3x3>1)//&& detKinBeamRot_def_angle_mu>0.2  && E_clus3x3>1
 {
 if (E_clus3x3!=0){E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);} 
 
@@ -303,8 +303,14 @@ if (dist<1.425 && E9>0.4 && E9<0.6 && Eout<0.05 && E2nd<0.6)// && E9>0.4 && E9<0
 ThCUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
 }
 
-if (dist>1.425 && dist<4)
+if (dist>1.425 && dist<4 && detKinBeamRot_def_angle_e<10 && detKinBeamRot_def_angle_e>5)
 {
+hist_E9_eOUT->Fill(E9,wgt_full);
+hist_E9_eLOOUT->Fill(E9,wgt_LO); 
+hist_Eout_eOUT->Fill(Eout,wgt_full);
+hist_Eout_eLOOUT->Fill(Eout,wgt_LO);
+hist_E92_eOUT->Fill(E2nd,wgt_full);
+hist_E92_eLOOUT->Fill(E2nd,wgt_LO); 
 }
 
 if (dist>4 && E9>0.8 && Eout<0.04 && E2nd<0.1)//&& E9>0.8 && Eout<0.04 && E2nd<0.1

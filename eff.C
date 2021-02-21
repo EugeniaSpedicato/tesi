@@ -20,7 +20,7 @@ void atree::Loop()
 Double_t E_CAL=0.;
 Double_t E9=0.;
 int n_cell_e=0;
-intn_cell_ph=0;
+int n_cell_ph=0;
     
     
 typedef map<int, double>  energy_cell; 
@@ -178,7 +178,7 @@ if(E_1!=0){
     int biny_ph = myGrid->GetYaxis()->FindBin(photon_cooy);
     int nbin_ph = myGrid->GetBin(binx_ph,biny_ph);
      n_cell_ph=number[nbin_ph];}
-    else n_cell_ph=0;           
+    else n_cell_ph=0;}  
 
     if (CentralCell==1) {Array9= new int[9]{1,6,7,2,0,0,0,0,0};}
     if (CentralCell==2) {Array9= new int[9]{1,2,6,7,8,3,0,0,0};}
@@ -248,7 +248,7 @@ if(r_mu<2) The_trueCUT1->Fill(detKinBeamRot_def_angle_e,wgt_full);
 //if(r_mu<2 && E_clus3x3>2) The_trueCUT1Ee->Fill(detKinBeamRot_def_angle_e,wgt_full);
 if(r_mu<2 && E_clus3x3>2) The_trueCUT1tot->Fill(detKinBeamRot_def_angle_e,wgt_full);}
     if (detKinBeamRot_tar==1)
-    {The_true2->Fill(detKinBeamRot_def_angle_e,wgt_full);
+{The_true2->Fill(detKinBeamRot_def_angle_e,wgt_full);
      
 if(r_mu<2) The_trueCUT2->Fill(detKinBeamRot_def_angle_e,wgt_full);
 //if(r_mu<2 && detKinBeamRot_def_angle_mu>0.2) The_trueCUT2mu->Fill(detKinBeamRot_def_angle_e,wgt_full);
@@ -257,7 +257,7 @@ if(r_mu<2 && E_clus3x3>2) The_trueCUT2tot->Fill(detKinBeamRot_def_angle_e,wgt_fu
        
     if (detKinBeamRot_tar==0) rmu->Fill(r_mu,wgt_full);
        
-if (n_cell_e!=0 && E_CAL>0)
+if (n_cell_e!=0)
 {  
 
     /*TheBIG->Fill(detKinBeamRot_def_angle_e,wgt_full);
@@ -326,7 +326,7 @@ if(r_mu<2 && E_clus3x3>2) E3x32CUTtot->Fill(detKinBeamRot_def_angle_e,E_clus3x3,
     The2P2CUT->Fill(detKinBeamRot_def_angle_e,wgt_full);}
 }*/
      
-}}}
+}}delete myGrid;}}
     
 TH1F *Eff1CUT = new TH1F("ef1cut", "Eff Tar1 cut", 120,0,30);
 TH1F *Eff2CUT = new TH1F("ef2cut", "Eff Tar2 cut", 120,0,30);

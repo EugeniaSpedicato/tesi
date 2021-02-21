@@ -240,7 +240,7 @@ int Maxcell1=0.;
 
 for(int i=0; i<9; ++i)
 {
-    if(en_c[Array9[i]]>en_Maxcell1 && Array9[i]!=CentralCell && Array9[i]!=SecondCentralCell){en_Maxcell1=en_c[Array9[i]]; Maxcell1=Array9[i];}
+    if(en_c[Array9[i]]>en_Maxcell1 && Array9[i]!=CentralCell && Array9[i]!=SecondCentralCell_in9){en_Maxcell1=en_c[Array9[i]]; Maxcell1=Array9[i];}
     else continue;
 }
 int ThirdCentralCell=Maxcell1;
@@ -252,7 +252,7 @@ int Maxcell2=0.;
 
 for(int i=0; i<9; ++i)
 {
-    if(en_c[Array9[i]]>en_Maxcell2 && Array9[i]!=CentralCell && Array9[i]!=SecondCentralCell && Array9[i]!=ThirdCentralCell){en_Maxcell2=en_c[Array9[i]]; Maxcell2=Array9[i];}
+    if(en_c[Array9[i]]>en_Maxcell2 && Array9[i]!=CentralCell && Array9[i]!=SecondCentralCell_in9 && Array9[i]!=ThirdCentralCell){en_Maxcell2=en_c[Array9[i]]; Maxcell2=Array9[i];}
     else continue;
 }
 int FourthCentralCell=Maxcell2;
@@ -262,7 +262,7 @@ for(int i=0; i<9; ++i)
 {cout << Array9[i]<< " c'è energia " << myGrid->GetBinContent(Rev_number[Array9[i]]) << endl;}
     
  cout << CentralCell << endl;
- cout << SecondCentralCell << endl;
+ cout << SecondCentralCell_in9 << endl;
  cout << ThirdCentralCell << endl;
  cout << FourthCentralCell << endl;
     

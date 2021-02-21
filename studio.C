@@ -305,16 +305,16 @@ if (dist<1.425 && E9>0.4 && E9<0.6 && Eout<0.05 && E2nd<0.6)// && E9>0.4 && E9<0
 ThCUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
 }
 
-if (dist>1.425 && dist<4 && detKinBeamRot_def_angle_e<10 && detKinBeamRot_def_angle_e>5 && photon_energy>2)
+if (dist>1.425 && dist<4 && detKinBeamRot_def_angle_e<10 && detKinBeamRot_def_angle_e>5)
 {
-hist_E9_eOUT->Fill(E9,wgt_full);
+if(photon_energy==-1 || photon_energy>2 ){hist_E9_eOUT->Fill(E9,wgt_full);
 hist_E9_eLOOUT->Fill(E9,wgt_LO); 
 hist_Eout_eOUT->Fill(Eout,wgt_full);
 hist_Eout_eLOOUT->Fill(Eout,wgt_LO);
 hist_E92_eOUT->Fill(E2nd,wgt_full);
 hist_E92_eLOOUT->Fill(E2nd,wgt_LO); 
     
-hist_dist->Fill(d_e_ph,wgt_full);
+hist_dist->Fill(d_e_ph,wgt_full);}
 }
 
 if (dist>4 && E9>0.8 && Eout<0.04 && E2nd<0.1)//&& E9>0.8 && Eout<0.04 && E2nd<0.1

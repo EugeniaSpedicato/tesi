@@ -235,53 +235,36 @@ else continue;
 double en_Maxcell1=0.;
 int Maxcell1=0.;
 
-for(int i=1;i<26;++i)
+for(int i=0; i<9; ++i)
 {
-    if(en_c[i]>en_Maxcell1 && i!=CentralCell && i!=SecondCentralCell && i!=SecondCentralCell_in9){en_Maxcell1=en_c[i]; Maxcell1=i;}
+    if(en_c[Array9[i]]>en_Maxcell1 && Array9[i]!=CentralCell && Array9[i]!=SecondCentralCell){en_Maxcell1=en_c[Array9[i]]; Maxcell1=Array9[i];}
     else continue;
 }
 int ThirdCentralCell=Maxcell1;
 E3=en_Maxcell1 ;
-    
-int ThirdCentralCell_in9=0;
- for(int i=0; i<9; ++i)
-{          
-if (ThirdCentralCell==Array9[i] && ThirdCentralCell!=0)
-    {//++sec_9;
-    ThirdCentralCell_in9=ThirdCentralCell;
-    ThirdCentralCell=0;
-    break;} 
-else continue;
-} 
+
 //quarta
 double en_Maxcell2=0.;
 int Maxcell2=0.;
 
-for(int i=1;i<26;++i)
+for(int i=0; i<9; ++i)
 {
-    if(en_c[i]>en_Maxcell2 && i!=CentralCell && i!=SecondCentralCell && i!=SecondCentralCell_in9 && i!=ThirdCentralCell && i!=ThirdCentralCell_in9){en_Maxcell2=en_c[i]; Maxcell2=i;}
+    if(en_c[Array9[i]]>en_Maxcell2 && Array9[i]!=CentralCell && Array9[i]!=SecondCentralCell && Array9[i]!=ThirdCentralCell){en_Maxcell2=en_c[Array9[i]]; Maxcell2=Array9[i];}
     else continue;
 }
 int FourthCentralCell=Maxcell2;
 E4=en_Maxcell2 ;
-    
-int FourthCentralCell_in9=0;
- for(int i=0; i<9; ++i)
-{          
-if (FourthCentralCell==Array9[i] && FourthCentralCell!=0)
-    {//++sec_9;
-    FourthCentralCell_in9=FourthCentralCell;
-    FourthCentralCell=0;
-    break;} 
-else continue;
-} 
+
+for(int i=0; i<9; ++i)
+{cout << Array9[i]<< " c'è energia " << EcalGrid->GetBinContent(Rev_number[Array9[i]]) << endl;}
     
  cout << CentralCell << endl;
- cout << SecondCentralCell << ", " << SecondCentralCell_in9 << endl;
- cout << ThirdCentralCell << ", " << ThirdCentralCell_in9 << endl;
- cout << FourthCentralCell << ", " << FourthCentralCell_in9 << endl;
+ cout << SecondCentralCell << endl;
+ cout << ThirdCentralCell << endl;
+ cout << FourthCentralCell << endl;
     
- Eres_in=(E_clus3x3-CentralCell-SecondCentralCell-ThirdCentralCell-FourthCentralCell)/E_clus3x3;
+ 
+Eres_in=(E_clus3x3-E_1-E2-E3-E4)/E_clus3x3;
     
     
     /*if (E_clus3x3!=0){E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);} 

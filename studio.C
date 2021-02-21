@@ -326,7 +326,7 @@ if (dist<1.425 && E9>0.4 && E9<0.6 && Eout<0.05 && E2nd<0.6)// && E9>0.4 && E9<0
 ThCUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
 }
 
-if (dist>1.425 && dist<4 && detKinBeamRot_def_angle_mu<10 && detKinBeamRot_def_angle_mu>5)
+if (dist>1.425 && dist<4 && detKinBeamRot_def_angle_e<10 && detKinBeamRot_def_angle_e>5)
 {                       
 hist_dist->Fill(ddd,wgt_full);
 hist_distLO->Fill(ddd,wgt_LO);

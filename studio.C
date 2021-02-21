@@ -221,12 +221,12 @@ for(int i=1;i<26;++i)
 int SecondCentralCell=Maxcell;
 E2=en_Maxcell ;
     
-int SecondCentralCell=0;
+int SecondCentralCell_in9=0;
  for(int i=0; i<9; ++i)
 {          
 if (SecondCentralCell==Array9[i] && SecondCentralCell!=0)
     {//++sec_9;
-    SecondCentralCell=SecondCentralCell;
+    SecondCentralCell_in9=SecondCentralCell;
     SecondCentralCell=0;
     break;} 
 else continue;
@@ -294,10 +294,10 @@ hist_Eout_eLO->Fill(Eout,wgt_LO);*/
 
     
 n_cut+=wgt_full;
-if(SecondCentralCell!=0)
+if(SecondCentralCell_in9!=0)
 {   
-double x = myGrid->GetXaxis()->GetBinCenter(Rev_numberX[SecondCentralCell]);
-double y = myGrid->GetYaxis()->GetBinCenter(Rev_numberY[SecondCentralCell]);
+double x = myGrid->GetXaxis()->GetBinCenter(Rev_numberX[SecondCentralCell_in9]);
+double y = myGrid->GetYaxis()->GetBinCenter(Rev_numberY[SecondCentralCell_in9]);
 double dist=sqrt((x-detKinBeamRot_cooXe)*(x-detKinBeamRot_cooXe)+(y-detKinBeamRot_cooYe)*(y-detKinBeamRot_cooYe)); 
      
     
@@ -329,7 +329,7 @@ ThCUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
 ThCUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
 }
     
-//else if (SecondCentralCell!=0){sec_9+=wgt_full;energy->Fill(Eout,wgt_full);}
+//else if (SecondCentralCell_in9!=0){sec_9+=wgt_full;energy->Fill(Eout,wgt_full);}
 
     
         

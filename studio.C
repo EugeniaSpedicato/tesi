@@ -136,7 +136,7 @@ Double_t Etotcal=0.;
          
        double r_mu=sqrt((detKinBeamRot_x_in*detKinBeamRot_x_in)+(detKinBeamRot_y_in*detKinBeamRot_y_in));
        
-       double d_e_ph=sqrt( (detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detKinBeamRot_cooYe-photon_cooy)*(detKinBeamRot_cooYe-photon_cooy) ); 
+       double d_e_ph=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detKinBeamRot_cooYe-photon_cooy)*(detKinBeamRot_cooYe-photon_cooy)); 
        if (r_mu<5){
            
     TH2F* myGrid= new TH2F("myGrid" , "EM Calorimeter with E in GeV",5,-7.125,7.125,5,-7.125,7.125);
@@ -314,7 +314,7 @@ hist_Eout_eLOOUT->Fill(Eout,wgt_LO);
 hist_E92_eOUT->Fill(E2nd,wgt_full);
 hist_E92_eLOOUT->Fill(E2nd,wgt_LO); 
     
-hist_dist->Fill(d_e_ph,wgt_LO);
+hist_dist->Fill(d_e_ph,wgt_full);
 }
 
 if (dist>4 && E9>0.8 && Eout<0.04 && E2nd<0.1)//&& E9>0.8 && Eout<0.04 && E2nd<0.1

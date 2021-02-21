@@ -19,6 +19,8 @@ void atree::Loop()
 
 Double_t E_CAL=0.;
 Double_t E9=0.;
+int n_cell_e=0;
+intn_cell_ph=0;
     
     
 typedef map<int, double>  energy_cell; 
@@ -255,7 +257,7 @@ if(r_mu<2 && E_clus3x3>2) The_trueCUT2tot->Fill(detKinBeamRot_def_angle_e,wgt_fu
        
     if (detKinBeamRot_tar==0) rmu->Fill(r_mu,wgt_full);
        
-if (detKinBeamRot_n_cell_e!=0 && E_CAL>0)
+if (n_cell_e!=0 && E_CAL>0)
 {  
 
     /*TheBIG->Fill(detKinBeamRot_def_angle_e,wgt_full);

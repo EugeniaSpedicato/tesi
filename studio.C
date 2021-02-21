@@ -305,11 +305,11 @@ ThCUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
 }
 
 if (dist>1.425 && dist<4)
-{  if (E_clus3x3!=0){E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);} 
+{  
 }
 
 if (dist>4 && E9>0.8 && Eout<0.04 && E2nd<0.1 && detKinBeamRot_def_angle_e<5 && detKinBeamRot_def_angle_e>10)
-{
+{ if (E_clus3x3!=0){E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);}
     
 }
 

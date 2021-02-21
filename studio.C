@@ -308,6 +308,21 @@ if (dist>1.425 && dist<4)
 ThCUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
 hist_E9_e->Fill(Eres_in,wgt_full);
 hist_E9_eLO->Fill(Eres_in,wgt_LO); 
+TCanvas * Ecal_= new TCanvas("Ecal_","Ecal_",1500,100,3500,2000);
+Ecal_->Divide(2,1);
+Ecal_->cd(1);
+gStyle->SetPalette(kAquamarine);
+//TColor::InvertPalette();
+myGrid->SetXTitle("x (cm)");
+myGrid->SetYTitle("y (cm)");
+myGrid->Draw("COL");
+myGrid->Draw("TEXT SAME");
+Ecal_->cd(2);
+myGrid->Draw("LEGO");
+std::ostringstream name1;
+name1 <<"/home/LHCB-T3/espedicato/tesi/studio/Ecal"<< jentry << ".png";
+TString name =name1.str();
+Ecal_->SaveAs(name);  
 }
 
 if (dist>4 && E9>0.8 && Eout<0.04 && E2nd<0.1 && detKinBeamRot_def_angle_e<5 && detKinBeamRot_def_angle_e>10)

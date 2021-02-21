@@ -294,9 +294,7 @@ Th->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
     
 
 double ddd=sqrt((centroidX-detKinBeamRot_cooXe)*(centroidX-detKinBeamRot_cooXe)+(centroidY-detKinBeamRot_cooYe)*(centroidY-detKinBeamRot_cooYe));   
-                        
-hist_dist->Fill(ddd,wgt_full);
-hist_distLO->Fill(ddd,wgt_LO);
+
 
                          
     
@@ -330,7 +328,9 @@ ThCUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
 
 if (dist>1.425 && dist<4 )
 {
-//hist_dist->Fill(d_e_ph,wgt_full);
+                        
+hist_dist->Fill(ddd,wgt_full);
+hist_distLO->Fill(ddd,wgt_LO);
 }
 
 if (dist>4 && E9>0.8 && Eout<0.04 && E2nd<0.1)//&& E9>0.8 && Eout<0.04 && E2nd<0.1

@@ -30,7 +30,7 @@ int n_cell_ph;
 Double_t E_CAL=0.;
 Double_t E9=0.;
 Double_t E2nd=0.;
-
+Double_t Eres_in=0.;
     
     
 double n5=0;
@@ -342,6 +342,7 @@ else if(SeconCentralCell!=0 && E9>0.87 && Eout<0.07)// && E9>0.87 && Eout>0.07
 {
 //if(n_cell_ph!=0){n_cut_ph+=wgt_full;}else if(n_cell_e!=0 && n_cell_ph==0) n_cut_noph+=wgt_full; 
  if (E_clus3x3!=0){E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);}   
+ThCUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
 ThCUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
 }
     

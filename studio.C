@@ -298,7 +298,7 @@ double dist=sqrt((x-detKinBeamRot_cooXe)*(x-detKinBeamRot_cooXe)+(y-detKinBeamRo
      
     
 
-if (dist<1.425)//&& E9>0.4 && E9<0.6 && Eout<0.05 && E2nd<0.6
+if (dist<1.425 && E9>0.4 && E9<0.6 && Eout<0.05 && E2nd<0.6)//
 { if (E_clus3x3!=0){E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);} 
 ThCUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
 }
@@ -307,14 +307,14 @@ if (dist>1.425 && dist<4)
 {  
 }
 
-if (dist>4  )//&& E9>0.8 && Eout<0.04 && E2nd<0.1
+if (dist>4 && E9>0.8 && Eout<0.04 && E2nd<0.1)//
 { if (E_clus3x3!=0){E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);}
    
 }
 
 } 
 
-else if(SecondCentralCell!=0)// && E9>0.87 && Eout<0.07
+else if(SecondCentralCell!=0 && E9>0.87 && Eout<0.07)// && E9>0.87 && Eout<0.07
 {
 //if(n_cell_ph!=0){n_cut_ph+=wgt_full;}else if(n_cell_e!=0 && n_cell_ph==0) n_cut_noph+=wgt_full; 
  if (E_clus3x3!=0){E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);}   

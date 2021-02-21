@@ -258,13 +258,6 @@ for(int i=0; i<9; ++i)
 int FourthCentralCell=Maxcell2;
 E4=en_Maxcell2 ;
 
-for(int i=0; i<9; ++i)
-{cout << Array9[i]<< " c'è energia " << myGrid->GetBinContent(Rev_number[Array9[i]]) << endl;}
-    
- cout << CentralCell << endl;
- cout << SecondCentralCell_in9 << endl;
- cout << ThirdCentralCell << endl;
- cout << FourthCentralCell << endl;
     
  
 Eres_in=(E_clus3x3-E_1-E2-E3-E4)/E_clus3x3;

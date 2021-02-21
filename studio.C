@@ -208,6 +208,8 @@ for(int i=0; i<9; ++i)
 if(CentralCell==7 || CentralCell==8 || CentralCell==9 || CentralCell==12 || CentralCell==13 || CentralCell==14 || CentralCell==17 || CentralCell==18 || CentralCell==19)
 { 
 n_small+=wgt_full;
+
+//seconda    
 double en_Maxcell=0.;
 int Maxcell=0.;
 
@@ -229,7 +231,60 @@ if (SeconCentralCell==Array9[i] && SeconCentralCell!=0)
     break;} 
 else continue;
 }
-        /*if (E_clus3x3!=0){E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);} 
+//terza
+double en_Maxcell1=0.;
+int Maxcell1=0.;
+
+for(int i=1;i<26;++i)
+{
+    if(en_c[i]>en_Maxcell1 && i!=CentralCell && i!=SecondCentralCell && i!=SecondCentralCell_in9){en_Maxcell1=en_c[i]; Maxcell1=i;}
+    else continue;
+}
+int ThirdCentralCell=Maxcell1;
+E3=en_Maxcell1 ;
+    
+int ThirdCentralCell_in9=0;
+ for(int i=0; i<9; ++i)
+{          
+if (ThirdCentralCell==Array9[i] && ThirdCentralCell!=0)
+    {//++sec_9;
+    ThirdCentralCell_in9=ThirdCentralCell;
+    ThirdCentralCell=0;
+    break;} 
+else continue;
+} 
+//quarta
+double en_Maxcell2=0.;
+int Maxcell2=0.;
+
+for(int i=1;i<26;++i)
+{
+    if(en_c[i]>en_Maxcell2 && i!=CentralCell && i!=SecondCentralCell && i!=SecondCentralCell_in9 && i!=ThirdCentralCell && i!=ThirdCentralCell_in9){en_Maxcell2=en_c[i]; Maxcell2=i;}
+    else continue;
+}
+int FourthCentralCell=Maxcell2;
+E4=en_Maxcell2 ;
+    
+int FourthCentralCell_in9=0;
+ for(int i=0; i<9; ++i)
+{          
+if (FourthCentralCell==Array9[i] && FourthCentralCell!=0)
+    {//++sec_9;
+    FourthCentralCell_in9=FourthCentralCell;
+    FourthCentralCell=0;
+    break;} 
+else continue;
+} 
+    
+ cout << CentralCell << endl;
+ cout << SecondCentralCell << ", " << SecondCentralCell_in9 << endl;
+ cout << ThirdCentralCell << ", " << ThirdCentralCell_in9 << endl;
+ cout << FourthCentralCell << ", " << FourthCentralCell_in9 << endl;
+    
+ Eres_in=(E_clus3x3-CentralCell-SecondCentralCell-ThirdCentralCell-FourthCentralCell)/E_clus3x3;
+    
+    
+    /*if (E_clus3x3!=0){E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);} 
         
         if (E_clus3x3!=0){E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_LO);} */
     
@@ -264,44 +319,20 @@ double dist=sqrt((x-detKinBeamRot_cooXe)*(x-detKinBeamRot_cooXe)+(y-detKinBeamRo
      
     
 
-if (dist<1.425 && E9>0.4 && E9<0.6 && Eout<0.05 && E2nd<0.6 && detKinBeamRot_def_angle_e<5 && detKinBeamRot_def_angle_e>10)
+if (dist<1.425 && E9>0.4 && E9<0.6 && Eout<0.05 && E2nd<0.6)
 { if (E_clus3x3!=0){E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);} 
 ThCUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
-hist_E9_eOUT->Fill(E9,wgt_full);
-hist_E9_eLOOUT->Fill(E9,wgt_LO); 
-hist_Eout_eOUT->Fill(Eout,wgt_full);
-hist_Eout_eLOOUT->Fill(Eout,wgt_LO);
-hist_E92_eOUT->Fill(E2nd,wgt_full);
-hist_E92_eLOOUT->Fill(E2nd,wgt_LO); 
 }
 
 if (dist>1.425 && dist<4)
 {  if (E_clus3x3!=0){E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);} 
 ThCUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
-hist_E9_eOUT->Fill(E9,wgt_full);
-hist_E9_eLOOUT->Fill(E9,wgt_LO); 
-hist_Eout_eOUT->Fill(Eout,wgt_full);
-hist_Eout_eLOOUT->Fill(Eout,wgt_LO);
-hist_E92_eOUT->Fill(E2nd,wgt_full);
-hist_E92_eLOOUT->Fill(E2nd,wgt_LO); 
- 
- if(n_cell_ph!=n_cell_e){    hist_E92_eLO->Fill(E2nd,wgt_LO);
-hist_E9_e->Fill(E9,wgt_full);
-hist_E9_eLO->Fill(E9,wgt_LO); 
-hist_Eout_e->Fill(Eout,wgt_full);
-hist_Eout_eLO->Fill(Eout,wgt_LO);}
+hist_Eout_e->Fill(Eres_in,wgt_full);
+hist_Eout_eLO->Fill(Eres_in,wgt_LO); 
 }
 
 if (dist>4 && E9>0.8 && Eout<0.04 && E2nd<0.1 && detKinBeamRot_def_angle_e<5 && detKinBeamRot_def_angle_e>10)
 { if (E_clus3x3!=0){E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);}
-ThCUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
-
-hist_E9_eOUT->Fill(E9,wgt_full);
-hist_E9_eLOOUT->Fill(E9,wgt_LO); 
-hist_Eout_eOUT->Fill(Eout,wgt_full);
-hist_Eout_eLOOUT->Fill(Eout,wgt_LO);
-hist_E92_eOUT->Fill(E2nd,wgt_full);
-hist_E92_eLOOUT->Fill(E2nd,wgt_LO); 
     
 }
 
@@ -312,12 +343,6 @@ else if(SeconCentralCell!=0 && E9>0.87 && Eout<0.07)// && E9>0.87 && Eout>0.07
 //if(n_cell_ph!=0){n_cut_ph+=wgt_full;}else if(n_cell_e!=0 && n_cell_ph==0) n_cut_noph+=wgt_full; 
  if (E_clus3x3!=0){E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);}   
 ThCUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
-hist_E9_eOUT->Fill(E9,wgt_full);
-hist_E9_eLOOUT->Fill(E9,wgt_LO); 
-hist_Eout_eOUT->Fill(Eout,wgt_full);
-hist_Eout_eLOOUT->Fill(Eout,wgt_LO);
-hist_E92_eOUT->Fill(E2nd,wgt_full);
-hist_E92_eLOOUT->Fill(E2nd,wgt_LO); 
 }
     
 //else if (SeconCentralCell_in9!=0){sec_9+=wgt_full;energy->Fill(Eout,wgt_full);}

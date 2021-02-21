@@ -314,7 +314,7 @@ hist_Eout_eLOOUT->Fill(Eout,wgt_LO);
 hist_E92_eOUT->Fill(E2nd,wgt_full);
 hist_E92_eLOOUT->Fill(E2nd,wgt_LO); 
     
-hist_dist->(d_e_ph,wgt_LO);
+hist_dist->Fill(d_e_ph,wgt_LO);
 }
 
 if (dist>4 && E9>0.8 && Eout<0.04 && E2nd<0.1)//&& E9>0.8 && Eout<0.04 && E2nd<0.1

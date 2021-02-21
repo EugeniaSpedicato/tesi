@@ -274,7 +274,6 @@ Ey+=en_c[i]*y;
 double centroidX=(Ex)/E_clus3x3;
 double centroidY=(Ey)/E_clus3x3;    
     
-if (photon_energy==-1) cout  << "centroide (" << centroidX << ", " << centroidY << ")" << "coo elettrone "<< detKinBeamRot_cooXe << ", " << detKinBeamRot_cooYe<<endl;
  
 Eres_in=((E_1+E2)/2)/E_1;
     
@@ -290,6 +289,12 @@ if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 && E_clus3x3>1)//&& detKinBeamRot_
 if (E_clus3x3!=0){E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);} 
 
 Th->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
+    
+if (photon_energy==-1) {cout  << "centroide (" << centroidX << ", " << centroidY << ")" << "coo elettrone "<< detKinBeamRot_cooXe << ", " << detKinBeamRot_cooYe<<endl;
+double ddd=sqrt((centroidX-detKinBeamRot_cooXe)*(centroidX-detKinBeamRot_cooXe)+(centroidY-detKinBeamRot_cooYe)*(centroidY-detKinBeamRot_cooYe));   
+                        
+hist_dist->Fill(ddd,wgt_full);
+                       }    
     
 /*hist_E9_eOUT->Fill(E9,wgt_full);
 hist_E9_eLOOUT->Fill(E9,wgt_LO); 
@@ -321,7 +326,7 @@ ThCUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
 
 if (dist>1.425 && dist<4 )
 {
-hist_dist->Fill(d_e_ph,wgt_full);
+//hist_dist->Fill(d_e_ph,wgt_full);
 }
 
 if (dist>4 && E9>0.8 && Eout<0.04 && E2nd<0.1)//&& E9>0.8 && Eout<0.04 && E2nd<0.1

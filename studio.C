@@ -59,8 +59,8 @@ TH2F  *Th  = new TH2F("ThEel1" , " Th_el Vs. Th_mu  core NLO CUT",300,0,30,150,0
 TH2F  *ThCUT  = new TH2F("ThEel2" , " Th_el Vs. Th_mu   core NLO cut CUT",300,0,30,150,0,5);    
 
 
-TH1F* hist_E9_e=new TH1F("E9e", "E9", 100,0.3,1);
-TH1F* hist_E9_eLO=new TH1F("E9eLO", "E9 LO", 100,0.3,1);
+TH1F* hist_E9_e=new TH1F("E9e", "E9", 100,0.,1);
+TH1F* hist_E9_eLO=new TH1F("E9eLO", "E9 LO", 100,0.,1);
 
 TH1F* hist_E9_eOUT=new TH1F("E9e", "E9 OUT", 100,0.3,1);
 TH1F* hist_E9_eLOOUT=new TH1F("E9eLO", "E9 LO OUT", 100,0.3,1);    

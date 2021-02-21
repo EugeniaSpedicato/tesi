@@ -265,7 +265,7 @@ E4=en_Maxcell2 ;
 double Ex=0.;
 double Ey=0.;
 
-for(int i=0; i<9; ++i)
+for(int i=1; i<26; ++i)
 {
 double x = myGrid->GetXaxis()->GetBinCenter(Rev_numberX[i]);
 double y = myGrid->GetYaxis()->GetBinCenter(Rev_numberY[i]);

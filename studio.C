@@ -49,7 +49,9 @@ double n_cut_noph=0;
 TH1F* TheCUT=new TH1F("th", "th El core CUT", 120,0,30); 
 TH1F* The1CUT=new TH1F("th", "th El TAR 1 core CUT", 120,0,30); 
 TH1F* The2CUT=new TH1F("th", "th El TAR 2 core CUT", 120,0,30);
-
+    
+    
+TH1F* hist_dist=new TH1F("dist", "Dist e-gamma", 400,0,8);
 
 TH2F  *E3x31CUT  = new TH2F("ThEel1" , " Th_el Vs. E_E3x3 core NLO CUT",120,0,30,360,0,140);
 TH2F  *E3x32CUT  = new TH2F("ThEel2" , " Th_el Vs. E_E3x3 core LO CUT",120,0,30,360,0,140);
@@ -205,7 +207,7 @@ for(int i=0; i<9; ++i)
     for(int i=1;i<26;++i)
     {Etotcal+=en_c[i];}
            
-    double Eout=((Etotcal-E_clus3x3)/16)/E_clus3x3;
+    double Eout=(Etotcal-E_clus3x3)/E_clus3x3;
 
            
 if(CentralCell==7 || CentralCell==8 || CentralCell==9 || CentralCell==12 || CentralCell==13 || CentralCell==14 || CentralCell==17 || CentralCell==18 || CentralCell==19)
@@ -311,6 +313,8 @@ hist_Eout_eOUT->Fill(Eout,wgt_full);
 hist_Eout_eLOOUT->Fill(Eout,wgt_LO);
 hist_E92_eOUT->Fill(E2nd,wgt_full);
 hist_E92_eLOOUT->Fill(E2nd,wgt_LO); 
+    
+hist_dist->(d_e_ph,wgt_LO);
 }
 
 if (dist>4 && E9>0.8 && Eout<0.04 && E2nd<0.1)//&& E9>0.8 && Eout<0.04 && E2nd<0.1
@@ -490,5 +494,13 @@ hist_E92_eLOOUT->SetLineColor(kRed);
 hist_E92_eLOOUT->Draw("HIST same");     
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 cc->SaveAs("/home/LHCB-T3/espedicato/tesi/studio/E92nd.png");
+    
+TCanvas * dd= new TCanvas("dd","dd",1000,100,2500,2000);
+
+hist_dist->GetXaxis()->SetTitle("d [cm]");
+hist_dist->SetLineWidth(3);
+hist_dist->Draw("HIST"); 
+        
+dd->SaveAs("/home/LHCB-T3/espedicato/tesi/studio/dist.png");
 
 }

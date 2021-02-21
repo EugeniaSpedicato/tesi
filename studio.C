@@ -260,8 +260,8 @@ for(int i=0; i<9; ++i)
 int FourthCentralCell=Maxcell2;
 E4=en_Maxcell2 ;
 
-Double Ex=0.;
-Double Ey=0.;
+double Ex=0.;
+double Ey=0.;
 
 for(int i=0; i<9; ++i)
 {

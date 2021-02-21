@@ -19,6 +19,43 @@ void atree::Loop()
 
 Double_t E_CAL=0.;
 Double_t E9=0.;
+    
+    
+typedef map<int, double>  energy_cell; 
+energy_cell number;
+energy_cell Rev_number;
+energy_cell Rev_numberX;
+energy_cell Rev_numberY;
+energy_cell en_c; 
+number[36]=1; number[37]=2; number[38]=3; number[39]=4; number[40]=5;
+number[29]=6; number[30]=7; number[31]=8; number[32]=9; number[33]=10;
+number[22]=11; number[23]=12; number[24]=13; number[25]=14; number[26]=15;
+number[15]=16; number[16]=17; number[17]=18; number[18]=19; number[19]=20;
+number[8]=21; number[9]=22; number[10]=23; number[11]=24; number[12]=25;    
+    
+Rev_number[1]=36; Rev_number[2]=37; Rev_number[3]=38; Rev_number[4]=39; Rev_number[5]=40;
+Rev_number[6]=29; Rev_number[7]=30; Rev_number[8]=31; Rev_number[9]=32; Rev_number[10]=33;
+Rev_number[11]=22; Rev_number[12]=23; Rev_number[13]=24; Rev_number[14]=25; Rev_number[15]=26;
+Rev_number[16]=15; Rev_number[17]=16; Rev_number[18]=17; Rev_number[19]=18; Rev_number[20]=19;
+Rev_number[21]=8; Rev_number[22]=9; Rev_number[23]=10; Rev_number[24]=11; Rev_number[25]=12;
+Rev_numberX[1]=1; Rev_numberX[2]=2; Rev_numberX[3]=3; Rev_numberX[4]=4; Rev_numberX[5]=5;
+Rev_numberX[6]=1; Rev_numberX[7]=2; Rev_numberX[8]=3; Rev_numberX[9]=4; Rev_numberX[10]=5;
+Rev_numberX[11]=1; Rev_numberX[12]=2; Rev_numberX[13]=3; Rev_numberX[14]=4; Rev_numberX[15]=5;
+Rev_numberX[16]=1; Rev_numberX[17]=2; Rev_numberX[18]=3; Rev_numberX[19]=4; Rev_numberX[20]=5;
+Rev_numberX[21]=1; Rev_numberX[22]=2; Rev_numberX[23]=3; Rev_numberX[24]=4; Rev_numberX[25]=5;
+    
+    
+Rev_numberY[1]=5; Rev_numberY[2]=5; Rev_numberY[3]=5; Rev_numberY[4]=5; Rev_numberY[5]=5;
+Rev_numberY[6]=4; Rev_numberY[7]=4; Rev_numberY[8]=4; Rev_numberY[9]=4; Rev_numberY[10]=4;
+Rev_numberY[11]=3; Rev_numberY[12]=3; Rev_numberY[13]=3; Rev_numberY[14]=3; Rev_numberY[15]=3;
+Rev_numberY[16]=2; Rev_numberY[17]=2; Rev_numberY[18]=2; Rev_numberY[19]=2; Rev_numberY[20]=2;
+Rev_numberY[21]=1; Rev_numberY[22]=1; Rev_numberY[23]=1; Rev_numberY[24]=1; Rev_numberY[25]=1;
+    
+int *Array9=0;
+Double_t E_1=0.;
+Double_t E_clus3x3=0.;
+
+    
 
 TH1F* The_trueCUT=new TH1F("th", "th El true CUT", 120,0,30);
 TH1F* The_trueCUT1=new TH1F("th", "th El true TAR 1 CUT", 120,0,30);
@@ -112,6 +149,70 @@ Long64_t nentries = fChain->GetEntriesFast();
       nb = fChain->GetEntry(jentry);   nbytes += nb;
    
        
+TH2F* myGrid= new TH2F("myGrid" , "EM Calorimeter with E in GeV",5,-7.125,7.125,5,-7.125,7.125);
+       en_c[1]=detKinBeamRot_Ecell1; en_c[2]=detKinBeamRot_Ecell2; en_c[3]=detKinBeamRot_Ecell3; en_c[4]=detKinBeamRot_Ecell4; en_c[5]=detKinBeamRot_Ecell5;
+        en_c[6]=detKinBeamRot_Ecell6; en_c[7]=detKinBeamRot_Ecell7; en_c[8]=detKinBeamRot_Ecell8; en_c[9]=detKinBeamRot_Ecell9; en_c[10]=detKinBeamRot_Ecell10;
+        en_c[11]=detKinBeamRot_Ecell11; en_c[12]=detKinBeamRot_Ecell12; en_c[13]=detKinBeamRot_Ecell13; en_c[14]=detKinBeamRot_Ecell14; en_c[15]=detKinBeamRot_Ecell15;
+        en_c[16]=detKinBeamRot_Ecell16; en_c[17]=detKinBeamRot_Ecell17; en_c[18]=detKinBeamRot_Ecell18; en_c[19]=detKinBeamRot_Ecell19; en_c[20]=detKinBeamRot_Ecell20;
+        en_c[21]=detKinBeamRot_Ecell21; en_c[22]=detKinBeamRot_Ecell22; en_c[23]=detKinBeamRot_Ecell23; en_c[24]=detKinBeamRot_Ecell24; en_c[25]=detKinBeamRot_Ecell25;
+       
+    for(int i=1;i<26;++i){myGrid->SetBinContent(Rev_number[i],en_c[i]);}    
+       
+
+int binMax=myGrid->GetMaximumBin();  
+int CentralCell=number[binMax];
+       
+
+E_1=myGrid->GetBinContent(binMax);
+
+// con if E_1!=0 è gia imposto r<1.7 perchè gia in fastsim         
+if(E_1!=0){           
+    if (detKinBeamRot_Ee>0.2){int binx_e = myGrid->GetXaxis()->FindBin(detKinBeamRot_cooXe);
+    int biny_e = myGrid->GetYaxis()->FindBin(detKinBeamRot_cooYe);
+    int nbin_e = myGrid->GetBin(binx_e,biny_e);
+     n_cell_e=number[nbin_e];} else n_cell_e=0;
+    if(photon_coox!=-100 && photon_energy>0.2)
+    {int binx_ph = myGrid->GetXaxis()->FindBin(photon_coox);
+    int biny_ph = myGrid->GetYaxis()->FindBin(photon_cooy);
+    int nbin_ph = myGrid->GetBin(binx_ph,biny_ph);
+     n_cell_ph=number[nbin_ph];}
+    else n_cell_ph=0;           
+
+    if (CentralCell==1) {Array9= new int[9]{1,6,7,2,0,0,0,0,0};}
+    if (CentralCell==2) {Array9= new int[9]{1,2,6,7,8,3,0,0,0};}
+    if (CentralCell==3) {Array9= new int[9]{2,3,7,8,9,4,0,0,0};}
+    if (CentralCell==4) {Array9= new int[9]{3,4,8,9,10,0,0,0};}
+    if (CentralCell==5) {Array9= new int[9]{4,5,9,10,0,0,0};}
+    if (CentralCell==6) {Array9= new int[9]{1,2,6,7,12,11,0,0,0};}
+    if (CentralCell==7) {Array9= new int[9]{1,2,3,6,7,8,11,12,13};}
+    if (CentralCell==8) {Array9= new int[9]{2,3,4,7,8,9,12,13,14};}
+    if (CentralCell==9) {Array9= new int[9]{3,4,5,8,9,10,13,14,15};}
+    if (CentralCell==10) {Array9= new int[9]{4,5,9,10,14,15,0,0,0};}
+    if (CentralCell==11) {Array9= new int[9]{6,7,11,12,16,17,0,0,0};}
+    if (CentralCell==12) {Array9= new int[9]{6,7,8,11,12,13,16,17,18};}
+    if (CentralCell==13) {Array9= new int[9]{7,8,9,12,13,14,17,18,19};}
+    if (CentralCell==14) {Array9= new int[9]{8,9,10,13,14,15,18,19,20};}
+    if (CentralCell==15) {Array9= new int[9]{9,10,14,15,19,20,0,0,0};}
+    if (CentralCell==16) {Array9= new int[9]{11,12,16,17,21,22,0,0,0};}
+    if (CentralCell==17) {Array9= new int[9]{11,12,13,16,17,18,21,22,23};}
+    if (CentralCell==18) {Array9= new int[9]{12,13,14,17,18,19,22,23,24};}
+    if (CentralCell==19) {Array9= new int[9]{13,14,15,18,19,20,23,24,25};}
+    if (CentralCell==20) {Array9= new int[9]{14,15,19,20,24,25,0,0,0};}
+    if (CentralCell==21) {Array9= new int[9]{16,17,21,22,0,0,0,0,0};}
+    if (CentralCell==22) {Array9= new int[9]{16,17,18,21,22,23,0,0,0};}
+    if (CentralCell==23) {Array9= new int[9]{17,18,19,22,23,24,0,0,0};}
+    if (CentralCell==24) {Array9= new int[9]{18,19,20,23,24,25,0,0,0};}
+    if (CentralCell==25) {Array9= new int[9]{19,20,24,25,0,0,0,0,0};}  
+
+for(int i=0; i<9; ++i)
+{
+    if (Array9[i]>0 && Array9[i]<26) E_clus3x3+=myGrid->GetBinContent(Rev_number[Array9[i]]);
+}  
+           
+       
+       
+       
+       
               
     if (photon_coox!=-1 && photon_cooy!=-1)
     {  
@@ -128,29 +229,29 @@ Long64_t nentries = fChain->GetEntriesFast();
                
        double r_mu=sqrt((detKinBeamRot_x_in*detKinBeamRot_x_in)+(detKinBeamRot_y_in*detKinBeamRot_y_in));
               
-        E9=detKinBeamRot_E_1/detKinBeamRot_E_clus3x3;
+        E9=E_1/E_clus3x3;
 
        
 The_true->Fill(detKinBeamRot_def_angle_e,wgt_full);
 if(r_mu<2) The_trueCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
 //if(r_mu<2 && detKinBeamRot_def_angle_mu>0.2) The_trueCUTmu->Fill(detKinBeamRot_def_angle_e,wgt_full);
-//if(r_mu<2 && detKinBeamRot_E_clus3x3>2) The_trueCUTEe->Fill(detKinBeamRot_def_angle_e,wgt_full);
-if(r_mu<2 && detKinBeamRot_E_clus3x3>2) The_trueCUTtot->Fill(detKinBeamRot_def_angle_e,wgt_full);
+//if(r_mu<2 && E_clus3x3>2) The_trueCUTEe->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<2 && E_clus3x3>2) The_trueCUTtot->Fill(detKinBeamRot_def_angle_e,wgt_full);
     
 
     if (detKinBeamRot_tar==0)
     {The_true1->Fill(detKinBeamRot_def_angle_e,wgt_full);
 if(r_mu<2) The_trueCUT1->Fill(detKinBeamRot_def_angle_e,wgt_full);
 //if(r_mu<2 && detKinBeamRot_def_angle_mu>0.2) The_trueCUT1mu->Fill(detKinBeamRot_def_angle_e,wgt_full);
-//if(r_mu<2 && detKinBeamRot_E_clus3x3>2) The_trueCUT1Ee->Fill(detKinBeamRot_def_angle_e,wgt_full);
-if(r_mu<2 && detKinBeamRot_E_clus3x3>2) The_trueCUT1tot->Fill(detKinBeamRot_def_angle_e,wgt_full);}
+//if(r_mu<2 && E_clus3x3>2) The_trueCUT1Ee->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<2 && E_clus3x3>2) The_trueCUT1tot->Fill(detKinBeamRot_def_angle_e,wgt_full);}
     if (detKinBeamRot_tar==1)
     {The_true2->Fill(detKinBeamRot_def_angle_e,wgt_full);
      
 if(r_mu<2) The_trueCUT2->Fill(detKinBeamRot_def_angle_e,wgt_full);
 //if(r_mu<2 && detKinBeamRot_def_angle_mu>0.2) The_trueCUT2mu->Fill(detKinBeamRot_def_angle_e,wgt_full);
-//if(r_mu<2 && detKinBeamRot_E_clus3x3>2) The_trueCUT2Ee->Fill(detKinBeamRot_def_angle_e,wgt_full);
-if(r_mu<2 && detKinBeamRot_E_clus3x3>2) The_trueCUT2tot->Fill(detKinBeamRot_def_angle_e,wgt_full);}
+//if(r_mu<2 && E_clus3x3>2) The_trueCUT2Ee->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<2 && E_clus3x3>2) The_trueCUT2tot->Fill(detKinBeamRot_def_angle_e,wgt_full);}
        
     if (detKinBeamRot_tar==0) rmu->Fill(r_mu,wgt_full);
        
@@ -174,8 +275,8 @@ The->Fill(detKinBeamRot_def_angle_e,wgt_full);
     
 if(r_mu<2) TheCUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
 //if(r_mu<2 && detKinBeamRot_def_angle_mu>0.2) TheCUTmu->Fill(detKinBeamRot_def_angle_e,wgt_full);
-//if(r_mu<2 && detKinBeamRot_E_clus3x3>2) TheCUTEe->Fill(detKinBeamRot_def_angle_e,wgt_full);
-if(r_mu<2 && detKinBeamRot_E_clus3x3>2)
+//if(r_mu<2 && E_clus3x3>2) TheCUTEe->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<2 && E_clus3x3>2)
 {TheCUTtot->Fill(detKinBeamRot_def_angle_e,wgt_full);
      hist_E9_e->Fill(E9,wgt_full);
      hist_E9_eLO->Fill(E9,wgt_LO);}
@@ -185,29 +286,29 @@ if(r_mu<2 && detKinBeamRot_E_clus3x3>2)
      
 if(r_mu<2) The1CUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
 //if(r_mu<2 && detKinBeamRot_def_angle_mu>0.2) The1CUTmu->Fill(detKinBeamRot_def_angle_e,wgt_full);
-//if(r_mu<2 && detKinBeamRot_E_clus3x3>2) The1CUTEe->Fill(detKinBeamRot_def_angle_e,wgt_full);
-if(r_mu<2 && detKinBeamRot_E_clus3x3>2)The1CUTtot->Fill(detKinBeamRot_def_angle_e,wgt_full);
+//if(r_mu<2 && E_clus3x3>2) The1CUTEe->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<2 && E_clus3x3>2)The1CUTtot->Fill(detKinBeamRot_def_angle_e,wgt_full);
 
-     if (detKinBeamRot_E_clus3x3!=0) 
+     if (E_clus3x3!=0) 
      {
-if(r_mu<2) E3x31CUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_full);
-//if(r_mu<2 && detKinBeamRot_def_angle_mu>0.2) E3x31CUTmu->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_full);
-//if(r_mu<2 && detKinBeamRot_E_clus3x3>2) E3x31CUTEe->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_full);
-if(r_mu<2 && detKinBeamRot_E_clus3x3>2) E3x31CUTtot->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_full);
+if(r_mu<2) E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
+//if(r_mu<2 && detKinBeamRot_def_angle_mu>0.2) E3x31CUTmu->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
+//if(r_mu<2 && E_clus3x3>2) E3x31CUTEe->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
+if(r_mu<2 && E_clus3x3>2) E3x31CUTtot->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
 } }
     if (detKinBeamRot_tar==1)
     {The2->Fill(detKinBeamRot_def_angle_e,wgt_full);
      
 if(r_mu<2) The2CUT->Fill(detKinBeamRot_def_angle_e,wgt_full);
 //if(r_mu<2 && detKinBeamRot_def_angle_mu>0.2) The2CUTmu->Fill(detKinBeamRot_def_angle_e,wgt_full);
-//if(r_mu<2 && detKinBeamRot_E_clus3x3>2) The2CUTEe->Fill(detKinBeamRot_def_angle_e,wgt_full);
-if(r_mu<2 && detKinBeamRot_E_clus3x3>2)The2CUTtot->Fill(detKinBeamRot_def_angle_e,wgt_full);
-     if (detKinBeamRot_E_clus3x3!=0) 
+//if(r_mu<2 && E_clus3x3>2) The2CUTEe->Fill(detKinBeamRot_def_angle_e,wgt_full);
+if(r_mu<2 && E_clus3x3>2)The2CUTtot->Fill(detKinBeamRot_def_angle_e,wgt_full);
+     if (E_clus3x3!=0) 
      {
-if(r_mu<2) E3x32CUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_full);
-//if(r_mu<2 && detKinBeamRot_def_angle_mu>0.2) E3x32CUTmu->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_full);
-//if(r_mu<2 && detKinBeamRot_E_clus3x3>2) E3x32CUTEe->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_full);
-if(r_mu<2 && detKinBeamRot_E_clus3x3>2) E3x32CUTtot->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_full);
+if(r_mu<2) E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
+//if(r_mu<2 && detKinBeamRot_def_angle_mu>0.2) E3x32CUTmu->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
+//if(r_mu<2 && E_clus3x3>2) E3x32CUTEe->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
+if(r_mu<2 && E_clus3x3>2) E3x32CUTtot->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
 } 
     
     } /*else { 

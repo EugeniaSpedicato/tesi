@@ -259,7 +259,7 @@ int FourthCentralCell=Maxcell2;
 E4=en_Maxcell2 ;
 
 for(int i=0; i<9; ++i)
-{cout << Array9[i]<< " c'è energia " << EcalGrid->GetBinContent(Rev_number[Array9[i]]) << endl;}
+{cout << Array9[i]<< " c'è energia " << myGrid->GetBinContent(Rev_number[Array9[i]]) << endl;}
     
  cout << CentralCell << endl;
  cout << SecondCentralCell << endl;

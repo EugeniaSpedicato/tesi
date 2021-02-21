@@ -271,7 +271,7 @@ Eres_in=((E_1+E2)/2)/E_1;
     
 if(r_mu<3 && detKinBeamRot_def_angle_mu>0.2 && detKinBeamRot_def_angle_e<5)//&& detKinBeamRot_def_angle_mu>0.2  && E_clus3x3>1
 {
-if (E_clus3x3!=0){E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);} 
+if (E_clus3x3!=0){E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_LO);} 
 
 Th->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
     

@@ -265,16 +265,16 @@ E4=en_Maxcell2 ;
 double Ex=0.;
 double Ey=0.;
 
-for(int i=0; i<9; ++i)
+for(int i=1; i<26; ++i)
 {
-double x = myGrid->GetXaxis()->GetBinCenter(Rev_numberX[Array9[i]]);
-double y = myGrid->GetYaxis()->GetBinCenter(Rev_numberY[Array9[i]]);
+double x = myGrid->GetXaxis()->GetBinCenter(Rev_numberX[i]);
+double y = myGrid->GetYaxis()->GetBinCenter(Rev_numberY[i]);
     
-Ex+=en_c[Array9[i]]*x;
-Ey+=en_c[Array9[i]]*y;
+Ex+=en_c[i]*x;
+Ey+=en_c[i]*y;
 }
-double centroidX=(Ex)/E_clus3x3;
-double centroidY=(Ey)/E_clus3x3;    
+double centroidX=(Ex)/Etotcal;
+double centroidY=(Ey)/Etotcal;    
     
  
 Eres_in=((E_1+E2)/2)/E_1;

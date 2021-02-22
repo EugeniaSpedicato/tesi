@@ -105,6 +105,7 @@ Double_t n_cell_e;
     Double_t theta;     //   "    theta in the Lab frame (in mrad)
     Double_t phi;       //   "    phi in the Lab frame (in rad)
     Double_t energyCoM; // photon energy in the Centre-of-Mass frame
+    Double_t def_angle_ph;//   "    theta in the mu_in frame (in mrad)
    Double_t coox;
    Double_t cooy;
     Double_t n_cell_ph;

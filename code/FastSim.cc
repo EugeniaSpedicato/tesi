@@ -989,7 +989,7 @@ PxPyPzEVector p_gamma_CoM = Lorentz_ToCoM(p_gamma_lab_div);
     photon.phi       = p_gamma_lab_div.Phi();
     photon.energyCoM = p_gamma_CoM.E(); 
 
-    photon.def_angle_ph=Def_angle(p_mu_in,p_gamma_lab_div;
+    photon.def_angle_ph=Def_angle(p_mu_in,p_gamma_lab_div);
       
     photon.coox=x;
     photon.cooy=y;

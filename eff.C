@@ -357,7 +357,7 @@ Eff1CUT->GetXaxis()->SetTitle("Theta el[mrad]");
 Eff1CUT->GetYaxis()->SetTitle("Efficency");
 Eff1CUT->SetLineWidth(3);
 Eff1CUT->SetLineColor(kRed);
-//Eff1CUT->SetMinimum(0);
+Eff1CUT->SetMinimum(0);
 Eff1CUT->Draw(); 
 
 ef->cd(2);
@@ -365,7 +365,7 @@ Eff2CUT->GetXaxis()->SetTitle("Theta el[mrad]");
 Eff2CUT->GetYaxis()->SetTitle("Efficency");
 Eff2CUT->SetLineWidth(3);
 Eff2CUT->SetLineColor(kRed);
-//Eff2CUT->SetMinimum(0);
+Eff2CUT->SetMinimum(0.7);
 Eff2CUT->Draw();   
     
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
@@ -381,14 +381,15 @@ Eff1CUTtot->GetXaxis()->SetTitle("Theta el[mrad]");
 Eff1CUTtot->GetYaxis()->SetTitle("Efficency");
 Eff1CUTtot->SetLineWidth(3);
 Eff1CUTtot->SetLineColor(kBlue);
-//Eff1CUTtot->SetMinimum(0);
-Eff1CUTtot->Draw(); 
+Eff1CUTtot->SetMinimum(0);
+Eff1CUTtot->Draw(0.7); 
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 ef1->cd(2);  
 Eff2CUTtot->GetXaxis()->SetTitle("Theta el[mrad]");
 Eff2CUTtot->GetYaxis()->SetTitle("Efficency");
 Eff2CUTtot->SetLineWidth(3);
 Eff2CUTtot->SetLineColor(kBlue);
+Eff1CUTtot->SetMinimum(0.7);
 Eff2CUTtot->Draw(); 
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 

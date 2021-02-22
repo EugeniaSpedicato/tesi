@@ -305,7 +305,7 @@ if (detKinBeamRot_tar==0){ZV=1007.5; } else ZV=2007.5; // Z a metà dei targets 
 double Zecal=3100; //posizione in mm ECAL   
 double Z=Zecal-ZV;
 double th_ECAL=atan2(R,Z);//theta calorimetro in mrad
-
+cout << " th,r,Z " << th_ECAL << ", "<< R << ", " << Z << endl;
 double diff=detKinBeamRot_the-th_ECAL;
     
 if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 && E_clus3x3>1)//&& detKinBeamRot_def_angle_mu>0.2  && E_clus3x3>1
@@ -314,7 +314,6 @@ if (E_clus3x3!=0){E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);}
 Th->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
     
 double ddd=sqrt((centroidX-detKinBeamRot_cooXe)*(centroidX-detKinBeamRot_cooXe)+(centroidY-detKinBeamRot_cooYe)*(centroidY-detKinBeamRot_cooYe));    
-if (photon_energy==-1){hist_dist->Fill(ddd,wgt_full);} else {hist_distLO->Fill(ddd,wgt_full);}
     
 ang->Fill(th_ECAL,wgt_full);
 angLO->Fill(detKinBeamRot_the,wgt_full);    
@@ -348,6 +347,7 @@ ThCUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
 
 if (dist>1.425 && dist<4)
 {//if (E_clus3x3!=0){E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);}   //ThCUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
+if (photon_energy==-1){hist_dist->Fill(ddd,wgt_full);} else {hist_distLO->Fill(ddd,wgt_full);}
 }
 
 if (dist>4)//&& E9>0.8 && Eout<0.04 && E2nd<0.1

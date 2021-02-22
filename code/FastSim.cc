@@ -861,7 +861,7 @@ TMatrixD FastSim::MCSphoton(const PxPyPzEVector & kp,const Double_t & xin, const
 }
 
 
-TMatrixD FastSim::Def_angle(const PxPyPzEVector & p_mu_in_div,const PxPyPzEVector & p_mu_out_div,const PxPyPzEVector & p_e_out_div,const PxPyPzEVector & p_gamma_lab_div) const {
+TMatrixD FastSim::Def_angle(const PxPyPzEVector & p_mu_in_div,const PxPyPzEVector & p_mu_out_div,const PxPyPzEVector & p_e_out_div) const {
     
 
 

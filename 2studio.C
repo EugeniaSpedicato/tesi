@@ -274,7 +274,7 @@ hist_E3x3_e->Fill(E_clus3x3,wgt_full);
 hist_E9_e->Fill(E9,wgt_full);
 hist_E92_e->Fill(Emean_out,wgt_full);
 hist_Eout_e->Fill(Eout,wgt_full); 
-hist_dist->Fill(ddd,wgt_full);    
+hist_dist->Fill(ddd,wgt_LO);    
     
 /*if (photon_energy==-1) cout << " coordinate centroide (" << centroidX << ", " <<centroidY << "); coordinate elettrone " <<  detKinBeamRot_cooXe << ", " << detKinBeamRot_cooYe << endl;
 double ddd=sqrt((centroidX-detKinBeamRot_cooXe)*(centroidX-detKinBeamRot_cooXe)+(centroidY-detKinBeamRot_cooYe)*(centroidY-detKinBeamRot_cooYe));   

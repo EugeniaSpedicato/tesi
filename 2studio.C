@@ -278,14 +278,15 @@ hist_dist->Fill(ddd,wgt_full);
 E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
 Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full); 
     
-    if(E_clus3x3<(30-(5/2)*detKinBeamRot_def_angle_e) )// E_clus3x3<(20-(10/7)*detKinBeamRot_def_angle_e
+    if((E_clus3x3<5 && detKinBeamRot_def_angle_e<11) ||(E_clus3x3<25 && detKinBeamRot_def_angle_e<5))// E_clus3x3<(20-(10/7)*detKinBeamRot_def_angle_e
     {hist_E3x3_eCUT->Fill(E_clus3x3,wgt_full);
     hist_E9_eCUT->Fill(E9,wgt_full);
     hist_E92_eCUT->Fill(Emean_out,wgt_full);
     hist_Eout_eCUT->Fill(Eout,wgt_full); 
     hist_distCUT->Fill(ddd,wgt_full);
     E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
-    Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full); } 
+    Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
+    } 
     
 /*if (photon_energy==-1) cout << " coordinate centroide (" << centroidX << ", " <<centroidY << "); coordinate elettrone " <<  detKinBeamRot_cooXe << ", " << detKinBeamRot_cooYe << endl;
 double ddd=sqrt((centroidX-detKinBeamRot_cooXe)*(centroidX-detKinBeamRot_cooXe)+(centroidY-detKinBeamRot_cooYe)*(centroidY-detKinBeamRot_cooYe));   
@@ -400,6 +401,7 @@ c9->cd(3);
 hist_E92_e->GetXaxis()->SetTitle("<Eres> [GeV]");
 hist_E92_e->SetLineWidth(3);
 hist_E92_e->Draw("HIST"); 
+hist_E92_e->SetMinimum(1);
 gPad->SetLogy();
     
 hist_E92_eCUT->GetXaxis()->SetTitle("<Eres> [GeV]");
@@ -441,21 +443,22 @@ hist_E9_eCUT->GetXaxis()->SetTitle("Ecentral/E3x3");
 hist_E9_eCUT->SetLineWidth(3);
 hist_E9_eCUT->SetLineColor(kRed);
 hist_E9_eCUT->Draw("HIST");    
-gPad->BuildLegend(0.25,0.15,0.25,0.15);
+//gPad->BuildLegend(0.25,0.15,0.25,0.15);
     
 c9c->cd(2);  
 hist_Eout_eCUT->GetXaxis()->SetTitle("Eres/E3x3");
 hist_Eout_eCUT->SetLineWidth(3);
 hist_Eout_eCUT->SetLineColor(kRed);
 hist_Eout_eCUT->Draw("HIST");  
-gPad->BuildLegend(0.25,0.15,0.25,0.15);
+//gPad->BuildLegend(0.25,0.15,0.25,0.15);
     
 c9c->cd(3);
 hist_E92_eCUT->GetXaxis()->SetTitle("<Eres> [GeV]");
 hist_E92_eCUT->SetLineWidth(3);
 hist_E92_eCUT->SetLineColor(kRed);
 hist_E92_eCUT->Draw("HIST");   
-gPad->BuildLegend(0.25,0.15,0.25,0.15);
+//gPad->BuildLegend(0.25,0.15,0.25,0.15);
+hist_E92_eCUT->SetMinimum(1);
 gPad->SetLogy();
     
 c9c->cd(4);  
@@ -465,14 +468,14 @@ hist_E3x3_eCUT->SetLineWidth(3);
 hist_E3x3_eCUT->SetLineColor(kRed);
 hist_E3x3_eCUT->Draw("HIST");  
 gPad->SetLogy();
-gPad->BuildLegend(0.25,0.15,0.25,0.15);
+//gPad->BuildLegend(0.25,0.15,0.25,0.15);
     
 c9c->cd(5);   
 hist_distCUT->GetXaxis()->SetTitle("d [cm]");
 hist_distCUT->SetLineWidth(3);
 hist_distCUT->SetLineColor(kRed);
 hist_distCUT->Draw("HIST"); 
-gPad->BuildLegend(0.25,0.15,0.25,0.15);
+//gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
 c9c->SaveAs("/home/LHCB-T3/espedicato/tesi/studio2/E9cut.png");
 

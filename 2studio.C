@@ -278,7 +278,7 @@ hist_dist->Fill(ddd,wgt_full);
 E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
 Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full); 
     
-    if( E_clus3x3<5 && detKinBeamRot_def_angle_e<12)// E_clus3x3<(20-(10/7)*detKinBeamRot_def_angle_e
+    if(E_clus3x3<(30-(5/2)*detKinBeamRot_def_angle_e)// E_clus3x3<(20-(10/7)*detKinBeamRot_def_angle_e
     {hist_E3x3_eCUT->Fill(E_clus3x3,wgt_full);
     hist_E9_eCUT->Fill(E9,wgt_full);
     hist_E92_eCUT->Fill(Emean_out,wgt_full);
@@ -433,6 +433,48 @@ hist_distCUT->Draw("HIST same");
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
 c9->SaveAs("/home/LHCB-T3/espedicato/tesi/studio2/E9.png");
+    
+TCanvas * c9c= new TCanvas("c9","c9",1000,100,2500,2000);
+c9c->Divide(2,3);
+c9c->cd(1);
+hist_E9_eCUT->GetXaxis()->SetTitle("Ecentral/E3x3");
+hist_E9_eCUT->SetLineWidth(3);
+hist_E9_eCUT->SetLineColor(kRed);
+hist_E9_eCUT->Draw("HIST");    
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
+    
+c9c->cd(2);  
+hist_Eout_eCUT->GetXaxis()->SetTitle("Eres/E3x3");
+hist_Eout_eCUT->SetLineWidth(3);
+hist_Eout_eCUT->SetLineColor(kRed);
+hist_Eout_eCUT->Draw("HIST");  
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
+    
+c9c->cd(3);
+hist_E92_eCUT->GetXaxis()->SetTitle("<Eres> [GeV]");
+hist_E92_eCUT->SetLineWidth(3);
+hist_E92_eCUT->SetLineColor(kRed);
+hist_E92_eCUT->Draw("HIST");   
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
+gPad->SetLogy();
+    
+c9c->cd(4);  
+hist_E3x3_eCUT->GetXaxis()->SetTitle("E3x3 [GeV]");
+hist_E3x3_eCUT->SetMinimum(1);
+hist_E3x3_eCUT->SetLineWidth(3);
+hist_E3x3_eCUT->SetLineColor(kRed);
+hist_E3x3_eCUT->Draw("HIST");  
+gPad->SetLogy();
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
+    
+c9c->cd(5);   
+hist_distCUT->GetXaxis()->SetTitle("d [cm]");
+hist_distCUT->SetLineWidth(3);
+hist_distCUT->SetLineColor(kRed);
+hist_distCUT->Draw("HIST"); 
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
+
+c9c->SaveAs("/home/LHCB-T3/espedicato/tesi/studio2/E9cut.png");
 
     
 /*TCanvas * cc= new TCanvas("cc","cc",1000,100,2500,2000);

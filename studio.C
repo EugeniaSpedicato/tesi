@@ -262,7 +262,8 @@ for(int i=0; i<9; ++i)
 int FourthCentralCell=Maxcell2;
 E4=en_Maxcell2 ;
 
-/*double Ex=0.;
+
+double Ex=0.;
 double Ey=0.;
 
 for(int i=0; i<9; ++i)
@@ -270,27 +271,27 @@ for(int i=0; i<9; ++i)
 double x = myGrid->GetXaxis()->GetBinCenter(Rev_numberX[Array9[i]]);
 double y = myGrid->GetYaxis()->GetBinCenter(Rev_numberY[Array9[i]]);
 
-double wi=4+log(en_c[Array9[i]]/E_clus3x3);
+double wi=4.0+log(en_c[Array9[i]]/E_clus3x3);
 wi=(0<wi)?wi:0;
 
 Ex+=wi*x;
 Ey+=wi*y;
 }
 double centroidX=(Ex)/E_clus3x3;
-double centroidY=(Ey)/E_clus3x3;    
-double ddd=sqrt((centroidX-detKinBeamRot_cooXe)*(centroidX-detKinBeamRot_cooXe)+(centroidY-detKinBeamRot_cooYe)*(centroidY-detKinBeamRot_cooYe));   
+double centroidY=(Ey)/E_clus3x3; 
+
+cout << " coordinate centroide (" << centroidX << ", " <<centroidY << "); coordinate elettrone " <<  detKinBeamRot_cooXe << ", << detKinBeamRot_cooYe << endl;
+/*double ddd=sqrt((centroidX-detKinBeamRot_cooXe)*(centroidX-detKinBeamRot_cooXe)+(centroidY-detKinBeamRot_cooYe)*(centroidY-detKinBeamRot_cooYe));   
 hist_dist->Fill(ddd,wgt_full);
-hist_distLO->Fill(ddd,wgt_LO);*/
+hist_distLO->Fill(ddd,wgt_LO);
+*/
 
                             
 E9=E_1/E_clus3x3;           
 Eout=(Etotcal-E_clus3x3)/E_clus3x3;
 Eres_in=(E_clus3x3-E_1-E2-E3-E4)/E_clus3x3;
 E2nd=E2/E_1;    
-    
-    /*if (E_clus3x3!=0){E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);} 
-        
-        if (E_clus3x3!=0){E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_LO);} */
+
     
     
 if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 && E_clus3x3>1)//&& detKinBeamRot_def_angle_mu>0.2  && E_clus3x3>1

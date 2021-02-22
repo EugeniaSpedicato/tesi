@@ -487,10 +487,12 @@ c4a->cd(1);
 E3x31CUT->GetXaxis()->SetTitle("Theta_el[mrad]");
 E3x31CUT->GetYaxis()->SetTitle("Ereco3x3[GeV]");
 E3x31CUT->Draw("COLZ");
+    gPad->SetLogy();
 c4a->cd(2);   
 E3x32CUT->GetXaxis()->SetTitle("Theta_el[mrad]");
 E3x32CUT->GetYaxis()->SetTitle("Ereco3x3[GeV]");
 E3x32CUT->Draw("COLZ");
+    gPad->SetLogy();
 
 
 c4a->SaveAs("/home/LHCB-T3/espedicato/tesi/studio2/thE_cut.png");

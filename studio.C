@@ -313,7 +313,10 @@ if (E_clus3x3!=0){E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);}
 Th->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
     
 double ddd=sqrt((centroidX-detKinBeamRot_cooXe)*(centroidX-detKinBeamRot_cooXe)+(centroidY-detKinBeamRot_cooYe)*(centroidY-detKinBeamRot_cooYe));    
-if (photon_energy==-1){hist_dist->Fill(ddd,wgt_full); ang->Fill(th_ECAL,wgt_full);} else {hist_distLO->Fill(ddd,wgt_full); angLO->Fill(detKinBeamRot_the,wgt_full);}
+if (photon_energy==-1){hist_dist->Fill(ddd,wgt_full);} else {hist_distLO->Fill(ddd,wgt_full);}
+    
+ang->Fill(th_ECAL,wgt_full);
+angLO->Fill(detKinBeamRot_the,wgt_full);    
     
 /*hist_E9_eOUT->Fill(E9,wgt_full);
 hist_E9_eLOOUT->Fill(E9,wgt_LO); 

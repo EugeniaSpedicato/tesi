@@ -29,6 +29,7 @@ int n_cell_e;
 int n_cell_ph;
 Double_t E_CAL=0.;
 Double_t E9=0.;
+Double_t Eout=0.;
 Double_t E2nd=0.;
 Double_t Eres_in=0.;
     
@@ -159,7 +160,7 @@ E_1=myGrid->GetBinContent(binMax);
 
 // con if E_1!=0 è gia imposto r<1.7 perchè gia in fastsim         
 if(E_1!=0){           
-    n5+=wgt_full;
+
     if (detKinBeamRot_Ee>0.2){int binx_e = myGrid->GetXaxis()->FindBin(detKinBeamRot_cooXe);
     int biny_e = myGrid->GetYaxis()->FindBin(detKinBeamRot_cooYe);
     int nbin_e = myGrid->GetBin(binx_e,biny_e);
@@ -204,12 +205,11 @@ for(int i=0; i<9; ++i)
 
     double r=sqrt((detKinBeamRot_cooXe*detKinBeamRot_cooXe)+(detKinBeamRot_cooYe*detKinBeamRot_cooYe));
     
-    E9=E_1/E_clus3x3;
+
     
     for(int i=1;i<26;++i)
     {Etotcal+=en_c[i];}
-           
-    double Eout=(Etotcal-E_clus3x3)/E_clus3x3;
+
 
            
 if(CentralCell==7 || CentralCell==8 || CentralCell==9 || CentralCell==12 || CentralCell==13 || CentralCell==14 || CentralCell==17 || CentralCell==18 || CentralCell==19)
@@ -262,7 +262,7 @@ for(int i=0; i<9; ++i)
 int FourthCentralCell=Maxcell2;
 E4=en_Maxcell2 ;
 
-double Ex=0.;
+/*double Ex=0.;
 double Ey=0.;
 
 for(int i=1; i<26; ++i)
@@ -275,28 +275,25 @@ Ey+=en_c[i]*y;
 }
 double centroidX=(Ex)/Etotcal;
 double centroidY=(Ey)/Etotcal;    
-    
- 
+double ddd=sqrt((centroidX-detKinBeamRot_cooXe)*(centroidX-detKinBeamRot_cooXe)+(centroidY-detKinBeamRot_cooYe)*(centroidY-detKinBeamRot_cooYe));   
+hist_dist->Fill(ddd,wgt_full);
+hist_distLO->Fill(ddd,wgt_LO);*/
+
+                            
+E9=E_1/E_clus3x3;           
+Eout=(Etotcal-E_clus3x3)/E_clus3x3;
 Eres_in=((E_1+E2)/2)/E_1;
-    
+E2nd=E2/E_1;    
     
     /*if (E_clus3x3!=0){E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);} 
         
         if (E_clus3x3!=0){E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_LO);} */
     
-    E2nd=E2/E_1;
     
 if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 && E_clus3x3>1)//&& detKinBeamRot_def_angle_mu>0.2  && E_clus3x3>1
 {
 if (E_clus3x3!=0){E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);} 
-
 Th->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
-    
-
-double ddd=sqrt((centroidX-detKinBeamRot_cooXe)*(centroidX-detKinBeamRot_cooXe)+(centroidY-detKinBeamRot_cooYe)*(centroidY-detKinBeamRot_cooYe));   
-
-
-                         
     
 /*hist_E9_eOUT->Fill(E9,wgt_full);
 hist_E9_eLOOUT->Fill(E9,wgt_LO); 
@@ -319,7 +316,6 @@ double x = myGrid->GetXaxis()->GetBinCenter(Rev_numberX[SecondCentralCell_in9]);
 double y = myGrid->GetYaxis()->GetBinCenter(Rev_numberY[SecondCentralCell_in9]);
 double dist=sqrt((x-detKinBeamRot_cooXe)*(x-detKinBeamRot_cooXe)+(y-detKinBeamRot_cooYe)*(y-detKinBeamRot_cooYe)); 
      
-    
 
 if (dist<1.425 && E9>0.4 && E9<0.6 && Eout<0.05 && E2nd<0.6)// && E9>0.4 && E9<0.6 && Eout<0.05 && E2nd<0.6
 { if (E_clus3x3!=0){E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);} 
@@ -327,9 +323,7 @@ ThCUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
 }
 
 if (dist>1.425 && dist<4)
-{                       
-hist_dist->Fill(ddd,wgt_full);
-hist_distLO->Fill(ddd,wgt_LO);
+{if (E_clus3x3!=0){E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);}   ThCUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
 }
 
 if (dist>4 && E9>0.8 && Eout<0.04 && E2nd<0.1)//&& E9>0.8 && Eout<0.04 && E2nd<0.1
@@ -338,16 +332,11 @@ if (dist>4 && E9>0.8 && Eout<0.04 && E2nd<0.1)//&& E9>0.8 && Eout<0.04 && E2nd<0
 }
 
 } 
-
 else if(SecondCentralCell!=0 && E9>0.87 && Eout<0.07)// && E9>0.87 && Eout<0.07
 {
-//if(n_cell_ph!=0){n_cut_ph+=wgt_full;}else if(n_cell_e!=0 && n_cell_ph==0) n_cut_noph+=wgt_full; 
- if (E_clus3x3!=0){E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);}   
+if (E_clus3x3!=0){E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);}   
 ThCUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
 }
-    
-//else if (SecondCentralCell_in9!=0){sec_9+=wgt_full;energy->Fill(Eout,wgt_full);}
-
     
         
     }}

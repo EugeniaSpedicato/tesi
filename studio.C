@@ -299,14 +299,14 @@ Eout=(Etotcal-E_clus3x3)/E_clus3x3;
 Eres_in=(E_clus3x3-E_1-E2-E3-E4)/E_clus3x3;
 E2nd=E2/E_1;    
 
-double R=sqrt((detKinBeamRot_x_in-centroidX)*(detKinBeamRot_x_in-centroidX)+(detKinBeamRot_y_in-centroidY)*(detKinBeamRot_y_in-centroidY))*10; // mm  
+double R=sqrt((detKinBeamRot_x_in-centroidX)*(detKinBeamRot_x_in-centroidX)+(detKinBeamRot_y_in-centroidY)*(detKinBeamRot_y_in-centroidY)); // cm  
 double ZV=0.;
-if (detKinBeamRot_tar==0){ZV=1007.5; } else ZV=2007.5; // Z a metà dei targets in mm  
-double Zecal=3100; //posizione in mm ECAL   
+if (detKinBeamRot_tar==0){ZV=100.75; } else ZV=200.75; // Z a metà dei targets in cm  
+double Zecal=310; //posizione in cm ECAL   
 double Z=Zecal-ZV;
-double th_ECAL=atan2(R,Z);//theta calorimetro in mrad
+double th_ECAL=atan2(R,Z)*1000;//theta calorimetro in mrad
 cout << " th,r,Z " << th_ECAL << ", "<< R << ", " << Z << endl;
-cout << " th trak" << detKinBeamRot_the << endl;
+cout << " th trak " << detKinBeamRot_the << endl;
     
 double diff=detKinBeamRot_the-th_ECAL;
     

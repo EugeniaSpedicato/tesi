@@ -35,8 +35,8 @@ Double_t Eres_in=0.;
     
     
     
-TH1F* hist_dist=new TH1F("dist1", "Dist e-centroide", 400,0,8);
-TH1F* hist_distLO=new TH1F("dist2", "Dist e-centroide", 400,0,8);
+TH1F* hist_dist=new TH1F("dist1", "Dist e-centroide", 400,0,2);
+TH1F* hist_distLO=new TH1F("dist2", "Dist e-centroide", 400,0,2);
 
 
 TH2F  *E3x31CUT  = new TH2F("Eel1" , " Th_el Vs. E_3x3 coreECAL TAR 1 (Fiducial cut) ",120,0,30,360,0,140);
@@ -53,8 +53,8 @@ TH1F* hist_E9_eCUT=new TH1F("E9eCUT", "E9 cut", 100,0.,1);
 TH1F* hist_Eout_e=new TH1F("en", "Eout", 100,0.,0.1);
 TH1F* hist_Eout_eCUT=new TH1F("encut", "Eout cut", 100,0.,0.1);
     
-TH1F* hist_E92_e=new TH1F("Emean", "Mean E out", 100,0.,0.1);
-TH1F* hist_E92_eCUT=new TH1F("Emeancut", "Mean E out cut", 100,0.,0.1);
+TH1F* hist_E92_e=new TH1F("Emean", "Mean E out", 100,0.,0.15);
+TH1F* hist_E92_eCUT=new TH1F("Emeancut", "Mean E out cut", 100,0.,0.15);
     
 TH1F* hist_E3x3_e=new TH1F("E3x3", "Energy Reco 3x3", 70,0.,140);
 TH1F* hist_E3x3_eCUT=new TH1F("E3x3cut", "Energy Reco 3x3 cut", 70,0.,140); 
@@ -274,7 +274,7 @@ hist_E3x3_e->Fill(E_clus3x3,wgt_full);
 hist_E9_e->Fill(E9,wgt_full);
 hist_E92_e->Fill(Emean_out,wgt_full);
 hist_Eout_e->Fill(Eout,wgt_full); 
-hist_dist->Fill(ddd,wgt_LO);    
+hist_dist->Fill(ddd,wgt_full);    
     
 /*if (photon_energy==-1) cout << " coordinate centroide (" << centroidX << ", " <<centroidY << "); coordinate elettrone " <<  detKinBeamRot_cooXe << ", " << detKinBeamRot_cooYe << endl;
 double ddd=sqrt((centroidX-detKinBeamRot_cooXe)*(centroidX-detKinBeamRot_cooXe)+(centroidY-detKinBeamRot_cooYe)*(centroidY-detKinBeamRot_cooYe));   

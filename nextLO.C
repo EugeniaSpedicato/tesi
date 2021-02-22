@@ -16,12 +16,12 @@ Double_t mmu= 105.6583745 *0.001;
 Double_t me= 0.5109989461 *0.001;
 Double_t E_ECAL;
 
-TH1F* Emuout=new TH1F("EnergyMU", "Energy Mu out", 75,0.2,150); 
-TH1F* Emuout_E =new TH1F("EnergyMU_E", "Energy Mu out", 75,0.2,150); 
-TH1F* Emuout1=new TH1F("EnergyMU1", "Energy Mu out Tar 1", 75,0.2,150); 
-TH1F* Emuout_E1 =new TH1F("EnergyMU_E1", "Energy Mu out Tar 1", 75,0.2,150); 
-TH1F* Emuout2=new TH1F("EnergyMU2", "Energy Mu out Tar 2", 75,0.2,150); 
-TH1F* Emuout_E2 =new TH1F("EnergyMU_E2", "Energy Mu out Tar 2", 75,0.2,150); 
+TH1F* Emuout=new TH1F("EnergyMU", "Energy Mu out", 75,0.2,170); 
+TH1F* Emuout_E =new TH1F("EnergyMU_E", "Energy Mu out", 75,0.2,170); 
+TH1F* Emuout1=new TH1F("EnergyMU1", "Energy Mu out Tar 1", 75,0.2,170); 
+TH1F* Emuout_E1 =new TH1F("EnergyMU_E1", "Energy Mu out Tar 1", 75,0.2,170); 
+TH1F* Emuout2=new TH1F("EnergyMU2", "Energy Mu out Tar 2", 75,0.2,170); 
+TH1F* Emuout_E2 =new TH1F("EnergyMU_E2", "Energy Mu out Tar 2", 75,0.2,170); 
     
 TH1F* Eelout=new TH1F("EnergyEL", "Energy El out", 70,0.2,140); 
 TH1F* Eelout_E =new TH1F("EnergyEL_E", "Energy El out", 70,0.2,140);
@@ -244,6 +244,7 @@ double r_mu=sqrt((detKinBeamRot_x_in*detKinBeamRot_x_in)+(detKinBeamRot_y_in*det
     e->cd(2);
     Eelout->GetXaxis()->SetTitle("E [GeV]");
     Eelout->SetLineWidth(3);
+    Eelout->SetMinimum(1);
     Eelout->Draw("HIST");
     gPad->SetLogy();
     e->cd(5);
@@ -251,11 +252,13 @@ double r_mu=sqrt((detKinBeamRot_x_in*detKinBeamRot_x_in)+(detKinBeamRot_y_in*det
     Eelout1->SetLineWidth(3);
     Eelout1->SetLineColor(8);
     Eelout1->Draw("HIST");
+    Eelout1->SetMinimum(1);
     gPad->SetLogy();
     e->cd(8);
     Eelout2->GetXaxis()->SetTitle("E [GeV]");
     Eelout2->SetLineWidth(3);
     Eelout2->SetLineColor(kBlack);
+    Eelout2->SetMinimum(1);
     Eelout2->Draw("HIST");
     gPad->SetLogy();
 

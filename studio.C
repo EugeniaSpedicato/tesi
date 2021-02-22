@@ -265,16 +265,19 @@ E4=en_Maxcell2 ;
 /*double Ex=0.;
 double Ey=0.;
 
-for(int i=1; i<26; ++i)
+for(int i=0; i<9; ++i)
 {
-double x = myGrid->GetXaxis()->GetBinCenter(Rev_numberX[i]);
-double y = myGrid->GetYaxis()->GetBinCenter(Rev_numberY[i]);
-    
-Ex+=en_c[i]*x;
-Ey+=en_c[i]*y;
+double x = myGrid->GetXaxis()->GetBinCenter(Rev_numberX[Array9[i]]);
+double y = myGrid->GetYaxis()->GetBinCenter(Rev_numberY[Array9[i]]);
+
+double wi=4+log(en_c[Array9[i]]/E_clus3x3);
+wi=(0<wi)?wi:0;
+
+Ex+=wi*x;
+Ey+=wi*y;
 }
-double centroidX=(Ex)/Etotcal;
-double centroidY=(Ey)/Etotcal;    
+double centroidX=(Ex)/E_clus3x3;
+double centroidY=(Ey)/E_clus3x3;    
 double ddd=sqrt((centroidX-detKinBeamRot_cooXe)*(centroidX-detKinBeamRot_cooXe)+(centroidY-detKinBeamRot_cooYe)*(centroidY-detKinBeamRot_cooYe));   
 hist_dist->Fill(ddd,wgt_full);
 hist_distLO->Fill(ddd,wgt_LO);*/
@@ -282,7 +285,7 @@ hist_distLO->Fill(ddd,wgt_LO);*/
                             
 E9=E_1/E_clus3x3;           
 Eout=(Etotcal-E_clus3x3)/E_clus3x3;
-Eres_in=((E_1+E2)/2)/E_1;
+Eres_in=(E_clus3x3-E_1-E2-E3-E4)/E_clus3x3;
 E2nd=E2/E_1;    
     
     /*if (E_clus3x3!=0){E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);} 
@@ -317,7 +320,7 @@ double y = myGrid->GetYaxis()->GetBinCenter(Rev_numberY[SecondCentralCell_in9]);
 double dist=sqrt((x-detKinBeamRot_cooXe)*(x-detKinBeamRot_cooXe)+(y-detKinBeamRot_cooYe)*(y-detKinBeamRot_cooYe)); 
      
 
-if (dist<1.425 && E9>0.4 && E9<0.6 && Eout<0.05 && E2nd<0.6)// && E9>0.4 && E9<0.6 && Eout<0.05 && E2nd<0.6
+if (dist<1.425)// && E9>0.4 && E9<0.6 && Eout<0.05 && E2nd<0.6
 { if (E_clus3x3!=0){E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);} 
 ThCUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
 }
@@ -326,13 +329,13 @@ if (dist>1.425 && dist<4)
 {//if (E_clus3x3!=0){E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);}   //ThCUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
 }
 
-if (dist>4 && E9>0.8 && Eout<0.04 && E2nd<0.1)//&& E9>0.8 && Eout<0.04 && E2nd<0.1
+if (dist>4)//&& E9>0.8 && Eout<0.04 && E2nd<0.1
 { if (E_clus3x3!=0){E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);}
   ThCUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full); 
 }
 
 } 
-else if(SecondCentralCell!=0 && E9>0.87 && Eout<0.07)// && E9>0.87 && Eout<0.07
+else if(SecondCentralCell!=0)// && E9>0.87 && Eout<0.07
 {
 if (E_clus3x3!=0){E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);}   
 ThCUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);

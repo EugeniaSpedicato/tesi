@@ -265,20 +265,23 @@ E4=en_Maxcell2 ;
 
 double Ex=0.;
 double Ey=0.;
+double wtot=0.;
+
 
 for(int i=0; i<9; ++i)
 {
 double x = myGrid->GetXaxis()->GetBinCenter(Rev_numberX[Array9[i]]);
 double y = myGrid->GetYaxis()->GetBinCenter(Rev_numberY[Array9[i]]);
 
-double wi=4.0+log(en_c[Array9[i]]/E_clus3x3);
-wi=(0<wi)?wi:0;
+double w=4.0+log(en_c[Array9[i]]/E_clus3x3);
+wi=(w>0)?w:0;
 
 Ex+=wi*x;
 Ey+=wi*y;
+wtot+=wi;
 }
-double centroidX=(Ex)/E_clus3x3;
-double centroidY=(Ey)/E_clus3x3; 
+double centroidX=(Ex)/wtot;
+double centroidY=(Ey)/wtot; 
 
 if (photon_energy==-1) cout << " coordinate centroide (" << centroidX << ", " <<centroidY << "); coordinate elettrone " <<  detKinBeamRot_cooXe << ", " << detKinBeamRot_cooYe << endl;
 /*double ddd=sqrt((centroidX-detKinBeamRot_cooXe)*(centroidX-detKinBeamRot_cooXe)+(centroidY-detKinBeamRot_cooYe)*(centroidY-detKinBeamRot_cooYe));   

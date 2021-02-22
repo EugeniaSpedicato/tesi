@@ -868,8 +868,6 @@ TMatrixD FastSim::Def_angle(const PxPyPzEVector & p_mu_in_div,const PxPyPzEVecto
 XYZVector p_mu_in_div3 = p_mu_in_div.Vect().Unit();    
 XYZVector p_e_out_div3 = p_e_out_div.Vect().Unit();
 XYZVector p_mu_out_div3 = p_mu_out_div.Vect().Unit();
-XYZVector p_gamma_lab_div3 = p_gamma_lab_div3.Vect().Unit();
-
     
 Double_t DIR_mu=p_mu_in_div3.Dot(p_mu_out_div3);
 Double_t A_DIR_mu=abs(DIR_mu)<1. ? 1000.*acos(DIR_mu) : 100.;
@@ -877,13 +875,10 @@ Double_t A_DIR_mu=abs(DIR_mu)<1. ? 1000.*acos(DIR_mu) : 100.;
 Double_t DIR_e=p_mu_in_div3.Dot(p_e_out_div3);
 Double_t A_DIR_e=abs(DIR_e)<1. ? 1000.*acos(DIR_e) : 100.;
     
-Double_t DIR_ph=p_mu_in_div3.Dot(p_gamma_lab_div3);
-Double_t A_DIR_ph=abs(DIR_ph)<1. ? 1000.*acos(DIR_ph) : 100.;
 
 TMatrixD def_angle(2,1);
   def_angle[0][0]=A_DIR_mu;
   def_angle[1][0]=A_DIR_e;
-  def_angle[2][0]=A_DIR_ph;
     
     
 return def_angle;
@@ -892,12 +887,12 @@ return def_angle;
 Double_t FastSim::Def_angle_ph(const PxPyPzEVector & p_mu_in_div,const PxPyPzEVector & p_gamma_lab_div) const {
 
 XYZVector p_mu_in_div3 = p_mu_in_div.Vect().Unit();  
-XYZVector p_gamma_lab_div3 = p_gamma_lab_div3.Vect().Unit();
+XYZVector p_gamma_lab_div3 = p_gamma_lab_div.Vect().Unit();
 
 Double_t DIR_ph=p_mu_in_div3.Dot(p_gamma_lab_div3);
 Double_t A_DIR_ph=abs(DIR_ph)<1. ? 1000.*acos(DIR_ph) : 100.;
 
-return A_DIR_ph;
+return A_DIR_ph;}
 
 void FastSim::LoadKineVars(const PxPyPzEVector & p_mu_in,  const PxPyPzEVector & p_e_in, 
 			   const PxPyPzEVector & p_mu_out, const PxPyPzEVector & p_e_out, const TMatrixD & coo, const Double_t & TheINT, const Double_t & ThMuINT,

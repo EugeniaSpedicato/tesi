@@ -421,18 +421,11 @@ Eff2CUT->SetMaximum(1);
 Eff2CUT->SetMinimum(0);
 Eff2CUT->Draw();   
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
-efCUT->SaveAs("/home/LHCB-T3/espedicato/tesi/eff/EffCUT.png");*/
+efCUT->SaveAs("/home/LHCB-T3/espedicato/tesi/eff/EffCUT.png");
     
     
 TCanvas * c5= new TCanvas("c5","c5",1000,1000,2500,2000);
 c5->Divide(2,1);
-/*c5->cd(1);
-The_true->SetLineColor(kBlack);
-The_true->SetLineWidth(3);
-The_true->Draw("HIST"); 
-The->SetLineWidth(3);
-The->Draw("HIST same");
-gPad->BuildLegend(0.3,0.21,0.3,0.21);*/
 c5->cd(1);
 The_trueCUT1->SetLineColor(kBlack);
 The_trueCUT1->SetLineWidth(3);
@@ -640,6 +633,6 @@ hist_E9_eLO->SetLineColor(kRed);
 hist_E9_eLO->Draw("HIST same"); 
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
-c9->SaveAs("/home/LHCB-T3/espedicato/tesi/eff/E9.png");
+c9->SaveAs("/home/LHCB-T3/espedicato/tesi/eff/E9.png");*/
 
 }

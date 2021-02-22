@@ -36,15 +36,15 @@ Double_t Eres_in=0.;
     
     
 TH1F* hist_dist=new TH1F("dist1", "Dist e-centroide", 400,0,2);
-TH1F* hist_distLO=new TH1F("dist2", "Dist e-centroide", 400,0,2);
+TH1F* hist_distCUT=new TH1F("dist2", "Dist e-centroide CUT", 400,0,2);
 
 
-TH2F  *E3x31CUT  = new TH2F("Eel1" , " Th_el Vs. E_3x3 coreECAL TAR 1 (Fiducial cut) ",120,0,30,360,0,140);
-TH2F  *E3x32CUT  = new TH2F("Eel2" , " Th_el Vs. E_3x3 coreECAL TAR 2 (Fiducial cut)",120,0,30,360,0,140);
+TH2F  *E3x31CUT  = new TH2F("Eel1" , " Th_el Vs. E_3x3 coreECAL (Fiducial cut) ",120,0,30,360,0,140);
+TH2F  *E3x32CUT  = new TH2F("Eel2" , " Th_el Vs. E_3x3 coreECAL (Fiducial cut+BRUTAL)",120,0,30,360,0,140);
     
     
-TH2F  *Th1  = new TH2F("ThEel1" , " Th_el Vs. Th_mu coreECAL TAR 1 (Fiducial cut)",120,0,30,150,0,5);
-TH2F  *Th2  = new TH2F("ThEel2" , " Th_el Vs. Th_mu coreECAL TAR 2 (Fiducial cut)",120,0,30,150,0,5);    
+TH2F  *Th1  = new TH2F("ThEel1" , " Th_el Vs. Th_mu coreECAL (Fiducial cut)",120,0,30,150,0,5);
+TH2F  *Th2  = new TH2F("ThEel2" , " Th_el Vs. Th_mu coreECAL (Fiducial cut+BRUTAL)",120,0,30,150,0,5);    
 
 
 TH1F* hist_E9_e=new TH1F("E9e", "E9", 100,0.,1);
@@ -274,7 +274,18 @@ hist_E3x3_e->Fill(E_clus3x3,wgt_full);
 hist_E9_e->Fill(E9,wgt_full);
 hist_E92_e->Fill(Emean_out,wgt_full);
 hist_Eout_e->Fill(Eout,wgt_full); 
-hist_dist->Fill(ddd,wgt_full);    
+hist_dist->Fill(ddd,wgt_full); 
+E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
+Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full); 
+    
+    if( E_clus3x3<(20-(4/3)*detKinBeamRot_def_angle_e) )
+    {hist_E3x3_eCUT->Fill(E_clus3x3,wgt_full);
+    hist_E9_eCUT->Fill(E9,wgt_full);
+    hist_E92_eCUT->Fill(Emean_out,wgt_full);
+    hist_Eout_eCUT->Fill(Eout,wgt_full); 
+    hist_distCUT->Fill(ddd,wgt_full);
+    E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
+    Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);  } 
     
 /*if (photon_energy==-1) cout << " coordinate centroide (" << centroidX << ", " <<centroidY << "); coordinate elettrone " <<  detKinBeamRot_cooXe << ", " << detKinBeamRot_cooYe << endl;
 double ddd=sqrt((centroidX-detKinBeamRot_cooXe)*(centroidX-detKinBeamRot_cooXe)+(centroidY-detKinBeamRot_cooYe)*(centroidY-detKinBeamRot_cooYe));   
@@ -307,7 +318,7 @@ delete myGrid;
 }}
 
       
-/*Int_t nx1CUT = E3x31CUT->GetNbinsX();
+Int_t nx1CUT = E3x31CUT->GetNbinsX();
 Int_t ny1CUT = E3x31CUT->GetNbinsY();
 for (Int_t i=1; i<nx1CUT+1; i++) {
 for (Int_t j=1; j<ny1CUT+1; j++) {
@@ -360,7 +371,7 @@ thu->cd(2);
 Th2->GetXaxis()->SetTitle("Theta_el[mrad]");
 Th2->GetYaxis()->SetTitle("Theta_mu[GeV]");
 Th2->Draw("COLZ");
-thu->SaveAs("/home/LHCB-T3/espedicato/tesi/studio2/thu.png");*/
+thu->SaveAs("/home/LHCB-T3/espedicato/tesi/studio2/thu.png");
     
 TCanvas * c9= new TCanvas("c9","c9",1000,100,2500,2000);
 c9->Divide(2,3);
@@ -369,33 +380,33 @@ hist_E9_e->GetXaxis()->SetTitle("Ecentral/E3x3");
 hist_E9_e->SetLineWidth(3);
 hist_E9_e->Draw("HIST"); 
     
-/*hist_E9_eCUT->GetXaxis()->SetTitle("Ecentral/E3x3");
+hist_E9_eCUT->GetXaxis()->SetTitle("Ecentral/E3x3");
 hist_E9_eCUT->SetLineWidth(3);
 hist_E9_eCUT->SetLineColor(kRed);
-hist_E9_eCUT->Draw("HIST same");    */ 
-//gPad->BuildLegend(0.25,0.15,0.25,0.15);
+hist_E9_eCUT->Draw("HIST same");    
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
     
 c9->cd(2);  
 hist_Eout_e->GetXaxis()->SetTitle("Eres/E3x3");
 hist_Eout_e->SetLineWidth(3);
 hist_Eout_e->Draw("HIST");  
     
-/*hist_Eout_eCUT->GetXaxis()->SetTitle("Eres/E3x3");
+hist_Eout_eCUT->GetXaxis()->SetTitle("Eres/E3x3");
 hist_Eout_eCUT->SetLineWidth(3);
 hist_Eout_eCUT->SetLineColor(kRed);
-hist_Eout_eCUT->Draw("HIST same");  */
-//gPad->BuildLegend(0.25,0.15,0.25,0.15);
+hist_Eout_eCUT->Draw("HIST same");  
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
 c9->cd(3);
 hist_E92_e->GetXaxis()->SetTitle("<Eres> [GeV]");
 hist_E92_e->SetLineWidth(3);
 hist_E92_e->Draw("HIST"); 
 gPad->SetLogy();
     
-/*hist_E9_eCUTOUT->GetXaxis()->SetTitle("Ecentral/E3x3");
-hist_E9_eCUTOUT->SetLineWidth(3);
-hist_E9_eCUTOUT->SetLineColor(kRed);
-hist_E9_eCUTOUT->Draw("HIST same");    */ 
-//gPad->BuildLegend(0.25,0.15,0.25,0.15);
+hist_E92_eCUT->GetXaxis()->SetTitle("<Eres> [GeV]");
+hist_E92_eCUT->SetLineWidth(3);
+hist_E92_eCUT->SetLineColor(kRed);
+hist_E92_eCUT->Draw("HIST same");   
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
     
 c9->cd(4);  
 hist_E3x3_e->GetXaxis()->SetTitle("E3x3 [GeV]");
@@ -404,22 +415,22 @@ hist_E3x3_e->Draw("HIST");
 hist_E3x3_e->SetMinimum(1);   
 gPad->SetLogy();
     
-/*hist_Eout_eCUTOUT->GetXaxis()->SetTitle("Eres/E3x3");
-hist_Eout_eCUTOUT->SetLineWidth(3);
-hist_Eout_eCUTOUT->SetLineColor(kRed);
-hist_Eout_eCUTOUT->Draw("HIST same");  */
-//gPad->BuildLegend(0.25,0.15,0.25,0.15);
+hist_E3x3_eCUT->GetXaxis()->SetTitle("E3x3 [GeV]");
+hist_E3x3_eCUT->SetLineWidth(3);
+hist_E3x3_eCUT->SetLineColor(kRed);
+hist_E3x3_eCUT->Draw("HIST same");  
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
     
 c9->cd(5); 
 hist_dist->GetXaxis()->SetTitle("d [cm]");
 hist_dist->SetLineWidth(3);
 hist_dist->Draw("HIST"); 
     
-/*hist_Eout_eCUTOUT->GetXaxis()->SetTitle("Eres/E3x3");
-hist_Eout_eCUTOUT->SetLineWidth(3);
-hist_Eout_eCUTOUT->SetLineColor(kRed);
-hist_Eout_eCUTOUT->Draw("HIST same");  */
-//gPad->BuildLegend(0.25,0.15,0.25,0.15);
+hist_distCUT->GetXaxis()->SetTitle("d [cm]");
+hist_distCUT->SetLineWidth(3);
+hist_distCUT->SetLineColor(kRed);
+hist_distCUT->Draw("HIST same"); 
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
 c9->SaveAs("/home/LHCB-T3/espedicato/tesi/studio2/E9.png");
 
     

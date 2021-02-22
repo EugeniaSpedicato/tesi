@@ -63,7 +63,7 @@ TH1F* hist_E3x3_eCUT=new TH1F("E3x3cut", "Energy Reco 3x3 cut", 70,0.,140);
     
 //caratteristiche fotoni
     TH1F* Ephout=new TH1F("EnergyPH", "Energy Ph", 75,0.2,150); 
-    TH1F* Thphout=new TH1F("thetaPH", "Theta Ph", 120,0.,30); 
+    TH1F* Thphout=new TH1F("thetaPH", "Theta Ph", 120,0.,100); 
     TH1F* diff_th_phe=new TH1F("thetaPH", "Diff Th_e-Th_ph", 75,-25,25); 
     
 
@@ -332,7 +332,7 @@ double ddd=sqrt((centroidX-detKinBeamRot_cooXe)*(centroidX-detKinBeamRot_cooXe)+
     }
 
     // ZONA 3
-    if(detKinBeamRot_def_angle_e>10 && detKinBeamRot_def_angle_e<15)// E_clus3x3<(20-(10/7)*detKinBeamRot_def_angle_e -- (E_clus3x3<5 && detKinBeamRot_def_angle_e<11)
+    if(detKinBeamRot_def_angle_e>10 && detKinBeamRot_def_angle_e<14)// E_clus3x3<(20-(10/7)*detKinBeamRot_def_angle_e -- (E_clus3x3<5 && detKinBeamRot_def_angle_e<11)
     {
         if(detKinBeamRot_def_angle_mu<0.4)
         {hist_E3x3_eCUT->Fill(E_clus3x3,wgt_full);
@@ -355,7 +355,29 @@ double ddd=sqrt((centroidX-detKinBeamRot_cooXe)*(centroidX-detKinBeamRot_cooXe)+
     }
     
     // ZONA 4
-    if(detKinBeamRot_def_angle_e>15 && detKinBeamRot_def_angle_e<30)// E_clus3x3<(20-(10/7)*detKinBeamRot_def_angle_e -- (E_clus3x3<5 && detKinBeamRot_def_angle_e<11)
+    if(detKinBeamRot_def_angle_e>14 && detKinBeamRot_def_angle_e<19)// E_clus3x3<(20-(10/7)*detKinBeamRot_def_angle_e -- (E_clus3x3<5 && detKinBeamRot_def_angle_e<11)
+    {
+        if(detKinBeamRot_def_angle_mu<0.3)
+        {hist_E3x3_eCUT->Fill(E_clus3x3,wgt_full);
+    hist_E9_eCUT->Fill(E9,wgt_full);
+    hist_E92_eCUT->Fill(Emean_out,wgt_full);
+    hist_Eout_eCUT->Fill(Eout,wgt_full); 
+    hist_distCUT->Fill(ddd,wgt_full);
+    E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
+    Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
+        } else
+        {
+         hist_E3x3_e->Fill(E_clus3x3,wgt_full);
+         hist_E9_e->Fill(E9,wgt_full);
+         hist_E92_e->Fill(Emean_out,wgt_full);
+         hist_Eout_e->Fill(Eout,wgt_full); 
+         hist_dist->Fill(ddd,wgt_full);
+        E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
+        Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full); 
+        }
+        
+    // ZONA 5
+    if(detKinBeamRot_def_angle_e>19 && detKinBeamRot_def_angle_e<30)// E_clus3x3<(20-(10/7)*detKinBeamRot_def_angle_e -- (E_clus3x3<5 && detKinBeamRot_def_angle_e<11)
     {
         if(detKinBeamRot_def_angle_mu<0.2)
         {hist_E3x3_eCUT->Fill(E_clus3x3,wgt_full);
@@ -581,6 +603,7 @@ d->cd(3);
 diff_th_phe->GetXaxis()->SetTitle("Delta_Theta[mrad]");
 diff_th_phe->SetLineColor(30);
 diff_th_phe->SetLineWidth(3);
+diff_th_phe->SetMinimum(1);
 diff_th_phe->Draw("HIST");     
    
 d->SaveAs("/home/LHCB-T3/espedicato/tesi/studio2/photon.png");

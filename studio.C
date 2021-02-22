@@ -283,9 +283,6 @@ wtot+=wi;
 double centroidX=(Ex)/wtot;
 double centroidY=(Ey)/wtot; 
 
-if (photon_energy==-1) cout << " coordinate centroide (" << centroidX << ", " <<centroidY << "); coordinate elettrone " <<  detKinBeamRot_cooXe << ", " << detKinBeamRot_cooYe << endl;
-double ddd=sqrt((centroidX-detKinBeamRot_cooXe)*(centroidX-detKinBeamRot_cooXe)+(centroidY-detKinBeamRot_cooYe)*(centroidY-detKinBeamRot_cooYe));   
-hist_dist->Fill(ddd,wgt_full);
 //hist_distLO->Fill(ddd,wgt_LO);
 
 

@@ -83,8 +83,8 @@ TH1F* hist_E92_eOUT=new TH1F("E9e", "E92 OUT", 100,0.,1);
 TH1F* hist_E92_eLOOUT=new TH1F("E9eLO", "E92 LO OUT", 100,0.,1);  
     
     
-TH1F* ang=new TH1F("dist", "DTheta TheTRACK-TheECAL", 200,-10,10);
-TH1F* angLO=new TH1F("distLO", "DTheta TheTRACK-TheECAL LO", 200,-10,10);
+TH1F* ang=new TH1F("dist", "DTheta TheTRACK-TheECAL", 200,0,100);
+TH1F* angLO=new TH1F("distLO", "DTheta TheTRACK-TheECAL LO", 200,0,100);
 
 number[36]=1; number[37]=2; number[38]=3; number[39]=4; number[40]=5;
 number[29]=6; number[30]=7; number[31]=8; number[32]=9; number[33]=10;
@@ -313,7 +313,7 @@ if (E_clus3x3!=0){E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);}
 Th->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
     
 double ddd=sqrt((centroidX-detKinBeamRot_cooXe)*(centroidX-detKinBeamRot_cooXe)+(centroidY-detKinBeamRot_cooYe)*(centroidY-detKinBeamRot_cooYe));    
-if (photon_energy==-1){hist_dist->Fill(ddd,wgt_full); ang->Fill(diff,wgt_full);} else {hist_distLO->Fill(ddd,wgt_full); angLO->Fill(diff,wgt_full);}
+if (photon_energy==-1){hist_dist->Fill(ddd,wgt_full); ang->Fill(th_ECAL,wgt_full);} else {hist_distLO->Fill(ddd,wgt_full); angLO->Fill(detKinBeamRot_the,wgt_full);}
     
 /*hist_E9_eOUT->Fill(E9,wgt_full);
 hist_E9_eLOOUT->Fill(E9,wgt_LO); 

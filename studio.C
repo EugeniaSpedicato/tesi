@@ -285,15 +285,7 @@ Ey+=wi*y;
 wtot+=wi;
 }
 double centroidX=(Ex)/wtot;
-double centroidY=(Ey)/wtot; 
-
-/*if (photon_energy==-1) cout << " coordinate centroide (" << centroidX << ", " <<centroidY << "); coordinate elettrone " <<  detKinBeamRot_cooXe << ", " << detKinBeamRot_cooYe << endl;
-double ddd=sqrt((centroidX-detKinBeamRot_cooXe)*(centroidX-detKinBeamRot_cooXe)+(centroidY-detKinBeamRot_cooYe)*(centroidY-detKinBeamRot_cooYe));   
-hist_dist->Fill(ddd,wgt_full);
-hist_distLO->Fill(ddd,wgt_LO);*/
-
-
-                            
+double centroidY=(Ey)/wtot;        
 E9=E_1/E_clus3x3;           
 Eout=(Etotcal-E_clus3x3)/E_clus3x3;
 Eres_in=(E_clus3x3-E_1-E2-E3-E4)/E_clus3x3;
@@ -301,16 +293,14 @@ E2nd=E2/E_1;
 
 double R=sqrt((detKinBeamRot_x_in-centroidX)*(detKinBeamRot_x_in-centroidX)+(detKinBeamRot_y_in-centroidY)*(detKinBeamRot_y_in-centroidY)); // cm  
 double ZV=0.;
-if (detKinBeamRot_tar==0){ZV=100.75; } else ZV=200.75; // Z a metà dei targets in cm  
+if (detKinBeamRot_tar==0){ZV=100.75;} else ZV=200.75; // Z a metà dei targets in cm  
 double Zecal=310; //posizione in cm ECAL   
 double Z=Zecal-ZV;
 double th_ECAL=atan2(R,Z)*1000;//theta calorimetro in mrad
-cout << " th,r,Z " << th_ECAL << ", "<< R << ", " << Z << endl;
-cout << " th trak " << detKinBeamRot_the << endl;
     
 double diff=detKinBeamRot_the-th_ECAL;
     
-if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 && E_clus3x3>1)//&& detKinBeamRot_def_angle_mu>0.2  && E_clus3x3>1
+if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 && E_clus3x3>2)//&& detKinBeamRot_def_angle_mu>0.2  && E_clus3x3>1
 {
 if (E_clus3x3!=0){E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);} 
 Th->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
@@ -331,7 +321,16 @@ hist_E92_eLOOUT->Fill(E2nd,wgt_LO);
 hist_E9_e->Fill(E9,wgt_full);
 hist_E9_eLO->Fill(E9,wgt_LO); 
 hist_Eout_e->Fill(Eout,wgt_full);
-hist_Eout_eLO->Fill(Eout,wgt_LO);*/   
+hist_Eout_eLO->Fill(Eout,wgt_LO);*/  
+    
+
+/*if (photon_energy==-1) cout << " coordinate centroide (" << centroidX << ", " <<centroidY << "); coordinate elettrone " <<  detKinBeamRot_cooXe << ", " << detKinBeamRot_cooYe << endl;
+double ddd=sqrt((centroidX-detKinBeamRot_cooXe)*(centroidX-detKinBeamRot_cooXe)+(centroidY-detKinBeamRot_cooYe)*(centroidY-detKinBeamRot_cooYe));   
+hist_dist->Fill(ddd,wgt_full);
+hist_distLO->Fill(ddd,wgt_LO);*/
+
+
+                     
 
     
 n_cut+=wgt_full;

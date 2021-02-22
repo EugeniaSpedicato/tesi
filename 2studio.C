@@ -277,18 +277,7 @@ double th_ECAL=atan2(R,Z)*1000;//theta calorimetro in mrad
 double diff=detKinBeamRot_the-th_ECAL;*/
 double diffTh=detKinBeamRot_def_angle_e-photon_def_angle_ph;
     
-if(r_mu<1.7 && E_clus3x3>1){// && detKinBeamRot_tar==1
-    
- if(detKinBeamRot_tar==0) 
-{
-    E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
-    Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);   
-}
-if(detKinBeamRot_tar==1) 
-{
-    E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
-    Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);   
-}    
+if(r_mu<1.7 && E_clus3x3>1 && detKinBeamRot_tar==1){
     
 double ddd=sqrt((centroidX-detKinBeamRot_cooXe)*(centroidX-detKinBeamRot_cooXe)+(centroidY-detKinBeamRot_cooYe)*(centroidY-detKinBeamRot_cooYe));    
 
@@ -296,6 +285,7 @@ if(photon_energy!=-1 && n_cell_ph!=0){
 Ephout->Fill(photon_energy,wgt_full);
 Thphout->Fill(photon_def_angle_ph,wgt_full);
 diff_th_phe->Fill(diffTh,wgt_full);}
+    
     
     // ZONA 1    
     if(detKinBeamRot_def_angle_e<5)// E_clus3x3<(20-(10/7)*detKinBeamRot_def_angle_e -- (E_clus3x3<5 && detKinBeamRot_def_angle_e<11)
@@ -318,9 +308,11 @@ diff_th_phe->Fill(diffTh,wgt_full);}
          hist_dist->Fill(ddd,wgt_full);
         /*E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
         Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);*/
- 
+ if(photon_energy!=-1 && n_cell_ph!=0){
+EphoutCUT->Fill(photon_energy,wgt_full);
+ThphoutCUT->Fill(photon_def_angle_ph,wgt_full);
+diff_th_pheCUT->Fill(diffTh,wgt_full);}
         }
-    }
     
     
     // ZONA 2
@@ -344,7 +336,10 @@ diff_th_phe->Fill(diffTh,wgt_full);}
          hist_dist->Fill(ddd,wgt_full);
         /*E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
         Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);*/
-
+if(photon_energy!=-1 && n_cell_ph!=0){
+EphoutCUT->Fill(photon_energy,wgt_full);
+ThphoutCUT->Fill(photon_def_angle_ph,wgt_full);
+diff_th_pheCUT->Fill(diffTh,wgt_full);}
         }  
     }   
         
@@ -371,6 +366,10 @@ diff_th_phe->Fill(diffTh,wgt_full);}
          hist_dist->Fill(ddd,wgt_full);
         /*E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
         Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);*/
+            if(photon_energy!=-1 && n_cell_ph!=0){
+EphoutCUT->Fill(photon_energy,wgt_full);
+ThphoutCUT->Fill(photon_def_angle_ph,wgt_full);
+diff_th_pheCUT->Fill(diffTh,wgt_full);}
         }   
         }
     
@@ -395,6 +394,10 @@ diff_th_phe->Fill(diffTh,wgt_full);}
          hist_dist->Fill(ddd,wgt_full);
         /*E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
         Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);*/
+            if(photon_energy!=-1 && n_cell_ph!=0){
+EphoutCUT->Fill(photon_energy,wgt_full);
+ThphoutCUT->Fill(photon_def_angle_ph,wgt_full);
+diff_th_pheCUT->Fill(diffTh,wgt_full);}
         }   
     }
     
@@ -418,6 +421,10 @@ diff_th_phe->Fill(diffTh,wgt_full);}
          hist_dist->Fill(ddd,wgt_full);
         /*E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
         Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);*/
+            if(photon_energy!=-1 && n_cell_ph!=0){
+EphoutCUT->Fill(photon_energy,wgt_full);
+ThphoutCUT->Fill(photon_def_angle_ph,wgt_full);
+diff_th_pheCUT->Fill(diffTh,wgt_full);}
         }
     }
 
@@ -487,12 +494,10 @@ c4a->cd(1);
 E3x31CUT->GetXaxis()->SetTitle("Theta_el[mrad]");
 E3x31CUT->GetYaxis()->SetTitle("Ereco3x3[GeV]");
 E3x31CUT->Draw("COLZ");
-    gPad->SetLogy();
 c4a->cd(2);   
 E3x32CUT->GetXaxis()->SetTitle("Theta_el[mrad]");
 E3x32CUT->GetYaxis()->SetTitle("Ereco3x3[GeV]");
 E3x32CUT->Draw("COLZ");
-    gPad->SetLogy();
 
 
 c4a->SaveAs("/home/LHCB-T3/espedicato/tesi/studio2/thE_cut.png");
@@ -626,7 +631,7 @@ Ephout->SetMinimum(1);
 Ephout->Draw("HIST");
 
 EphoutCUT->GetXaxis()->SetTitle("E[GeV]");
-EphoutCUT->SetLineColor(kViolet);
+EphoutCUT->SetLineColor(kBlue);
 EphoutCUT->SetLineWidth(3);
 EphoutCUT->SetMinimum(1);
 EphoutCUT->Draw("HIST same");

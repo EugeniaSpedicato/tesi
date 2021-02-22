@@ -149,7 +149,7 @@ double en_ph_sm=p_gamma_Lab_div.E();
 TMatrixD cooPH=MCSphoton(p_gamma_Lab_div,xin,yin);
 double ECAL_E= energy_sm_el+en_ph_sm;   
 double cellPH=myGrid->GiveCentralCell(cooPH[0][0]*100,cooPH[0][1]*100);
-LoadPhoton(event,photon,p_gamma_Lab_div,cooPH[0][0],cooPH[0][1],myGrid);
+LoadPhoton(event,photon,p_gamma_Lab_div,p_mu_in,cooPH[0][0],cooPH[0][1],myGrid);
     if (r_mu<5 && ECAL_E>0.2)
     {
     //for electrons
@@ -190,11 +190,11 @@ EMShower TheShower(gamma,myParam,myGrid,bFixedLength,nPart,X0depth,energy_in_el,
 TheShower.compute();
 LoadECAL(detKinBeamRot,myGrid,i);
 PxPyPzEVector pNO(0,0,0,0);
-LoadPhoton(event, photon,pNO,0,0,myGrid);}
+LoadPhoton(event, photon,pNO,p_mu_in,0,0,myGrid);}
 } else 
 {LoadECAL(detKinBeamRot,myGrid,i);  
  PxPyPzEVector pNO(0,0,0,0);
-LoadPhoton(event, photon,pNO,0,0,myGrid);}
+LoadPhoton(event, photon,pNO,p_mu_in,0,0,myGrid);}
 
 }
 
@@ -861,14 +861,14 @@ TMatrixD FastSim::MCSphoton(const PxPyPzEVector & kp,const Double_t & xin, const
 }
 
 
-TMatrixD FastSim::Def_angle(const PxPyPzEVector & p_mu_in_div,const PxPyPzEVector & p_mu_out_div,const PxPyPzEVector & p_e_out_div) const {
+TMatrixD FastSim::Def_angle(const PxPyPzEVector & p_mu_in_div,const PxPyPzEVector & p_mu_out_div,const PxPyPzEVector & p_e_out_div,const PxPyPzEVector & p_gamma_lab_div) const {
     
 
 
 XYZVector p_mu_in_div3 = p_mu_in_div.Vect().Unit();    
 XYZVector p_e_out_div3 = p_e_out_div.Vect().Unit();
 XYZVector p_mu_out_div3 = p_mu_out_div.Vect().Unit();
-
+XYZVector p_gamma_lab_div3 = p_gamma_lab_div3.Vect().Unit();
 
     
 Double_t DIR_mu=p_mu_in_div3.Dot(p_mu_out_div3);
@@ -876,13 +876,28 @@ Double_t A_DIR_mu=abs(DIR_mu)<1. ? 1000.*acos(DIR_mu) : 100.;
     
 Double_t DIR_e=p_mu_in_div3.Dot(p_e_out_div3);
 Double_t A_DIR_e=abs(DIR_e)<1. ? 1000.*acos(DIR_e) : 100.;
+    
+Double_t DIR_ph=p_mu_in_div3.Dot(p_gamma_lab_div3);
+Double_t A_DIR_ph=abs(DIR_ph)<1. ? 1000.*acos(DIR_ph) : 100.;
 
 TMatrixD def_angle(2,1);
   def_angle[0][0]=A_DIR_mu;
   def_angle[1][0]=A_DIR_e;
+  def_angle[2][0]=A_DIR_ph;
+    
     
 return def_angle;
 }
+
+Double_t FastSim::Def_angle_ph(const PxPyPzEVector & p_mu_in_div,const PxPyPzEVector & p_gamma_lab_div) const {
+
+XYZVector p_mu_in_div3 = p_mu_in_div.Vect().Unit();  
+XYZVector p_gamma_lab_div3 = p_gamma_lab_div3.Vect().Unit();
+
+Double_t DIR_ph=p_mu_in_div3.Dot(p_gamma_lab_div3);
+Double_t A_DIR_ph=abs(DIR_ph)<1. ? 1000.*acos(DIR_ph) : 100.;
+
+return A_DIR_ph;
 
 void FastSim::LoadKineVars(const PxPyPzEVector & p_mu_in,  const PxPyPzEVector & p_e_in, 
 			   const PxPyPzEVector & p_mu_out, const PxPyPzEVector & p_e_out, const TMatrixD & coo, const Double_t & TheINT, const Double_t & ThMuINT,
@@ -924,7 +939,7 @@ kv.Pe_out = p_e_out.P();
 TMatrixD def_angle=Def_angle(p_mu_in,p_mu_out,p_e_out);
     
 kv.def_angle_mu = def_angle[0][0];
-kv.def_angle_e = def_angle[1][0]; 
+kv.def_angle_e = def_angle[1][0];  
 
 kv.n_cell_e = theGrid->GiveCentralCell(kv.cooXe*100,kv.cooYe*100);
 
@@ -961,7 +976,7 @@ kv.n_cell_e = theGrid->GiveCentralCell(kv.cooXe*100,kv.cooYe*100);
 
 
       
-void FastSim::LoadPhoton(const MuE::Event & event, MuE::Photon & photon,const PxPyPzEVector & p_gamma_lab_div,const Double_t & x,const Double_t & y,ECAL* const & theGrid) {
+void FastSim::LoadPhoton(const MuE::Event & event, MuE::Photon & photon,const PxPyPzEVector & p_gamma_lab_div,const PxPyPzEVector & p_mu_in,const Double_t & x,const Double_t & y,ECAL* const & theGrid) {
   // by now at most one photon
  auto n_photons = event.photons.size();
   
@@ -974,6 +989,7 @@ PxPyPzEVector p_gamma_CoM = Lorentz_ToCoM(p_gamma_lab_div);
     photon.phi       = p_gamma_lab_div.Phi();
     photon.energyCoM = p_gamma_CoM.E(); 
 
+    photon.def_angle_ph=Def_angle(p_mu_in,p_gamma_lab_div;
       
     photon.coox=x;
     photon.cooy=y;
@@ -985,6 +1001,7 @@ PxPyPzEVector p_gamma_CoM = Lorentz_ToCoM(p_gamma_lab_div);
     photon.energy    = -1;
     photon.theta     = -1;
     photon.phi       =  0;
+    photon.def_angle_ph = -1;
     photon.coox     = -1;
     photon.cooy     = -1;
    photon.n_cell_ph = 0;

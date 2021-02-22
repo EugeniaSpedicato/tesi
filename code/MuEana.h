@@ -111,7 +111,7 @@ Double_t n_cell_e;
 
     
   Photon():
-    energy(-1),theta(-1),phi(0),energyCoM(-1),coox(-1),cooy(-1),n_cell_ph(0)
+    energy(-1),theta(-1),phi(0),energyCoM(-1),def_angle_ph(-1),coox(-1),cooy(-1),n_cell_ph(0)
       {};
 virtual ~Photon(){};
 

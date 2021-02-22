@@ -58,7 +58,12 @@ TH1F* hist_E92_eCUT=new TH1F("Emeancut", "Mean E out cut", 100,0.,0.15);
     
 TH1F* hist_E3x3_e=new TH1F("E3x3", "Energy Reco 3x3", 70,0.,140);
 TH1F* hist_E3x3_eCUT=new TH1F("E3x3cut", "Energy Reco 3x3 cut", 70,0.,140); 
+
     
+    
+//caratteristiche fotoni
+    TH1F* Ephout=new TH1F("EnergyPH", "Energy Ph", 75,0.2,150); 
+    TH1F* Thphout=new TH1F("EnergyPH", "Theta Ph", 75,0.2,150); 
 
 number[36]=1; number[37]=2; number[38]=3; number[39]=4; number[40]=5;
 number[29]=6; number[30]=7; number[31]=8; number[32]=9; number[33]=10;

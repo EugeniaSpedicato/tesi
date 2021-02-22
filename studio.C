@@ -306,6 +306,8 @@ double Zecal=3100; //posizione in mm ECAL
 double Z=Zecal-ZV;
 double th_ECAL=atan2(R,Z);//theta calorimetro in mrad
 cout << " th,r,Z " << th_ECAL << ", "<< R << ", " << Z << endl;
+cout << " th trak" << detKinBeamRot_the << endl;
+    
 double diff=detKinBeamRot_the-th_ECAL;
     
 if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 && E_clus3x3>1)//&& detKinBeamRot_def_angle_mu>0.2  && E_clus3x3>1

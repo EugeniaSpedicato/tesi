@@ -275,7 +275,7 @@ double diff=detKinBeamRot_the-th_ECAL;*/
     
 if(r_mu<1.7 && E_clus3x3>1 && detKinBeamRot_tar==1){
 
-if(photon_energy!=-1){
+if(photon_energy!=-1 && n_cell_ph!=0){
 double diffTh=detKinBeamRot_def_angle_e-photon_def_angle_ph;
 Ephout->Fill(photon_energy,wgt_full);
 Thphout->Fill(photon_def_angle_ph,wgt_full);
@@ -598,12 +598,12 @@ d->cd(2);
 Thphout->GetXaxis()->SetTitle("Theta[mrad]");
 Thphout->SetLineColor(kRed);
 Thphout->SetLineWidth(3);
+Thphout->SetMinimum(1);
 Thphout->Draw("HIST"); 
 d->cd(3);
 diff_th_phe->GetXaxis()->SetTitle("Delta_Theta[mrad]");
 diff_th_phe->SetLineColor(30);
 diff_th_phe->SetLineWidth(3);
-diff_th_phe->SetMinimum(1);
 diff_th_phe->Draw("HIST");     
    
 d->SaveAs("/home/LHCB-T3/espedicato/tesi/studio2/photon.png");

@@ -297,7 +297,7 @@ E2nd=E2/E_1;
 
     
     
-if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 && E_clus3x3>1)//&& detKinBeamRot_def_angle_mu>0.2  && E_clus3x3>1
+if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 && E_clus3x3>2)//&& detKinBeamRot_def_angle_mu>0.2  && E_clus3x3>1
 {
 if (E_clus3x3!=0){E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);} 
 Th->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);

@@ -278,7 +278,7 @@ hist_dist->Fill(ddd,wgt_full);
 E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
 Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full); 
     
-    if( E_clus3x3<(20-(10/7)*detKinBeamRot_def_angle_e) )
+    if( E_clus3x3<5 && detKinBeamRot_def_angle_e<11)// E_clus3x3<(20-(10/7)*detKinBeamRot_def_angle_e
     {hist_E3x3_eCUT->Fill(E_clus3x3,wgt_full);
     hist_E9_eCUT->Fill(E9,wgt_full);
     hist_E92_eCUT->Fill(Emean_out,wgt_full);
@@ -431,7 +431,7 @@ hist_distCUT->SetLineWidth(3);
 hist_distCUT->SetLineColor(kRed);
 hist_distCUT->Draw("HIST same"); 
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
-gPad->SetLogy();
+
 c9->SaveAs("/home/LHCB-T3/espedicato/tesi/studio2/E9.png");
 
     

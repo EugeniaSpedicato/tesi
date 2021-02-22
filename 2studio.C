@@ -34,34 +34,17 @@ Double_t E2nd=0.;
 Double_t Eres_in=0.;
     
     
-double n5=0;
-double n_small=0;
-double n_cut=0;
-double n_cut_ph=0;
-double n_cut_noph=0;
-    
-
-    
-
-
-    
-    
- 
-TH1F* TheCUT=new TH1F("th", "th El core CUT", 120,0,30); 
-TH1F* The1CUT=new TH1F("th", "th El TAR 1 core CUT", 120,0,30); 
-TH1F* The2CUT=new TH1F("th", "th El TAR 2 core CUT", 120,0,30);
-    
     
 TH1F* hist_dist=new TH1F("dist", "Dist e-centroide", 400,0,8);
 TH1F* hist_distLO=new TH1F("dist", "Dist e-centroide", 400,0,8);
 
 
-TH2F  *E3x31CUT  = new TH2F("ThEel1" , " Th_el Vs. E_E3x3 core NLO CUT",120,0,30,360,0,140);
-TH2F  *E3x32CUT  = new TH2F("ThEel2" , " Th_el Vs. E_E3x3 core LO CUT",120,0,30,360,0,140);
+TH2F  *E3x31CUT  = new TH2F("ThEel1" , " Th_el Vs. E_3x3 coreECAL TAR 1 (r_mu<5cm)",120,0,30,360,0,140);
+TH2F  *E3x32CUT  = new TH2F("ThEel2" , " Th_el Vs. E_3x3 coreECAL TAR 2 (r_mu<5cm)",120,0,30,360,0,140);
     
     
-TH2F  *Th  = new TH2F("ThEel1" , " Th_el Vs. Th_mu  core NLO CUT",120,0,30,150,0,5);
-TH2F  *ThCUT  = new TH2F("ThEel2" , " Th_el Vs. Th_mu   core NLO cut CUT",120,0,30,150,0,5);    
+TH2F  *Th  = new TH2F("ThEel1" , " Th_el Vs. Th_mu coreECAL TAR 1 (r_mu<5cm)",120,0,30,150,0,5);
+TH2F  *ThCUT  = new TH2F("ThEel2" , " Th_el Vs. Th_mu coreECAL TAR 2 (r_mu<5cm)",120,0,30,150,0,5);    
 
 
 TH1F* hist_E9_e=new TH1F("E9e", "E9", 100,0.,1);
@@ -76,15 +59,12 @@ TH1F* hist_Eout_eLO=new TH1F("en", "Eout", 100,0.,0.5);
 TH1F* hist_Eout_eOUT=new TH1F("en", "Eout NLO OUT", 100,0.,0.5);
 TH1F* hist_Eout_eLOOUT=new TH1F("en", "Eout OUT", 100,0.,0.5);
     
-TH1F* hist_E92_e=new TH1F("E9e", "E92", 100,0.,1);
-TH1F* hist_E92_eLO=new TH1F("E9eLO", "E92 LO", 100,0.,1);
+TH1F* hist_E92_e=new TH1F("E9e", "Mean E out", 100,0.,1);
+TH1F* hist_E92_eLO=new TH1F("E9eLO", "Mean E out LO", 100,0.,1);
 
-TH1F* hist_E92_eOUT=new TH1F("E9e", "E92 OUT", 100,0.,1);
-TH1F* hist_E92_eLOOUT=new TH1F("E9eLO", "E92 LO OUT", 100,0.,1);  
+TH1F* hist_E92_eOUT=new TH1F("E9e", "Mean E out OUT", 100,0.,1);
+TH1F* hist_E92_eLOOUT=new TH1F("E9eLO", "Mean E out LO OUT", 100,0.,1);  
     
-    
-TH1F* ang=new TH1F("dist", "DTheta TheTRACK-TheECAL", 200,0,100);
-TH1F* angLO=new TH1F("distLO", "DTheta TheTRACK-TheECAL LO", 200,0,100);
 
 number[36]=1; number[37]=2; number[38]=3; number[39]=4; number[40]=5;
 number[29]=6; number[30]=7; number[31]=8; number[32]=9; number[33]=10;
@@ -206,19 +186,12 @@ for(int i=0; i<9; ++i)
 {
     if (Array9[i]>0 && Array9[i]<26) E_clus3x3+=myGrid->GetBinContent(Rev_number[Array9[i]]);
 }  
-
-    double r=sqrt((detKinBeamRot_cooXe*detKinBeamRot_cooXe)+(detKinBeamRot_cooYe*detKinBeamRot_cooYe));
     
-
-    
-    for(int i=1;i<26;++i)
+for(int i=1;i<26;++i)
     {Etotcal+=en_c[i];}
-
-
            
 if(CentralCell==7 || CentralCell==8 || CentralCell==9 || CentralCell==12 || CentralCell==13 || CentralCell==14 || CentralCell==17 || CentralCell==18 || CentralCell==19)
 { 
-n_small+=wgt_full;
 
 //seconda    
 double en_Maxcell=0.;
@@ -269,15 +242,11 @@ E4=en_Maxcell2 ;
     
 E9=E_1/E_clus3x3;           
 Eout=(Etotcal-E_clus3x3)/E_clus3x3;
-Eres_in=(E_clus3x3-E_1-E2-E3-E4)/E_clus3x3;
-E2nd=E2/E_1;    
+Emean_out=(Etotcal-E_clus3x3)/16;    
     
-    
-
 double Ex=0.;
 double Ey=0.;
 double wtot=0.;
-
 
 for(int i=0; i<9; ++i)
 {
@@ -295,24 +264,36 @@ double centroidX=(Ex)/wtot;
 double centroidY=(Ey)/wtot;        
 
 double R=sqrt((detKinBeamRot_x_in-centroidX)*(detKinBeamRot_x_in-centroidX)+(detKinBeamRot_y_in-centroidY)*(detKinBeamRot_y_in-centroidY)); // cm  
-double ZV=0.;
+/*double ZV=0.;
 if (detKinBeamRot_tar==0){ZV=100.75;} else ZV=200.75; // Z a metà dei targets in cm  
 double Zecal=310; //posizione in cm ECAL   
 double Z=Zecal-ZV;
 double th_ECAL=atan2(R,Z)*1000;//theta calorimetro in mrad
+double diff=detKinBeamRot_the-th_ECAL;*/
     
-double diff=detKinBeamRot_the-th_ECAL;
     
-if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 && E_clus3x3>1)//&& detKinBeamRot_def_angle_mu>0.2  && E_clus3x3>1
+//if(r_mu<5){//r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2  && E_clus3x3>1
+
+
+if(detKinBeamRot_tar==0) 
 {
-if (E_clus3x3!=0){E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);} 
-Th->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
-    
+    E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
+    Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);   
+}
+if(detKinBeamRot_tar==1) 
+{
+    E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
+    Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);   
+}
+
 double ddd=sqrt((centroidX-detKinBeamRot_cooXe)*(centroidX-detKinBeamRot_cooXe)+(centroidY-detKinBeamRot_cooYe)*(centroidY-detKinBeamRot_cooYe));    
-    
-if (photon_energy==-1){ang->Fill(th_ECAL,wgt_full);
-angLO->Fill(detKinBeamRot_the,wgt_full);}
-    
+
+  
+/*if (photon_energy==-1) cout << " coordinate centroide (" << centroidX << ", " <<centroidY << "); coordinate elettrone " <<  detKinBeamRot_cooXe << ", " << detKinBeamRot_cooYe << endl;
+double ddd=sqrt((centroidX-detKinBeamRot_cooXe)*(centroidX-detKinBeamRot_cooXe)+(centroidY-detKinBeamRot_cooYe)*(centroidY-detKinBeamRot_cooYe));   
+hist_dist->Fill(ddd,wgt_full);
+hist_distLO->Fill(ddd,wgt_LO);*/  
+
 /*hist_E9_eOUT->Fill(E9,wgt_full);
 hist_E9_eLOOUT->Fill(E9,wgt_LO); 
 hist_Eout_eOUT->Fill(Eout,wgt_full);
@@ -325,79 +306,16 @@ hist_E9_e->Fill(E9,wgt_full);
 hist_E9_eLO->Fill(E9,wgt_LO); 
 hist_Eout_e->Fill(Eout,wgt_full);
 hist_Eout_eLO->Fill(Eout,wgt_LO);*/  
-    
 
-/*if (photon_energy==-1) cout << " coordinate centroide (" << centroidX << ", " <<centroidY << "); coordinate elettrone " <<  detKinBeamRot_cooXe << ", " << detKinBeamRot_cooYe << endl;
-double ddd=sqrt((centroidX-detKinBeamRot_cooXe)*(centroidX-detKinBeamRot_cooXe)+(centroidY-detKinBeamRot_cooYe)*(centroidY-detKinBeamRot_cooYe));   
-hist_dist->Fill(ddd,wgt_full);
-hist_distLO->Fill(ddd,wgt_LO);*/
-
-
-                     
-
-    
-n_cut+=wgt_full;
-if(SecondCentralCell_in9!=0)
-{   
-double x = myGrid->GetXaxis()->GetBinCenter(Rev_numberX[SecondCentralCell_in9]);
-double y = myGrid->GetYaxis()->GetBinCenter(Rev_numberY[SecondCentralCell_in9]);
-double dist=sqrt((x-detKinBeamRot_cooXe)*(x-detKinBeamRot_cooXe)+(y-detKinBeamRot_cooYe)*(y-detKinBeamRot_cooYe)); 
-     
-
-if (dist<1.425)// && E9>0.4 && E9<0.6 && Eout<0.05 && E2nd<0.6
-{ if (E_clus3x3!=0){E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);} 
-ThCUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
-}
-
-if (dist>1.425 && dist<4)
-{//if (E_clus3x3!=0){E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);}   //ThCUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
-if (photon_energy==-1){hist_dist->Fill(ddd,wgt_full);} else {hist_distLO->Fill(ddd,wgt_full);}
-}
-
-if (dist>4)//&& E9>0.8 && Eout<0.04 && E2nd<0.1
-{ if (E_clus3x3!=0){E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);}
-  ThCUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full); 
-}
-
-} 
-else if(SecondCentralCell!=0)// && E9>0.87 && Eout<0.07
-{
-if (E_clus3x3!=0){E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);}   
-ThCUT->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
-}
     
         
-    }}
-           
-           
-/*TCanvas * Ecal_= new TCanvas("Ecal_","Ecal_",1500,100,3500,2000);
-Ecal_->Divide(2,1);
-Ecal_->cd(1);
-gStyle->SetPalette(kAquamarine);
-//TColor::InvertPalette();
-myGrid->SetXTitle("x (cm)");
-myGrid->SetYTitle("y (cm)");
-myGrid->Draw("COL");
-myGrid->Draw("TEXT SAME");
-Ecal_->cd(2);
-myGrid->Draw("LEGO");
-std::ostringstream name1;
-name1 <<"/home/LHCB-T3/espedicato/tesi/studio/Ecal"<< jentry << ".png";
-TString name =name1.str();
-Ecal_->SaveAs(name);   */        
+   // }
+}       
 }
 delete myGrid; 
 }}
-    
- cout << "TOT eventi nel r<5 " << n5 << endl;
- cout << "Eventi in small ECAL " << n_small <<  endl;
- cout << "Eventi in taglio fiduciale " << n_cut <<  endl;
- cout << "Eventi in taglio fiduciale con ph " << n_cut_ph <<  endl;
- cout << "Eventi in taglio fiduciale senza ph  " << n_cut_noph <<  endl;
 
-    
-
-    
+      
 Int_t nx1CUT = E3x31CUT->GetNbinsX();
 Int_t ny1CUT = E3x31CUT->GetNbinsY();
 for (Int_t i=1; i<nx1CUT+1; i++) {
@@ -410,17 +328,17 @@ for (Int_t i=1; i<nx2CUT+1; i++) {
 for (Int_t j=1; j<ny2CUT+1; j++) {
 if (E3x32CUT->GetBinContent(i,j)<5) E3x32CUT->SetBinContent(i,j,0);}}
     
-Int_t nxTh = Th->GetNbinsX();
-Int_t nyTh = Th->GetNbinsY();
+Int_t nxTh = Th1->GetNbinsX();
+Int_t nyTh = Th1->GetNbinsY();
 for (Int_t i=1; i<nxTh+1; i++) {
 for (Int_t j=1; j<nyTh+1; j++) {
-if (Th->GetBinContent(i,j)<5) Th->SetBinContent(i,j,0);}}
+if (Th1->GetBinContent(i,j)<5) Th1->SetBinContent(i,j,0);}}
     
-Int_t nx2thcut = ThCUT->GetNbinsX();
-Int_t ny2thcut = ThCUT->GetNbinsY();
+Int_t nx2thcut = Th2->GetNbinsX();
+Int_t ny2thcut = Th2->GetNbinsY();
 for (Int_t i=1; i<nx2thcut+1; i++) {
 for (Int_t j=1; j<ny2thcut+1; j++) {
-if (ThCUT->GetBinContent(i,j)<5) ThCUT->SetBinContent(i,j,0);}}
+if (Th2->GetBinContent(i,j)<5) Th2->SetBinContent(i,j,0);}}
         
     
 TCanvas * c4a= new TCanvas("c4a","c4a",100,100,2500,2000);
@@ -437,25 +355,23 @@ E3x32CUT->GetYaxis()->SetTitle("Ereco3x3[GeV]");
 E3x32CUT->Draw("COLZ");
 
 
-c4a->SaveAs("/home/LHCB-T3/espedicato/tesi/studio/thE_cut.png");
+c4a->SaveAs("/home/LHCB-T3/espedicato/tesi/studio2/thE_cut.png");
     
 TCanvas * thu= new TCanvas("c4a","c4a",100,100,2500,2000);
 thu->Divide(1,2);
 gStyle->SetPalette(kLake);
 TColor::InvertPalette(); 
 thu->cd(1);   
-Th->GetXaxis()->SetTitle("Theta_el[mrad]");
-Th->GetYaxis()->SetTitle("Theta_mu[GeV]");
-Th->Draw("COLZ");
+Th1->GetXaxis()->SetTitle("Theta_el[mrad]");
+Th1->GetYaxis()->SetTitle("Theta_mu[GeV]");
+Th1->Draw("COLZ");
 thu->cd(2);   
-ThCUT->GetXaxis()->SetTitle("Theta_el[mrad]");
-ThCUT->GetYaxis()->SetTitle("Theta_mu[GeV]");
-ThCUT->Draw("COLZ");
-
-
-thu->SaveAs("/home/LHCB-T3/espedicato/tesi/studio/thu.png");  
+Th2->GetXaxis()->SetTitle("Theta_el[mrad]");
+Th2->GetYaxis()->SetTitle("Theta_mu[GeV]");
+Th2->Draw("COLZ");
+thu->SaveAs("/home/LHCB-T3/espedicato/tesi/studio2/thu.png");  
     
-TCanvas * c9= new TCanvas("c9","c9",1000,100,2500,2000);
+/*TCanvas * c9= new TCanvas("c9","c9",1000,100,2500,2000);
     c9->Divide(2,2);
     c9->cd(1);
 hist_E9_e->GetXaxis()->SetTitle("Ecentral/E3x3");
@@ -499,7 +415,7 @@ hist_Eout_eLOOUT->SetLineWidth(3);
 hist_Eout_eLOOUT->SetLineColor(kRed);
 hist_Eout_eLOOUT->Draw("HIST same");  
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
-c9->SaveAs("/home/LHCB-T3/espedicato/tesi/studio/E9.png");
+c9->SaveAs("/home/LHCB-T3/espedicato/tesi/studio2/E9.png");
 
     
 TCanvas * cc= new TCanvas("cc","cc",1000,100,2500,2000);
@@ -525,11 +441,10 @@ hist_E92_eLOOUT->SetLineWidth(3);
 hist_E92_eLOOUT->SetLineColor(kRed);
 hist_E92_eLOOUT->Draw("HIST same");     
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
-cc->SaveAs("/home/LHCB-T3/espedicato/tesi/studio/E92nd.png");
+cc->SaveAs("/home/LHCB-T3/espedicato/tesi/studio2/E92nd.png");
     
 TCanvas * dd= new TCanvas("dd","dd",1000,100,2500,2000);
-dd->Divide(1,2);
-       dd->cd(1);
+
 hist_dist->GetXaxis()->SetTitle("d [cm]");
 hist_dist->SetLineWidth(3);
 hist_dist->Draw("HIST"); 
@@ -537,15 +452,7 @@ hist_distLO->GetXaxis()->SetTitle("d [cm]");
 hist_distLO->SetLineColor(kRed);
 hist_distLO->SetLineWidth(3);
 hist_distLO->Draw("HIST same"); 
-       dd->cd(2);
-ang->GetXaxis()->SetTitle("dTh [mrad]");
-ang->SetLineWidth(3);
-ang->Draw("HIST"); 
-angLO->GetXaxis()->SetTitle("dTh [mrad]");
-angLO->SetLineColor(kRed);
-angLO->SetLineWidth(3);
-angLO->Draw("HIST same");        
+   
+dd->SaveAs("/home/LHCB-T3/espedicato/tesi/studio2/dist.png");*/
 
-dd->SaveAs("/home/LHCB-T3/espedicato/tesi/studio/dist.png");
-
-}
+} 

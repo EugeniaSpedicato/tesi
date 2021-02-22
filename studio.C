@@ -302,7 +302,8 @@ E2nd=E2/E_1;
 double R=sqrt((detKinBeamRot_x_in-centroidX)*(detKinBeamRot_x_in-centroidX)+(detKinBeamRot_y_in-centroidY)*(detKinBeamRot_y_in-centroidY))*10; // mm  
 double ZV=0.;
 if (detKinBeamRot_tar==0){ZV=1007.5; } else ZV=2007.5; // Z a metà dei targets in mm  
-double Z=3100; //posizione in mm ECAL    
+double Zecal=3100; //posizione in mm ECAL   
+double Z=Zecal-ZV;
 double th_ECAL=atan2(R,Z);//theta calorimetro in mrad
 
 double diff=detKinBeamRot_the-th_ECAL;

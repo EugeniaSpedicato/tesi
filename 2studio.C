@@ -272,7 +272,7 @@ double th_ECAL=atan2(R,Z)*1000;//theta calorimetro in mrad
 double diff=detKinBeamRot_the-th_ECAL;*/
     
     
-//if(r_mu<5){//r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2  && E_clus3x3>1
+if(r_mu<1.7 && E_clus3x3>1){//r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2  && E_clus3x3>1
 
 
 if(detKinBeamRot_tar==0) 
@@ -309,7 +309,7 @@ hist_Eout_eLO->Fill(Eout,wgt_LO);*/
 
     
         
-   // }
+    }
 }       
 }
 delete myGrid; 

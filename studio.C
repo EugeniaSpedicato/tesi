@@ -274,7 +274,7 @@ double x = myGrid->GetXaxis()->GetBinCenter(Rev_numberX[Array9[i]]);
 double y = myGrid->GetYaxis()->GetBinCenter(Rev_numberY[Array9[i]]);
 
 double w=4.0+log(en_c[Array9[i]]/E_clus3x3);
-wi=(w>0)?w:0;
+double wi=(w>0)?w:0;
 
 Ex+=wi*x;
 Ey+=wi*y;

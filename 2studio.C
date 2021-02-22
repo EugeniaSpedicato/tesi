@@ -275,12 +275,12 @@ double diff=detKinBeamRot_the-th_ECAL;*/
     
 if(r_mu<1.7 && E_clus3x3>1 && detKinBeamRot_tar==1){
 
-/*if(photon_energy!=-1){
+if(photon_energy!=-1){
 double diffTh=detKinBeamRot_def_angle_e-photon_def_angle_ph;
 Ephout->Fill(photon_energy,wgt_full);
 Thphout->Fill(photon_def_angle_ph,wgt_full);
 diff_th_phe->Fill(diffTh,wgt_full);
-}    */
+}   
     
 double ddd=sqrt((centroidX-detKinBeamRot_cooXe)*(centroidX-detKinBeamRot_cooXe)+(centroidY-detKinBeamRot_cooYe)*(centroidY-detKinBeamRot_cooYe));    
 
@@ -565,7 +565,7 @@ hist_distCUT->Draw("HIST");
 
 c9c->SaveAs("/home/LHCB-T3/espedicato/tesi/studio2/E9cut.png");
 
-/*TCanvas * d= new TCanvas("d","d",1000,100,2500,2000);
+TCanvas * d= new TCanvas("d","d",1000,100,2500,2000);
 d->Divide(1,3);
 d->cd(1);
 Ephout->GetXaxis()->SetTitle("E[GeV]");
@@ -583,7 +583,7 @@ diff_th_phe->SetLineColor(30);
 diff_th_phe->SetLineWidth(3);
 diff_th_phe->Draw("HIST");     
    
-d->SaveAs("/home/LHCB-T3/espedicato/tesi/studio2/photon.png");*/
+d->SaveAs("/home/LHCB-T3/espedicato/tesi/studio2/photon.png");
 
     
 /*TCanvas * cc= new TCanvas("cc","cc",1000,100,2500,2000);

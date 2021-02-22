@@ -382,7 +382,7 @@ Eff1CUTtot->GetYaxis()->SetTitle("Efficency");
 Eff1CUTtot->SetLineWidth(3);
 Eff1CUTtot->SetLineColor(kBlue);
 Eff1CUTtot->SetMinimum(0);
-Eff1CUTtot->Draw(0.7); 
+Eff1CUTtot->Draw(); 
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 ef1->cd(2);  
 Eff2CUTtot->GetXaxis()->SetTitle("Theta el[mrad]");

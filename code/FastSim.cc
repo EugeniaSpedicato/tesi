@@ -448,7 +448,7 @@ Double_t sigBEe=(13.6/(ke.E()*1000))*sqrt(sB/x0B)*(1+0.038*log(sB/x0B)); //rad
                 xei[0][0] = x1+(1-sSin)*tan(anglexin);
                 yei[0][0] = y1+(1-sSin)*tan(angleyin);
         
-                //coo d'interazione dopo metà berillio
+                //coo d'interazione dopo tot berillio
                 Double_t x2 = gRandom->Gaus(xi[0][0],(1/sqrt(3))*(sB*vertex)*sigBE2in);
                 Double_t y2 = gRandom->Gaus(yi[0][0],(1/sqrt(3))*(sB*vertex)*sigBE2in);
 

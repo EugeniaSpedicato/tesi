@@ -30,7 +30,7 @@ int n_cell_ph;
 Double_t E_CAL=0.;
 Double_t E9=0.;
 Double_t Eout=0.;
-Double_t E2nd=0.;
+Double_t Emean_out=0.;
 Double_t Eres_in=0.;
     
     
@@ -43,8 +43,8 @@ TH2F  *E3x31CUT  = new TH2F("ThEel1" , " Th_el Vs. E_3x3 coreECAL TAR 1 (r_mu<5c
 TH2F  *E3x32CUT  = new TH2F("ThEel2" , " Th_el Vs. E_3x3 coreECAL TAR 2 (r_mu<5cm)",120,0,30,360,0,140);
     
     
-TH2F  *Th  = new TH2F("ThEel1" , " Th_el Vs. Th_mu coreECAL TAR 1 (r_mu<5cm)",120,0,30,150,0,5);
-TH2F  *ThCUT  = new TH2F("ThEel2" , " Th_el Vs. Th_mu coreECAL TAR 2 (r_mu<5cm)",120,0,30,150,0,5);    
+TH2F  *Th1  = new TH2F("ThEel1" , " Th_el Vs. Th_mu coreECAL TAR 1 (r_mu<5cm)",120,0,30,150,0,5);
+TH2F  *Th2  = new TH2F("ThEel2" , " Th_el Vs. Th_mu coreECAL TAR 2 (r_mu<5cm)",120,0,30,150,0,5);    
 
 
 TH1F* hist_E9_e=new TH1F("E9e", "E9", 100,0.,1);

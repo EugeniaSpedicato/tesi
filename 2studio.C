@@ -298,7 +298,7 @@ double ddd=sqrt((centroidX-detKinBeamRot_cooXe)*(centroidX-detKinBeamRot_cooXe)+
     Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
         } else
         {
-         if(E_clus3x3<7){hist_E3x3_e->Fill(E_clus3x3,wgt_full);
+         if(detKinBeamRot_def_angle_e<7){hist_E3x3_e->Fill(E_clus3x3,wgt_full);
          hist_E9_e->Fill(E9,wgt_full);
          hist_E92_e->Fill(Emean_out,wgt_full);
          hist_Eout_e->Fill(Eout,wgt_full); 

@@ -286,7 +286,7 @@ Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
     hist_distCUT->Fill(ddd,wgt_full);
     E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
     Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
-    } else
+    } else if(E_clus3x3<40 && detKinBeamRot_def_angle_e<11)
     {hist_E3x3_e->Fill(E_clus3x3,wgt_full);
 hist_E9_e->Fill(E9,wgt_full);
 hist_E92_e->Fill(Emean_out,wgt_full);

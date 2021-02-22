@@ -375,7 +375,7 @@ double ddd=sqrt((centroidX-detKinBeamRot_cooXe)*(centroidX-detKinBeamRot_cooXe)+
         E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
         Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full); 
         }
-        
+    }
     // ZONA 5
     if(detKinBeamRot_def_angle_e>19 && detKinBeamRot_def_angle_e<30)// E_clus3x3<(20-(10/7)*detKinBeamRot_def_angle_e -- (E_clus3x3<5 && detKinBeamRot_def_angle_e<11)
     {

@@ -80,7 +80,11 @@ TH1F* hist_E92_e=new TH1F("E9e", "E92", 100,0.,1);
 TH1F* hist_E92_eLO=new TH1F("E9eLO", "E92 LO", 100,0.,1);
 
 TH1F* hist_E92_eOUT=new TH1F("E9e", "E92 OUT", 100,0.,1);
-TH1F* hist_E92_eLOOUT=new TH1F("E9eLO", "E92 LO OUT", 100,0.,1);     
+TH1F* hist_E92_eLOOUT=new TH1F("E9eLO", "E92 LO OUT", 100,0.,1);  
+    
+    
+TH1F* ang=new TH1F("dist", "DTheta TheTRACK-TheECAL", 200,-10,10);
+TH1F* angLO=new TH1F("distLO", "DTheta TheTRACK-TheECAL LO", 200,-10,10);
 
 number[36]=1; number[37]=2; number[38]=3; number[39]=4; number[40]=5;
 number[29]=6; number[30]=7; number[31]=8; number[32]=9; number[33]=10;
@@ -295,15 +299,21 @@ Eout=(Etotcal-E_clus3x3)/E_clus3x3;
 Eres_in=(E_clus3x3-E_1-E2-E3-E4)/E_clus3x3;
 E2nd=E2/E_1;    
 
+double R=sqrt((detKinBeamRot_x_in-centroidX)*(detKinBeamRot_x_in-centroidX)+(detKinBeamRot_y_in-centroidY)*(detKinBeamRot_y_in-centroidY))*10; // mm  
+double ZV=0.;
+if (tar==0){ZV=1007.5; } else ZV=2007.5; // Z a metà dei targets in mm  
+double Z=3100; //posizione in mm ECAL    
+th_ECAL=atan2(R/Z);//theta calorimetro in mrad
+
+double diff=detKinBeamRot_the-th_ECAL;
     
-    
-if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 && E_clus3x3>2)//&& detKinBeamRot_def_angle_mu>0.2  && E_clus3x3>1
+if(r_mu<1.7 && detKinBeamRot_def_angle_mu>0.2 && E_clus3x3>1)//&& detKinBeamRot_def_angle_mu>0.2  && E_clus3x3>1
 {
 if (E_clus3x3!=0){E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);} 
 Th->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
     
 double ddd=sqrt((centroidX-detKinBeamRot_cooXe)*(centroidX-detKinBeamRot_cooXe)+(centroidY-detKinBeamRot_cooYe)*(centroidY-detKinBeamRot_cooYe));    
-if (photon_energy==-1){hist_dist->Fill(ddd,wgt_full); } else hist_distLO->Fill(ddd,wgt_full);
+if (photon_energy==-1){hist_dist->Fill(ddd,wgt_full); ang->Fill(diff,wgt_full)} else {hist_distLO->Fill(ddd,wgt_full); angLO->Fill(diff,wgt_full);
     
 /*hist_E9_eOUT->Fill(E9,wgt_full);
 hist_E9_eLOOUT->Fill(E9,wgt_LO); 
@@ -510,7 +520,8 @@ gPad->BuildLegend(0.25,0.15,0.25,0.15);
 cc->SaveAs("/home/LHCB-T3/espedicato/tesi/studio/E92nd.png");
     
 TCanvas * dd= new TCanvas("dd","dd",1000,100,2500,2000);
-
+dd->Divide(1,2);
+       dd->cd(1);
 hist_dist->GetXaxis()->SetTitle("d [cm]");
 hist_dist->SetLineWidth(3);
 hist_dist->Draw("HIST"); 
@@ -518,7 +529,15 @@ hist_distLO->GetXaxis()->SetTitle("d [cm]");
 hist_distLO->SetLineColor(kRed);
 hist_distLO->SetLineWidth(3);
 hist_distLO->Draw("HIST same"); 
-        
+       dd->cd(2);
+ang->GetXaxis()->SetTitle("dTh [mrad]");
+ang->SetLineWidth(3);
+ang->Draw("HIST"); 
+angLO->GetXaxis()->SetTitle("dTh [mrad]");
+angLO->SetLineColor(kRed);
+angLO->SetLineWidth(3);
+angLO->Draw("HIST same");        
+
 dd->SaveAs("/home/LHCB-T3/espedicato/tesi/studio/dist.png");
 
 }

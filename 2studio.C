@@ -313,7 +313,7 @@ EphoutCUT->Fill(photon_energy,wgt_full);
 ThphoutCUT->Fill(photon_def_angle_ph,wgt_full);
 diff_th_pheCUT->Fill(diffTh,wgt_full);}
         }
-    
+    }
     
     // ZONA 2
         if(detKinBeamRot_def_angle_e>5 && detKinBeamRot_def_angle_e<10)// E_clus3x3<(20-(10/7)*detKinBeamRot_def_angle_e -- (E_clus3x3<5 && detKinBeamRot_def_angle_e<11)

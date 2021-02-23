@@ -286,7 +286,8 @@ if(photon_energy==-1 && n_cell_ph==0){
 Ephout->Fill(photon_energy,wgt_full);
 Thphout->Fill(photon_def_angle_ph,wgt_full);
 diff_th_phe->Fill(diffTh,wgt_full);
-cout << "centroide " << centroidX << ", " << centroidY << "; elettrone "<< detKinBeamRot_cooXe << ", " << detKinBeamRot_cooYe << endl;}  
+//cout << "centroide " << centroidX << ", " << centroidY << "; elettrone "<< detKinBeamRot_cooXe << ", " << detKinBeamRot_cooYe << endl;
+ hist_distCUT->Fill(ddd,wgt_full);}  
     
 
     

@@ -350,7 +350,7 @@ Eff2CUTtot->Divide(The2CUTtot,The_trueCUT2tot,1,1,"B");
 
        
 
-/*TCanvas * ef= new TCanvas("ef","ef",1000,100,2500,2000);
+TCanvas * ef= new TCanvas("ef","ef",1000,100,2500,2000);
 ef->Divide(1,2);
 ef->cd(1); 
 Eff1CUT->GetXaxis()->SetTitle("Theta el[mrad]");
@@ -396,9 +396,9 @@ Eff2CUTtot->SetMinimum(0.7);
 Eff2CUTtot->Draw(); 
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
-ef1->SaveAs("/home/LHCB-T3/espedicato/tesi/eff/Effcut.png");*/
+ef1->SaveAs("/home/LHCB-T3/espedicato/tesi/eff/Effcut.png");
 
-TCanvas * ef= new TCanvas("ef","ef",1000,100,2500,2000);
+/*TCanvas * ef= new TCanvas("ef","ef",1000,100,2500,2000);
 ef->Divide(1,2);
 ef->cd(1); 
 Eff1CUT->GetXaxis()->SetTitle("Theta el[mrad]");
@@ -436,7 +436,7 @@ gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
 ef->SaveAs("/home/LHCB-T3/espedicato/tesi/eff/1-2gev.png");   
     
-/*TCanvas * efCUT= new TCanvas("efcut","efcut",1000,100,2500,2000);
+TCanvas * efCUT= new TCanvas("efcut","efcut",1000,100,2500,2000);
 efCUT->Divide(1,2);
 efCUT->cd(1);
 Eff1CUT->GetXaxis()->SetTitle("Theta el[mrad]");

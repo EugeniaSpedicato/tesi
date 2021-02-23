@@ -414,7 +414,7 @@ Eff1CUTtot->SetLineWidth(3);
 Eff1CUTtot->SetLineColor(kBlue);
 Eff1CUTtot->SetMaximum(1.1);
 Eff1CUTtot->SetMinimum(0.9);
-Eff1CUTtot->Draw("same"); 
+//Eff1CUTtot->Draw("same"); 
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
 ef->cd(2);
@@ -431,7 +431,7 @@ Eff2CUTtot->SetLineWidth(3);
 Eff2CUTtot->SetLineColor(kBlue);
 Eff2CUTtot->SetMaximum(1.1);
 Eff2CUTtot->SetMinimum(0.9);
-Eff2CUTtot->Draw("same");     
+//Eff2CUTtot->Draw("same");     
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
 ef->SaveAs("/home/LHCB-T3/espedicato/tesi/eff/1-2gev.png");   

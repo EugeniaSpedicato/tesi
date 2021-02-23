@@ -282,7 +282,7 @@ if(r_mu<1.7 && E_clus3x3>1 && detKinBeamRot_tar==1){
     
 double ddd=sqrt((centroidX-detKinBeamRot_cooXe)*(centroidX-detKinBeamRot_cooXe)+(centroidY-detKinBeamRot_cooYe)*(centroidY-detKinBeamRot_cooYe));    
 
-if(photon_energy!=-1 && n_cell_ph!=0){
+if(photon_energy==-1 && n_cell_ph==0){
 Ephout->Fill(photon_energy,wgt_full);
 Thphout->Fill(photon_def_angle_ph,wgt_full);
 diff_th_phe->Fill(diffTh,wgt_full);

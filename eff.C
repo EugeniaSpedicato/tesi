@@ -466,6 +466,7 @@ The_trueCUT1->SetLineColor(kBlack);
 The_trueCUT1->SetLineWidth(3);
 The_trueCUT1->Draw("HIST");
 The1CUT->SetLineWidth(3);
+The1CUT->SetLineColor(30);
 The1CUT->Draw("HIST same");  
 
 gPad->BuildLegend(0.3,0.21,0.3,0.21);
@@ -474,6 +475,7 @@ The_trueCUT2->SetLineColor(kBlack);
 The_trueCUT2->SetLineWidth(3);
 The_trueCUT2->Draw("HIST");   
 The2CUT->SetLineWidth(3);
+The2CUT->SetLineColor(30);
 The2CUT->Draw("HIST same"); 
 
 gPad->BuildLegend(0.3,0.21,0.3,0.21);

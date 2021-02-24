@@ -71,9 +71,9 @@ TH1F* The_trueCUTEe=new TH1F("th", "th El true CUT on E_e", 120,0,30);
 TH1F* The_trueCUT1Ee=new TH1F("th", "th El true TAR 1 CUT on E_e", 120,0,30);
 TH1F* The_trueCUT2Ee=new TH1F("th", "th El true TAR 2 CUT on E_e", 120,0,30);
     
-TH1F* The_trueCUTtot=new TH1F("th", "th El fiducial cut ", 120,0,30);
-TH1F* The_trueCUT1tot=new TH1F("th", "th El TAR 1 fiducial cut", 120,0,30);
-TH1F* The_trueCUT2tot=new TH1F("th", "th El TAR 2 fiducial cut", 120,0,30);
+TH1F* The_trueCUTtot=new TH1F("th", "th El gen fiducial cut ", 120,0,30);
+TH1F* The_trueCUT1tot=new TH1F("th", "th El gen TAR 1 fiducial cut", 120,0,30);
+TH1F* The_trueCUT2tot=new TH1F("th", "th El gen TAR 2 fiducial cut", 120,0,30);
 
 TH1F* The_true=new TH1F("th", "th El true", 120,0,30);    
 TH1F* The=new TH1F("th", "th El core", 120,0,30); 
@@ -93,8 +93,8 @@ TH1F* The2P2=new TH1F("th", "th El crown TAR 2", 120,0,30);*/
     
     
 TH1F* TheCUT=new TH1F("th", "th El core CUT", 120,0,30); 
-TH1F* The1CUT=new TH1F("th", "th El TAR 1 core ", 120,0,30); 
-TH1F* The2CUT=new TH1F("th", "th El TAR 2 core ", 120,0,30); 
+TH1F* The1CUT=new TH1F("th", "th El core TAR 1 ", 120,0,30); 
+TH1F* The2CUT=new TH1F("th", "th El core TAR 2 ", 120,0,30); 
 
 /*TH1F* TheBIGCUT=new TH1F("th", "th El 5X5 CUT", 120,0,30); 
 TH1F* The2PCUT=new TH1F("th", "th El crown CUT", 120,0,30);*/ 
@@ -116,8 +116,8 @@ TH1F* The2CUTEe=new TH1F("th", "th El core TAR 2 CUT on E_e", 120,0,30);
 TH1F* The2P2CUT=new TH1F("th", "th El crown TAR 2 CUT", 120,0,30); */
 
 TH1F* TheCUTtot=new TH1F("th", "th El core CUT th_mu+Ee", 120,0,30); 
-TH1F* The1CUTtot=new TH1F("th", "th El core TAR 1 CUT th_mu+Ee", 120,0,30); 
-TH1F* The2CUTtot=new TH1F("th", "th El core TAR 2 CUT th_mu+Ee", 120,0,30); 
+TH1F* The1CUTtot=new TH1F("th", "th El core TAR 1 CUT fiducial cut", 120,0,30); 
+TH1F* The2CUTtot=new TH1F("th", "th El core TAR 2 CUT fiducial cut", 120,0,30); 
     
 TH1F* rmu=new TH1F("rmu", "impact point", 100,0,10); 
 

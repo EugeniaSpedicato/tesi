@@ -255,12 +255,12 @@ double Ex=0.;
 double Ey=0.;
 double wtot=0.;
 
-for(int i=1; i<26; ++i)
+for(int i=0; i<9; ++i)
 {
-double x = myGrid->GetXaxis()->GetBinCenter(Rev_numberX[i]);
-double y = myGrid->GetYaxis()->GetBinCenter(Rev_numberY[i]);
+double x = myGrid->GetXaxis()->GetBinCenter(Rev_numberX[Array9[i]]);
+double y = myGrid->GetYaxis()->GetBinCenter(Rev_numberY[Array9[i]]);
 
-double w=4.0+log(en_c[i]/E_clus3x3);
+double w=4.0+log(en_c[Array9[i]]/E_clus3x3);
 double wi=(w>0)?w:0;
 
 Ex+=wi*x;

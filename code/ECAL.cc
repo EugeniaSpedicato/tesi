@@ -117,7 +117,7 @@ double ECAL::GiveCentralCell(double coox,double cooy)
 
 
 double ECAL::AddHitCoo(double r, double phi,double xi, double yi, double w)
-{   r *= 2.19;
+{   r *= 2.19; //multiplication moliere radius  * radiuscorrectionfactor  preso da CMS barrel
     double x=r*cos(phi)+xi; // coo x in cm
     double y=r*sin(phi)+yi; // coo y in cm
     EcalGrid->Fill(x,y,w);   
@@ -128,7 +128,7 @@ return number;
 
 void ECAL::AddHitCooDepth(double r, double phi,double xi, double yi, double w, double depth, double X0depth)
 {   depth += X0depth;
-    r *= 2.19;
+    r *= 2.19; //multiplication moliere radius  * radiuscorrectionfactor  preso da CMS barrel
     double x=r*cos(phi)+xi; // coo x in cm
     double y=r*sin(phi)+yi; // coo y in cm
  if (24.7-X0depth>depth) 

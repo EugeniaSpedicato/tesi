@@ -464,6 +464,7 @@ The_trueCUT1->SetLineWidth(3);
 The_trueCUT1->Draw("HIST");
 The1MCS->SetLineColor(30);
 The1MCS->SetLineWidth(3);
+The_trueCUT1->GetXaxis()->SetTitle("Theta_el [mrad]");
 The1MCS->Draw("HIST same");
 gPad->BuildLegend(0.3,0.21,0.3,0.21);
 
@@ -473,6 +474,7 @@ The_trueCUT2->SetLineWidth(3);
 The_trueCUT2->Draw("HIST");
 The2MCS->SetLineColor(30);
 The2MCS->SetLineWidth(3);
+The_trueCUT2->GetXaxis()->SetTitle("Theta_el [mrad]");
 The2MCS->Draw("HIST same");  
 
 gPad->BuildLegend(0.3,0.21,0.3,0.21);

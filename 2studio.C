@@ -70,7 +70,7 @@ TH1F* hist_E3x3_eCUT=new TH1F("E3x3cut", "Energy Reco 3x3 cut", 70,0.,140);
     TH1F* ThphoutCUT=new TH1F("thetaPH1", "Theta Ph CUT", 120,0.,100); 
     TH1F* diff_th_pheCUT=new TH1F("thetaPH1", "Diff Th_e-Th_ph CUT", 75,-25,25); 
     
-    TH1F* residuo=new TH1F("res", "Residual r_cal-r_trak", 30,-1.5,1.5);
+    TH1F* residuo=new TH1F("res", "Residual r_cal-r_trak", 15,-1.5,1.5);
 
 
 number[36]=1; number[37]=2; number[38]=3; number[39]=4; number[40]=5;
@@ -255,12 +255,12 @@ double Ex=0.;
 double Ey=0.;
 double wtot=0.;
 
-for(int i=1; i<26; ++i)
+for(int i=0; i<9; ++i)
 {
-double x = myGrid->GetXaxis()->GetBinCenter(Rev_numberX[i]);
-double y = myGrid->GetYaxis()->GetBinCenter(Rev_numberY[i]);
+double x = myGrid->GetXaxis()->GetBinCenter(Rev_numberX[Array9[i]]);
+double y = myGrid->GetYaxis()->GetBinCenter(Rev_numberY[Array9[i]]);
 
-double w=4.0+log(en_c[i]/Etotcal);
+double w=4.0+log(en_c[Array9[i]]/E_clus3x3);
 double wi=(w>0)?w:0;
 
 Ex+=wi*x;
@@ -280,7 +280,7 @@ double th_ECAL=atan2(R,Z)*1000;//theta calorimetro in mrad
 double diff=detKinBeamRot_the-th_ECAL;*/
 double diffTh=detKinBeamRot_def_angle_e-photon_def_angle_ph;
     
-if(r_mu<1.7 && E_clus3x3>1 && detKinBeamRot_tar==1){
+if(r_mu<1.7 && detKinBeamRot_Ee>40 && E_clus3x3>1 && detKinBeamRot_tar==1){
     
 double ddd=sqrt((centroidX-detKinBeamRot_cooXe)*(centroidX-detKinBeamRot_cooXe)+(centroidY-detKinBeamRot_cooYe)*(centroidY-detKinBeamRot_cooYe));    
 double r_cal=sqrt((centroidX)*(centroidX)+(centroidY)*(centroidY));  

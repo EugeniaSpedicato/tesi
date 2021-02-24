@@ -70,8 +70,8 @@ TH1F* hist_E3x3_eCUT=new TH1F("E3x3cut", "Energy Reco 3x3 cut", 70,0.,140);
     TH1F* ThphoutCUT=new TH1F("thetaPH1", "Theta Ph CUT", 120,0.,100); 
     TH1F* diff_th_pheCUT=new TH1F("thetaPH1", "Diff Th_e-Th_ph CUT", 75,-25,25); 
     
-    TH1F* residuoX=new TH1F("res", "Residual X_cal-X_trak", 100,-0.8,0.8);
-    TH1F* residuoY=new TH1F("res", "Residual Y_cal-Y_trak", 100,-0.8,0.8);
+    TH1F* residuoX=new TH1F("res", "Residual X_cal-X_trak", 50,-0.8,0.8);
+    TH1F* residuoY=new TH1F("res", "Residual Y_cal-Y_trak", 50,-0.8,0.8);
     
 
 

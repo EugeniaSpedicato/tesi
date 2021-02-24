@@ -456,11 +456,11 @@ Eff2CUT->SetMaximum(1);
 Eff2CUT->SetMinimum(0);
 Eff2CUT->Draw();   
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
-efCUT->SaveAs("/home/LHCB-T3/espedicato/tesi/eff/EffCUT.png");
+efCUT->SaveAs("/home/LHCB-T3/espedicato/tesi/eff/EffCUT.png");*/
     
     
-TCanvas * c5= new TCanvas("c5","c5",1000,1000,2500,2000);
-c5->Divide(2,1);
+TCanvas * c5= new TCanvas("c5","c5",1000,100,2500,2000);
+c5->Divide(1,2);
 c5->cd(1);
 The_trueCUT1->SetLineColor(kBlack);
 The_trueCUT1->SetLineWidth(3);
@@ -480,7 +480,7 @@ gPad->BuildLegend(0.3,0.21,0.3,0.21);
     
 c5->SaveAs("/home/LHCB-T3/espedicato/tesi/eff/th_el.png"); 
     
-TCanvas * c5MCS= new TCanvas("c5MCS","c5MCS",1000,100,2500,2000);
+/*TCanvas * c5MCS= new TCanvas("c5MCS","c5MCS",1000,100,2500,2000);
 c5MCS->Divide(2,4);
 c5MCS->cd(1);
 The_trueCUT1->SetLineColor(kRed);

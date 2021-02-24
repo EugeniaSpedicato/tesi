@@ -172,12 +172,6 @@ Long64_t nentries = fChain->GetEntriesFast();
        n_tot+=wgt_full;
        ++n_tot_true;
        
-
-        /*en_c[1]=detKinBeamRot_Ecell1; en_c[2]=detKinBeamRot_Ecell2; en_c[3]=detKinBeamRot_Ecell3; en_c[4]=detKinBeamRot_Ecell4; en_c[5]=detKinBeamRot_Ecell5;
-        en_c[6]=detKinBeamRot_Ecell6; en_c[7]=detKinBeamRot_Ecell7; en_c[8]=detKinBeamRot_Ecell8; en_c[9]=detKinBeamRot_Ecell9; en_c[10]=detKinBeamRot_Ecell10;
-        en_c[11]=detKinBeamRot_Ecell11; en_c[12]=detKinBeamRot_Ecell12; en_c[13]=detKinBeamRot_Ecell13; en_c[14]=detKinBeamRot_Ecell14; en_c[15]=detKinBeamRot_Ecell15;
-        en_c[16]=detKinBeamRot_Ecell16; en_c[17]=detKinBeamRot_Ecell17; en_c[18]=detKinBeamRot_Ecell18; en_c[19]=detKinBeamRot_Ecell19; en_c[20]=detKinBeamRot_Ecell20;
-        en_c[21]=detKinBeamRot_Ecell21; en_c[22]=detKinBeamRot_Ecell22; en_c[23]=detKinBeamRot_Ecell23; en_c[24]=detKinBeamRot_Ecell24; en_c[25]=detKinBeamRot_Ecell25;*/
        
     if (photon_coox!=-1 && photon_cooy!=-1)
     {  
@@ -194,17 +188,9 @@ Long64_t nentries = fChain->GetEntriesFast();
               double r_mu=sqrt((detKinBeamRot_x_in*detKinBeamRot_x_in)+(detKinBeamRot_y_in*detKinBeamRot_y_in));
 if (r_mu<5){
        
-       //double Eout=(Etotcal-detKinBeamRot_E_clus3x3)/detKinBeamRot_E_clus3x3;
-       //double Eout_9=detKinBeamRot_E_clus3x3/Etotcal;
-       E9=detKinBeamRot_E_1/detKinBeamRot_E_clus3x3;
-       /*cout << detKinBeamRot_n_max_Cell << " cella impatto elettrone " << detKinBeamRot_n_cell_e << "con energia " <<detKinBeamRot_Ee << " cella impatto fotone " << photon_n_cell_ph<< "con energia " <<photon_energy <<endl;*/
+
         Double_t anglex_e = atan2(detKinBeamRot_pXe_out, detKinBeamRot_pZe_out);
         Double_t angley_e = atan2(detKinBeamRot_pYe_out, detKinBeamRot_pZe_out);
-
-       
-    /*Double_t d_e_mu=sqrt( (detKinBeamRot_cooXe-detKinBeamRot_cooXmu)*(detKinBeamRot_cooXe-detKinBeamRot_cooXmu)+(detKinBeamRot_cooYe-detKinBeamRot_cooYmu)*(detKinBeamRot_cooYe-detKinBeamRot_cooYmu) ); detKinBeamRot_n_cell_e!=1 && detKinBeamRot_n_cell_e!=2 && detKinBeamRot_n_cell_e!=3 && detKinBeamRot_n_cell_e!=4 && detKinBeamRot_n_cell_e!=5 && detKinBeamRot_n_cell_e!=10 && detKinBeamRot_n_cell_e!=15 && detKinBeamRot_n_cell_e!=20 && detKinBeamRot_n_cell_e!=25 && detKinBeamRot_n_cell_e!=24 && detKinBeamRot_n_cell_e!=23 && detKinBeamRot_n_cell_e!=22 && detKinBeamRot_n_cell_e!=21 && detKinBeamRot_n_cell_e!=16 && detKinBeamRot_n_cell_e!=11 && detKinBeamRot_n_cell_e!=6*/
-
-//if (detKinBeamRot_n_cell_e!=0 && abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275)  
 
 The_true->Fill(detKinBeamRot_def_angle_e,wgt_full);
     if (detKinBeamRot_tar==0){The_true1->Fill(detKinBeamRot_def_angle_e,wgt_full);
@@ -239,9 +225,7 @@ if (detKinBeamRot_n_cell_e!=0 && E_CAL>0)
     TheBIG2MCS->Fill(detKinBeamRot_def_angle_e,wgt_full);}
     
     //hist_Eout_9_e->Fill(Eout_9,wgt_full);
-    
-if (detKinBeamRot_E_clus3x3!=0) {E3x3BIG->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_full);
-                                 E3x3true->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_Ee,wgt_full);}
+
     
 if(abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275) {
     n_tot_e+=wgt_full;
@@ -265,10 +249,7 @@ if(abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275) {
     
     //hist_Eout_9_e->Fill(Eout_9,wgt_full);
     
-    if (detKinBeamRot_E_clus3x3!=0) {
-        E3x3->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_full);
-        //E3x3true->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_Ee,wgt_full);
-    } //(detKinBeamRot_E_clus3x3!=0 && E9<0.95 && E9>0.5) 
+
 } else { 
     n_tot_e2P+=wgt_full;
     ++n_tot_e2P_true;
@@ -291,7 +272,7 @@ if(abs(detKinBeamRot_cooXe)<4.275 && abs(detKinBeamRot_cooYe)<4.275) {
     
     //hist_Eout_9_e->Fill(Eout_9,wgt_full);
     
-if (detKinBeamRot_E_clus3x3!=0) {E3x32P->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_E_clus3x3,wgt_full);}}}
+}}
     
 
     

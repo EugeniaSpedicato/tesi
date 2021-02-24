@@ -185,10 +185,14 @@ Long64_t nentries = fChain->GetEntriesFast();
     else 
     {E_CAL=detKinBeamRot_Ee;}
 
+
         detKinBeamRot_cooXe=detKinBeamRot_cooXe*100; // cm
         detKinBeamRot_cooYe=detKinBeamRot_cooYe*100; // cm
         photon_coox=photon_coox*100; // cm
         photon_cooy=photon_cooy*100; // cm
+       
+              double r_mu=sqrt((detKinBeamRot_x_in*detKinBeamRot_x_in)+(detKinBeamRot_y_in*detKinBeamRot_y_in));
+if (r_mu<5){
        
        //double Eout=(Etotcal-detKinBeamRot_E_clus3x3)/detKinBeamRot_E_clus3x3;
        //double Eout_9=detKinBeamRot_E_clus3x3/Etotcal;
@@ -291,7 +295,7 @@ if (detKinBeamRot_E_clus3x3!=0) {E3x32P->Fill(detKinBeamRot_def_angle_e,detKinBe
     
 
     
- 
+}
 }
  cout << " Numero elettroni totali IN 5X5 " << n_tot_eBIG << " su un totale di " << n_tot << " eventi " << endl;
  cout << " Numero elettroni totali IN CORE " << n_tot_e << " su un totale di " << n_tot << " eventi " << endl;
@@ -358,7 +362,7 @@ gPad->BuildLegend(0.25,0.15,0.25,0.15);
 c2a->SaveAs("/home/LHCB-T3/espedicato/tesi/Dtheta.png");*/
 
 
-Int_t nx = E3x3->GetNbinsX();
+/*Int_t nx = E3x3->GetNbinsX();
 Int_t ny = E3x3->GetNbinsY();
 for (Int_t i=1; i<nx+1; i++) {
 for (Int_t j=1; j<ny+1; j++) {
@@ -468,54 +472,33 @@ cc->cd(2);
 E3x3true->GetXaxis()->SetTitle("Theta_el[mrad]");
 E3x3true->GetYaxis()->SetTitle("Etrue");
 E3x3true->Draw("COLZ");
-cc->SaveAs("/home/LHCB-T3/espedicato/tesi/thEcore.png");
+cc->SaveAs("/home/LHCB-T3/espedicato/tesi/thEcore.png");*/
 
     
 TCanvas * c5= new TCanvas("c5","c5",1000,100,2500,2000);
-c5->Divide(1,3);
+c5->Divide(1,2);
 c5->cd(1);
-The_true->SetLineColor(kBlack);
-The_true->SetLineWidth(3);
-The_true->Draw("HIST"); 
-TheBIG->SetLineColor(kRed);
-TheBIG->SetLineWidth(3);
-TheBIG->Draw("HIST same"); 
-The->SetLineWidth(3);
-The->Draw("HIST same");
-The2P->SetLineColor(kViolet);
-The2P->SetLineWidth(3);
-The2P->Draw("HIST same"); 
+The_trueCUT1->SetLineColor(kBlack);
+The_trueCUT1->SetLineWidth(3);
+The_trueCUT1->Draw("HIST");
+The1MCS->SetLineColor(30);
+The1MCS->SetLineWidth(3);
+The1MCS->Draw("HIST same");
 gPad->BuildLegend(0.3,0.21,0.3,0.21);
-c5->cd(2);
-The_true1->SetLineColor(kBlack);
-The_true1->SetLineWidth(3);
-The_true1->Draw("HIST");
-TheBIG1->SetLineColor(kRed);
-TheBIG1->SetLineWidth(3);
-TheBIG1->Draw("HIST same");
-The1->SetLineWidth(3);
-The1->Draw("HIST same");  
-The2P1->SetLineColor(kViolet);
-The2P1->SetLineWidth(3);
-The2P1->Draw("HIST same");
-gPad->BuildLegend(0.3,0.21,0.3,0.21);
-c5->cd(3);
-The_true2->SetLineColor(kBlack);
-The_true2->SetLineWidth(3);
-The_true2->Draw("HIST");     
-TheBIG2->SetLineColor(kRed);
-TheBIG2->SetLineWidth(3);
-TheBIG2->Draw("HIST same"); 
-The2->SetLineWidth(3);
-The2->Draw("HIST same"); 
-The2P2->SetLineColor(kViolet);
-The2P2->SetLineWidth(3);
-The2P2->Draw("HIST same"); 
+
+    c5->cd(2);
+The_trueCUT2->SetLineColor(kBlack);
+The_trueCUT2->SetLineWidth(3);
+The_trueCUT2->Draw("HIST");
+The2MCS->SetLineColor(30);
+The2MCS->SetLineWidth(3);
+The2MCS->Draw("HIST same");  
+
 gPad->BuildLegend(0.3,0.21,0.3,0.21);
     
 c5->SaveAs("/home/LHCB-T3/espedicato/tesi/th_el.png"); 
     
-TCanvas * c5MCS= new TCanvas("c5MCS","c5MCS",1000,100,2500,2000);
+/*TCanvas * c5MCS= new TCanvas("c5MCS","c5MCS",1000,100,2500,2000);
 c5MCS->Divide(1,3);
 c5MCS->cd(1);
 The_trueCUT->SetLineColor(kBlack);
@@ -558,7 +541,7 @@ The2P2->Draw("HIST same");
 gPad->BuildLegend(0.3,0.21,0.3,0.21);
     
     
-c5MCS->SaveAs("/home/LHCB-T3/espedicato/tesi/th_elMCS.png"); 
+c5MCS->SaveAs("/home/LHCB-T3/espedicato/tesi/th_elMCS.png"); */
   
   /*  TCanvas * theC= new TCanvas("tar","tar",1500,1000,3500,2000);
     theC->Divide(2,3);

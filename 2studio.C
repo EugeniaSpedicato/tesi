@@ -70,7 +70,9 @@ TH1F* hist_E3x3_eCUT=new TH1F("E3x3cut", "Energy Reco 3x3 cut", 70,0.,140);
     TH1F* ThphoutCUT=new TH1F("thetaPH1", "Theta Ph CUT", 120,0.,100); 
     TH1F* diff_th_pheCUT=new TH1F("thetaPH1", "Diff Th_e-Th_ph CUT", 75,-25,25); 
     
-    TH1F* residuo=new TH1F("res", "Residual r_cal-r_trak", 20,-0.5,0.5);
+    TH1F* residuoX=new TH1F("res", "Residual X_cal-X_trak", 100,-0.5,0.5);
+    TH1F* residuoY=new TH1F("res", "Residual Y_cal-Y_trak", 100,-0.5,0.5);
+    
 
 
 number[36]=1; number[37]=2; number[38]=3; number[39]=4; number[40]=5;
@@ -286,6 +288,9 @@ double ddd=sqrt((centroidX-detKinBeamRot_cooXe)*(centroidX-detKinBeamRot_cooXe)+
 double r_cal=sqrt((centroidX)*(centroidX)+(centroidY)*(centroidY));  
 double r_trak=sqrt((detKinBeamRot_cooXe)*(detKinBeamRot_cooXe)+(detKinBeamRot_cooYe)*(detKinBeamRot_cooYe));  
     
+double dx=centroidX-detKinBeamRot_cooXe;
+double dy=centroidY-detKinBeamRot_cooYe;
+    
 if(photon_energy==-1 && n_cell_ph==0){
 Ephout->Fill(photon_energy,wgt_full);
 Thphout->Fill(photon_def_angle_ph,wgt_full);
@@ -294,7 +299,8 @@ diff_th_phe->Fill(diffTh,wgt_full);
  hist_distCUT->Fill(ddd,wgt_full);
 double a=(r_cal>r_trak)?(+1):(-1);
 double res=ddd*a;
-residuo->Fill(res,wgt_full);}  
+residuoX->Fill(dx,wgt_full);
+residuoY->Fill(dy,wgt_full);}  
     
 
     
@@ -569,13 +575,20 @@ hist_distCUT->SetLineWidth(3);
 hist_distCUT->SetLineColor(kRed);
 hist_distCUT->Draw("HIST same"); 
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
-
-c9->cd(6); 
-residuo->GetXaxis()->SetTitle("r [cm]");
-residuo->SetLineWidth(3);
-residuo->Draw("HIST"); 
     
 c9->SaveAs("/home/LHCB-T3/espedicato/tesi/studio2/E9.png");
+    
+TCanvas * cres= new TCanvas("cres","cres",1000,100,2500,2000);  
+cres->Divide(2,3);
+cres->cd(1);    
+residuoX->GetXaxis()->SetTitle("r [cm]");
+residuoX->SetLineWidth(3);
+residuoX->Draw("HIST"); 
+cres->cd(1); 
+residuoY->GetXaxis()->SetTitle("r [cm]");
+residuoY->SetLineWidth(3);
+residuoY->Draw("HIST"); 
+cres->SaveAs("/home/LHCB-T3/espedicato/tesi/studio2/res.png");
     
 TCanvas * c9c= new TCanvas("c9","c9",1000,100,2500,2000);
 c9c->Divide(2,3);

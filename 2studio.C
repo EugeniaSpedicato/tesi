@@ -579,15 +579,17 @@ gPad->BuildLegend(0.25,0.15,0.25,0.15);
 c9->SaveAs("/home/LHCB-T3/espedicato/tesi/studio2/E9.png");
     
 TCanvas * cres= new TCanvas("cres","cres",1000,100,2500,2000);  
-cres->Divide(2,3);
+cres->Divide(1,2);
 cres->cd(1);    
 residuoX->GetXaxis()->SetTitle("r [cm]");
 residuoX->SetLineWidth(3);
-residuoX->Draw("HIST"); 
-cres->cd(1); 
+residuoX->Fit("gaus");
+residuoX->Draw("HIST same"); 
+cres->cd(2); 
 residuoY->GetXaxis()->SetTitle("r [cm]");
 residuoY->SetLineWidth(3);
-residuoY->Draw("HIST"); 
+residuoY->Fit("gaus");
+residuoY->Draw("HIST same"); 
 cres->SaveAs("/home/LHCB-T3/espedicato/tesi/studio2/res.png");
     
 TCanvas * c9c= new TCanvas("c9","c9",1000,100,2500,2000);

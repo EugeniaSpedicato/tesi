@@ -63,12 +63,19 @@ TH1F* hist_E3x3_eCUT=new TH1F("E3x3cut", "Energy Reco 3x3 cut", 70,0.,140);
     
 //caratteristiche fotoni
     TH1F* Ephout=new TH1F("EnergyPH", "Energy Ph", 75,0.2,150); 
-    TH1F* Thphout=new TH1F("thetaPH", "Theta Ph", 120,0.,100); 
+    TH1F* Thphout=new TH1F("thetaPH", "Theta gen Ph", 120,0.,100); 
     TH1F* diff_th_phe=new TH1F("thetaPH", "Diff Th_e-Th_ph", 75,-25,25); 
+    TH1F* diff_r_phe=new TH1F("thetaPH", "Diff r_e-r_ph", 75,0,10); 
+    
     
     TH1F* EphoutCUT=new TH1F("EnergyPH1", "Energy Ph CUT", 75,0.2,150); 
-    TH1F* ThphoutCUT=new TH1F("thetaPH1", "Theta Ph CUT", 120,0.,100); 
+    TH1F* ThphoutCUT=new TH1F("thetaPH1", "Theta gen Ph CUT", 120,0.,100); 
     TH1F* diff_th_pheCUT=new TH1F("thetaPH1", "Diff Th_e-Th_ph CUT", 75,-25,25); 
+    TH1F* diff_r_pheCUT =new TH1F("thetaPH", "Diff r_e-r_ph CUT", 75,0,10); 
+
+    
+    
+    
     
     TH1F* residuoX=new TH1F("res", "Residual X_cal-X_trak", 30,-0.4,0.4);
     TH1F* residuoY=new TH1F("res", "Residual Y_cal-Y_trak", 30,-0.4,0.4);
@@ -272,7 +279,8 @@ wtot+=wi;
 double centroidX=(Ex)/wtot;
 double centroidY=(Ey)/wtot;        
   
-if (detKinBeamRot_tar==1) {E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
+if (detKinBeamRot_tar==1){
+E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
 Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}  
     
 /*double R=sqrt((detKinBeamRot_x_in-centroidX)*(detKinBeamRot_x_in-centroidX)+(detKinBeamRot_y_in-centroidY)*(detKinBeamRot_y_in-centroidY)); // cm  
@@ -287,9 +295,14 @@ double diffTh=detKinBeamRot_def_angle_e-photon_def_angle_ph;
 if(r_mu<1.7 && E_clus3x3>1 && detKinBeamRot_tar==1){
     
 
-    E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
-    Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
+E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
+Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
     
+if(photon_energy!=-1 && n_cell_ph!=0){
+Ephout->Fill(photon_energy,wgt_full);
+Thphout->Fill(photon_def_angle_ph,wgt_full);
+diff_th_phe->Fill(diffTh,wgt_full);
+diff_r_phe->Fill(d_e_ph,wgt_full);}
     
 /*double ddd=sqrt((centroidX-detKinBeamRot_cooXe)*(centroidX-detKinBeamRot_cooXe)+(centroidY-detKinBeamRot_cooYe)*(centroidY-detKinBeamRot_cooYe));    
 double r_cal=sqrt((centroidX)*(centroidX)+(centroidY)*(centroidY));  
@@ -302,6 +315,7 @@ if(photon_energy==-1 && n_cell_ph==0){
 Ephout->Fill(photon_energy,wgt_full);
 Thphout->Fill(photon_def_angle_ph,wgt_full);
 diff_th_phe->Fill(diffTh,wgt_full);
+diff_r_phe->Fill(d_e_ph,wgt_full);
 //cout << "centroide " << centroidX << ", " << centroidY << "; elettrone "<< detKinBeamRot_cooXe << ", " << detKinBeamRot_cooYe << endl;
  hist_distCUT->Fill(ddd,wgt_full);
 double a=(r_cal>r_trak)?(+1):(-1);
@@ -467,8 +481,38 @@ if(detKinBeamRot_tar==1)
 delete myGrid; 
 }}
 
-      
-Int_t nx1CUT = E3x31CUT->GetNbinsX();
+
+TCanvas * d= new TCanvas("d","d",1000,100,2500,2000);
+d->Divide(2,2);
+d->cd(1);
+Ephout->GetXaxis()->SetTitle("E[GeV]");
+Ephout->SetLineColor(9);
+Ephout->SetLineWidth(3);
+Ephout->SetMinimum(1);
+Ephout->Draw("HIST");
+
+gPad->SetLogy();
+d->cd(2);
+Thphout->GetXaxis()->SetTitle("Theta_gen[mrad]");
+Thphout->SetLineColor(9);
+Thphout->SetLineWidth(3);
+Thphout->Draw("HIST"); 
+d->cd(3);
+diff_th_phe->GetXaxis()->SetTitle("Delta_ThetaGen[mrad]");
+diff_th_phe->SetLineColor(9);
+diff_th_phe->SetLineWidth(3);
+diff_th_phe->Draw("HIST"); 
+d->cd(4);
+diff_r_phe->GetXaxis()->SetTitle("Delta_r[cm]");
+diff_r_phe->SetLineColor(9);
+diff_r_phe->SetLineWidth(3);
+diff_r_phe->Draw("HIST"); 
+   
+d->SaveAs("/home/LHCB-T3/espedicato/tesi/studio2/photon_all.png");
+    
+    
+    
+/*Int_t nx1CUT = E3x31CUT->GetNbinsX();
 Int_t ny1CUT = E3x31CUT->GetNbinsY();
 for (Int_t i=1; i<nx1CUT+1; i++) {
 for (Int_t j=1; j<ny1CUT+1; j++) {
@@ -523,7 +567,7 @@ Th2->GetYaxis()->SetTitle("Theta_mu[GeV]");
 Th2->Draw("COLZ");
 thu->SaveAs("/home/LHCB-T3/espedicato/tesi/studio2/thu.png");
     
-/*TCanvas * c9= new TCanvas("c9","c9",1000,100,2500,2000);
+TCanvas * c9= new TCanvas("c9","c9",1000,100,2500,2000);
 c9->Divide(2,3);
 c9->cd(1);
 hist_E9_e->GetXaxis()->SetTitle("Ecentral/E3x3");

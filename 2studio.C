@@ -541,7 +541,7 @@ diff_th_phe->SetLineColor(9);
 diff_th_phe->SetLineWidth(3);
 diff_th_phe->Draw("HIST"); 
 diff_th_pheCUT->GetXaxis()->SetTitle("Delta_ThetaGen[mrad]");
-diff_th_pheCUT->SetLineColor(kRed);
+diff_th_pheCUT->SetLineColor(8);
 diff_th_pheCUT->SetLineWidth(3);
 diff_th_pheCUT->Draw("HIST same"); 
 d->cd(4);

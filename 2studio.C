@@ -64,13 +64,13 @@ TH1F* hist_E3x3_eCUT=new TH1F("E3x3cut", "Energy Reco 3x3 cut", 70,0.,140);
 //caratteristiche fotoni
     TH1F* Ephout=new TH1F("EnergyPH", "Energy Ph", 75,0.2,150); 
     TH1F* Thphout=new TH1F("thetaPH", "Theta gen Ph", 120,0.,100); 
-    TH1F* diff_th_phe=new TH1F("thetaPH", "Diff Th_e-Th_ph", 75,-25,25); 
+    TH1F* diff_th_phe=new TH1F("thetaPH", "Diff Th_e-Th_ph", 50,-30,30); 
     TH1F* diff_r_phe=new TH1F("thetaPH", "Diff r_e-r_ph", 75,0,10); 
     
     
     TH1F* EphoutCUT=new TH1F("EnergyPH1", "Energy Ph CUT", 75,0.2,150); 
     TH1F* ThphoutCUT=new TH1F("thetaPH1", "Theta gen Ph CUT", 120,0.,100); 
-    TH1F* diff_th_pheCUT=new TH1F("thetaPH1", "Diff Th_e-Th_ph CUT", 75,-25,25); 
+    TH1F* diff_th_pheCUT=new TH1F("thetaPH1", "Diff Th_e-Th_ph CUT", 50,-30,30); 
     TH1F* diff_r_pheCUT =new TH1F("thetaPH", "Diff r_e-r_ph CUT", 75,0,10); 
 
     

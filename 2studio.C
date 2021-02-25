@@ -336,7 +336,8 @@ residuoY->Fill(dy,wgt_full);}
     hist_distCUT->Fill(ddd,wgt_full);*/
    E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
     Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
-            
+              if(photon_energy!=-1 && n_cell_ph!=0){
+                EphoutCUT->Fill(photon_energy,wgt_full);}      
         } else
         {
           /*hist_E3x3_e->Fill(E_clus3x3,wgt_full);
@@ -365,7 +366,8 @@ residuoY->Fill(dy,wgt_full);}
     hist_distCUT->Fill(ddd,wgt_full);*/
     E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
     Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
-
+        if(photon_energy!=-1 && n_cell_ph!=0){
+                EphoutCUT->Fill(photon_energy,wgt_full);}
         } else
         {
           /*hist_E3x3_e->Fill(E_clus3x3,wgt_full);
@@ -396,6 +398,8 @@ residuoY->Fill(dy,wgt_full);}
     hist_distCUT->Fill(ddd,wgt_full);*/
     E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
     Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
+                    if(photon_energy!=-1 && n_cell_ph!=0){
+                EphoutCUT->Fill(photon_energy,wgt_full);}
         } else
         {
           /*hist_E3x3_e->Fill(E_clus3x3,wgt_full);
@@ -425,6 +429,8 @@ if(photon_energy!=-1 && n_cell_ph!=0){
     hist_distCUT->Fill(ddd,wgt_full);*/
     E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
     Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
+                    if(photon_energy!=-1 && n_cell_ph!=0){
+                EphoutCUT->Fill(photon_energy,wgt_full);}
         } else
         {
           /*hist_E3x3_e->Fill(E_clus3x3,wgt_full);
@@ -453,6 +459,8 @@ if(photon_energy!=-1 && n_cell_ph!=0){
     hist_distCUT->Fill(ddd,wgt_full);*/
     E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
     Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
+                    if(photon_energy!=-1 && n_cell_ph!=0){
+                EphoutCUT->Fill(photon_energy,wgt_full);}
         } else
         {
           /*hist_E3x3_e->Fill(E_clus3x3,wgt_full);

@@ -356,7 +356,7 @@ residuoY->Fill(dy,wgt_full);}
     }
     
     // ZONA 2
-        if(detKinBeamRot_def_angle_e>5 && detKinBeamRot_def_angle_e<10)// E_clus3x3<(20-(10/7)*detKinBeamRot_def_angle_e -- (E_clus3x3<5 && detKinBeamRot_def_angle_e<11)
+        if(detKinBeamRot_def_angle_e>=5 && detKinBeamRot_def_angle_e<10)// E_clus3x3<(20-(10/7)*detKinBeamRot_def_angle_e -- (E_clus3x3<5 && detKinBeamRot_def_angle_e<11)
     {
          if(E_clus3x3<8)
         { /*hist_E3x3_eCUT->Fill(E_clus3x3,wgt_full);
@@ -388,7 +388,7 @@ residuoY->Fill(dy,wgt_full);}
     
 
     // ZONA 3
-    if(detKinBeamRot_def_angle_e>10 && detKinBeamRot_def_angle_e<13.5)// E_clus3x3<(20-(10/7)*detKinBeamRot_def_angle_e -- (E_clus3x3<5 && detKinBeamRot_def_angle_e<11)
+    if(detKinBeamRot_def_angle_e>=10 && detKinBeamRot_def_angle_e<13.5)// E_clus3x3<(20-(10/7)*detKinBeamRot_def_angle_e -- (E_clus3x3<5 && detKinBeamRot_def_angle_e<11)
     {
         if(detKinBeamRot_def_angle_mu<0.4)
         { /*hist_E3x3_eCUT->Fill(E_clus3x3,wgt_full);
@@ -419,7 +419,7 @@ if(photon_energy!=-1 && n_cell_ph!=0){
     
     
     // ZONA 4
-    if(detKinBeamRot_def_angle_e>13.5 && detKinBeamRot_def_angle_e<18.5)// E_clus3x3<(20-(10/7)*detKinBeamRot_def_angle_e -- (E_clus3x3<5 && detKinBeamRot_def_angle_e<11)
+    if(detKinBeamRot_def_angle_e>=13.5 && detKinBeamRot_def_angle_e<18.5)// E_clus3x3<(20-(10/7)*detKinBeamRot_def_angle_e -- (E_clus3x3<5 && detKinBeamRot_def_angle_e<11)
     {
         if(detKinBeamRot_def_angle_mu<0.3)
         { /*hist_E3x3_eCUT->Fill(E_clus3x3,wgt_full);
@@ -449,7 +449,7 @@ if(photon_energy!=-1 && n_cell_ph!=0){
     }
     
     // ZONA 5
-    if(detKinBeamRot_def_angle_e>18.5 && detKinBeamRot_def_angle_e<30)// E_clus3x3<(20-(10/7)*detKinBeamRot_def_angle_e -- (E_clus3x3<5 && detKinBeamRot_def_angle_e<11)
+    if(detKinBeamRot_def_angle_e>=18.5 && detKinBeamRot_def_angle_e<35)// E_clus3x3<(20-(10/7)*detKinBeamRot_def_angle_e -- (E_clus3x3<5 && detKinBeamRot_def_angle_e<11)
     {
         if(detKinBeamRot_def_angle_mu<0.2)
         { /*hist_E3x3_eCUT->Fill(E_clus3x3,wgt_full);

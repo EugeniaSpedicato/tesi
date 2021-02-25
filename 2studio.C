@@ -39,12 +39,12 @@ TH1F* hist_dist=new TH1F("dist1", "Dist e-centroide", 200,0,2);
 TH1F* hist_distCUT=new TH1F("dist2", "Dist e-centroide CUT", 200,0,2);
 
 
-TH2F  *E3x31CUT  = new TH2F("Eel1" , " Th_el Vs. E_3x3 coreECAL (Fiducial cut) ",120,0,30,360,0,140);
-TH2F  *E3x32CUT  = new TH2F("Eel2" , " Th_el Vs. E_3x3 coreECAL (Fiducial cut+BRUTAL)",120,0,30,360,0,140);
+TH2F  *E3x31CUT  = new TH2F("Eel1" , " Th_el Vs. E_3x3 core Tar 2 (r_mu<5) ",120,0,30,360,0,140);
+TH2F  *E3x32CUT  = new TH2F("Eel2" , " Th_el Vs. E_3x3 core Tar 2 (Fiducial cut)",120,0,30,360,0,140);
     
     
-TH2F  *Th1  = new TH2F("ThEel1" , " Th_el Vs. Th_mu coreECAL (Fiducial cut)",120,0,30,150,0,5);
-TH2F  *Th2  = new TH2F("ThEel2" , " Th_el Vs. Th_mu coreECAL (Fiducial cut+BRUTAL)",120,0,30,150,0,5);    
+TH2F  *Th1  = new TH2F("ThEel1" , " Th_el Vs. Th_mu core Tar 2 (r_mu<5)",120,0,30,150,0,5);
+TH2F  *Th2  = new TH2F("ThEel2" , " Th_el Vs. Th_mu core (Fiducial cut)",120,0,30,150,0,5);    
 
 
 TH1F* hist_E9_e=new TH1F("E9e", "E9", 100,0.,1);
@@ -151,7 +151,7 @@ int CentralCell=number[binMax];
 
 E_1=myGrid->GetBinContent(binMax);
 
-// con if E_1!=0 è gia imposto r<1.7 perchè gia in fastsim         
+// con if E_1!=0 è gia imposto r<5 perchè gia in fastsim         
 if(E_1!=0){           
 
     if (detKinBeamRot_Ee>0.2){int binx_e = myGrid->GetXaxis()->FindBin(detKinBeamRot_cooXe);
@@ -272,6 +272,8 @@ wtot+=wi;
 double centroidX=(Ex)/wtot;
 double centroidY=(Ey)/wtot;        
   
+if (detKinBeamRot_tar==1) {E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
+Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}  
     
 /*double R=sqrt((detKinBeamRot_x_in-centroidX)*(detKinBeamRot_x_in-centroidX)+(detKinBeamRot_y_in-centroidY)*(detKinBeamRot_y_in-centroidY)); // cm  
 double ZV=0.;
@@ -282,9 +284,14 @@ double th_ECAL=atan2(R,Z)*1000;//theta calorimetro in mrad
 double diff=detKinBeamRot_the-th_ECAL;*/
 double diffTh=detKinBeamRot_def_angle_e-photon_def_angle_ph;
     
-if(r_mu<1.7 && detKinBeamRot_Ee>30 && E_clus3x3>1 && detKinBeamRot_tar==1){
+if(r_mu<1.7 && E_clus3x3>1 && detKinBeamRot_tar==1){
     
-double ddd=sqrt((centroidX-detKinBeamRot_cooXe)*(centroidX-detKinBeamRot_cooXe)+(centroidY-detKinBeamRot_cooYe)*(centroidY-detKinBeamRot_cooYe));    
+
+    E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
+    Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
+    
+    
+/*double ddd=sqrt((centroidX-detKinBeamRot_cooXe)*(centroidX-detKinBeamRot_cooXe)+(centroidY-detKinBeamRot_cooYe)*(centroidY-detKinBeamRot_cooYe));    
 double r_cal=sqrt((centroidX)*(centroidX)+(centroidY)*(centroidY));  
 double r_trak=sqrt((detKinBeamRot_cooXe)*(detKinBeamRot_cooXe)+(detKinBeamRot_cooYe)*(detKinBeamRot_cooYe));  
     
@@ -301,7 +308,7 @@ double a=(r_cal>r_trak)?(+1):(-1);
 double res=ddd*a;
 residuoX->Fill(dx,wgt_full);
 residuoY->Fill(dy,wgt_full);}  
-    
+    */
 
     
     
@@ -516,7 +523,7 @@ Th2->GetYaxis()->SetTitle("Theta_mu[GeV]");
 Th2->Draw("COLZ");
 thu->SaveAs("/home/LHCB-T3/espedicato/tesi/studio2/thu.png");
     
-TCanvas * c9= new TCanvas("c9","c9",1000,100,2500,2000);
+/*TCanvas * c9= new TCanvas("c9","c9",1000,100,2500,2000);
 c9->Divide(2,3);
 c9->cd(1);
 hist_E9_e->GetXaxis()->SetTitle("Ecentral/E3x3");
@@ -671,7 +678,7 @@ diff_th_pheCUT->SetLineColor(30);
 diff_th_pheCUT->SetLineWidth(3);
 diff_th_pheCUT->Draw("HIST same"); 
    
-d->SaveAs("/home/LHCB-T3/espedicato/tesi/studio2/photon.png");
+d->SaveAs("/home/LHCB-T3/espedicato/tesi/studio2/photon.png");*/
 
     
 /*TCanvas * cc= new TCanvas("cc","cc",1000,100,2500,2000);

@@ -296,12 +296,6 @@ diff_th_phe->Fill(diffTh,wgt_full);
 diff_r_phe->Fill(d_e_ph,wgt_full);
  hist_distCUT->Fill(ddd,wgt_full);*/
     
-if(photon_energy!=-1 && n_cell_ph!=0){
-Ephout->Fill(photon_energy,wgt_full);
-Thphout->Fill(photon_def_angle_ph,wgt_full);
-diff_th_phe->Fill(diffTh,wgt_full);
-diff_r_phe->Fill(d_e_ph,wgt_full);}
-    
 double ddd=sqrt((centroidX-detKinBeamRot_cooXe)*(centroidX-detKinBeamRot_cooXe)+(centroidY-detKinBeamRot_cooYe)*(centroidY-detKinBeamRot_cooYe)); 
 
 double r_cal=sqrt((centroidX)*(centroidX)+(centroidY)*(centroidY));  
@@ -313,6 +307,7 @@ double dy=centroidY-detKinBeamRot_cooYe;
 if(photon_energy==-1 && n_cell_ph==0 && detKinBeamRot_Ee>50){
 residuoX->Fill(dx,wgt_full);
 residuoY->Fill(dy,wgt_full);}  
+
 }
 }       
 }

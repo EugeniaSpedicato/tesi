@@ -145,7 +145,7 @@ Double_t Etotcal=0.;
        
        double diffTh=detKinBeamRot_def_angle_e-photon_def_angle_ph;
 
-       if (r_mu<5){
+       if (r_mu<1){
            
     TH2F* myGrid= new TH2F("myGrid" , "EM Calorimeter with E in GeV",5,-7.125,7.125,5,-7.125,7.125);
        en_c[1]=detKinBeamRot_Ecell1; en_c[2]=detKinBeamRot_Ecell2; en_c[3]=detKinBeamRot_Ecell3; en_c[4]=detKinBeamRot_Ecell4; en_c[5]=detKinBeamRot_Ecell5;
@@ -163,7 +163,7 @@ int CentralCell=number[binMax];
 
 E_1=myGrid->GetBinContent(binMax);
 
-// con if E_1!=0 è gia imposto r<5 perchè gia in fastsim         
+// con if E_1!=0 è gia imposto r<1 perchè gia in fastsim         
 if(E_1!=0){           
 
     if (detKinBeamRot_Ee>0.2){int binx_e = myGrid->GetXaxis()->FindBin(detKinBeamRot_cooXe);
@@ -475,25 +475,25 @@ Int_t nx1CUT = E3x31CUT->GetNbinsX();
 Int_t ny1CUT = E3x31CUT->GetNbinsY();
 for (Int_t i=1; i<nx1CUT+1; i++) {
 for (Int_t j=1; j<ny1CUT+1; j++) {
-if (E3x31CUT->GetBinContent(i,j)<5) E3x31CUT->SetBinContent(i,j,0);}}
+if (E3x31CUT->GetBinContent(i,j)<1) E3x31CUT->SetBinContent(i,j,0);}}
     
 Int_t nx2CUT = E3x32CUT->GetNbinsX();
 Int_t ny2CUT = E3x32CUT->GetNbinsY();
 for (Int_t i=1; i<nx2CUT+1; i++) {
 for (Int_t j=1; j<ny2CUT+1; j++) {
-if (E3x32CUT->GetBinContent(i,j)<5) E3x32CUT->SetBinContent(i,j,0);}}
+if (E3x32CUT->GetBinContent(i,j)<1) E3x32CUT->SetBinContent(i,j,0);}}
     
 Int_t nxTh = Th1->GetNbinsX();
 Int_t nyTh = Th1->GetNbinsY();
 for (Int_t i=1; i<nxTh+1; i++) {
 for (Int_t j=1; j<nyTh+1; j++) {
-if (Th1->GetBinContent(i,j)<5) Th1->SetBinContent(i,j,0);}}
+if (Th1->GetBinContent(i,j)<1) Th1->SetBinContent(i,j,0);}}
     
 Int_t nx2thcut = Th2->GetNbinsX();
 Int_t ny2thcut = Th2->GetNbinsY();
 for (Int_t i=1; i<nx2thcut+1; i++) {
 for (Int_t j=1; j<ny2thcut+1; j++) {
-if (Th2->GetBinContent(i,j)<5) Th2->SetBinContent(i,j,0);}}
+if (Th2->GetBinContent(i,j)<1) Th2->SetBinContent(i,j,0);}}
         
     
 TCanvas * c4a= new TCanvas("c4a","c4a",100,100,2500,2000);

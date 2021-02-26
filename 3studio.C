@@ -324,7 +324,7 @@ if(E_clus3x3<=10)
 
     if(ddd>(4*(5.78/sqrt(5)+1.095)*0.1))
     {
-     cout << ddd << endl;
+ 
         DeltaRCUT->Fill(ddd,wgt_full);
         if(photon_energy!=-1 && n_cell_ph!=0){
             EphoutCUT->Fill(photon_energy,wgt_full);
@@ -344,7 +344,7 @@ if(E_clus3x3>10 && E_clus3x3<=20)
 {
     if(ddd>(4*(5.78/sqrt(15)+1.095)*0.1))
     {
-     cout << ddd << endl;
+ 
         DeltaRCUT->Fill(ddd,wgt_full);
         if(photon_energy!=-1 && n_cell_ph!=0){
             EphoutCUT->Fill(photon_energy,wgt_full);
@@ -362,7 +362,7 @@ if(E_clus3x3>20 && E_clus3x3<=30)
 {
 if(ddd>(4*(5.78/sqrt(25)+1.095)*0.1))
     {
-     cout << ddd << endl;
+ 
         DeltaRCUT->Fill(ddd,wgt_full);
         if(photon_energy!=-1 && n_cell_ph!=0){
             EphoutCUT->Fill(photon_energy,wgt_full);
@@ -382,7 +382,7 @@ if(E_clus3x3>30 && E_clus3x3<=40)
 {
     if(ddd>(4*(5.78/sqrt(35)+1.095)*0.1))
     {
-     cout << ddd << endl;
+ 
         DeltaRCUT->Fill(ddd,wgt_full);
         if(photon_energy!=-1 && n_cell_ph!=0){
             EphoutCUT->Fill(photon_energy,wgt_full);
@@ -400,7 +400,7 @@ if(E_clus3x3>40)
 {
     if(ddd>(4*(5.78/sqrt(60)+1.095)*0.1))
     {
-     cout << ddd << endl;
+ 
         DeltaRCUT->Fill(ddd,wgt_full);
         if(photon_energy!=-1 && n_cell_ph!=0){
             EphoutCUT->Fill(photon_energy,wgt_full);

@@ -301,7 +301,7 @@ double r_trak=sqrt((detKinBeamRot_cooXe)*(detKinBeamRot_cooXe)+(detKinBeamRot_co
 double dx=centroidX-detKinBeamRot_cooXe;
 double dy=centroidY-detKinBeamRot_cooYe;
     
-if(photon_energy==-1 && n_cell_ph==0 && detKinBeamRot_Ee>40){
+if(photon_energy!=-1 && n_cell_ph!=0 && detKinBeamRot_Ee>40){
 residuoX->Fill(dx,wgt_full);
 residuoY->Fill(dy,wgt_full);}  
 

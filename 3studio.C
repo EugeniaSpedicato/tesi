@@ -145,7 +145,7 @@ Double_t Etotcal=0.;
        
        double diffTh=detKinBeamRot_def_angle_e-photon_def_angle_ph;
 
-       if (r_mu<1.7){
+       if (r_mu<5){
            
     TH2F* myGrid= new TH2F("myGrid" , "EM Calorimeter with E in GeV",5,-7.125,7.125,5,-7.125,7.125);
        en_c[1]=detKinBeamRot_Ecell1; en_c[2]=detKinBeamRot_Ecell2; en_c[3]=detKinBeamRot_Ecell3; en_c[4]=detKinBeamRot_Ecell4; en_c[5]=detKinBeamRot_Ecell5;
@@ -316,6 +316,9 @@ if(photon_energy!=-1 && n_cell_ph!=0){
  Thphout->Fill(photon_def_angle_ph,wgt_full);
  diff_th_phe->Fill(diffTh,wgt_full);
  diff_r_phe->Fill(d_e_ph,wgt_full);}
+    
+E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
+Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
    
 double eq=3*sqrt((5.78/sqrt(E_clus3x3))*(5.78/sqrt(E_clus3x3))+1.095*1.095)*0.1;
 //ZONA 1

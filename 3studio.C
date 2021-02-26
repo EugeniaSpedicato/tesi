@@ -318,15 +318,14 @@ if(photon_energy!=-1 && n_cell_ph!=0){
  diff_r_phe->Fill(d_e_ph,wgt_full);}
 
     if(ddd>(4*sqrt((5.78/sqrt(E_clus3x3))*(5.78/sqrt(E_clus3x3))+1.095*1.095)*0.1))
-    {
- 
+    { cout << (4*sqrt((5.78/sqrt(E_clus3x3))*(5.78/sqrt(E_clus3x3))+1.095*1.095)*0.1) << endl;
         DeltaRCUT->Fill(ddd,wgt_full);
         if(photon_energy!=-1 && n_cell_ph!=0){
             EphoutCUT->Fill(photon_energy,wgt_full);
             ThphoutCUT->Fill(photon_def_angle_ph,wgt_full);
             diff_th_pheCUT->Fill(diffTh,wgt_full);
             diff_r_pheCUT->Fill(d_e_ph,wgt_full);}
-        E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
+E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
 Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
     }
   

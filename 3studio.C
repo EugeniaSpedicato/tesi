@@ -320,7 +320,7 @@ DeltaR->Fill(ddd,wgt_full);
  Thphout->Fill(photon_def_angle_ph,wgt_full);
  diff_th_phe->Fill(diffTh,wgt_full);
  diff_r_phe->Fill(d_e_ph,wgt_full);}
-    if(ddd>(4*(5.78/sqrt(20)+1.095)*0.1))
+    if(ddd>(4*(5.78/sqrt(5)+1.095)*0.1))
     {
      cout << ddd << endl;
         DeltaRCUT->Fill(ddd,wgt_full);
@@ -331,7 +331,7 @@ DeltaR->Fill(ddd,wgt_full);
             diff_r_pheCUT->Fill(d_e_ph,wgt_full);}
     }
 }
-*/   
+   
     
 //ZONA 2
     
@@ -344,7 +344,30 @@ DeltaR->Fill(ddd,wgt_full);
  Thphout->Fill(photon_def_angle_ph,wgt_full);
  diff_th_phe->Fill(diffTh,wgt_full);
  diff_r_phe->Fill(d_e_ph,wgt_full);}
-    if(ddd>(4*(5.78/sqrt(20)+1.095)*0.1))
+    if(ddd>(4*(5.78/sqrt(15)+1.095)*0.1))
+    {
+     cout << ddd << endl;
+        DeltaRCUT->Fill(ddd,wgt_full);
+        if(photon_energy!=-1 && n_cell_ph!=0){
+            EphoutCUT->Fill(photon_energy,wgt_full);
+            ThphoutCUT->Fill(photon_def_angle_ph,wgt_full);
+            diff_th_pheCUT->Fill(diffTh,wgt_full);
+            diff_r_pheCUT->Fill(d_e_ph,wgt_full);}
+    }
+}*/
+
+//ZONA 3
+    
+if(E_clus3x3>20 && E_clus3x3<=30)
+{
+DeltaR->Fill(ddd,wgt_full);
+
+ if(photon_energy!=-1 && n_cell_ph!=0){
+ Ephout->Fill(photon_energy,wgt_full);
+ Thphout->Fill(photon_def_angle_ph,wgt_full);
+ diff_th_phe->Fill(diffTh,wgt_full);
+ diff_r_phe->Fill(d_e_ph,wgt_full);}
+    if(ddd>(4*(5.78/sqrt(25)+1.095)*0.1))
     {
      cout << ddd << endl;
         DeltaRCUT->Fill(ddd,wgt_full);
@@ -355,7 +378,37 @@ DeltaR->Fill(ddd,wgt_full);
             diff_r_pheCUT->Fill(d_e_ph,wgt_full);}
     }
 }
+    
+    
+//ZONA 4
+    
+/*if(E_clus3x3>30 && E_clus3x3<=40)
+{
+DeltaR->Fill(ddd,wgt_full);
 
+ if(photon_energy!=-1 && n_cell_ph!=0){
+ Ephout->Fill(photon_energy,wgt_full);
+ Thphout->Fill(photon_def_angle_ph,wgt_full);
+ diff_th_phe->Fill(diffTh,wgt_full);
+ diff_r_phe->Fill(d_e_ph,wgt_full);}
+    if(ddd>(4*(5.78/sqrt(35)+1.095)*0.1))
+    {
+     cout << ddd << endl;
+        DeltaRCUT->Fill(ddd,wgt_full);
+        if(photon_energy!=-1 && n_cell_ph!=0){
+            EphoutCUT->Fill(photon_energy,wgt_full);
+            ThphoutCUT->Fill(photon_def_angle_ph,wgt_full);
+            diff_th_pheCUT->Fill(diffTh,wgt_full);
+            diff_r_pheCUT->Fill(d_e_ph,wgt_full);}
+    }
+}*/
+    
+    
+    
+    
+    
+    
+    
 }
 }       
 }

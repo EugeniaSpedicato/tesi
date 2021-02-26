@@ -350,7 +350,7 @@ Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
     
 if(E_clus3x3>10 && E_clus3x3<=20)
 {
-    if(ddd>0.8eq)
+    if(ddd>eq)
     {
  
         DeltaRCUT->Fill(ddd,wgt_full);

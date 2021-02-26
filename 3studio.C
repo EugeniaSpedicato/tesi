@@ -323,7 +323,7 @@ double eq=4*sqrt((5.78/sqrt(E_clus3x3))*(5.78/sqrt(E_clus3x3))+1.095*1.095)*0.1;
 if(E_clus3x3<=10)
 {
 
-    if(ddd>(4*sqrt((5.78/sqrt(10))*(5.78/sqrt(10))+1.095*1.095)*0.1))
+    if(ddd>(4*sqrt((5.78/sqrt(5))*(5.78/sqrt(5))+1.095*1.095)*0.1))
     {
  
         DeltaRCUT->Fill(ddd,wgt_full);

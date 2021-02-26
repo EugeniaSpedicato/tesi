@@ -321,7 +321,8 @@ DeltaR->Fill(ddd,wgt_full);
  diff_r_phe->Fill(d_e_ph,wgt_full);}
 
     if(ddd>(4*(5.78/sqrt(20)+1.095)))
-    {
+    { cout << (4*(5.78/sqrt(20)+1.095)) << endl;
+     cout << ddd << endl;
         DeltaRCUT->Fill(ddd,wgt_full);
         if(photon_energy!=-1 && n_cell_ph!=0){
             EphoutCUT->Fill(photon_energy,wgt_full);

@@ -320,9 +320,9 @@ if(photon_energy!=-1 && n_cell_ph!=0){
 E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
 Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
     
-/*if(E_clus3x3>1){
+if(E_clus3x3>1){
     E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
-    Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}*/
+    Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}
    
 double eq=3*sqrt((5.78/sqrt(E_clus3x3))*(5.78/sqrt(E_clus3x3))+1.095*1.095)*0.1;
 //ZONA 1

@@ -308,9 +308,12 @@ double dy=centroidY-detKinBeamRot_cooYe;
     
 residuoX->Fill(dx,wgt_full);
 residuoY->Fill(dy,wgt_full);
+
+
 if(E_clus3x3<10)
 {
 DeltaR->Fill(ddd,wgt_full);
+
  if(photon_energy!=-1 && n_cell_ph!=0){
  Ephout->Fill(photon_energy,wgt_full);
  Thphout->Fill(photon_def_angle_ph,wgt_full);
@@ -454,10 +457,10 @@ residuoY->Draw("same");
 cres->cd(3); 
 DeltaR->GetXaxis()->SetTitle("r [cm]");
 DeltaR->SetLineWidth(3);
-DeltaR->Draw();
+DeltaR->Draw("HIST");
 DeltaRCUT->SetLineWidth(3);
 DeltaRCUT->SetLineColor(kRed);
-DeltaRCUT->Draw("same"); 
+DeltaRCUT->Draw("HIST same"); 
 cres->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/res.png");
    
 

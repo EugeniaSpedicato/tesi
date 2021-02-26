@@ -77,8 +77,8 @@ TH1F* hist_E3x3_eCUT=new TH1F("E3x3cut", "Energy Reco 3x3 cut", 70,0.,140);
     
     
     
-    TH1F* residuoX=new TH1F("res1", "Residual X_cal-X_trak", 100, -0.8, 0.8);
-    TH1F* residuoY=new TH1F("res2", "Residual Y_cal-Y_trak", 100, -0.8, 0.8);
+    TH1F* residuoX=new TH1F("res1", "Residual X_cal-X_trak", 30, -0.8, 0.8);
+    TH1F* residuoY=new TH1F("res2", "Residual Y_cal-Y_trak", 30, -0.8, 0.8);
     
 
 

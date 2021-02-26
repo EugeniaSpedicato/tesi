@@ -319,7 +319,7 @@ DeltaR->Fill(ddd,wgt_full);
  Thphout->Fill(photon_def_angle_ph,wgt_full);
  diff_th_phe->Fill(diffTh,wgt_full);
  diff_r_phe->Fill(d_e_ph,wgt_full);}
-
+ cout << (4*(5.78/sqrt(20)+1.095)) << endl;
     if(ddd>(4*(5.78/sqrt(20)+1.095)))
     { cout << (4*(5.78/sqrt(20)+1.095)) << endl;
      cout << ddd << endl;

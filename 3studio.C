@@ -77,7 +77,7 @@ TH1F* hist_E3x3_eCUT=new TH1F("E3x3cut", "Energy Reco 3x3 cut", 70,0.,140);
     
     
     TH1F* DeltaR=new TH1F("res", "r_cal-r_trak", 100,0,2);
-    TH1F* DeltaRLO=new TH1F("resLO", "r_cal-r_trak LO", 100,0,2);
+    TH1F* DeltaRCUT=new TH1F("resLO", "r_cal-r_trak LO", 100,0,2);
     
     TH1F* residuoX=new TH1F("res1", "Residual X_cal-X_trak", 30,-0.8,0.8);
     TH1F* residuoY=new TH1F("res2", "Residual Y_cal-Y_trak", 30,-0.8,0.8);
@@ -142,6 +142,9 @@ Double_t Etotcal=0.;
        double r_mu=sqrt((detKinBeamRot_x_in*detKinBeamRot_x_in)+(detKinBeamRot_y_in*detKinBeamRot_y_in));
        
        double d_e_ph=sqrt((detKinBeamRot_cooXe-photon_coox)*(detKinBeamRot_cooXe-photon_coox)+(detKinBeamRot_cooYe-photon_cooy)*(detKinBeamRot_cooYe-photon_cooy)); 
+       
+       double diffTh=detKinBeamRot_def_angle_e-photon_def_angle_ph;
+
        if (r_mu<5){
            
     TH2F* myGrid= new TH2F("myGrid" , "EM Calorimeter with E in GeV",5,-7.125,7.125,5,-7.125,7.125);
@@ -305,8 +308,25 @@ double dy=centroidY-detKinBeamRot_cooYe;
     
 residuoX->Fill(dx,wgt_full);
 residuoY->Fill(dy,wgt_full);
-if(photon_energy!=-1 && n_cell_ph!=0){DeltaR->Fill(ddd,wgt_full);}
-if(photon_energy==-1 && n_cell_ph==0){DeltaRLO->Fill(ddd,wgt_full);}
+if(E_clus3x3<10)
+{
+DeltaR->Fill(ddd,wgt_full);
+ if(photon_energy!=-1 && n_cell_ph!=0){
+ Ephout->Fill(photon_energy,wgt_full);
+ Thphout->Fill(photon_def_angle_ph,wgt_full);
+ diff_th_phe->Fill(diffTh,wgt_full);
+ diff_r_phe->Fill(d_e_ph,wgt_full);}
+
+    if(ddd<(4*(5.78/sqrt(20)+1.095)))
+    {
+        DeltaRCUT->Fill(ddd,wgt_full);
+        if(photon_energy!=-1 && n_cell_ph!=0){
+            EphoutCUT->Fill(photon_energy,wgt_full);
+            ThphoutCUT->Fill(photon_def_angle_ph,wgt_full);
+            diff_th_pheCUT->Fill(diffTh,wgt_full);
+            diff_r_pheCUT->Fill(d_e_ph,wgt_full);}
+    }
+}
     
 
 }
@@ -316,7 +336,7 @@ delete myGrid;
 }}
 
 
-/*TCanvas * d= new TCanvas("d","d",1000,100,2500,2000);
+TCanvas * d= new TCanvas("d","d",1000,100,2500,2000);
 d->Divide(2,2);
 d->cd(1);
 Ephout->GetXaxis()->SetTitle("E[GeV]");
@@ -359,7 +379,7 @@ diff_r_pheCUT->SetLineColor(kRed);
 diff_r_pheCUT->SetLineWidth(3);
 diff_r_pheCUT->Draw("HIST same"); 
    
-d->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/photon_after+cut.png");*/
+d->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/photon.png");
     
     
     
@@ -435,9 +455,9 @@ cres->cd(3);
 DeltaR->GetXaxis()->SetTitle("r [cm]");
 DeltaR->SetLineWidth(3);
 DeltaR->Draw();
-DeltaRLO->SetLineWidth(3);
-DeltaRLO->SetLineColor(kRed);
-DeltaRLO->Draw("same"); 
+DeltaRCUT->SetLineWidth(3);
+DeltaRCUT->SetLineColor(kRed);
+DeltaRCUT->Draw("same"); 
 cres->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/res.png");
    
 

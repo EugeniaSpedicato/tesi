@@ -319,7 +319,7 @@ if(photon_energy==-1 && n_cell_ph==0){
 residuoX->Fill(dx,wgt_full);
 residuoY->Fill(dy,wgt_full);}  
     
-double eq=4*sqrt((5.78/sqrt(detKinBeamRot_Ee))*(5.78/sqrt(detKinBeamRot_Ee))+1.095*1.095)*0.1;
+double eq=3*sqrt((5.78/sqrt(detKinBeamRot_Ee))*(5.78/sqrt(detKinBeamRot_Ee))+1.095*1.095)*0.1;
     
     
     // ZONA 1    

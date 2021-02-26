@@ -77,8 +77,8 @@ TH1F* hist_E3x3_eCUT=new TH1F("E3x3cut", "Energy Reco 3x3 cut", 70,0.,140);
     
     
     
-    TH1F* residuoX=new TH1F("res", "Residual X_cal-X_trak", 30,-0.4,0.4);
-    TH1F* residuoY=new TH1F("res", "Residual Y_cal-Y_trak", 30,-0.4,0.4);
+    TH1F* residuoX=new TH1F("res", "Residual X_cal-X_trak", 30,-0.8,0.8);
+    TH1F* residuoY=new TH1F("res", "Residual Y_cal-Y_trak", 30,-0.8,0.8);
     
 
 
@@ -303,7 +303,7 @@ Thphout->Fill(photon_def_angle_ph,wgt_full);
 diff_th_phe->Fill(diffTh,wgt_full);
 diff_r_phe->Fill(d_e_ph,wgt_full);}
     
-/*double ddd=sqrt((centroidX-detKinBeamRot_cooXe)*(centroidX-detKinBeamRot_cooXe)+(centroidY-detKinBeamRot_cooYe)*(centroidY-detKinBeamRot_cooYe));    
+double ddd=sqrt((centroidX-detKinBeamRot_cooXe)*(centroidX-detKinBeamRot_cooXe)+(centroidY-detKinBeamRot_cooYe)*(centroidY-detKinBeamRot_cooYe));    
 double r_cal=sqrt((centroidX)*(centroidX)+(centroidY)*(centroidY));  
 double r_trak=sqrt((detKinBeamRot_cooXe)*(detKinBeamRot_cooXe)+(detKinBeamRot_cooYe)*(detKinBeamRot_cooYe));  
     
@@ -321,7 +321,7 @@ double a=(r_cal>r_trak)?(+1):(-1);
 double res=ddd*a;
 residuoX->Fill(dx,wgt_full);
 residuoY->Fill(dy,wgt_full);}  
-    */
+    
 
     
     
@@ -669,7 +669,7 @@ hist_distCUT->SetLineColor(kRed);
 hist_distCUT->Draw("HIST same"); 
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
     
-c9->SaveAs("/home/LHCB-T3/espedicato/tesi/studio2/E9.png");
+c9->SaveAs("/home/LHCB-T3/espedicato/tesi/studio2/E9.png");*/
     
 TCanvas * cres= new TCanvas("cres","cres",1000,100,2500,2000);  
 cres->Divide(1,2);
@@ -685,7 +685,7 @@ residuoY->Fit("gaus");
 residuoY->Draw("HIST same"); 
 cres->SaveAs("/home/LHCB-T3/espedicato/tesi/studio2/res.png");
     
-TCanvas * c9c= new TCanvas("c9","c9",1000,100,2500,2000);
+/*TCanvas * c9c= new TCanvas("c9","c9",1000,100,2500,2000);
 c9c->Divide(2,3);
 c9c->cd(1);
 hist_E9_eCUT->GetXaxis()->SetTitle("Ecentral/E3x3");

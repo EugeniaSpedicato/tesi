@@ -76,7 +76,7 @@ TH1F* hist_E3x3_eCUT=new TH1F("E3x3cut", "Energy Reco 3x3 cut", 70,0.,140);
     
     
     
-    
+    TH1F* DeltaR=new TH1F("res", "r_cal-r_trak", 100,0,2);
     TH1F* residuoX=new TH1F("res", "Residual X_cal-X_trak", 30,-0.8,0.8);
     TH1F* residuoY=new TH1F("res", "Residual Y_cal-Y_trak", 30,-0.8,0.8);
     
@@ -303,6 +303,7 @@ double dy=centroidY-detKinBeamRot_cooYe;
     
 residuoX->Fill(dx,wgt_full);
 residuoY->Fill(dy,wgt_full);
+DeltaR->Fill(ddd,wgt_full);
 
 }
 }       
@@ -415,7 +416,7 @@ thu->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/thu.png");
 
     
 TCanvas * cres= new TCanvas("cres","cres",1000,100,2500,2000);  
-cres->Divide(1,2);
+cres->Divide(1,3);
 cres->cd(1);    
 residuoX->GetXaxis()->SetTitle("r [cm]");
 residuoX->SetLineWidth(3);
@@ -426,6 +427,11 @@ residuoY->GetXaxis()->SetTitle("r [cm]");
 residuoY->SetLineWidth(3);
 residuoY->Fit("gaus");
 residuoY->Draw("same"); 
+cres->cd(2); 
+DeltaR->GetXaxis()->SetTitle("r [cm]");
+DeltaR->SetLineWidth(3);
+DeltaR->Fit("gaus");
+DeltaR->Draw("same"); 
 cres->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/res.png");
    
 

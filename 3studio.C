@@ -320,7 +320,7 @@ DeltaR->Fill(ddd,wgt_full);
  diff_th_phe->Fill(diffTh,wgt_full);
  diff_r_phe->Fill(d_e_ph,wgt_full);}
 
-    if(ddd<(4*(5.78/sqrt(20)+1.095)))
+  /* if(ddd<(4*(5.78/sqrt(20)+1.095)))
     {
         DeltaRCUT->Fill(ddd,wgt_full);
         if(photon_energy!=-1 && n_cell_ph!=0){
@@ -328,7 +328,7 @@ DeltaR->Fill(ddd,wgt_full);
             ThphoutCUT->Fill(photon_def_angle_ph,wgt_full);
             diff_th_pheCUT->Fill(diffTh,wgt_full);
             diff_r_pheCUT->Fill(d_e_ph,wgt_full);}
-    }
+    }*/
 }
     
 

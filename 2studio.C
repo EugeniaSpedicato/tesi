@@ -296,13 +296,7 @@ if(r_mu<1.7 && E_clus3x3>1 && detKinBeamRot_tar==1){
 Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
 E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
 Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);*/
-    
-if(photon_energy!=-1 && n_cell_ph!=0){
-Ephout->Fill(photon_energy,wgt_full);
-Thphout->Fill(photon_def_angle_ph,wgt_full);
-diff_th_phe->Fill(diffTh,wgt_full);
-diff_r_phe->Fill(d_e_ph,wgt_full);}
-    
+        
 double ddd=sqrt((centroidX-detKinBeamRot_cooXe)*(centroidX-detKinBeamRot_cooXe)+(centroidY-detKinBeamRot_cooYe)*(centroidY-detKinBeamRot_cooYe));    
 double r_cal=sqrt((centroidX)*(centroidX)+(centroidY)*(centroidY));  
 double r_trak=sqrt((detKinBeamRot_cooXe)*(detKinBeamRot_cooXe)+(detKinBeamRot_cooYe)*(detKinBeamRot_cooYe));  
@@ -315,8 +309,7 @@ Ephout->Fill(photon_energy,wgt_full);
 Thphout->Fill(photon_def_angle_ph,wgt_full);
 diff_th_phe->Fill(diffTh,wgt_full);
 diff_r_phe->Fill(d_e_ph,wgt_full);
-//cout << "centroide " << centroidX << ", " << centroidY << "; elettrone "<< detKinBeamRot_cooXe << ", " << detKinBeamRot_cooYe << endl;
- hist_distCUT->Fill(ddd,wgt_full);
+hist_distCUT->Fill(ddd,wgt_full);
 double a=(r_cal>r_trak)?(+1):(-1);
 double res=ddd*a;
 residuoX->Fill(dx,wgt_full);

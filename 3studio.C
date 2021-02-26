@@ -301,7 +301,7 @@ double r_trak=sqrt((detKinBeamRot_cooXe)*(detKinBeamRot_cooXe)+(detKinBeamRot_co
 double dx=centroidX-detKinBeamRot_cooXe;
 double dy=centroidY-detKinBeamRot_cooYe;
     
-if(photon_energy==-1 && n_cell_ph==0){
+if(photon_energy==-1 && n_cell_ph==0 && detKinBeamRot_Ee){
 residuoX->Fill(dx,wgt_full);
 residuoY->Fill(dy,wgt_full);}  
 
@@ -355,7 +355,7 @@ diff_r_pheCUT->SetLineColor(kRed);
 diff_r_pheCUT->SetLineWidth(3);
 diff_r_pheCUT->Draw("HIST same"); 
    
-d->SaveAs("/home/LHCB-T3/espedicato/tesi/studio2/photon_after+cut.png");*/
+d->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/photon_after+cut.png");*/
     
     
     
@@ -398,7 +398,7 @@ E3x32CUT->GetYaxis()->SetTitle("Ereco3x3[GeV]");
 E3x32CUT->Draw("COLZ");
 
 
-c4a->SaveAs("/home/LHCB-T3/espedicato/tesi/studio2/thE_cut.png");
+c4a->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/thE_cut.png");
     
 TCanvas * thu= new TCanvas("c4a","c4a",100,100,2500,2000);
 thu->Divide(1,2);
@@ -412,7 +412,7 @@ thu->cd(2);
 Th2->GetXaxis()->SetTitle("Theta_el[mrad]");
 Th2->GetYaxis()->SetTitle("Theta_mu[GeV]");
 Th2->Draw("COLZ");
-thu->SaveAs("/home/LHCB-T3/espedicato/tesi/studio2/thu.png");
+thu->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/thu.png");
 
     
 TCanvas * cres= new TCanvas("cres","cres",1000,100,2500,2000);  
@@ -427,7 +427,7 @@ residuoY->GetXaxis()->SetTitle("r [cm]");
 residuoY->SetLineWidth(3);
 residuoY->Fit("gaus");
 residuoY->Draw("same"); 
-cres->SaveAs("/home/LHCB-T3/espedicato/tesi/studio2/res.png");
+cres->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/res.png");
    
 
 } 

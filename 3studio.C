@@ -64,21 +64,21 @@ TH1F* hist_E3x3_eCUT=new TH1F("E3x3cut", "Energy Reco 3x3 cut", 70,0.,140);
 //caratteristiche fotoni
     TH1F* Ephout=new TH1F("EnergyPH", "Energy Ph tot", 75,0.2,150); 
     TH1F* Thphout=new TH1F("thetaPH", "Theta gen Ph tot", 120,0.,100); 
-    TH1F* diff_th_phe=new TH1F("thetaPH", "Diff Th_e-Th_ph tot", 50,-30,30); 
-    TH1F* diff_r_phe=new TH1F("thetaPH", "Diff r_e-r_ph tot", 75,0,10); 
+    TH1F* diff_th_phe=new TH1F("difftheta", "Diff Th_e-Th_ph tot", 50,-30,30); 
+    TH1F* diff_r_phe=new TH1F("diffr", "Diff r_e-r_ph tot", 75,0,10); 
     
     
     TH1F* EphoutCUT=new TH1F("EnergyPH1", "Energy Ph cut off", 75,0.2,150); 
     TH1F* ThphoutCUT=new TH1F("thetaPH1", "Theta gen Ph cut off", 120,0.,100); 
-    TH1F* diff_th_pheCUT=new TH1F("thetaPH1", "Diff Th_e-Th_ph cut off", 50,-30,30); 
-    TH1F* diff_r_pheCUT =new TH1F("thetaPH", "Diff r_e-r_ph cut off", 75,0,10); 
+    TH1F* diff_th_pheCUT=new TH1F("difftheta1", "Diff Th_e-Th_ph cut off", 50,-30,30); 
+    TH1F* diff_r_pheCUT =new TH1F("diffr1", "Diff r_e-r_ph cut off", 75,0,10); 
 
     
     
     
     
-    TH1F* residuoX=new TH1F("res", "Residual X_cal-X_trak", 30,-0.4,0.4);
-    TH1F* residuoY=new TH1F("res", "Residual Y_cal-Y_trak", 30,-0.4,0.4);
+    TH1F* residuoX=new TH1F("res1", "Residual X_cal-X_trak", 100, -0.8, 0.8);
+    TH1F* residuoY=new TH1F("res2", "Residual Y_cal-Y_trak", 100, -0.8, 0.8);
     
 
 
@@ -304,7 +304,7 @@ double r_trak=sqrt((detKinBeamRot_cooXe)*(detKinBeamRot_cooXe)+(detKinBeamRot_co
 double dx=centroidX-detKinBeamRot_cooXe;
 double dy=centroidY-detKinBeamRot_cooYe;
     
-if(photon_energy==-1 && n_cell_ph==0 && detKinBeamRot_Ee>50){
+if(photon_energy==-1 && n_cell_ph==0 && detKinBeamRot_Ee>40){
 residuoX->Fill(dx,wgt_full);
 residuoY->Fill(dy,wgt_full);}  
 
@@ -424,12 +424,12 @@ cres->cd(1);
 residuoX->GetXaxis()->SetTitle("r [cm]");
 residuoX->SetLineWidth(3);
 residuoX->Fit("gaus");
-residuoX->Draw("HIST same"); 
+residuoX->Draw("same"); 
 cres->cd(2); 
 residuoY->GetXaxis()->SetTitle("r [cm]");
 residuoY->SetLineWidth(3);
 residuoY->Fit("gaus");
-residuoY->Draw("HIST same"); 
+residuoY->Draw("same"); 
 cres->SaveAs("/home/LHCB-T3/espedicato/tesi/studio2/res.png");
    
 

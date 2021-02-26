@@ -77,8 +77,10 @@ TH1F* hist_E3x3_eCUT=new TH1F("E3x3cut", "Energy Reco 3x3 cut", 70,0.,140);
     
     
     TH1F* DeltaR=new TH1F("res", "r_cal-r_trak", 100,0,2);
-    TH1F* residuoX=new TH1F("res", "Residual X_cal-X_trak", 30,-0.8,0.8);
-    TH1F* residuoY=new TH1F("res", "Residual Y_cal-Y_trak", 30,-0.8,0.8);
+    TH1F* DeltaRLO=new TH1F("resLO", "r_cal-r_trak LO", 100,0,2);
+    
+    TH1F* residuoX=new TH1F("res1", "Residual X_cal-X_trak", 30,-0.8,0.8);
+    TH1F* residuoY=new TH1F("res2", "Residual Y_cal-Y_trak", 30,-0.8,0.8);
     
 
 
@@ -303,7 +305,9 @@ double dy=centroidY-detKinBeamRot_cooYe;
     
 residuoX->Fill(dx,wgt_full);
 residuoY->Fill(dy,wgt_full);
-DeltaR->Fill(ddd,wgt_full);
+if(photon_energy!=-1 && n_cell_ph!=0){DeltaR->Fill(ddd,wgt_full);}
+if(photon_energy==-1 && n_cell_ph==0){DeltaRLO->Fill(ddd,wgt_full);}
+    
 
 }
 }       
@@ -427,11 +431,13 @@ residuoY->GetXaxis()->SetTitle("r [cm]");
 residuoY->SetLineWidth(3);
 residuoY->Fit("gaus");
 residuoY->Draw("same"); 
-cres->cd(2); 
+cres->cd(3); 
 DeltaR->GetXaxis()->SetTitle("r [cm]");
 DeltaR->SetLineWidth(3);
-DeltaR->Fit("gaus");
-DeltaR->Draw("same"); 
+DeltaR->Draw();
+DeltaRLO->SetLineWidth(3);
+DeltaRLO->SetLineColor(kRed);
+DeltaRLO->Draw("same"); 
 cres->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/res.png");
    
 

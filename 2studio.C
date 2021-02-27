@@ -763,7 +763,7 @@ thu->SaveAs("/home/LHCB-T3/espedicato/tesi/studio2/thu.png");
     
     
 TCanvas * aaa= new TCanvas("aaa","aaa",1000,100,2500,2000);  
-aaa->Divide(1,2);
+aaa->Divide(1,1);
 aaa->cd(1);    
 diff_r_mue->GetXaxis()->SetTitle("r [cm]");
 diff_r_mue->SetLineWidth(3);
@@ -771,13 +771,6 @@ diff_r_mue->Draw("HIST");
 diff_r_mueCUT->SetLineWidth(3);
 diff_r_mueCUT->SetLineColor(kRed-4);
 diff_r_mueCUT->Draw("HIST same"); 
-aaa->cd(2); 
-DeltaR->GetXaxis()->SetTitle("r [cm]");
-DeltaR->SetLineWidth(3);
-DeltaR->Draw("HIST");
-DeltaRCUT->SetLineWidth(3);
-DeltaRCUT->SetLineColor(kRed-4);
-DeltaRCUT->Draw("HIST same"); 
 aaa->SaveAs("/home/LHCB-T3/espedicato/tesi/studio2/res.png");
     
 /*TCanvas * c9= new TCanvas("c9","c9",1000,100,2500,2000);

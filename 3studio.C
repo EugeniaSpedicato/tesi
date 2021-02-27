@@ -72,6 +72,12 @@ TH1F* hist_E3x3_eCUT=new TH1F("E3x3cut", "Energy Reco 3x3 cut", 70,0.,140);
     TH1F* ThphoutCUT=new TH1F("thetaPH1", "Theta gen Ph cut off", 120,0.,100); 
     TH1F* diff_th_pheCUT=new TH1F("thetaPH1", "Diff Th_e-Th_ph cut off", 50,-30,30); 
     TH1F* diff_r_pheCUT =new TH1F("thetaPH", "Diff r_e-r_ph cut off", 75,0,10); 
+    
+
+    TH1F* EphoutCUTafter=new TH1F("EnergyPH1", "Energy Ph after cut off", 75,0.2,150); 
+    TH1F* ThphoutCUTafter=new TH1F("thetaPH1", "Theta gen Ph after cut off", 120,0.,100); 
+    TH1F* diff_th_pheCUTafter=new TH1F("thetaPH1", "Diff Th_e-Th_ph after cut off", 50,-30,30); 
+    TH1F* diff_r_pheCUTafter =new TH1F("thetaPH", "Diff r_e-r_ph after cut off", 75,0,10); 
 
     
     
@@ -312,13 +318,27 @@ residuoY->Fill(dy,wgt_full);
 
 DeltaR->Fill(ddd,wgt_full);
 
+if(photon_energy!=-1 && n_cell_ph!=0){
+ Ephout->Fill(photon_energy,wgt_full);
+ Thphout->Fill(photon_def_angle_ph,wgt_full);
+ diff_th_phe->Fill(diffTh,wgt_full);
+ diff_r_phe->Fill(d_e_ph,wgt_full);}
+    
 
 if(E_clus3x3>1){
-   
+
+E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
+Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
+
+    if(photon_energy!=-1 && n_cell_ph!=0){
+ EphoutCUTafter->Fill(photon_energy,wgt_full);
+ ThphoutCUTafter->Fill(photon_def_angle_ph,wgt_full);
+ diff_th_pheCUTafter->Fill(diffTh,wgt_full);
+ diff_r_pheCUTafter->Fill(d_e_ph,wgt_full);}
 
 //ZONA 1
     
-if(E_clus3x3<=10){
+/*if(E_clus3x3<=10){
 
     if(ddd>0.1*8.8)
     {
@@ -469,7 +489,7 @@ if(E_clus3x3>75){
 Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
     }    else {E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
 Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}
-} 
+}*/ 
 
 }
 else {
@@ -480,9 +500,7 @@ else {
             diff_r_pheCUT->Fill(d_e_ph,wgt_full);}
 E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
 Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}
-    
-    
-    
+       
 }
 }       
 }
@@ -499,39 +517,63 @@ Ephout->SetLineWidth(3);
 Ephout->SetMinimum(1);
 Ephout->Draw("HIST");
 EphoutCUT->GetXaxis()->SetTitle("E[GeV]");
-EphoutCUT->SetLineColor(kRed);
+EphoutCUT->SetLineColor(kRed-4);
 EphoutCUT->SetLineWidth(3);
 EphoutCUT->SetMinimum(1);
 EphoutCUT->Draw("HIST same");
-
+EphoutCUTafter->GetXaxis()->SetTitle("E[GeV]");
+EphoutCUTafter->SetLineColor(30);
+EphoutCUTafter->SetLineWidth(3);
+EphoutCUTafter->SetMinimum(1);
+EphoutCUTafter->Draw("HIST same");
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
 gPad->SetLogy();
+    
 d->cd(2);
 Thphout->GetXaxis()->SetTitle("Theta_gen[mrad]");
 Thphout->SetLineColor(9);
 Thphout->SetLineWidth(3);
 Thphout->Draw("HIST"); 
 ThphoutCUT->GetXaxis()->SetTitle("Theta_gen[mrad]");
-ThphoutCUT->SetLineColor(kRed);
+ThphoutCUT->SetLineColor(kRed-4);
 ThphoutCUT->SetLineWidth(3);
 ThphoutCUT->Draw("HIST same"); 
+ThphoutCUTafter->GetXaxis()->SetTitle("Theta_gen[mrad]");
+ThphoutCUTafter->SetLineColor(30);
+ThphoutCUTafter->SetLineWidth(3);
+ThphoutCUTafter->Draw("HIST same"); 
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
+
 d->cd(3);
 diff_th_phe->GetXaxis()->SetTitle("Delta_ThetaGen[mrad]");
 diff_th_phe->SetLineColor(9);
 diff_th_phe->SetLineWidth(3);
 diff_th_phe->Draw("HIST"); 
 diff_th_pheCUT->GetXaxis()->SetTitle("Delta_ThetaGen[mrad]");
-diff_th_pheCUT->SetLineColor(kRed);
+diff_th_pheCUT->SetLineColor(kRed-4);
 diff_th_pheCUT->SetLineWidth(3);
 diff_th_pheCUT->Draw("HIST same"); 
+diff_th_pheCUTafter->GetXaxis()->SetTitle("Delta_ThetaGen[mrad]");
+diff_th_pheCUTafter->SetLineColor(30);
+diff_th_pheCUTafter->SetLineWidth(3);
+diff_th_pheCUTafter->Draw("HIST same"); 
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
+
 d->cd(4);
 diff_r_phe->GetXaxis()->SetTitle("Delta_r[cm]");
 diff_r_phe->SetLineColor(9);
 diff_r_phe->SetLineWidth(3);
 diff_r_phe->Draw("HIST"); 
 diff_r_pheCUT->GetXaxis()->SetTitle("Delta_r[cm]");
-diff_r_pheCUT->SetLineColor(kRed);
+diff_r_pheCUT->SetLineColor(kRed-4);
 diff_r_pheCUT->SetLineWidth(3);
 diff_r_pheCUT->Draw("HIST same"); 
+diff_r_pheCUTafter->GetXaxis()->SetTitle("Delta_r[cm]");
+diff_r_pheCUTafter->SetLineColor(30);
+diff_r_pheCUTafter->SetLineWidth(3);
+diff_r_pheCUTafter->Draw("HIST same"); 
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
+
    
 d->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/photon.png");
     
@@ -610,7 +652,7 @@ DeltaR->GetXaxis()->SetTitle("r [cm]");
 DeltaR->SetLineWidth(3);
 DeltaR->Draw("HIST");
 DeltaRCUT->SetLineWidth(3);
-DeltaRCUT->SetLineColor(kRed);
+DeltaRCUT->SetLineColor(kRed-4);
 DeltaRCUT->Draw("HIST same"); 
 cres->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/res.png");
    

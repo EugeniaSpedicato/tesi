@@ -848,18 +848,15 @@ thu->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/thu.png");
 
     
 TCanvas * cres= new TCanvas("cres","cres",1000,100,2500,2000);  
-cres->Divide(1,3);
+cres->Divide(1,2);
 cres->cd(1);    
-residuoX->GetXaxis()->SetTitle("r [cm]");
-residuoX->SetLineWidth(3);
-residuoX->Fit("gaus");
-residuoX->Draw("same"); 
+diff_r_mue->GetXaxis()->SetTitle("r [cm]");
+diff_r_mue->SetLineWidth(3);
+diff_r_mue->Draw("HIST");
+diff_r_mueCUT->SetLineWidth(3);
+diff_r_mueCUT->SetLineColor(kRed-4);
+diff_r_mueCUT->Draw("HIST same"); 
 cres->cd(2); 
-residuoY->GetXaxis()->SetTitle("r [cm]");
-residuoY->SetLineWidth(3);
-residuoY->Fit("gaus");
-residuoY->Draw("same"); 
-cres->cd(3); 
 DeltaR->GetXaxis()->SetTitle("r [cm]");
 DeltaR->SetLineWidth(3);
 DeltaR->Draw("HIST");

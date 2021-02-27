@@ -312,12 +312,6 @@ residuoY->Fill(dy,wgt_full);
 
 DeltaR->Fill(ddd,wgt_full);
 
-if(photon_energy!=-1 && n_cell_ph!=0){
- Ephout->Fill(photon_energy,wgt_full);
- Thphout->Fill(photon_def_angle_ph,wgt_full);
- diff_th_phe->Fill(diffTh,wgt_full);
- diff_r_phe->Fill(d_e_ph,wgt_full);}
-    
 
 if(E_clus3x3>1){
    

@@ -327,7 +327,7 @@ if(photon_energy!=-1 && n_cell_ph!=0){
 E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
 Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
 
-if(E_clus3x3>1){
+//if(E_clus3x3>1){
     
 //ZONA 1
     
@@ -527,13 +527,13 @@ Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
  diff_r_pheCUTafter->Fill(d_e_ph,wgt_full);}
 } 
 }
-}
+/*}
 else {
         if(photon_energy!=-1 && n_cell_ph!=0){
             EphoutCUT->Fill(photon_energy,wgt_full);
             ThphoutCUT->Fill(photon_def_angle_ph,wgt_full);
             diff_th_pheCUT->Fill(diffTh,wgt_full);
-            diff_r_pheCUT->Fill(d_e_ph,wgt_full);}}
+            diff_r_pheCUT->Fill(d_e_ph,wgt_full);}}*/
        
 }
 }       

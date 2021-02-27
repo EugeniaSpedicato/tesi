@@ -384,7 +384,7 @@ E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
     // ZONA 3
     if(detKinBeamRot_def_angle_e>10 && detKinBeamRot_def_angle_e<=13.5)// E_clus3x3<(20-(10/7)*detKinBeamRot_def_angle_e -- (E_clus3x3<5 && detKinBeamRot_def_angle_e<11)
     {
-        if(detKinBeamRot_def_angle_mu<0.4)
+        if(detKinBeamRot_def_angle_mu<0.3)
         { /*hist_E3x3_eCUT->Fill(E_clus3x3,wgt_full);
     hist_E9_eCUT->Fill(E9,wgt_full);
     hist_E92_eCUT->Fill(Emean_out,wgt_full);
@@ -416,7 +416,7 @@ E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
     // ZONA 4
     if(detKinBeamRot_def_angle_e>13.5 && detKinBeamRot_def_angle_e<=18.5)// E_clus3x3<(20-(10/7)*detKinBeamRot_def_angle_e -- (E_clus3x3<5 && detKinBeamRot_def_angle_e<11)
     {
-        if(detKinBeamRot_def_angle_mu<0.3)
+        if(detKinBeamRot_def_angle_mu<0.2)
         { /*hist_E3x3_eCUT->Fill(E_clus3x3,wgt_full);
     hist_E9_eCUT->Fill(E9,wgt_full);
     hist_E92_eCUT->Fill(Emean_out,wgt_full);

@@ -73,10 +73,10 @@ TH1F* hist_E3x3_eCUT=new TH1F("E3x3cut", "Energy Reco 3x3 cut", 70,0.,140);
     TH1F* diff_th_pheCUT=new TH1F("thetaPH1", "Diff Th_e-Th_ph cut off", 50,-30,30); 
     TH1F* diff_r_pheCUT =new TH1F("thetaPH", "Diff r_e-r_ph cut off", 75,0,10); 
     
-    TH1F* EphoutCUTcal=new TH1F("EnergyPH1", "Energy Ph cut off", 75,0.2,150); 
-    TH1F* ThphoutCUTcal=new TH1F("thetaPH1", "Theta gen Ph cut off", 110,0.,100); 
-    TH1F* diff_th_pheCUTcal=new TH1F("thetaPH1", "Diff Th_e-Th_ph cut off", 50,-30,30); 
-    TH1F* diff_r_pheCUTcal =new TH1F("thetaPH", "Diff r_e-r_ph cut off", 75,0,10); 
+    TH1F* EphoutCUTafter=new TH1F("EnergyPH1", "Energy Ph after cut off", 75,0.2,150); 
+    TH1F* ThphoutCUTafter=new TH1F("thetaPH1", "Theta gen Ph after cut off", 110,0.,100); 
+    TH1F* diff_th_pheCUTafter=new TH1F("thetaPH1", "Diff Th_e-Th_ph after cut off", 50,-30,30); 
+    TH1F* diff_r_pheCUTafter =new TH1F("thetaPH", "Diff r_e-r_ph after cut off", 75,0,10); 
 
     
     
@@ -569,11 +569,11 @@ Ephout->SetLineColor(9);
 Ephout->SetLineWidth(3);
 Ephout->SetMinimum(1);
 Ephout->Draw("HIST");
-EphoutCUTcal->GetXaxis()->SetTitle("E[GeV]");
-EphoutCUTcal->SetLineColor(kGreen);
-EphoutCUTcal->SetLineWidth(3);
-EphoutCUTcal->SetMinimum(1);
-EphoutCUTcal->Draw("HIST same");
+EphoutCUTafter->GetXaxis()->SetTitle("E[GeV]");
+EphoutCUTafter->SetLineColor(kGreen);
+EphoutCUTafter->SetLineWidth(3);
+EphoutCUTafter->SetMinimum(1);
+EphoutCUTafter->Draw("HIST same");
 gPad->SetLogy();
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
@@ -582,10 +582,10 @@ Thphout->GetXaxis()->SetTitle("Theta_gen[mrad]");
 Thphout->SetLineColor(9);
 Thphout->SetLineWidth(3);
 Thphout->Draw("HIST"); 
-ThphoutCUTcal->GetXaxis()->SetTitle("Theta_gen[mrad]");
-ThphoutCUTcal->SetLineColor(kGreen);
-ThphoutCUTcal->SetLineWidth(3);
-ThphoutCUTcal->Draw("HIST same"); 
+ThphoutCUTafter->GetXaxis()->SetTitle("Theta_gen[mrad]");
+ThphoutCUTafter->SetLineColor(kGreen);
+ThphoutCUTafter->SetLineWidth(3);
+ThphoutCUTafter->Draw("HIST same"); 
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
 da->cd(3);
@@ -593,10 +593,10 @@ diff_th_phe->GetXaxis()->SetTitle("Delta_ThetaGen[mrad]");
 diff_th_phe->SetLineColor(9);
 diff_th_phe->SetLineWidth(3);
 diff_th_phe->Draw("HIST"); 
-diff_th_pheCUTcal->GetXaxis()->SetTitle("Delta_ThetaGen[mrad]");
-diff_th_pheCUTcal->SetLineColor(kGreen);
-diff_th_pheCUTcal->SetLineWidth(3);
-diff_th_pheCUTcal->Draw("HIST same");
+diff_th_pheCUTafter->GetXaxis()->SetTitle("Delta_ThetaGen[mrad]");
+diff_th_pheCUTafter->SetLineColor(kGreen);
+diff_th_pheCUTafter->SetLineWidth(3);
+diff_th_pheCUTafter->Draw("HIST same");
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
  
 da->cd(4);
@@ -604,10 +604,10 @@ diff_r_phe->GetXaxis()->SetTitle("Delta_r[cm]");
 diff_r_phe->SetLineColor(9);
 diff_r_phe->SetLineWidth(3);
 diff_r_phe->Draw("HIST"); 
-diff_r_pheCUTcal->GetXaxis()->SetTitle("Delta_r[cm]");
-diff_r_pheCUTcal->SetLineColor(kGreen);
-diff_r_pheCUTcal->SetLineWidth(3);
-diff_r_pheCUTcal->Draw("HIST same");
+diff_r_pheCUTafter->GetXaxis()->SetTitle("Delta_r[cm]");
+diff_r_pheCUTafter->SetLineColor(kGreen);
+diff_r_pheCUTafter->SetLineWidth(3);
+diff_r_pheCUTafter->Draw("HIST same");
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
  
    

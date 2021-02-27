@@ -44,7 +44,7 @@ TH2F  *E3x32CUT  = new TH2F("Eel2" , " Th_el Vs. E_3x3 core Tar 2 (Fiducial cut+
     
     
 TH2F  *Th1  = new TH2F("ThEel1" , " Th_el Vs. Th_mu core Tar 2 (Fiducial cut)",120,0,30,150,0,5);
-TH2F  *Th2  = new TH2F("ThEel2" , " Th_el Vs. Th_mu core Tar 2 (Fiducial cut+event cuts",120,0,30,150,0,5);    
+TH2F  *Th2  = new TH2F("ThEel2" , " Th_el Vs. Th_mu core Tar 2 (Fiducial cut+event cuts",150,0,30,200,0,5);    
 
 
 TH1F* hist_E9_e=new TH1F("E9e", "E9", 100,0.,1);
@@ -593,10 +593,10 @@ Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
 }
 else {
         if(photon_energy!=-1 && n_cell_ph!=0){
-            EphoutCUT->Fill(photon_energy,wgt_full);
-            ThphoutCUT->Fill(photon_def_angle_ph,wgt_full);
-            diff_th_pheCUT->Fill(diffTh,wgt_full);
-            diff_r_pheCUT->Fill(d_e_ph,wgt_full);}
+            EphoutCUT->Fill(photon_energy,wgt_LO);
+            ThphoutCUT->Fill(photon_def_angle_ph,wgt_LO);
+            diff_th_pheCUT->Fill(diffTh,wgt_LO);
+            diff_r_pheCUT->Fill(d_e_ph,wgt_LO);}
 }
        
 }

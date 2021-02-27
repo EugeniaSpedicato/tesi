@@ -599,6 +599,15 @@ else {
             ThphoutCUT->Fill(photon_def_angle_ph,wgt_LO);
             diff_th_pheCUT->Fill(diffTh,wgt_LO);
             diff_r_pheCUT->Fill(d_e_ph,wgt_LO);}
+            if(photon_energy!=-1 && n_cell_ph!=0){
+            EphoutCUT->Fill(photon_energy,wgt_full);
+            ThphoutCUT->Fill(photon_def_angle_ph,wgt_full);
+            diff_th_pheCUT->Fill(diffTh,wgt_full);
+            diff_r_pheCUT->Fill(d_e_ph,wgt_full);} 
+                    EeoutCUT->Fill(detKinBeamRot_Ee,wgt_LO); 
+               TheoutCUT->Fill(detKinBeamRot_def_angle_e,wgt_LO); 
+                EmuoutCUT->Fill(detKinBeamRot_Emu,wgt_LO); 
+               ThmuoutCUT->Fill(detKinBeamRot_def_angle_mu,wgt_LO); 
 }
        
 }

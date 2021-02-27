@@ -63,18 +63,18 @@ TH1F* hist_E3x3_eCUT=new TH1F("E3x3cut", "Energy Reco 3x3 cut", 70,0.,140);
     
 //caratteristiche fotoni
     TH1F* Ephout=new TH1F("EnergyPH", "Energy Ph tot", 75,0.2,150); 
-    TH1F* Thphout=new TH1F("thetaPH", "Theta gen Ph tot", 120,0.,100); 
+    TH1F* Thphout=new TH1F("thetaPH", "Theta gen Ph tot", 110,0.,100); 
     TH1F* diff_th_phe=new TH1F("thetaPH", "Diff Th_e-Th_ph tot", 50,-30,30); 
     TH1F* diff_r_phe=new TH1F("thetaPH", "Diff r_e-r_ph tot", 75,0,10); 
     
     
     TH1F* EphoutCUT=new TH1F("EnergyPH1", "Energy Ph cut off", 75,0.2,150); 
-    TH1F* ThphoutCUT=new TH1F("thetaPH1", "Theta gen Ph cut off", 120,0.,100); 
+    TH1F* ThphoutCUT=new TH1F("thetaPH1", "Theta gen Ph cut off", 110,0.,100); 
     TH1F* diff_th_pheCUT=new TH1F("thetaPH1", "Diff Th_e-Th_ph cut off", 50,-30,30); 
     TH1F* diff_r_pheCUT =new TH1F("thetaPH", "Diff r_e-r_ph cut off", 75,0,10); 
     
     TH1F* EphoutCUTcal=new TH1F("EnergyPH1", "Energy Ph cut off", 75,0.2,150); 
-    TH1F* ThphoutCUTcal=new TH1F("thetaPH1", "Theta gen Ph cut off", 120,0.,100); 
+    TH1F* ThphoutCUTcal=new TH1F("thetaPH1", "Theta gen Ph cut off", 110,0.,100); 
     TH1F* diff_th_pheCUTcal=new TH1F("thetaPH1", "Diff Th_e-Th_ph cut off", 50,-30,30); 
     TH1F* diff_r_pheCUTcal =new TH1F("thetaPH", "Diff r_e-r_ph cut off", 75,0,10); 
 
@@ -522,13 +522,9 @@ EphoutCUT->SetLineColor(kRed);
 EphoutCUT->SetLineWidth(3);
 EphoutCUT->SetMinimum(1);
 EphoutCUT->Draw("HIST same");
-EphoutCUTcal->GetXaxis()->SetTitle("E[GeV]");
-EphoutCUTcal->SetLineColor(kGreen);
-EphoutCUTcal->SetLineWidth(3);
-EphoutCUTcal->SetMinimum(1);
-EphoutCUTcal->Draw("HIST same");
-
 gPad->SetLogy();
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
+
 d->cd(2);
 Thphout->GetXaxis()->SetTitle("Theta_gen[mrad]");
 Thphout->SetLineColor(9);
@@ -538,10 +534,8 @@ ThphoutCUT->GetXaxis()->SetTitle("Theta_gen[mrad]");
 ThphoutCUT->SetLineColor(kRed);
 ThphoutCUT->SetLineWidth(3);
 ThphoutCUT->Draw("HIST same"); 
-ThphoutCUTcal->GetXaxis()->SetTitle("Theta_gen[mrad]");
-ThphoutCUTcal->SetLineColor(kGreen);
-ThphoutCUTcal->SetLineWidth(3);
-ThphoutCUTcal->Draw("HIST same"); 
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
+
 d->cd(3);
 diff_th_phe->GetXaxis()->SetTitle("Delta_ThetaGen[mrad]");
 diff_th_phe->SetLineColor(9);
@@ -550,11 +544,9 @@ diff_th_phe->Draw("HIST");
 diff_th_pheCUT->GetXaxis()->SetTitle("Delta_ThetaGen[mrad]");
 diff_th_pheCUT->SetLineColor(kRed);
 diff_th_pheCUT->SetLineWidth(3);
-diff_th_pheCUT->Draw("HIST same"); 
-diff_th_pheCUTcal->GetXaxis()->SetTitle("Delta_ThetaGen[mrad]");
-diff_th_pheCUTcal->SetLineColor(kGreen);
-diff_th_pheCUTcal->SetLineWidth(3);
-diff_th_pheCUTcal->Draw("HIST same"); 
+diff_th_pheCUT->Draw("HIST same");
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
+
 d->cd(4);
 diff_r_phe->GetXaxis()->SetTitle("Delta_r[cm]");
 diff_r_phe->SetLineColor(9);
@@ -564,12 +556,63 @@ diff_r_pheCUT->GetXaxis()->SetTitle("Delta_r[cm]");
 diff_r_pheCUT->SetLineColor(kRed);
 diff_r_pheCUT->SetLineWidth(3);
 diff_r_pheCUT->Draw("HIST same"); 
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
+
+   
+d->SaveAs("/home/LHCB-T3/espedicato/tesi/studio2/photon_cut.png");
+    
+TCanvas * da= new TCanvas("da","da",1000,100,2500,2000);
+da->Divide(2,2);
+da->cd(1);
+Ephout->GetXaxis()->SetTitle("E[GeV]");
+Ephout->SetLineColor(9);
+Ephout->SetLineWidth(3);
+Ephout->SetMinimum(1);
+Ephout->Draw("HIST");
+EphoutCUTcal->GetXaxis()->SetTitle("E[GeV]");
+EphoutCUTcal->SetLineColor(kGreen);
+EphoutCUTcal->SetLineWidth(3);
+EphoutCUTcal->SetMinimum(1);
+EphoutCUTcal->Draw("HIST same");
+gPad->SetLogy();
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
+
+da->cd(2);
+Thphout->GetXaxis()->SetTitle("Theta_gen[mrad]");
+Thphout->SetLineColor(9);
+Thphout->SetLineWidth(3);
+Thphout->Draw("HIST"); 
+ThphoutCUTcal->GetXaxis()->SetTitle("Theta_gen[mrad]");
+ThphoutCUTcal->SetLineColor(kGreen);
+ThphoutCUTcal->SetLineWidth(3);
+ThphoutCUTcal->Draw("HIST same"); 
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
+
+da->cd(3);
+diff_th_phe->GetXaxis()->SetTitle("Delta_ThetaGen[mrad]");
+diff_th_phe->SetLineColor(9);
+diff_th_phe->SetLineWidth(3);
+diff_th_phe->Draw("HIST"); 
+diff_th_pheCUTcal->GetXaxis()->SetTitle("Delta_ThetaGen[mrad]");
+diff_th_pheCUTcal->SetLineColor(kGreen);
+diff_th_pheCUTcal->SetLineWidth(3);
+diff_th_pheCUTcal->Draw("HIST same");
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
+ 
+da->cd(4);
+diff_r_phe->GetXaxis()->SetTitle("Delta_r[cm]");
+diff_r_phe->SetLineColor(9);
+diff_r_phe->SetLineWidth(3);
+diff_r_phe->Draw("HIST"); 
 diff_r_pheCUTcal->GetXaxis()->SetTitle("Delta_r[cm]");
 diff_r_pheCUTcal->SetLineColor(kGreen);
 diff_r_pheCUTcal->SetLineWidth(3);
-diff_r_pheCUTcal->Draw("HIST same"); 
+diff_r_pheCUTcal->Draw("HIST same");
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
+ 
    
-d->SaveAs("/home/LHCB-T3/espedicato/tesi/studio2/photon_.png");
+da->SaveAs("/home/LHCB-T3/espedicato/tesi/studio2/photon_after.png");
+    
     
     
     

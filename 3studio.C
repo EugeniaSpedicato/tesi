@@ -549,6 +549,7 @@ delete myGrid;
 }}
 
 
+
 TCanvas * d= new TCanvas("d","d",1000,100,2500,2000);
 d->Divide(2,2);
 d->cd(1);
@@ -558,31 +559,22 @@ Ephout->SetLineWidth(3);
 Ephout->SetMinimum(1);
 Ephout->Draw("HIST");
 EphoutCUT->GetXaxis()->SetTitle("E[GeV]");
-EphoutCUT->SetLineColor(kRed-4);
+EphoutCUT->SetLineColor(kRed);
 EphoutCUT->SetLineWidth(3);
 EphoutCUT->SetMinimum(1);
 EphoutCUT->Draw("HIST same");
-EphoutCUTafter->GetXaxis()->SetTitle("E[GeV]");
-EphoutCUTafter->SetLineColor(30);
-EphoutCUTafter->SetLineWidth(3);
-EphoutCUTafter->SetMinimum(1);
-EphoutCUTafter->Draw("HIST same");
-gPad->BuildLegend(0.25,0.15,0.25,0.15);
 gPad->SetLogy();
-    
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
+
 d->cd(2);
 Thphout->GetXaxis()->SetTitle("Theta_gen[mrad]");
 Thphout->SetLineColor(9);
 Thphout->SetLineWidth(3);
 Thphout->Draw("HIST"); 
 ThphoutCUT->GetXaxis()->SetTitle("Theta_gen[mrad]");
-ThphoutCUT->SetLineColor(kRed-4);
+ThphoutCUT->SetLineColor(kRed);
 ThphoutCUT->SetLineWidth(3);
 ThphoutCUT->Draw("HIST same"); 
-ThphoutCUTafter->GetXaxis()->SetTitle("Theta_gen[mrad]");
-ThphoutCUTafter->SetLineColor(30);
-ThphoutCUTafter->SetLineWidth(3);
-ThphoutCUTafter->Draw("HIST same"); 
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
 d->cd(3);
@@ -591,13 +583,9 @@ diff_th_phe->SetLineColor(9);
 diff_th_phe->SetLineWidth(3);
 diff_th_phe->Draw("HIST"); 
 diff_th_pheCUT->GetXaxis()->SetTitle("Delta_ThetaGen[mrad]");
-diff_th_pheCUT->SetLineColor(kRed-4);
+diff_th_pheCUT->SetLineColor(kRed);
 diff_th_pheCUT->SetLineWidth(3);
-diff_th_pheCUT->Draw("HIST same"); 
-diff_th_pheCUTafter->GetXaxis()->SetTitle("Delta_ThetaGen[mrad]");
-diff_th_pheCUTafter->SetLineColor(30);
-diff_th_pheCUTafter->SetLineWidth(3);
-diff_th_pheCUTafter->Draw("HIST same"); 
+diff_th_pheCUT->Draw("HIST same");
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
 d->cd(4);
@@ -606,17 +594,65 @@ diff_r_phe->SetLineColor(9);
 diff_r_phe->SetLineWidth(3);
 diff_r_phe->Draw("HIST"); 
 diff_r_pheCUT->GetXaxis()->SetTitle("Delta_r[cm]");
-diff_r_pheCUT->SetLineColor(kRed-4);
+diff_r_pheCUT->SetLineColor(kRed);
 diff_r_pheCUT->SetLineWidth(3);
 diff_r_pheCUT->Draw("HIST same"); 
-diff_r_pheCUTafter->GetXaxis()->SetTitle("Delta_r[cm]");
-diff_r_pheCUTafter->SetLineColor(30);
-diff_r_pheCUTafter->SetLineWidth(3);
-diff_r_pheCUTafter->Draw("HIST same"); 
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
    
-d->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/photon.png");
+d->SaveAs("/home/LHCB-T3/espedicato/tesi/studio2/photon_cut.png");
+    
+TCanvas * da= new TCanvas("da","da",1000,100,2500,2000);
+da->Divide(2,2);
+da->cd(1);
+Ephout->GetXaxis()->SetTitle("E[GeV]");
+Ephout->SetLineColor(9);
+Ephout->SetLineWidth(3);
+Ephout->SetMinimum(1);
+Ephout->Draw("HIST");
+EphoutCUTcal->GetXaxis()->SetTitle("E[GeV]");
+EphoutCUTcal->SetLineColor(kGreen);
+EphoutCUTcal->SetLineWidth(3);
+EphoutCUTcal->SetMinimum(1);
+EphoutCUTcal->Draw("HIST same");
+gPad->SetLogy();
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
+
+da->cd(2);
+Thphout->GetXaxis()->SetTitle("Theta_gen[mrad]");
+Thphout->SetLineColor(9);
+Thphout->SetLineWidth(3);
+Thphout->Draw("HIST"); 
+ThphoutCUTcal->GetXaxis()->SetTitle("Theta_gen[mrad]");
+ThphoutCUTcal->SetLineColor(kGreen);
+ThphoutCUTcal->SetLineWidth(3);
+ThphoutCUTcal->Draw("HIST same"); 
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
+
+da->cd(3);
+diff_th_phe->GetXaxis()->SetTitle("Delta_ThetaGen[mrad]");
+diff_th_phe->SetLineColor(9);
+diff_th_phe->SetLineWidth(3);
+diff_th_phe->Draw("HIST"); 
+diff_th_pheCUTcal->GetXaxis()->SetTitle("Delta_ThetaGen[mrad]");
+diff_th_pheCUTcal->SetLineColor(kGreen);
+diff_th_pheCUTcal->SetLineWidth(3);
+diff_th_pheCUTcal->Draw("HIST same");
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
+ 
+da->cd(4);
+diff_r_phe->GetXaxis()->SetTitle("Delta_r[cm]");
+diff_r_phe->SetLineColor(9);
+diff_r_phe->SetLineWidth(3);
+diff_r_phe->Draw("HIST"); 
+diff_r_pheCUTcal->GetXaxis()->SetTitle("Delta_r[cm]");
+diff_r_pheCUTcal->SetLineColor(kGreen);
+diff_r_pheCUTcal->SetLineWidth(3);
+diff_r_pheCUTcal->Draw("HIST same");
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
+ 
+   
+da->SaveAs("/home/LHCB-T3/espedicato/tesi/studio2/photon_after.png");
     
     
     

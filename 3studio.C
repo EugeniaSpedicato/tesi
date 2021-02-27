@@ -327,7 +327,7 @@ if(photon_energy!=-1 && n_cell_ph!=0){
     
 if(E_clus3x3<=10){
 
-    if(ddd>8.8)
+    if(ddd>0.1*8.8)
     {
  
         DeltaRCUT->Fill(ddd,wgt_full);
@@ -347,7 +347,7 @@ Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}
 //ZONA 2
     
 if(E_clus3x3>10 && E_clus3x3<=20){
-if(ddd>8.5)
+if(ddd>0.1*8.5)
     {
  
         DeltaRCUT->Fill(ddd,wgt_full);
@@ -366,7 +366,7 @@ Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}
 //ZONA 3
     
 if(E_clus3x3>20 && E_clus3x3<=30){
-if(ddd>7)
+if(ddd>0.1*7)
     {
  
         DeltaRCUT->Fill(ddd,wgt_full);
@@ -386,7 +386,7 @@ Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}
 //ZONA 4
     
 if(E_clus3x3>30 && E_clus3x3<=40){
-if(ddd>5.85)
+if(ddd>0.1*5.85)
     {
  
         DeltaRCUT->Fill(ddd,wgt_full);
@@ -405,7 +405,7 @@ Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}
 //ZONA 5
     
 if(E_clus3x3>40 && E_clus3x3<=50){
- if(ddd>5.7)
+ if(ddd>0.1*5.7)
     {
  
         DeltaRCUT->Fill(ddd,wgt_full);
@@ -424,7 +424,7 @@ Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}
 //ZONA 6
     
 if(E_clus3x3>50 && E_clus3x3<=60){
- if(ddd>5.4)
+ if(ddd>0.1*5.4)
     {
  
         DeltaRCUT->Fill(ddd,wgt_full);
@@ -443,7 +443,7 @@ Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}
 //ZONA 7
     
 if(E_clus3x3>60 && E_clus3x3<=75){
-  if(ddd>5.12)
+  if(ddd>0.1*5.12)
     {
  
         DeltaRCUT->Fill(ddd,wgt_full);
@@ -462,7 +462,7 @@ Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}
 //ZONA 8
     
 if(E_clus3x3>75){
-  if(ddd>4.9)
+  if(ddd>0.1*4.9)
     {
  
         DeltaRCUT->Fill(ddd,wgt_full);

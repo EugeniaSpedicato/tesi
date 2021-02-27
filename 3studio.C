@@ -363,7 +363,7 @@ if(E_clus3x3<=10){
         if(photon_energy!=-1 && n_cell_ph!=0){
             EphoutCUT->Fill(photon_energy,wgt_full);
             ThphoutCUT->Fill(photon_def_angle_ph,wgt_full);
-            diff_th_pheCUT->Fill(diffTh,wgt_full);
+            diff_th_pheCUT->Fill(diffTh,wgt_full);}
             
             
     }    else {    E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);

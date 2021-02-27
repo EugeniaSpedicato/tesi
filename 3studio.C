@@ -533,7 +533,7 @@ else {
             EphoutCUT->Fill(photon_energy,wgt_full);
             ThphoutCUT->Fill(photon_def_angle_ph,wgt_full);
             diff_th_pheCUT->Fill(diffTh,wgt_full);
-            diff_r_pheCUT->Fill(d_e_ph,wgt_full);}}*/
+            diff_r_pheCUT->Fill(d_e_ph,wgt_full);}}
        
 }
 }       

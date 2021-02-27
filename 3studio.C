@@ -39,8 +39,8 @@ TH1F* hist_dist=new TH1F("dist1", "Dist e-centroide", 200,0,2);
 TH1F* hist_distCUT=new TH1F("dist2", "Dist e-centroide CUT", 200,0,2);
 
 
-TH2F  *E3x31CUT  = new TH2F("Eel1" , " Th_el Vs. E_3x3 core Tar 2 (Fiducial cut) ",120,0,30,360,0,140);
-TH2F  *E3x32CUT  = new TH2F("Eel2" , " Th_el Vs. E_3x3 core Tar 2 (Fiducial cut+event cuts)",120,0,30,360,0,140);
+TH2F  *E3x31CUT  = new TH2F("Eel1" , " Th_el Vs. E_3x3 core Tar 2 (Fiducial cut) ",180,0,30,380,0,140);
+TH2F  *E3x32CUT  = new TH2F("Eel2" , " Th_el Vs. E_3x3 core Tar 2 (Fiducial cut+event cuts)",180,0,30,380,0,140);
     
     
 TH2F  *Th1  = new TH2F("ThEel1" , " Th_el Vs. Th_mu core Tar 2 (Fiducial cut)",180,0,30,250,0,5);
@@ -356,7 +356,7 @@ if(E_clus3x3>1){
     
 if(E_clus3x3<=10){
 
-    if(ddd>0.1*8.8)
+    if(ddd>(3/4)*0.1*8.8)
     {
  
         DeltaRCUT->Fill(ddd,wgt_full);
@@ -389,7 +389,7 @@ Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
 //ZONA 2
     
 if(E_clus3x3>10 && E_clus3x3<=20){
-if(ddd>0.1*8.5)
+if(ddd>(3/4)*0.1*8.5)
     {
  
         DeltaRCUT->Fill(ddd,wgt_full);
@@ -418,7 +418,7 @@ Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
 //ZONA 3
     
 if(E_clus3x3>20 && E_clus3x3<=30){
-if(ddd>0.1*7)
+if(ddd>(3/4)*0.1*7)
     {
  
         DeltaRCUT->Fill(ddd,wgt_full);
@@ -448,7 +448,7 @@ Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
 //ZONA 4
     
 if(E_clus3x3>30 && E_clus3x3<=40){
-if(ddd>0.1*5.85)
+if(ddd>(3/4)*0.1*5.85)
     {
  
         DeltaRCUT->Fill(ddd,wgt_full);
@@ -477,7 +477,7 @@ Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
 //ZONA 5
     
 if(E_clus3x3>40 && E_clus3x3<=50){
- if(ddd>0.1*5.7)
+ if(ddd>(3/4)*0.1*5.7)
     {
  
         DeltaRCUT->Fill(ddd,wgt_full);
@@ -506,7 +506,7 @@ Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
 //ZONA 6
     
 if(E_clus3x3>50 && E_clus3x3<=60){
- if(ddd>0.1*5.4)
+ if(ddd>(3/4)*0.1*5.4)
     {
  
         DeltaRCUT->Fill(ddd,wgt_full);
@@ -536,7 +536,7 @@ Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
 //ZONA 7
     
 if(E_clus3x3>60 && E_clus3x3<=75){
-  if(ddd>0.1*5.12)
+  if(ddd>(3/4)*0.1*5.12)
     {
  
         DeltaRCUT->Fill(ddd,wgt_full);
@@ -565,7 +565,7 @@ Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
 //ZONA 8
     
 if(E_clus3x3>75){
-  if(ddd>0.1*4.9)
+  if(ddd>(3/4)*0.1*4.9)
     {
  
         DeltaRCUT->Fill(ddd,wgt_full);

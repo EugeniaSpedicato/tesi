@@ -686,8 +686,8 @@ if (Th2->GetBinContent(i,j)<1) Th2->SetBinContent(i,j,0);}}
     
 TCanvas * c4a= new TCanvas("c4a","c4a",100,100,2500,2000);
 c4a->Divide(1,2);
-gStyle->SetPalette(kLake);
-TColor::InvertPalette(); 
+gStyle->SetPalette(kRainBow);
+ 
 c4a->cd(1);   
 E3x31CUT->GetXaxis()->SetTitle("Theta_el[mrad]");
 E3x31CUT->GetYaxis()->SetTitle("Ereco3x3[GeV]");
@@ -702,8 +702,8 @@ c4a->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/thE_cut.png");
     
 TCanvas * thu= new TCanvas("c4a","c4a",100,100,2500,2000);
 thu->Divide(1,2);
-gStyle->SetPalette(kLake);
-TColor::InvertPalette(); 
+gStyle->SetPalette(kRainBow);
+ 
 thu->cd(1);   
 Th1->GetXaxis()->SetTitle("Theta_el[mrad]");
 Th1->GetYaxis()->SetTitle("Theta_mu[GeV]");

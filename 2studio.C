@@ -79,7 +79,21 @@ TH1F* hist_E3x3_eCUT=new TH1F("E3x3cut", "Energy Reco 3x3 cut", 70,0.,140);
     TH1F* diff_r_pheCUTafter =new TH1F("thetaPH", "Diff r_e-r_ph after cut off", 75,0,10); 
 
     
+       TH1F* Eeout=new TH1F("EnergyPH", "Energy el- tot", 75,0.2,150); 
+    TH1F* Theout=new TH1F("thetaPH", "Theta gen el- tot", 75,0.,40); 
+TH1F* EeoutCUT=new TH1F("EnergyPH1", "Energy el- cut off", 75,0.2,150); 
+    TH1F* TheoutCUT=new TH1F("thetaPH1", "Theta gen el- cut off", 75,0.,40); 
+ TH1F* EeoutCUTafter=new TH1F("EnergyPH1", "Energy el- after cut off", 75,0.2,150); 
+    TH1F* TheoutCUTafter=new TH1F("thetaPH1", "Theta gen el- after cut off", 75,0.,40); 
     
+    
+    TH1F* Emuout=new TH1F("EnergyPH", "Energy mu tot", 75,0.2,160); 
+    TH1F* Thmuout=new TH1F("thetaPH", "Theta gen mu tot", 100,0.,5); 
+TH1F* EmuoutCUT=new TH1F("EnergyPH1", "Energy mu cut off", 75,0.2,160); 
+    TH1F* ThmuoutCUT=new TH1F("thetaPH1", "Theta gen mu cut off", 100,0.,5); 
+ TH1F* EmuoutCUTafter=new TH1F("EnergyPH1", "Energy mu after cut off", 75,0.2,160); 
+    TH1F* ThmuoutCUTafter=new TH1F("thetaPH1", "Theta gen mu after cut off", 100,0.,5); 
+     
     
     
     TH1F* residuoX=new TH1F("res", "Residual X_cal-X_trak", 30,-0.8,0.8);
@@ -335,7 +349,7 @@ Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
                 EphoutCUT->Fill(photon_energy,wgt_full);
                 ThphoutCUT->Fill(photon_def_angle_ph,wgt_full);
                 diff_th_pheCUT->Fill(diffTh,wgt_full);
-                diff_r_pheCUT->Fill(d_e_ph,wgt_full);}
+                diff_r_pheCUT->Fill(d_e_ph,wgt_full);} EeoutCUT->Fill(detKinBeamRot_Ee,wgt_LO);                 TheoutCUT->Fill(detKinBeamRot_def_angle_e,wgt_LO);                  EmuoutCUT->Fill(detKinBeamRot_Emu,wgt_LO);                 ThmuoutCUT->Fill(detKinBeamRot_def_angle_mu,wgt_LO); diff_r_mueCUT->Fill(r_mue,wgt_full); 
         } else
         {
           /*hist_E3x3_e->Fill(E_clus3x3,wgt_full);
@@ -370,7 +384,7 @@ Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
                 EphoutCUT->Fill(photon_energy,wgt_full);
                 ThphoutCUT->Fill(photon_def_angle_ph,wgt_full);
                 diff_th_pheCUT->Fill(diffTh,wgt_full);
-                diff_r_pheCUT->Fill(d_e_ph,wgt_full);}
+                diff_r_pheCUT->Fill(d_e_ph,wgt_full);} EeoutCUT->Fill(detKinBeamRot_Ee,wgt_LO);                 TheoutCUT->Fill(detKinBeamRot_def_angle_e,wgt_LO);                  EmuoutCUT->Fill(detKinBeamRot_Emu,wgt_LO);                 ThmuoutCUT->Fill(detKinBeamRot_def_angle_mu,wgt_LO); diff_r_mueCUT->Fill(r_mue,wgt_full);  EeoutCUT->Fill(detKinBeamRot_Ee,wgt_LO);                 TheoutCUT->Fill(detKinBeamRot_def_angle_e,wgt_LO);                  EmuoutCUT->Fill(detKinBeamRot_Emu,wgt_LO);                 ThmuoutCUT->Fill(detKinBeamRot_def_angle_mu,wgt_LO); diff_r_mueCUT->Fill(r_mue,wgt_full); 
         } else
         {
           /*hist_E3x3_e->Fill(E_clus3x3,wgt_full);
@@ -406,7 +420,7 @@ E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
                 EphoutCUT->Fill(photon_energy,wgt_full);
                 ThphoutCUT->Fill(photon_def_angle_ph,wgt_full);
                 diff_th_pheCUT->Fill(diffTh,wgt_full);
-                diff_r_pheCUT->Fill(d_e_ph,wgt_full);}
+                diff_r_pheCUT->Fill(d_e_ph,wgt_full);} EeoutCUT->Fill(detKinBeamRot_Ee,wgt_LO);                 TheoutCUT->Fill(detKinBeamRot_def_angle_e,wgt_LO);                  EmuoutCUT->Fill(detKinBeamRot_Emu,wgt_LO);                 ThmuoutCUT->Fill(detKinBeamRot_def_angle_mu,wgt_LO); diff_r_mueCUT->Fill(r_mue,wgt_full); 
         } else
         {
           /*hist_E3x3_e->Fill(E_clus3x3,wgt_full);
@@ -441,7 +455,7 @@ E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
                 EphoutCUT->Fill(photon_energy,wgt_full);
                 ThphoutCUT->Fill(photon_def_angle_ph,wgt_full);
                 diff_th_pheCUT->Fill(diffTh,wgt_full);
-                diff_r_pheCUT->Fill(d_e_ph,wgt_full);}
+                diff_r_pheCUT->Fill(d_e_ph,wgt_full);} EeoutCUT->Fill(detKinBeamRot_Ee,wgt_LO);                 TheoutCUT->Fill(detKinBeamRot_def_angle_e,wgt_LO);                  EmuoutCUT->Fill(detKinBeamRot_Emu,wgt_LO);                 ThmuoutCUT->Fill(detKinBeamRot_def_angle_mu,wgt_LO); diff_r_mueCUT->Fill(r_mue,wgt_full); 
             
         } else
         {
@@ -476,7 +490,7 @@ Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
                 EphoutCUT->Fill(photon_energy,wgt_full);
                 ThphoutCUT->Fill(photon_def_angle_ph,wgt_full);
                 diff_th_pheCUT->Fill(diffTh,wgt_full);
-                diff_r_pheCUT->Fill(d_e_ph,wgt_full);}
+                diff_r_pheCUT->Fill(d_e_ph,wgt_full);} EeoutCUT->Fill(detKinBeamRot_Ee,wgt_LO);                 TheoutCUT->Fill(detKinBeamRot_def_angle_e,wgt_LO);                  EmuoutCUT->Fill(detKinBeamRot_Emu,wgt_LO);                 ThmuoutCUT->Fill(detKinBeamRot_def_angle_mu,wgt_LO); diff_r_mueCUT->Fill(r_mue,wgt_full); 
         } else
         {
           /*hist_E3x3_e->Fill(E_clus3x3,wgt_full);
@@ -631,7 +645,63 @@ gPad->BuildLegend(0.25,0.15,0.25,0.15);
    
 da->SaveAs("/home/LHCB-T3/espedicato/tesi/studio2/photon_after.png");
     
-    
+  TCanvas * de= new TCanvas("de","de",1000,100,2500,2000);
+de->Divide(1,2);
+de->cd(1);
+Eeout->GetXaxis()->SetTitle("E[GeV]");
+Eeout->SetLineColor(9);
+Eeout->SetLineWidth(3);
+Eeout->SetMinimum(1);
+Eeout->Draw("HIST");
+EeoutCUT->GetXaxis()->SetTitle("E[GeV]");
+EeoutCUT->SetLineColor(kRed);
+EeoutCUT->SetLineWidth(3);
+EeoutCUT->SetMinimum(1);
+EeoutCUT->Draw("HIST same");
+gPad->SetLogy();
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
+
+de->cd(2);
+Theout->GetXaxis()->SetTitle("Theta_gen[mrad]");
+Theout->SetLineColor(9);
+Theout->SetLineWidth(3);
+Theout->Draw("HIST"); 
+TheoutCUT->GetXaxis()->SetTitle("Theta_gen[mrad]");
+TheoutCUT->SetLineColor(kRed);
+TheoutCUT->SetLineWidth(3);
+TheoutCUT->Draw("HIST same"); 
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
+   
+de->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/electron_cut.png");         
+
+TCanvas * dmu= new TCanvas("dmu","dmu",1000,100,2500,2000);
+dmu->Divide(1,2);
+dmu->cd(1);
+Emuout->GetXaxis()->SetTitle("E[GeV]");
+Emuout->SetLineColor(9);
+Emuout->SetLineWidth(3);
+Emuout->SetMinimum(1);
+Emuout->Draw("HIST");
+EmuoutCUT->GetXaxis()->SetTitle("E[GeV]");
+EmuoutCUT->SetLineColor(kRed);
+EmuoutCUT->SetLineWidth(3);
+EmuoutCUT->SetMinimum(1);
+EmuoutCUT->Draw("HIST same");
+gPad->SetLogy();
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
+
+dmu->cd(2);
+Thmuout->GetXaxis()->SetTitle("Theta_gen[mrad]");
+Thmuout->SetLineColor(9);
+Thmuout->SetLineWidth(3);
+Thmuout->Draw("HIST"); 
+ThmuoutCUT->GetXaxis()->SetTitle("Theta_gen[mrad]");
+ThmuoutCUT->SetLineColor(kRed);
+ThmuoutCUT->SetLineWidth(3);
+ThmuoutCUT->Draw("HIST same"); 
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
+   
+dmu->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/muon_cut.png");    
     
     
 Int_t nx1CUT = E3x31CUT->GetNbinsX();

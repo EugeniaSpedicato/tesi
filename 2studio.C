@@ -672,7 +672,7 @@ TheoutCUT->SetLineWidth(3);
 TheoutCUT->Draw("HIST same"); 
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
    
-de->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/electron_cut.png");         
+de->SaveAs("/home/LHCB-T3/espedicato/tesi/studio2/electron_cut.png");         
 
 TCanvas * dmu= new TCanvas("dmu","dmu",1000,100,2500,2000);
 dmu->Divide(1,2);
@@ -701,7 +701,7 @@ ThmuoutCUT->SetLineWidth(3);
 ThmuoutCUT->Draw("HIST same"); 
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
    
-dmu->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/muon_cut.png");    
+dmu->SaveAs("/home/LHCB-T3/espedicato/tesi/studio2/muon_cut.png");    
     
     
 Int_t nx1CUT = E3x31CUT->GetNbinsX();

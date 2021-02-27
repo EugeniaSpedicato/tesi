@@ -600,7 +600,7 @@ diff_r_pheCUT->Draw("HIST same");
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
    
-d->SaveAs("/home/LHCB-T3/espedicato/tesi/studio2/photon_cut.png");
+d->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/photon_cut.png");
     
 TCanvas * da= new TCanvas("da","da",1000,100,2500,2000);
 da->Divide(2,2);
@@ -611,7 +611,7 @@ Ephout->SetLineWidth(3);
 Ephout->SetMinimum(1);
 Ephout->Draw("HIST");
 EphoutCUTafter->GetXaxis()->SetTitle("E[GeV]");
-EphoutCUTafter->SetLineColor(kGreen);
+EphoutCUTafter->SetLineColor(30);
 EphoutCUTafter->SetLineWidth(3);
 EphoutCUTafter->SetMinimum(1);
 EphoutCUTafter->Draw("HIST same");
@@ -624,7 +624,7 @@ Thphout->SetLineColor(9);
 Thphout->SetLineWidth(3);
 Thphout->Draw("HIST"); 
 ThphoutCUTafter->GetXaxis()->SetTitle("Theta_gen[mrad]");
-ThphoutCUTafter->SetLineColor(kGreen);
+ThphoutCUTafter->SetLineColor(30);
 ThphoutCUTafter->SetLineWidth(3);
 ThphoutCUTafter->Draw("HIST same"); 
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
@@ -635,7 +635,7 @@ diff_th_phe->SetLineColor(9);
 diff_th_phe->SetLineWidth(3);
 diff_th_phe->Draw("HIST"); 
 diff_th_pheCUTafter->GetXaxis()->SetTitle("Delta_ThetaGen[mrad]");
-diff_th_pheCUTafter->SetLineColor(kGreen);
+diff_th_pheCUTafter->SetLineColor(30);
 diff_th_pheCUTafter->SetLineWidth(3);
 diff_th_pheCUTafter->Draw("HIST same");
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
@@ -646,13 +646,13 @@ diff_r_phe->SetLineColor(9);
 diff_r_phe->SetLineWidth(3);
 diff_r_phe->Draw("HIST"); 
 diff_r_pheCUTafter->GetXaxis()->SetTitle("Delta_r[cm]");
-diff_r_pheCUTafter->SetLineColor(kGreen);
+diff_r_pheCUTafter->SetLineColor(30);
 diff_r_pheCUTafter->SetLineWidth(3);
 diff_r_pheCUTafter->Draw("HIST same");
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
  
    
-da->SaveAs("/home/LHCB-T3/espedicato/tesi/studio2/photon_after.png");
+da->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/photon_after.png");
     
     
     

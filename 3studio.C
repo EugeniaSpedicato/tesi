@@ -341,10 +341,9 @@ double dy=centroidY-detKinBeamRot_cooYe;
 residuoX->Fill(dx,wgt_full);
 residuoY->Fill(dy,wgt_full);
 
-//DeltaR->Fill(ddd,wgt_full);
-    
-diff_r_mue->Fill(Eout,r_mue,wgt_full);
-E_rc->Fill(ddd,wgt_full);
+DeltaR->Fill(ddd,wgt_full);   
+E_rc->Fill(Eout,r_mue,wgt_full);
+
 
 if(photon_energy!=-1 && n_cell_ph!=0){
  Ephout->Fill(photon_energy,wgt_full);

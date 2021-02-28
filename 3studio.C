@@ -351,10 +351,16 @@ if(photon_energy!=-1 && n_cell_ph!=0){
  diff_th_phe->Fill(diffTh,wgt_full);
  diff_r_phe->Fill(d_e_ph,wgt_full);
 }
-
+    
+double dists=0;
+if(SecondCentralCell_in9!=0){
 double x = myGrid->GetXaxis()->GetBinCenter(Rev_numberX[SecondCentralCell_in9]);
 double y = myGrid->GetYaxis()->GetBinCenter(Rev_numberY[SecondCentralCell_in9]);
-double dists=sqrt((x-detKinBeamRot_cooXe)*(x-detKinBeamRot_cooXe)+(y-detKinBeamRot_cooYe)*(y-detKinBeamRot_cooYe));     
+ dists=sqrt((x-detKinBeamRot_cooXe)*(x-detKinBeamRot_cooXe)+(y-detKinBeamRot_cooYe)*(y-detKinBeamRot_cooYe)); }
+   else if(SecondCentralCell!=0{
+double x = myGrid->GetXaxis()->GetBinCenter(Rev_numberX[SecondCentralCell]);
+double y = myGrid->GetYaxis()->GetBinCenter(Rev_numberY[SecondCentralCell]);
+ dists=sqrt((x-detKinBeamRot_cooXe)*(x-detKinBeamRot_cooXe)+(y-detKinBeamRot_cooYe)*(y-detKinBeamRot_cooYe)); }
 
 if(photon_energy==-1 && n_cell_ph==0 && dists<1.3){
 if(SecondCentralCell_in9==n_cell_e || SecondCentralCell==n_cell_e){E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);

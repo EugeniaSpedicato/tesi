@@ -96,7 +96,11 @@ TH1F* EmuoutCUT=new TH1F("EnergyPH1", "Energy mu cut off", 75,0.2,160);
     TH1F* ThmuoutCUTafter=new TH1F("thetaPH1", "Theta gen mu after cut off", 100,0.,5); 
     
     
-    
+Double_t Emean_out=0.;
+TH1F* hist_E92_e=new TH1F("Emean", "Mean E out", 100,0.,0.15);
+TH1F* hist_E92_eCUT=new TH1F("Emeancut", "Mean E out cut", 100,0.,0.15);
+
+   
     
     
     TH1F* DeltaR=new TH1F("res", "r_cal-r_trak", 100,0,2);
@@ -393,11 +397,11 @@ Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
                EeoutCUTafter->Fill(detKinBeamRot_Ee,wgt_full); 
                TheoutCUTafter->Fill(detKinBeamRot_def_angle_e,wgt_full); EmuoutCUTafter->Fill(detKinBeamRot_Emu,wgt_full); 
                ThmuoutCUTafter->Fill(detKinBeamRot_def_angle_mu,wgt_full);  
-              
-              
+                   
               }
 }
-    
+ 
+ if(detKinBeamRot_def_angle_e<5) hist_E92_e->Fill(Emean_out,wgt_full);     
 //ZONA 2
     
 if(E_clus3x3>10 && E_clus3x3<=20){
@@ -425,7 +429,7 @@ Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
  ThphoutCUTafter->Fill(photon_def_angle_ph,wgt_full);
  diff_th_pheCUTafter->Fill(diffTh,wgt_full);
  diff_r_pheCUTafter->Fill(d_e_ph,wgt_full);} 
-               EeoutCUTafter->Fill(detKinBeamRot_Ee,wgt_full); TheoutCUTafter->Fill(detKinBeamRot_def_angle_e,wgt_full); EmuoutCUTafter->Fill(detKinBeamRot_Emu,wgt_full); ThmuoutCUTafter->Fill(detKinBeamRot_def_angle_mu,wgt_full);  
+               EeoutCUTafter->Fill(detKinBeamRot_Ee,wgt_full); TheoutCUTafter->Fill(detKinBeamRot_def_angle_e,wgt_full); EmuoutCUTafter->Fill(detKinBeamRot_Emu,wgt_full); ThmuoutCUTafter->Fill(detKinBeamRot_def_angle_mu,wgt_full);                    
 }
 }
 //ZONA 3
@@ -868,5 +872,19 @@ DeltaRCUT->SetLineColor(kRed-4);
 DeltaRCUT->Draw("HIST same"); 
 cres->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/res.png");
    
+TCanvas * c= new TCanvas("c","c",1000,100,2500,2000);
+
+hist_E92_e->GetXaxis()->SetTitle("<Eres> [GeV]");
+hist_E92_e->SetLineWidth(3);
+hist_E92_e->Draw("HIST"); 
+hist_E92_e->SetMinimum(1);
+gPad->SetLogy();
+    
+hist_E92_eCUT->GetXaxis()->SetTitle("<Eres> [GeV]");
+hist_E92_eCUT->SetLineWidth(3);
+hist_E92_eCUT->SetLineColor(kRed);
+hist_E92_eCUT->Draw("HIST same");   
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
+c->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/meanout.png");
 
 } 

@@ -339,21 +339,24 @@ double dy=centroidY-detKinBeamRot_cooYe;
 residuoX->Fill(dx,wgt_full);
 residuoY->Fill(dy,wgt_full);
 
-DeltaR->Fill(ddd,wgt_full);
+//DeltaR->Fill(ddd,wgt_full);
     
 diff_r_mue->Fill(r_mue,wgt_full);
 
 
-if(photon_energy!=-1 && n_cell_ph!=0 && photon_energy>30){
+if(photon_energy!=-1 && n_cell_ph!=0){
  Ephout->Fill(photon_energy,wgt_full);
  Thphout->Fill(photon_def_angle_ph,wgt_full);
  diff_th_phe->Fill(diffTh,wgt_full);
  diff_r_phe->Fill(d_e_ph,wgt_full);
- 
+}
+
+if(detKinBeamRot_def_angle_mu<1.5){    
+DeltaR->Fill(ddd,wgt_full);
 Eeout->Fill(detKinBeamRot_Ee,wgt_full);
 Theout->Fill(detKinBeamRot_def_angle_e,wgt_full);
 Emuout->Fill(detKinBeamRot_Emu,wgt_full);
-Thmuout->Fill(detKinBeamRot_def_angle_mu,wgt_full);} 
+Thmuout->Fill(detKinBeamRot_def_angle_mu,wgt_full);}
     
 E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
 Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);

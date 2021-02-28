@@ -43,8 +43,8 @@ TH2F  *E3x31CUT  = new TH2F("Eel1" , " Th_el Vs. E_3x3 core Tar 2 (Fiducial cut)
 TH2F  *E3x32CUT  = new TH2F("Eel2" , " Th_el Vs. E_3x3 core Tar 2 (Fiducial cut+event cuts)",180,0,30,380,0,140);
     
     
-TH2F  *Th1  = new TH2F("ThEel1" , " Th_el Vs. Th_mu core Tar 2 (Fiducial cut)",180,20,30,250,0,1.5);
-TH2F  *Th2  = new TH2F("ThEel2" , " Th_el Vs. Th_mu core Tar 2 (Fiducial cut+event cuts",180,20,30,250,0,1.5);    
+TH2F  *Th1  = new TH2F("ThEel1" , " Th_el Vs. Th_mu core Tar 2 (Fiducial cut)",180,0,30,250,0,5);
+TH2F  *Th2  = new TH2F("ThEel2" , " Th_el Vs. Th_mu core Tar 2 (Fiducial cut+event cuts",180,0,30,250,0,5);    
 
 
 TH1F* hist_E9_e=new TH1F("E9e", "E9", 100,0.,1);
@@ -361,7 +361,7 @@ Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
     
 if (detKinBeamRot_def_angle_e>=5 && detKinBeamRot_def_angle_e<10 ) hist_E92_e->Fill(Emean_out,wgt_full);
 
-//if(E_clus3x3>1){
+if(E_clus3x3>1){
 
     
 //ZONA 1
@@ -402,7 +402,7 @@ Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
 //ZONA 2
     
 if(E_clus3x3>10 && E_clus3x3<=20){
-if(ddd>0.1*8.5)
+if(ddd>0.1*7.28)
     {
  
         DeltaRCUT->Fill(ddd,wgt_full);
@@ -618,7 +618,7 @@ Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
                EeoutCUTafter->Fill(detKinBeamRot_Ee,wgt_full); TheoutCUTafter->Fill(detKinBeamRot_def_angle_e,wgt_full); EmuoutCUTafter->Fill(detKinBeamRot_Emu,wgt_full); ThmuoutCUTafter->Fill(detKinBeamRot_def_angle_mu,wgt_full);  }    
 } 
 }
-/*}
+}
 else {
         if(photon_energy!=-1 && n_cell_ph!=0){
             EphoutCUT->Fill(photon_energy,wgt_full);
@@ -630,7 +630,7 @@ else {
                TheoutCUT->Fill(detKinBeamRot_def_angle_e,wgt_LO); 
                 EmuoutCUT->Fill(detKinBeamRot_Emu,wgt_LO); 
                ThmuoutCUT->Fill(detKinBeamRot_def_angle_mu,wgt_LO); diff_r_mueCUT->Fill(r_mue,wgt_full); 
-}*/
+}
        
 }
 }       
@@ -858,13 +858,10 @@ thu->cd(1);
 Th1->GetXaxis()->SetTitle("Theta_el[mrad]");
 Th1->GetYaxis()->SetTitle("Theta_mu[GeV]");
 Th1->Draw("COLZ");
-    gPad->SetLogy();
 thu->cd(2);   
-gPad->SetLogy();
 Th2->GetXaxis()->SetTitle("Theta_el[mrad]");
 Th2->GetYaxis()->SetTitle("Theta_mu[GeV]");
 Th2->Draw("COLZ");
-gPad->SetLogy();
 thu->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/thu.png");
 
     

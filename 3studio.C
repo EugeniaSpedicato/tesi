@@ -694,6 +694,7 @@ ThmuoutCUT->GetXaxis()->SetTitle("Theta_gen[mrad]");
 ThmuoutCUT->SetLineColor(kRed);
 ThmuoutCUT->SetLineWidth(3);
 ThmuoutCUT->Draw("HIST same"); 
+gPad->SetLogy();
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
    
 dmu->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/muon_cut.png");       

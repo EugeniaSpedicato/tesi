@@ -342,7 +342,7 @@ residuoX->Fill(dx,wgt_full);
 residuoY->Fill(dy,wgt_full);
 
 DeltaR->Fill(ddd,wgt_full);   
-E_rc->Fill(r_mue,Eout,wgt_full);
+
 
 
 if(photon_energy!=-1 && n_cell_ph!=0){
@@ -370,6 +370,8 @@ if(E_clus3x3>1){
     
 if(E_clus3x3<=10){
 
+E_rc->Fill(r_mue,Eout,wgt_full);    
+    
     if(ddd>0.1*8.8)
     {
  

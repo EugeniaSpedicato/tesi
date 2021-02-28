@@ -312,7 +312,8 @@ double centroidX=(Ex)/wtot;
 double centroidY=(Ey)/wtot;         
 
 double r_mue=sqrt((detKinBeamRot_cooXe-detKinBeamRot_cooXmu)*(detKinBeamRot_cooXe-detKinBeamRot_cooXmu)+(detKinBeamRot_cooYe-detKinBeamRot_cooYmu)*(detKinBeamRot_cooYe-detKinBeamRot_cooYmu)); 
-    
+ 
+double ddd=sqrt((centroidX-detKinBeamRot_cooXe)*(centroidX-detKinBeamRot_cooXe)+(centroidY-detKinBeamRot_cooYe)*(centroidY-detKinBeamRot_cooYe)); 
     
 if(r_mu<1.7 && detKinBeamRot_tar==1){
     
@@ -329,36 +330,31 @@ diff_r_phe->Fill(d_e_ph,wgt_full);
 
 E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
 Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);    
-if (detKinBeamRot_def_angle_e<2.5 && E_clus3x3>65)
+if (detKinBeamRot_def_angle_e<2.5 && ddd<0.52)
 {
 E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
 Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);  
 }    
     
     
-if (detKinBeamRot_def_angle_e>=2.5 && detKinBeamRot_def_angle_e<5 && E_clus3x3>25)
+if (detKinBeamRot_def_angle_e>=2.5 && detKinBeamRot_def_angle_e<5 && ddd<0.7)
 {
 E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
 Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);  
 }
     
-if (detKinBeamRot_def_angle_e>=5 && detKinBeamRot_def_angle_e<7 && E_clus3x3>15)
+if (detKinBeamRot_def_angle_e>=5 && detKinBeamRot_def_angle_e<9 && ddd<0.85)
 {
 E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
 Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);  
 } 
 
-if (detKinBeamRot_def_angle_e>=7 && detKinBeamRot_def_angle_e<8.5 && E_clus3x3>10)
+if (detKinBeamRot_def_angle_e>=9 && ddd>1)
 {
 E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
 Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);  
 } 
-    
-if (detKinBeamRot_def_angle_e>=8.5 && E_clus3x3>1)
-{
-E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
-Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);  
-}
+
        
 }
 }       

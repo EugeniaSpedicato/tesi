@@ -362,7 +362,7 @@ double x = myGrid->GetXaxis()->GetBinCenter(Rev_numberX[SecondCentralCell]);
 double y = myGrid->GetYaxis()->GetBinCenter(Rev_numberY[SecondCentralCell]);
  dists=sqrt((x-detKinBeamRot_cooXe)*(x-detKinBeamRot_cooXe)+(y-detKinBeamRot_cooYe)*(y-detKinBeamRot_cooYe)); }
 
-if(photon_energy==-1 && n_cell_ph==0 && dists<1.35){
+if(photon_energy!=-1 && n_cell_ph!=0 && dists<1.35){
 if(SecondCentralCell_in9==n_cell_e || SecondCentralCell==n_cell_e){E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
 Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}}
     

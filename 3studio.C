@@ -344,7 +344,7 @@ DeltaR->Fill(ddd,wgt_full);
 diff_r_mue->Fill(r_mue,wgt_full);
 
 
-if(photon_energy!=-1 && n_cell_ph!=0 && Thphout>30){
+if(photon_energy!=-1 && n_cell_ph!=0 && photon_def_angle_ph>30){
  Ephout->Fill(photon_energy,wgt_full);
  Thphout->Fill(photon_def_angle_ph,wgt_full);
  diff_th_phe->Fill(diffTh,wgt_full);

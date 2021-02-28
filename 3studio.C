@@ -349,16 +349,17 @@ if(photon_energy!=-1 && n_cell_ph!=0){
  diff_th_phe->Fill(diffTh,wgt_full);
  diff_r_phe->Fill(d_e_ph,wgt_full);
 }
-
-if(detKinBeamRot_def_angle_mu<1.5 && detKinBeamRot_def_angle_e<1.5){    
+   
 DeltaR->Fill(ddd,wgt_full);
 Eeout->Fill(detKinBeamRot_Ee,wgt_full);
 Theout->Fill(detKinBeamRot_def_angle_e,wgt_full);
 Emuout->Fill(detKinBeamRot_Emu,wgt_full);
-Thmuout->Fill(detKinBeamRot_def_angle_mu,wgt_full);}
+Thmuout->Fill(detKinBeamRot_def_angle_mu,wgt_full);
     
-/*E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
-Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);*/
+E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
+Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
+    
+if (detKinBeamRot_def_angle_e>=5 && detKinBeamRot_def_angle_e<10 ) hist_E92_e->Fill(Emean_out,wgt_full);
 
 if(E_clus3x3>1){
 

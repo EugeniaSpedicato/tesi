@@ -95,12 +95,7 @@ TH1F* EmuoutCUT=new TH1F("EnergyPH1", "Energy mu cut off", 75,0.2,160);
  TH1F* EmuoutCUTafter=new TH1F("EnergyPH1", "Energy mu after cut off", 75,0.2,160); 
     TH1F* ThmuoutCUTafter=new TH1F("thetaPH1", "Theta gen mu after cut off", 100,0.,5); 
     
-    
-Double_t Emean_out=0.;
-TH1F* hist_E92_e=new TH1F("Emean", "Mean E out", 100,0.,0.15);
-TH1F* hist_E92_eCUT=new TH1F("Emeancut", "Mean E out cut", 100,0.,0.15);
 
-   
     
     
     TH1F* DeltaR=new TH1F("res", "r_cal-r_trak", 100,0,2);

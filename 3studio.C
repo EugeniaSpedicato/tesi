@@ -46,7 +46,7 @@ TH2F  *E3x32CUT  = new TH2F("Eel2" , " Th_el Vs. E_3x3 core Tar 2 (Fiducial cut+
 TH2F  *Th1  = new TH2F("ThEel1" , " Th_el Vs. Th_mu core Tar 2 (Fiducial cut)",180,0,30,250,0,5);
 TH2F  *Th2  = new TH2F("ThEel2" , " Th_el Vs. Th_mu core Tar 2 (Fiducial cut+event cuts",180,0,30,250,0,5);    
     
-TH2F  *E_rc  = new TH2F("ThEel2" , " E3x3 vs Rc-Rt",100,0,2,100,0.,0.1);    
+TH2F  *E_rc  = new TH2F("ThEel2" , " E3x3 vs Rc-Rt",100,0,1.8,100,0.,0.1);    
 
 
 
@@ -342,7 +342,7 @@ residuoX->Fill(dx,wgt_full);
 residuoY->Fill(dy,wgt_full);
 
 DeltaR->Fill(ddd,wgt_full);   
-E_rc->Fill(Eout,r_mue,wgt_full);
+E_rc->Fill(r_mue,Eout,wgt_full);
 
 
 if(photon_energy!=-1 && n_cell_ph!=0){
@@ -878,7 +878,7 @@ gStyle->SetPalette(kRainBow);
 E_rc->GetXaxis()->SetTitle("DR[cm]");
 E_rc->GetYaxis()->SetTitle("Eout/E3x3[GeV]");
 E_rc->Draw("COLZ");
-er->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/thu.png"); 
+er->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/erc.png"); 
     
     
 TCanvas * cres= new TCanvas("cres","cres",1000,100,2500,2000);  

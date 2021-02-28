@@ -45,6 +45,9 @@ TH2F  *E3x32CUT  = new TH2F("Eel2" , " Th_el Vs. E_3x3 core Tar 2 (Fiducial cut+
     
 TH2F  *Th1  = new TH2F("ThEel1" , " Th_el Vs. Th_mu core Tar 2 (Fiducial cut)",180,0,30,250,0,5);
 TH2F  *Th2  = new TH2F("ThEel2" , " Th_el Vs. Th_mu core Tar 2 (Fiducial cut+event cuts",180,0,30,250,0,5);    
+    
+TH2F  *E_rc  = new TH2F("ThEel2" , " E3x3 vs Rc-Rt",100,0,2,100,0.,0.1);    
+
 
 
 TH1F* hist_E9_e=new TH1F("E9e", "E9", 100,0.,1);
@@ -340,8 +343,8 @@ residuoY->Fill(dy,wgt_full);
 
 //DeltaR->Fill(ddd,wgt_full);
     
-diff_r_mue->Fill(r_mue,wgt_full);
-
+diff_r_mue->Fill(Eout,r_mue,wgt_full);
+E_rc->Fill(ddd,wgt_full);
 
 if(photon_energy!=-1 && n_cell_ph!=0){
  Ephout->Fill(photon_energy,wgt_full);
@@ -834,6 +837,12 @@ for (Int_t i=1; i<nx2thcut+1; i++) {
 for (Int_t j=1; j<ny2thcut+1; j++) {
 if (Th2->GetBinContent(i,j)<1) Th2->SetBinContent(i,j,0);}}
         
+Int_t nxr = E_rc->GetNbinsX();
+Int_t nyr = E_rc->GetNbinsY();
+for (Int_t i=1; i<nxr+1; i++) {
+for (Int_t j=1; j<nyr+1; j++) {
+if (E_rc->GetBinContent(i,j)<1) E_rc->SetBinContent(i,j,0);}}
+        
     
 TCanvas * c4a= new TCanvas("c4a","c4a",100,100,2500,2000);
 c4a->Divide(1,2);
@@ -865,6 +874,13 @@ Th2->GetYaxis()->SetTitle("Theta_mu[GeV]");
 Th2->Draw("COLZ");
 thu->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/thu.png");
 
+TCanvas * er= new TCanvas("er","er",100,100,2500,2000);
+gStyle->SetPalette(kRainBow);
+E_rc->GetXaxis()->SetTitle("DR[cm]");
+E_rc->GetYaxis()->SetTitle("Eout/E3x3[GeV]");
+E_rc->Draw("COLZ");
+er->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/thu.png"); 
+    
     
 TCanvas * cres= new TCanvas("cres","cres",1000,100,2500,2000);  
 cres->Divide(1,2);

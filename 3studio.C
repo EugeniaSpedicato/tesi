@@ -399,7 +399,7 @@ Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
  if(detKinBeamRot_def_angle_e<5) hist_E92_e->Fill(Emean_out,wgt_full);    
     
     
-     if(detKinBeamRot_def_angle_e<5 && Emean_out>0.04) {E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
+     if(detKinBeamRot_def_angle_e<5 && Emean_out<0.04) {E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
 Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}
 //ZONA 2
     

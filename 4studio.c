@@ -346,7 +346,19 @@ if (detKinBeamRot_def_angle_e>=5 && detKinBeamRot_def_angle_e<7 && E_clus3x3>15)
 {
 E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
 Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);  
-}    
+} 
+
+if (detKinBeamRot_def_angle_e>=7 && detKinBeamRot_def_angle_e<8.5 && E_clus3x3>10)
+{
+E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
+Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);  
+} 
+    
+if (detKinBeamRot_def_angle_e>=8.5 && E_clus3x3>1)
+{
+E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
+Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);  
+}
        
 }
 }       

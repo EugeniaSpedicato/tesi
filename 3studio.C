@@ -859,9 +859,11 @@ Th1->GetXaxis()->SetTitle("Theta_el[mrad]");
 Th1->GetYaxis()->SetTitle("Theta_mu[GeV]");
 Th1->Draw("COLZ");
 thu->cd(2);   
+gPad->SetLogy();
 Th2->GetXaxis()->SetTitle("Theta_el[mrad]");
 Th2->GetYaxis()->SetTitle("Theta_mu[GeV]");
 Th2->Draw("COLZ");
+gPad->SetLogy();
 thu->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/thu.png");
 
     

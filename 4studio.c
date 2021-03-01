@@ -390,9 +390,9 @@ diff_r_phe->Fill(d_e_ph,wgt_full);
 }
 
 }       
-}
+
 delete myGrid; 
-}
+}}
 
 
 TCanvas * el= new TCanvas("el","el",1000,100,2500,2000);

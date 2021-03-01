@@ -64,7 +64,7 @@ TH1F* hist_E3x3_e=new TH1F("E3x3", "Energy Reco 3x3", 70,0.,140);
 TH1F* hist_E3x3_eCUT=new TH1F("E3x3cut", "Energy Reco 3x3 cut", 70,0.,140); 
 
 
-TH1F* hist_DE=new TH1F("E3x3", "DE", 100,-1,1);
+TH1F* hist_DE=new TH1F("E3x3", "DE", 100,-2,2);
 TH1F* hist_DE5=new TH1F("E3x3", "DE", 100,-0.01,0.01);
     
     
@@ -345,7 +345,7 @@ if (detKinBeamRot_def_angle_e>10) hist_DE5->Fill(DE5,wgt_full);
 if (DE>-0.9 && DE<0.9 && detKinBeamRot_def_angle_e<10) 
 {E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
 Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}   
-if (DE5>-0.001 && detKinBeamRot_def_angle_e>10) 
+if (DE5>-0.006 && detKinBeamRot_def_angle_e>10) 
 {E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
 Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}
 /*if (photon_energy>1 || photon_energy<0) {E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);

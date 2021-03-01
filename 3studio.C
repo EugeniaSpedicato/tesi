@@ -397,7 +397,7 @@ if(E_clus3x3>1){
     
 if(E_clus3x3<=10){
 
-    if(ddd>0.1*8.8)
+    if(ddd>0.1*9)
     {
  
         DeltaRCUT->Fill(ddd,wgt_full);
@@ -901,7 +901,7 @@ ThmuoutCUTafter->Draw("HIST same");
 gPad->SetLogy();
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
    
-dmu->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/muon_after.png");         
+dmuafter->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/muon_after.png");         
        
        
        

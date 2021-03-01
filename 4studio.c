@@ -336,7 +336,7 @@ if(r_mu<1.7 && detKinBeamRot_tar==1 ){
  
 hist_DE->Fill(DE,wgt_full);      
     
-if (DE>0.01) 
+if (DE>-0.01) 
 {E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
 Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}
 /*if (photon_energy>1 || photon_energy<0) {E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);

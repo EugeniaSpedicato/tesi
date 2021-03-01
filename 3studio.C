@@ -394,7 +394,7 @@ if(E_clus3x3<=10){
 
 E_rc->Fill(r_mue,Eout,wgt_full);    
     
-    if(ddd>0.1*8.8)
+    if(ddd>0.1*8.6)
     {
  
         DeltaRCUT->Fill(ddd,wgt_full);
@@ -449,7 +449,7 @@ E_rc->Fill(r_mue,Eout,wgt_full);
 //ZONA 2
     
 if(E_clus3x3>10 && E_clus3x3<=20){
-if(ddd>0.1*7.28)
+if(ddd>0.1*7.2)
     {
  
         DeltaRCUT->Fill(ddd,wgt_full);

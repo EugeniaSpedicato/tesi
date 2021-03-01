@@ -366,9 +366,14 @@ double x = myGrid->GetXaxis()->GetBinCenter(Rev_numberX[CentralCell]);
 double y = myGrid->GetYaxis()->GetBinCenter(Rev_numberY[CentralCell]);
  dists=sqrt((x-detKinBeamRot_cooXe)*(x-detKinBeamRot_cooXe)+(y-detKinBeamRot_cooYe)*(y-detKinBeamRot_cooYe));    
 
-if(photon_energy==-1 && n_cell_ph==0){
+//if(photon_energy==-1 && n_cell_ph==0){
 if(SecondCentralCell_in9==n_cell_e || SecondCentralCell==n_cell_e){E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
-Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}}
+Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
+hist_E9_e->Fill(E9,wgt_full);
+hist_Eout_e->Fill(Eout,wgt_full);
+hist_E92_e->Fill(Emean_out,wgt_full);
+hist_E3x3_e->Fill(E_clus3x3,wgt_full);
+hist_dist->Fill(ddd,wgt_full);}//}
     
 DeltaR->Fill(ddd,wgt_full);
 Eeout->Fill(detKinBeamRot_Ee,wgt_full);
@@ -932,5 +937,68 @@ hist_E92_eCUT->SetLineColor(kRed);
 hist_E92_eCUT->Draw("HIST same");   
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 c->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/meanout.png");
+
+TCanvas * c9= new TCanvas("c9","c9",1000,100,2500,2000);
+c9->Divide(2,3);
+c9->cd(1);
+hist_E9_e->GetXaxis()->SetTitle("Ecentral/E3x3");
+hist_E9_e->SetLineWidth(3);
+hist_E9_e->Draw("HIST"); 
+    
+hist_E9_eCUT->GetXaxis()->SetTitle("Ecentral/E3x3");
+hist_E9_eCUT->SetLineWidth(3);
+hist_E9_eCUT->SetLineColor(kRed);
+hist_E9_eCUT->Draw("HIST same");    
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
+    
+c9->cd(2);  
+hist_Eout_e->GetXaxis()->SetTitle("Eres/E3x3");
+hist_Eout_e->SetLineWidth(3);
+hist_Eout_e->Draw("HIST");  
+    
+hist_Eout_eCUT->GetXaxis()->SetTitle("Eres/E3x3");
+hist_Eout_eCUT->SetLineWidth(3);
+hist_Eout_eCUT->SetLineColor(kRed);
+hist_Eout_eCUT->Draw("HIST same");  
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
+c9->cd(3);
+hist_E92_e->GetXaxis()->SetTitle("<Eres> [GeV]");
+hist_E92_e->SetLineWidth(3);
+hist_E92_e->Draw("HIST"); 
+hist_E92_e->SetMinimum(1);
+gPad->SetLogy();
+    
+hist_E92_eCUT->GetXaxis()->SetTitle("<Eres> [GeV]");
+hist_E92_eCUT->SetLineWidth(3);
+hist_E92_eCUT->SetLineColor(kRed);
+hist_E92_eCUT->Draw("HIST same");   
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
+    
+c9->cd(4);  
+hist_E3x3_e->GetXaxis()->SetTitle("E3x3 [GeV]");
+hist_E3x3_e->SetLineWidth(3);
+hist_E3x3_e->Draw("HIST"); 
+hist_E3x3_e->SetMinimum(1);   
+gPad->SetLogy();
+    
+hist_E3x3_eCUT->GetXaxis()->SetTitle("E3x3 [GeV]");
+hist_E3x3_eCUT->SetLineWidth(3);
+hist_E3x3_eCUT->SetLineColor(kRed);
+hist_E3x3_eCUT->Draw("HIST same");  
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
+    
+c9->cd(5); 
+hist_dist->GetXaxis()->SetTitle("d [cm]");
+hist_dist->SetLineWidth(3);
+hist_dist->Draw("HIST"); 
+    
+hist_distCUT->GetXaxis()->SetTitle("d [cm]");
+hist_distCUT->SetLineWidth(3);
+hist_distCUT->SetLineColor(kRed);
+hist_distCUT->Draw("HIST same"); 
+gPad->BuildLegend(0.25,0.15,0.25,0.15);
+    
+c9->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/E9.png");
+
 
 } 

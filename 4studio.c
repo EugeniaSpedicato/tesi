@@ -327,7 +327,7 @@ double x=detKinBeamRot_def_angle_e*0.001;
 double beta=(sqrt(150*150-(m_mu*m_mu))/(150+m_e));
 double Ethe=m_e*((1+(beta*beta*cos(x)*cos(x)))/(1-(beta*beta*cos(x)*cos(x))));
 //cout << " E teorico " << Ethe  << " E reco " << E_clus3x3 << endl;
-double der_Ee=-4*m_e*beta*beta*( (cos(x)*sin(x))/((1-(beta*beta*cos(x)*cos(x)))*(1-(beta*beta*cos(x)*cos(x)))) );
+//double der_Ee=-4*m_e*beta*beta*( (cos(x)*sin(x))/((1-(beta*beta*cos(x)*cos(x)))*(1-(beta*beta*cos(x)*cos(x)))) );
 double DE= (E_clus3x3/Ethe-0.955);
 //double DE5= (E_clus3x3-(95.4/100)*Ethe)/(sqrt(der_Ee*der_Ee+1));
 // /(sqrt(der_Ee*der_Ee+1));
@@ -350,36 +350,32 @@ if (DE>-0.08 && DE<0.08 && detKinBeamRot_def_angle_e>10)
 Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}*/
     
 
-     if (DE>-0.08 && DE<0.08 && E_clus3x3>=28) 
-    {E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
-    Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}   
-    else if (DE>-0.2 && DE<0.2 && E_clus3x3<28 && E_clus3x3>=7) 
-    {E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
-     Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);} 
-    else if (DE>-0.3 && DE<0.3 && E_clus3x3>7 && E_clus3x3>=5) 
-    {E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
-     Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}
-    else if ( DE>-0.4 && DE<0.4 && E_clus3x3<5 ) 
-    {E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
-     Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);} 
+                 if (DE>-0.08 && DE<0.08 && detKinBeamRot_def_angle_e<=5) 
+    {E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
+    Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}   
+    else if (DE>-0.2 && DE<0.2 && detKinBeamRot_def_angle_e>5 && detKinBeamRot_def_angle_e<=10) 
+    {E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
+     Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);} else if (DE>-0.3 && DE<0.3 && detKinBeamRot_def_angle_e>10 && detKinBeamRot_def_angle_e<=15) {E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
+     Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);} else if ( DE>-0.4 && DE<0.4 && detKinBeamRot_def_angle_e>15 && detKinBeamRot_def_angle_e<=20) 
+    {E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
+     Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}     
+    else if (detKinBeamRot_def_angle_e>20) {E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
+     Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);} 
     /*else if ( detKinBeamRot_def_angle_e>20) 
     {E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
      Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);} */
  
  if(photon_energy==-1 && n_cell_ph==0)   
- {
-     if ( DE>abs(0.08) && E_clus3x3>=25) 
+ {if (DE>abs(0.08) && detKinBeamRot_def_angle_e<=5) 
     {E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
     Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}   
-    else if ( DE>abs(0.2) && E_clus3x3<25 && E_clus3x3>=7) 
+    else if ( DE>abs(0.2) && detKinBeamRot_def_angle_e>5 && detKinBeamRot_def_angle_e<=10) 
     {E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
-     Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);} 
-    else if ( DE>abs(0.3) && E_clus3x3<7 && E_clus3x3>=5) 
+     Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);} else if ( DE>abs(0.3) && detKinBeamRot_def_angle_e>10 && detKinBeamRot_def_angle_e<=15) {E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
+     Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);} else if (  DE>abs(0.4) && detKinBeamRot_def_angle_e>15 && detKinBeamRot_def_angle_e<=20) 
     {E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
-     Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);} 
-    else if ( DE>abs(0.4) && E_clus3x3<5) 
-    {E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
-     Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}
+     Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}     } 
+  
  }      
     
     

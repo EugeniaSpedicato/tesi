@@ -350,20 +350,18 @@ if (DE>-0.08 && DE<0.08 && detKinBeamRot_def_angle_e>10)
 Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}*/
     
 
-                 if (DE>-0.08 && DE<0.08 && detKinBeamRot_def_angle_e<=5) 
-    {E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
-    Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}   
-    else if (DE>-0.2 && DE<0.2 && detKinBeamRot_def_angle_e>5 && detKinBeamRot_def_angle_e<=10) 
-    {E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
-     Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);} else if (DE>-0.3 && DE<0.3 && detKinBeamRot_def_angle_e>10 && detKinBeamRot_def_angle_e<=15) {E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
-     Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);} else if ( DE>-0.4 && DE<0.4 && detKinBeamRot_def_angle_e>15 && detKinBeamRot_def_angle_e<=20) 
-    {E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
-     Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}     
-    else if (detKinBeamRot_def_angle_e>20) {E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
-     Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);} 
-    /*else if ( detKinBeamRot_def_angle_e>20) 
+    if (DE>-0.08 && DE<0.08 && detKinBeamRot_def_angle_e<=5) 
     {E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
-     Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);} */
+    Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}   
+    else if (DE>-0.2 && DE<0.2 && detKinBeamRot_def_angle_e>5 && detKinBeamRot_def_angle_e<=10) 
+    {E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
+     Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);} else if (DE>-0.3 && DE<0.3 && detKinBeamRot_def_angle_e>10 && detKinBeamRot_def_angle_e<=15) {E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
+     Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);} else if ( DE>-0.4 && DE<0.4 && detKinBeamRot_def_angle_e>15 && detKinBeamRot_def_angle_e<=20) 
+    {E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
+     Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}     
+    else if (detKinBeamRot_def_angle_e>20) {E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
+     Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);} 
+
  
  if(photon_energy==-1 && n_cell_ph==0)   
  {if (DE>abs(0.08) && detKinBeamRot_def_angle_e<=5) 
@@ -394,7 +392,7 @@ diff_r_phe->Fill(d_e_ph,wgt_full);
 }       
 }
 delete myGrid; 
-}}
+}
 
 
 TCanvas * el= new TCanvas("el","el",1000,100,2500,2000);

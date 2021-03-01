@@ -63,7 +63,9 @@ TH1F* hist_E92_eCUT=new TH1F("Emeancut", "Mean E out cut", 100,0.,0.15);
 TH1F* hist_E3x3_e=new TH1F("E3x3", "Energy Reco 3x3", 70,0.,140);
 TH1F* hist_E3x3_eCUT=new TH1F("E3x3cut", "Energy Reco 3x3 cut", 70,0.,140); 
 
-TH1F* hist_DE=new TH1F("E3x3", "DE", 100,-0.1,0.1);
+TH1F* hist_DE=new TH1F("E3x3", "DE", 100,-1,1);
+TH1F* hist_DE5=new TH1F("E3x3", "DE", 100,-0.1,0.1);
+    
     
     
 //caratteristiche fotoni
@@ -325,16 +327,20 @@ double beta=(sqrt(150*150-(m_mu*m_mu))/(150+m_e));
 double Ethe=m_e*((1+(beta*beta*cos(x)*cos(x)))/(1-(beta*beta*cos(x)*cos(x))));
 //cout << " E teorico " << Ethe  << " E reco " << E_clus3x3 << endl;
 double der_Ee=-4*m_e*beta*beta*( (cos(x)*sin(x))/((1-(beta*beta*cos(x)*cos(x)))*(1-(beta*beta*cos(x)*cos(x)))) );
-double DE= (E_clus3x3-(95.4/100)*Ethe);// /(sqrt(der_Ee*der_Ee+1));
+double DE= (E_clus3x3-(95.4/100)*Ethe)/(95.4/100)*Ethe;
+double DE5= (E_clus3x3-(95.4/100)*Ethe)/(sqrt(der_Ee*der_Ee+1));
+// /(sqrt(der_Ee*der_Ee+1));
 // cout << " DE " << DE << " E_clus3x3-Ethe " << E_clus3x3-Ethe << endl;
     
 /*Elastic->SetPoint(n,x,Ethe);
 ++n;*/
-hist_DE->Fill(DE,wgt_full);    
+
 
 if(r_mu<1.7 && detKinBeamRot_tar==1 ){
  
-hist_DE->Fill(DE,wgt_full);      
+if (E_clus3x3<5) hist_DE5->Fill(DE5,wgt_full);   
+if (E_clus3x3>5) hist_DE->Fill(DE,wgt_full);   
+       
     
 if (DE<-0.015) 
 {E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
@@ -358,7 +364,7 @@ delete myGrid;
 
 
 TCanvas * el= new TCanvas("el","el",1000,100,2500,2000);
-el->Divide(1,2);
+el->Divide(1,3);
 el->cd(1);
 TF1 *Elastic = new TF1("Elastic","0.5109989461*0.001*((1+(sqrt(150*150-(105.6583745 *0.001*105.6583745 *0.001))/(150+0.5109989461*0.001))*(sqrt(150*150-(105.6583745 *0.001*105.6583745 *0.001))/(150+0.5109989461*0.001))*cos(x)*cos(x))/(1-(sqrt(150*150-(105.6583745 *0.001*105.6583745 *0.001))/(150+0.5109989461*0.001))*(sqrt(150*150-(105.6583745 *0.001*105.6583745 *0.001))/(150+0.5109989461*0.001))*cos(x)*cos(x)))",0,0.03); 
 Elastic->SetMaximum(150);
@@ -367,6 +373,10 @@ el->cd(2);
 hist_DE->SetLineColor(9);
 hist_DE->SetLineWidth(3);
 hist_DE->Draw("HIST");
+el->cd(3);
+hist_DE5->SetLineColor(9);
+hist_DE5->SetLineWidth(3);
+hist_DE5->Draw("HIST");
 el->SaveAs("/home/LHCB-T3/espedicato/tesi/studio4/elastic.png");   
     
 

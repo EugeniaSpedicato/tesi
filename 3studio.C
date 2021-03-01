@@ -1110,8 +1110,6 @@ eoutmean->GetXaxis()->SetTitle("E3x3 [GeV]");
 eoutmean->GetYaxis()->SetTitle("<Eres> [GeV]");
 eoutmean->SetLineWidth(3);
 eoutmean->Draw("HIST"); 
-eoutmean->SetMinimum(1);
-gPad->SetLogy();
     
 /*eoutmean->SetLineWidth(3);
 eoutmean->SetLineColor(kRed);

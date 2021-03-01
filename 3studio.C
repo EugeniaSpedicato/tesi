@@ -97,6 +97,7 @@ TH1F* EeoutCUT=new TH1F("EnergyPH1", "Energy el- cut off", 75,0.2,150);
     
     TH1F* Emuout=new TH1F("EnergyPH", "Energy mu tot", 75,0.2,160); 
     TH1F* Thmuout=new TH1F("thetaPH", "Theta gen mu tot", 100,0.,5); 
+    TH1F* Thmuout_TH=new TH1F("thetaPHth", "Theta gen mu tot TH", 100,0.,5); 
 TH1F* EmuoutCUT=new TH1F("EnergyPH1", "Energy mu cut off", 75,0.2,160); 
     TH1F* ThmuoutCUT=new TH1F("thetaPH1", "Theta gen mu cut off", 100,0.,5); 
  TH1F* EmuoutCUTafter=new TH1F("EnergyPH1", "Energy mu after cut off", 75,0.2,160); 
@@ -385,6 +386,8 @@ Theout->Fill(detKinBeamRot_def_angle_e,wgt_full);
 Theout_TH->Fill(detKinBeamRot_def_angle_e,wgt_LO);
 Emuout->Fill(detKinBeamRot_Emu,wgt_full);
 Thmuout->Fill(detKinBeamRot_def_angle_mu,wgt_full);
+Thmuout_TH->Fill(detKinBeamRot_def_angle_mu,wgt_full);
+    
     
 E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
 Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);  
@@ -872,6 +875,10 @@ ThmuoutCUT->GetXaxis()->SetTitle("Theta_gen[mrad]");
 ThmuoutCUT->SetLineColor(kRed);
 ThmuoutCUT->SetLineWidth(3);
 ThmuoutCUT->Draw("HIST same"); 
+Thmuout_TH->GetXaxis()->SetTitle("Theta_gen[mrad]");
+Thmuout_TH->SetLineColor(kBlack);
+Thmuout_TH->SetLineWidth(3);
+Thmuout_TH->Draw("HIST same"); 
 gPad->SetLogy();
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
    

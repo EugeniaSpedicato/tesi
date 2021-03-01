@@ -319,8 +319,8 @@ if(r_mu<1.7 && detKinBeamRot_tar==1){
     
 /*E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
 Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
-E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
-Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
+if (photon_energy>1 || photon_energy<0) {E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
+Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}
 Ephout->Fill(photon_energy,wgt_full);
 Thphout->Fill(photon_def_angle_ph,wgt_full);
 diff_th_phe->Fill(diffTh,wgt_full);
@@ -332,7 +332,7 @@ diff_r_phe->Fill(d_e_ph,wgt_full);
     
 if (photon_energy>1 || photon_energy<0) {E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
 Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full); }     
-if(E_clus3x3>1){    
+   
 if(E_clus3x3<=10){
 
     
@@ -354,8 +354,8 @@ if(E_clus3x3<=10){
             
     } else {    
     
-            E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
-            Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
+            if (photon_energy>1 || photon_energy<0) {E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
+            Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}
 
             if(photon_energy!=-1 && n_cell_ph!=0){
             EphoutCUTafter->Fill(photon_energy,wgt_full);
@@ -393,8 +393,8 @@ if(ddd>0.1*7.28)
 
     } else { 
     
-E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
-Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
+if (photon_energy>1 || photon_energy<0) {E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
+Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}
 
     if(photon_energy!=-1 && n_cell_ph!=0){
  EphoutCUTafter->Fill(photon_energy,wgt_full);
@@ -423,8 +423,8 @@ if(ddd>0.1*6)
 
     }else {    
     
-E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
-Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
+if (photon_energy>1 || photon_energy<0) {E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
+Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}
 
     if(photon_energy!=-1 && n_cell_ph!=0){
  EphoutCUTafter->Fill(photon_energy,wgt_full);
@@ -454,8 +454,8 @@ if(ddd>0.1*5.85)
 
     } else {   
     
-E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
-Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
+if (photon_energy>1 || photon_energy<0) {E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
+Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}
 
     if(photon_energy!=-1 && n_cell_ph!=0){
  EphoutCUTafter->Fill(photon_energy,wgt_full);
@@ -486,8 +486,8 @@ if(E_clus3x3>40 && E_clus3x3<=50){
 
     } else {    
     
-E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
-Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
+if (photon_energy>1 || photon_energy<0) {E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
+Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}
 
     if(photon_energy!=-1 && n_cell_ph!=0){
  EphoutCUTafter->Fill(photon_energy,wgt_full);
@@ -516,8 +516,8 @@ if(E_clus3x3>50 && E_clus3x3<=60){
             
 
     } else{
-E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
-Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
+if (photon_energy>1 || photon_energy<0) {E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
+Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}
 
     if(photon_energy!=-1 && n_cell_ph!=0){
  EphoutCUTafter->Fill(photon_energy,wgt_full);
@@ -548,8 +548,8 @@ if(E_clus3x3>60 && E_clus3x3<=75){
 
     } else {   
     
-E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
-Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
+if (photon_energy>1 || photon_energy<0) {E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
+Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}
 
     if(photon_energy!=-1 && n_cell_ph!=0){
  EphoutCUTafter->Fill(photon_energy,wgt_full);
@@ -578,8 +578,8 @@ if(E_clus3x3>75){
 
     } else {  
     
-E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
-Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
+if (photon_energy>1 || photon_energy<0) {E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
+Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}
 
     if(photon_energy!=-1 && n_cell_ph!=0){
  EphoutCUTafter->Fill(photon_energy,wgt_full);
@@ -592,7 +592,7 @@ Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
 } 
     
     
-}}
+}
 
 }       
 }

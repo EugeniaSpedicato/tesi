@@ -324,7 +324,7 @@ double Ethe=m_e*((1+cos(x)*cos(x))/(1-cos(x)*cos(x)));
 double der_Ee=-4*m_e*( (cos(x)*sin(x))/((1-cos(x)*cos(x))*(1-cos(x)*cos(x))) );
 double DE= (E_clus3x3-Ethe)/(sqrt(der_Ee+1));
  
-Elastic->(x,Ethe,wgt_full);
+Elastic->Fill(x,Ethe,wgt_full);
     
 
 if(r_mu<1.7 && detKinBeamRot_tar==1){

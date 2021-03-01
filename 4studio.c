@@ -342,7 +342,10 @@ if (detKinBeamRot_def_angle_e<10) hist_DE5->Fill(DE5,wgt_full);
 if (detKinBeamRot_def_angle_e>10) hist_DE->Fill(DE,wgt_full);   
        
     
-if (DE<-0.015) 
+if (DE5>-0.07 && detKinBeamRot_def_angle_e>10) 
+{E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
+Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}
+if (DE>-0.4 && DE<0.4 && detKinBeamRot_def_angle_e<10) 
 {E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
 Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}
 /*if (photon_energy>1 || photon_energy<0) {E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);

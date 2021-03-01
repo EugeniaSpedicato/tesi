@@ -362,11 +362,7 @@ double y = myGrid->GetYaxis()->GetBinCenter(Rev_numberY[SecondCentralCell_in9]);
    else if(SecondCentralCell!=0){
 double x = myGrid->GetXaxis()->GetBinCenter(Rev_numberX[SecondCentralCell]);
 double y = myGrid->GetYaxis()->GetBinCenter(Rev_numberY[SecondCentralCell]);
- dists=sqrt((x-detKinBeamRot_cooXe)*(x-detKinBeamRot_cooXe)+(y-detKinBeamRot_cooYe)*(y-detKinBeamRot_cooYe)); }*/
-    
-double x = myGrid->GetXaxis()->GetBinCenter(Rev_numberX[CentralCell]);
-double y = myGrid->GetYaxis()->GetBinCenter(Rev_numberY[CentralCell]);
- dists=sqrt((x-detKinBeamRot_cooXe)*(x-detKinBeamRot_cooXe)+(y-detKinBeamRot_cooYe)*(y-detKinBeamRot_cooYe));    
+ dists=sqrt((x-detKinBeamRot_cooXe)*(x-detKinBeamRot_cooXe)+(y-detKinBeamRot_cooYe)*(y-detKinBeamRot_cooYe)); }*/     
 
 
 double x=detKinBeamRot_def_angle_e*0.001;    

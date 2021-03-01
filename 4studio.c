@@ -335,7 +335,6 @@ Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full); }
 if(E_clus3x3>1){    
 if(E_clus3x3<=10){
 
-E_rc->Fill(r_mue,Eout,wgt_full);    
     
     if(ddd>0.1*8.8)
     {

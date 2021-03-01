@@ -1109,7 +1109,7 @@ TCanvas * c= new TCanvas("c","c",1000,100,2500,2000);
 eoutmean->GetXaxis()->SetTitle("E3x3 [GeV]");
 eoutmean->GetYaxis()->SetTitle("<Eres> [GeV]");
 eoutmean->SetLineWidth(3);
-eoutmean->Draw("HIST"); 
+eoutmean->Draw(); 
     
 /*eoutmean->SetLineWidth(3);
 eoutmean->SetLineColor(kRed);

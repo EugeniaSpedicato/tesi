@@ -115,7 +115,7 @@ TH1F* EmuoutCUT=new TH1F("EnergyPH1", "Energy mu cut off", 75,0.2,160);
     TH1F* diff_r_mue=new TH1F("thetaPH", "Diff r_e-r_mu tot", 75,0,10); 
     TH1F* diff_r_mueCUT=new TH1F("thetaPH", "Diff r_e-r_mu tot", 75,0,10); 
     
-TProfile *eoutmean =  new TProfile("eoutmean", "E16mean vs E3x3", 75,0.2,150, 0, 0.5);
+TProfile *eoutmean =  new TProfile("eoutmean", "E16mean vs E3x3", 75,0.2,150,0,0.1);
     eoutmean->SetErrorOption("S"); 
 
 number[36]=1; number[37]=2; number[38]=3; number[39]=4; number[40]=5;
@@ -1042,11 +1042,11 @@ for (Int_t i=1; i<nxr+1; i++) {
 for (Int_t j=1; j<nyr+1; j++) {
 if (E_rc->GetBinContent(i,j)<1) E_rc->SetBinContent(i,j,0);}}
     
-Int_t nxrm = eoutmean->GetNbinsX();
+/*Int_t nxrm = eoutmean->GetNbinsX();
 Int_t nyrm = eoutmean->GetNbinsY();
 for (Int_t i=1; i<nxrm+1; i++) {
 for (Int_t j=1; j<nyrm+1; j++) {
-if (eoutmean->GetBinContent(i,j)<1) eoutmean->SetBinContent(i,j,0);}}
+if (eoutmean->GetBinContent(i,j)<1) eoutmean->SetBinContent(i,j,0);}}*/
         
     
 TCanvas * c4a= new TCanvas("c4a","c4a",100,100,2500,2000);

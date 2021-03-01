@@ -336,7 +336,7 @@ Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full); }
 if(E_clus3x3<=10){
 
     
-    if(ddd>0.1*8.8)
+    if(ddd>0.1*8.6)
     {
  
         DeltaRCUT->Fill(ddd,wgt_full);
@@ -375,7 +375,7 @@ if(E_clus3x3<=10){
 //ZONA 2
     
 if(E_clus3x3>10 && E_clus3x3<=20){
-if(ddd>0.1*7.28)
+if(ddd>0.1*7.2)
     {
  
         DeltaRCUT->Fill(ddd,wgt_full);

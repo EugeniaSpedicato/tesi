@@ -325,7 +325,7 @@ double beta=(sqrt(150*150-(m_mu*m_mu))/(150+m_e));
 double Ethe=m_e*((1+(beta*beta*cos(x)*cos(x)))/(1-(beta*beta*cos(x)*cos(x))));
 //cout << " E teorico " << Ethe  << " E reco " << E_clus3x3 << endl;
 double der_Ee=-4*m_e*beta*beta*( (cos(x)*sin(x))/((1-(beta*beta*cos(x)*cos(x)))*(1-(beta*beta*cos(x)*cos(x)))) );
-double DE= (E_clus3x3-Ethe)/(sqrt(der_Ee*der_Ee+1));
+double DE= (E_clus3x3-(95.4/100)*Ethe)/(sqrt(der_Ee*der_Ee+1));
 // cout << " DE " << DE << " E_clus3x3-Ethe " << E_clus3x3-Ethe << endl;
     
 /*Elastic->SetPoint(n,x,Ethe);

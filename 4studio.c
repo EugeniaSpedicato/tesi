@@ -349,11 +349,11 @@ diff_r_phe->Fill(d_e_ph,wgt_full);
 delete myGrid; 
 }}
 
-Int_t el1 = Elastic->GetNbinsX();
+/*Int_t el1 = Elastic->GetNbinsX();
 Int_t el2 = Elastic->GetNbinsY();
 for (Int_t i=1; i<el1+1; i++) {
 for (Int_t j=1; j<el2+1; j++) {
-if (Elastic->GetBinContent(i,j)<1) Elastic->SetBinContent(i,j,0);}}
+if (Elastic->GetBinContent(i,j)<1) Elastic->SetBinContent(i,j,0);}}*/
 
 
 TCanvas * el= new TCanvas("dmu","dmu",1000,100,2500,2000);

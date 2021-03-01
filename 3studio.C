@@ -387,9 +387,9 @@ Thmuout->Fill(detKinBeamRot_def_angle_mu,wgt_full);
     
 if (detKinBeamRot_def_angle_e>=5 && detKinBeamRot_def_angle_e<10 ) hist_E92_e->Fill(Emean_out,wgt_full);
 
-if(E_clus3x3>1 && photon_energy>1){
+if(E_clus3x3>1){
 
-    
+if (photon_energy>1 || photon_energy<0){    
 //ZONA 1
     
 if(E_clus3x3<=10){
@@ -761,7 +761,7 @@ Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
                 ThmuoutCUTafter->Fill(detKinBeamRot_def_angle_mu,wgt_full);  }    
 } 
 }
-}
+}}
 else {
         if(photon_energy!=-1 && n_cell_ph!=0){
             EphoutCUT->Fill(photon_energy,wgt_full);

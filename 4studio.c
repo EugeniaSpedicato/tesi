@@ -48,8 +48,7 @@ TH2F  *E3x32CUT  = new TH2F("Eel2" , " Th_el Vs. E_3x3 core Tar 2 (Fiducial cut+
 TH2F  *Th1  = new TH2F("ThEel1" , " Th_el Vs. Th_mu core Tar 2 (Fiducial cut)",180,0,30,250,0,5);
 TH2F  *Th2  = new TH2F("ThEel2" , " Th_el Vs. Th_mu core Tar 2 (Fiducial cut+event cuts",180,0,30,250,0,5);    
 
-    
-TGraph  *Elastic= new TGraph();    
+ 
 
 TH1F* hist_E9_e=new TH1F("E9e", "E9", 100,0.,1);
 TH1F* hist_E9_eCUT=new TH1F("E9eCUT", "E9 cut", 100,0.,1);
@@ -326,8 +325,8 @@ double Ethe=m_e*((1+cos(x)*cos(x))/(1-cos(x)*cos(x)));
 double der_Ee=-4*m_e*( (cos(x)*sin(x))/((1-cos(x)*cos(x))*(1-cos(x)*cos(x))) );
 double DE= (E_clus3x3-Ethe)/(sqrt(der_Ee+1));
  
-Elastic->SetPoint(n,x,Ethe);
-++n;
+/*Elastic->SetPoint(n,x,Ethe);
+++n;*/
 hist_DE->Fill(DE,wgt_full);    
 
 if(r_mu<1.7 && detKinBeamRot_tar==1){
@@ -359,10 +358,10 @@ if (Elastic->GetBinContent(i,j)<1) Elastic->SetBinContent(i,j,0);}}*/
 
 
 TCanvas * el= new TCanvas("el","el",1000,100,2500,2000);
+el->Divide(1,2);
 el->cd(1);
-Elastic->GetXaxis()->SetTitle("Theta_el[mrad]");
-Elastic->GetYaxis()->SetTitle("Ereco3x3[GeV]");
-Elastic->Draw("ACP");   
+TF1 *Elastic = new TF1("Elastic","0.5109989461 *0.001*((1+cos(x)*cos(x))/(1-cos(x)*cos(x)))",0,0.1); 
+Elastic->Draw();
 el->cd(2);
 hist_DE->SetLineColor(9);
 hist_DE->SetLineWidth(3);

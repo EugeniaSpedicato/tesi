@@ -332,11 +332,11 @@ double DE= (E_clus3x3-(95.4/100)*Ethe)/(sqrt(der_Ee*der_Ee+1));
 ++n;*/
 hist_DE->Fill(DE,wgt_full);    
 
-if(r_mu<1.7 && detKinBeamRot_tar==1){
+if(r_mu<1.7 && detKinBeamRot_tar==1 && DE<0.01){
     
-/*E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
+E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
 Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
-if (photon_energy>1 || photon_energy<0) {E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
+/*if (photon_energy>1 || photon_energy<0) {E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
 Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}
 Ephout->Fill(photon_energy,wgt_full);
 Thphout->Fill(photon_def_angle_ph,wgt_full);
@@ -534,7 +534,7 @@ gPad->BuildLegend(0.25,0.15,0.25,0.15);
    
 da->SaveAs("/home/LHCB-T3/espedicato/tesi/studio4/photon_after.png");
     
-    
+*/    
     
 Int_t nx1CUT = E3x31CUT->GetNbinsX();
 Int_t ny1CUT = E3x31CUT->GetNbinsY();
@@ -590,7 +590,7 @@ Th2->GetXaxis()->SetTitle("Theta_el[mrad]");
 Th2->GetYaxis()->SetTitle("Theta_mu[GeV]");
 Th2->Draw("COLZ");
 thu->SaveAs("/home/LHCB-T3/espedicato/tesi/studio4/thu.png");
-
+/*
     
 TCanvas * cres= new TCanvas("cres","cres",1000,100,2500,2000);  
 cres->Divide(1,2);

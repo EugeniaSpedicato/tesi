@@ -595,8 +595,6 @@ Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);
     
 }}
 
-       
-}
 }       
 }
 delete myGrid; 

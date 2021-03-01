@@ -338,8 +338,8 @@ double DE5= (E_clus3x3-(95.4/100)*Ethe)/(sqrt(der_Ee*der_Ee+1));
 
 if(r_mu<1.7 && detKinBeamRot_tar==1 ){
  
-if (E_clus3x3<5) hist_DE5->Fill(DE5,wgt_full);   
-if (E_clus3x3>5) hist_DE->Fill(DE,wgt_full);   
+if (detKinBeamRot_def_angle_e<10) hist_DE5->Fill(DE5,wgt_full);   
+if (detKinBeamRot_def_angle_e>10) hist_DE->Fill(DE,wgt_full);   
        
     
 if (DE<-0.015) 

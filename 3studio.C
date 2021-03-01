@@ -484,7 +484,7 @@ if(ddd>0.1*7.2)
             diff_r_mueCUT->Fill(r_mue,wgt_full);  }
                    
 }
-
+}
 //ZONA 3
     
 if(E_clus3x3>20 && E_clus3x3<=30){
@@ -528,7 +528,7 @@ if(ddd>0.1*6)
     
 
 }
-
+}
     
 //ZONA 4
     
@@ -572,7 +572,7 @@ if(ddd>0.1*5.85)
             diff_r_mueCUT->Fill(r_mue,wgt_full);  }
 
 }
-
+}
     
 //ZONA 5
     
@@ -616,7 +616,7 @@ if(E_clus3x3>40 && E_clus3x3<=50){
             ThmuoutCUT->Fill(detKinBeamRot_def_angle_mu,wgt_full); 
             diff_r_mueCUT->Fill(r_mue,wgt_full);  }
      
-
+ }
 } 
 
 //ZONA 6
@@ -663,7 +663,7 @@ if(E_clus3x3>50 && E_clus3x3<=60){
      
     
 }
-
+}
     
 //ZONA 7
     
@@ -708,7 +708,7 @@ if(E_clus3x3>60 && E_clus3x3<=75){
             diff_r_mueCUT->Fill(r_mue,wgt_full);  }
   
 } 
-
+}
 //ZONA 8
     
 if(E_clus3x3>75){

@@ -63,7 +63,7 @@ TH1F* hist_E92_eCUT=new TH1F("Emeancut", "Mean E out cut", 100,0.,0.15);
 TH1F* hist_E3x3_e=new TH1F("E3x3", "Energy Reco 3x3", 70,0.,140);
 TH1F* hist_E3x3_eCUT=new TH1F("E3x3cut", "Energy Reco 3x3 cut", 70,0.,140); 
 
-TH1F* hist_DE=new TH1F("E3x3", "DE", 70,-1,1);
+TH1F* hist_DE=new TH1F("E3x3", "DE", 100,-0.1,0.1);
     
     
 //caratteristiche fotoni

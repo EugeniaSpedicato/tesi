@@ -319,7 +319,7 @@ double r_mue=sqrt((detKinBeamRot_cooXe-detKinBeamRot_cooXmu)*(detKinBeamRot_cooX
  
 double ddd=sqrt((centroidX-detKinBeamRot_cooXe)*(centroidX-detKinBeamRot_cooXe)+(centroidY-detKinBeamRot_cooYe)*(centroidY-detKinBeamRot_cooYe)); 
     
-double x=detKinBeamRot_def_angle_e;    
+double x=detKinBeamRot_def_angle_e*0.001;    
 
 double Ethe=m_e*((1+cos(x)*cos(x))/(1-cos(x)*cos(x)));
 double der_Ee=-4*m_e*( (cos(x)*sin(x))/((1-cos(x)*cos(x))*(1-cos(x)*cos(x))) );
@@ -350,17 +350,11 @@ diff_r_phe->Fill(d_e_ph,wgt_full);
 delete myGrid; 
 }}
 
-/*Int_t el1 = Elastic->GetNbinsX();
-Int_t el2 = Elastic->GetNbinsY();
-for (Int_t i=1; i<el1+1; i++) {
-for (Int_t j=1; j<el2+1; j++) {
-if (Elastic->GetBinContent(i,j)<1) Elastic->SetBinContent(i,j,0);}}*/
-
 
 TCanvas * el= new TCanvas("el","el",1000,100,2500,2000);
 el->Divide(1,2);
 el->cd(1);
-TF1 *Elastic = new TF1("Elastic","0.5109989461 *0.001*((1+cos(x)*cos(x))/(1-cos(x)*cos(x)))",0,100); 
+TF1 *Elastic = new TF1("Elastic","0.5109989461*0.001*((1+cos(x)*cos(x))/(1-cos(x)*cos(x)))",0,0.1); 
 Elastic->Draw();
 el->cd(2);
 hist_DE->SetLineColor(9);

@@ -35,6 +35,7 @@ Double_t Emean_out=0.;
 Double_t Eres_in=0.;
    
 const Double_t m_e = 0.5109989461 *0.001; //GeV
+const Double_t m_mu =105.6583745 *0.001; //GeV
     
     
 TH1F* hist_dist=new TH1F("dist1", "Dist e-centroide", 200,0,2);
@@ -320,9 +321,9 @@ double r_mue=sqrt((detKinBeamRot_cooXe-detKinBeamRot_cooXmu)*(detKinBeamRot_cooX
 double ddd=sqrt((centroidX-detKinBeamRot_cooXe)*(centroidX-detKinBeamRot_cooXe)+(centroidY-detKinBeamRot_cooYe)*(centroidY-detKinBeamRot_cooYe)); 
     
 double x=detKinBeamRot_def_angle_e*0.001;    
-
+double beta=(sqrt(150*150-(m_mu*m_mu))/(150+m_e))
 double Ethe=m_e*((1+cos(x)*cos(x))/(1-cos(x)*cos(x)));
-double der_Ee=-4*m_e*( (cos(x)*sin(x))/((1-cos(x)*cos(x))*(1-cos(x)*cos(x))) );
+double der_Ee=-4*m_e*beta*beta*( (cos(x)*sin(x))/((1-(beta*beta*cos(x)*cos(x)))*(1-(beta*beta*cos(x)*cos(x)))) );
 double DE= (E_clus3x3-Ethe)/(sqrt(der_Ee+1));
  
 /*Elastic->SetPoint(n,x,Ethe);

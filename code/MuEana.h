@@ -37,9 +37,9 @@ namespace MuE {
     Double_t cooYe;
     Double_t cooYmu;
     Double_t pXmu;
-/*Double_t pYmu;
+Double_t pYmu;
 Double_t pZmu;
-Double_t pXe;
+/*Double_t pXe;
 Double_t pYe;
 Double_t pZe;
 Double_t pXmu_out;

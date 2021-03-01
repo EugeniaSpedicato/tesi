@@ -24,6 +24,7 @@ energy_cell Rev_number;
 energy_cell Rev_numberX;
 energy_cell Rev_numberY;
     
+int n=0;
 energy_cell en_c; 
 int n_cell_e;
 int n_cell_ph;
@@ -325,7 +326,8 @@ double Ethe=m_e*((1+cos(x)*cos(x))/(1-cos(x)*cos(x)));
 double der_Ee=-4*m_e*( (cos(x)*sin(x))/((1-cos(x)*cos(x))*(1-cos(x)*cos(x))) );
 double DE= (E_clus3x3-Ethe)/(sqrt(der_Ee+1));
  
-Elastic->AddPoint(x,Ethe);
+Elastic->SetPoint(n,x,Ethe);
+++n;
 hist_DE->Fill(DE,wgt_full);    
 
 if(r_mu<1.7 && detKinBeamRot_tar==1){

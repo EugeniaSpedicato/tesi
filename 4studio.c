@@ -349,7 +349,7 @@ if (DE>-0.08 && DE<0.08 && detKinBeamRot_def_angle_e>10)
 {E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
 Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}*/
     
- if(photon_energy!=-1 && n_cell_ph!=0)   
+ if(photon_energy==-1 && n_cell_ph==0)   
  {if (DE<-0.08 && DE>0.08 && detKinBeamRot_def_angle_e<10) 
 {E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
 Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}   

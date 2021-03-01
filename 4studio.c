@@ -360,7 +360,7 @@ if (Elastic->GetBinContent(i,j)<1) Elastic->SetBinContent(i,j,0);}}*/
 TCanvas * el= new TCanvas("el","el",1000,100,2500,2000);
 el->Divide(1,2);
 el->cd(1);
-TF1 *Elastic = new TF1("Elastic","0.5109989461 *0.001*((1+cos(x)*cos(x))/(1-cos(x)*cos(x)))",0,0.1); 
+TF1 *Elastic = new TF1("Elastic","0.5109989461 *0.001*((1+cos(x)*cos(x))/(1-cos(x)*cos(x)))",0,100); 
 Elastic->Draw();
 el->cd(2);
 hist_DE->SetLineColor(9);

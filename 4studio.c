@@ -322,7 +322,7 @@ double ddd=sqrt((centroidX-detKinBeamRot_cooXe)*(centroidX-detKinBeamRot_cooXe)+
     
 double x=detKinBeamRot_def_angle_e*0.001;    
 double beta=(sqrt(150*150-(m_mu*m_mu))/(150+m_e));
-double Ethe=m_e*((1+cos(x)*cos(x))/(1-cos(x)*cos(x)));
+double Ethe=m_e*((1+(beta*beta*cos(x)*cos(x)))/(1-(beta*beta*cos(x)*cos(x))));
 double der_Ee=-4*m_e*beta*beta*( (cos(x)*sin(x))/((1-(beta*beta*cos(x)*cos(x)))*(1-(beta*beta*cos(x)*cos(x)))) );
 double DE= (E_clus3x3-Ethe)/(sqrt(der_Ee+1));
  

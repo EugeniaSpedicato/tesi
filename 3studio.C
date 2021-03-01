@@ -397,7 +397,7 @@ if(E_clus3x3>1){
     
 if(E_clus3x3<=10){
 
-    if(ddd>0.1*8.6)
+    if(ddd>0.1*8.8)
     {
  
         DeltaRCUT->Fill(ddd,wgt_full);
@@ -446,7 +446,7 @@ if(E_clus3x3<=10){
 //ZONA 2
     
 if(E_clus3x3>10 && E_clus3x3<=20){
-if(ddd>0.1*7.2)
+if(ddd>0.1*7.3)
     {
  
         DeltaRCUT->Fill(ddd,wgt_full);
@@ -491,7 +491,7 @@ if(ddd>0.1*7.2)
 //ZONA 3
     
 if(E_clus3x3>20 && E_clus3x3<=30){
-if(ddd>0.1*6)
+if(ddd>0.1*6.4)
     {
  
         DeltaRCUT->Fill(ddd,wgt_full);
@@ -536,7 +536,7 @@ if(ddd>0.1*6)
 //ZONA 4
     
 if(E_clus3x3>30 && E_clus3x3<=40){
-if(ddd>0.1*5.85)
+if(ddd>0.1*6)
     {
  
         DeltaRCUT->Fill(ddd,wgt_full);
@@ -580,7 +580,7 @@ if(ddd>0.1*5.85)
 //ZONA 5
     
 if(E_clus3x3>40 && E_clus3x3<=50){
- if(ddd>0.1*5.6)
+ if(ddd>0.1*5.8)
     {
  
         DeltaRCUT->Fill(ddd,wgt_full);
@@ -625,7 +625,7 @@ if(E_clus3x3>40 && E_clus3x3<=50){
 //ZONA 6
     
 if(E_clus3x3>50 && E_clus3x3<=60){
- if(ddd>0.1*5.4)
+ if(ddd>0.1*5.5)
     {
  
         DeltaRCUT->Fill(ddd,wgt_full);

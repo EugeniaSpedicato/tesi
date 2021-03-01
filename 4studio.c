@@ -62,6 +62,7 @@ TH1F* hist_E92_eCUT=new TH1F("Emeancut", "Mean E out cut", 100,0.,0.15);
 TH1F* hist_E3x3_e=new TH1F("E3x3", "Energy Reco 3x3", 70,0.,140);
 TH1F* hist_E3x3_eCUT=new TH1F("E3x3cut", "Energy Reco 3x3 cut", 70,0.,140); 
 
+TH1F* hist_DE=new TH1F("E3x3", "DE", 70,-1,1);
     
     
 //caratteristiche fotoni
@@ -325,7 +326,7 @@ double der_Ee=-4*m_e*( (cos(x)*sin(x))/((1-cos(x)*cos(x))*(1-cos(x)*cos(x))) );
 double DE= (E_clus3x3-Ethe)/(sqrt(der_Ee+1));
  
 Elastic->Fill(x,Ethe,wgt_full);
-    
+hist_DE->Fill(DE,wgt_full);    
 
 if(r_mu<1.7 && detKinBeamRot_tar==1){
     
@@ -356,9 +357,14 @@ if (Elastic->GetBinContent(i,j)<1) Elastic->SetBinContent(i,j,0);}}
 
 
 TCanvas * el= new TCanvas("dmu","dmu",1000,100,2500,2000);
+el->cd(1);
 Elastic->GetXaxis()->SetTitle("Theta_el[mrad]");
 Elastic->GetYaxis()->SetTitle("Ereco3x3[GeV]");
-Elastic->Draw("COLZ");     
+Elastic->Draw("COLZ");   
+el->cd(2);
+hist_DE->SetLineColor(9);
+hist_DE->SetLineWidth(3);
+hist_DE->Draw("HIST");
 el->SaveAs("/home/LHCB-T3/espedicato/tesi/studio4/elastic.png");   
     
 

@@ -363,14 +363,6 @@ if(photon_energy!=-1 && n_cell_ph!=0){
 }
     
 double dists=0;
-/*if(SecondCentralCell_in9!=0){
-double x = myGrid->GetXaxis()->GetBinCenter(Rev_numberX[SecondCentralCell_in9]);
-double y = myGrid->GetYaxis()->GetBinCenter(Rev_numberY[SecondCentralCell_in9]);
- dists=sqrt((x-detKinBeamRot_cooXe)*(x-detKinBeamRot_cooXe)+(y-detKinBeamRot_cooYe)*(y-detKinBeamRot_cooYe)); }
-   else if(SecondCentralCell!=0){
-double x = myGrid->GetXaxis()->GetBinCenter(Rev_numberX[SecondCentralCell]);
-double y = myGrid->GetYaxis()->GetBinCenter(Rev_numberY[SecondCentralCell]);
- dists=sqrt((x-detKinBeamRot_cooXe)*(x-detKinBeamRot_cooXe)+(y-detKinBeamRot_cooYe)*(y-detKinBeamRot_cooYe)); }*/     
 
 
 double x=detKinBeamRot_def_angle_e*0.001;    
@@ -788,7 +780,7 @@ delete myGrid;
 
        
        
-TCanvas * de= new TCanvas("de","de",1000,100,2500,2000);
+/*TCanvas * de= new TCanvas("de","de",1000,100,2500,2000);
 de->Divide(1,2);
 de->cd(1);
 Eeout->GetXaxis()->SetTitle("E[GeV]");
@@ -1032,7 +1024,7 @@ diff_r_pheCUTafter->Draw("HIST same");
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
  
    
-da->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/photon_after.png");
+da->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/photon_after.png");*/
     
     
     
@@ -1073,7 +1065,7 @@ for (Int_t j=1; j<nyrm+1; j++) {
 if (eoutmean->GetBinContent(i,j)<1) eoutmean->SetBinContent(i,j,0);}}*/
         
     
-TCanvas * c4a= new TCanvas("c4a","c4a",100,100,2500,2000);
+/*TCanvas * c4a= new TCanvas("c4a","c4a",100,100,2500,2000);
 c4a->Divide(1,2);
 gStyle->SetPalette(kRainBow);
  
@@ -1100,9 +1092,40 @@ thu->cd(2);
 Th2->GetXaxis()->SetTitle("Theta_el[mrad]");
 Th2->GetYaxis()->SetTitle("Theta_mu[GeV]");
 Th2->Draw("COLZ");
-thu->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/thu.png");
+thu->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/thu.png");*/
 
-TCanvas * er= new TCanvas("er","er",100,100,2500,2000);
+
+TF1 *Elastic = new TF1("Elastic","0.5109989461*0.001*((1+(sqrt(150*150-(105.6583745 *0.001*105.6583745 *0.001))/(150+0.5109989461*0.001))*(sqrt(150*150-(105.6583745 *0.001*105.6583745 *0.001))/(150+0.5109989461*0.001))*cos(x)*cos(x))/(1-(sqrt(150*150-(105.6583745 *0.001*105.6583745 *0.001))/(150+0.5109989461*0.001))*(sqrt(150*150-(105.6583745 *0.001*105.6583745 *0.001))/(150+0.5109989461*0.001))*cos(x)*cos(x)))",0,0.030); 
+TF1 *Elastic2 = new TF1("Elastic2","asin( (sin(x)*sqrt(Elastic(x)*Elastic(x)-0.5109989461*0.001*0.5109989461*0.001))/sqrt( (150+0.5109989461*0.001-Elastic(x))*(150+0.5109989461*0.001-Elastic(x))-105.6583745 *0.001*105.6583745 *0.001 ) )",0,0.030);   
+TCanvas * c4a= new TCanvas("c4a","c4a",1000,1000,2500,2000);
+c4a->Divide(2,2);
+gStyle->SetPalette(kRainBow);
+ 
+c4a->cd(2);   
+E3x31CUT->GetXaxis()->SetTitle("Theta_el[rad]");
+E3x31CUT->GetYaxis()->SetTitle("Ereco3x3[GeV]");
+E3x31CUT->Draw("COLZ");
+Elastic->Draw("same");
+c4a->cd(4);   
+E3x32CUT->GetXaxis()->SetTitle("Theta_el[rad]");
+E3x32CUT->GetYaxis()->SetTitle("Ereco3x3[GeV]");
+E3x32CUT->Draw("COLZ");
+Elastic->Draw("same");
+c4a->cd(1);   
+Th1->GetXaxis()->SetTitle("Theta_el[rad]");
+Th1->GetYaxis()->SetTitle("Theta_mu[rad]");
+Th1->Draw("COLZ");
+Elastic2->Draw("same");
+c4a->cd(3);   
+Th2->GetXaxis()->SetTitle("Theta_el[rad]");
+Th2->GetYaxis()->SetTitle("Theta_mu[rad]");
+Th2->Draw("COLZ");
+Elastic2->Draw("same");
+c4a->SaveAs("/home/LHCB-T3/espedicato/tesi/studio4/thu.png");    
+    
+    
+    
+/*TCanvas * er= new TCanvas("er","er",100,100,2500,2000);
 gStyle->SetPalette(kRainBow);
 E_rc->GetXaxis()->SetTitle("DR[cm]");
 E_rc->GetYaxis()->SetTitle("Eout/E3x3[GeV]");
@@ -1201,7 +1224,7 @@ hist_distCUT->SetLineColor(kRed);
 hist_distCUT->Draw("HIST same"); 
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
     
-c9->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/E9.png");
+c9->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/E9.png");*/
 
 
 } 

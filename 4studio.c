@@ -42,12 +42,12 @@ TH1F* hist_dist=new TH1F("dist1", "Dist e-centroide", 200,0,2);
 TH1F* hist_distCUT=new TH1F("dist2", "Dist e-centroide CUT", 200,0,2);
 
 
-TH2F  *E3x31CUT  = new TH2F("Eel1" , " Th_el Vs. E_3x3 core Tar 2 (Fiducial cut + 1GeV cut) ",180,0,0.030,380,0,140);
-TH2F  *E3x32CUT  = new TH2F("Eel2" , " Th_el Vs. E_3x3 core Tar 2 (Fiducial cut + 1GeV cut + E_3x3 cut)",180,0,0.030,380,0,140);
+TH2F  *E3x31CUT  = new TH2F("Eel1" , " Th_el Vs. E_3x3 core Tar 2 (Fiducial cut + 1GeV cut + E_3x3 cut) ",180,0,0.030,380,0,140);
+TH2F  *E3x32CUT  = new TH2F("Eel2" , " Th_el Vs. E_3x3 core Tar 2 (All cuts applied)",180,0,0.030,380,0,140);
     
     
-TH2F  *Th1  = new TH2F("ThEel1" , " Th_el Vs. Th_mu core Tar 2 (Fiducial cut + 1GeV cut) ",180,0,0.030,250,0,0.005);
-TH2F  *Th2  = new TH2F("ThEel2" , " Th_el Vs. Th_mu core Tar 2 (Fiducial cut + 1GeV cut + E_3x3 cut)",180,0,0.030,250,0,0.005);    
+TH2F  *Th1  = new TH2F("ThEel1" , " Th_el Vs. Th_mu core Tar 2 (Fiducial cut + 1GeV cut + E_3x3 cut) ",180,0,0.030,250,0,0.005);
+TH2F  *Th2  = new TH2F("ThEel2" , " Th_el Vs. Th_mu core Tar 2 (All cuts applied)",180,0,0.030,250,0,0.005);    
 
  
 
@@ -328,7 +328,7 @@ double beta=(sqrt(150*150-(m_mu*m_mu))/(150+m_e));
 double Ethe=m_e*((1+(beta*beta*cos(x)*cos(x)))/(1-(beta*beta*cos(x)*cos(x))));
 //cout << " E teorico " << Ethe  << " E reco " << E_clus3x3 << endl;
 //double der_Ee=-4*m_e*beta*beta*( (cos(x)*sin(x))/((1-(beta*beta*cos(x)*cos(x)))*(1-(beta*beta*cos(x)*cos(x)))) );
-double DE= (E_clus3x3/Ethe-0.944);
+double DE= (E_clus3x3/Ethe-0.955);
 //double DE5= (E_clus3x3-(95.4/100)*Ethe)/(sqrt(der_Ee*der_Ee+1));
 // /(sqrt(der_Ee*der_Ee+1));
 // cout << " DE " << DE << " E_clus3x3-Ethe " << E_clus3x3-Ethe << endl;

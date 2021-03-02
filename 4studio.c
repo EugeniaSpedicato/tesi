@@ -420,6 +420,8 @@ hist_DE5->Draw("HIST");
 el->SaveAs("/home/LHCB-T3/espedicato/tesi/studio4/elastic.png");   
     
 
+TF1 *Elastic = new TF1("Elastic","asin((sin(x)*Elastic(x))",0,0.030);     
+    
 Int_t nx1CUT = E3x31CUT->GetNbinsX();
 Int_t ny1CUT = E3x31CUT->GetNbinsY();
 for (Int_t i=1; i<nx1CUT+1; i++) {

@@ -87,12 +87,12 @@ TH1F* hist_E3x3_eCUT=new TH1F("E3x3cut", "Energy Reco 3x3 cut", 70,0.,140);
     
     TH1F* Eeout=new TH1F("EnergyPH", "Energy el- tot", 75,0.2,150); 
     TH1F* Eeout_TH=new TH1F("EnergyPH", "Energy el- tot LO", 75,0.2,150); 
-    TH1F* Theout=new TH1F("thetaPH", "Theta gen el- tot", 75,0.,40); 
-    TH1F* Theout_TH=new TH1F("thetaPH", "Theta gen el- tot LO", 75,0.,40); 
+    TH1F* Theout=new TH1F("thetaPH", "Theta gen el- tot", 75,0.,30); 
+    TH1F* Theout_TH=new TH1F("thetaPH", "Theta gen el- tot LO", 75,0.,30); 
     TH1F* EeoutCUT=new TH1F("EnergyPH1", "Energy el- cut off", 75,0.2,150); 
-    TH1F* TheoutCUT=new TH1F("thetaPH1", "Theta gen el- cut off", 75,0.,40); 
+    TH1F* TheoutCUT=new TH1F("thetaPH1", "Theta gen el- cut off", 75,0.,30); 
     TH1F* EeoutCUTafter=new TH1F("EnergyPH1", "Energy el- after cut off", 75,0.2,150); 
-    TH1F* TheoutCUTafter=new TH1F("thetaPH1", "Theta gen el- after cut off", 75,0.,40); 
+    TH1F* TheoutCUTafter=new TH1F("thetaPH1", "Theta gen el- after cut off", 75,0.,30); 
     
     
     TH1F* Emuout=new TH1F("EnergyPH", "Energy mu tot", 75,0.2,160);

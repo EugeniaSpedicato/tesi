@@ -408,7 +408,6 @@ TCanvas * el= new TCanvas("el","el",1000,100,2500,2000);
 el->Divide(1,3);
 el->cd(1);
 TF1 *Elastic = new TF1("Elastic","0.5109989461*0.001*((1+(sqrt(150*150-(105.6583745 *0.001*105.6583745 *0.001))/(150+0.5109989461*0.001))*(sqrt(150*150-(105.6583745 *0.001*105.6583745 *0.001))/(150+0.5109989461*0.001))*cos(x)*cos(x))/(1-(sqrt(150*150-(105.6583745 *0.001*105.6583745 *0.001))/(150+0.5109989461*0.001))*(sqrt(150*150-(105.6583745 *0.001*105.6583745 *0.001))/(150+0.5109989461*0.001))*cos(x)*cos(x)))",0,0.03); 
-Elastic->SetMaximum(150);
 Elastic->Draw();
 el->cd(2);
 hist_DE->SetLineColor(9);
@@ -421,175 +420,6 @@ hist_DE5->Draw("HIST");
 el->SaveAs("/home/LHCB-T3/espedicato/tesi/studio4/elastic.png");   
     
 
-/*TCanvas * de= new TCanvas("de","de",1000,100,2500,2000);
-de->Divide(1,2);
-de->cd(1);
-Eeout->GetXaxis()->SetTitle("E[GeV]");
-Eeout->SetLineColor(9);
-Eeout->SetLineWidth(3);
-Eeout->SetMinimum(1);
-Eeout->Draw("HIST");
-EeoutCUT->GetXaxis()->SetTitle("E[GeV]");
-EeoutCUT->SetLineColor(kRed);
-EeoutCUT->SetLineWidth(3);
-EeoutCUT->SetMinimum(1);
-EeoutCUT->Draw("HIST same");
-gPad->SetLogy();
-gPad->BuildLegend(0.25,0.15,0.25,0.15);
-
-de->cd(2);
-Theout->GetXaxis()->SetTitle("Theta_gen[mrad]");
-Theout->SetLineColor(9);
-Theout->SetLineWidth(3);
-Theout->Draw("HIST"); 
-TheoutCUT->GetXaxis()->SetTitle("Theta_gen[mrad]");
-TheoutCUT->SetLineColor(kRed);
-TheoutCUT->SetLineWidth(3);
-TheoutCUT->Draw("HIST same"); 
-gPad->BuildLegend(0.25,0.15,0.25,0.15);
-   
-de->SaveAs("/home/LHCB-T3/espedicato/tesi/studio4/electron_cut.png");         
-
-TCanvas * dmu= new TCanvas("dmu","dmu",1000,100,2500,2000);
-dmu->Divide(1,2);
-dmu->cd(1);
-Emuout->GetXaxis()->SetTitle("E[GeV]");
-Emuout->SetLineColor(9);
-Emuout->SetLineWidth(3);
-Emuout->SetMinimum(1);
-Emuout->Draw("HIST");
-EmuoutCUT->GetXaxis()->SetTitle("E[GeV]");
-EmuoutCUT->SetLineColor(kRed);
-EmuoutCUT->SetLineWidth(3);
-EmuoutCUT->SetMinimum(1);
-EmuoutCUT->Draw("HIST same");
-gPad->SetLogy();
-gPad->BuildLegend(0.25,0.15,0.25,0.15);
-
-dmu->cd(2);
-Thmuout->GetXaxis()->SetTitle("Theta_gen[mrad]");
-Thmuout->SetLineColor(9);
-Thmuout->SetLineWidth(3);
-Thmuout->Draw("HIST"); 
-ThmuoutCUT->GetXaxis()->SetTitle("Theta_gen[mrad]");
-ThmuoutCUT->SetLineColor(kRed);
-ThmuoutCUT->SetLineWidth(3);
-ThmuoutCUT->Draw("HIST same"); 
-gPad->BuildLegend(0.25,0.15,0.25,0.15);
-   
-dmu->SaveAs("/home/LHCB-T3/espedicato/tesi/studio4/muon_cut.png");       
-       
-       
-       
-       
-       
-
-TCanvas * d= new TCanvas("d","d",1000,100,2500,2000);
-d->Divide(2,2);
-d->cd(1);
-Ephout->GetXaxis()->SetTitle("E[GeV]");
-Ephout->SetLineColor(9);
-Ephout->SetLineWidth(3);
-Ephout->SetMinimum(1);
-Ephout->Draw("HIST");
-EphoutCUT->GetXaxis()->SetTitle("E[GeV]");
-EphoutCUT->SetLineColor(kRed);
-EphoutCUT->SetLineWidth(3);
-EphoutCUT->SetMinimum(1);
-EphoutCUT->Draw("HIST same");
-gPad->SetLogy();
-gPad->BuildLegend(0.25,0.15,0.25,0.15);
-
-d->cd(2);
-Thphout->GetXaxis()->SetTitle("Theta_gen[mrad]");
-Thphout->SetLineColor(9);
-Thphout->SetLineWidth(3);
-Thphout->Draw("HIST"); 
-ThphoutCUT->GetXaxis()->SetTitle("Theta_gen[mrad]");
-ThphoutCUT->SetLineColor(kRed);
-ThphoutCUT->SetLineWidth(3);
-ThphoutCUT->Draw("HIST same"); 
-gPad->BuildLegend(0.25,0.15,0.25,0.15);
-
-d->cd(3);
-diff_th_phe->GetXaxis()->SetTitle("Delta_ThetaGen[mrad]");
-diff_th_phe->SetLineColor(9);
-diff_th_phe->SetLineWidth(3);
-diff_th_phe->Draw("HIST"); 
-diff_th_pheCUT->GetXaxis()->SetTitle("Delta_ThetaGen[mrad]");
-diff_th_pheCUT->SetLineColor(kRed);
-diff_th_pheCUT->SetLineWidth(3);
-diff_th_pheCUT->Draw("HIST same");
-gPad->BuildLegend(0.25,0.15,0.25,0.15);
-
-d->cd(4);
-diff_r_phe->GetXaxis()->SetTitle("Delta_r[cm]");
-diff_r_phe->SetLineColor(9);
-diff_r_phe->SetLineWidth(3);
-diff_r_phe->Draw("HIST"); 
-diff_r_pheCUT->GetXaxis()->SetTitle("Delta_r[cm]");
-diff_r_pheCUT->SetLineColor(kRed);
-diff_r_pheCUT->SetLineWidth(3);
-diff_r_pheCUT->Draw("HIST same"); 
-gPad->BuildLegend(0.25,0.15,0.25,0.15);
-
-   
-d->SaveAs("/home/LHCB-T3/espedicato/tesi/studio4/photon_cut.png");
-    
-TCanvas * da= new TCanvas("da","da",1000,100,2500,2000);
-da->Divide(2,2);
-da->cd(1);
-Ephout->GetXaxis()->SetTitle("E[GeV]");
-Ephout->SetLineColor(9);
-Ephout->SetLineWidth(3);
-Ephout->SetMinimum(1);
-Ephout->Draw("HIST");
-EphoutCUTafter->GetXaxis()->SetTitle("E[GeV]");
-EphoutCUTafter->SetLineColor(30);
-EphoutCUTafter->SetLineWidth(3);
-EphoutCUTafter->SetMinimum(1);
-EphoutCUTafter->Draw("HIST same");
-gPad->SetLogy();
-gPad->BuildLegend(0.25,0.15,0.25,0.15);
-
-da->cd(2);
-Thphout->GetXaxis()->SetTitle("Theta_gen[mrad]");
-Thphout->SetLineColor(9);
-Thphout->SetLineWidth(3);
-Thphout->Draw("HIST"); 
-ThphoutCUTafter->GetXaxis()->SetTitle("Theta_gen[mrad]");
-ThphoutCUTafter->SetLineColor(30);
-ThphoutCUTafter->SetLineWidth(3);
-ThphoutCUTafter->Draw("HIST same"); 
-gPad->BuildLegend(0.25,0.15,0.25,0.15);
-
-da->cd(3);
-diff_th_phe->GetXaxis()->SetTitle("Delta_ThetaGen[mrad]");
-diff_th_phe->SetLineColor(9);
-diff_th_phe->SetLineWidth(3);
-diff_th_phe->Draw("HIST"); 
-diff_th_pheCUTafter->GetXaxis()->SetTitle("Delta_ThetaGen[mrad]");
-diff_th_pheCUTafter->SetLineColor(30);
-diff_th_pheCUTafter->SetLineWidth(3);
-diff_th_pheCUTafter->Draw("HIST same");
-gPad->BuildLegend(0.25,0.15,0.25,0.15);
- 
-da->cd(4);
-diff_r_phe->GetXaxis()->SetTitle("Delta_r[cm]");
-diff_r_phe->SetLineColor(9);
-diff_r_phe->SetLineWidth(3);
-diff_r_phe->Draw("HIST"); 
-diff_r_pheCUTafter->GetXaxis()->SetTitle("Delta_r[cm]");
-diff_r_pheCUTafter->SetLineColor(30);
-diff_r_pheCUTafter->SetLineWidth(3);
-diff_r_pheCUTafter->Draw("HIST same");
-gPad->BuildLegend(0.25,0.15,0.25,0.15);
- 
-   
-da->SaveAs("/home/LHCB-T3/espedicato/tesi/studio4/photon_after.png");
-    
-*/    
-    
 Int_t nx1CUT = E3x31CUT->GetNbinsX();
 Int_t ny1CUT = E3x31CUT->GetNbinsY();
 for (Int_t i=1; i<nx1CUT+1; i++) {
@@ -616,7 +446,7 @@ if (Th2->GetBinContent(i,j)<1) Th2->SetBinContent(i,j,0);}}
         
     
 TCanvas * c4a= new TCanvas("c4a","c4a",100,100,2500,2000);
-c4a->Divide(1,2);
+c4a->Divide(2,2);
 gStyle->SetPalette(kRainBow);
  
 c4a->cd(1);   
@@ -639,6 +469,7 @@ c4a->cd(3);
 Th1->GetXaxis()->SetTitle("Theta_el[mrad]");
 Th1->GetYaxis()->SetTitle("Theta_mu[GeV]");
 Th1->Draw("COLZ");
+Elastic->Draw("same");
 c4a->cd(4);   
 Th2->GetXaxis()->SetTitle("Theta_el[mrad]");
 Th2->GetYaxis()->SetTitle("Theta_mu[GeV]");

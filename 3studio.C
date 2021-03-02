@@ -379,7 +379,7 @@ Eeout_TH->Fill(detKinBeamRot_Ee,wgt_LO);
 Theout->Fill(detKinBeamRot_def_angle_e,wgt_full);
 Theout_TH->Fill(detKinBeamRot_def_angle_e,wgt_LO);
 Emuout->Fill(detKinBeamRot_Emu,wgt_full);
-Emuout->Fill(detKinBeamRot_Emu,wgt_LO);
+Emuout_TH->Fill(detKinBeamRot_Emu,wgt_LO);
 Thmuout->Fill(detKinBeamRot_def_angle_mu,wgt_full);
 Thmuout_TH->Fill(detKinBeamRot_def_angle_mu,wgt_full);
     

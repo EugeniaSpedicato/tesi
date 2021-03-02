@@ -635,15 +635,15 @@ TCanvas * thu= new TCanvas("c4a","c4a",100,100,2500,2000);
 thu->Divide(1,2);
 gStyle->SetPalette(kRainBow);
  */
-thu->cd(3);   
+c4a->cd(3);   
 Th1->GetXaxis()->SetTitle("Theta_el[mrad]");
 Th1->GetYaxis()->SetTitle("Theta_mu[GeV]");
 Th1->Draw("COLZ");
-thu->cd(4);   
+c4a->cd(4);   
 Th2->GetXaxis()->SetTitle("Theta_el[mrad]");
 Th2->GetYaxis()->SetTitle("Theta_mu[GeV]");
 Th2->Draw("COLZ");
-thu->SaveAs("/home/LHCB-T3/espedicato/tesi/studio4/thu.png");
+c4a->SaveAs("/home/LHCB-T3/espedicato/tesi/studio4/thu.png");
 /*
     
 TCanvas * cres= new TCanvas("cres","cres",1000,100,2500,2000);  

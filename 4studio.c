@@ -42,12 +42,12 @@ TH1F* hist_dist=new TH1F("dist1", "Dist e-centroide", 200,0,2);
 TH1F* hist_distCUT=new TH1F("dist2", "Dist e-centroide CUT", 200,0,2);
 
 
-TH2F  *E3x31CUT  = new TH2F("Eel1" , " Th_el Vs. E_3x3 core Tar 2 (r_mu<5cm) ",180,0,30,380,0,140);
-TH2F  *E3x32CUT  = new TH2F("Eel2" , " Th_el Vs. E_3x3 core Tar 2 (Fiducial cut)",180,0,30,380,0,140);
+TH2F  *E3x31CUT  = new TH2F("Eel1" , " Th_el Vs. E_3x3 core Tar 2 (r_mu<5cm) ",180,0,0.030,380,0,140);
+TH2F  *E3x32CUT  = new TH2F("Eel2" , " Th_el Vs. E_3x3 core Tar 2 (Fiducial cut)",180,0,0.030,380,0,140);
     
     
-TH2F  *Th1  = new TH2F("ThEel1" , " Th_el Vs. Th_mu core Tar 2 (r_mu<5cm) ",180,0,30,250,0,5);
-TH2F  *Th2  = new TH2F("ThEel2" , " Th_el Vs. Th_mu core Tar 2 (Fiducial cut)",180,0,30,250,0,5);    
+TH2F  *Th1  = new TH2F("ThEel1" , " Th_el Vs. Th_mu core Tar 2 (r_mu<5cm) ",180,0,0.030,250,0,0.005);
+TH2F  *Th2  = new TH2F("ThEel2" , " Th_el Vs. Th_mu core Tar 2 (Fiducial cut)",180,0,0.030,250,0,0.005);    
 
  
 
@@ -407,7 +407,7 @@ delete myGrid;
 TCanvas * el= new TCanvas("el","el",1000,100,2500,2000);
 el->Divide(1,3);
 el->cd(1);
-TF1 *Elastic = new TF1("Elastic","0.5109989461*0.001*0.001*((1+(sqrt(150*150-(105.6583745 *0.001*105.6583745 *0.001))/(150+0.5109989461*0.001))*(sqrt(150*150-(105.6583745 *0.001*105.6583745 *0.001))/(150+0.5109989461*0.001))*cos(x*1000)*cos(x*1000))/(1-(sqrt(150*150-(105.6583745 *0.001*105.6583745 *0.001))/(150+0.5109989461*0.001))*(sqrt(150*150-(105.6583745 *0.001*105.6583745 *0.001))/(150+0.5109989461*0.001))*cos(x*1000)*cos(x*1000)))",0,30); 
+TF1 *Elastic = new TF1("Elastic","0.5109989461*0.001*((1+(sqrt(150*150-(105.6583745 *0.001*105.6583745 *0.001))/(150+0.5109989461*0.001))*(sqrt(150*150-(105.6583745 *0.001*105.6583745 *0.001))/(150+0.5109989461*0.001))*cos(x)*cos(x))/(1-(sqrt(150*150-(105.6583745 *0.001*105.6583745 *0.001))/(150+0.5109989461*0.001))*(sqrt(150*150-(105.6583745 *0.001*105.6583745 *0.001))/(150+0.5109989461*0.001))*cos(x)*cos(x)))",0,0.030); 
 Elastic->Draw();
 el->cd(2);
 hist_DE->SetLineColor(9);
@@ -451,12 +451,12 @@ c4a->Divide(2,2);
 gStyle->SetPalette(kRainBow);
  
 c4a->cd(3);   
-E3x31CUT->GetXaxis()->SetTitle("Theta_el[mrad]");
+E3x31CUT->GetXaxis()->SetTitle("Theta_el[rad]");
 E3x31CUT->GetYaxis()->SetTitle("Ereco3x3[GeV]");
 E3x31CUT->Draw("COLZ");
 Elastic->Draw("same");
 c4a->cd(4);   
-E3x32CUT->GetXaxis()->SetTitle("Theta_el[mrad]");
+E3x32CUT->GetXaxis()->SetTitle("Theta_el[rad]");
 E3x32CUT->GetYaxis()->SetTitle("Ereco3x3[GeV]");
 E3x32CUT->Draw("COLZ");
 Elastic->Draw("same");
@@ -469,12 +469,12 @@ thu->Divide(1,2);
 gStyle->SetPalette(kRainBow);
  */
 c4a->cd(1);   
-Th1->GetXaxis()->SetTitle("Theta_el[mrad]");
-Th1->GetYaxis()->SetTitle("Theta_mu[GeV]");
+Th1->GetXaxis()->SetTitle("Theta_el[rad]");
+Th1->GetYaxis()->SetTitle("Theta_mu[rad]");
 Th1->Draw("COLZ");
 c4a->cd(2);   
-Th2->GetXaxis()->SetTitle("Theta_el[mrad]");
-Th2->GetYaxis()->SetTitle("Theta_mu[GeV]");
+Th2->GetXaxis()->SetTitle("Theta_el[rad]");
+Th2->GetYaxis()->SetTitle("Theta_mu[rad]");
 Th2->Draw("COLZ");
 c4a->SaveAs("/home/LHCB-T3/espedicato/tesi/studio4/thu.png");
 /*

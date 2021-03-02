@@ -46,7 +46,7 @@ TH2F  *E3x31CUT  = new TH2F("Eel1" , " Th_el Vs. E_3x3 core Tar 2 (Fiducial cut)
 TH2F  *E3x32CUT  = new TH2F("Eel2" , " Th_el Vs. E_3x3 core Tar 2 (All cuts applied)",180,0,0.030,380,0,140);
     
     
-TH2F  *Th1  = new TH2F("ThEel1" , " Th_el Vs. Th_mu core Tar 2 (Fiducial cut + 1GeV cut + E_3x3 cut) ",180,0,0.030,250,0,0.005);
+TH2F  *Th1  = new TH2F("ThEel1" , " Th_el Vs. Th_mu core Tar 2 (Fiducial cut) ",180,0,0.030,250,0,0.005);
 TH2F  *Th2  = new TH2F("ThEel2" , " Th_el Vs. Th_mu core Tar 2 (All cuts applied)",180,0,0.030,250,0,0.005);    
 
  

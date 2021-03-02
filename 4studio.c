@@ -448,7 +448,7 @@ if (Th2->GetBinContent(i,j)<1) Th2->SetBinContent(i,j,0);}}
            
     
     
-TCanvas * c4a= new TCanvas("c4a","c4a",100,100,2500,2000);
+TCanvas * c4a= new TCanvas("c4a","c4a",1000,1000,2500,2000);
 c4a->Divide(2,2);
 gStyle->SetPalette(kRainBow);
  

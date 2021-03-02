@@ -452,7 +452,7 @@ TCanvas * c4a= new TCanvas("c4a","c4a",1000,1000,2500,2000);
 c4a->Divide(2,2);
 gStyle->SetPalette(kRainBow);
  
-c4a->cd(3);   
+c4a->cd(2);   
 E3x31CUT->GetXaxis()->SetTitle("Theta_el[rad]");
 E3x31CUT->GetYaxis()->SetTitle("Ereco3x3[GeV]");
 E3x31CUT->Draw("COLZ");
@@ -475,7 +475,7 @@ Th1->GetXaxis()->SetTitle("Theta_el[rad]");
 Th1->GetYaxis()->SetTitle("Theta_mu[rad]");
 Th1->Draw("COLZ");
 Elastic2->Draw("same");
-c4a->cd(2);   
+c4a->cd(3);   
 Th2->GetXaxis()->SetTitle("Theta_el[rad]");
 Th2->GetYaxis()->SetTitle("Theta_mu[rad]");
 Th2->Draw("COLZ");

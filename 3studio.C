@@ -881,7 +881,7 @@ gPad->BuildLegend(0.25,0.15,0.25,0.15);
 dmu->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/muon_cut.png");       
        
 TCanvas * dmuafter= new TCanvas("dmuafter","dmuafter",1000,100,2500,2000);
-dmuafter->Divide(1,2);
+dmuafter->Divide(2,2);
 dmuafter->cd(1);
 Emuout->GetXaxis()->SetTitle("E[GeV]");
 Emuout->SetLineColor(46);

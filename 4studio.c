@@ -345,7 +345,7 @@ Th1->Fill(detKinBeamRot_def_angle_e*0.001,detKinBeamRot_def_angle_mu*0.001,wgt_f
 
 
     if (DE>-0.08 && DE<0.08 && detKinBeamRot_def_angle_e<=5) 
-    {E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,);
+    {E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
     Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}   
     else if (DE>-0.2 && DE<0.2 && detKinBeamRot_def_angle_e>5 && detKinBeamRot_def_angle_e<=10) 
     {E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);

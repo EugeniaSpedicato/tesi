@@ -717,7 +717,7 @@ if(E_clus3x3>60 && E_clus3x3<=75){
 //ZONA 8
     
 if(E_clus3x3>75){
-  if(ddd>0.1*4.8)
+  if(ddd>100*0.1*4.8)
     {
  
         DeltaRCUT->Fill(ddd,wgt_full);
@@ -780,7 +780,7 @@ delete myGrid;
 
        
        
-/*TCanvas * de= new TCanvas("de","de",1000,100,2500,2000);
+TCanvas * de= new TCanvas("de","de",1000,100,2500,2000);
 de->Divide(1,2);
 de->cd(1);
 Eeout->GetXaxis()->SetTitle("E[GeV]");
@@ -1024,7 +1024,7 @@ diff_r_pheCUTafter->Draw("HIST same");
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
  
    
-da->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/photon_after.png");*/
+da->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/photon_after.png");
     
     
     
@@ -1121,7 +1121,7 @@ Th2->GetXaxis()->SetTitle("Theta_el[rad]");
 Th2->GetYaxis()->SetTitle("Theta_mu[rad]");
 Th2->Draw("COLZ");
 Elastic2->Draw("same");
-c4a->SaveAs("/home/LHCB-T3/espedicato/tesi/studio4/thu.png");    
+c4a->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/thu.png");    
     
     
     

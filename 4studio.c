@@ -420,7 +420,7 @@ hist_DE5->Draw("HIST");
 el->SaveAs("/home/LHCB-T3/espedicato/tesi/studio4/elastic.png");   
     
 
-TF1 *Elastic2 = new TF1("Elastic2","asin((sin(x)*Elastic(x))",0,0.030);     
+TF1 *Elastic2 = new TF1("Elastic2","asin( (sin(x)*sqrt(Elastic(x)*Elastic(x)-0.5109989461*0.001*0.5109989461*0.001))/sqrt( (150+0.5109989461*0.001-Elastic(x))*(150+0.5109989461*0.001-Elastic(x))-105.6583745 *0.001*105.6583745 *0.001 ) )",0,0.030);     
     
 Int_t nx1CUT = E3x31CUT->GetNbinsX();
 Int_t ny1CUT = E3x31CUT->GetNbinsY();
@@ -474,10 +474,12 @@ c4a->cd(1);
 Th1->GetXaxis()->SetTitle("Theta_el[rad]");
 Th1->GetYaxis()->SetTitle("Theta_mu[rad]");
 Th1->Draw("COLZ");
+Elastic2->Draw("same");
 c4a->cd(2);   
 Th2->GetXaxis()->SetTitle("Theta_el[rad]");
 Th2->GetYaxis()->SetTitle("Theta_mu[rad]");
 Th2->Draw("COLZ");
+Elastic2->Draw("same");
 c4a->SaveAs("/home/LHCB-T3/espedicato/tesi/studio4/thu.png");
 /*
     

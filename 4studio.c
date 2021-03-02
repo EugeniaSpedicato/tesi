@@ -347,8 +347,8 @@ if(r_mu<1.7 && detKinBeamRot_tar==1 ){
 E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
 Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);    
     
-if (detKinBeamRot_def_angle_e<5) hist_DE->Fill(DE,wgt_LO);   
-if (detKinBeamRot_def_angle_e>5) hist_DE5->Fill(DE,wgt_LO);   
+if (detKinBeamRot_def_angle_e<5) hist_DE->Fill(DE,wgt_full);   
+if (detKinBeamRot_def_angle_e>5) hist_DE5->Fill(DE,wgt_full);   
        
 /*if (DE>-0.08 && DE<0.08 && detKinBeamRot_def_angle_e<10) 
 {E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_LO);
@@ -449,14 +449,16 @@ TCanvas * c4a= new TCanvas("c4a","c4a",100,100,2500,2000);
 c4a->Divide(2,2);
 gStyle->SetPalette(kRainBow);
  
-c4a->cd(1);   
+c4a->cd(3);   
 E3x31CUT->GetXaxis()->SetTitle("Theta_el[mrad]");
 E3x31CUT->GetYaxis()->SetTitle("Ereco3x3[GeV]");
 E3x31CUT->Draw("COLZ");
-c4a->cd(2);   
+Elastic->Draw("same");
+c4a->cd(4);   
 E3x32CUT->GetXaxis()->SetTitle("Theta_el[mrad]");
 E3x32CUT->GetYaxis()->SetTitle("Ereco3x3[GeV]");
 E3x32CUT->Draw("COLZ");
+Elastic->Draw("same");
 
 
 /*c4a->SaveAs("/home/LHCB-T3/espedicato/tesi/studio4/thE_cut.png");
@@ -465,12 +467,11 @@ TCanvas * thu= new TCanvas("c4a","c4a",100,100,2500,2000);
 thu->Divide(1,2);
 gStyle->SetPalette(kRainBow);
  */
-c4a->cd(3);   
+c4a->cd(1);   
 Th1->GetXaxis()->SetTitle("Theta_el[mrad]");
 Th1->GetYaxis()->SetTitle("Theta_mu[GeV]");
 Th1->Draw("COLZ");
-Elastic->Draw("same");
-c4a->cd(4);   
+c4a->cd(2);   
 Th2->GetXaxis()->SetTitle("Theta_el[mrad]");
 Th2->GetYaxis()->SetTitle("Theta_mu[GeV]");
 Th2->Draw("COLZ");

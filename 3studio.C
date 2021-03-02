@@ -717,7 +717,7 @@ if(E_clus3x3>60 && E_clus3x3<=75){
 //ZONA 8
     
 if(E_clus3x3>75){
-  if(ddd>100*0.1*4.8)
+  if(ddd>300*0.1*4.8)
     {
  
         DeltaRCUT->Fill(ddd,wgt_full);

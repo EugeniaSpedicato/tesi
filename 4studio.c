@@ -42,12 +42,12 @@ TH1F* hist_dist=new TH1F("dist1", "Dist e-centroide", 200,0,2);
 TH1F* hist_distCUT=new TH1F("dist2", "Dist e-centroide CUT", 200,0,2);
 
 
-TH2F  *E3x31CUT  = new TH2F("Eel1" , " Th_el Vs. E_3x3 core Tar 2 (Fiducial cut) ",180,0,30,380,0,140);
-TH2F  *E3x32CUT  = new TH2F("Eel2" , " Th_el Vs. E_3x3 core Tar 2 (Fiducial cut+event cuts)",180,0,30,380,0,140);
+TH2F  *E3x31CUT  = new TH2F("Eel1" , " Th_el Vs. E_3x3 core Tar 2 (r_mu<5cm) ",180,0,30,380,0,140);
+TH2F  *E3x32CUT  = new TH2F("Eel2" , " Th_el Vs. E_3x3 core Tar 2 (Fiducial cut)",180,0,30,380,0,140);
     
     
-TH2F  *Th1  = new TH2F("ThEel1" , " Th_el Vs. Th_mu core Tar 2 (Fiducial cut)",180,0,30,250,0,5);
-TH2F  *Th2  = new TH2F("ThEel2" , " Th_el Vs. Th_mu core Tar 2 (Fiducial cut+event cuts",180,0,30,250,0,5);    
+TH2F  *Th1  = new TH2F("ThEel1" , " Th_el Vs. Th_mu core Tar 2 (r_mu<5cm) ",180,0,30,250,0,5);
+TH2F  *Th2  = new TH2F("ThEel2" , " Th_el Vs. Th_mu core Tar 2 (Fiducial cut)",180,0,30,250,0,5);    
 
  
 
@@ -336,9 +336,17 @@ double DE= (E_clus3x3/Ethe-0.955);
 /*Elastic->SetPoint(n,x,Ethe);
 ++n;*/
 
+if (detKinBeamRot_tar==1)
+{E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
+Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);}
+
 
 if(r_mu<1.7 && detKinBeamRot_tar==1 ){
 
+    
+E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);
+Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_full);    
+    
 if (detKinBeamRot_def_angle_e<5) hist_DE->Fill(DE,wgt_LO);   
 if (detKinBeamRot_def_angle_e>5) hist_DE5->Fill(DE,wgt_LO);   
        
@@ -349,7 +357,7 @@ if (DE>-0.08 && DE<0.08 && detKinBeamRot_def_angle_e>10)
 {E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_LO);
 Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_LO);}*/
    
-
+/*
 
     if (DE>-0.08 && DE<0.08 && detKinBeamRot_def_angle_e<=5) 
     {E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_LO);
@@ -373,7 +381,7 @@ Th1->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_LO);}*/
      Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_LO);} else if ( DE>abs(0.3) && detKinBeamRot_def_angle_e>10 && detKinBeamRot_def_angle_e<=15) {E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_LO);
      Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_LO);} else if (  DE>abs(0.4) && detKinBeamRot_def_angle_e>15 && detKinBeamRot_def_angle_e<=20) 
     {E3x32CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_LO);
-     Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_LO);}     } 
+     Th2->Fill(detKinBeamRot_def_angle_e,detKinBeamRot_def_angle_mu,wgt_LO);}     } */
   
  }      
     
@@ -621,17 +629,17 @@ E3x32CUT->GetYaxis()->SetTitle("Ereco3x3[GeV]");
 E3x32CUT->Draw("COLZ");
 
 
-c4a->SaveAs("/home/LHCB-T3/espedicato/tesi/studio4/thE_cut.png");
+/*c4a->SaveAs("/home/LHCB-T3/espedicato/tesi/studio4/thE_cut.png");
     
 TCanvas * thu= new TCanvas("c4a","c4a",100,100,2500,2000);
 thu->Divide(1,2);
 gStyle->SetPalette(kRainBow);
- 
-thu->cd(1);   
+ */
+thu->cd(3);   
 Th1->GetXaxis()->SetTitle("Theta_el[mrad]");
 Th1->GetYaxis()->SetTitle("Theta_mu[GeV]");
 Th1->Draw("COLZ");
-thu->cd(2);   
+thu->cd(4);   
 Th2->GetXaxis()->SetTitle("Theta_el[mrad]");
 Th2->GetYaxis()->SetTitle("Theta_mu[GeV]");
 Th2->Draw("COLZ");

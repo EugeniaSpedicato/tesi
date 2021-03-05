@@ -60,8 +60,8 @@ Double_t E_clus3x3=0.;
     
 
 TH1F* The_trueCUT=new TH1F("th", "th El gen", 120,0,30);
-TH1F* The_trueCUT1=new TH1F("th", "th El gen TAR 1", 120,0,30);
-TH1F* The_trueCUT2=new TH1F("th", "th El gen TAR 2", 120,0,30);
+TH1F* The_trueCUT1=new TH1F("th", "All events TAR 1", 120,0,30);
+TH1F* The_trueCUT2=new TH1F("th", "All events TAR 2", 120,0,30);
 
 TH1F* The_trueCUTmu=new TH1F("th", "th El  true CUT th_mu>0.2mrad", 120,0,30);
 TH1F* The_trueCUT1mu=new TH1F("th", "th El true TAR 1 CUT th_mu>0.2mrad", 120,0,30);
@@ -72,22 +72,22 @@ TH1F* The_trueCUT1Ee=new TH1F("th", "th El true TAR 1 CUT on E_e", 120,0,30);
 TH1F* The_trueCUT2Ee=new TH1F("th", "th El true TAR 2 CUT on E_e", 120,0,30);
     
 TH1F* The_trueCUTtot=new TH1F("th", "th El gen fiducial cut ", 120,0,30);
-TH1F* The_trueCUT1tot=new TH1F("th", "th El gen TAR 1 fiducial cut", 120,0,30);
-TH1F* The_trueCUT2tot=new TH1F("th", "th El gen TAR 2 fiducial cut", 120,0,30);
+TH1F* The_trueCUT1tot=new TH1F("th", "th El core TAR 1", 120,0,30);
+TH1F* The_trueCUT2tot=new TH1F("th", "th El core TAR 2", 120,0,30);
 
 TH1F* The_true=new TH1F("th", "th El true", 120,0,30);    
 TH1F* The=new TH1F("th", "th El core", 120,0,30); 
 /*TH1F* TheBIG=new TH1F("th", "th El 5X5", 120,0,30); 
 TH1F* The2P=new TH1F("th", "th El crown", 120,0,30); */
 
-TH1F* The_true1=new TH1F("th", "th El true TAR 1", 120,0,30);    
-TH1F* The1=new TH1F("th", "th El core TAR 1", 120,0,30); 
+TH1F* The_true1=new TH1F("th", "All events TAR 1", 120,0,30);    
+TH1F* The1=new TH1F("th", "Core events TAR 1", 120,0,30); 
 /*TH1F* TheBIG1=new TH1F("th", "th El 5X5 TAR 1", 120,0,30); 
 TH1F* The2P1=new TH1F("th", "th El crown TAR 1", 120,0,30); */
 
     
-TH1F* The_true2=new TH1F("th", "th El true TAR 2", 120,0,30);     
-TH1F* The2=new TH1F("th", "th El core TAR 2", 120,0,30); 
+TH1F* The_true2=new TH1F("th", "All events TAR 2", 120,0,30);     
+TH1F* The2=new TH1F("th", "Core events TAR 2", 120,0,30); 
 /*TH1F* TheBIG2=new TH1F("th", "th El 5X5 TAR 2", 120,0,30); 
 TH1F* The2P2=new TH1F("th", "th El crown TAR 2", 120,0,30);*/ 
     
@@ -459,7 +459,7 @@ gPad->BuildLegend(0.25,0.15,0.25,0.15);
 efCUT->SaveAs("/home/LHCB-T3/espedicato/tesi/eff/EffCUT.png");*/
 
 TCanvas * c5a= new TCanvas("c5a","c5a",1000,100,2500,2000);
-c5a->Divide(1,2);
+c5a->Divide(2,1);
 c5a->cd(1);
 The_trueCUT1->SetLineColor(kBlack);
 The_trueCUT1->SetLineWidth(3);
@@ -481,7 +481,7 @@ gPad->BuildLegend(0.3,0.21,0.3,0.21);
  c5a->SaveAs("/home/LHCB-T3/espedicato/tesi/eff/th_elR5.png");    
     
 TCanvas * c5= new TCanvas("c5","c5",1000,100,2500,2000);
-c5->Divide(1,2);
+c5->Divide(2,1);
 c5->cd(1);
 The_trueCUT1tot->SetLineColor(kBlack);
 The_trueCUT1tot->SetLineWidth(3);

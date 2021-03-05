@@ -1096,6 +1096,7 @@ EphoutCUTafter->SetLineColor(30);
 EphoutCUTafter->SetLineWidth(3);
 EphoutCUTafter->SetMinimum(1);
 EphoutCUTafter->Draw("HIST same");
+gStyle->SetOptStat(0);
 gPad->SetLogy();
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
@@ -1108,6 +1109,7 @@ ThphoutCUTafter->GetXaxis()->SetTitle("Theta_gen[mrad]");
 ThphoutCUTafter->SetLineColor(30);
 ThphoutCUTafter->SetLineWidth(3);
 ThphoutCUTafter->Draw("HIST same"); 
+gStyle->SetOptStat(0);
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
 da->cd(3);
@@ -1119,6 +1121,7 @@ diff_th_pheCUTafter->GetXaxis()->SetTitle("Delta_ThetaGen[mrad]");
 diff_th_pheCUTafter->SetLineColor(30);
 diff_th_pheCUTafter->SetLineWidth(3);
 diff_th_pheCUTafter->Draw("HIST same");
+gStyle->SetOptStat(0);
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
  
 da->cd(4);
@@ -1130,6 +1133,7 @@ diff_r_pheCUTafter->GetXaxis()->SetTitle("Delta_r[cm]");
 diff_r_pheCUTafter->SetLineColor(30);
 diff_r_pheCUTafter->SetLineWidth(3);
 diff_r_pheCUTafter->Draw("HIST same");
+gStyle->SetOptStat(0);
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
  
    

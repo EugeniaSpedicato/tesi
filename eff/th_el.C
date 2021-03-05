@@ -1,7 +1,7 @@
 void th_el()
 {
 //=========Macro generated from canvas: c5/c5
-//=========  (Fri Mar  5 08:55:39 2021) by ROOT version 6.20/02
+//=========  (Fri Mar  5 09:11:41 2021) by ROOT version 6.20/02
    TCanvas *c5 = new TCanvas("c5", "c5",0,0,2500,2000);
    gStyle->SetOptStat(0);
    c5->Range(0,0,1,1);

@@ -339,7 +339,7 @@ double DE= (E_clus3x3/Ethe-0.955);
     
 if(r_mu<5 && detKinBeamRot_tar==1) 
 {   E3x31CUT->Fill(detKinBeamRot_def_angle_e*0.001,E_clus3x3,wgt_full);
-Th1->Fill(detKinBeamRot_def_angle_e*0.001,detKinBeamRot_def_angle_mu*0.001,wgt_full=;}
+Th1->Fill(detKinBeamRot_def_angle_e*0.001,detKinBeamRot_def_angle_mu*0.001,wgt_full);}
 
 if(r_mu<1.7 && detKinBeamRot_tar==1 ){ //E_clus3x3>1
 

@@ -1071,7 +1071,7 @@ diff_r_pheCUT1->SetLineColor(lOrange);
 diff_r_pheCUT1->SetLineWidth(3);
 diff_r_pheCUT1->Draw("HIST same"); 
 diff_r_pheCUT2->GetXaxis()->SetTitle("Delta_r[cm]");
-diff_r_pheCUT2->SetLineColor(kRed);
+diff_r_pheCUT2->SetLineColor(kBlack);
 diff_r_pheCUT2->SetLineWidth(3);
 diff_r_pheCUT2->Draw("HIST same"); 
 gPad->BuildLegend(0.25,0.15,0.25,0.15);

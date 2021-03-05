@@ -130,9 +130,11 @@ TH1F* hist_E3x3_eCUT=new TH1F("E3x3cut", "Energy Reco 3x3 cut", 70,0.,140);
     TH1F* residuoX=new TH1F("res1", "Residual X_cal-X_trak", 30,-0.8,0.8);
     TH1F* residuoY=new TH1F("res2", "Residual Y_cal-Y_trak", 30,-0.8,0.8);
 
-    
+
     TH1F* diff_r_mue=new TH1F("thetaPH", "Diff r_e-r_mu tot", 75,0,10); 
-    TH1F* diff_r_mueCUT=new TH1F("thetaPH", "Diff r_e-r_mu tot", 75,0,10); 
+    TH1F* diff_r_mueCUT=new TH1F("thetaPH4", "Centroid cut", 75,0,10); 
+    TH1F* diff_r_mueCUT1=new TH1F("thetaPH5", "1 GeV cut", 75,0,10); 
+    TH1F* diff_r_mueCUT2=new TH1F("thetaPH6", "DE(theta) cut", 75,0,10); 
     
 TProfile *eoutmean =  new TProfile("eoutmean", "E16mean vs E3x3", 75,0.2,150,0,0.1);
     eoutmean->SetErrorOption("S"); 
@@ -1067,7 +1069,7 @@ diff_r_pheCUT->SetLineColor(kRed);
 diff_r_pheCUT->SetLineWidth(3);
 diff_r_pheCUT->Draw("HIST same"); 
 diff_r_pheCUT1->GetXaxis()->SetTitle("Delta_r[cm]");
-diff_r_pheCUT1->SetLineColor(lOrange);
+diff_r_pheCUT1->SetLineColor(kOrange);
 diff_r_pheCUT1->SetLineWidth(3);
 diff_r_pheCUT1->Draw("HIST same"); 
 diff_r_pheCUT2->GetXaxis()->SetTitle("Delta_r[cm]");

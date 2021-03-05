@@ -1123,6 +1123,7 @@ diff_th_pheCUTafter->SetLineWidth(3);
 diff_th_pheCUTafter->Draw("HIST same");
 gStyle->SetOptStat(0);
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
+
  
 da->cd(4);
 diff_r_phe->GetXaxis()->SetTitle("Delta_r[cm]");

@@ -363,7 +363,7 @@ Eff1CUT->SetMaximum(1.1);
 Eff1CUT->SetMinimum(0);
 Eff1CUT->Draw(); 
 gStyle->SetOptStat(0);
-ef->cd(2);
+ef->cd(3);
 Eff2CUT->GetXaxis()->SetTitle("Theta el[mrad]");
 Eff2CUT->GetYaxis()->SetTitle("Efficency");
 Eff2CUT->SetLineWidth(3);
@@ -372,16 +372,9 @@ Eff2CUT->SetMaximum(1.1);
 Eff2CUT->SetMinimum(0.7);
 Eff2CUT->Draw();   
 gStyle->SetOptStat(0);   
-gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
-ef->SaveAs("/home/LHCB-T3/espedicato/tesi/eff/Effrmu5.png");  
-ef->SaveAs("/home/LHCB-T3/espedicato/tesi/eff/Effrmu5.C");   
 
-    
-    
-/*TCanvas * ef1= new TCanvas("ef","ef",1000,100,2500,2000);
-ef1->Divide(1,2);
-ef1->cd(1);
+ef->cd(2);
 Eff1CUTtot->GetXaxis()->SetTitle("Theta el[mrad]");
 Eff1CUTtot->GetYaxis()->SetTitle("Efficency");
 Eff1CUTtot->SetLineWidth(3);
@@ -390,8 +383,7 @@ Eff1CUTtot->SetMaximum(1.1);
 Eff1CUTtot->SetMinimum(0);
 Eff1CUTtot->Draw(); 
 gStyle->SetOptStat(0);
-gPad->BuildLegend(0.25,0.15,0.25,0.15);
-ef1->cd(2);  
+ef->cd(4);  
 Eff2CUTtot->GetXaxis()->SetTitle("Theta el[mrad]");
 Eff2CUTtot->GetYaxis()->SetTitle("Efficency");
 Eff2CUTtot->SetLineWidth(3);
@@ -400,9 +392,11 @@ Eff2CUTtot->SetMaximum(1.1);
 Eff2CUTtot->SetMinimum(0.7);
 Eff2CUTtot->Draw(); 
 gStyle->SetOptStat(0);
-gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
-ef1->SaveAs("/home/LHCB-T3/espedicato/tesi/eff/Effcut.png");*/
+ef->SaveAs("/home/LHCB-T3/espedicato/tesi/eff/Eff.png");  
+ef->SaveAs("/home/LHCB-T3/espedicato/tesi/eff/Eff.C");   
+
+
 
 /*TCanvas * ef= new TCanvas("ef","ef",1000,100,2500,2000);
 ef->Divide(1,2);

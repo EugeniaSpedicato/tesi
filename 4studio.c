@@ -810,11 +810,13 @@ c4a->cd(2);
 E3x31CUT->GetXaxis()->SetTitle("Theta_el[rad]");
 E3x31CUT->GetYaxis()->SetTitle("Ereco3x3[GeV]");
 E3x31CUT->Draw("COLZ");
+gStyle->SetOptStat(0); 
 Elastic->Draw("same");
 c4a->cd(4);   
 E3x32CUT->GetXaxis()->SetTitle("Theta_el[rad]");
 E3x32CUT->GetYaxis()->SetTitle("Ereco3x3[GeV]");
 E3x32CUT->Draw("COLZ");
+gStyle->SetOptStat(0); 
 Elastic->Draw("same");
 
 
@@ -829,11 +831,13 @@ Th1->GetXaxis()->SetTitle("Theta_el[rad]");
 Th1->GetYaxis()->SetTitle("Theta_mu[rad]");
 Th1->Draw("COLZ");
 Elastic2->Draw("same");
+gStyle->SetOptStat(0); 
 c4a->cd(3);   
 Th2->GetXaxis()->SetTitle("Theta_el[rad]");
 Th2->GetYaxis()->SetTitle("Theta_mu[rad]");
 Th2->Draw("COLZ");
 Elastic2->Draw("same");
+gStyle->SetOptStat(0); 
 c4a->SaveAs("/home/LHCB-T3/espedicato/tesi/studio4/thu.png");
 /*
     

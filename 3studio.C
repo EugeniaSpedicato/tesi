@@ -892,7 +892,7 @@ EmuoutCUT2->SetLineColor(kBlack);
 EmuoutCUT2->SetLineWidth(3);
 EmuoutCUT2->SetMinimum(1);
 EmuoutCUT2->Draw("HIST same");
-
+gStyle->SetOptStat(0); 
 gPad->SetLogy();
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
@@ -914,6 +914,7 @@ ThmuoutCUT2->SetLineColor(kBlack);
 ThmuoutCUT2->SetLineWidth(3);
 ThmuoutCUT2->Draw("HIST same");
 gPad->SetLogy();
+gStyle->SetOptStat(0); 
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
    
 dmu->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/muon_cut.png");       
@@ -937,6 +938,7 @@ Emuout_TH->SetLineWidth(3);
 Emuout_TH->SetMinimum(1);
 Emuout_TH->Draw("HIST same");
 gPad->SetLogy();
+gStyle->SetOptStat(0); 
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
 dmuafter->cd(3);
@@ -953,6 +955,7 @@ Thmuout_TH->SetLineColor(kBlack);
 Thmuout_TH->SetLineWidth(3);
 Thmuout_TH->Draw("HIST same"); 
 gPad->SetLogy();
+gStyle->SetOptStat(0); 
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
 dmuafter->cd(2);
@@ -972,6 +975,7 @@ Eeout_TH->SetLineWidth(3);
 Eeout_TH->SetMinimum(1);
 Eeout_TH->Draw("HIST same");
 gPad->SetLogy();
+gStyle->SetOptStat(0); 
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
 dmuafter->cd(4);
@@ -987,7 +991,7 @@ Theout_TH->GetXaxis()->SetTitle("Theta_gen[mrad]");
 Theout_TH->SetLineColor(kBlack);
 Theout_TH->SetLineWidth(3);
 Theout_TH->Draw("HIST same"); 
-    
+gStyle->SetOptStat(0); 
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
    
 dmuafter->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/muon_after.png");         

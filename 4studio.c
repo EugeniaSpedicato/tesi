@@ -838,6 +838,7 @@ gStyle->SetPalette(kRainBow);
 E3x32CUT->GetXaxis()->SetTitle("Theta_el[rad]");
 E3x32CUT->GetYaxis()->SetTitle("Ereco3x3[GeV]");
 E3x32CUT->Draw("COLZ");
+Elastic->Draw("same");
 gStyle->SetOptStat("ne"); 
 a->SaveAs("/home/LHCB-T3/espedicato/tesi/studio4/thE_2.png");    
     

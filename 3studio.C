@@ -95,31 +95,31 @@ TH1F* hist_E3x3_eCUT=new TH1F("E3x3cut", "Energy Reco 3x3 cut", 70,0.,140);
     TH1F* diff_r_pheCUTafter =new TH1F("thetaPHr", "Diff r_e-r_ph after cut off", 75,0,10); 
 
     
-    TH1F* Eeout=new TH1F("EnergyPH1", "Energy el- tot", 75,0.2,150); 
-    TH1F* Eeout_TH=new TH1F("EnergyPH2", "Energy el- tot LO", 75,0.2,150); 
-    TH1F* Theout=new TH1F("thetaPH3", "Theta gen el- tot", 75,0.,30); 
-    TH1F* Theout_TH=new TH1F("thetaPH4", "Theta gen el- tot LO", 75,0.,30); 
+    TH1F* Eeout=new TH1F("EnergyPH1", "NLO", 75,0.2,150); 
+    TH1F* Eeout_TH=new TH1F("EnergyPH2", "LO", 75,0.2,150); 
+    TH1F* Theout=new TH1F("thetaPH3", "NLO", 75,0.,30); 
+    TH1F* Theout_TH=new TH1F("thetaPH4", "LO", 75,0.,30); 
     TH1F* EeoutCUT=new TH1F("EnergyPH15", "Energy el- cut off", 75,0.2,150); 
     TH1F* TheoutCUT=new TH1F("thetaPH16", "Theta gen el- cut off", 75,0.,30);
     TH1F* EeoutCUT1=new TH1F("EnergyPH17", "Energy el- cut off", 75,0.2,150); 
     TH1F* TheoutCUT1=new TH1F("thetaPH18", "Theta gen el- cut off", 75,0.,30);
     TH1F* EeoutCUT2=new TH1F("EnergyPH19", "Energy el- cut off", 75,0.2,150); 
     TH1F* TheoutCUT2=new TH1F("thetaPH10", "Theta gen el- cut off", 75,0.,30);
-    TH1F* EeoutCUTafter=new TH1F("EnergyPH11", "Energy el- after cut off", 75,0.2,150); 
-    TH1F* TheoutCUTafter=new TH1F("thetaPH12", "Theta gen el- after cut off", 75,0.,30); 
+    TH1F* EeoutCUTafter=new TH1F("EnergyPH11", "NLO after selection", 75,0.2,150); 
+    TH1F* TheoutCUTafter=new TH1F("thetaPH12", "NLO after selection", 75,0.,30); 
     
     
-    TH1F* Emuout=new TH1F("EnergyaPH1", "Energy mu tot", 75,0.2,160);
-    TH1F* Emuout_TH=new TH1F("EnergyaPH2", "Energy mu tot LO", 75,0.2,160); 
-    TH1F* Thmuout=new TH1F("thetaaPH3", "Theta gen mu tot", 100,0.,5); 
-    TH1F* Thmuout_TH=new TH1F("thetaaPHth4", "Theta gen mu tot TH LO", 100,0.,5); 
+    TH1F* Emuout=new TH1F("EnergyaPH1", "NLO", 75,0.2,160);
+    TH1F* Emuout_TH=new TH1F("EnergyaPH2", "LO", 75,0.2,160); 
+    TH1F* Thmuout=new TH1F("thetaaPH3", "NLO", 100,0.,5); 
+    TH1F* Thmuout_TH=new TH1F("thetaaPHth4", "LO", 100,0.,5); 
     TH1F* EmuoutCUT=new TH1F("EnergyaPH15", "Energy mu cut off", 75,0.2,160); 
     TH1F* ThmuoutCUT=new TH1F("thetaaPH16", "Theta gen mu cut off", 100,0.,5); 
     TH1F* EmuoutCUT1=new TH1F("EnergyaPH17", "Energy mu cut off", 75,0.2,160); 
     TH1F* ThmuoutCUT1=new TH1F("thetaaPH18", "Theta gen mu cut off", 100,0.,5);     TH1F* EmuoutCUT2=new TH1F("EnergyaPH19", "Energy mu cut off", 75,0.2,160); 
     TH1F* ThmuoutCUT2=new TH1F("thetaaPH10", "Theta gen mu cut off", 100,0.,5); 
-    TH1F* EmuoutCUTafter=new TH1F("EnergyaPH11", "Energy mu after cut off", 75,0.2,160); 
-    TH1F* ThmuoutCUTafter=new TH1F("thetaaPH12", "Theta gen mu after cut off", 100,0.,5); 
+    TH1F* EmuoutCUTafter=new TH1F("EnergyaPH11", "NLO after selection", 75,0.2,160); 
+    TH1F* ThmuoutCUTafter=new TH1F("thetaaPH12", "NLO after selection", 100,0.,5); 
     
 
     

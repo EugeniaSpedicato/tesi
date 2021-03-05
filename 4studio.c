@@ -42,12 +42,12 @@ TH1F* hist_dist=new TH1F("dist1", "Dist e-centroide", 200,0,2);
 TH1F* hist_distCUT=new TH1F("dist2", "Dist e-centroide CUT", 200,0,2);
 
 
-TH2F  *E3x31CUT  = new TH2F("Eel1" , " Th_el Vs. E_3x3 core Tar 2 (Fiducial cut) ",180,0,0.030,380,0,140);
-TH2F  *E3x32CUT  = new TH2F("Eel2" , " Th_el Vs. E_3x3 core Tar 2 (All cuts applied)",180,0,0.030,380,0,140);
+TH2F  *E3x31CUT  = new TH2F("Eel1" , " Th_el Vs. E_3x3 ",180,0,0.030,380,0,140);
+TH2F  *E3x32CUT  = new TH2F("Eel2" , " Th_el Vs. E_3x3 (Fiducial cut) ",180,0,0.030,380,0,140);
     
     
-TH2F  *Th1  = new TH2F("ThEel1" , " Th_el Vs. Th_mu core Tar 2 (Fiducial cut) ",180,0,0.030,250,0,0.005);
-TH2F  *Th2  = new TH2F("ThEel2" , " Th_el Vs. Th_mu core Tar 2 (All cuts applied)",180,0,0.030,250,0,0.005);    
+TH2F  *Th1  = new TH2F("ThEel1" , " Th_el Vs. Th_mu core Tar 2 ",180,0,0.030,250,0,0.005);
+TH2F  *Th2  = new TH2F("ThEel2" , " Th_el Vs. Th_mu core Tar 2  (Fiducial cut) ",180,0,0.030,250,0,0.005);    
 
  
 
@@ -792,39 +792,41 @@ if (Th2->GetBinContent(i,j)<1) Th2->SetBinContent(i,j,0);}}
            
     
     
-TCanvas * c4a= new TCanvas("c4a","c4a",1000,1000,2500,2000);
-c4a->Divide(2,1);
+TCanvas * thu= new TCanvas("thu","thu",1000,1000,2500,2000);
+thu->Divide(2,2);
 gStyle->SetPalette(kRainBow);
  
-c4a->cd(1);   
+thu->cd(1);   
 E3x31CUT->GetXaxis()->SetTitle("Theta_el[rad]");
 E3x31CUT->GetYaxis()->SetTitle("Ereco3x3[GeV]");
 E3x31CUT->Draw("COLZ");
 gStyle->SetOptStat(0); 
 Elastic->Draw("same");
-c4a->cd(2);   
+thu->cd(2);   
 E3x32CUT->GetXaxis()->SetTitle("Theta_el[rad]");
 E3x32CUT->GetYaxis()->SetTitle("Ereco3x3[GeV]");
 E3x32CUT->Draw("COLZ");
 gStyle->SetOptStat(0); 
 Elastic->Draw("same");
-c4a->SaveAs("/home/LHCB-T3/espedicato/tesi/studio4/thE_cut.png");
-c4a->SaveAs("/home/LHCB-T3/espedicato/tesi/studio4/thE_cut.C");
+/*c4a->SaveAs("/home/LHCB-T3/espedicato/tesi/studio4/thE_cut.png");
+c4a->SaveAs("/home/LHCB-T3/espedicato/tesi/studio4/thE_cut.C");*/
 
     
-TCanvas * thu= new TCanvas("c4a","c4a",100,100,2500,2000);
+/*TCanvas * thu= new TCanvas("c4a","c4a",100,100,2500,2000);
 thu->Divide(2,1);
-gStyle->SetPalette(kRainBow);
+gStyle->SetPalette(kRainBow);*/
  
-thu->cd(1);   
+thu->cd(3);   
 Th1->GetXaxis()->SetTitle("Theta_el[rad]");
 Th1->GetYaxis()->SetTitle("Theta_mu[rad]");
+Th1->LabelsDeflate("Y");
 Th1->Draw("COLZ");
 Elastic2->Draw("same");
 gStyle->SetOptStat(0); 
-thu->cd(2);   
+thu->cd(4);   
 Th2->GetXaxis()->SetTitle("Theta_el[rad]");
 Th2->GetYaxis()->SetTitle("Theta_mu[rad]");
+Th2->LabelsDeflate("Y");
 Th2->Draw("COLZ");
 Elastic2->Draw("same");
 gStyle->SetOptStat(0); 

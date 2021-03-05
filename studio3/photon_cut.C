@@ -1,8 +1,9 @@
 void photon_cut()
 {
 //=========Macro generated from canvas: d/d
-//=========  (Fri Mar  5 18:19:48 2021) by ROOT version 6.20/02
+//=========  (Fri Mar  5 18:26:25 2021) by ROOT version 6.20/02
    TCanvas *d = new TCanvas("d", "d",0,0,2500,2000);
+   gStyle->SetOptStat(0);
    d->Range(0,0,1,1);
    d->SetFillColor(0);
    d->SetBorderMode(0);
@@ -176,23 +177,6 @@ void photon_cut()
    EnergyPH__1->SetBinError(76,2.954456e-09);
    EnergyPH__1->SetMinimum(1);
    EnergyPH__1->SetEntries(114340);
-   
-   TPaveStats *ptstats = new TPaveStats(0.78,0.775,0.98,0.935,"brNDC");
-   ptstats->SetName("stats");
-   ptstats->SetBorderSize(1);
-   ptstats->SetFillColor(0);
-   ptstats->SetTextAlign(12);
-   ptstats->SetTextFont(42);
-   TText *ptstats_LaTex = ptstats->AddText("EnergyPH");
-   ptstats_LaTex->SetTextSize(0.0368);
-   ptstats_LaTex = ptstats->AddText("Entries = 114340 ");
-   ptstats_LaTex = ptstats->AddText("Mean  =  1.629");
-   ptstats_LaTex = ptstats->AddText("Std Dev   =  5.579");
-   ptstats->SetOptStat(1111);
-   ptstats->SetOptFit(0);
-   ptstats->Draw();
-   EnergyPH__1->GetListOfFunctions()->Add(ptstats);
-   ptstats->SetParent(EnergyPH__1);
    EnergyPH__1->SetLineColor(9);
    EnergyPH__1->SetLineWidth(3);
    EnergyPH__1->GetXaxis()->SetTitle("E[GeV]");
@@ -796,23 +780,6 @@ void photon_cut()
    thetaPH__5->SetBinError(79,0.1069385);
    thetaPH__5->SetEntries(114340);
    thetaPH__5->SetDirectory(0);
-   
-   ptstats = new TPaveStats(0.78,0.775,0.98,0.935,"brNDC");
-   ptstats->SetName("stats");
-   ptstats->SetBorderSize(1);
-   ptstats->SetFillColor(0);
-   ptstats->SetTextAlign(12);
-   ptstats->SetTextFont(42);
-   ptstats_LaTex = ptstats->AddText("thetaPH");
-   ptstats_LaTex->SetTextSize(0.0368);
-   ptstats_LaTex = ptstats->AddText("Entries = 114340 ");
-   ptstats_LaTex = ptstats->AddText("Mean  =  24.85");
-   ptstats_LaTex = ptstats->AddText("Std Dev   =  15.97");
-   ptstats->SetOptStat(1111);
-   ptstats->SetOptFit(0);
-   ptstats->Draw();
-   thetaPH__5->GetListOfFunctions()->Add(ptstats);
-   ptstats->SetParent(thetaPH__5);
    thetaPH__5->SetLineColor(9);
    thetaPH__5->SetLineWidth(3);
    thetaPH__5->GetXaxis()->SetTitle("Theta_gen[mrad]");
@@ -1507,23 +1474,6 @@ void photon_cut()
    thetaPH__9->SetBinError(51,2.831259);
    thetaPH__9->SetEntries(114340);
    thetaPH__9->SetDirectory(0);
-   
-   ptstats = new TPaveStats(0.78,0.775,0.98,0.935,"brNDC");
-   ptstats->SetName("stats");
-   ptstats->SetBorderSize(1);
-   ptstats->SetFillColor(0);
-   ptstats->SetTextAlign(12);
-   ptstats->SetTextFont(42);
-   ptstats_LaTex = ptstats->AddText("thetaPH");
-   ptstats_LaTex->SetTextSize(0.0368);
-   ptstats_LaTex = ptstats->AddText("Entries = 114340 ");
-   ptstats_LaTex = ptstats->AddText("Mean  = -2.645");
-   ptstats_LaTex = ptstats->AddText("Std Dev   =  10.25");
-   ptstats->SetOptStat(1111);
-   ptstats->SetOptFit(0);
-   ptstats->Draw();
-   thetaPH__9->GetListOfFunctions()->Add(ptstats);
-   ptstats->SetParent(thetaPH__9);
    thetaPH__9->SetLineColor(9);
    thetaPH__9->SetLineWidth(3);
    thetaPH__9->GetXaxis()->SetTitle("Delta_ThetaGen[mrad]");
@@ -2090,23 +2040,6 @@ void photon_cut()
    thetaPH__13->SetBinError(71,0.210271);
    thetaPH__13->SetEntries(114340);
    thetaPH__13->SetDirectory(0);
-   
-   ptstats = new TPaveStats(0.78,0.775,0.98,0.935,"brNDC");
-   ptstats->SetName("stats");
-   ptstats->SetBorderSize(1);
-   ptstats->SetFillColor(0);
-   ptstats->SetTextAlign(12);
-   ptstats->SetTextFont(42);
-   ptstats_LaTex = ptstats->AddText("thetaPH");
-   ptstats_LaTex->SetTextSize(0.0368);
-   ptstats_LaTex = ptstats->AddText("Entries = 114340 ");
-   ptstats_LaTex = ptstats->AddText("Mean  =  2.375");
-   ptstats_LaTex = ptstats->AddText("Std Dev   =  2.395");
-   ptstats->SetOptStat(1111);
-   ptstats->SetOptFit(0);
-   ptstats->Draw();
-   thetaPH__13->GetListOfFunctions()->Add(ptstats);
-   ptstats->SetParent(thetaPH__13);
    thetaPH__13->SetLineColor(9);
    thetaPH__13->SetLineWidth(3);
    thetaPH__13->GetXaxis()->SetTitle("Delta_r[cm]");

@@ -256,7 +256,9 @@ if(r_mu<5) The_trueCUT2->Fill(detKinBeamRot_def_angle_e,wgt_full);
 if(r_mu<1.7 && E_clus3x3>1) The_trueCUT2tot->Fill(detKinBeamRot_def_angle_e,wgt_full);}
        
     if (detKinBeamRot_tar==0) rmu->Fill(r_mu,wgt_full);
+
        
+// quelli nel PICCOLO CAL
 if (n_cell_e!=0)
 {  
 
@@ -330,10 +332,10 @@ if(r_mu<1.7 && E_clus3x3>1) E3x32CUTtot->Fill(detKinBeamRot_def_angle_e,E_clus3x
     
 TH1F *Eff1CUT = new TH1F("ef1cut", "Eff Tar1 cut", 120,0,30);
 TH1F *Eff2CUT = new TH1F("ef2cut", "Eff Tar2 cut", 120,0,30);
-Eff1CUT->Divide(The1CUT,The_trueCUT1,1,1,"B");
+Eff1CUT->Divide(The1CUT,The_trueCUT1,1,1,"B"); // eff ALL CAL cal 1.7
 Eff2CUT->Divide(The2CUT,The_trueCUT2,1,1,"B");
 
-TH1F *Eff1CUTmu = new TH1F("ef1cutmu", "Eff Tar1 cut th_mu>0.2mrad", 120,0,30);
+/*TH1F *Eff1CUTmu = new TH1F("ef1cutmu", "Eff Tar1 cut th_mu>0.2mrad", 120,0,30);
 TH1F *Eff2CUTmu = new TH1F("ef2cutmu", "Eff Tar2 cut th_mu>0.2mrad", 120,0,30);
 Eff1CUTmu->Divide(The1CUTmu,The_trueCUT1mu,1,1,"B");
 Eff2CUTmu->Divide(The2CUTmu,The_trueCUT2mu,1,1,"B");
@@ -341,12 +343,12 @@ Eff2CUTmu->Divide(The2CUTmu,The_trueCUT2mu,1,1,"B");
 TH1F *Eff1CUTEe = new TH1F("ef1cutEe", "Eff Tar1 cut E_e", 120,0,30);
 TH1F *Eff2CUTEe = new TH1F("ef2cutEe", "Eff Tar2 cut E_e", 120,0,30);
 Eff1CUTEe->Divide(The1CUTEe,The_trueCUT1Ee,1,1,"B");
-Eff2CUTEe->Divide(The2CUTEe,The_trueCUT2Ee,1,1,"B");
+Eff2CUTEe->Divide(The2CUTEe,The_trueCUT2Ee,1,1,"B");*/
 
 TH1F *Eff1CUTtot = new TH1F("ef1cuttot", "Eff Tar1 cut th_mu+Ee", 120,0,30);
 TH1F *Eff2CUTtot = new TH1F("ef2cuttot", "Eff Tar2 cut th_mu+Ee", 120,0,30);
-Eff1CUTtot->Divide(The1CUTtot,The_trueCUT1tot,1,1,"B");
-Eff2CUTtot->Divide(The2CUTtot,The_trueCUT2tot,1,1,"B");
+Eff1CUTtot->Divide(The1CUTtot,The_trueCUT1tot,1,1,"B"); // eff piccolo cal 1.7
+Eff2CUTtot->Divide(The2CUTtot,The_trueCUT2tot,1,1,"B");// eff piccolo cal 1.7
 
        
 
@@ -360,7 +362,7 @@ Eff1CUT->SetLineColor(kRed);
 Eff1CUT->SetMaximum(1.1);
 Eff1CUT->SetMinimum(0);
 Eff1CUT->Draw(); 
-
+gStyle->SetOptStat(0);
 ef->cd(2);
 Eff2CUT->GetXaxis()->SetTitle("Theta el[mrad]");
 Eff2CUT->GetYaxis()->SetTitle("Efficency");
@@ -369,13 +371,15 @@ Eff2CUT->SetLineColor(kRed);
 Eff2CUT->SetMaximum(1.1);
 Eff2CUT->SetMinimum(0.7);
 Eff2CUT->Draw();   
-    
+gStyle->SetOptStat(0);   
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
-ef->SaveAs("/home/LHCB-T3/espedicato/tesi/eff/Effrmu5.png");   
+ef->SaveAs("/home/LHCB-T3/espedicato/tesi/eff/Effrmu5.png");  
+ef->SaveAs("/home/LHCB-T3/espedicato/tesi/eff/Effrmu5.C");   
+
     
     
-TCanvas * ef1= new TCanvas("ef","ef",1000,100,2500,2000);
+/*TCanvas * ef1= new TCanvas("ef","ef",1000,100,2500,2000);
 ef1->Divide(1,2);
 ef1->cd(1);
 Eff1CUTtot->GetXaxis()->SetTitle("Theta el[mrad]");
@@ -385,6 +389,7 @@ Eff1CUTtot->SetLineColor(kBlue);
 Eff1CUTtot->SetMaximum(1.1);
 Eff1CUTtot->SetMinimum(0);
 Eff1CUTtot->Draw(); 
+gStyle->SetOptStat(0);
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 ef1->cd(2);  
 Eff2CUTtot->GetXaxis()->SetTitle("Theta el[mrad]");
@@ -394,9 +399,10 @@ Eff2CUTtot->SetLineColor(kBlue);
 Eff2CUTtot->SetMaximum(1.1);
 Eff2CUTtot->SetMinimum(0.7);
 Eff2CUTtot->Draw(); 
+gStyle->SetOptStat(0);
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
-ef1->SaveAs("/home/LHCB-T3/espedicato/tesi/eff/Effcut.png");
+ef1->SaveAs("/home/LHCB-T3/espedicato/tesi/eff/Effcut.png");*/
 
 /*TCanvas * ef= new TCanvas("ef","ef",1000,100,2500,2000);
 ef->Divide(1,2);
@@ -462,46 +468,58 @@ TCanvas * c5a= new TCanvas("c5a","c5a",1000,100,2500,2000);
 c5a->Divide(2,1);
 c5a->cd(1);
 The_trueCUT1->SetLineColor(kBlack);
+The_trueCUT1->GetXaxis()->SetTitle("Theta el[mrad]");
 The_trueCUT1->SetLineWidth(3);
 The_trueCUT1->Draw("HIST");
 The1CUT->SetLineWidth(3);
 The1CUT->SetLineColor(30);
 The1CUT->Draw("HIST same");  
-
+gStyle->SetOptStat(0);  
 gPad->BuildLegend(0.3,0.21,0.3,0.21);
+    
 c5a->cd(2);
 The_trueCUT2->SetLineColor(kBlack);
+The_trueCUT2->GetXaxis()->SetTitle("Theta el[mrad]");
 The_trueCUT2->SetLineWidth(3);
 The_trueCUT2->Draw("HIST");   
 The2CUT->SetLineWidth(3);
 The2CUT->SetLineColor(30);
 The2CUT->Draw("HIST same"); 
-
+gStyle->SetOptStat(0);  
 gPad->BuildLegend(0.3,0.21,0.3,0.21);
- c5a->SaveAs("/home/LHCB-T3/espedicato/tesi/eff/th_elR5.png");    
+    
+c5a->SaveAs("/home/LHCB-T3/espedicato/tesi/eff/th_elR5.png");    
+c5a->SaveAs("/home/LHCB-T3/espedicato/tesi/eff/th_elR5.C");    
+
     
 TCanvas * c5= new TCanvas("c5","c5",1000,100,2500,2000);
 c5->Divide(2,1);
 c5->cd(1);
 The_trueCUT1tot->SetLineColor(kBlack);
 The_trueCUT1tot->SetLineWidth(3);
+The_trueCUT1tot->GetXaxis()->SetTitle("Theta el[mrad]");
 The_trueCUT1tot->Draw("HIST");
 The1CUTtot->SetLineWidth(3);
 The1CUTtot->SetLineColor(30);
 The1CUTtot->Draw("HIST same");  
+gStyle->SetOptStat(0);  
 
 gPad->BuildLegend(0.3,0.21,0.3,0.21);
 c5->cd(2);
 The_trueCUT2tot->SetLineColor(kBlack);
+The_trueCUT2tot->GetXaxis()->SetTitle("Theta el[mrad]");
 The_trueCUT2tot->SetLineWidth(3);
 The_trueCUT2tot->Draw("HIST");   
 The2CUTtot->SetLineWidth(3);
 The2CUTtot->SetLineColor(30);
 The2CUTtot->Draw("HIST same"); 
+gStyle->SetOptStat(0);  
 
 gPad->BuildLegend(0.3,0.21,0.3,0.21);
     
 c5->SaveAs("/home/LHCB-T3/espedicato/tesi/eff/th_el.png"); 
+c5->SaveAs("/home/LHCB-T3/espedicato/tesi/eff/th_el.C"); 
+
     
 /*TCanvas * c5MCS= new TCanvas("c5MCS","c5MCS",1000,100,2500,2000);
 c5MCS->Divide(2,4);

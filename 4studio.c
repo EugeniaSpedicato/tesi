@@ -43,11 +43,11 @@ TH1F* hist_distCUT=new TH1F("dist2", "Dist e-centroide CUT", 200,0,2);
 
 
 TH2F  *E3x31CUT  = new TH2F("Eel1" , " Th_el Vs. E_3x3 ",180,0,0.030,380,0,140);
-TH2F  *E3x32CUT  = new TH2F("Eel2" , " Th_el Vs. E_3x3 (Fiducial cut) ",180,0,0.030,380,0,140);
+TH2F  *E3x32CUT  = new TH2F("Eel2" , " Th_el Vs. E_3x3 cut",180,0,0.030,380,0,140);
     
     
 TH2F  *Th1  = new TH2F("ThEel1" , " Th_el Vs. Th_mu ",180,0,0.030,250,0,0.005);
-TH2F  *Th2  = new TH2F("ThEel2" , " Th_el Vs. Th_mu (Fiducial cut) ",180,0,0.030,250,0,0.005);    
+TH2F  *Th2  = new TH2F("ThEel2" , " Th_el Vs. Th_mu cut",180,0,0.030,250,0,0.005);    
 
  
 
@@ -337,26 +337,24 @@ double DE= (E_clus3x3/Ethe-0.955);
 ++n;*/
 
     
-if(r_mu<5 && detKinBeamRot_tar==1) 
+/*if(r_mu<5 && detKinBeamRot_tar==1) 
 {   E3x31CUT->Fill(detKinBeamRot_def_angle_e*0.001,E_clus3x3,wgt_full);
-Th1->Fill(detKinBeamRot_def_angle_e*0.001,detKinBeamRot_def_angle_mu*0.001,wgt_full);}
+Th1->Fill(detKinBeamRot_def_angle_e*0.001,detKinBeamRot_def_angle_mu*0.001,wgt_full);}*/
 
 if(r_mu<1.7 && detKinBeamRot_tar==1 && E_clus3x3>1 ){ //E_clus3x3>1
 
-E3x32CUT->Fill(detKinBeamRot_def_angle_e*0.001,E_clus3x3,wgt_full);
-Th2->Fill(detKinBeamRot_def_angle_e*0.001,detKinBeamRot_def_angle_mu*0.001,wgt_full);
 
-   /* if (DE>-0.08 && DE<0.08 && detKinBeamRot_def_angle_e<=5) 
-    {E3x31CUT->Fill(detKinBeamRot_def_angle_e*0.001,E_clus3x3,wgt_full);
-    Th1->Fill(detKinBeamRot_def_angle_e*0.001,detKinBeamRot_def_angle_mu*0.001,wgt_full);}   
+    if (DE>-0.08 && DE<0.08 && detKinBeamRot_def_angle_e<=5) 
+    {E3x32CUT->Fill(detKinBeamRot_def_angle_e*0.001,E_clus3x3,wgt_full);
+    Th2->Fill(detKinBeamRot_def_angle_e*0.001,detKinBeamRot_def_angle_mu*0.001,wgt_full);}   
     else if (DE>-0.2 && DE<0.2 && detKinBeamRot_def_angle_e>5 && detKinBeamRot_def_angle_e<=10) 
-    {E3x31CUT->Fill(detKinBeamRot_def_angle_e*0.001,E_clus3x3,wgt_full);
-     Th1->Fill(detKinBeamRot_def_angle_e*0.001,detKinBeamRot_def_angle_mu*0.001,wgt_full);} else if (DE>-0.3 && DE<0.3 && detKinBeamRot_def_angle_e>10 && detKinBeamRot_def_angle_e<=15) {E3x31CUT->Fill(detKinBeamRot_def_angle_e*0.001,E_clus3x3,wgt_full);
-     Th1->Fill(detKinBeamRot_def_angle_e*0.001,detKinBeamRot_def_angle_mu*0.001,wgt_full);} else if ( DE>-0.4 && DE<0.4 && detKinBeamRot_def_angle_e>15 && detKinBeamRot_def_angle_e<=20) 
-    {E3x31CUT->Fill(detKinBeamRot_def_angle_e*0.001,E_clus3x3,wgt_full);
-     Th1->Fill(detKinBeamRot_def_angle_e*0.001,detKinBeamRot_def_angle_mu*0.001,wgt_full);}     
-    else if (detKinBeamRot_def_angle_e>20) {E3x31CUT->Fill(detKinBeamRot_def_angle_e*0.001,E_clus3x3,wgt_full);
-     Th1->Fill(detKinBeamRot_def_angle_e*0.001,detKinBeamRot_def_angle_mu*0.001,wgt_full);} */
+    {E3x32CUT->Fill(detKinBeamRot_def_angle_e*0.001,E_clus3x3,wgt_full);
+     Th2->Fill(detKinBeamRot_def_angle_e*0.001,detKinBeamRot_def_angle_mu*0.001,wgt_full);} else if (DE>-0.3 && DE<0.3 && detKinBeamRot_def_angle_e>10 && detKinBeamRot_def_angle_e<=15) {E3x32CUT->Fill(detKinBeamRot_def_angle_e*0.001,E_clus3x3,wgt_full);
+     Th2->Fill(detKinBeamRot_def_angle_e*0.001,detKinBeamRot_def_angle_mu*0.001,wgt_full);} else if ( DE>-0.4 && DE<0.4 && detKinBeamRot_def_angle_e>15 && detKinBeamRot_def_angle_e<=20) 
+    {E3x32CUT->Fill(detKinBeamRot_def_angle_e*0.001,E_clus3x3,wgt_full);
+     Th2->Fill(detKinBeamRot_def_angle_e*0.001,detKinBeamRot_def_angle_mu*0.001,wgt_full);}     
+    else if (detKinBeamRot_def_angle_e>20) {E3x32CUT->Fill(detKinBeamRot_def_angle_e*0.001,E_clus3x3,wgt_full);
+     Th2->Fill(detKinBeamRot_def_angle_e*0.001,detKinBeamRot_def_angle_mu*0.001,wgt_full);} 
 
     
     
@@ -831,9 +829,18 @@ Th2->LabelsDeflate("Y");
 Th2->Draw("COLZ");
 Elastic2->Draw("same");
 gStyle->SetOptStat("ne"); 
-thu->SaveAs("/home/LHCB-T3/espedicato/tesi/studio4/thu.png");
+thu->SaveAs("/home/LHCB-T3/espedicato/tesi/studio4/thu2.png");
 //thu->SaveAs("/home/LHCB-T3/espedicato/tesi/studio4/thu.C");
 
+    
+TCanvas * a= new TCanvas("a","a",1000,1000,2500,2000);
+gStyle->SetPalette(kRainBow);
+E3x32CUT->GetXaxis()->SetTitle("Theta_el[rad]");
+E3x32CUT->GetYaxis()->SetTitle("Ereco3x3[GeV]");
+E3x32CUT->Draw("COLZ");
+gStyle->SetOptStat("ne"); 
+a->SaveAs("/home/LHCB-T3/espedicato/tesi/studio4/thE_2.png");    
+    
 /*
     
 TCanvas * cres= new TCanvas("cres","cres",1000,100,2500,2000);  

@@ -353,7 +353,7 @@ Eff2CUTtot->Divide(The2CUTtot,The_trueCUT2tot,1,1,"B");// eff piccolo cal 1.7
        
 
 TCanvas * ef= new TCanvas("ef","ef",1000,100,2500,2000);
-ef->Divide(1,2);
+ef->Divide(2,2);
 ef->cd(1); 
 Eff1CUT->GetXaxis()->SetTitle("Theta el[mrad]");
 Eff1CUT->GetYaxis()->SetTitle("Efficency");

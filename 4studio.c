@@ -337,13 +337,14 @@ double DE= (E_clus3x3/Ethe-0.955);
 ++n;*/
 
     
-if(r_mu<1.7 && detKinBeamRot_tar==1) 
+if(r_mu<5 && detKinBeamRot_tar==1) 
 {   E3x31CUT->Fill(detKinBeamRot_def_angle_e*0.001,E_clus3x3,wgt_full);
-    Th1->Fill(detKinBeamRot_def_angle_e*0.001,detKinBeamRot_def_angle_mu*0.001,wgt_full);}
+Th1->Fill(detKinBeamRot_def_angle_e*0.001,detKinBeamRot_def_angle_mu*0.001,wgt_full=;}
 
-if(r_mu<1.7 && detKinBeamRot_tar==1 && E_clus3x3>1){
+if(r_mu<1.7 && detKinBeamRot_tar==1 ){ //E_clus3x3>1
 
- 
+E3x32CUT->Fill(detKinBeamRot_def_angle_e*0.001,E_clus3x3,wgt_full);
+Th2->Fill(detKinBeamRot_def_angle_e*0.001,detKinBeamRot_def_angle_mu*0.001,wgt_full);
 
    /* if (DE>-0.08 && DE<0.08 && detKinBeamRot_def_angle_e<=5) 
     {E3x31CUT->Fill(detKinBeamRot_def_angle_e*0.001,E_clus3x3,wgt_full);
@@ -360,7 +361,7 @@ if(r_mu<1.7 && detKinBeamRot_tar==1 && E_clus3x3>1){
     
     
     
-//ZONA 1
+/*//ZONA 1
     
 if(E_clus3x3<=10){
 
@@ -722,7 +723,7 @@ if(E_clus3x3>75){
        }  
    
 
-}  
+}  */
     
     
  
@@ -762,16 +763,9 @@ TCanvas * el= new TCanvas("el","el",1000,100,2500,2000);
 el->Divide(1,3);
 el->cd(1);
 TF1 *Elastic = new TF1("Elastic","0.5109989461*0.001*((1+(sqrt(150*150-(105.6583745 *0.001*105.6583745 *0.001))/(150+0.5109989461*0.001))*(sqrt(150*150-(105.6583745 *0.001*105.6583745 *0.001))/(150+0.5109989461*0.001))*cos(x)*cos(x))/(1-(sqrt(150*150-(105.6583745 *0.001*105.6583745 *0.001))/(150+0.5109989461*0.001))*(sqrt(150*150-(105.6583745 *0.001*105.6583745 *0.001))/(150+0.5109989461*0.001))*cos(x)*cos(x)))",0,0.030); 
-Elastic->Draw();
-el->cd(2);
-hist_DE->SetLineColor(9);
-hist_DE->SetLineWidth(3);
-hist_DE->Draw("HIST");
-el->cd(3);
-hist_DE5->SetLineColor(9);
-hist_DE5->SetLineWidth(3);
-hist_DE5->Draw("HIST");
-el->SaveAs("/home/LHCB-T3/espedicato/tesi/studio4/elastic.png");   
+
+Elastic->SetLineColor(kViolet);
+
     
 
 TF1 *Elastic2 = new TF1("Elastic2","asin( (sin(x)*sqrt(Elastic(x)*Elastic(x)-0.5109989461*0.001*0.5109989461*0.001))/sqrt( (150+0.5109989461*0.001-Elastic(x))*(150+0.5109989461*0.001-Elastic(x))-105.6583745 *0.001*105.6583745 *0.001 ) )",0,0.030);     
@@ -803,42 +797,44 @@ if (Th2->GetBinContent(i,j)<1) Th2->SetBinContent(i,j,0);}}
     
     
 TCanvas * c4a= new TCanvas("c4a","c4a",1000,1000,2500,2000);
-c4a->Divide(2,2);
+c4a->Divide(2,1);
 gStyle->SetPalette(kRainBow);
  
-c4a->cd(2);   
+c4a->cd(1);   
 E3x31CUT->GetXaxis()->SetTitle("Theta_el[rad]");
 E3x31CUT->GetYaxis()->SetTitle("Ereco3x3[GeV]");
 E3x31CUT->Draw("COLZ");
 gStyle->SetOptStat(0); 
 Elastic->Draw("same");
-c4a->cd(4);   
+c4a->cd(2);   
 E3x32CUT->GetXaxis()->SetTitle("Theta_el[rad]");
 E3x32CUT->GetYaxis()->SetTitle("Ereco3x3[GeV]");
 E3x32CUT->Draw("COLZ");
 gStyle->SetOptStat(0); 
 Elastic->Draw("same");
+c4a->SaveAs("/home/LHCB-T3/espedicato/tesi/studio4/thE_cut.png");
+c4a->SaveAs("/home/LHCB-T3/espedicato/tesi/studio4/thE_cut.C");
 
-
-/*c4a->SaveAs("/home/LHCB-T3/espedicato/tesi/studio4/thE_cut.png");
     
 TCanvas * thu= new TCanvas("c4a","c4a",100,100,2500,2000);
-thu->Divide(1,2);
+thu->Divide(2,1);
 gStyle->SetPalette(kRainBow);
- */
-c4a->cd(1);   
+ 
+thu->cd(1);   
 Th1->GetXaxis()->SetTitle("Theta_el[rad]");
 Th1->GetYaxis()->SetTitle("Theta_mu[rad]");
 Th1->Draw("COLZ");
 Elastic2->Draw("same");
 gStyle->SetOptStat(0); 
-c4a->cd(3);   
+thu->cd(2);   
 Th2->GetXaxis()->SetTitle("Theta_el[rad]");
 Th2->GetYaxis()->SetTitle("Theta_mu[rad]");
 Th2->Draw("COLZ");
 Elastic2->Draw("same");
 gStyle->SetOptStat(0); 
-c4a->SaveAs("/home/LHCB-T3/espedicato/tesi/studio4/thu.png");
+thu->SaveAs("/home/LHCB-T3/espedicato/tesi/studio4/thu.png");
+thu->SaveAs("/home/LHCB-T3/espedicato/tesi/studio4/thu.C");
+
 /*
     
 TCanvas * cres= new TCanvas("cres","cres",1000,100,2500,2000);  

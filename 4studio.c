@@ -344,7 +344,7 @@ Th1->Fill(detKinBeamRot_def_angle_e*0.001,detKinBeamRot_def_angle_mu*0.001,wgt_f
 if(r_mu<1.7 && detKinBeamRot_tar==1 && E_clus3x3>1 ){ //E_clus3x3>1
 
 
-    if (DE>-0.08 && DE<0.08 && detKinBeamRot_def_angle_e<=5) 
+  /*  if (DE>-0.08 && DE<0.08 && detKinBeamRot_def_angle_e<=5) 
     {E3x32CUT->Fill(detKinBeamRot_def_angle_e*0.001,E_clus3x3,wgt_full);
     Th2->Fill(detKinBeamRot_def_angle_e*0.001,detKinBeamRot_def_angle_mu*0.001,wgt_full);}   
     else if (DE>-0.2 && DE<0.2 && detKinBeamRot_def_angle_e>5 && detKinBeamRot_def_angle_e<=10) 
@@ -355,11 +355,11 @@ if(r_mu<1.7 && detKinBeamRot_tar==1 && E_clus3x3>1 ){ //E_clus3x3>1
      Th2->Fill(detKinBeamRot_def_angle_e*0.001,detKinBeamRot_def_angle_mu*0.001,wgt_full);}     
     else if (detKinBeamRot_def_angle_e>20) {E3x32CUT->Fill(detKinBeamRot_def_angle_e*0.001,E_clus3x3,wgt_full);
      Th2->Fill(detKinBeamRot_def_angle_e*0.001,detKinBeamRot_def_angle_mu*0.001,wgt_full);} 
-
+*/
     
     
     
-/*//ZONA 1
+//ZONA 1
     
 if(E_clus3x3<=10){
 
@@ -721,7 +721,7 @@ if(E_clus3x3>75){
        }  
    
 
-}  */
+}  
     
     
  

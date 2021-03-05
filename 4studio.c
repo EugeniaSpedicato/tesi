@@ -46,8 +46,8 @@ TH2F  *E3x31CUT  = new TH2F("Eel1" , " Th_el Vs. E_3x3 ",180,0,0.030,380,0,140);
 TH2F  *E3x32CUT  = new TH2F("Eel2" , " Th_el Vs. E_3x3 (Fiducial cut) ",180,0,0.030,380,0,140);
     
     
-TH2F  *Th1  = new TH2F("ThEel1" , " Th_el Vs. Th_mu core Tar 2 ",180,0,0.030,250,0,0.005);
-TH2F  *Th2  = new TH2F("ThEel2" , " Th_el Vs. Th_mu core Tar 2  (Fiducial cut) ",180,0,0.030,250,0,0.005);    
+TH2F  *Th1  = new TH2F("ThEel1" , " Th_el Vs. Th_mu ",180,0,0.030,250,0,0.005);
+TH2F  *Th2  = new TH2F("ThEel2" , " Th_el Vs. Th_mu (Fiducial cut) ",180,0,0.030,250,0,0.005);    
 
  
 
@@ -341,7 +341,7 @@ if(r_mu<5 && detKinBeamRot_tar==1)
 {   E3x31CUT->Fill(detKinBeamRot_def_angle_e*0.001,E_clus3x3,wgt_full);
 Th1->Fill(detKinBeamRot_def_angle_e*0.001,detKinBeamRot_def_angle_mu*0.001,wgt_full);}
 
-if(r_mu<1.7 && detKinBeamRot_tar==1 ){ //E_clus3x3>1
+if(r_mu<1.7 && detKinBeamRot_tar==1 && E_clus3x3>1 ){ //E_clus3x3>1
 
 E3x32CUT->Fill(detKinBeamRot_def_angle_e*0.001,E_clus3x3,wgt_full);
 Th2->Fill(detKinBeamRot_def_angle_e*0.001,detKinBeamRot_def_angle_mu*0.001,wgt_full);
@@ -793,8 +793,9 @@ if (Th2->GetBinContent(i,j)<1) Th2->SetBinContent(i,j,0);}}
     
     
 TCanvas * thu= new TCanvas("thu","thu",1000,1000,2500,2000);
-thu->Divide(2,2);
 gStyle->SetPalette(kRainBow);
+/*thu->Divide(2,2);
+
  
 thu->cd(1);   
 E3x31CUT->GetXaxis()->SetTitle("Theta_el[rad]");
@@ -807,7 +808,7 @@ E3x32CUT->GetXaxis()->SetTitle("Theta_el[rad]");
 E3x32CUT->GetYaxis()->SetTitle("Ereco3x3[GeV]");
 E3x32CUT->Draw("COLZ");
 gStyle->SetOptStat("ne"); 
-Elastic->Draw("same");
+Elastic->Draw("same");*/
 /*c4a->SaveAs("/home/LHCB-T3/espedicato/tesi/studio4/thE_cut.png");
 c4a->SaveAs("/home/LHCB-T3/espedicato/tesi/studio4/thE_cut.C");*/
 
@@ -816,14 +817,14 @@ c4a->SaveAs("/home/LHCB-T3/espedicato/tesi/studio4/thE_cut.C");*/
 thu->Divide(2,1);
 gStyle->SetPalette(kRainBow);*/
  
-thu->cd(3);   
+/*thu->cd(3);   
 Th1->GetXaxis()->SetTitle("Theta_el[rad]");
 Th1->GetYaxis()->SetTitle("Theta_mu[rad]");
 Th1->LabelsDeflate("Y");
 Th1->Draw("COLZ");
 Elastic2->Draw("same");
 gStyle->SetOptStat("ne"); 
-thu->cd(4);   
+thu->cd(4);   */
 Th2->GetXaxis()->SetTitle("Theta_el[rad]");
 Th2->GetYaxis()->SetTitle("Theta_mu[rad]");
 Th2->LabelsDeflate("Y");
@@ -831,7 +832,7 @@ Th2->Draw("COLZ");
 Elastic2->Draw("same");
 gStyle->SetOptStat("ne"); 
 thu->SaveAs("/home/LHCB-T3/espedicato/tesi/studio4/thu.png");
-thu->SaveAs("/home/LHCB-T3/espedicato/tesi/studio4/thu.C");
+//thu->SaveAs("/home/LHCB-T3/espedicato/tesi/studio4/thu.C");
 
 /*
     

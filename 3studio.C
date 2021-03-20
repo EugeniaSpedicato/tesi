@@ -923,7 +923,7 @@ TCanvas * dmuafter= new TCanvas("dmuafter","dmuafter",1000,100,2500,2000);
 dmuafter->Divide(2,2);
 dmuafter->cd(1);
 Emuout->GetXaxis()->SetTitle("E[GeV]");
-Emuout->SetLineColor(46);
+Emuout->SetLineColor(9);
 Emuout->SetLineWidth(3);
 Emuout->SetMinimum(1);
 Emuout->Draw("HIST");
@@ -934,6 +934,7 @@ EmuoutCUTafter->SetMinimum(1);
 EmuoutCUTafter->Draw("HIST same");
 Emuout_TH->GetXaxis()->SetTitle("E[GeV]");
 Emuout_TH->SetLineColor(kBlack);
+Emuout_TH->SetLineStyle(10);
 Emuout_TH->SetLineWidth(3);
 Emuout_TH->SetMinimum(1);
 Emuout_TH->Draw("HIST same");
@@ -943,7 +944,7 @@ gPad->BuildLegend(0.25,0.15,0.25,0.15);
 
 dmuafter->cd(3);
 Thmuout->GetXaxis()->SetTitle("Theta_gen[mrad]");
-Thmuout->SetLineColor(46);
+Thmuout->SetLineColor(9);
 Thmuout->SetLineWidth(3);
 Thmuout->Draw("HIST"); 
 ThmuoutCUTafter->GetXaxis()->SetTitle("Theta_gen[mrad]");
@@ -952,6 +953,7 @@ ThmuoutCUTafter->SetLineWidth(3);
 ThmuoutCUTafter->Draw("HIST same"); 
 Thmuout_TH->GetXaxis()->SetTitle("Theta_gen[mrad]");
 Thmuout_TH->SetLineColor(kBlack);
+Thmuout_TH->SetLineStyle(10);
 Thmuout_TH->SetLineWidth(3);
 Thmuout_TH->Draw("HIST same"); 
 gPad->SetLogy();
@@ -972,6 +974,7 @@ EeoutCUTafter->Draw("HIST same");
 Eeout_TH->GetXaxis()->SetTitle("E[GeV]");
 Eeout_TH->SetLineColor(kBlack);
 Eeout_TH->SetLineWidth(3);
+Eeout_TH->SetLineStyle(10);
 Eeout_TH->SetMinimum(1);
 Eeout_TH->Draw("HIST same");
 gPad->SetLogy();
@@ -990,11 +993,14 @@ TheoutCUTafter->Draw("HIST same");
 Theout_TH->GetXaxis()->SetTitle("Theta_gen[mrad]");
 Theout_TH->SetLineColor(kBlack);
 Theout_TH->SetLineWidth(3);
+Theout_TH->SetLineStyle(10);
 Theout_TH->Draw("HIST same"); 
 gStyle->SetOptStat(0); 
 gPad->BuildLegend(0.25,0.15,0.25,0.15);
    
-dmuafter->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/muon_after.png");         
+dmuafter->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/muon_after.png");  
+dmuafter->SaveAs("/home/LHCB-T3/espedicato/tesi/studio3/muon_after.C");         
+
        
        
        

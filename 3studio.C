@@ -806,7 +806,7 @@ delete myGrid;
 }}
 
  cout << "numero eventi nella fiduciale " << n_tot<<endl;
- cout << "numero eventi elastici tagliati da 1 GeV " << n_tot<<endl; 
+ cout << "numero eventi elastici tagliati da 1 GeV " << n_1Gev<<endl; 
 cout << "numero eventi elastici tagliati da DE " << n_DE<<endl;
  cout << "numero eventi elastici tagliati da centroide " << n_centroid<<endl; 
     

@@ -805,7 +805,11 @@ else {
 delete myGrid; 
 }}
 
-       
+ cout << "numero eventi nella fiduciale " << n_tot<<endl;
+ cout << "numero eventi elastici tagliati da 1 GeV " << n_tot<<endl; 
+cout << "numero eventi elastici tagliati da DE " << n_DE<<endl;
+ cout << "numero eventi elastici tagliati da centroide " << n_centroid<<endl; 
+    
        
 TCanvas * de= new TCanvas("de","de",1000,100,2500,2000);
 de->Divide(1,2);

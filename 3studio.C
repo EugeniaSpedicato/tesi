@@ -33,6 +33,12 @@ Double_t Eout=0.;
 Double_t Emean_out=0.;
 Double_t Eres_in=0.;
     
+Double_t n_1Gev=0.;
+Double_t n_DE=0.;    
+Double_t n_centroid=0.; 
+Double_t n_tot=0.;    
+    
+    
     
 const Double_t m_e = 0.5109989461 *0.001; //GeV
 const Double_t m_mu =105.6583745 *0.001; //GeV
@@ -412,6 +418,8 @@ if (detKinBeamRot_def_angle_e>=5 && detKinBeamRot_def_angle_e<10 ) hist_E92_e->F
 eoutmean->Fill(E_clus3x3,Emean_out,wgt_full);    
 
 
+n_tot+=wgt_full;
+    
 if(E_clus3x3>1){
 
 //ZONA 1
@@ -431,8 +439,8 @@ if(E_clus3x3<=10){
             TheoutCUT->Fill(detKinBeamRot_def_angle_e,wgt_full); 
             EmuoutCUT->Fill(detKinBeamRot_Emu,wgt_full); 
             ThmuoutCUT->Fill(detKinBeamRot_def_angle_mu,wgt_full); 
-            diff_r_mueCUT->Fill(r_mue,wgt_full);  
-            
+            diff_r_mueCUT->Fill(r_mue,wgt_full);  if (photon_energy==-1 && n_cell_ph==0) {n_centroid+=wgt_full; }
+     
             
     } else {    
     
@@ -456,7 +464,7 @@ if(E_clus3x3<=10){
             TheoutCUT2->Fill(detKinBeamRot_def_angle_e,wgt_full); 
             EmuoutCUT2->Fill(detKinBeamRot_Emu,wgt_full); 
             ThmuoutCUT2->Fill(detKinBeamRot_def_angle_mu,wgt_full); 
-            diff_r_mueCUT2->Fill(r_mue,wgt_full);  }
+            diff_r_mueCUT2->Fill(r_mue,wgt_full);  if(photon_energy==-1 && n_cell_ph==0){n_DE+=wgt_full;}  }
  }    
                    
               }
@@ -480,7 +488,7 @@ if(ddd>0.1*7.3)
                TheoutCUT->Fill(detKinBeamRot_def_angle_e,wgt_full); 
                 EmuoutCUT->Fill(detKinBeamRot_Emu,wgt_full); 
                ThmuoutCUT->Fill(detKinBeamRot_def_angle_mu,wgt_full); 
-    diff_r_mueCUT->Fill(r_mue,wgt_full); 
+    diff_r_mueCUT->Fill(r_mue,wgt_full);  n_centroid+=wgt_full;
             
 
     } else { 
@@ -505,7 +513,7 @@ if(ddd>0.1*7.3)
             TheoutCUT2->Fill(detKinBeamRot_def_angle_e,wgt_full); 
             EmuoutCUT2->Fill(detKinBeamRot_Emu,wgt_full); 
             ThmuoutCUT2->Fill(detKinBeamRot_def_angle_mu,wgt_full); 
-            diff_r_mueCUT2->Fill(r_mue,wgt_full);  }
+            diff_r_mueCUT2->Fill(r_mue,wgt_full);  if(photon_energy==-1 && n_cell_ph==0){n_DE+=wgt_full;}  }
                    
 }
 }
@@ -524,7 +532,7 @@ if(ddd>0.1*6.4)
                 EeoutCUT->Fill(detKinBeamRot_Ee,wgt_full); 
                TheoutCUT->Fill(detKinBeamRot_def_angle_e,wgt_full); 
                 EmuoutCUT->Fill(detKinBeamRot_Emu,wgt_full); 
-               ThmuoutCUT->Fill(detKinBeamRot_def_angle_mu,wgt_full); diff_r_mueCUT->Fill(r_mue,wgt_full); 
+               ThmuoutCUT->Fill(detKinBeamRot_def_angle_mu,wgt_full); diff_r_mueCUT->Fill(r_mue,wgt_full);  n_centroid+=wgt_full;
 
     }else {    
     
@@ -548,7 +556,7 @@ if(ddd>0.1*6.4)
             TheoutCUT2->Fill(detKinBeamRot_def_angle_e,wgt_full); 
             EmuoutCUT2->Fill(detKinBeamRot_Emu,wgt_full); 
             ThmuoutCUT2->Fill(detKinBeamRot_def_angle_mu,wgt_full); 
-            diff_r_mueCUT2->Fill(r_mue,wgt_full);  }
+            diff_r_mueCUT2->Fill(r_mue,wgt_full);  if(photon_energy==-1 && n_cell_ph==0){n_DE+=wgt_full;}  }
     
 
 }
@@ -569,7 +577,7 @@ if(ddd>0.1*6)
                 EeoutCUT->Fill(detKinBeamRot_Ee,wgt_full); 
                TheoutCUT->Fill(detKinBeamRot_def_angle_e,wgt_full); 
                 EmuoutCUT->Fill(detKinBeamRot_Emu,wgt_full); 
-               ThmuoutCUT->Fill(detKinBeamRot_def_angle_mu,wgt_full); diff_r_mueCUT->Fill(r_mue,wgt_full); 
+               ThmuoutCUT->Fill(detKinBeamRot_def_angle_mu,wgt_full); diff_r_mueCUT->Fill(r_mue,wgt_full);  n_centroid+=wgt_full;
 
     } else {   
     
@@ -593,7 +601,7 @@ if(ddd>0.1*6)
             TheoutCUT2->Fill(detKinBeamRot_def_angle_e,wgt_full); 
             EmuoutCUT2->Fill(detKinBeamRot_Emu,wgt_full); 
             ThmuoutCUT2->Fill(detKinBeamRot_def_angle_mu,wgt_full); 
-            diff_r_mueCUT2->Fill(r_mue,wgt_full);  }
+            diff_r_mueCUT2->Fill(r_mue,wgt_full);  if(photon_energy==-1 && n_cell_ph==0){n_DE+=wgt_full;}  }
 
 }
 }
@@ -613,7 +621,7 @@ if(E_clus3x3>40 && E_clus3x3<=50){
                     EeoutCUT->Fill(detKinBeamRot_Ee,wgt_full); 
                TheoutCUT->Fill(detKinBeamRot_def_angle_e,wgt_full); 
                 EmuoutCUT->Fill(detKinBeamRot_Emu,wgt_full); 
-               ThmuoutCUT->Fill(detKinBeamRot_def_angle_mu,wgt_full); diff_r_mueCUT->Fill(r_mue,wgt_full); 
+               ThmuoutCUT->Fill(detKinBeamRot_def_angle_mu,wgt_full); diff_r_mueCUT->Fill(r_mue,wgt_full);  n_centroid+=wgt_full;
             
 
     } else {    
@@ -638,7 +646,7 @@ if(E_clus3x3>40 && E_clus3x3<=50){
             TheoutCUT2->Fill(detKinBeamRot_def_angle_e,wgt_full); 
             EmuoutCUT2->Fill(detKinBeamRot_Emu,wgt_full); 
             ThmuoutCUT2->Fill(detKinBeamRot_def_angle_mu,wgt_full); 
-            diff_r_mueCUT2->Fill(r_mue,wgt_full);  }
+            diff_r_mueCUT2->Fill(r_mue,wgt_full);  if(photon_energy==-1 && n_cell_ph==0){n_DE+=wgt_full;}  }
      
  }
 } 
@@ -658,7 +666,7 @@ if(E_clus3x3>50 && E_clus3x3<=60){
                 EeoutCUT->Fill(detKinBeamRot_Ee,wgt_full); 
                TheoutCUT->Fill(detKinBeamRot_def_angle_e,wgt_full); 
                 EmuoutCUT->Fill(detKinBeamRot_Emu,wgt_full); 
-               ThmuoutCUT->Fill(detKinBeamRot_def_angle_mu,wgt_full); diff_r_mueCUT->Fill(r_mue,wgt_full); 
+               ThmuoutCUT->Fill(detKinBeamRot_def_angle_mu,wgt_full); diff_r_mueCUT->Fill(r_mue,wgt_full);  n_centroid+=wgt_full;
             
 
     } else{
@@ -683,7 +691,7 @@ if(E_clus3x3>50 && E_clus3x3<=60){
             TheoutCUT2->Fill(detKinBeamRot_def_angle_e,wgt_full); 
             EmuoutCUT2->Fill(detKinBeamRot_Emu,wgt_full); 
             ThmuoutCUT2->Fill(detKinBeamRot_def_angle_mu,wgt_full); 
-            diff_r_mueCUT2->Fill(r_mue,wgt_full);  }
+            diff_r_mueCUT2->Fill(r_mue,wgt_full);  if(photon_energy==-1 && n_cell_ph==0){n_DE+=wgt_full;}  }
      
     
 }
@@ -704,7 +712,7 @@ if(E_clus3x3>60 && E_clus3x3<=75){
                     EeoutCUT->Fill(detKinBeamRot_Ee,wgt_full); 
                TheoutCUT->Fill(detKinBeamRot_def_angle_e,wgt_full); 
                 EmuoutCUT->Fill(detKinBeamRot_Emu,wgt_full); 
-               ThmuoutCUT->Fill(detKinBeamRot_def_angle_mu,wgt_full); diff_r_mueCUT->Fill(r_mue,wgt_full); 
+               ThmuoutCUT->Fill(detKinBeamRot_def_angle_mu,wgt_full); diff_r_mueCUT->Fill(r_mue,wgt_full);  n_centroid+=wgt_full;
             
 
     } else {   
@@ -729,7 +737,7 @@ if(E_clus3x3>60 && E_clus3x3<=75){
             TheoutCUT2->Fill(detKinBeamRot_def_angle_e,wgt_full); 
             EmuoutCUT2->Fill(detKinBeamRot_Emu,wgt_full); 
             ThmuoutCUT2->Fill(detKinBeamRot_def_angle_mu,wgt_full); 
-            diff_r_mueCUT2->Fill(r_mue,wgt_full);  }
+            diff_r_mueCUT2->Fill(r_mue,wgt_full);  if(photon_energy==-1 && n_cell_ph==0){n_DE+=wgt_full;}  }
   
 } 
 }
@@ -748,7 +756,7 @@ if(E_clus3x3>75){
                 EeoutCUT->Fill(detKinBeamRot_Ee,wgt_full); 
                TheoutCUT->Fill(detKinBeamRot_def_angle_e,wgt_full); 
                 EmuoutCUT->Fill(detKinBeamRot_Emu,wgt_full); 
-               ThmuoutCUT->Fill(detKinBeamRot_def_angle_mu,wgt_full); diff_r_mueCUT->Fill(r_mue,wgt_full); 
+               ThmuoutCUT->Fill(detKinBeamRot_def_angle_mu,wgt_full); diff_r_mueCUT->Fill(r_mue,wgt_full);  n_centroid+=wgt_full;
 
     } else {  
     
@@ -772,7 +780,7 @@ if(E_clus3x3>75){
             TheoutCUT2->Fill(detKinBeamRot_def_angle_e,wgt_full); 
             EmuoutCUT2->Fill(detKinBeamRot_Emu,wgt_full); 
             ThmuoutCUT2->Fill(detKinBeamRot_def_angle_mu,wgt_full); 
-            diff_r_mueCUT2->Fill(r_mue,wgt_full);  }
+            diff_r_mueCUT2->Fill(r_mue,wgt_full);  if(photon_energy==-1 && n_cell_ph==0){n_DE+=wgt_full;}  }
        }  
    
 
@@ -788,7 +796,7 @@ else {
                 TheoutCUT1->Fill(detKinBeamRot_def_angle_e,wgt_full); 
                 EmuoutCUT1->Fill(detKinBeamRot_Emu,wgt_full); 
                 ThmuoutCUT1->Fill(detKinBeamRot_def_angle_mu,wgt_full); 
-                diff_r_mueCUT1->Fill(r_mue,wgt_full); 
+                diff_r_mueCUT1->Fill(r_mue,wgt_full);  if(photon_energy==-1 && n_cell_ph==0){n_1Gev+=wgt_full;} 
 }  
            
 }

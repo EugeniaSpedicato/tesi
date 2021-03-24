@@ -406,7 +406,7 @@ Theout_TH->Fill(detKinBeamRot_def_angle_e,wgt_LO);
 Emuout->Fill(detKinBeamRot_Emu,wgt_full);
 Emuout_TH->Fill(detKinBeamRot_Emu,wgt_LO);
 Thmuout->Fill(detKinBeamRot_def_angle_mu,wgt_full);
-Thmuout_TH->Fill(detKinBeamRot_def_angle_mu,wgt_full);
+Thmuout_TH->Fill(detKinBeamRot_def_angle_mu,wgt_LO);
     
     
 E3x31CUT->Fill(detKinBeamRot_def_angle_e,E_clus3x3,wgt_full);

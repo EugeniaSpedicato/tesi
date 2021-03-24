@@ -1,7 +1,7 @@
 void photon_cut()
 {
 //=========Macro generated from canvas: d/d
-//=========  (Sat Mar 20 13:04:29 2021) by ROOT version 6.20/02
+//=========  (Wed Mar 24 17:47:59 2021) by ROOT version 6.20/02
    TCanvas *d = new TCanvas("d", "d",0,0,2500,2000);
    gStyle->SetOptStat(0);
    d->Range(0,0,1,1);
